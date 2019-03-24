@@ -2,7 +2,7 @@ ActiveAdmin.register Item do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :name, :item_type, :thing, :thing_id, :item_type_id
+  permit_params :name, :item_type, :thing, :thing_id, :item_type_id, links_attributes: [:id, :url, :_destroy]
 #
 # or
 #
@@ -11,5 +11,19 @@ ActiveAdmin.register Item do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+  form do |f|
+  	f.inputs 'Details' do
+  		f.input :name
+  		f.input :item_type
+  		f.input :thing
+  	end
+  	f.inputs do
+  		f.has_many :links, allow_destroy: true, new_record: true do |a|
+  			a.input :url
+  		end
+  	end
+  	f.actions
+  end
 
 end

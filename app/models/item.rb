@@ -5,4 +5,5 @@ class Item < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 8..120 }
   validates :item_type, presence: true
   validates :thing, presence: true
+  accepts_nested_attributes_for :links, allow_destroy: true
 end

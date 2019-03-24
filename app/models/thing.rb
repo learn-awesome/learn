@@ -5,4 +5,5 @@ class Thing < ApplicationRecord
 	has_many :topics, :through => :topic_things
 	has_many :person_things
 	has_many :people, :through => :person_things
+	accepts_nested_attributes_for :items, allow_destroy: true
 end
