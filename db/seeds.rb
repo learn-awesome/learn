@@ -5,7 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+AdminUser.delete_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Link.delete_all
+Item.delete_all
+PersonThing.delete_all
+TopicThing.delete_all
+Person.delete_all
+Topic.delete_all
+Thing.delete_all
+
+ItemType.delete_all
 
 ItemType.create!(id: 'article')
 ItemType.create!(id: 'audio')
@@ -53,7 +64,7 @@ Person.create!(name: 'Josh Waitzkin')
 sivers = Person.create!(name: 'Derek Sivers', twitter: 'sivers', website: 'https://sivers.org/')
 nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
 
-
+=begin
 th = Thing.create!(name: 'learning how to learn')
 TopicThing.create!(topic: learning, thing: th)
 
@@ -74,7 +85,20 @@ Link.create!(item: it, url: 'https://sivers.org/kimo')
 
 th = Thing.create!(name: 'how people learn')
 TopicThing.create!(topic: learning, thing: th)
+=end
 
+th = learning.things.create!(
+	name: 'how to remember anything forever',
+	items_attributes: [
+		{
+			name: 'how to remember anything forever',
+			item_type_id: 'interactive',
+			links_attributes: [
+				{url: 'https://ncase.me/remember/'}
+			]
+		}
+	]
+)
 
-
+PersonThing.create!(person: nicky, thing: th, role: 'creator')
 

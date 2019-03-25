@@ -1,27 +1,2 @@
 <h1>Welcome</h1>
-<ul>
-<% Topic.all.each do |topic| %>
-	<li>
-		<h2><%= topic.name.capitalize %></h2>
-		<ul>
-		<% topic.things.each do |thing| %>
-			<li>
-				<h4><%= thing.name.capitalize %></h4>
-				<ul>
-				<% thing.items.each do |item| %>
-					<li>
-						<h6><%= item.name.capitalize %></h6>
-						<ul>
-							<% item.links.each do |link| %>
-								<li><%= link_to link.url, link.url %></li>
-							<% end %>
-						</ul>
-					</li>
-				<% end %>
-				</ul>
-			</li>
-		<% end %>
-		</ul>
-	</li>
-<% end %>
-</ul>
+<%= render Topic.all %>
