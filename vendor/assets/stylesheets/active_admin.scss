@@ -1,3 +1,5 @@
+// @import "flattened_active_admin/variables";
+
 // SASS variable overrides must be declared before loading up Active Admin's styles.
 //
 // To view the variables that Active Admin provides, take a look at
@@ -8,10 +10,18 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
+// @import 'active_admin/mixins';
+// @import 'active_admin/base';
+// @import "flattened_active_admin/mixins";
+// @import "flattened_active_admin/base";
+
+@import 'formadmin/formadmin';
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+// form fieldset > ol > li fieldset.has_many_fields ol {
+//  	width: 80%;
+// }

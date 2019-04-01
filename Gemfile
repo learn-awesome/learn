@@ -63,3 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'activeadmin'
+
+gem 'flattened_active_admin'
+
+gem 'bourbon'
+gem 'formadmin'

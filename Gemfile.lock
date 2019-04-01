@@ -65,6 +65,9 @@ GEM
     bindex (0.5.0)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
+    bourbon (5.1.0)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.15.0)
@@ -98,6 +101,10 @@ GEM
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
+    flattened_active_admin (0.0.7)
+      rails (>= 3.2.0)
+    formadmin (0.2.1)
+      activeadmin
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -255,11 +262,14 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootsnap (>= 1.1.0)
+  bourbon
   byebug
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  flattened_active_admin
+  formadmin
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
