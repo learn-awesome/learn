@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :item_type, foreign_key: true, null: false, type: :string
       t.integer :estimated_time
       t.integer :required_expertise
-      t.references :thing, foreign_key: true, null: false, type: :uuid
+      t.references :idea_set, foreign_key: true, null: false, type: :uuid
 
       t.timestamps
     end

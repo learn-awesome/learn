@@ -10,9 +10,9 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :person_things, id: :uuid do |t|
+    create_table :person_idea_sets, id: :uuid do |t|
     	t.references :person, foreign_key: true, null: false, type: :uuid
-    	t.references :thing, foreign_key: true, null: false, type: :uuid
+    	t.references :idea_set, foreign_key: true, null: false, type: :uuid
     	t.string :role
     	t.timestamps
     end

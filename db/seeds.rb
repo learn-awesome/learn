@@ -10,11 +10,11 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 Link.delete_all
 Item.delete_all
-PersonThing.delete_all
-TopicThing.delete_all
+PersonIdeaSet.delete_all
+TopicIdeaSet.delete_all
 Person.delete_all
 Topic.delete_all
-Thing.delete_all
+IdeaSet.delete_all
 
 ItemType.delete_all
 
@@ -42,22 +42,17 @@ ItemType.create!(id: 'app')
 ItemType.create!(id: 'game')
 ItemType.create!(id: 'people')
 
-learning = Topic.create!(name: 'learning')
-thinking = Topic.create!(name: 'thinking')
-communicating = Topic.create!(name: 'communicating')
-reading = Topic.create!(name: 'reading')
-writing = Topic.create!(name: 'writing')
-speaking = Topic.create!(name: 'speaking')
-listening = Topic.create!(name: 'listening')
+learning = Topic.create!(name: 'learning', search_index: 'learning')
+thinking = Topic.create!(name: 'thinking', search_index: 'thinking')
+communicating = Topic.create!(name: 'communicating', search_index: 'communicating')
+reading = Topic.create!(name: 'reading', search_index: 'reading')
+writing = Topic.create!(name: 'writing', search_index: 'writing')
+speaking = Topic.create!(name: 'speaking', search_index: 'speaking')
+listening = Topic.create!(name: 'listening', search_index: 'listening')
 
-probability = Topic.create!(name: 'probability')
-logic = Topic.create!(name: 'logic')
-statistics = Topic.create!(name: 'statistics')
-
-Topic.create!(name: 'managing time')
-Topic.create!(name: 'managing wealth')
-Topic.create!(name: 'managing health')
-Topic.create!(name: 'managing relationships')
+probability = Topic.create!(name: 'probability', search_index: 'probability')
+logic = Topic.create!(name: 'logic', search_index: 'logic')
+statistics = Topic.create!(name: 'statistics', search_index: 'statistics')
 
 Person.create!(name: 'Barbara Oakley')
 Person.create!(name: 'Josh Waitzkin')
@@ -65,29 +60,29 @@ sivers = Person.create!(name: 'Derek Sivers', twitter: 'sivers', website: 'https
 nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
 
 =begin
-th = Thing.create!(name: 'learning how to learn')
-TopicThing.create!(topic: learning, thing: th)
+th = IdeaSet.create!(name: 'learning how to learn')
+TopicIdeaSet.create!(topic: learning, idea_set: th)
 
-th = Thing.create!(name: 'the art of learning')
-TopicThing.create!(topic: learning, thing: th)
+th = IdeaSet.create!(name: 'the art of learning')
+TopicIdeaSet.create!(topic: learning, idea_set: th)
 
-th = Thing.create!(name: 'how to remember anything forever')
-TopicThing.create!(topic: learning, thing: th)
-PersonThing.create!(person: nicky, thing: th, role: 'creator')
-it = Item.create!(thing: th, name: th.name, item_type_id: 'interactive')
+th = IdeaSet.create!(name: 'how to remember anything forever')
+TopicIdeaSet.create!(topic: learning, idea_set: th)
+PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
+it = Item.create!(idea_set: th, name: th.name, item_type_id: 'interactive')
 Link.create!(item: it, url: 'https://ncase.me/remember/')
 
-th = Thing.create!(name: 'there is no speed limit')
-TopicThing.create!(topic: learning, thing: th)
-PersonThing.create!(person: sivers, thing: th, role: 'creator')
-it = Item.create!(thing: th, name: th.name, item_type_id: 'article')
+th = IdeaSet.create!(name: 'there is no speed limit')
+TopicIdeaSet.create!(topic: learning, idea_set: th)
+PersonIdeaSet.create!(person: sivers, idea_set: th, role: 'creator')
+it = Item.create!(idea_set: th, name: th.name, item_type_id: 'article')
 Link.create!(item: it, url: 'https://sivers.org/kimo')
 
-th = Thing.create!(name: 'how people learn')
-TopicThing.create!(topic: learning, thing: th)
+th = IdeaSet.create!(name: 'how people learn')
+TopicThing.create!(topic: learning, idea_set: th)
 =end
 
-th = learning.things.create!(
+th = learning.idea_sets.create!(
 	name: 'how to remember anything forever',
 	items_attributes: [
 		{
@@ -100,5 +95,5 @@ th = learning.things.create!(
 	]
 )
 
-PersonThing.create!(person: nicky, thing: th, role: 'creator')
+PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
 

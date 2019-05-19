@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "idea_sets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_types", id: :string, force: :cascade do |t|
   end
 
@@ -50,11 +56,11 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.string "item_type_id", null: false
     t.integer "estimated_time"
     t.integer "required_expertise"
-    t.uuid "thing_id", null: false
+    t.uuid "idea_set_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["idea_set_id"], name: "index_items_on_idea_set_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
-    t.index ["thing_id"], name: "index_items_on_thing_id"
   end
 
   create_table "links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -67,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
 
   create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
     t.string "website"
     t.string "email"
     t.string "twitter"
@@ -74,20 +81,23 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "person_things", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "person_idea_sets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "person_id", null: false
-    t.uuid "thing_id", null: false
+    t.uuid "idea_set_id", null: false
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_person_things_on_person_id"
-    t.index ["thing_id"], name: "index_person_things_on_thing_id"
+    t.index ["idea_set_id"], name: "index_person_idea_sets_on_idea_set_id"
+    t.index ["person_id"], name: "index_person_idea_sets_on_person_id"
   end
 
-  create_table "things", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
+  create_table "topic_idea_sets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "topic_id", null: false
+    t.uuid "idea_set_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["idea_set_id"], name: "index_topic_idea_sets_on_idea_set_id"
+    t.index ["topic_id"], name: "index_topic_idea_sets_on_topic_id"
   end
 
   create_table "topic_relations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -100,28 +110,20 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.index ["to_id"], name: "index_topic_relations_on_to_id"
   end
 
-  create_table "topic_things", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "topic_id", null: false
-    t.uuid "thing_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["thing_id"], name: "index_topic_things_on_thing_id"
-    t.index ["topic_id"], name: "index_topic_things_on_topic_id"
-  end
-
   create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
+    t.string "search_index", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "idea_sets"
   add_foreign_key "items", "item_types"
-  add_foreign_key "items", "things"
   add_foreign_key "links", "items"
-  add_foreign_key "person_things", "people"
-  add_foreign_key "person_things", "things"
+  add_foreign_key "person_idea_sets", "idea_sets"
+  add_foreign_key "person_idea_sets", "people"
+  add_foreign_key "topic_idea_sets", "idea_sets"
+  add_foreign_key "topic_idea_sets", "topics"
   add_foreign_key "topic_relations", "topics", column: "from_id"
   add_foreign_key "topic_relations", "topics", column: "to_id"
-  add_foreign_key "topic_things", "things"
-  add_foreign_key "topic_things", "topics"
 end

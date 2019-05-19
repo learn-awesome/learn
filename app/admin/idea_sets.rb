@@ -1,10 +1,10 @@
-ActiveAdmin.register Thing do
+ActiveAdmin.register IdeaSet do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
   permit_params :name, items_attributes: [:id, :name, :item_type_id, :_destroy, :links_attributes],
-    topic_things_attributes: [:id, :topic_id],
-    person_things_attributes: [:id, :person_id]
+    topic_idea_sets_attributes: [:id, :topic_id],
+    person_idea_sets_attributes: [:id, :person_id]
 #
 # or
 #
@@ -15,20 +15,20 @@ ActiveAdmin.register Thing do
 # end
   form do |f|
     f.object.items.build if f.object.items.empty?
-    f.object.topic_things.build if f.object.topic_things.empty?
-    f.object.person_things.build if f.object.person_things.empty?
+    f.object.topic_idea_sets.build if f.object.topic_idea_sets.empty?
+    f.object.person_idea_sets.build if f.object.person_idea_sets.empty?
 
   	f.inputs 'Details' do
   		f.input :name
   	end
   	f.inputs do
-      f.has_many :topic_things, allow_destroy: true, new_record: true, reject_if: proc { |attrs| attrs['topic'].blank? } do |x|
+      f.has_many :topic_idea_sets, allow_destroy: true, new_record: true, reject_if: proc { |attrs| attrs['topic'].blank? } do |x|
         x.inputs do
           x.input :topic
         end
       end
 
-      f.has_many :person_things, allow_destroy: true, new_record: true, reject_if: proc { |attrs| attrs['person'].blank? } do |x|
+      f.has_many :person_idea_sets, allow_destroy: true, new_record: true, reject_if: proc { |attrs| attrs['person'].blank? } do |x|
         x.inputs do
           x.input :person
         end

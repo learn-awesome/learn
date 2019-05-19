@@ -1,8 +1,8 @@
-ActiveAdmin.register TopicThing do
+ActiveAdmin.register TopicIdeaSet do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :topic, :thing, :topic_id, :thing_id
+  permit_params :topic, :idea_set, :topic_id, :idea_set_id
 #
 # or
 #
