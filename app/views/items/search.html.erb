@@ -1,0 +1,11 @@
+<h1>Search or add a learning resource</h1>
+<%= form_with local: true, method: :get do |form| %>
+  <p>
+    <%= form.label :q, "URL or name / title" %><br>
+    <%= form.text_field :q %>
+  </p>
+
+  <p>
+    <%= form.submit "Search or Add" %>
+  </p>
+<% end %>

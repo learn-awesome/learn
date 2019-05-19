@@ -1,0 +1,58 @@
+<h1>Add a new learning resource</h1>
+<%= form_with scope: :item, url: items_path, local: true do |form| %>
+  <p>
+    <%= form.label :item_type_id %><br>
+    <%= form.collection_select :item_type_id, ItemType.all, :id, :id %>
+  </p>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, value: params[:name] %>
+  </p>
+
+  <p>
+    <%= form.label :url %><br>
+    <%= form.text_field :url, value: params[:url] %>
+  </p>
+
+  <p>
+    <%= form.label :topic %><br>
+    <%= form.collection_select :topic, Topic.all, :id, :name, {}, {multiple: true} %>
+  </p>
+
+  <fieldset>
+    <leged>Add your review</leged>
+    <p>
+      <%= form.label :status %>
+      <%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']] %>
+    </p>
+    <div>
+      <p>
+        <%= form.label :inspirational_score %>
+        <%= form.select :inspirational_score, [['Not al all','1'], ['Not a lot', '2'], ['Okayish','3'], ['A little bit','4'], ['A lot', '5']] %>
+      </p>
+
+      <p>
+        <%= form.label :educational_score %>
+        <%= form.select :educational_score, [['Not al all','1'], ['Not a lot', '2'], ['Okayish','3'], ['A little bit','4'], ['A lot', '5']] %>
+      </p>
+
+      <p>
+        <%= form.label :difficulty_score %>
+        <%= form.select :difficulty_score, [['Not al all','1'], ['Not a lot', '2'], ['Okayish','3'], ['A little bit','4'], ['A lot', '5']] %>
+      </p>
+
+      <p>
+        <%= form.label :entertaining_score %>
+        <%= form.select :entertaining_score, [['Not al all','1'], ['Not a lot', '2'], ['Okayish','3'], ['A little bit','4'], ['A lot', '5']] %>
+      </p>
+    </div>
+    <p>
+      <%= form.label :notes %>
+      <%= form.text_area :notes %>
+    </p>
+  </fieldset>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -54,10 +54,10 @@ probability = Topic.create!(name: 'probability', search_index: 'probability')
 logic = Topic.create!(name: 'logic', search_index: 'logic')
 statistics = Topic.create!(name: 'statistics', search_index: 'statistics')
 
-Person.create!(name: 'Barbara Oakley')
-Person.create!(name: 'Josh Waitzkin')
-sivers = Person.create!(name: 'Derek Sivers', twitter: 'sivers', website: 'https://sivers.org/')
-nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
+# Person.create!(name: 'Barbara Oakley')
+# Person.create!(name: 'Josh Waitzkin')
+# sivers = Person.create!(name: 'Derek Sivers', twitter: 'sivers', website: 'https://sivers.org/')
+# nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
 
 =begin
 th = IdeaSet.create!(name: 'learning how to learn')
@@ -82,18 +82,18 @@ th = IdeaSet.create!(name: 'how people learn')
 TopicThing.create!(topic: learning, idea_set: th)
 =end
 
-th = learning.idea_sets.create!(
-	name: 'how to remember anything forever',
-	items_attributes: [
-		{
-			name: 'how to remember anything forever',
-			item_type_id: 'interactive',
-			links_attributes: [
-				{url: 'https://ncase.me/remember/'}
-			]
-		}
-	]
-)
+# th = learning.idea_sets.create!(
+# 	name: 'how to remember anything forever',
+# 	items_attributes: [
+# 		{
+# 			name: 'how to remember anything forever',
+# 			item_type_id: 'interactive',
+# 			links_attributes: [
+# 				{url: 'https://ncase.me/remember/'}
+# 			]
+# 		}
+# 	]
+# )
 
-PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
+# PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
 

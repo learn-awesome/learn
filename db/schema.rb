@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_045414) do
+ActiveRecord::Schema.define(version: 2019_05_19_061036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.integer "estimated_time"
     t.integer "required_expertise"
     t.uuid "idea_set_id", null: false
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["idea_set_id"], name: "index_items_on_idea_set_id"
@@ -91,6 +92,21 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.index ["person_id"], name: "index_person_idea_sets_on_person_id"
   end
 
+  create_table "reviews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "item_id", null: false
+    t.string "status", null: false
+    t.integer "inspirational_score"
+    t.integer "educational_score"
+    t.integer "difficulty_score"
+    t.integer "entertaining_score"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_reviews_on_item_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "topic_idea_sets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "topic_id", null: false
     t.uuid "idea_set_id", null: false
@@ -117,11 +133,19 @@ ActiveRecord::Schema.define(version: 2019_05_19_045414) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "items", "idea_sets"
   add_foreign_key "items", "item_types"
   add_foreign_key "links", "items"
   add_foreign_key "person_idea_sets", "idea_sets"
   add_foreign_key "person_idea_sets", "people"
+  add_foreign_key "reviews", "items"
+  add_foreign_key "reviews", "users"
   add_foreign_key "topic_idea_sets", "idea_sets"
   add_foreign_key "topic_idea_sets", "topics"
   add_foreign_key "topic_relations", "topics", column: "from_id"

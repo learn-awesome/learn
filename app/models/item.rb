@@ -6,4 +6,12 @@ class Item < ApplicationRecord
   validates :item_type, presence: true
   validates :idea_set, presence: true
   accepts_nested_attributes_for :links, allow_destroy: true
+
+  def self.search(q)
+  	if q.start_with?('http')
+  		Link.where(url: q).first.item
+  	else
+  		Item.where(name: q).first
+  	end
+  end
 end
