@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_181309) do
+ActiveRecord::Schema.define(version: 2019_05_19_045414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 2019_03_23_181309) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topic_relations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "from_id", null: false
+    t.uuid "to_id", null: false
+    t.string "kind", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_id"], name: "index_topic_relations_on_from_id"
+    t.index ["to_id"], name: "index_topic_relations_on_to_id"
+  end
+
   create_table "topic_things", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "topic_id", null: false
     t.uuid "thing_id", null: false
@@ -110,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_181309) do
   add_foreign_key "links", "items"
   add_foreign_key "person_things", "people"
   add_foreign_key "person_things", "things"
+  add_foreign_key "topic_relations", "topics", column: "from_id"
+  add_foreign_key "topic_relations", "topics", column: "to_id"
   add_foreign_key "topic_things", "things"
   add_foreign_key "topic_things", "topics"
 end
