@@ -2,29 +2,29 @@
 <%= form_with scope: :item, url: items_path, local: true do |form| %>
   <p>
     <%= form.label :item_type_id %><br>
-    <%= form.collection_select :item_type_id, ItemType.all, :id, :id %>
+    <%= form.collection_select :item_type_id, ItemType.all, :id, :id, {required: true} %>
   </p>
 
   <p>
     <%= form.label :name %><br>
-    <%= form.text_field :name, value: params[:name] %>
+    <%= form.text_field :name, value: params[:name], required: true %>
   </p>
 
   <p>
-    <%= form.label :url %><br>
-    <%= form.text_field :url, value: params[:url] %>
+    <%= form.label :url, "URL" %><br>
+    <%= form.text_field :url, value: params[:url], required: true %>
   </p>
 
   <p>
     <%= form.label :topic %><br>
-    <%= form.collection_select :topic, Topic.all, :id, :name, {}, {multiple: true} %>
+    <%= form.collection_select :topic, Topic.all, :id, :name, {}, {multiple: true, required: true} %>
   </p>
 
   <fieldset>
     <leged>Add your review</leged>
     <p>
       <%= form.label :status %>
-      <%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']] %>
+      <%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true} %>
     </p>
     <div>
       <p>
