@@ -1,0 +1,27 @@
+//
+// Card Header Tabs
+//
+
+.card-header-tabs {
+  margin: 0 0 #{-$card-spacer-y} 0;
+
+  .nav-item {
+    margin-right: $card-header-tabs-nav-item-space;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .nav-link {
+    transition: all .2s;
+    color: $card-header-tabs-nav-link;
+    padding: $card-header-tabs-nav-link-padding;
+    border-width: $card-header-tabs-nav-link-border-width;
+    padding-bottom: $card-spacer-y;
+
+    &.active {
+      border-bottom: $card-header-tabs-nav-link-active solid $primary;
+    }
+  }
+}

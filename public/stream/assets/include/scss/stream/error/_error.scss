@@ -1,0 +1,26 @@
+//
+// Error
+//
+
+.u-error {
+  position: relative;
+
+  &__title {
+    line-height: $error-title-line-height;
+    font-weight: $error-title-font-weight;
+    font-size: $error-title-font-size;
+    color: $error-title-color;
+  }
+}
+
+@media (min-width: $md) {
+  .u-error {
+    &__title {
+      font-size: $error-title-md-font-size;
+    }
+
+    &__text {
+      @include content-centered(true, true);
+    }
+  }
+}

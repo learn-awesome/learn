@@ -1,0 +1,70 @@
+//
+// Selects
+//
+
+.select2-container {
+  .u-select-line.select2-selection--single {
+    height: auto;
+    border-width: 0 0 1px 0;
+    border-color: $gray-200;
+    border-radius: 0;
+
+    .select2-selection__rendered {
+      line-height: 40px;
+      font-weight: 600;
+      font-size: .88rem;
+      color: $dark;
+      padding-left: 0;
+    }
+
+    .select2-selection__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      b {
+        position: static;
+        left: auto;
+        top: auto;
+        height: auto;
+        width: auto;
+        font-size: .75rem;
+        font-family: "FontAwesome", sans-serif;
+        color: $gray-600;
+        border: none;
+        margin-top: 0;
+        margin-left: 0;
+
+        &::after {
+          content: "\f078";
+        }
+      }
+    }
+
+    &:focus,
+    &:active {
+      outline: 0 none;
+    }
+  }
+}
+
+.select2-container--open .u-select-line__dropdown.select2-dropdown--below {
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: $box-shadow-sm;
+  overflow: hidden;
+
+  .select2-results__option {
+    line-height: 40px;
+    font-weight: 600;
+    font-size: .88rem;
+    color: $dark;
+    padding: 0 10px;
+
+    &.select2-results__option--highlighted {
+      color: $white;
+    }
+  }
+}

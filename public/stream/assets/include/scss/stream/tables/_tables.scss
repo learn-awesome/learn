@@ -1,0 +1,24 @@
+//
+// Tables
+//
+
+.table {
+  th,
+  td {
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: $table-th-font-weight;
+    color: $table-th-color;
+    border-top: none;
+  }
+
+  thead th {
+    border-bottom-width: $table-border-width;
+  }
+
+  tbody + tbody {
+    border-top-width: $table-border-width;
+  }
+}

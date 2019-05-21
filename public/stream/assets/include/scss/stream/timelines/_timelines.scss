@@ -1,0 +1,38 @@
+//
+// Timelines
+//
+
+.u-timeline {
+  border-left: $timeline-border-width solid $timeline-border-color;
+  margin-left: $timeline-spacer-x;
+
+  &__item {
+    position: relative;
+    padding-left: $timeline-item-padding-x;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(-#{$timeline-item-helper-height} / 2 - #{$timeline-border-width} / 2);
+      top: $timeline-item-helper-offset-x;
+      width: $timeline-item-helper-width;
+      height: $timeline-item-helper-height;
+      background-color: $timeline-item-helper-bg;
+      border-radius: $timeline-item-helper-border-radius;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $timeline-item-spacer-y;
+    }
+  }
+}
+
+@media(min-width: $md) {
+  .u-timeline {
+    margin-left: $timeline-spacer-lg-x;
+
+    &__item {
+      padding-left: $timeline-item-padding-lg-x;
+    }
+  }
+}

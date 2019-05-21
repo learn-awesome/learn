@@ -1,0 +1,15 @@
+//
+// Apps
+//
+
+.u-apps {
+  transition: background-color .2s ease-in;
+  padding: .75rem;
+  color: $gray-600;
+
+  &:hover,
+  &.active {
+    color: $dark;
+    background-color: $gray-200;
+  }
+}

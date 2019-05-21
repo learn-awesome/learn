@@ -1,0 +1,261 @@
+//
+// Forms
+//
+
+// Text Labels
+.form-label-text {
+  .is-valid & {
+    color: $success;
+  }
+
+  .is-invalid & {
+    color: $danger;
+  }
+
+  .is-disabled & {
+    color: $form-label-color-disabled;
+  }
+}
+
+// Pilled Forms
+.form-pill {
+  border-radius: $border-radius-pill;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+// Form Icons
+.form-icon {
+  &-wrapper {
+    position: relative;
+    display: block;
+  }
+
+  &-input-left {
+    padding-left: 2.18rem;
+  }
+
+  &-input-right {
+    padding-right: 2.18rem;
+  }
+
+  & {
+    position: absolute;
+    height: 100%;
+    width: 2.5rem;
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &__item {
+    position: absolute;
+    color: $form-icon-color;
+    @include content-centered(true, true);
+  }
+}
+
+// Form Toggles
+.form-toggle {
+  position: relative;
+  cursor: pointer;
+
+  &__item {
+    display: block;
+    padding-left: 1px;
+    padding-right: 1px;
+    cursor: pointer;
+    width: 43px;
+    height: 22px;
+    font: {
+      style: normal;
+      weight: 700;
+      size: 9px;
+    }
+    color: $form-toggle-color;
+    border: 1px solid $form-toggle-border-color;
+    border-radius: 6.25rem;
+
+    i {
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+
+      &::before {
+        content: attr(data-uncheck-icon);
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 18px;
+        text-align: right;
+        padding: 2px 7px;
+      }
+
+      &::after {
+        top: 50%;
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        background-color: $form-toggle-circle-bg-color;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: left .2s ease;
+      }
+    }
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked {
+      & +,
+      & + * {
+        .form-toggle__item {
+          color: $form-toggle-color-checked;
+          background-color: $form-toggle-bg-color-checked;
+          border-color: $form-toggle-border-color-checked;
+          transition: all .3s ease;
+
+          i {
+            &:before {
+              content: attr(data-check-icon);
+              text-align: left;
+            }
+
+            &::after {
+              left: calc(100% - 19px);
+              background-color: $form-toggle-circle-bg-color-checked;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .is-valid & {
+    &__item {
+      color: $success;
+      border: 1px solid $success;
+
+      i {
+        &::after {
+          background-color: $success;
+        }
+      }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      &:checked {
+        & +,
+        & + * {
+          .form-toggle__item {
+            background-color: $success;
+            border-color: $success;
+          }
+        }
+      }
+    }
+  }
+
+  .is-invalid & {
+    &__item {
+      color: $danger;
+      border: solid 1px $danger;
+
+      i {
+        &::after {
+          background-color: $danger;
+        }
+      }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      &:checked {
+        & +,
+        & + * {
+          .form-toggle__item {
+            background-color: $danger;
+            border-color: $danger;
+          }
+        }
+      }
+    }
+  }
+
+  .is-disabled & {
+    &__item {
+      color: $form-toggle-color-disabled;
+      border: 1px solid $form-toggle-border-color-disabled;
+
+      i {
+        &::after {
+          background-color: $form-toggle-circle-bg-color-disabled;
+        }
+      }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      &:checked {
+        & +,
+        & + * {
+          .form-toggle__item {
+            background-color: $form-toggle-bg-color-disabled-checked;
+            border-color: $form-toggle-border-color-disabled-checked;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom Inputs
+.custom-control-input {
+  &.is-valid:checked {
+    ~ .custom-control-label {
+      &::before {
+        background-color: $success;
+      }
+    }
+  }
+
+  &.is-invalid:checked {
+    ~ .custom-control-label {
+      &::before {
+        background-color: $danger;
+      }
+    }
+  }
+
+  &:disabled:checked {
+    ~ .custom-control-label {
+      &::before {
+        background-color: $custom-control-indicator-disabled-bg;
+      }
+    }
+  }
+}
+
+// Sign In/Up Pages
+.u-login-form {
+  width: 100%;
+}
+
+@media (min-width: $sm) {
+  .u-login-form {
+    width: $form-login-width;
+  }
+}

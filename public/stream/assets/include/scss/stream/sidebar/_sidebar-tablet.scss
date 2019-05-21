@@ -1,0 +1,32 @@
+//
+// Sidebar Tablet
+//
+
+@media (min-width: $md) {
+  .u-sidebar {
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  .u-sidebar-inner {
+    left: 0;
+    min-height: calc(100vh - #{$header-height});
+    opacity: 1;
+    border-right: 1px solid $gray-200;
+    padding: 1.75rem .5rem;
+    transition: width .2s ease-in, left .2s ease-in;
+
+    .tablet.mini.action & {
+      width: $sidebar-min-width;
+    }
+  }
+
+  .u-sidebar-header {
+    display: none;
+  }
+
+  .u-sidebar-logo {
+    display: none;
+  }
+}

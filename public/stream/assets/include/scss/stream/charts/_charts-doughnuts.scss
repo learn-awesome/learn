@@ -1,0 +1,17 @@
+//
+// Doughnuts
+//
+
+.u-doughnut {
+  position: relative;
+
+  &--70 {
+    width: 70px;
+    height: 70px;
+  }
+
+  &__label {
+    @include content-centered(true, true);
+    font-size: $chart-doughnut-label-font-size;
+  }
+}

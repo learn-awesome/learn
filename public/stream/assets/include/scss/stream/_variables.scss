@@ -1,0 +1,381 @@
+/*----------------------------------------------------------------------
+  * Stream Dashboard
+  * Copyright 2018 Htmlstream (https://htmlstream.com)
+  * Licensed under MIT
+------------------------------------------------------------------------*/
+
+$version: "1.0";
+
+// Breakpoints
+// =========================================================
+$xs:                                                   0;
+$sm:                                                   576px;
+$md:                                                   768px;
+$lg:                                                   992px;
+$xl:                                                   1200px;
+
+$grid-breakpoints: (
+  xs:                                                  $xs,
+  sm:                                                  $sm,
+  md:                                                  $md,
+  lg:                                                  $lg,
+  xl:                                                  $xl
+) !default;
+
+
+// Color System
+// =============================================================
+
+// Base Colors
+$transparent:                                          transparent !default;
+$white:                                                #fff !default;
+$gray-100:                                             #f6f9fc !default;
+$gray-200:                                             #eaf2f9 !default;
+$gray-400:                                             #d9e4ec !default;
+$gray-500:                                             #c1d0da !default;
+$gray-600:                                             #5a6a7e !default; // mainly used for text-muted
+$gray-800:                                             #1b1e24 !default; // dark color
+$black:                                                #000 !default;
+
+// Theme Colors
+$primary:                                              #6b15b6 !default;
+$secondary:                                            #00c9a7 !default;
+$success:                                              #0dd157 !default;
+$info:                                                 #2972fa !default;
+$warning:                                              #fab633 !default;
+$danger:                                               #fb4143 !default;
+$light:                                                $gray-100 !default;
+$dark:                                                 $gray-800 !default;
+
+// Soft Colors
+$soft-primary:                                         rgba($primary, .1) !default;
+$soft-secondary:                                       rgba($secondary, .1) !default;
+$soft-info:                                            rgba($info, .1) !default;
+$soft-success:                                         rgba($success, .1) !default;
+$soft-danger:                                          rgba($danger, .1) !default;
+$soft-warning:                                         rgba($warning, .1) !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  // Theme Colors
+  "light":                                             $light,
+
+  // Soft Colors
+  "soft-primary":                                      $soft-primary,
+  "soft-secondary":                                    $soft-secondary,
+  "soft-info":                                         $soft-info,
+  "soft-success":                                      $soft-success,
+  "soft-danger":                                       $soft-danger,
+  "soft-warning":                                      $soft-warning
+), $theme-colors);
+
+// Social Colors
+$facebook:                                             #3b5998 !default;
+$google:                                               #d14130 !default;
+$twitter:                                              #66c3ff !default;
+$instagram:                                            #3f729b !default;
+$github:                                               #24292e !default;
+
+
+// Typography
+// =============================================================
+
+// Base Styles
+//
+// Base font styles such as font-family, font-size etc.
+$font-size-base:                                       .9375rem !default;
+$font-family-sans-serif:                               "Open Sans", sans-serif !default;
+$font-weight-light:                                    300 !default;
+$font-weight-normal:                                   400 !default;
+$font-weight-bold:                                     600 !default;
+$text-muted:                                           $gray-600 !default;
+
+// Headings
+//
+// Style heading e.g. <h1> elements.
+$h1-font-size:                                         $font-size-base * 1.75 !default;
+$h2-font-size:                                         $font-size-base * 1.5 !default;
+$h3-font-size:                                         $font-size-base * 1.125 !default;
+$h4-font-size:                                         $font-size-base !default;
+$h5-font-size:                                         $font-size-base * .875 !default;
+$h6-font-size:                                         $font-size-base * .75 !default;
+
+// Links
+//
+// Style anchor e.g. <a> elements.
+$link-hover-decoration:                                none !default;
+
+
+// Borders Radius
+// =========================================================
+
+$border-radius:                                        .25rem !default;
+$border-radius-pill:                                   6.1875rem !default;
+
+
+// Dividers
+// =========================================================
+$hr-border-color:                                      $gray-200 !default;
+
+
+// Box Shadows
+// =========================================================
+$box-shadow-sm:                                        0 .15rem .5rem rgba($gray-600, .075)!default;
+
+
+// Buttons + Forms
+// =========================================================
+// Default Spacing
+$input-btn-padding-y:                                  .5rem !default;
+$input-btn-padding-x:                                  .8rem !default;
+
+// Large Spacing
+$input-btn-padding-y-lg:                               .625rem !default;
+$input-btn-padding-x-lg:                               1.2rem !default;
+
+// Focus Width
+$input-btn-focus-width:                                0 !default;
+
+
+// Buttons
+// =========================================================
+// $btn-font-weight:                                      $font-weight-light !default;
+
+
+// Close
+// =========================================================
+$close-font-weight:                                    $font-weight-normal !default;
+$close-color:                                          inherit !default;
+$close-text-shadow:                                    none !default;
+
+// Dropdown
+// =========================================================
+$dropdown-border-color:                                $gray-200;
+
+// Header
+// =============================================================
+$header-font-size:                                     .875rem !default;
+
+$header-height:                                        3.75rem !default;
+$header-height-mobile:                                 3.75rem !default;
+$header-padding:                                       0.625rem !default;
+$header-padding-desktop:                               1rem !default;
+$header-padding-x:                                     .75rem !default;
+
+// Error
+$header-error-offset-y:                                3.75rem !default;
+$header-error-width:                                   100% !default;
+$header-error-height:                                  auto !default;
+$header-error-text-align:                              center !default;
+$header-error-bg:                                      $transparent !default;
+
+// Login
+$header-login-spacer-y:                                3.75rem !default;
+$header-login-spacer-x:                                auto !default;
+$header-login-width:                                   24.5rem !default;
+$header-login-height:                                  auto !default;
+$header-login-text-align:                              start !default;
+$header-login-bg:                                      $transparent !default;
+
+// Header Search
+// =============================================================
+$header-search-form-bg-color:                          $white !default;
+$header-search-form-border-radius:                     $border-radius !default;
+$header-search-form-box-shadow:                        0 5px 20px 0 rgba($black, .2) !default;
+$header-search-form-space:                             10px !default;
+$header-search-form-margin-top:                        5px !default;
+
+$header-search-btn-font-size:                          16px !default;
+$header-search-btn-margin-right:                       15px !default;
+
+$header-search-input-font-size:                        $header-font-size !default;
+$header-search-input-color:                            $gray-600 !default;
+
+
+// Sidebar
+// =============================================================
+$sidebar-font-size:                                    .875rem !default;
+$sidebar-width:                                        15rem !default;
+$sidebar-min-width:                                    4.19rem !default;
+
+
+// Content
+// =============================================================
+
+// Body
+$body-bg:                                              $gray-100 !default;
+$body-padding-y:                                       .9375rem !default;
+$body-padding-x:                                       .9375rem !default;
+$body-md-padding-y:                                    1.875rem !default;
+$body-md-padding-x:                                    1.875rem !default;
+
+// Content Section
+$content-section-bg:                                   $white !default;
+$content-section-border-radius:                        $border-radius !default;
+$content-section-padding-y:                            .9375rem !default;
+$content-section-padding-x:                            .9375rem !default;
+$content-section-md-padding-y:                         1.5625rem !default;
+$content-section-md-padding-x:                         1.5625rem !default;
+
+
+// Card
+// =============================================================
+
+$card-bg:                                              $white !default;
+$card-cap-bg:                                          $white !default;
+$card-border-radius:                                   $border-radius !default;
+$card-border-color:                                    $gray-200 !default;
+
+$card-spacer-y:                                        1.25rem !default;
+$card-spacer-x:                                        1.5rem !default;
+
+//
+// Stream Dashboard
+//
+$card-header-title-line-height:                        1.4;
+
+
+// Nav Tabs
+// =============================================================
+$nav-tabs-link-active-bg:                              $white !default;
+
+//
+// Stream Dashboard
+//
+$card-header-tabs-nav-link:                            $gray-600;
+$card-header-tabs-nav-item-space:                      1.25rem;
+$card-header-tabs-nav-link-padding:                    0;
+$card-header-tabs-nav-link-border-width:               0;
+$card-header-tabs-nav-link-active:                     1px;
+
+
+// List Group
+// =========================================================
+$list-group-border-color:                              $gray-200 !default;
+$list-group-item-padding-x:                            $card-spacer-x !default;
+
+//
+// Stream Dashboard
+//
+$list-lg-group-item-padding-y:                         1.05rem !default;
+$list-lg-group-item-padding-x:                         $card-spacer-x !default;
+
+
+// Charts
+// =============================================================
+
+// Doughnuts
+$chart-doughnut-label-font-size:                       1.125rem !default;
+
+// Tooltips
+$chart-tooltip-spacer-y:                               1rem !default;
+$chart-tooltip-spacer-x:                               1.125rem !default;
+$chart-tooltip-title-bottom-space:                     .25rem !default;
+$chart-tooltip-triangle-size:                          10px !default;
+$chart-tooltip-border-color:                           $card-border-color;
+
+
+// Alerts
+// =============================================================
+$alert-padding-y:                                      1rem !default;
+$alert-padding-x:                                      1.5rem !default;
+
+$alert-bg-level:                                       0 !default;
+$alert-border-level:                                   0 !default;
+$alert-color-level:                                    -12 !default;
+
+
+// Badges
+// =============================================================
+$badge-padding-y:                                      .3rem !default;
+$badge-padding-x:                                      .5rem !default;
+
+
+// Pagination
+// =============================================================
+$pagination-border-color:                              $gray-200 !default;
+
+// Hover
+$pagination-hover-color:                               $white !default;
+$pagination-hover-bg:                                  $primary !default;
+$pagination-hover-border-color:                        $primary !default;
+
+// Active
+$pagination-active-color:                              $white !default;
+$pagination-active-bg:                                 $primary !default;
+$pagination-active-border-color:                       $primary !default;
+
+
+// Tables
+// =============================================================
+$table-border-color:                                   $gray-200 !default;
+$table-hover-bg:                                       $gray-100 !default;
+
+//
+// Stream Dashboard
+//
+$table-border-width:                                   1px !default;
+$table-th-font-weight:                                 400 !default;
+$table-th-color:                                       $gray-600 !default;
+
+// Forms
+// =============================================================
+$input-box-shadow:                                     none !default;
+$input-focus-box-shadow:                               none !default;
+$input-focus-width:                                    0 !default;
+$custom-control-indicator-bg:                          $gray-400 !default;
+$input-disabled-bg:                                    $gray-100 !default;
+$custom-control-indicator-disabled-bg:                 $gray-200 !default;
+$custom-control-label-disabled-color:                  $gray-600 !default;
+
+//
+// Stream Dashboard
+//
+$form-label-color-disabled:                            $custom-control-label-disabled-color !default;
+$form-icon-color:                                      $gray-600 !default;
+
+// Form Toggles
+$form-toggle-color:                                    $gray-500 !default;
+$form-toggle-border-color:                             $gray-400 !default;
+$form-toggle-circle-bg-color:                          $gray-500 !default;
+$form-toggle-color-checked:                            $white !default;
+$form-toggle-bg-color-checked:                         $primary !default;
+$form-toggle-border-color-checked:                     $primary !default;
+$form-toggle-circle-bg-color-checked:                  $white !default;
+$form-toggle-color-disabled:                           $gray-200 !default;
+$form-toggle-border-color-disabled:                    $gray-200 !default;
+$form-toggle-circle-bg-color-disabled:                 $gray-200 !default;
+$form-toggle-bg-color-disabled-checked:                $gray-200 !default;
+$form-toggle-border-color-disabled-checked:            $gray-200 !default;
+
+// Login Form
+$form-login-width:                                     26rem !default;
+
+// Profile
+// =============================================================
+$profile-header-lg-padding-y:                          0 !default;
+$profile-header-lg-padding-x:                          4.75rem !default;
+$profile-header-lg-width:                              22.5rem !default;
+
+// Timeline
+// =============================================================
+$timeline-spacer-x:                                    .625rem !default;
+$timeline-spacer-lg-x:                                 1.875rem !default;
+$timeline-border-width:                                2px !default;
+$timeline-border-color:                                $gray-200 !default;
+$timeline-item-spacer-y:                               1.375rem !default;
+$timeline-item-padding-x:                              1.25rem !default;
+$timeline-item-padding-lg-x:                           1.875rem !default;
+$timeline-item-helper-offset-x:                        .3125rem !default;
+$timeline-item-helper-width:                           .6875rem !default;
+$timeline-item-helper-height:                          .6875rem !default;
+$timeline-item-helper-border-radius:                   50% !default;
+$timeline-item-helper-bg:                              $gray-500 !default;
+
+// Error
+// =============================================================
+$error-title-line-height:                              1 !default;
+$error-title-font-weight:                              700 !default;
+$error-title-font-size:                                12rem !default;
+$error-title-md-font-size:                             15.5rem !default;
+$error-title-color:                                    $gray-200 !default;

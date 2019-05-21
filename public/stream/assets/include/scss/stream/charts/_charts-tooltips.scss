@@ -1,0 +1,37 @@
+//
+// Charts Tooltips
+//
+
+.u-chart-tooltip {
+  position: fixed;
+  z-index: 6;
+  opacity: 0;
+  background-color: $white;
+  border-radius: $border-radius;
+  padding: $chart-tooltip-spacer-y $chart-tooltip-spacer-x;
+  border: 1px solid $chart-tooltip-border-color;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    display: block;
+    width: $chart-tooltip-triangle-size;
+    height: $chart-tooltip-triangle-size;
+    border: {
+      style: solid;
+      color: $chart-tooltip-border-color;
+      width: 0 1px 1px 0;
+    }
+    background-color: white;
+    transform: rotate(45deg) translate(-50%, -1px);
+  }
+
+  &__title {
+    color: $gray-600;
+    margin-bottom: $chart-tooltip-title-bottom-space;
+    text-transform: uppercase;
+    font-size: .70312rem;
+  }
+}

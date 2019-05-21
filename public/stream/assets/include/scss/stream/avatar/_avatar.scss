@@ -1,0 +1,18 @@
+//
+// Avatars
+//
+
+.u-avatar {
+  width: 3.125rem;
+  height: 3.125rem;
+
+  &--sm {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  &--xs {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+}

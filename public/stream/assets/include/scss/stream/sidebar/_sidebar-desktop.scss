@@ -1,0 +1,16 @@
+//
+// Sidebar Desktop
+//
+
+@media (min-width: $lg) {
+  .u-sidebar-invoker {
+    display: block;
+    margin-right: 1.75rem;
+  }
+
+  .u-sidebar-inner {
+    .mini.action & {
+      width: $sidebar-min-width;
+    }
+  }
+}

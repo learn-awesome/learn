@@ -1,0 +1,12 @@
+//
+// Profile
+//
+
+@media (min-width: $lg) {
+  .u-profile {
+    .u-profile-header {
+      padding: $profile-header-lg-padding-y $profile-header-lg-padding-x;
+      min-width: $profile-header-lg-width;
+    }
+  }
+}

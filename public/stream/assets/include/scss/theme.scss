@@ -1,0 +1,22 @@
+// Bootstrap setup
+@import '../../vendor/bootstrap/scss/functions';
+
+// Stream setup
+@import 'stream/variables';
+
+// Custom setup
+@import 'user-variables';
+
+// Bootstrap core
+@import '../../vendor/bootstrap/scss/bootstrap';
+
+/*----------------------------------------------------------------------
+  * Stream - Responsive Website Template
+  * Copyright 2018 Htmlstream
+  * Licensed under Bootstrap Themes (https://themes.getbootstrap.com/licenses/)
+------------------------------------------------------------------------*/
+
+@import 'stream/stream';
+
+// Custom core
+@import 'user';

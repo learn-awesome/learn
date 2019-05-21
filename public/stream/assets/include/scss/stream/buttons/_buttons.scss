@@ -1,0 +1,121 @@
+//
+// Buttons
+//
+
+.btn {
+  cursor: pointer;
+  transition: .2s ease;
+
+  &.focus,
+  &:focus
+  &.active:focus,
+  &:active:focus {
+    outline: 0 none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+
+// Circle
+.btn-circle {
+  border-radius: 100%;
+  padding: 0;
+  width: 2.62rem;
+  height: 2.62rem;
+  line-height: 2.62rem;
+
+  &.btn-sm {
+    width: 1.94rem;
+    height: 1.94rem;
+    line-height: 1.94rem;
+  }
+
+  &.btn-lg {
+    width: 3.25rem;
+    height: 3.25rem;
+    line-height: 3.25rem;
+  }
+}
+
+// Pilled
+.btn-pill {
+  border-radius: $border-radius-pill;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+
+  &.btn-sm {
+    padding-left: .94rem;
+    padding-right: .94rem;
+  }
+
+  &.btn-lg {
+    padding-left: 1.56rem;
+    padding-right: 1.56rem;
+  }
+}
+
+// Link
+.btn-link {
+  font-weight: $font-weight-normal;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+// Soft
+.btn-soft {
+  &-primary {
+    color: $primary;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+
+  &-secondary {
+    color: $secondary;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+
+  &-success {
+    color: $success;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $success;
+    }
+  }
+
+  &-warning {
+    color: $warning;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $warning;
+    }
+  }
+
+  &-danger {
+    color: $danger;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $danger;
+    }
+  }
+
+  &-info {
+    color: $info;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $info;
+    }
+  }
+}

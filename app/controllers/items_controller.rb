@@ -40,9 +40,9 @@ class ItemsController < ApplicationController
   def search
   	q = params[:q]
   	if q.present?
-  		item = Item.search(q)
-  		if item
-  			redirect_to @item
+  		items = Item.search(q)
+  		if items.first
+  			redirect_to items.first
   		else
         if is_url?(q)
           redirect_to items_new_path(url: q)

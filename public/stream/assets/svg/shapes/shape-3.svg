@@ -1,0 +1,10 @@
+<svg width="103px" height="24px" viewBox="0 0 103 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="shape-3" transform="translate(1.000000, 0.000000)" stroke-width="2">
+            <g id="shapes03" transform="translate(51.500000, 11.000000) scale(-1, 1) rotate(-180.000000) translate(-51.500000, -11.000000) ">
+                <polyline id="Stroke-1-Copy" stroke="#E3E9F2" points="0 3.42599632 15.0206203 12 28.9877224 1.71281422 44.0086646 10.2871858 57.9772334 0 73 8.57400368"></polyline>
+                <path d="M30,13.4258913 L45.0205488,22 L58.9876866,11.7131296 L74.0083069,20.2870176 L87.9768757,10 L103,18.5736673" id="Stroke-2-Copy" stroke="#6B15B6" stroke-dasharray="12,12"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,101 @@
+//
+// Shapes
+//
+
+.u-shape {
+  position: absolute;
+
+  &--centered {
+    @include content-centered(true, true);
+  }
+
+  &--center-right {
+    @include content-centered(false, true);
+    right: 0;
+  }
+
+  &--center-left {
+    @include content-centered(false, true);
+    left: 0;
+  }
+
+  &--top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.u-shape {
+  &--position {
+    &-1 {
+      margin-top: 5vh;
+      margin-right: 6vw;
+    }
+
+    &-2 {
+      margin-top: -8.13rem;
+      margin-left: -19.06rem;
+    }
+
+    &-3 {
+      margin-top: 7.5rem;
+      margin-left: 19.06rem;
+    }
+
+    &-4 {
+      margin-bottom: 5vh;
+      margin-left: 6vw;
+    }
+
+    &-5 {
+      margin-top: 11vh;
+      margin-right: 8vw;
+    }
+
+    &-6 {
+      margin-top: -11.88rem;
+      margin-left: 2.5vw;
+    }
+
+    &-7 {
+      margin-top: 11.25rem;
+      margin-right: 5vw;
+    }
+
+    &-8 {
+      margin-bottom: 11vh;
+      margin-left: 5vw;
+    }
+  }
+}
+
+@media (min-width: $md) {
+  .u-shape {
+    &--position {
+      &-1 {
+        margin-top: 11vh;
+        margin-right: 12vw;
+      }
+
+      &-2 {
+        margin-top: -8.13rem;
+        margin-left: -19.06rem;
+      }
+
+      &-3 {
+        margin-top: 7.5rem;
+        margin-left: 19.06rem;
+      }
+
+      &-4 {
+        margin-bottom: 11vh;
+        margin-left: 13.5vw;
+      }
+    }
+  }
+}

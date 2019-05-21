@@ -1,0 +1,11 @@
+//
+// Dividers
+//
+
+.divider {
+  border-color: $gray-200 !important;
+
+  &-vertical {
+    border-left: 1px solid;
+  }
+}

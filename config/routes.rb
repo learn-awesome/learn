@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'items/index'
-  get 'items/show'
-  get 'items/new'
   get 'dashboard/show'
   get 'welcome/index'
   root 'welcome#index'
@@ -12,7 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :topics, only: [:index, :show]
   resources :people, only: [:index, :show]
-  resource  :items do
+  resources  :items do
     collection do
       get 'search'
     end

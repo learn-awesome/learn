@@ -1,0 +1,13 @@
+//
+// Indicators Themes
+//
+
+.u-indicator--primary-lightest {
+  background-color: rgba($primary, .1);
+  color: $primary;
+}
+
+.u-indicator--success-lightest {
+  background-color: rgba($secondary, .1);
+  color: $secondary;
+}

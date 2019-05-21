@@ -1,0 +1,38 @@
+//
+// Malihu Custom Scrollbar
+//
+
+.mCSB_scrollTools {
+  z-index: 5;
+  width: 8px;
+  opacity: 0;
+
+  .mCSB_draggerRail {
+    background-color: transparent;
+  }
+
+  .mCSB_dragger {
+    .mCSB_dragger_bar {
+      background-color: $gray-500;
+    }
+
+    &.mCSB_dragger_onDrag {
+      .mCSB_dragger_bar {
+        background-color: $gray-500;
+      }
+    }
+  }
+}
+
+.mCSB_outside {
+  & + .mCSB_scrollTools {
+    right: auto;
+    left: calc(#{$sidebar-width} - 8px);
+  }
+
+  .mini & {
+    & + .mCSB_scrollTools {
+      left: 0;
+    }
+  }
+}

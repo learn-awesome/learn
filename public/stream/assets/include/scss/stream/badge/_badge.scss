@@ -1,0 +1,64 @@
+//
+// Badge
+//
+
+.badge {
+  &-close {
+    font-size: .8rem;
+    padding: 0;
+  }
+}
+
+.badge-soft-primary {
+  color: $primary;
+
+  &[href]:hover {
+    color: $primary;
+    background-color: rgba($primary, .2);
+  }
+}
+
+.badge-soft-secondary {
+  color: $secondary;
+
+  &[href]:hover {
+    color: $secondary;
+    background-color: rgba($secondary, .2);
+  }
+}
+
+.badge-soft-success {
+  color: $success;
+
+  &[href]:hover {
+    color: $success;
+    background-color: rgba($success, .2);
+  }
+}
+
+.badge-soft-warning {
+  color: $warning;
+
+  &[href]:hover {
+    color: $warning;
+    background-color: rgba($warning, .2);
+  }
+}
+
+.badge-soft-danger {
+  color: $danger;
+
+  &[href]:hover {
+    color: $danger;
+    background-color: rgba($danger, .2);
+  }
+}
+
+.badge-soft-info {
+  color: $info;
+
+  &[href]:hover {
+    color: $info;
+    background-color: rgba($info, .2);
+  }
+}

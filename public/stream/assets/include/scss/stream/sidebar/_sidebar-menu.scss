@@ -1,0 +1,210 @@
+//
+// Sidebar Menu
+//
+
+.u-sidebar-nav {
+  height: 100%;
+}
+
+.u-sidebar-nav-menu {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.u-sidebar-nav-menu--top-level {
+  & > .u-sidebar-nav-menu__item {
+    position: relative;
+  }
+}
+
+.u-sidebar-nav-menu--second-level {
+  display: none;
+  padding-top: .75rem;
+
+  body.mobile-mode & {
+    display: block;
+  }
+}
+
+.u-sidebar-nav-menu__item {
+  list-style: none;
+  margin-bottom: .75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.u-sidebar-nav-menu__link {
+  display: flex;
+  align-items: center;
+  color: $dark;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: $border-radius;
+  padding: .88rem 1rem;
+  transition: all .2s ease-in;
+
+  @media (min-width: $md) {
+    .u-sidebar-nav-menu__indicator {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: rgba(0,0,0, .1);
+      font-size: 9px;
+      opacity: 0;
+      transition: opacity .3s ease-out;
+
+      .u-sidebar.mini & {
+        opacity: 1;
+      }
+    }
+    .u-sidebar-nav--opened & .u-sidebar-nav-menu__indicator,
+    &.active .u-sidebar-nav-menu__indicator {
+      background-color: rgba(255,255,255, .2);
+    }
+  }
+
+  &:hover {
+    color: $dark;
+    background-color: rgba($primary, .1);
+  }
+
+  &.active,
+  .u-sidebar-nav-menu--top-level > .u-sidebar-nav--opened > & {
+    color: $white;
+    background-color: $primary;
+
+    .u-sidebar-nav-menu--second-level & {
+      color: $dark;
+      background-color: rgba($primary, .07);
+    }
+  }
+}
+
+.u-sidebar-nav-menu__item-icon {
+  font-size: 1rem;
+  color: $gray-600;
+  margin-right: .75rem;
+  transition: all .2s ease-in;
+
+  .u-sidebar-nav-menu__link:hover & {
+    color: $primary;
+  }
+
+  .u-sidebar-nav-menu__link.active &,
+  .u-sidebar-nav-menu--top-level > .u-sidebar-nav--opened > .u-sidebar-nav-menu__link & {
+    color: $white;
+  }
+
+  .u-sidebar-nav-menu--second-level .u-sidebar-nav-menu__link.active & {
+    color: $primary;
+  }
+
+  .u-sidebar-nav-menu--second-level .u-sidebar-nav-menu__link & {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: .88rem;
+  }
+}
+
+.u-sidebar-nav-menu__item-title {
+  line-height: 1;
+}
+
+.u-sidebar-nav-menu__item-arrow {
+  font-size: .875rem;
+  margin-left: auto;
+  transition: transform .2s ease-in;
+  color: $gray-600;
+
+  .active &,
+  .u-sidebar-nav--opened & {
+    color: $white;
+  }
+
+  .u-sidebar-nav--opened & {
+    transform: rotate(90deg);
+  }
+}
+
+@media (min-width: $md) {
+  .u-sidebar-nav-menu__item-icon {
+    .u-sidebar.tablet.mini & {
+      margin-right: 0;
+    }
+
+    .u-sidebar.tablet .u-sidebar-nav-menu--second-level & {
+      margin-right: .75rem;
+    }
+  }
+
+  .u-sidebar-nav-menu__item-title,
+  .u-sidebar-nav-menu__item-arrow {
+    .u-sidebar.tablet.mini & {
+      display: none;
+    }
+
+    .u-sidebar.tablet .u-sidebar-nav-menu--second-level & {
+      display: block;
+    }
+  }
+
+  .u-sidebar-nav-menu--second-level {
+    .u-sidebar.tablet.mini.action & {
+      position: absolute;
+      left: calc(100% + 15px);
+      top: -10px;
+      z-index: 5;
+      background-color: $white;
+      box-shadow: 0 5px 20px 0 rgba($black, .2);
+      padding: .5rem;
+    }
+  }
+}
+
+@media (min-width: $lg) {
+  .u-sidebar-nav-menu__item-icon {
+    .u-sidebar.action & {
+      margin-right: 0;
+    }
+
+    .u-sidebar.action .u-sidebar-nav-menu--second-level & {
+      margin-right: .75rem;
+    }
+  }
+
+  .u-sidebar-nav-menu__item-title,
+  .u-sidebar-nav-menu__item-arrow {
+    .u-sidebar.mini.action & {
+      display: none;
+    }
+
+    .u-sidebar .u-sidebar-nav-menu--second-level &,
+    .u-sidebar.mini.action .u-sidebar-nav-menu--second-level & {
+      display: block;
+    }
+  }
+
+  .u-sidebar-nav-menu--second-level {
+    .u-sidebar.mini.action & {
+      position: absolute;
+      left: calc(100% + 15px);
+      top: -10px;
+      z-index: 5;
+      background-color: $white;
+      box-shadow: 0 5px 20px 0 rgba($black, .2);
+      padding: .5rem;
+    }
+
+    body.desktop-mode & {
+      display: block;
+    }
+  }
+}

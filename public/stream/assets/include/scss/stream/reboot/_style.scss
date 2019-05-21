@@ -1,0 +1,43 @@
+//
+// Default Styles
+//
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+p {
+  line-height: 1.8;
+  color: $gray-600;
+}
+
+figure {
+  margin-bottom: 0;
+}
+
+canvas {
+  max-width: 100% !important;
+}
+
+// Highlight Color
+::-moz-selection {
+  color: $white;
+  background-color: $primary;
+}
+
+::selection {
+  color: $white;
+  background-color: $primary;
+}
+
+.bg-primary ::-moz-selection {
+  color: $primary;
+  background-color: $white;
+}
+
+.bg-primary ::selection {
+  color: $primary;
+  background-color: $white;
+}

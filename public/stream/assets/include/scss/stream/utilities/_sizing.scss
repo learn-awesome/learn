@@ -1,0 +1,17 @@
+//
+// Width & Height
+//
+
+.mnh-100 {
+  min-height: 100%;
+}
+
+.mnh-100vh {
+  min-height: 100vh;
+}
+
+@media (min-width: $md) {
+  .mnw-md-120 {
+    min-width: 7.5rem;
+  }
+}

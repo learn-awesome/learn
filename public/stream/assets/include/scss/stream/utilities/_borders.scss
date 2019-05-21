@@ -1,0 +1,17 @@
+//
+// Borders
+//
+
+.border-bottom {
+  border-bottom: 1px solid;
+}
+
+.border-light {
+  border-color: $gray-200 !important;
+}
+
+@media (min-width: $md) {
+  .border-md-right {
+    border-right: 1px solid;
+  }
+}

@@ -1,0 +1,21 @@
+//
+// Links
+//
+
+.link-dark {
+  color: $dark;
+  transition: all .2s ease-in;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.link-muted {
+  color: $gray-600;
+  transition: all .2s ease-in;
+
+  &:hover {
+    color: $primary;
+  }
+}

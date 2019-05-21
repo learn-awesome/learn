@@ -1,0 +1,21 @@
+//
+// Indicators
+//
+
+
+.u-indicator {
+  border: 1px solid $white;
+  border-radius: 50%;
+
+  &-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &:empty {
+    display: block;
+    padding: 0;
+  }
+}

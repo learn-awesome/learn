@@ -1,0 +1,18 @@
+//
+// Header Login
+//
+
+.u-header--login {
+  position: static;
+  width: 100%;
+  margin: $header-login-spacer-y $header-login-spacer-x 0;
+  min-height: $header-login-height;
+  justify-content: $header-login-text-align;
+  background-color: $header-login-bg;
+}
+
+@media (min-width: $sm) {
+  .u-header--login {
+    width: $header-login-width;
+  }
+}

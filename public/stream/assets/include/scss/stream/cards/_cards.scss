@@ -1,0 +1,19 @@
+//
+// Cards
+//
+
+// Card Header
+.card-header {
+  &-title {
+    margin-bottom: 0;
+    line-height: $card-header-title-line-height;
+  }
+
+  // Accordion
+  & [aria-expanded="false"] {
+    color: $gray-600;
+  }
+  & [aria-expanded="true"] {
+    color: $dark;
+  }
+}
