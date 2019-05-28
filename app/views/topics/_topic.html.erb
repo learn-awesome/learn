@@ -1,2 +1,5 @@
 <h2><%= link_to topic.name.capitalize, topic_path(topic) %></h2>
-<%= render topic.idea_sets %>
+<% topic.items.group_by(&:item_type).each do |item_type, items| %>
+	<h4><%= item_type.id.pluralize.capitalize %></h4>
+	<%= render items %>
+<% end %>

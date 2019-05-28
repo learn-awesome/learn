@@ -1,1 +1,2 @@
-<h1><%= @item.name %></h1>
+<h1><%= @item.item_type.id.capitalize %>: <%= @item.name %></h1>
+<p>Topics: <%= @item.topics.map(&:name).join(",") %></p>

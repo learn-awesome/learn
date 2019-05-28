@@ -45,13 +45,17 @@ class ItemsController < ApplicationController
   			redirect_to items.first
   		else
         if is_url?(q)
-          redirect_to items_new_path(url: q)
+          redirect_to new_item_path(url: q)
         else
-          redirect_to items_new_path(name: q)
+          redirect_to new_item_path(name: q)
         end
       end
   	end
     # render search form
+  end
+
+  def discover
+    redirect_to Item.discover
   end
 
   private

@@ -1,0 +1,5 @@
+<% ItemType.all.each do |it| %>
+	<% next if it.items.count == 0 %>
+	<h2><%= it.id.pluralize.capitalize %></h2>
+	<%= render it.items.all %>
+<% end %>

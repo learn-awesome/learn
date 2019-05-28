@@ -16,4 +16,12 @@ class Item < ApplicationRecord
   		Item.where(name: q).limit(max)
   	end
   end
+
+  def self.discover
+    Item.order('RANDOM()').first
+  end
+
+  def topics
+    self.idea_set.topics
+  end
 end
