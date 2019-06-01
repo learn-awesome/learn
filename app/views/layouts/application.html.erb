@@ -15,11 +15,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Web Fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -38,8 +38,8 @@
     <header class="u-header">
       <div class="u-header-left">
         <a class="u-header-logo" href="/">
-          <img class="u-logo-desktop" src="/logo.png" width="160" alt="LearnAwesome">
-          <img class="img-fluid u-logo-mobile" src="/logo-mobile.png" width="50" alt="LearnAwesome">
+          <img class="u-logo-desktop" src="/stream/assets/img/logo.png" width="160" alt="LearnAwesome">
+          <img class="img-fluid u-logo-mobile" src="/stream/assets/img/logo-mobile.png" width="50" alt="LearnAwesome">
         </a>
       </div>
 
@@ -59,12 +59,12 @@
           </a>
 
           <div id="headerSearch" class="u-header-search-form">
-            <form>
+            <form action="/items/search?top=true" accept-charset="UTF-8" method="get">
               <div class="input-group">
                 <button class="btn-link input-group-prepend u-header-search__btn" type="submit">
                   <i class="fa fa-search"></i>
                 </button>
-                <input class="form-control u-header-search__field" type="search" placeholder="Type to search…" style="border-radius: 8px; border: thin solid gray; padding-left: 8px">
+                <input name="q" value="<%= @q %>" class="form-control u-header-search__field" type="search" placeholder="Type to search…" style="border-radius: 8px; border: thin solid gray; padding-left: 8px">
               </div>
             </form>
           </div>
@@ -132,13 +132,14 @@
         <div class="u-sidebar-inner">
           <header class="u-sidebar-header">
             <a class="u-sidebar-logo" href="index.html">
-              <img class="img-fluid" src="/stream/assets/img/logo.png" width="124" alt="Stream Dashboard">
+              <img class="img-fluid" src="/stream/assets/img/logo.png" width="124" alt="Home">
             </a>
           </header>
 
           <nav class="u-sidebar-nav">
             <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
 
+              <% if current_user.present? %>
               <!-- Forms -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link active" href="/items/search">
@@ -150,16 +151,17 @@
 
               <!-- Dashboard -->
               <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link" href="/dashboard">
+                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'dashboard' && params[:action] == 'show' %>" href="/dashboard">
                   <i class="fa fa-cubes u-sidebar-nav-menu__item-icon"></i>
                   <span class="u-sidebar-nav-menu__item-title">Dashboard</span>
                 </a>
               </li>
               <!-- End Dashboard -->
+              <% end %>
 
               <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link" href="/topics">
+                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'topics' && params[:action] == 'index' %>" href="/topics">
                   <i class="far fa-list-alt u-sidebar-nav-menu__item-icon"></i>
                   <span class="u-sidebar-nav-menu__item-title">Browse by Topic</span>
                 </a>
@@ -168,7 +170,7 @@
 
               <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link" href="/formats">
+                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'item_types' && params[:action] == 'index' %>" href="/formats">
                   <i class="far fa-list-alt u-sidebar-nav-menu__item-icon"></i>
                   <span class="u-sidebar-nav-menu__item-title">Browse by Format</span>
                 </a>

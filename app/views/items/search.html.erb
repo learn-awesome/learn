@@ -1,11 +1,17 @@
-<h1>Search or add a learning resource</h1>
+
+<% if @q %>
+	<h1>No results found for &quot;<%= @q %>&quot;. Try again?</h1>
+<% else %>
+	<h1>Search or add a learning resource</h1>
+<% end %>
+
 <%= form_with local: true, method: :get do |form| %>
   <p>
     <%= form.label :q, "URL or name / title" %><br>
-    <%= form.text_field :q %>
+    <%= form.text_field :q, value: @q %>
   </p>
 
   <p>
-    <%= form.submit "Search or Add" %>
+    <%= form.submit current_user.present? ? "Search or Add" : "Search" %>
   </p>
 <% end %>

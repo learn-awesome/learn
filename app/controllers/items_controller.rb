@@ -38,17 +38,19 @@ class ItemsController < ApplicationController
   end
 
   def search
-  	q = params[:q]
-  	if q.present?
-  		items = Item.search(q)
+  	@q = params[:q]
+  	if @q.present?
+  		items = Item.search(@q)
   		if items.first
   			redirect_to items.first
-  		else
-        if is_url?(q)
-          redirect_to new_item_path(url: q)
+  		elsif @current_user
+        if is_url?(@q)
+          redirect_to new_item_path(url: @q)
         else
-          redirect_to new_item_path(name: q)
+          redirect_to new_item_path(name: @q)
         end
+      else
+        # render search
       end
   	end
     # render search form
