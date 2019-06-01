@@ -2,13 +2,13 @@
 
 <p>Topics: 
 <% @item.topics.map do |topic| %>
-	<%= link_to topic.name, topic, class: "btn btn-soft-secondary" %>
+	<%= link_to topic.name, topic, class: "btn btn-sm btn-soft-secondary" %>
 <% end %>
 </p>
 
 <p>Links:
 <% @item.links.map do |link| %>
-	<%= link_to link.top_domain, link.url, class: "btn btn-soft-primary" %>
+	<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-soft-primary" %>
 <% end %>
 </p>
 
