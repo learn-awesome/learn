@@ -15,8 +15,9 @@ TopicIdeaSet.delete_all
 Person.delete_all
 Topic.delete_all
 IdeaSet.delete_all
-
 ItemType.delete_all
+Review.delete_all
+User.delete_all
 
 ItemType.create!(id: 'article')
 ItemType.create!(id: 'audio')
