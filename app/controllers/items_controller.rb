@@ -15,7 +15,9 @@ class ItemsController < ApplicationController
     Item.transaction do
       idea_set = IdeaSet.new
       idea_set.name = params[:item][:name]
-      idea_set.save
+      unless idea_set.save
+        raise idea_set.errors.first.inspect
+      end
 
       params[:item][:topic].each do |topic_id|
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
@@ -43,7 +45,7 @@ class ItemsController < ApplicationController
   		items = Item.search(@q)
   		if items.first
   			redirect_to items.first
-  		elsif @current_user
+  		elsif current_user
         if is_url?(@q)
           redirect_to new_item_path(url: @q)
         else
