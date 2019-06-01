@@ -7,6 +7,9 @@ class Item < ApplicationRecord
   validates :idea_set, presence: true
   accepts_nested_attributes_for :links, allow_destroy: true
 
+  scope :recent, -> { order("created_at DESC").limit(3) }
+  scope :popular, -> { order("rating DESC").limit(3) }
+
   def self.search(q, max=1)
   	if q.start_with?('http')
       #TODO: Fetch the canonical URL and use that instead

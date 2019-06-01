@@ -1,1 +1,3 @@
-<%= render Topic.all %>
+<% Topic.all.order(:name).each do |topic| %>
+<h3><%= link_to topic.name.capitalize, topic_path(topic) %></h3>
+<% end %>
