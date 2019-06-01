@@ -22,7 +22,8 @@
         	<div class="list-group list-lg-group list-group-flush">
         	<% @item.reviews.each do |rev| %>
 
-					<div class="list-group-item list-group-item-action" href="#">
+					<div class="list-group-item">
+
 							<div class="media">
 								<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
 
@@ -34,7 +35,11 @@
 										<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 									</div>
 
-									<p class="mb-0"><%= rev.notes %></p>
+									<p class="mb-0"><%= rev.notes %></p><br/>
+									<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score %></p>
+									<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score %></p>
+									<p class="mb-0"><code>Difficulty&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.difficulty_score %></p>
+									<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score %></p>
 								</div>
 							</div>
 					</div>
