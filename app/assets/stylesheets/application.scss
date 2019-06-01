@@ -17,3 +17,44 @@
 .u-sidebar-nav-menu__link.selectedtab {
   background-color: rgba(107, 21, 182, 0.1);
 }
+
+$stars: 5;
+$star-size: 20px;
+$star-spacing: 2px;
+$star-on-color: #F9DF4A;
+$star-off-color: #CCCCCC;
+
+.rating {
+	width: ($star-size * $stars) + ($star-spacing * ($stars - 1));
+	height: $star-size;
+	margin: 0 auto;
+
+	label {
+		float: right;
+		position: relative;
+		width: $star-size;
+		height: $star-size;
+		cursor: pointer;
+		
+		&:not(:first-of-type) {
+			padding-right: $star-spacing;
+		}
+		
+		&:before {
+			content: "\2605";
+			font-size: $star-size + 2px;
+			color: $star-off-color;
+			line-height: 1;
+		}
+	}
+	
+	input {
+		display: none;
+	}
+	
+	input:checked ~ label:before,
+	&:not(:checked) > label:hover:before,
+	&:not(:checked) > label:hover ~ label:before {
+		color: $star-on-color;
+	}
+}

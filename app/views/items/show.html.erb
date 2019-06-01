@@ -1,2 +1,47 @@
 <h1><%= @item.item_type.id.capitalize %>: <%= @item.name %></h1>
-<p>Topics: <%= @item.topics.map(&:name).join(",") %></p>
+
+<p>Topics: 
+<% @item.topics.map do |topic| %>
+	<%= link_to topic.name, topic, class: "btn btn-soft-secondary" %>
+<% end %>
+</p>
+
+<p>Links:
+<% @item.links.map do |link| %>
+	<%= link_to link.top_domain, link.url, class: "btn btn-soft-primary" %>
+<% end %>
+</p>
+
+<div class="row">
+	<div class="col-md-6 mb-4">
+	  <div class="card">
+        <div class="card-header d-md-flex align-items-center">
+        	<h2 class="h3 card-header-title">Reviews</h2>
+        </div>
+        <div class="card-body">
+        	<div class="list-group list-lg-group list-group-flush">
+        	<% @item.reviews.each do |rev| %>
+
+					<div class="list-group-item list-group-item-action" href="#">
+							<div class="media">
+								<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
+
+								<div class="media-body">
+									<div class="d-md-flex align-items-center">
+										<h4 class="mb-1">
+											<%= rev.user.nickname %> <span class="badge badge-soft-warning mx-1">Light</span>
+										</h4>
+										<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
+									</div>
+
+									<p class="mb-0"><%= rev.notes %></p>
+								</div>
+							</div>
+					</div>
+
+    		<% end %>
+    		</div>
+        </div>
+	  </div>
+	</div>
+</div>

@@ -317,6 +317,7 @@ DEPENDENCIES
   omniauth (~> 1.6.1)
   omniauth-auth0 (~> 2.0.0)
   pg (>= 0.18, < 2.0)
+  public_suffix
   puma (~> 3.11)
   rails (~> 5.2.2, >= 5.2.2.1)
   sass-rails (~> 5.0)

@@ -28,6 +28,15 @@ class ItemsController < ApplicationController
       item.links.build
       item.links.first.url = params[:item][:url]
 
+      item.reviews.build
+      item.reviews.first.user = current_user
+      item.reviews.first.status = params[:item][:status]
+      item.reviews.first.inspirational_score = params[:item][:inspirational_score]
+      item.reviews.first.educational_score = params[:item][:educational_score]
+      item.reviews.first.difficulty_score = params[:item][:difficulty_score]
+      item.reviews.first.entertaining_score = params[:item][:entertaining_score]
+      item.reviews.first.notes = params[:item][:notes]
+
       unless item.save
         raise item.errors.first.inspect
       end
@@ -59,7 +68,13 @@ class ItemsController < ApplicationController
   end
 
   def discover
-    redirect_to Item.discover
+    item = Item.discover
+    if item
+      redirect_to item
+    else
+      flash[:danger] = "No items exist."
+      redirect_to root_path
+    end
   end
 
   private

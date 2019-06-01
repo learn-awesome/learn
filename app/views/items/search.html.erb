@@ -1,17 +1,28 @@
+<div class="row">
+<div class="col-md-6 mb-4">
+<div class="card">
 
+<header class="card-header">
 <% if @q %>
-	<h1>No results found for &quot;<%= @q %>&quot;. Try again?</h1>
+	<h2 class="h3 card-header-title">No results found for &quot;<%= @q %>&quot;. Try again?</h2>
 <% else %>
-	<h1>Search or add a learning resource</h1>
+	<h2 class="h3 card-header-title">Search or add a learning resource</h2>
 <% end %>
+</header>
 
+<div class="card-body">
 <%= form_with local: true, method: :get do |form| %>
-  <p>
+  <div class="form-group mb-4">
     <%= form.label :q, "URL or name / title" %><br>
-    <%= form.text_field :q, value: @q %>
-  </p>
+    <%= form.text_field :q, value: @q, class: "form-control form-pill" %>
+  </div>
 
-  <p>
-    <%= form.submit current_user.present? ? "Search or Add" : "Search" %>
-  </p>
+  <div class="form-group mb-4">
+    <%= form.submit current_user.present? ? "Search or Add" : "Search", class: "btn btn-primary" %>
+  </div>
 <% end %>
+</div>
+
+</div>
+</div>
+</div>

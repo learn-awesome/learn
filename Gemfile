@@ -74,3 +74,5 @@ gem 'omniauth-auth0', '~> 2.0.0'
 
 gem 'bootstrap'
 gem 'jquery-rails'
+
+gem 'public_suffix'
