@@ -1,1 +1,137 @@
-<%= render @user %>
+<h1 class="h2 font-weight-semibold mb-4">Profile</h1>
+
+<div class="card mb-4">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-4 border-md-right border-light text-center">
+				<img class="img-fluid rounded-circle mb-3" src="<%= @user.auth0["info"]["image"] %>" alt="photo" width="84">
+
+				<h2 class="mb-2"><%= @user.nickname %></h2>
+				<h5 class="text-muted mb-4"><%= @user.bio %></h5>
+
+				<!-- <ul class="list-inline mb-4">
+					<li class="list-inline-item mr-3">
+						<a class="link-muted" href="#!">
+							<i class="fab fa-facebook"></i>
+						</a>
+					</li>
+					<li class="list-inline-item mr-3">
+						<a class="link-muted" href="#!">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+					<li class="list-inline-item mr-3">
+						<a class="link-muted" href="#!">
+							<i class="fab fa-slack"></i>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="link-muted" href="#!">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+					</li>
+				</ul> -->
+
+				<div class="mb-3">
+					<% if current_user %>
+						<% if @user.id == current_user.id %>
+							<a class="btn btn-primary mb-2" href="#!">Edit Profile</a>
+						<% else %>
+							<a class="btn btn-primary mb-2" href="#!">Follow</a>
+						<% end %>
+					<% end %>
+				</div>
+
+				<!--<a class="link-muted" href="#!">
+					<i class="fa fa-envelope mr-2"></i> Send Message
+				</a>-->
+			</div>
+
+			<div class="col-md-8">
+				<h3 class="card-title">About me</h3>
+				<p class="mb-5"><%= @user.description %></p>
+
+				<div class="row">
+					<div class="col-lg-4 mb-5 mb-lg-0">
+						<h4 class="h3 mb-3">Profile Rating</h4>
+
+						<div class="mb-1">
+							<span class="font-size-44 text-dark"><%= @user.score %></span>
+							<!-- <span class="h1 font-weight-light text-muted">/ 100</span> -->
+						</div>
+
+						<p class="text-muted mb-0"><%= @user.submissions.count %> Submissions</p>
+						<p class="text-muted mb-0"><%= @user.reviews.count %> Reviews</p>
+					</div>
+
+					<div class="col-lg-8">
+						<h4 class="h3 mb-3">Topics</h4>
+
+						<div class="d-flex flex-wrap align-items-center">
+							<% @user.fav_topics.each do |topic| %>
+								<%= link_to topic.name.capitalize, topic, class: "btn btn-sm btn-soft-secondary mr-1" %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+
+		<div class="row">
+            <!-- Cards with Tabs -->
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                <div class="card-header d-md-flex align-items-center">
+                  <h2 class="h3 card-header-title">Activity</h2>
+
+                  <!-- Tabs Nav -->
+                  <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
+                   <li class="nav-item">
+                     <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Current Learning</a>
+                   </li>
+                   <li class="nav-item">
+                     <a href="#panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Have Learned From</a>
+                   </li>
+                   <li class="nav-item">
+                     <a href="#panelWithTabsTab3" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Wants to Learn</a>
+                   </li>
+                  </ul>
+                  <!-- End Tabs Nav -->
+                </div>
+
+                <div class="card-body">
+                  <!-- Tabs Content -->
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
+                      <% @user.reviews.where(status: 'learning').each do |rev| %>
+                       <%= render rev.item %>
+                      <% end %>
+                    </div>
+
+                    <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
+                      <% @user.reviews.where(status: 'learned').each do |rev| %>
+                       <%= render rev.item %>
+                       <% rev.item.topics.map do |topic| %>
+							<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+					   <% end %>
+                      <% end %>
+                    </div>
+
+                    <div class="tab-pane fade" id="panelWithTabsTab3" role="tabpanel">
+                      <% @user.reviews.where(status: 'want_to_learn').each do |rev| %>
+                       <%= render rev.item %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!-- End Tabs Content -->
+                </div>
+
+              </div>
+            </div>
+            <!-- End Cards with Tabs -->
+		</div>

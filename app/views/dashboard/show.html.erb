@@ -1,6 +1,6 @@
 <div class="mb-4">
 <nav aria-label="breadcrumb">
-  <h1 class="h3">Your Learning Dashboard</h1>
+  <h1 class="h3">Your Favorite Topics</h1>
 </nav>
 </div>
 
@@ -11,7 +11,7 @@
 	        <div class="col-md-6 mb-4">
 	          <div class="card">
 	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><%= link_to topic.name.capitalize, topic, class: "btn btn-soft-primary" %></h2>
+	              <h2 class="h3 card-header-title"><%= link_to topic.name.capitalize, topic, class: "btn #{Topic.button_style}" %></h2>
 
 	              <!-- Tabs Nav -->
 	              <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
@@ -29,19 +29,15 @@
 	              <!-- Tabs Content -->
 	              <div class="tab-content">
 	                <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
-	                	<ul>
 	                		<% topic.items.recent.each do |item| %>
-	                		<li><%= render item %></li>
+	                		<div><%= render item %></div>
 	                		<% end %>
-	                	</ul>
 	                </div>
 
 	                <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
-	                	<ul>
 	                		<% topic.items.popular.each do |item| %>
-	                		<li><%= render item %></li>
+	                		<div><%= render item %></div>
 	                		<% end %>
-	                	</ul>
 	                </div>
 	              </div>
 	              <!-- End Tabs Content -->

@@ -1,14 +1,14 @@
-<h1><%= @item.item_type.id.capitalize %>: <%= @item.name %></h1>
+<h1><%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;<%= @item.name %></h1>
 
 <p>Topics: 
 <% @item.topics.map do |topic| %>
-	<%= link_to topic.name, topic, class: "btn btn-sm btn-soft-secondary" %>
+	<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 <% end %>
 </p>
 
 <p>Links:
 <% @item.links.map do |link| %>
-	<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-soft-primary" %>
+	<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-soft-primary", target: :_blank %>
 <% end %>
 </p>
 
@@ -30,16 +30,16 @@
 								<div class="media-body">
 									<div class="d-md-flex align-items-center">
 										<h4 class="mb-1">
-											<%= rev.user.nickname %> <span class="badge badge-soft-warning mx-1">Light</span>
+											<%= rev.user.nickname %> <!-- <span class="badge badge-soft-warning mx-1">Light</span> -->
 										</h4>
 										<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 									</div>
 
 									<p class="mb-0"><%= rev.notes %></p><br/>
-									<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score %></p>
-									<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score %></p>
-									<p class="mb-0"><code>Difficulty&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.difficulty_score %></p>
-									<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score %></p>
+									<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
+									<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
+									<p class="mb-0"><code>Difficulty&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.difficulty_score.to_i %></p>
+									<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
 								</div>
 							</div>
 					</div>

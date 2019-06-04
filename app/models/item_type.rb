@@ -6,4 +6,8 @@ class ItemType < ApplicationRecord
 	def items
 		Item.where(item_type: self)
 	end
+
+	def self.button_style
+		"btn-soft-info"
+	end
 end
