@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_061036) do
+ActiveRecord::Schema.define(version: 2019_06_04_140829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -134,6 +134,16 @@ ActiveRecord::Schema.define(version: 2019_05_19_061036) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "topic_id", null: false
+    t.string "action", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_user_topics_on_topic_id"
+    t.index ["user_id"], name: "index_user_topics_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "nickname"
     t.string "auth0_uid"
@@ -153,4 +163,6 @@ ActiveRecord::Schema.define(version: 2019_05_19_061036) do
   add_foreign_key "topic_idea_sets", "topics"
   add_foreign_key "topic_relations", "topics", column: "from_id"
   add_foreign_key "topic_relations", "topics", column: "to_id"
+  add_foreign_key "user_topics", "topics"
+  add_foreign_key "user_topics", "users"
 end

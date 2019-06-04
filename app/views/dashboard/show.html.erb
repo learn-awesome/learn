@@ -1,1 +1,54 @@
-<h1>Your lifelong learning dashboard</h1>
+<div class="mb-4">
+<nav aria-label="breadcrumb">
+  <h1 class="h3">Your Learning Dashboard</h1>
+</nav>
+</div>
+
+<% @user_topics.map(&:topic).each_slice(2).to_a.each do |pair| %>
+      <div class="row">
+        <!-- Cards with Tabs -->
+        <% pair.each do |topic| %>
+	        <div class="col-md-6 mb-4">
+	          <div class="card">
+	            <div class="card-header d-md-flex align-items-center">
+	              <h2 class="h3 card-header-title"><%= link_to topic.name.capitalize, topic, class: "btn btn-soft-primary" %></h2>
+
+	              <!-- Tabs Nav -->
+	              <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
+	               <li class="nav-item">
+	                 <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
+	               </li>
+	               <li class="nav-item">
+	                 <a href="#panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
+	               </li>
+	              </ul>
+	              <!-- End Tabs Nav -->
+	            </div>
+
+	            <div class="card-body">
+	              <!-- Tabs Content -->
+	              <div class="tab-content">
+	                <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
+	                	<ul>
+	                		<% topic.items.recent.each do |item| %>
+	                		<li><%= render item %></li>
+	                		<% end %>
+	                	</ul>
+	                </div>
+
+	                <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
+	                	<ul>
+	                		<% topic.items.popular.each do |item| %>
+	                		<li><%= render item %></li>
+	                		<% end %>
+	                	</ul>
+	                </div>
+	              </div>
+	              <!-- End Tabs Content -->
+	            </div>
+
+	          </div>
+	        </div>
+        <% end %>
+      </div>
+<% end %>

@@ -3,4 +3,5 @@ class Topic < ApplicationRecord
 	has_many :topic_idea_sets
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :items, :through => :idea_sets
+	has_many :user_topics
 end

@@ -1,4 +1,11 @@
-<h2><%= link_to topic.name.capitalize, topic_path(topic) %></h2>
+<h2>
+	<%= link_to topic.name.capitalize, topic_path(topic) %>
+	<% if current_user %>
+	<%= link_to (@topic_action ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@topic_action ? "btn-soft-danger" : "btn-soft-success") %>
+	<% end %>
+
+</h2>
+
 <% topic.items.group_by(&:item_type).each do |item_type, items| %>
 	<h4><%= item_type.id.pluralize.capitalize %></h4>
 	<%= render items %>
