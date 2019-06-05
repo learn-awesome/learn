@@ -2,12 +2,19 @@
 	<div class="col-md-12 mb-4">
 	  <div class="card mb-4">
 	  	<div class="card-body">
+	  			<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+	  			<h1 class="display-4 mu-4 mb-4" id="queryheadline">Show me <u>podcasts</u> about <u>machine learning</u> which are <u>30 to 60 minutes</u> long and are <u>challenging</u>.</h1><br/>
 
-	  			<!-- animate the headline using this technique: https://codyhouse.co/gem/css-animated-headlines -->
-
-	  			<h1 class="display-4 mu-4 mb-4">Show me <span><u>podcasts</u></span> about <span><u>machine learning</u></span> which are <span><u>30 to 60 minutes</u></span> long and are <span><u>challenging</u></span>. <a href="<%= query_items_path(topic_name: 'logic', item_type: 'audio', length: '30-60', quality: 'challenging') %>" class="btn btn-success"><h1 class="display-6">Go!</h1></a> </h1><br/><br/>
+	  			<div class="text-center"><a id="querylink" href="<%= query_items_path(topic_name: 'logic', item_type: 'audio', length: '30-60', quality: 'challenging') %>" class="btn btn-success btn-lg btn-pill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+	  			<br/><br/>
 
 	  			<h1 class="display-5 mu-4"><%= ItemType.count %> formats. <%= Topic.count %> topics. <b><big><%= Item.count %></big></b> learning resources. All about YOU - the lifelong learner.</h1>
+
+	  			<script type="text/javascript" defer>
+	  				document.addEventListener('DOMContentLoaded', function(){
+	  					setTimeout(animateHeadline, 2000);
+	  				});
+	  			</script>
 	  	</div>
 	  </div>
 
@@ -20,7 +27,7 @@
 
 	  		<p class="lead">In 2012, Danny Hillis had presented the vision of <a href="https://www.youtube.com/watch?v=wKcZ8ozCah0" target="_blank"><u>a global learning map</u></a>. However, it did not really materialize at that time. Some of us, who like to think of ourselves as lifelong learners, really wanted something like that. So, we're building one. Everyone is welcome to join. </p>
 
-	  		<p class="lead">You can still browse our earlier <a href="https://github.com/learn-awesome/learn-awesome" target="_blank">Git repository of curated links</a>.</p>
+	  		<p class="lead">You can still browse our earlier <a href="https://github.com/learn-awesome/learn-awesome" target="_blank">GitHub repository of curated links</a>.</p>
 	  	</div>
 	  </div>
 	</div>

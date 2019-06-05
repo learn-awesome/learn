@@ -10,7 +10,9 @@
   &nbsp; which are &nbsp; 
   <%= form.select :length, [["< 5 minutes", "0-5"], ["30 to 60 minutes", "30-60"]], selected: @length, include_blank: "Any length", class: "form-control form-pill" %> 
   &nbsp; long and &nbsp; 
-  <%= form.select :quality, [["challenging", "challenging"], ["entertaining", "entertaining"]], selected: @quality, include_blank: "Any quality", class: "form-control form-pill" %> &nbsp; which I haven't seen. &nbsp; <%= form.submit "Search", class: "btn btn-primary" %>
+  <%= form.select :quality, [["challenging", "challenging"], ["entertaining", "entertaining"]], selected: @quality, include_blank: "Any quality", class: "form-control form-pill" %> &nbsp; <% if current_user %>which I haven't seen<% end %>. &nbsp;
+
+  <%= form.submit "Search", class: "btn btn-primary" %>
 <% end %>
 </header>
 
