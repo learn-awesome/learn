@@ -8,4 +8,8 @@ class Topic < ApplicationRecord
 	def self.button_style
 		"btn-soft-success"
 	end
+
+	def chat_room
+		self.gitter_room or self.name.downcase
+	end
 end

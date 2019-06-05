@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'dashboard/show'
-  get 'welcome/index'
   root 'welcome#index'
-  get 'welcome/about'
 
   get 'dashboard' => 'dashboard#show'
 
@@ -18,6 +15,7 @@ Rails.application.routes.draw do
   resources  :items do
     collection do
       get 'search'
+      get 'query'
       get 'discover'
     end
   end

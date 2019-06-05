@@ -99,8 +99,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.string "status", null: false
     t.integer "inspirational_score"
     t.integer "educational_score"
-    t.integer "difficulty_score"
+    t.integer "challenging_score"
     t.integer "entertaining_score"
+    t.integer "visual_score"
+    t.integer "interactive_score"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
   create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "search_index", null: false
+    t.string "gitter_room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -145,9 +148,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "nickname"
-    t.string "auth0_uid"
-    t.text "authinfo"
+    t.string "nickname", null: false
+    t.string "auth0_uid", null: false
+    t.text "authinfo", null: false
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

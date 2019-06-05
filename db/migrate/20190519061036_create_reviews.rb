@@ -6,8 +6,10 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :status, null: false
       t.integer :inspirational_score
       t.integer :educational_score
-      t.integer :difficulty_score
+      t.integer :challenging_score
       t.integer :entertaining_score
+      t.integer :visual_score
+      t.integer :interactive_score
       t.text :notes
 
       t.timestamps

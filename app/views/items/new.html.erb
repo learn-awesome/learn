@@ -24,8 +24,13 @@
   </div>
 
   <div class="form-group mb-4">
-    <%= form.label :topic %><br>
+    <%= form.label :topic, "Topics (you can choose multiple)" %><br>
     <%= form.collection_select :topic, Topic.all.sort_by(&:name), :id, :name, {}, {multiple: true, required: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group mb-4">
+    <%= form.label :estimated_time, 'Approximate length in minutes' %><br>
+    <%= form.number_field :estimated_time, value: params[:estimated_time], required: true, class: "form-control" %>
   </div>
 
   <fieldset>
@@ -71,6 +76,26 @@
         <% (1..5).to_a.reverse.each do |score| %>
           <input type="radio" id="enstar<%= score %>" name="item[entertaining_score]" value="<%= score %>" />
           <label for="enstar<%= score %>"></label>
+        <% end %>
+        </span>
+      </div>
+
+      <div class="form-group mb-4">
+        <span>How visual?</span>
+        <span class="rating">
+        <% (1..5).to_a.reverse.each do |score| %>
+          <input type="radio" id="vistar<%= score %>" name="item[visual_score]" value="<%= score %>" />
+          <label for="vistar<%= score %>"></label>
+        <% end %>
+        </span>
+      </div>
+
+      <div class="form-group mb-4">
+        <span>How interactive?</span>
+        <span class="rating">
+        <% (1..5).to_a.reverse.each do |score| %>
+          <input type="radio" id="actstar<%= score %>" name="item[interactive_score]" value="<%= score %>" />
+          <label for="actstar<%= score %>"></label>
         <% end %>
         </span>
       </div>

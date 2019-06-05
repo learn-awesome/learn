@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    # search or add
   	@q = params[:q]
   	if @q.present?
   		items = Item.search(@q)
@@ -74,6 +75,19 @@ class ItemsController < ApplicationController
     else
       flash[:danger] = "No items exist."
       redirect_to root_path
+    end
+  end
+
+  def query
+    @topic = params[:topic_name]
+    @item_type = params[:item_type]
+    @length = params[:length]
+    @quality = params[:quality]
+    if @topic.present? or @item_type.present? or @length.present? or @quality.present?
+      # query items
+      @items = Item.advanced_search(@topic, @item_type, @length, @quality)
+    else
+      @items = []
     end
   end
 

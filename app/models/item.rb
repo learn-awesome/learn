@@ -21,6 +21,14 @@ class Item < ApplicationRecord
   	end
   end
 
+  def self.advanced_search(topic, item_type, length, quality)
+    results = Item.all
+    results = results.where(id: Topic.where(name: topic).first.items.map(&:id)) if topic.present?
+    results = results.where(item_type_id: item_type) if item_type.present?
+    results = results.where(estimated_time: length) if length.present?
+    return results.limit(10)
+  end
+
   def self.discover
     Item.order('RANDOM()').first
   end

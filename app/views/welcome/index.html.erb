@@ -5,9 +5,9 @@
 
 	  			<!-- animate the headline using this technique: https://codyhouse.co/gem/css-animated-headlines -->
 
-	  			<h1 class="display-4 mu-4 mb-4">Show me <span><u>podcasts</u></span> about <span><u>machine learning</u></span> which are <span><u>30 to 60 minutes</u></span> long and are <span><u>challenging</u></span>. <a href="<%= topic_path(Topic.first) %>" class="btn btn-success"><h1 class="display-6">Go!</h1></a> </h1><br/><br/>
+	  			<h1 class="display-4 mu-4 mb-4">Show me <span><u>podcasts</u></span> about <span><u>machine learning</u></span> which are <span><u>30 to 60 minutes</u></span> long and are <span><u>challenging</u></span>. <a href="<%= query_items_path(topic_name: 'logic', item_type: 'audio', length: '30-60', quality: 'challenging') %>" class="btn btn-success"><h1 class="display-6">Go!</h1></a> </h1><br/><br/>
 
-	  			<h1 class="display-5 mu-4"><%= ItemType.count %> formats. <%= Topic.count %> topics. <b><big><%= Item.count %></big></b> learning resources. All about YOU - the student.</h1>
+	  			<h1 class="display-5 mu-4"><%= ItemType.count %> formats. <%= Topic.count %> topics. <b><big><%= Item.count %></big></b> learning resources. All about YOU - the lifelong learner.</h1>
 	  	</div>
 	  </div>
 
@@ -16,9 +16,11 @@
 	  		<h2 class="h1 card-header-title">We're building humanity's universal skills graph.</h2>
 	  	</div>
 	  	<div class="card-body">
-	  		<p>Today's learning platforms are not actually learner-centric. They want the students to be locked within their ecosystem. But the way we learn in 21st centure is far too rich. We learn from blogs, tweetstorms, livestreams, newsletters, podcasts, video, infographics, Q&A sites and much more.</p>
+	  		<p class="lead">Today's learning platforms are not actually learner-centric. They want the students to be locked within their apps & websites and insist on specific formats. But the way we learn in 21st centure is far too rich. <b>We learn from blogs, tweetstorms, livestreams, newsletters, podcasts, video, infographics, Q&A sites and much more.</b></p>
 
-	  		<p>In 2012, Danny Hillis had presented the vision of a global learning map. However, it did not really materialize at that time. Some of us, who like to think of ourselves as lifelong learners, really wanted something like that. So, we're building one. This is free and open-source. Everyone is welcome to join.</p>
+	  		<p class="lead">In 2012, Danny Hillis had presented the vision of <a href="https://www.youtube.com/watch?v=wKcZ8ozCah0" target="_blank"><u>a global learning map</u></a>. However, it did not really materialize at that time. Some of us, who like to think of ourselves as lifelong learners, really wanted something like that. So, we're building one. Everyone is welcome to join. </p>
+
+	  		<p class="lead">You can still browse our earlier <a href="https://github.com/learn-awesome/learn-awesome" target="_blank">Git repository of curated links</a>.</p>
 	  	</div>
 	  </div>
 	</div>
