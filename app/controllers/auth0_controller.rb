@@ -8,11 +8,14 @@ class Auth0Controller < ApplicationController
       user = User.find_by_auth0_uid(session[:userinfo]["uid"])
       if user
         user.authinfo = session[:userinfo].to_json
+        user.nickname = session[:userinfo]["info"]["nickname"]
+        user.image_url = session[:userinfo]["info"]["image"]
         user.save
       else
         user = User.create(authinfo: session[:userinfo].to_json,
           auth0_uid: session[:userinfo]["uid"],
-          nickname: session[:userinfo]["info"]["nickname"])
+          nickname: session[:userinfo]["info"]["nickname"],
+          image_url: session[:userinfo]["info"]["image"])
       end
     end
 
