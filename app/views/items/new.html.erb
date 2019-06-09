@@ -30,7 +30,7 @@
 
   <div class="form-group mb-4">
     <%= form.label :estimated_time, 'Approximate length in minutes' %><br>
-    <%= form.number_field :estimated_time, value: params[:estimated_time], required: true, class: "form-control" %>
+    <%= form.number_field :estimated_time, value: params[:estimated_time], required: false, min: "0", class: "form-control" %>
   </div>
 
   <fieldset>

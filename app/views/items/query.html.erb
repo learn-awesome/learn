@@ -5,8 +5,8 @@
 <header class="card-header">
 <%= form_with local: true, method: :get, class: "form-inline" do |form| %>
   Show me &nbsp; 
-  <%= form.select :item_type, ItemType.all.collect {|t| [t.id, t.id]}, selected: @item_type, include_blank: "Any format", class: "form-control form-pill" %> &nbsp; about &nbsp; 
-  <%= form.select :topic, Topic.all.collect {|t| [t.name, t.name]}, selected: @topic, include_blank: "Any topic", class: "form-control form-pill" %> 
+  <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, selected: @item_type, include_blank: "Any format", class: "form-control form-pill" %> &nbsp; about &nbsp; 
+  <%= form.select :topic, Topic.all.collect {|t| [t.display_name, t.name]}, selected: @topic, include_blank: "Any topic", class: "form-control form-pill" %> 
   &nbsp; which are &nbsp; 
   <%= form.select :length, [["< 5 minutes", "0-5"], ["30 to 60 minutes", "30-60"]], selected: @length, include_blank: "Any length", class: "form-control form-pill" %> 
   &nbsp; long and &nbsp; 

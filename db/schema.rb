@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_reviews_on_item_id"
+    t.index ["user_id", "item_id"], name: "index_reviews_on_user_id_and_item_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
