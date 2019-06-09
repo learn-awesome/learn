@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :item_types, only: [:index, :show]
   resources :users, only: [:index, :show]
+  resources :reviews, only: [:new, :create, :edit, :update]
 
   get 'auth/oauth2/callback' => 'auth0#callback'
   get 'auth/failure' => 'auth0#failure'

@@ -1,4 +1,12 @@
-<h1><%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;<%= @item.name %></h1>
+<h1>
+	<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
+	<%= @item.name %>
+	<% if (rev = Review.where(item: @item, user: current_user).first) %>
+		<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
+	<% else %>
+		<%= link_to "Add my review", new_review_path, class: "btn btn-sm #{ItemType.button_style}" %>
+	<% end %>
+</h1>
 
 <p>Topics: 
 <% @item.topics.map do |topic| %>
@@ -12,6 +20,7 @@
 <% end %>
 </p>
 
+<% if @item.reviews.any? %>
 <div class="row">
 	<div class="col-md-6 mb-4">
 	  <div class="card">
@@ -38,8 +47,10 @@
 									<p class="mb-0"><%= rev.notes %></p><br/>
 									<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
 									<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
-									<p class="mb-0"><code>Difficulty&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.difficulty_score.to_i %></p>
+									<p class="mb-0"><code>Challenging&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.challenging_score.to_i %></p>
 									<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
+									<p class="mb-0"><code>Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.visual_score.to_i %></p>
+									<p class="mb-0"><code>Interactive&nbsp;&nbsp;:</code> <%= "★" * rev.interactive_score.to_i %></p>
 								</div>
 							</div>
 					</div>
@@ -50,3 +61,6 @@
 	  </div>
 	</div>
 </div>
+<% else %>
+	<p>No reviews available for this.</p>
+<% end %>

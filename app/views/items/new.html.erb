@@ -10,7 +10,7 @@
 <%= form_with scope: :item, url: items_path, local: true do |form| %>
   <div class="form-group mb-4">
     <%= form.label :item_type_id %><br>
-    <%= form.collection_select :item_type_id, ItemType.all, :id, :id, {required: true}, class: "form-control form-pill" %>
+    <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true}, class: "form-control form-pill" %>
   </div>
 
   <div class="form-group mb-4">
@@ -25,7 +25,7 @@
 
   <div class="form-group mb-4">
     <%= form.label :topic, "Topics (you can choose multiple)" %><br>
-    <%= form.collection_select :topic, Topic.all.sort_by(&:name), :id, :name, {}, {multiple: true, required: true, class: "form-control"} %>
+    <%= form.collection_select :topic, Topic.all.sort_by(&:display_name), :id, :display_name, {}, {multiple: true, required: true, class: "form-control"} %>
   </div>
 
   <div class="form-group mb-4">
@@ -61,10 +61,10 @@
       </div>
 
       <div class="form-group mb-4">
-        <span>How difficult?</span>
+        <span>How challenging?</span>
         <span class="rating">
         <% (1..5).to_a.reverse.each do |score| %>
-          <input type="radio" id="distar<%= score %>" name="item[difficulty_score]" value="<%= score %>" />
+          <input type="radio" id="distar<%= score %>" name="item[challenging_score]" value="<%= score %>" />
           <label for="distar<%= score %>"></label>
         <% end %>
         </span>

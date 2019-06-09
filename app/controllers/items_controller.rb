@@ -33,8 +33,10 @@ class ItemsController < ApplicationController
       item.reviews.first.status = params[:item][:status]
       item.reviews.first.inspirational_score = params[:item][:inspirational_score]
       item.reviews.first.educational_score = params[:item][:educational_score]
-      item.reviews.first.difficulty_score = params[:item][:difficulty_score]
+      item.reviews.first.challenging_score = params[:item][:challenging_score]
       item.reviews.first.entertaining_score = params[:item][:entertaining_score]
+      item.reviews.first.visual_score = params[:item][:visual_score]
+      item.reviews.first.interactive_score = params[:item][:interactive_score]
       item.reviews.first.notes = params[:item][:notes]
 
       unless item.save
