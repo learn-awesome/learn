@@ -59,7 +59,12 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.integer "required_expertise"
     t.uuid "idea_set_id", null: false
     t.integer "year"
-    t.integer "rating"
+    t.integer "inspirational_score"
+    t.integer "educational_score"
+    t.integer "challenging_score"
+    t.integer "entertaining_score"
+    t.integer "visual_score"
+    t.integer "interactive_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["idea_set_id"], name: "index_items_on_idea_set_id"

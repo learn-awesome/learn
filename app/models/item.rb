@@ -21,11 +21,18 @@ class Item < ApplicationRecord
   	end
   end
 
-  def self.advanced_search(topic, item_type, length, quality)
+  def self.advanced_search(topic_name, item_type, length, quality)
     results = Item.all
-    results = results.where(id: Topic.where(name: topic).first.items.map(&:id)) if topic.present?
+    if topic_name.present?
+      topic = Topic.where(name: topic_name).first
+      results = results.where(id: topic.items.map(&:id)) if topic
+    end
     results = results.where(item_type_id: item_type) if item_type.present?
     results = results.where(estimated_time: length) if length.present?
+
+    if quality.present?
+      results = results.where("#{quality}_score >= 4.0")
+    end
     return results.limit(10)
   end
 
