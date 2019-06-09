@@ -1,6 +1,7 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :item_types, id: :string do |t|
+      t.string :display_name_plural
     end
 
     create_table :items, id: :uuid do |t|

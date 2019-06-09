@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
   end
 
   create_table "item_types", id: :string, force: :cascade do |t|
+    t.string "display_name_plural"
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
   create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "search_index", null: false
+    t.string "namespace"
     t.string "gitter_room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

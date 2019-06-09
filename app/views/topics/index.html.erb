@@ -1,3 +1,3 @@
-<% Topic.all.order(:name).each do |topic| %>
-<h3><%= link_to topic.name.capitalize, topic_path(topic), class: "btn btn-sm #{Topic.button_style}" %></h3>
+<% Topic.all.sort_by(&:display_name).each do |topic| %>
+<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>
 <% end %>

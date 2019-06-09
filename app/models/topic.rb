@@ -6,10 +6,18 @@ class Topic < ApplicationRecord
 	has_many :user_topics
 
 	def self.button_style
-		"btn-soft-success"
+		"btn-success"
 	end
 
 	def chat_room
 		self.gitter_room or self.name.downcase
+	end
+
+	def display_name
+		if self.namespace.present?
+			self.namespace.to_s + "/" + self.name
+		else
+			self.name
+		end
 	end
 end
