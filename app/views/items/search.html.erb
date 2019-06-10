@@ -4,7 +4,13 @@
 
 <header class="card-header">
 <% if @q %>
-	<h2 class="h3 card-header-title">No results found for &quot;<%= @q %>&quot;. Try again?</h2>
+	<% if @items.any? %>
+		<% @items.group_by(&:item_type).each do |item_type, items| %>
+			<%= render items %>
+		<% end %>
+	<% else %>
+		<h2 class="h3 card-header-title">No results found for &quot;<%= @q %>&quot;. Try again?</h2>
+	<% end %>
 <% else %>
 	<h2 class="h3 card-header-title">Search or add a learning resource</h2>
 <% end %>

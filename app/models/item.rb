@@ -14,13 +14,16 @@ class Item < ApplicationRecord
   scope :recent, -> { order("created_at DESC").limit(3) }
   scope :popular, -> { order("(inspirational_score + educational_score + challenging_score + entertaining_score + visual_score + interactive_score) DESC").limit(3) }
 
-  def self.search(q, max=1)
+  def self.searchable_language
+    'english'
+  end
+
+  def self.search(q, max)
   	if q.start_with?('http')
       #TODO: Fetch the canonical URL and use that instead
   		Link.where(url: q).limit(max).map(&:item)
   	else
-      # TODO: Fuzzy search using the items.search_index column
-  		Item.where(name: q).limit(max)
+      Item.fuzzy_search(name: q).limit(max)
   	end
   end
 

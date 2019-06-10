@@ -76,3 +76,5 @@ gem 'bootstrap'
 gem 'jquery-rails'
 
 gem 'public_suffix'
+
+gem 'textacular', '~> 5.0'

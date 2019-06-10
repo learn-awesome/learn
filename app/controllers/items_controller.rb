@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
       end
 
       item = Item.new(params.require(:item).permit(:name, :item_type_id))
+      item.search_index = params[:item][:name]
       item.user = current_user
       item.idea_set = idea_set
       item.links.build
@@ -55,9 +56,13 @@ class ItemsController < ApplicationController
     # search or add
   	@q = params[:q]
   	if @q.present?
-  		items = Item.search(@q)
-  		if items.first
-  			redirect_to items.first
+  		@items = Item.search(@q, 10)
+  		if @items.any?
+        if @items.size == 1
+  			  redirect_to items.first and return
+        else
+          # render search
+        end
   		elsif current_user
         if is_url?(@q)
           redirect_to new_item_path(url: @q)

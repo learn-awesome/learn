@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_140829) do
+ActiveRecord::Schema.define(version: 2019_06_10_164206) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.datetime "updated_at", null: false
     t.index ["idea_set_id"], name: "index_items_on_idea_set_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
+    t.index ["name"], name: "trgm_items_name_indx", opclass: :gist_trgm_ops, using: :gist
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -165,6 +167,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.string "bio"
     t.text "description"
     t.integer "score", default: 100, null: false
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
