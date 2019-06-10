@@ -560,6 +560,13 @@ CREATE INDEX index_topic_relations_on_to_id ON public.topic_relations USING btre
 
 
 --
+-- Name: index_topics_on_namespace_and_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_topics_on_namespace_and_name ON public.topics USING btree (namespace, name);
+
+
+--
 -- Name: index_user_topics_on_topic_id; Type: INDEX; Schema: public; Owner: -
 --
 
