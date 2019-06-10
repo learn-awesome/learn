@@ -19,6 +19,7 @@
 function animateHeadline(){
 
 	var querylink = document.getElementById("querylink");
+
 	var versions = [
 	  {
 	  	msg: "Show me <u>podcasts</u> about <u>machine learning</u> which are <u>30 to 60 minutes</u> long and are <u>challenging</u>.",
@@ -34,7 +35,7 @@ function animateHeadline(){
 	  },
 	  {
 	  	msg: "Show me <u>MOOCs</u> about <u>learning</u> which are <u>20 to 60 hours</u> long and are <u>inspirational</u>.",
-	  	link: "item_type=course&length=1200-3660&quality=inspirational&topic_name=learning"
+	  	link: "item_type=course&length=1200-3600&quality=inspirational&topic_name=learning"
 	  }
 	];
 	
