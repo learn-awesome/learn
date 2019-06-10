@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
       end
 
       item = Item.new(params.require(:item).permit(:name, :item_type_id))
+      item.user = current_user
       item.idea_set = idea_set
       item.links.build
       item.links.first.url = params[:item][:url]

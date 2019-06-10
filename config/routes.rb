@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post 'toggle_follow'
     end
   end
-  resources :people, only: [:index, :show]
+  resources :people
   resources  :items do
     collection do
       get 'search'

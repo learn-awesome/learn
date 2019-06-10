@@ -16,4 +16,8 @@ class User < ApplicationRecord
 	def fav_topics
 		user_topics.map(&:topic)
 	end
+
+	def is_admin?
+		self.role == "admin"
+	end
 end

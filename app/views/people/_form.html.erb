@@ -1,0 +1,31 @@
+<%= form_for @person do |form| %>
+    <div class="form-group mb-4">
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group mb-4">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group mb-4">
+      <%= form.label :website %>
+      <%= form.text_field :website, class: "form-control" %>
+    </div>
+
+    <div class="form-group mb-4">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group mb-4">
+      <%= form.label :twitter %>
+      <%= form.text_field :twitter, class: "form-control" %>
+    </div>
+
+  	<div class="form-group mb-4">
+  		<%= form.submit "Save", class: "btn btn-primary" %>
+  	</div>
+<% end %>

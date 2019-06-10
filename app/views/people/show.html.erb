@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-6 mb-4">
+	  <div class="card">
+        <div class="card-header d-md-flex align-items-center">
+        	<h2 class="h3 card-header-title"><%= @person.name %></h2>
+        </div>
+        <div class="card-body">
+        	<p><%= @person.description %></p>
+        </div>
+        <footer class="card-footer">
+			<ul class="list-inline mb-0">
+				<% if @person.website.present? %>
+	            	<li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Website</a></li>
+	            <% end %>
+				<% if @person.twitter.present? %>
+	            	<li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Twitter</a></li>
+	            <% end %>
+			</ul>
+        </footer>
+	  </div>
+	</div>
+</div>

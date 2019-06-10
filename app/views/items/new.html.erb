@@ -33,6 +33,13 @@
     <%= form.number_field :estimated_time, value: params[:estimated_time], required: false, min: "0", class: "form-control" %>
   </div>
 
+  <div class="form-inline mb-4">
+    <%= form.label :person, "Creators: " %> &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= form.select :status, [['Author(s)','author'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
+    <%= form.collection_select :person, Person.all.sort_by(&:name), :id, :name, {include_blank: ""}, {required: false, class: "form-control"} %> &nbsp; &nbsp;
+    <%= link_to "Add People", new_person_path %>
+  </div>
+
   <fieldset>
     <leged>Add your review</leged>
     <div class="form-group mb-4">
