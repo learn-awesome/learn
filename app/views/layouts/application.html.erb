@@ -60,11 +60,11 @@
 
           <div id="headerSearch" class="u-header-search-form">
             <form action="/items/search?top=true" accept-charset="UTF-8" method="get">
-              <div class="input-group">
+              <div class="input-group" id="topformdiv">
                 <button class="btn-link input-group-prepend u-header-search__btn" type="submit">
                   <i class="fa fa-search"></i>
                 </button>
-                <input name="q" value="<%= @q %>" minlength="5" maxlength="30" class="form-control u-header-search__field" type="search" placeholder="Type to search…" style="border-radius: 8px; border: thin solid gray; padding-left: 8px">
+                <input name="q" value="<%= @q %>" autocomplete="off" minlength="5" maxlength="30" class="form-control u-header-search__field typeahead" id="topsearch" type="search" placeholder="Type to search…" style="border-radius: 8px; border: thin solid gray; padding-left: 8px">
               </div>
             </form>
           </div>
@@ -237,6 +237,7 @@
     <script src="/stream/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
     <script src="/stream/assets/vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="/stream/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/stream/assets/vendor/typeahead/typeahead.bundle.min.js"></script>
 
     <!-- Plugins -->
     <script src="/stream/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>

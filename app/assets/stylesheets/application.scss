@@ -58,3 +58,18 @@ $star-off-color: #CCCCCC;
 		color: $star-on-color;
 	}
 }
+
+
+#topformdiv .empty-message {
+  padding: 5px 10px;
+ text-align: center;
+}
+
+#topformdiv .tt-menu {
+	background-color: yellow;
+}
+
+#topformdiv .tt-suggestion {
+	background-color: yellow;
+	border: thin solid grey;
+}

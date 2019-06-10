@@ -12,6 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :idea_set, foreign_key: true, null: false, type: :uuid
       t.references :user, foreign_key: true, null: false, type: :uuid
       t.integer :year
+      t.string :image_url
       t.integer :inspirational_score
       t.integer :educational_score
       t.integer :challenging_score

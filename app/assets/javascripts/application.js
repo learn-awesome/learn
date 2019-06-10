@@ -51,3 +51,36 @@ function animateHeadline(){
 		}
 	});
 }
+
+function autosuggest(){
+	var bestResults = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  remote: {
+	    url: '/items/search.json?q=%QUERY',
+	    wildcard: '%QUERY'
+	  }
+	});
+
+	$('#topsearch').typeahead({
+		highlight: true,
+		minLength: 3,
+		autoselect: true
+	}, {
+	  name: 'best-items',
+	  display: 'name',
+	  source: bestResults,
+	  templates: {
+	    empty: [
+	      '<div class="empty-message">',
+	        'No such items',
+	      '</div>'
+	    ].join('\n'),
+	    suggestion: function(data) { return '<div><strong>' + data.name + '</strong> ' + data.item_type_id + '</div>'; }
+	  }
+	});
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(autosuggest, 1000);
+});
