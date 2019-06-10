@@ -39,7 +39,7 @@
 								<div class="media-body">
 									<div class="d-md-flex align-items-center">
 										<h4 class="mb-1">
-											<%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= rev.status %></span>
+											<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.status %></span>
 										</h4>
 										<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 									</div>

@@ -81,11 +81,11 @@ class ItemsController < ApplicationController
   end
 
   def query
-    @topic_name = params[:topic_name]
+    @topic_name = params[:topic]
     @item_type = params[:item_type]
     @length = params[:length]
     @quality = params[:quality]
-    if @topic_name.present? or @item_type.present? or @length.present? or @quality.present?
+    if params[:commit].present?
       # query items
       @items = Item.advanced_search(@topic_name, @item_type, @length, @quality)
     else

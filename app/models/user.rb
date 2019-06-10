@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
 	has_many :user_topics
 	has_many :reviews
+	has_many :submissions, class_name: "Item"
 
 	def auth0
 		JSON.parse(self.authinfo)
@@ -14,21 +15,5 @@ class User < ApplicationRecord
 
 	def fav_topics
 		user_topics.map(&:topic)
-	end
-
-	def bio
-		"programmer"
-	end
-
-	def description
-		"testing"
-	end
-
-	def score
-		100
-	end
-
-	def submissions
-		self.reviews
 	end
 end

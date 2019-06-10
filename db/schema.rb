@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.integer "estimated_time"
     t.integer "required_expertise"
     t.uuid "idea_set_id", null: false
+    t.uuid "user_id", null: false
     t.integer "year"
     t.integer "inspirational_score"
     t.integer "educational_score"
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.datetime "updated_at", null: false
     t.index ["idea_set_id"], name: "index_items_on_idea_set_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -160,12 +162,16 @@ ActiveRecord::Schema.define(version: 2019_06_04_140829) do
     t.string "auth0_uid", null: false
     t.text "authinfo", null: false
     t.string "image_url"
+    t.string "bio"
+    t.text "description"
+    t.integer "score", default: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "items", "idea_sets"
   add_foreign_key "items", "item_types"
+  add_foreign_key "items", "users"
   add_foreign_key "links", "items"
   add_foreign_key "person_idea_sets", "idea_sets"
   add_foreign_key "person_idea_sets", "people"

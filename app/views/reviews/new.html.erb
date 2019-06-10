@@ -1,3 +1,15 @@
-<h1>Add Review for <%= @review.item.name %></h1>
+<div class="row">
+	<div class="col-md-6 mb-4">
+		<div class="card">
 
-<%= render :partial => 'form' %>
+			<header class="card-header">
+			  <h2 class="h3 card-header-title">Add Review for <%= @review.item.name %></h2>
+			</header>
+
+			<div class="card-body">
+				<%= render :partial => 'form' %>
+			</div>
+
+		</div>
+	</div>
+</div>

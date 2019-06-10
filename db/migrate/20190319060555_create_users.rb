@@ -5,6 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :auth0_uid, null: false
       t.text   :authinfo, null: false
       t.string :image_url
+      t.string :bio
+      t.text   :description
+      t.integer :score, null: false, default: 100
 
       t.timestamps
     end

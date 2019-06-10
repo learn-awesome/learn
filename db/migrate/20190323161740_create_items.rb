@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :estimated_time
       t.integer :required_expertise
       t.references :idea_set, foreign_key: true, null: false, type: :uuid
+      t.references :user, foreign_key: true, null: false, type: :uuid
       t.integer :year
       t.integer :inspirational_score
       t.integer :educational_score
