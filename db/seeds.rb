@@ -332,46 +332,12 @@ Topic.create(name: 'work-place', 'search_index': 'work-place', namespace: nil, '
 Topic.create(name: 'world-building', 'search_index': 'world-building', namespace: nil, 'gitter_room': 'world-building')
 Topic.create(name: 'writing', 'search_index': 'writing', namespace: nil, 'gitter_room': 'writing')
 
-# Person.create!(name: 'Barbara Oakley')
-# Person.create!(name: 'Josh Waitzkin')
-# sivers = Person.create!(name: 'Derek Sivers', twitter: 'sivers', website: 'https://sivers.org/')
-# nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
-
-=begin
-th = IdeaSet.create!(name: 'learning how to learn')
-TopicIdeaSet.create!(topic: learning, idea_set: th)
-
-th = IdeaSet.create!(name: 'the art of learning')
-TopicIdeaSet.create!(topic: learning, idea_set: th)
+nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
 
 th = IdeaSet.create!(name: 'how to remember anything forever')
+learning = Topic.where(name: 'learning').first
 TopicIdeaSet.create!(topic: learning, idea_set: th)
 PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
-it = Item.create!(idea_set: th, name: th.name, item_type_id: 'interactive')
-Link.create!(item: it, url: 'https://ncase.me/remember/')
-
-th = IdeaSet.create!(name: 'there is no speed limit')
-TopicIdeaSet.create!(topic: learning, idea_set: th)
-PersonIdeaSet.create!(person: sivers, idea_set: th, role: 'creator')
-it = Item.create!(idea_set: th, name: th.name, item_type_id: 'article')
-Link.create!(item: it, url: 'https://sivers.org/kimo')
-
-th = IdeaSet.create!(name: 'how people learn')
-TopicThing.create!(topic: learning, idea_set: th)
-=end
-
-# th = learning.idea_sets.create!(
-# 	name: 'how to remember anything forever',
-# 	items_attributes: [
-# 		{
-# 			name: 'how to remember anything forever',
-# 			item_type_id: 'interactive',
-# 			links_attributes: [
-# 				{url: 'https://ncase.me/remember/'}
-# 			]
-# 		}
-# 	]
-# )
-
-# PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
+#it = Item.create!(idea_set: IdeaSet.where(name: 'how to remember anything forever').first, name: 'how to remember anything forever', item_type_id: 'interactive', user: User.first)
+#Link.create!(item: it, url: 'https://ncase.me/remember/')
 

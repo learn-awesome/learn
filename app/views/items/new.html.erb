@@ -39,7 +39,7 @@
   <div class="form-group mb-4">
     <%= form.label :person, "Creators: " %> &nbsp; &nbsp; &nbsp; &nbsp;
     <div class="form-inline">
-    <%= form.select :role, [['Author(s)','author'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
+    <%= form.select :role, [['Creator(s)','creator'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
     <%= form.collection_select :person_id, Person.all.sort_by(&:name), :id, :name, {include_blank: ""}, {required: false, class: "form-control"} %> &nbsp; &nbsp;
     </div>
     <%= link_to "Add People", new_person_path, {target: "_blank"} %>

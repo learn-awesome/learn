@@ -69,6 +69,7 @@ function autosuggest(){
 	}, {
 	  name: 'best-items',
 	  display: 'name',
+	  limit: 10,
 	  source: bestResults,
 	  templates: {
 	    empty: [
@@ -76,7 +77,12 @@ function autosuggest(){
 	        'No such items',
 	      '</div>'
 	    ].join('\n'),
-	    suggestion: function(data) { return '<div><strong>' + data.name + '</strong> ' + data.item_type_id + '</div>'; }
+	    suggestion: function(data) { 
+	    	var name = '<strong>' + data.name + '</strong>';
+	    	var type = data.item_type_id;
+	    	if(data.creators)
+	    		type += ' by ' + data.creators;
+	    	return '<a href="/items/' + data.id + '"><div>' + name + '<br/>' + type + '</div></a>'; }
 	  }
 	});
 }

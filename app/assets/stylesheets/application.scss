@@ -66,10 +66,25 @@ $star-off-color: #CCCCCC;
 }
 
 #topformdiv .tt-menu {
-	background-color: yellow;
+	background-color: white;
+	min-width: 350px;
+	max-width: 900px;
+	border: thin solid #6b15b6;
 }
 
-#topformdiv .tt-suggestion {
-	background-color: yellow;
-	border: thin solid grey;
+#topformdiv .tt-dropdown-menu {
+	max-height: 150px;
+	overflow-y: auto;
+}
+
+#topformdiv .tt-selectable {
+}
+
+#topformdiv .tt-menu a div {
+  padding: 0.3em;
+}
+
+#topformdiv .tt-menu a:hover div {
+	background-color: #6b15b6;
+	color: white;
 }

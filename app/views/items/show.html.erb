@@ -1,6 +1,6 @@
 <h1>
 	<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
-	<%= @item.name %>
+	<%= @item.name.titleize %>
 	<% if (rev = Review.where(item: @item, user: current_user).first) %>
 		<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
 	<% else %>

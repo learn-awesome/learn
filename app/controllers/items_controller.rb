@@ -18,11 +18,11 @@ class ItemsController < ApplicationController
 
       idea_set.people.build
       idea_set.people.first.role = params[:item][:role]
-      idea_set.people.first.person_id = params[:item][:person_id
+      idea_set.people.first.person_id = params[:item][:person_id]
 
       unless idea_set.save
         raise idea_set.errors.first.inspect
-      end]
+      end
 
       params[:item][:topic].each do |topic_id|
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)

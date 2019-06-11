@@ -14,6 +14,14 @@ class Item < ApplicationRecord
   scope :recent, -> { order("created_at DESC").limit(3) }
   scope :popular, -> { order("(inspirational_score + educational_score + challenging_score + entertaining_score + visual_score + interactive_score) DESC").limit(3) }
 
+  def creators
+    self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).collect(&:name).join(", ")
+  end
+
+  def as_json(options = {})
+    {id: self.id, name: self.name.titleize, item_type_id: self.item_type_id.titleize, creators: self.creators}
+  end
+
   def self.searchable_language
     'english'
   end
