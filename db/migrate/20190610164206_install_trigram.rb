@@ -6,6 +6,7 @@ class InstallTrigram < ActiveRecord::Migration[5.0]
   end
 
   def self.down
+  	execute "DROP INDEX IF EXISTS trgm_items_name_indx"
     ActiveRecord::Base.connection.execute("DROP EXTENSION pg_trgm;")
   end
 end

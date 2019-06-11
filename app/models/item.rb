@@ -40,9 +40,9 @@ class Item < ApplicationRecord
     end
     
     if length.present?
-      range_start = length.split("-").first
-      range_finish = length.split("-").last
-      results = results.where(estimated_time: range_start..range_finish)
+      range_start = length.split("-").first.to_i
+      range_finish = length.split("-").last.to_i
+      results = results.where(["case when time_unit = 'minutes' then estimated_time when time_unit = 'hours' then estimated_time * 60 end between :start and :finish", {start: range_start, finish: range_finish}])
     end
 
     if quality.present?

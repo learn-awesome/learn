@@ -29,15 +29,20 @@
   </div>
 
   <div class="form-group mb-4">
-    <%= form.label :estimated_time, 'Approximate length in minutes' %><br>
-    <%= form.number_field :estimated_time, value: params[:estimated_time], required: false, min: "0", class: "form-control" %>
+    <%= form.label :estimated_time, 'Approximate length in minutes' %>
+    <div class="form-inline">
+      <%= form.number_field :estimated_time, value: params[:estimated_time], required: false, min: "0", class: "form-control", style: "width: 8.0em" %>&nbsp;
+      <%= form.select :time_unit, [['minutes','minutes'],['hours','hours']], {required: true}, class: "form-control" %> 
+    </div>
   </div>
 
-  <div class="form-inline mb-4">
+  <div class="form-group mb-4">
     <%= form.label :person, "Creators: " %> &nbsp; &nbsp; &nbsp; &nbsp;
-    <%= form.select :status, [['Author(s)','author'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
-    <%= form.collection_select :person, Person.all.sort_by(&:name), :id, :name, {include_blank: ""}, {required: false, class: "form-control"} %> &nbsp; &nbsp;
-    <%= link_to "Add People", new_person_path %>
+    <div class="form-inline">
+    <%= form.select :role, [['Author(s)','author'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
+    <%= form.collection_select :person_id, Person.all.sort_by(&:name), :id, :name, {include_blank: ""}, {required: false, class: "form-control"} %> &nbsp; &nbsp;
+    </div>
+    <%= link_to "Add People", new_person_path, {target: "_blank"} %>
   </div>
 
   <fieldset>

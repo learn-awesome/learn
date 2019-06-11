@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.references :item_type, foreign_key: true, null: false, type: :string
       t.integer :estimated_time
+      t.string  :time_unit, null: false, default: 'minutes'
       t.integer :required_expertise
       t.references :idea_set, foreign_key: true, null: false, type: :uuid
       t.references :user, foreign_key: true, null: false, type: :uuid

@@ -15,18 +15,24 @@ class ItemsController < ApplicationController
     Item.transaction do
       idea_set = IdeaSet.new
       idea_set.name = params[:item][:name]
+
+      idea_set.people.build
+      idea_set.people.first.role = params[:item][:role]
+      idea_set.people.first.person_id = params[:item][:person_id
+
       unless idea_set.save
         raise idea_set.errors.first.inspect
-      end
+      end]
 
       params[:item][:topic].each do |topic_id|
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
-      item = Item.new(params.require(:item).permit(:name, :item_type_id))
+      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :time_unit))
       # item.search_index = params[:item][:name]
       item.user = current_user
       item.idea_set = idea_set
+
       item.links.build
       item.links.first.url = params[:item][:url]
 
