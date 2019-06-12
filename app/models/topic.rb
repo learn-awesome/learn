@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id           :uuid             not null, primary key
+#  name         :string           not null
+#  search_index :string           not null
+#  namespace    :string
+#  gitter_room  :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Topic < ApplicationRecord
 	validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :namespace }, length: { in: 3..30 }
 	has_many :topic_idea_sets

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: idea_sets
+#
+#  id         :uuid             not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class IdeaSet < ApplicationRecord
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 8..120 }
 	has_many :items

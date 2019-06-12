@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: item_types
+#
+#  id                  :string           not null, primary key
+#  display_name_plural :string
+#
+
 class ItemType < ApplicationRecord
 	def to_s
 		self.id
