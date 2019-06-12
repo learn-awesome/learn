@@ -338,6 +338,11 @@ th = IdeaSet.create!(name: 'how to remember anything forever')
 learning = Topic.where(name: 'learning').first
 TopicIdeaSet.create!(topic: learning, idea_set: th)
 PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
-#it = Item.create!(idea_set: IdeaSet.where(name: 'how to remember anything forever').first, name: 'how to remember anything forever', item_type_id: 'interactive', user: User.first)
-#Link.create!(item: it, url: 'https://ncase.me/remember/')
 
+=begin
+
+it = Item.create!(idea_set: IdeaSet.where(name: 'how to remember anything forever').first, name: 'how to remember anything forever', item_type_id: 'interactive', user: User.first)
+Link.create!(item: it, url: 'https://ncase.me/remember/')
+UserTopic.create!(user: User.first, topic: Topic.where(name: 'learning').first, action: 'follow')
+
+=end
