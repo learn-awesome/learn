@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: topic_relations
+#
+#  id         :uuid             not null, primary key
+#  from_id    :uuid             not null
+#  to_id      :uuid             not null
+#  kind       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class TopicRelation < ApplicationRecord
   belongs_to :from, class_name: "Topic"
   belongs_to :to, class_name: "Topic"

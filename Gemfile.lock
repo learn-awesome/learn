@@ -56,6 +56,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    annotate (2.7.5)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 13.0)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     archive-zip (0.12.0)
@@ -303,6 +306,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  annotate
   bootsnap (>= 1.1.0)
   bootstrap
   bourbon
