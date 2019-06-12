@@ -35,9 +35,9 @@
 				<div class="mb-3">
 					<% if current_user %>
 						<% if @user.id == current_user.id %>
-							<a class="btn btn-primary mb-2" href="#!">Edit Profile</a>
+							<a class="btn btn-primary mb-2" href="/users/<%= @user.id %>/edit">Edit Profile</a>
 						<% else %>
-							<a class="btn btn-primary mb-2" href="#!">Follow</a>
+							<!-- <a class="btn btn-primary mb-2" href="#!">Follow</a> -->
 						<% end %>
 					<% end %>
 				</div>

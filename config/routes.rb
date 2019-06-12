@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :item_types, only: [:index, :show]
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :reviews, only: [:new, :create, :edit, :update]
 
   get 'auth/oauth2/callback' => 'auth0#callback'

@@ -21,6 +21,12 @@ class User < ApplicationRecord
 	validates :authinfo, presence: true
 	validates :auth0_uid, presence: true
 
+	validates_length_of :nickname, in: 4..20, allow_blank: false
+	validates_length_of :bio, maximum: 140
+	validates_length_of :description, maximum: 400
+
+	validates_format_of :nickname, with: /\A[a-z][a-z0-9.\-]+[a-z0-9]\Z/
+
 	has_many :user_topics
 	has_many :reviews
 	has_many :submissions, class_name: "Item"
