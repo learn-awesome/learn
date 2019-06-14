@@ -6,29 +6,27 @@ namespace :import do
 	user = User.find_or_create_by!(nickname: 'learnawesome', auth0_uid: 'learnawesome', authinfo: 'learnawesome')
 
 	data = JSON.parse(File.read(args[:file_name]))
-	data.each do |idea_set_name, idea_set_value|
-		idea_set_name = idea_set_name.sub('learn-awesome/', '').sub('.html', '')
-		idea_set_name_array = idea_set_name.split('/')
+	data.each do |topic_name, topic_hash|
+		topic_name = topic_name.sub('learn-awesome/', '').sub('.html', '')
+		topic_name_array = topic_name.split('/')
 
-		byebug if idea_set_name_array.last.length < 2
-		idea_set = IdeaSet.find_or_create_by!(name: idea_set_name_array.last)
 		topic = Topic.find_or_create_by!(
-			name: idea_set_name_array.last,
-			namespace: idea_set_name_array.first(idea_set_name_array.count - 1).join('/'),
-			search_index: idea_set_name
+			name: topic_name_array.last,
+			namespace: topic_name_array.first(topic_name_array.count - 1).join('/'),
+			search_index: topic_name
 		)
 
-		TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
-
-		idea_set_value.each do |item_type_name, item_type_hash|
+		topic_hash.each do |item_type_name, item_type_hash|
 			item_type = ItemType.find_or_create_by!(id: item_type_name.split(',').first.parameterize.underscore)
 			item_type.update(display_name_plural: item_type_name)
 			next unless item_type_hash['links']
 
 			item_type_hash['links'].each do |item_hash|
 				next if item_hash['sourceText'].length < 3
+				idea_set = IdeaSet.find_or_create_by!(name: item_hash['sourceText'])
 				item = Item.find_or_create_by!(name: item_hash['sourceText'], idea_set: idea_set, item_type: item_type, user: user)
 
+				TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
 				Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length > 8
 
 				puts "created Item #{item.name}"
