@@ -1,0 +1,8290 @@
+{
+  "human-languages/chinese-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/chinese",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "http://chinese.stackexchange.com",
+          "sourceText": "Chinese"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Chinese_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Chinese_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/english-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/english",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://english.stackexchange.com",
+          "sourceText": "English language &amp; usage"
+        },
+        {
+          "title": "",
+          "link": "https://ell.stackexchange.com",
+          "sourceText": "English language learners"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/English_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/English_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/french-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/french",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://french.stackexchange.com",
+          "sourceText": "French language"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/French_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/French_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/german-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/german",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://german.stackexchange.com",
+          "sourceText": "German language"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/German_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/German_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/hindi-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Hindi",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Hindi",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/italian-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://italian.stackexchange.com/",
+          "sourceText": "Stack Exchange"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Italian_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Italian_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/japanese-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/japanese",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;": {
+      "title": "Q&amp;",
+      "links": [
+        {
+          "title": "",
+          "link": "https://japanese.stackexchange.com",
+          "sourceText": "Stack Exchange"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Japanese_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Japanese_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/kannada-language.html": {
+    "Apps": {
+      "title": "Apps",
+      "links": [
+        {
+          "title": "",
+          "link": "https://play.google.com/store/apps/details?id=com.kannadabaruthe&amp;hl=en_IN",
+          "sourceText": "Kannada Baruthe"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Kannada",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Kannada",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/russian-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://andrew-r.ru/notes/",
+          "sourceText": "Andrew Romanov"
+        },
+        {
+          "title": "",
+          "link": "https://canonium.com",
+          "sourceText": "Canonium"
+        },
+        {
+          "title": "",
+          "link": "https://borshev.com/",
+          "sourceText": "Fedor Borshev"
+        },
+        {
+          "title": "",
+          "link": "http://vas3k.ru/",
+          "sourceText": "vas3k"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.michelthomas.com/learn-russian/",
+          "sourceText": "Learn Russian by Michelt Thomas"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/russian",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://russian.stackexchange.com",
+          "sourceText": "Russian language"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Russian_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Russian_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "human-languages/spanish-language.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards",
+      "links": [
+        {
+          "title": "",
+          "link": "https://ankiweb.net/shared/decks/spanish",
+          "sourceText": "Anki Decks"
+        }
+      ]
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "http://spanish.stackexchange.com",
+          "sourceText": "Spanish language"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Spanish_language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Spanish_language",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/agda.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://plfa.github.io/",
+          "sourceText": "📖 Programming Language Foundations in Agda (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/assembly.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.syncfusion.com/resources/techportal/details/ebooks/assemblylanguage",
+          "sourceText": "📖 Assembly language succinctly (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/c++.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://dun.gs/",
+          "sourceText": "Kevin Dungs"
+        },
+        {
+          "title": "",
+          "link": "http://zverovich.net/",
+          "sourceText": "Victor Zverovich"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/120642.C_Primer_Plus",
+          "sourceText": "📕 C++ primer (1989)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/852335.Beginning_C_Through_Game_Programming",
+          "sourceText": "📕 Beginning c++ through game programming (2004"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md",
+          "sourceText": "📖 C++ core guidelines (2017)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/C++-programming-language",
+          "sourceText": "C++"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/C%2B%2B",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/C%2B%2B",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/c-language.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://fanf.livejournal.com/",
+          "sourceText": "Tony Finch"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/515601.The_C_Programming_Language",
+          "sourceText": "📕 The C programming language (1975)"
+        },
+        {
+          "title": "",
+          "link": "http://shop.oreilly.com/product/0636920033677.do",
+          "sourceText": "📕 21st century C (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/C-programming-language",
+          "sourceText": "C Language Quora"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/The_C_Programming_Language",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/C_(programming_language)",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/clojure.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "http://clojure-doc.org/articles/tutorials/introduction.html",
+          "sourceText": "Introduction to Clojure"
+        },
+        {
+          "title": "",
+          "link": "https://kimh.github.io/clojure-by-example/",
+          "sourceText": "Clojure by Example"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.booleanknot.com/blog/",
+          "sourceText": "Boolean Knot"
+        },
+        {
+          "title": "",
+          "link": "http://yogthos.net/",
+          "sourceText": "Yogthos"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.goodreads.com/book/show/31159768-elements-of-clojure",
+          "sourceText": "Elements of Clojure (2017)"
+        },
+        {
+          "title": "",
+          "link": "https://www.braveclojure.com/",
+          "sourceText": "Clojure for the Brave and True"
+        },
+        {
+          "title": "",
+          "link": "http://www.joyofclojure.com/",
+          "sourceText": "The Joy of Clojure"
+        },
+        {
+          "title": "",
+          "link": "https://www.manning.com/books/get-programming-with-clojure",
+          "sourceText": "Get Programming With Clojure"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.4clojure.com/",
+          "sourceText": "4Clojure"
+        }
+      ]
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Clojure",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/coq.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/Coq/",
+          "sourceText": "Coq"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Coq",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/css.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://csswizardry.com/archive/",
+          "sourceText": "CSS Wizardry"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://book.mixu.net/css/",
+          "sourceText": "📖 Learn CSS Layout the pedantic way (2015)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " 🆓",
+          "link": "https://github.com/wesbos/css-grid",
+          "sourceText": "CSS Grid by Wes Bos"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Cascading_Style_Sheets",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Cascading_Style_Sheets",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/d-language.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://amzn.to/1ZTDmqH",
+          "sourceText": "📕 The D programming language (2010)"
+        },
+        {
+          "title": "",
+          "link": "http://ddili.org/ders/d.en/index.html",
+          "sourceText": "📖 Programming in D (2015)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/dotnet.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "https://dotnet.microsoft.com/",
+          "sourceText": "Official Website"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://demo.dotnetawesome.com",
+          "sourceText": "DotnetAwesome"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets",
+      "links": [
+        {
+          "title": "",
+          "link": "https://gist.github.com/jonlabelle/869c16194be7e2355f35e999d5e76e46",
+          "sourceText": "Dotnet core Cheat Sheet"
+        }
+      ]
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans",
+      "links": [
+        {
+          "title": "",
+          "link": "http://demo.dotnetawesome.com/mvc/mycontactbook",
+          "sourceText": "Project: MyContactBook"
+        },
+        {
+          "title": "",
+          "link": "https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/?view=aspnetcore-2.2",
+          "sourceText": "Create a web app with ASP.NET Core MVC"
+        }
+      ]
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/go.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "https://changelog.com/gotime",
+          "sourceText": "Go Time"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://pliutau.com/",
+          "sourceText": "Aliaksandr Pliutau"
+        },
+        {
+          "title": "",
+          "link": "https://appliedgo.net/",
+          "sourceText": "Applied Go"
+        },
+        {
+          "title": "",
+          "link": "https://carlosbecker.com/archive/",
+          "sourceText": "Carlos Alexandro"
+        },
+        {
+          "title": "",
+          "link": "https://dassur.ma/",
+          "sourceText": "Dassur"
+        },
+        {
+          "title": "",
+          "link": "https://dave.cheney.net/",
+          "sourceText": "Dave Cheney"
+        },
+        {
+          "title": "",
+          "link": "https://dmitri.shuralyov.com/blog",
+          "sourceText": "Dmitri Shuralyov"
+        },
+        {
+          "title": "",
+          "link": "https://medium.com/@farslan",
+          "sourceText": "Fatih Arslan"
+        },
+        {
+          "title": "",
+          "link": "https://www.goinggo.net/",
+          "sourceText": "Going Go"
+        },
+        {
+          "title": "",
+          "link": "https://blog.gopheracademy.com/",
+          "sourceText": "Gopher Academy"
+        },
+        {
+          "title": "",
+          "link": "https://groob.io/",
+          "sourceText": "Groob"
+        },
+        {
+          "title": "",
+          "link": "https://npf.io/blog/",
+          "sourceText": "Npf"
+        },
+        {
+          "title": "",
+          "link": "https://nsfdev.wordpress.com/",
+          "sourceText": "Nsf"
+        },
+        {
+          "title": "",
+          "link": "http://blog.sgmansfield.com/",
+          "sourceText": "Scott Mansfield"
+        },
+        {
+          "title": "",
+          "link": "https://www.goinggo.net/",
+          "sourceText": "William Kennedy"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://jan.newmarch.name/go/",
+          "sourceText": "📖 Network programming with Go (2012)"
+        },
+        {
+          "title": "",
+          "link": "http://openmymind.net/The-Little-Go-Book/",
+          "sourceText": "📖 The little go book (2014)"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/iMarcoGovea/books/blob/master/golang/go-in-action.pdf",
+          "sourceText": "📖 Go in action (2015)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/25080953-the-go-programming-language",
+          "sourceText": "📕 The go programming language (2015)"
+        },
+        {
+          "title": "",
+          "link": "https://go101.org/article/101.html",
+          "sourceText": "📖 Go 101 (2018)"
+        },
+        {
+          "title": "",
+          "link": "https://thewhitetulip.gitbooks.io/webapp-with-golang-anti-textbook/content/",
+          "sourceText": "📖 Web app with go - anti text book"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/astaxie/build-web-application-with-golang/blob/master/en/preface.md",
+          "sourceText": "📖 Build web application with golang"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/golang/",
+          "sourceText": "Golang"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Go_(programming_language)",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/graphql.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "https://graphql.org/",
+          "sourceText": "Homepage"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/GraphQL",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/haskell.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.haskellcast.com/",
+          "sourceText": "The Haskell Cast"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.fpcomplete.com/",
+          "sourceText": "FPcomplete"
+        },
+        {
+          "title": "",
+          "link": "https://joyofhaskell.com/blog.html",
+          "sourceText": "Joy of Haskell"
+        },
+        {
+          "title": "",
+          "link": "http://nikita-volkov.github.io/",
+          "sourceText": "Nikita Volkov"
+        },
+        {
+          "title": "",
+          "link": "http://reasonablypolymorphic.com/blog/archives/",
+          "sourceText": "Reasonably Polymorphic"
+        },
+        {
+          "title": "",
+          "link": "https://ruhaskell.org/",
+          "sourceText": "RUHaskell (Russian)"
+        },
+        {
+          "title": "",
+          "link": "http://tab.snarc.org/",
+          "sourceText": "Vincent Hanquez"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://learnyouahaskell.com/",
+          "sourceText": "📖 Learn You a Haskell for Great Good! (2011)"
+        },
+        {
+          "title": "",
+          "link": "http://dev.stephendiehl.com/fun/",
+          "sourceText": "📖 Write you a Haskell (2014)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/912217.Programming_in_Haskell",
+          "sourceText": "📕 Programming in Haskell (2016)"
+        },
+        {
+          "title": " - Explores the important language features and programming skills you’ll need to build production-quality software using Haskell.",
+          "link": "https://www.manning.com/books/haskell-in-depth",
+          "sourceText": "📕 Haskell in Depth (2018)"
+        },
+        {
+          "title": " - Type-Level Programming in Haskell.",
+          "link": "https://leanpub.com/thinking-with-types",
+          "sourceText": "📕 Thinking with Types (2018)"
+        },
+        {
+          "title": "",
+          "link": "https://www.goodreads.com/book/show/18299474-the-haskell-school-of-music",
+          "sourceText": "📕 The Haskell School of Music (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " 🆓",
+          "link": "https://www.seas.upenn.edu/~cis552/current/index.html",
+          "sourceText": "Advanced Programming (2017)"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://github.com/jagajaga/FP-Course-ITMO",
+          "sourceText": "Haskell ITMO (2017)"
+        },
+        {
+          "title": " 🆓",
+          "link": "http://www.seas.upenn.edu/%7Ecis194/spring13/",
+          "sourceText": "Introduction to Haskell (2016)"
+        },
+        {
+          "title": " 🆓",
+          "link": "http://www.scs.stanford.edu/14sp-cs240h/",
+          "sourceText": "Stanford functional systems in Haskell (2014)"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/haskell/",
+          "sourceText": "Haskell"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Haskell-programming-language",
+          "sourceText": "Haskell"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.scs.stanford.edu/14sp-cs240h/projects/isaacs_geiduscheck.pdf",
+          "sourceText": "Linear-Time Suffix Array Implementation in Haskell (2014)"
+        }
+      ]
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Haskell_(programming_language)",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Haskell_(programming_language)",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/idris.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/Idris/",
+          "sourceText": "Idris"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/java.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "http://javaposse.com/",
+          "sourceText": "Java Posse"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://itblues.pl",
+          "sourceText": "IT Blues"
+        },
+        {
+          "title": "",
+          "link": "http://stuff-gil-says.blogspot.nl/",
+          "sourceText": "Stuff Gil Says"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/105099.Effective_Java_Programming_Language_Guide",
+          "sourceText": "📕 Effective java (2001)"
+        },
+        {
+          "title": "",
+          "link": "http://coltech.vnu.edu.vn/~sonpb/DSA/Data%20Structures%20and%20Algorithms%20in%20Java,%206th%20Edition,%202014.pdf",
+          "sourceText": "📖 Data structures and algorithms in java (2003)"
+        },
+        {
+          "title": "",
+          "link": "http://jcip.net/",
+          "sourceText": "📕 Java concurrency in practice (2006)"
+        },
+        {
+          "title": "",
+          "link": "http://introcs.cs.princeton.edu/java/home/chapter1.pdf",
+          "sourceText": "📖 Introduction to programming in java: an interdisciplinary approach (2008)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/20534354-java-8-in-action",
+          "sourceText": "📕 Java 8 in action (2014)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/26333479-test-driven-java-development",
+          "sourceText": "📕 Test-driven Java development (2015)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/java/",
+          "sourceText": "Java"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Java-programming-language",
+          "sourceText": "Java"
+        },
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Java-Virtual-Machine-JVM",
+          "sourceText": "Jvm"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Java_(programming_language)",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/javascript.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": " - The only engineering podcast with a 2 drink minimum.",
+          "link": "https://overcast.fm/itunes1451541555/the-undefined-podcast",
+          "sourceText": "The Undefined Podcast"
+        },
+        {
+          "title": "",
+          "link": "https://changelog.com/jsparty",
+          "sourceText": "JS Party"
+        },
+        {
+          "title": " - Conversations about React with your favorite developers.",
+          "link": "https://reactpodcast.simplecast.fm/",
+          "sourceText": "React Podcast"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://2ality.com/",
+          "sourceText": "2ality"
+        },
+        {
+          "title": "",
+          "link": "http://staltz.com/blog.html",
+          "sourceText": "André Staltz"
+        },
+        {
+          "title": "",
+          "link": "https://davidwalsh.name/tutorials/features",
+          "sourceText": "David Walsh"
+        },
+        {
+          "title": "",
+          "link": "https://feross.org/",
+          "sourceText": "Feross"
+        },
+        {
+          "title": " - Guides and tutorials for developers.",
+          "link": "https://flaviocopes.com/",
+          "sourceText": "Flavio Copes"
+        },
+        {
+          "title": "",
+          "link": "http://blog.iansinnott.com/",
+          "sourceText": "Ian Sinnott"
+        },
+        {
+          "title": "",
+          "link": "https://jasonformat.com/",
+          "sourceText": "Jason Format"
+        },
+        {
+          "title": "",
+          "link": "https://javascriptplayground.com",
+          "sourceText": "JavaScript Playground"
+        },
+        {
+          "title": "",
+          "link": "https://maxogden.com/index.html",
+          "sourceText": "Max Ogden"
+        },
+        {
+          "title": "",
+          "link": "http://nick.balestra.ch/",
+          "sourceText": "Nick Balestra"
+        },
+        {
+          "title": "",
+          "link": "http://perfectionkills.com/",
+          "sourceText": "Perfection Kills"
+        },
+        {
+          "title": "",
+          "link": "http://www.playfuljs.com",
+          "sourceText": "PlayfulJS"
+        },
+        {
+          "title": "",
+          "link": "https://blog.praveen.science/tag/javascript/",
+          "sourceText": "Praveen&#39;s Adventures"
+        },
+        {
+          "title": "",
+          "link": "http://wavesoft.github.io/",
+          "sourceText": "Wavesoft"
+        },
+        {
+          "title": "",
+          "link": "http://wesbos.com/blog/",
+          "sourceText": "Wes Bos"
+        },
+        {
+          "title": "",
+          "link": "http://yehudakatz.com/",
+          "sourceText": "Yehuda Katz"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://github.com/getify/You-Dont-Know-JS",
+          "sourceText": "📖 You don’t know JS"
+        },
+        {
+          "title": "",
+          "link": "http://exploringjs.com/",
+          "sourceText": "📖 Exploring js"
+        },
+        {
+          "title": "",
+          "link": "http://eloquentjavascript.net/00_intro.html",
+          "sourceText": "📖 Eloquent JavaScript (2011)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/13705402-effective-javascript",
+          "sourceText": "📕 Effective JavaScript: 68 specific ways to harness the power of JavaScript (2012)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/4373732-secrets-of-the-javascript-ninja",
+          "sourceText": "📕 Secrets of the JavaScript ninja (2013)"
+        },
+        {
+          "title": "",
+          "link": "https://addyosmani.com/resources/essentialjsdesignpatterns/book/",
+          "sourceText": "📖 Learning JavaScript design patterns (2015)"
+        },
+        {
+          "title": "",
+          "link": "https://leanpub.com/thejsway",
+          "sourceText": "📖 The JavaScript way (2017)"
+        },
+        {
+          "title": "",
+          "link": "https://builderbook.org/book",
+          "sourceText": "📖 Builder Book: Build a Full Stack JavaScript Web App from Scratch (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences",
+      "links": [
+        {
+          "title": "",
+          "link": "https://jsconf.com/",
+          "sourceText": "JSConf - Conferences for the JavaScript Community"
+        }
+      ]
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " (Always updated, 6 hours, Beginner) by Wes Bos. ",
+          "link": "https://reactforbeginners.com/",
+          "sourceText": "React For Beginners — The best way to learn React"
+        },
+        {
+          "title": " (Always updated, 15+ hours, Beginner) by Wes Bos. ",
+          "link": "https://advancedreact.com/",
+          "sourceText": "Advanced React &amp; GraphQL — Build Full Stack Applications with React and GraphQL"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/javascript/",
+          "sourceText": "JavaScript"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.pluralsight.com/paths/javascript",
+          "sourceText": "JavaScript Path | Pluralsight"
+        }
+      ]
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups",
+      "links": [
+        {
+          "title": "",
+          "link": "https://frontendne.co.uk/",
+          "sourceText": "Frontend web developer meetup, Newcastle upon Tyne"
+        }
+      ]
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/JavaScript",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/JavaScript",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/kotlin.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/factorio/",
+          "sourceText": "Kotlin"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Kotlin_(programming_language)",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/lisp.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://mitpress.mit.edu/books/little-schemer",
+          "sourceText": "📕 The little schemer (1974)"
+        },
+        {
+          "title": "",
+          "link": "https://pages.lip6.fr/Christian.Queinnec/WWW/LiSP.html",
+          "sourceText": "📕 Lisp in small pieces (1994)"
+        },
+        {
+          "title": "",
+          "link": "http://www.gigamonkeys.com/book/",
+          "sourceText": "📖 Practical Common Lisp (2005)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Lisp-programming-language",
+          "sourceText": "Lisp"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/ocaml.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://dev.realworldocaml.org/",
+          "sourceText": "📖 Real World OCaml (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/ocaml/",
+          "sourceText": "OCaml"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/OCaml-programming-language",
+          "sourceText": "OCaml"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/OCaml",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/OCaml",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/perl.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://perltricks.com/",
+          "sourceText": "Perl Tricks"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://modernperlbooks.com/books/modern_perl_2016/index.html",
+          "sourceText": "📖 Modern Perl (2016)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/perl/",
+          "sourceText": "Perl"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Perl",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Perl",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/php.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://nikic.github.io/",
+          "sourceText": "Nikic"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/prolog.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.metalevel.at/prolog",
+          "sourceText": "📖 The Power of Prolog (2018)"
+        },
+        {
+          "title": "",
+          "link": "https://drive.uqu.edu.sa/_/fbshareef/files/textbook.pdf",
+          "sourceText": "📖 Logic Programming with Prolog (2005)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/purescript.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://github.com/paf31/purescript-book",
+          "sourceText": "📖 Purescript book (2017)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/purescript/",
+          "sourceText": "Purescript"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/PureScript",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/python.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles",
+      "links": [
+        {
+          "title": " by ",
+          "link": "https://medium.com/the-renaissance-developer/learning-python-from-zero-to-hero-8ceed48486d5",
+          "sourceText": "Learning Python: From Zero to Hero"
+        },
+        {
+          "title": " by ",
+          "link": "https://medium.com/@george.seif94/learning-python-programming-the-basics-252d9df3744a",
+          "sourceText": "Learning Python Programming: The Basics"
+        },
+        {
+          "title": " by ",
+          "link": "https://towardsdatascience.com/analyzing-medium-story-stats-with-python-24c6491a8ff0",
+          "sourceText": "Analyzing Medium Story Stats With Python"
+        },
+        {
+          "title": " by ",
+          "link": "https://blog.anirudha.org/en/2014/08/29/intro-to-python/",
+          "sourceText": "An Intro to Python"
+        }
+      ]
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "https://talkpython.fm/",
+          "sourceText": "Talk Python To Me"
+        },
+        {
+          "title": "",
+          "link": "https://pythonbytes.fm/",
+          "sourceText": "Python Bytes Podcast"
+        },
+        {
+          "title": "",
+          "link": "https://www.pythonpodcast.com/",
+          "sourceText": "Podcast."
+        },
+        {
+          "title": "",
+          "link": "https://testandcode.com/",
+          "sourceText": "Test &amp; Code - Software Testing, Development, Python"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://realpython.com/",
+          "sourceText": "Real Python"
+        },
+        {
+          "title": "",
+          "link": "https://planetpython.org/",
+          "sourceText": "Planet Python"
+        },
+        {
+          "title": "",
+          "link": "https://thepythonguru.com/blog/",
+          "sourceText": "The Python Guru"
+        },
+        {
+          "title": "",
+          "link": "http://lucumr.pocoo.org/",
+          "sourceText": "Armin Ronacher&#39;s Thoughts and Writings"
+        },
+        {
+          "title": "&#39;s Blog",
+          "link": "http://pyfound.blogspot.com/",
+          "sourceText": "Python Software Foundation"
+        },
+        {
+          "title": "",
+          "link": "http://rg3.name/",
+          "sourceText": "Rg3"
+        },
+        {
+          "title": "",
+          "link": "http://bangalore.python.org.in/",
+          "sourceText": "BangPypers"
+        },
+        {
+          "title": "",
+          "link": "https://medium.com/tag/python",
+          "sourceText": "The Most Insightful Stories on Python | Medium"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": " by ",
+          "link": "https://www.goodreads.com/book/show/6666430-python-essential-reference",
+          "sourceText": "📕 Python essential reference (1999)"
+        },
+        {
+          "title": " by ",
+          "link": "http://www.diveintopython3.net/",
+          "sourceText": "📖 Dive into python 3 (2004)"
+        },
+        {
+          "title": " by ",
+          "link": "http://interactivepython.org/runestone/static/pythonds/index.html",
+          "sourceText": "📖 Problem solving with algorithms and data structures using python (2005)"
+        },
+        {
+          "title": " by ",
+          "link": "https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf",
+          "sourceText": "📖 Python cookbook 3r Edition(2011)"
+        },
+        {
+          "title": " by ",
+          "link": "https://doc.lagout.org/programmation/python/Data%20Structures%20and%20Algorithms%20in%20Python%20%5BGoodrich,%20Tamassia%20&amp;%20Goldwasser%202013-03-18%5D.pdf",
+          "sourceText": "📕 Data structures and algorithms in python (2013)"
+        },
+        {
+          "title": " by ",
+          "link": "http://www.obeythetestinggoat.com/pages/book.html#toc",
+          "sourceText": "📕 Test driven development with python (2014)"
+        },
+        {
+          "title": " by ",
+          "link": "https://arisuchan.jp/%CE%BB/src/1498628824511-0.pdf",
+          "sourceText": "📕 Effective python (2015)"
+        },
+        {
+          "title": " by ",
+          "link": "http://www.goodreads.com/book/show/22800567-fluent-python",
+          "sourceText": "📕 Fluent python (2015)"
+        },
+        {
+          "title": "",
+          "link": "https://leanpub.com/insidethepythonvirtualmachine/read",
+          "sourceText": "📖 Inside the python virtual machine (2017)"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/joaoventura/full-speed-python",
+          "sourceText": "📖 Full Speed Python (2018)"
+        },
+        {
+          "title": " by ",
+          "link": "https://automatetheboringstuff.com/",
+          "sourceText": "📖 Automate the boring stuff with python"
+        },
+        {
+          "title": " by Swaroop C. H.",
+          "link": "https://python.swaroopch.com/",
+          "sourceText": "📕 A Byte of Python"
+        },
+        {
+          "title": " by ",
+          "link": "http://www.itmaybeahack.com/book/python-2.6/latex/BuildingSkillsinPython.pdf",
+          "sourceText": "📖 Building Skills in Python (2010)"
+        },
+        {
+          "title": "",
+          "link": "https://www.python-course.eu/python3_course.php",
+          "sourceText": "📕 Python 3 Tutorial"
+        },
+        {
+          "title": "",
+          "link": "https://lectures.quantecon.org/py/",
+          "sourceText": "📕 Quantitative Economics with Python"
+        },
+        {
+          "title": " by ",
+          "link": "https://www.greenteapress.com/thinkpython/thinkpython.pdf",
+          "sourceText": "📕 Think Python - How to Think Like a Computer Scientist (2012)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.sololearn.com/Course/Python/",
+          "sourceText": "Python 3 Tutorial | SoloLearn: Learn to Code for Free!"
+        }
+      ]
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets",
+      "links": [
+        {
+          "title": "",
+          "link": "https://static.realpython.com/python-cheat-sheet.pdf?__s=spkfg5559c9wdkhcifhw",
+          "sourceText": "Real Python: Python 3 Cheat Sheet"
+        }
+      ]
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.python.org/community/workshops/",
+          "sourceText": "List of Python Conferences &amp; Workshops Worldwide"
+        },
+        {
+          "title": "",
+          "link": "http://pycon.org/",
+          "sourceText": "Official PyCon Website"
+        },
+        {
+          "title": "",
+          "link": "https://www.python.org/events/",
+          "sourceText": "List of Upcoming Python Conferences Worldwide"
+        }
+      ]
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/100058BUQcclZbRXo=/",
+          "sourceText": "Complete Python Bootcamp: Go from zero to hero in Python 3"
+        },
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/1000dOBUQcclZbRXo=/",
+          "sourceText": "Learn Python Programming Masterclass"
+        },
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/10000OBUQcclZbRXo=/",
+          "sourceText": "The Python Bible™ | Everything You Need to Program in Python"
+        },
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/1000MUBUQcclZbRXo=/",
+          "sourceText": "30 Days of Python | Unlock your Python Potential"
+        },
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/100006BUQcclZbRXo=/",
+          "sourceText": "Automate the Boring Stuffs With Python Programming"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/Python/",
+          "sourceText": "r/python | Reddit"
+        },
+        {
+          "title": "",
+          "link": "https://bangpypers.slack.com/",
+          "sourceText": "BangPypers"
+        },
+        {
+          "title": "",
+          "link": "https://pystudygroup.slack.com/",
+          "sourceText": "PyStudyGroup"
+        },
+        {
+          "title": "",
+          "link": "https://groups.google.com/forum/#!forum/comp.lang.python",
+          "sourceText": "comp.lang.python | Google Group"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives",
+      "links": [
+        {
+          "title": "",
+          "link": "http://pythontutor.com/visualize.html#mode=edit",
+          "sourceText": "Python Tutor | Visualize Python Code Execution"
+        },
+        {
+          "title": "",
+          "link": "https://py3.codeskulptor.org/",
+          "sourceText": "CodeSkulptor3"
+        },
+        {
+          "title": "",
+          "link": "https://py.checkio.org/",
+          "sourceText": "CheckiO | Python Online Playground"
+        }
+      ]
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.meetup.com/bangpypers",
+          "sourceText": "BangPypers"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/topics/python/",
+          "sourceText": "Python Meetups | Worldwide"
+        }
+      ]
+    },
+    "Newsletters": {
+      "title": "Newsletters",
+      "links": [
+        {
+          "title": "",
+          "link": "https://mail.python.org/mailman/listinfo/bangpypers",
+          "sourceText": "BangPypers"
+        },
+        {
+          "title": "",
+          "link": "https://pycoders.com/",
+          "sourceText": "PyCoder&#39;s Weekly | A Weekly Python E-Mail Newsletter"
+        }
+      ]
+    },
+    "People": {
+      "title": "People",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/David_M._Beazley",
+          "sourceText": "David M. Beazley"
+        },
+        {
+          "title": "",
+          "link": "https://twitter.com/amuellerml",
+          "sourceText": "Andreas Mueller | Twitter"
+        },
+        {
+          "title": "",
+          "link": "https://twitter.com/AllenDowney",
+          "sourceText": "Allen Downey | Twitter"
+        },
+        {
+          "title": "",
+          "link": "https://twitter.com/AlSweigart",
+          "sourceText": "Al Sweigart | Twitter"
+        }
+      ]
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Python-programming-language-1",
+          "sourceText": "Python | Quora"
+        },
+        {
+          "title": "",
+          "link": "https://stackoverflow.com/tags/python/info",
+          "sourceText": "Python | StackOverflow"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU",
+          "sourceText": "Python Tutorials by Corey Schafer | YouTube"
+        },
+        {
+          "title": "",
+          "link": "https://www.youtube.com/playlist?list=PLBZBJbE_rGRWeh5mIBhD-hhDwSEDxogDg",
+          "sourceText": "Python Tutorials for Absolute Beginner by CS Dojo | YouTube"
+        },
+        {
+          "title": "",
+          "link": "https://www.youtube.com/playlist?list=PLQVvvaa0QuDe8XSftW-RAxdo6OmaeL85M",
+          "sourceText": "Python 3 Basics Tutorial by Sentdex | YouTube"
+        },
+        {
+          "title": "",
+          "link": "https://pyvideo.org/",
+          "sourceText": "Archived List of Python Conference Videos"
+        }
+      ]
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://wiki.python.org/moin/BeginnersGuide/Programmers",
+          "sourceText": "Python Wiki"
+        },
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+          "sourceText": "Python(Programming Language) | Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Python_(programming_language)",
+          "sourceText": "Python(Programming Language) | Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/r-language.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.edureka.co/blog/game-changing-technologies-in-the-world-cup-2018/",
+          "sourceText": "World Cup 2018: 5 Game Changing Technologies in Football"
+        },
+        {
+          "title": "",
+          "link": "http://www.programmingr.com/content/first-date-data-r/",
+          "sourceText": "The First Date with your Data in R"
+        },
+        {
+          "title": "",
+          "link": "http://www.programmingr.com/content/analyst-resume/",
+          "sourceText": "How To Make Your Data Analyst Resume Stand Out"
+        },
+        {
+          "title": "",
+          "link": "http://www.programmingr.com/content/resume-interview-tips-r-programmers/",
+          "sourceText": "Resume &amp; Interview Tips For R Programmers"
+        }
+      ]
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "https://r-podcast.org/",
+          "sourceText": "The R-Podcast"
+        },
+        {
+          "title": "",
+          "link": "http://nssdeviations.com/",
+          "sourceText": "No So Standard Deviations"
+        },
+        {
+          "title": "",
+          "link": "https://www.datacamp.com/community/podcast?tap_a=5644-dce66f&amp;tap_s=10907-287229",
+          "sourceText": "DataFramed"
+        },
+        {
+          "title": "",
+          "link": "https://twimlai.com/",
+          "sourceText": "This Week in Machine Learning and AI Podcast"
+        },
+        {
+          "title": "",
+          "link": "https://www.microsoft.com/en-us/research/blog/category/podcast/",
+          "sourceText": "Microsoft Research Podcast Archives"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.r-bloggers.com/",
+          "sourceText": "R-Bloggers | R News and Tutorials Contributed by (750) R-Bloggers"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": " by ",
+          "link": "http://r4ds.had.co.nz/",
+          "sourceText": "📖 R for Data Science (2016)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets",
+      "links": [
+        {
+          "title": "",
+          "link": "http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf",
+          "sourceText": "Base R"
+        },
+        {
+          "title": "",
+          "link": "https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf",
+          "sourceText": "Advanced R"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/regex.pdf",
+          "sourceText": "Regular Expressions"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf",
+          "sourceText": "Import Data using R"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf",
+          "sourceText": "Data Transformation"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf",
+          "sourceText": "Data Visualization"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf",
+          "sourceText": "R Markdown"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf",
+          "sourceText": "RStudio IDE"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/shiny.pdf",
+          "sourceText": "Shiny"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/caret.pdf",
+          "sourceText": "Caret - R Package | Modelling &amp; ML in R"
+        },
+        {
+          "title": "",
+          "link": "https://github.com/rstudio/cheatsheets/raw/master/Machine%20Learning%20Modelling%20in%20R.pdf",
+          "sourceText": "Tabular Guide to ML Modelling"
+        },
+        {
+          "title": "",
+          "link": "http://datasciencefree.com/basicR.pdf",
+          "sourceText": "Basic R Programming Cheatsheet"
+        },
+        {
+          "title": "",
+          "link": "http://web.mit.edu/hackl/www/lab/turkshop/slides/r-cheatsheet.pdf",
+          "sourceText": "R Cheatsheet | MIT"
+        },
+        {
+          "title": "",
+          "link": "https://sites.ualberta.ca/~ahamann/teaching/renr690/R_Cheat_Data.pdf",
+          "sourceText": "The Ultimate Cheatsheet(v4)"
+        }
+      ]
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.r-project.org/conferences/",
+          "sourceText": "R: Conferences"
+        }
+      ]
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " (",
+          "link": "https://www.udemy.com/share/1000DOBUQcclZbRXo=/",
+          "sourceText": "R Programming A-Z™: R For Data Science With Real Exercises!"
+        },
+        {
+          "title": " (",
+          "link": "https://www.coursera.org/learn/r-programming?specialization=jhu-data-science",
+          "sourceText": "R Programming | Coursera"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "http://r.789695.n4.nabble.com/",
+          "sourceText": "Nabble | R Mailling List Archive"
+        },
+        {
+          "title": "",
+          "link": "https://www.youth4work.com/Talent/R-Programming-Language/Forum",
+          "sourceText": "Youth4Work"
+        },
+        {
+          "title": "",
+          "link": "https://www.edureka.co/community/",
+          "sourceText": "Edureka Community"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives",
+      "links": [
+        {
+          "title": "",
+          "link": "https://swirlstats.com/",
+          "sourceText": "Swirl: Learn R, in R."
+        }
+      ]
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.meetup.com/pro/r-user-groups",
+          "sourceText": "List of Some of the Big Meetup Groups Worldwide"
+        },
+        {
+          "title": "",
+          "link": "https://nyhackr.org/",
+          "sourceText": "New York Open Statistical Programming Meetup | 10k+ Members"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/Data-Science-Festival-London/",
+          "sourceText": "Data Science Festival - London | 9k+ Members"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/Boston-useR/",
+          "sourceText": "Greater Boston useR Group | 3k+ Members"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/analytics-vidhya-bangalore/",
+          "sourceText": "Analytics Vidhya Bangalore | 4k+ members"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/Taiwan-R/",
+          "sourceText": "Taiwan R User Group/MLDM Monday | 6k+ Members"
+        },
+        {
+          "title": "",
+          "link": "https://www.meetup.com/London-Data-Science-Workshop/",
+          "sourceText": "London Data Science Workshop | 4k+ Members"
+        }
+      ]
+    },
+    "Newsletters": {
+      "title": "Newsletters",
+      "links": [
+        {
+          "title": "",
+          "link": "https://journal.r-project.org/",
+          "sourceText": "The R Journal"
+        },
+        {
+          "title": "",
+          "link": "https://rweekly.org/",
+          "sourceText": "RWeekly.org"
+        }
+      ]
+    },
+    "People": {
+      "title": "People"
+    }
+  },
+  "programming-languages/reasonml.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://reasonmlhub.com/exploring-reasonml/toc.html",
+          "sourceText": "📖 Exploring ReasonML (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/ruby.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://alyssa.is/",
+          "sourceText": "Alyssa.is"
+        },
+        {
+          "title": "",
+          "link": "http://javivelasco.com/blog/",
+          "sourceText": "Javivelasco"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/3892688-the-well-grounded-rubyist",
+          "sourceText": "📕 The well grounded rubyist (2009)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/9364729-eloquent-ruby",
+          "sourceText": "📕 Eloquent ruby (2011)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/13507787-practical-object-oriented-design-in-ruby",
+          "sourceText": "📕 Practical object oriented design in ruby (2012)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/15847933-confident-ruby",
+          "sourceText": "📕 Confident ruby (2013)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences",
+      "links": [
+        {
+          "title": "",
+          "link": "https://rubyconf.org/",
+          "sourceText": "RubyConf"
+        },
+        {
+          "title": "",
+          "link": "https://www.rubyconfindia.org/",
+          "sourceText": "RubyConf India"
+        },
+        {
+          "title": "",
+          "link": "https://www.deccanrubyconf.org/",
+          "sourceText": "Deccan RubyConf, India"
+        }
+      ]
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/rust.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": " - Weekly discussion of Rust RFCs.",
+          "link": "https://request-for-explanation.github.io/podcast/",
+          "sourceText": "The Request for Explanation"
+        },
+        {
+          "title": "",
+          "link": "https://newrustacean.com/",
+          "sourceText": "New Rustacean"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://edunham.net/",
+          "sourceText": "Edunham"
+        },
+        {
+          "title": "",
+          "link": "http://blog.japaric.io/",
+          "sourceText": "Embedded in Rust"
+        },
+        {
+          "title": "",
+          "link": "https://manishearth.github.io/",
+          "sourceText": "Manish Goregaokar"
+        },
+        {
+          "title": "",
+          "link": "http://fitzgeraldnick.com/",
+          "sourceText": "Nick Fitzgerald"
+        },
+        {
+          "title": "",
+          "link": "http://words.steveklabnik.com/",
+          "sourceText": "Steve Klabnik"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://rustbyexample.com/",
+          "sourceText": "📖 Rust by example"
+        },
+        {
+          "title": "",
+          "link": "https://doc.rust-lang.org/book/",
+          "sourceText": "📖 The rust programming language"
+        },
+        {
+          "title": "",
+          "link": "https://doc.rust-lang.org/nomicon/",
+          "sourceText": "📖 The rustonomicon"
+        },
+        {
+          "title": " - Discover the world of microcontrollers through Rust.",
+          "link": "https://japaric.github.io/discovery/README.html#Scope",
+          "sourceText": "📖 Discovery"
+        },
+        {
+          "title": "",
+          "link": "https://rustwasm.github.io/book/",
+          "sourceText": "📖 Rust and WebAssembly (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/scala.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://blog.higher-order.com/",
+          "sourceText": "Higher Order"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.manning.com/books/functional-programming-in-scala",
+          "sourceText": "📕 Functional programming in scala (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/smalltalk.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/781561.Smalltalk_Best_Practice_Patterns",
+          "sourceText": "📕 Smalltalk best practice patterns (1997)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "programming-languages/swift.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": " - Answering your questions about Swift development.",
+          "link": "https://overcast.fm/itunes1267161825/swift-by-sundell",
+          "sourceText": "Swift by Sundell"
+        },
+        {
+          "title": " - Podcast for the Swift Community, by the Swift Community.",
+          "link": "https://overcast.fm/itunes1449664346/the-swift-community-podcast",
+          "sourceText": "The Swift Community Podcast"
+        },
+        {
+          "title": " - Popular Swift programming podcast where two buddies, Zack and Steve, discuss a new Swift topic each week.",
+          "link": "https://www.firesideswift.com/",
+          "sourceText": "Fireside Swift"
+        },
+        {
+          "title": " - Helps you keep your Swift skills up to date the easy way, hosted by Paul Hudson and Sean Allen.",
+          "link": "https://anchor.fm/swiftovercoffee",
+          "sourceText": "Swift over Coffee"
+        },
+        {
+          "title": " - Podcast by Bas Broek and Benedikt Terhechte.",
+          "link": "https://contravariance.rocks/",
+          "sourceText": "Contravariance: A Swift podcast"
+        },
+        {
+          "title": "",
+          "link": "https://devchat.tv/iphreaks/",
+          "sourceText": "iPhreaks"
+        },
+        {
+          "title": " - 30-minute spin off of Swift Weekly Brief and other Swifty news.",
+          "link": "https://spec.fm/podcasts/swift-unwrapped",
+          "sourceText": "Swift Unwrapped"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://ankit.im",
+          "sourceText": "Ankit"
+        },
+        {
+          "title": "",
+          "link": "https://ashfurrow.com/",
+          "sourceText": "Ash Furrow"
+        },
+        {
+          "title": "",
+          "link": "http://eon.codes",
+          "sourceText": "Eon Codes"
+        },
+        {
+          "title": "",
+          "link": "http://freshswift.net/",
+          "sourceText": "Fresh Swift"
+        },
+        {
+          "title": " - Works on Swift languge at Apple.",
+          "link": "http://duriansoftware.com/joe/index.html",
+          "sourceText": "Joe Groff"
+        },
+        {
+          "title": "",
+          "link": "http://codeforcaffeine.com/",
+          "sourceText": "Michael Kyriacou"
+        },
+        {
+          "title": "",
+          "link": "http://nshipster.com/",
+          "sourceText": "NSHipster"
+        },
+        {
+          "title": "",
+          "link": "https://medium.com/@olegdreyman",
+          "sourceText": "Oleg Dreyman"
+        },
+        {
+          "title": "",
+          "link": "https://silverfox.be/blog/",
+          "sourceText": "Silver fox"
+        },
+        {
+          "title": "",
+          "link": "https://www.swiftbysundell.com/",
+          "sourceText": "Swift by Sundell"
+        },
+        {
+          "title": "",
+          "link": "https://ninjapro.wordpress.com/",
+          "sourceText": "Vinh nguyen"
+        },
+        {
+          "title": "",
+          "link": "http://yonaskolb.com",
+          "sourceText": "Yoans Kolb"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/",
+          "sourceText": "📖 Swift programming language (2014)"
+        },
+        {
+          "title": "",
+          "link": "https://www.hackingwithswift.com/store/hacking-with-macos",
+          "sourceText": "📕 Hacking with macOS (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/swift/",
+          "sourceText": "Swift"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Swift_(programming_language)",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/tex.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://tex.stackexchange.com",
+          "sourceText": "Tex"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/TeX",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/LaTeX",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "programming-languages/typescript.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://basarat.gitbooks.io/typescript/",
+          "sourceText": "📖 Typescript deep dive"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/android.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://medium.com/@hitherejoe",
+          "sourceText": "Joe Birch"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://android.stackexchange.com",
+          "sourceText": "Android enthusiasts"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/drupal.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://drupal.stackexchange.com",
+          "sourceText": "Drupal"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Drupal",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Drupal",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/emacs.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Emacs",
+          "sourceText": "Emacs"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Emacs",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/GNU_Emacs",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/excel.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " by Microsoft, edX",
+          "link": "https://learn.edx.org/spreadsheets/",
+          "sourceText": "Free Online Excel Course for Beginners"
+        },
+        {
+          "title": "",
+          "link": "https://www.edx.org/professional-certificate/microsoft-excel-fundamentals",
+          "sourceText": "Excel Fundamentals"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/excel/",
+          "sourceText": "/r/excel"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films",
+      "links": [
+        {
+          "title": " by Joel Spolsky",
+          "link": "https://www.youtube.com/watch?v=0nbkaYsR94c",
+          "sourceText": "You Suck At Excel"
+        },
+        {
+          "title": "",
+          "link": "https://www.youtube.com/user/ExcelIsFun",
+          "sourceText": "ExcelIsFun"
+        },
+        {
+          "title": " by Martin Shkreli",
+          "link": "https://www.youtube.com/watch?v=jFSf5YhYQbw",
+          "sourceText": "Finance Lesson 11 - eBay analysis"
+        }
+      ]
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Microsoft_Excel",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/expression-engin.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "http://expressionengine.stackexchange.com",
+          "sourceText": "Expression engine"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/git.html": {
+    "Apps and Website": {
+      "title": "Apps and Website",
+      "links": [
+        {
+          "title": "",
+          "link": "https://try.github.io/",
+          "sourceText": "Learn GitHub"
+        },
+        {
+          "title": "",
+          "link": "https://desktop.github.com/",
+          "sourceText": "App GitHub for Desktop"
+        },
+        {
+          "title": " - For beginners",
+          "link": "https://try.github.io/",
+          "sourceText": "Resources by Github"
+        },
+        {
+          "title": "",
+          "link": "https://git-rebase.io",
+          "sourceText": "Git Rebase in Depth"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://content.mirantis.com/rs/451-RBY-185/images/McQuaid-git-in-practice.pdf",
+          "sourceText": "📖 Git in practice (2014)"
+        },
+        {
+          "title": "",
+          "link": "https://git-scm.com/book/en/v2",
+          "sourceText": "📖 Pro git (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets",
+      "links": [
+        {
+          "title": "",
+          "link": "https://education.github.com/git-cheat-sheet-education.pdf",
+          "sourceText": "GitHub Education"
+        }
+      ]
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.codecademy.com/learn/learn-git",
+          "sourceText": "codecademy"
+        },
+        {
+          "title": "",
+          "link": "https://www.atlassian.com/git/tutorials",
+          "sourceText": "Bitbucket"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Git",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Git_(software)",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/integrated-development-environments.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Integrated-Development-Environments",
+          "sourceText": "Integrated development environments"
+        },
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/IntelliJ-IDEA",
+          "sourceText": "IntelliJ"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/ios.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://benjaminmayo.co.uk/archive",
+          "sourceText": "Benjamin Mayo"
+        },
+        {
+          "title": "",
+          "link": "http://calayer.com/",
+          "sourceText": "CALayer"
+        },
+        {
+          "title": "",
+          "link": "https://www.leojweda.com/",
+          "sourceText": "Leo Jweda"
+        },
+        {
+          "title": "",
+          "link": "http://lkzhao.com/",
+          "sourceText": "Luke Zhao"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://shop.oreilly.com/product/0636920055211.do",
+          "sourceText": "📕 iOS 10 programming fundamentals with swift (2015)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " 🆓",
+          "link": "https://itunes.apple.com/us/course/developing-ios-10-apps-with-swift/id1198467120",
+          "sourceText": "Developing iOS 10 apps with Swift (2017)"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/IOS",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/IOS",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/kubernetes.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": " - Weekly podcast focused on what’s happening in the Kubernetes community.",
+          "link": "https://overcast.fm/itunes1370049232/kubernetes-podcast-from-google",
+          "sourceText": "Kubernetes Podcast from Google"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.goodreads.com/book/show/26759355-kubernetes",
+          "sourceText": "📕 Kubernetes: Up &amp; Running (2016)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/linux.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://itsfoss.com",
+          "sourceText": "It&#39;s FOSS"
+        },
+        {
+          "title": "",
+          "link": "https://linux.com",
+          "sourceText": "Linux.com"
+        },
+        {
+          "title": "",
+          "link": "https://www.cyberciti.biz/",
+          "sourceText": "nixCraft"
+        },
+        {
+          "title": "",
+          "link": "https://linux.slashdot.org",
+          "sourceText": "Slashdot"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/514432.How_Linux_Works",
+          "sourceText": "📕 How linux works (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/Android/",
+          "sourceText": "Android"
+        },
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/docker/",
+          "sourceText": "Docker"
+        },
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/linux/",
+          "sourceText": "Linux"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://unix.stackexchange.com",
+          "sourceText": "Unix"
+        }
+      ]
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Linux",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/Linux",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/nodejs.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://blog.trevnorris.com/",
+          "sourceText": "Node as We Go"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://chimera.labs.oreilly.com/books/1234000001808/index.html",
+          "sourceText": "📖 Node up and running (2012)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans",
+      "links": [
+        {
+          "title": "",
+          "link": "https://github.com/aliyr/Nodejs-Developer-Roadmap",
+          "sourceText": "NodeJS Developer Roadmap for 2019"
+        }
+      ]
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Node-js",
+          "sourceText": "Node.js"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/postgresql.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "https://wiki.postgresql.org/wiki/Main_Page",
+          "sourceText": "PostgreSQL Wiki"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles",
+      "links": [
+        {
+          "title": "",
+          "link": "https://wiki.postgresql.org/wiki/Don%27t_Do_This",
+          "sourceText": "Don&#39;t Do This"
+        }
+      ]
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/PostgreSQL",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/powershell.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/PowerShell/",
+          "sourceText": "Powershell"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/PowerShell",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/react.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles",
+      "links": [
+        {
+          "title": "",
+          "link": "https://medium.freecodecamp.org/the-react-handbook-b71c27b0a795",
+          "sourceText": "React Handbook"
+        }
+      ]
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": "",
+          "link": "https://changelog.com/reactpodcast",
+          "sourceText": "The React Podcast"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "http://brentvatne.ca/",
+          "sourceText": "Brent Vatne"
+        },
+        {
+          "title": "",
+          "link": "http://buildwithreact.com/",
+          "sourceText": "Build with React"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://krasimir.gitbooks.io/react-in-patterns/content/",
+          "sourceText": "📖 React in Patterns (2018)"
+        },
+        {
+          "title": "",
+          "link": "https://roadtoreact.com/",
+          "sourceText": "📖 The Road to learn React"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses",
+      "links": [
+        {
+          "title": " 🆓",
+          "link": "https://github.com/kentcdodds/advanced-react-patterns",
+          "sourceText": "Advanced React Patterns (2017)"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://egghead.io/courses/the-beginner-s-guide-to-react",
+          "sourceText": "Beginner&#39;s guide to React (2017)"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://survivejs.com/react/introduction/",
+          "sourceText": "Survive JS: React, From apprentice to master"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://egghead.io/courses/building-react-applications-with-idiomatic-redux",
+          "sourceText": "Building React Applications with Idiomatic Redux"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://egghead.io/courses/building-react-applications-with-idiomatic-redux",
+          "sourceText": "Building React Applications with Redux"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://btholt.github.io/complete-intro-to-react-v4/",
+          "sourceText": "Complete intro to React v4 (2018)"
+        },
+        {
+          "title": " 🆓",
+          "link": "https://egghead.io/courses/leverage-new-features-of-react-16",
+          "sourceText": "Leverage New Features of React 16 (2018)"
+        },
+        {
+          "title": " - React through examples. 🆓",
+          "link": "https://react.holiday/",
+          "sourceText": "React Holiday (2017)"
+        }
+      ]
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/React_(JavaScript_library)",
+          "sourceText": "Main Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/redux.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://read.reduxbook.com/",
+          "sourceText": "📖 Redux Book (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/salesforce.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;": {
+      "title": "Q&amp;",
+      "links": [
+        {
+          "title": "",
+          "link": "https://salesforce.stackexchange.com",
+          "sourceText": "Salesforce"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Salesforce.com",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/sharepoint.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://sharepoint.stackexchange.com",
+          "sourceText": "Sharepoint"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/SharePoint",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/tor.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "http://tor.stackexchange.com",
+          "sourceText": "Tor"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Tor_(anonymity_network)",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": ")",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/ubuntu.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "http://askubuntu.com",
+          "sourceText": "Ask ubuntu"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/unix.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/603263.Advanced_Programming_in_the_UNIX_Environment",
+          "sourceText": "📕 Advanced programming in the unix environment (1992)"
+        },
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/172314.UNIX_Power_Tools",
+          "sourceText": "📕 Unix power tools (1993)"
+        },
+        {
+          "title": "",
+          "link": "http://www.oliverelliott.org/article/computing/tut_unix/",
+          "sourceText": "📖 An introduction to unix (2014)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets",
+      "links": [
+        {
+          "title": "",
+          "link": "https://files.fosswire.com/2007/08/fwunixref.pdf",
+          "sourceText": "Command line"
+        }
+      ]
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://unix.stackexchange.com",
+          "sourceText": "Unix"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/Unix",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/UNIX",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "software-tools/v8engine.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://wingolog.org/",
+          "sourceText": "Wingolog"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/vim.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://airbladesoftware.com/notes/",
+          "sourceText": "AirBlade Software"
+        },
+        {
+          "title": "",
+          "link": "https://bluz71.github.io/",
+          "sourceText": "Bluz71"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "http://www.goodreads.com/book/show/13607232-practical-vim",
+          "sourceText": "📕 Practical vim: Edit Text at the Speed of Thought (2012)"
+        },
+        {
+          "title": "",
+          "link": "http://learnvimscriptthehardway.stevelosh.com/",
+          "sourceText": "📖 Learn Vimscript the Hard Way"
+        },
+        {
+          "title": " - Must read for anyone new to vim.",
+          "link": "http://vimdoc.sourceforge.net/htmldoc/usr_toc.html",
+          "sourceText": "📖 Vim user manual"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.quora.com/topic/Vim-text-editor",
+          "sourceText": "Vim"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/webpack.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://survivejs.com/webpack/preface/",
+          "sourceText": "📖 Webpack: From apprentice to master (2018)"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki"
+    }
+  },
+  "software-tools/wordpress.html": {
+    "Apps": {
+      "title": "Apps"
+    },
+    "Articles": {
+      "title": "Articles",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.sitepoint.com/publishing-a-plugin-to-the-wordpress-plugin-directory/",
+          "sourceText": "Publishing a plugin to the Wordpress Plugin Directory"
+        }
+      ]
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A",
+      "links": [
+        {
+          "title": "",
+          "link": "https://wordpress.stackexchange.com",
+          "sourceText": "Wordpress development"
+        }
+      ]
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "https://en.wikipedia.org/wiki/WordPress",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "https://simple.wikipedia.org/wiki/WordPress",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "nations/china/technology.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.abacusnews.com/",
+          "sourceText": "Abacus News"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters",
+      "links": [
+        {
+          "title": "",
+          "link": "https://chinaecontalk.substack.com/",
+          "sourceText": "China EconTalk"
+        }
+      ]
+    },
+    "People": {
+      "title": "People"
+    }
+  },
+  "nations/india/india-finance.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites",
+      "links": [
+        {
+          "title": "",
+          "link": "https://play.google.com/store/apps/details?id=com.zerodha.varsity&amp;hl=en_US",
+          "sourceText": "Varsity by Zerodha"
+        },
+        {
+          "title": "",
+          "link": "https://economictimes.indiatimes.com/",
+          "sourceText": "EconomicTimes"
+        }
+      ]
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts",
+      "links": [
+        {
+          "title": " by ",
+          "link": "https://ivmpodcasts.com/paisavaisa",
+          "sourceText": "Paisa Vaisa - all things money in India"
+        }
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs",
+      "links": [
+        {
+          "title": "",
+          "link": "https://capitalmind.in/",
+          "sourceText": "CapitalMind"
+        }
+      ]
+    },
+    "Books": {
+      "title": "Books",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.taxmann.com/bookstore/nism-iibf-books.aspx",
+          "sourceText": "NISM / IIBF books"
+        }
+      ]
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment",
+      "links": [
+        {
+          "title": "",
+          "link": "https://www.nism.ac.in/certification/index.php/nism-certifications/investment-adviser/investment-adviser-level-1",
+          "sourceText": "NISM, SEBI India&#39;s Investment Advisor (Level 1) Certification Exam"
+        },
+        {
+          "title": "",
+          "link": "https://www.nism.ac.in/certification/index.php/nism-certifications/investment-adviser/investment-advisors-level-2",
+          "sourceText": "NISM, SEBI India&#39;s Investment Adviser (Level 2) Certification Exam"
+        }
+      ]
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats",
+      "links": [
+        {
+          "title": "",
+          "link": "https://discord.gg/qJ6vhTX",
+          "sourceText": "IndiaInvestments Discord"
+        },
+        {
+          "title": "",
+          "link": "https://www.reddit.com/r/IndiaInvestments/",
+          "sourceText": "/r/IndiaInvestments/"
+        }
+      ]
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People",
+      "links": [
+        {
+          "title": "",
+          "link": "https://twitter.com/deepakshenoy",
+          "sourceText": "Deepak Shenoy"
+        }
+      ]
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  },
+  "nations/india/india-history.html": {
+    "Apps &amp; Websites": {
+      "title": "Apps &amp; Websites"
+    },
+    "Articles": {
+      "title": "Articles"
+    },
+    "Audio, Podcasts": {
+      "title": "Audio, Podcasts"
+    },
+    "Blogs": {
+      "title": "Blogs"
+    },
+    "Books": {
+      "title": "Books"
+    },
+    "Certifications &amp; Assessment": {
+      "title": "Certifications &amp; Assessment"
+    },
+    "Cheatsheets": {
+      "title": "Cheatsheets"
+    },
+    "Code": {
+      "title": "Code"
+    },
+    "Conferences": {
+      "title": "Conferences"
+    },
+    "Courses": {
+      "title": "Courses"
+    },
+    "FlashCards": {
+      "title": "FlashCards"
+    },
+    "Forums, Group chats": {
+      "title": "Forums, Group chats"
+    },
+    "Games": {
+      "title": "Games"
+    },
+    "Images": {
+      "title": "Images"
+    },
+    "Interactives": {
+      "title": "Interactives"
+    },
+    "Journals": {
+      "title": "Journals"
+    },
+    "Learning Plans": {
+      "title": "Learning Plans"
+    },
+    "Livestreams": {
+      "title": "Livestreams"
+    },
+    "Meetups": {
+      "title": "Meetups"
+    },
+    "Newsletters": {
+      "title": "Newsletters"
+    },
+    "People": {
+      "title": "People"
+    },
+    "Q&amp;A": {
+      "title": "Q&amp;A"
+    },
+    "Quotes": {
+      "title": "Quotes"
+    },
+    "Research Papers": {
+      "title": "Research Papers"
+    },
+    "Videos, Documentaries &amp; Films": {
+      "title": "Videos, Documentaries &amp; Films"
+    },
+    "Wiki": {
+      "title": "Wiki",
+      "links": [
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Main Wikipedia"
+        },
+        {
+          "title": "",
+          "link": "",
+          "sourceText": "Simple Wikipedia"
+        }
+      ]
+    }
+  }
+}
