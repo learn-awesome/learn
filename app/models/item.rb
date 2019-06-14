@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   has_many :links
   has_many :reviews
   belongs_to :user # submitter
-  validates :name, presence: true, length: { in: 3..120 } # removed uniqeness validation
+  validates :name, presence: true, length: { in: 3..150 } # removed uniqeness validation
   validates :item_type, presence: true
   validates :idea_set, presence: true
   validates :user, presence: true

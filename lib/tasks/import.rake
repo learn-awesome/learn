@@ -26,7 +26,7 @@ namespace :import do
 			next unless item_type_hash['links']
 
 			item_type_hash['links'].each do |item_hash|
-				byebug if item_hash['sourceText'].length < 3
+				next if item_hash['sourceText'].length < 3
 				item = Item.find_or_create_by!(name: item_hash['sourceText'], idea_set: idea_set, item_type: item_type, user: user)
 
 				Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length > 8
