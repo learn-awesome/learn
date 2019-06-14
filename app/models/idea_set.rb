@@ -9,7 +9,7 @@
 #
 
 class IdeaSet < ApplicationRecord
-	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 4..120 }
+	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 2..120 }
 	has_many :items
 	has_many :topic_idea_sets, dependent: :destroy
 	has_many :topics, :through => :topic_idea_sets
