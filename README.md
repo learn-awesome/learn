@@ -1,6 +1,9 @@
-# README
+# Learn Awesome
 
-This is a personalized learning app.
+[![Gitter](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
+[![Twitter](https://img.shields.io/badge/-Twitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://twitter.com/learn_awesome)
+
+#### Awesome learning resources organized by topics, formats and difficulty.
 
 ```
 bundle install
@@ -22,4 +25,4 @@ Start the app
 ```
 rails s
 ```
-Login to the http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
+For the admin interface, login at http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
