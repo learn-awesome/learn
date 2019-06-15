@@ -12,7 +12,7 @@
 #
 
 class Topic < ApplicationRecord
-	validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :namespace }, length: { in: 2..50 }
+	validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :namespace }, length: { in: 1..50 }
 	has_many :topic_idea_sets
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :items, :through => :idea_sets

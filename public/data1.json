@@ -5804,7 +5804,7 @@
       ]
     }
   },
-  "software-tools/expression-engin.html": {
+  "software-tools/expression-engine.html": {
     "Apps": {
       "title": "Apps"
     },
@@ -6620,7 +6620,7 @@
         {
           "title": "",
           "link": "https://wiki.postgresql.org/wiki/Don%27t_Do_This",
-          "sourceText": "Don&#39;t Do This"
+          "sourceText": "Don't Do This"
         }
       ]
     },
@@ -8094,12 +8094,12 @@
         {
           "title": "",
           "link": "https://www.nism.ac.in/certification/index.php/nism-certifications/investment-adviser/investment-adviser-level-1",
-          "sourceText": "NISM, SEBI India&#39;s Investment Advisor (Level 1) Certification Exam"
+          "sourceText": "NISM, SEBI India Investment Advisor (Level 1) Certification Exam"
         },
         {
           "title": "",
           "link": "https://www.nism.ac.in/certification/index.php/nism-certifications/investment-adviser/investment-advisors-level-2",
-          "sourceText": "NISM, SEBI India&#39;s Investment Adviser (Level 2) Certification Exam"
+          "sourceText": "NISM, SEBI India Investment Adviser (Level 2) Certification Exam"
         }
       ]
     },

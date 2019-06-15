@@ -30,7 +30,7 @@
 	              <div class="tab-content">
 	                <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
 	                		<% it.items.recent.each do |item| %>
-	                		<div>
+	                		<div class="mb-2">
 	                			<% item.topics.map do |topic| %>
 									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 								<% end %>
@@ -41,7 +41,12 @@
 
 	                <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
 	                		<% it.items.popular.each do |item| %>
-	                		<div><%= link_to item.name.capitalize, item %></div>
+	                		<div class="mb-2">
+	                			<% item.topics.map do |topic| %>
+									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+								<% end %>
+	                			<%= link_to item.name.capitalize, item %>
+                			</div>
 	                		<% end %>
 	                </div>
 	              </div>

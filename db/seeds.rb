@@ -201,7 +201,6 @@ Topic.create(name: 'open-data', 'search_index': 'open-data', namespace: nil, 'gi
 Topic.create(name: 'operating-systems', 'search_index': 'operating-systems', namespace: nil, 'gitter_room': 'operating-systems')
 Topic.create(name: 'opsec', 'search_index': 'opsec', namespace: nil, 'gitter_room': 'opsec')
 Topic.create(name: 'optimization', 'search_index': 'optimization', namespace: nil, 'gitter_room': 'optimization')
-Topic.create(name: 'other', 'search_index': 'other', namespace: nil, 'gitter_room': 'other')
 Topic.create(name: 'outdoors', 'search_index': 'outdoors', namespace: nil, 'gitter_room': 'outdoors')
 Topic.create(name: 'outer-space', 'search_index': 'outer-space', namespace: nil, 'gitter_room': 'outer-space')
 Topic.create(name: 'parenting', 'search_index': 'parenting', namespace: nil, 'gitter_room': 'parenting')
@@ -332,14 +331,13 @@ Topic.create(name: 'work-place', 'search_index': 'work-place', namespace: nil, '
 Topic.create(name: 'world-building', 'search_index': 'world-building', namespace: nil, 'gitter_room': 'world-building')
 Topic.create(name: 'writing', 'search_index': 'writing', namespace: nil, 'gitter_room': 'writing')
 
+=begin
 nicky = Person.create!(name: 'Nicky Case', twitter: 'ncasenmare', website: 'https://ncase.me')
 
 th = IdeaSet.create!(name: 'how to remember anything forever')
 learning = Topic.where(name: 'learning').first
 TopicIdeaSet.create!(topic: learning, idea_set: th)
 PersonIdeaSet.create!(person: nicky, idea_set: th, role: 'creator')
-
-=begin
 
 it = Item.create!(idea_set: IdeaSet.where(name: 'how to remember anything forever').first, name: 'how to remember anything forever', item_type_id: 'interactive', user: User.first)
 Link.create!(item: it, url: 'https://ncase.me/remember/')

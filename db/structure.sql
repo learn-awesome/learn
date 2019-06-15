@@ -1,26 +1,12 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -315,14 +301,14 @@ CREATE TABLE public.users (
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments
@@ -330,7 +316,7 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.admin_users
@@ -338,7 +324,7 @@ ALTER TABLE ONLY public.admin_users
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -346,7 +332,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: idea_sets idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.idea_sets
@@ -354,7 +340,7 @@ ALTER TABLE ONLY public.idea_sets
 
 
 --
--- Name: item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: item_types item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.item_types
@@ -362,7 +348,7 @@ ALTER TABLE ONLY public.item_types
 
 
 --
--- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: items items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.items
@@ -370,7 +356,7 @@ ALTER TABLE ONLY public.items
 
 
 --
--- Name: links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: links links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.links
@@ -378,7 +364,7 @@ ALTER TABLE ONLY public.links
 
 
 --
--- Name: people_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: people people_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.people
@@ -386,7 +372,7 @@ ALTER TABLE ONLY public.people
 
 
 --
--- Name: person_idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: person_idea_sets person_idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_idea_sets
@@ -394,7 +380,7 @@ ALTER TABLE ONLY public.person_idea_sets
 
 
 --
--- Name: reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -402,7 +388,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
@@ -410,7 +396,7 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: topic_idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_idea_sets topic_idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_idea_sets
@@ -418,7 +404,7 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
--- Name: topic_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_relations topic_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_relations
@@ -426,7 +412,7 @@ ALTER TABLE ONLY public.topic_relations
 
 
 --
--- Name: topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: topics topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topics
@@ -434,7 +420,7 @@ ALTER TABLE ONLY public.topics
 
 
 --
--- Name: user_topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: user_topics user_topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.user_topics
@@ -442,7 +428,7 @@ ALTER TABLE ONLY public.user_topics
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -604,7 +590,7 @@ CREATE INDEX trgm_items_name_indx ON public.items USING gist (name public.gist_t
 
 
 --
--- Name: fk_rails_0aa5b25f82; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: user_topics fk_rails_0aa5b25f82; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.user_topics
@@ -612,7 +598,7 @@ ALTER TABLE ONLY public.user_topics
 
 
 --
--- Name: fk_rails_1b37fb5a2a; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: reviews fk_rails_1b37fb5a2a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -620,7 +606,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: fk_rails_4e9299d5db; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_relations fk_rails_4e9299d5db; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_relations
@@ -628,7 +614,7 @@ ALTER TABLE ONLY public.topic_relations
 
 
 --
--- Name: fk_rails_4fb9cd9cdf; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_idea_sets fk_rails_4fb9cd9cdf; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_idea_sets
@@ -636,7 +622,7 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
--- Name: fk_rails_6bed0f90a5; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: items fk_rails_6bed0f90a5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.items
@@ -644,7 +630,7 @@ ALTER TABLE ONLY public.items
 
 
 --
--- Name: fk_rails_74a66bd6c5; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: reviews fk_rails_74a66bd6c5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -652,7 +638,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: fk_rails_853a6f5036; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_idea_sets fk_rails_853a6f5036; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_idea_sets
@@ -660,7 +646,7 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
--- Name: fk_rails_bfe29ea272; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: user_topics fk_rails_bfe29ea272; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.user_topics
@@ -668,7 +654,7 @@ ALTER TABLE ONLY public.user_topics
 
 
 --
--- Name: fk_rails_c3b7c63f2d; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: person_idea_sets fk_rails_c3b7c63f2d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_idea_sets
@@ -676,7 +662,7 @@ ALTER TABLE ONLY public.person_idea_sets
 
 
 --
--- Name: fk_rails_d4b6334db2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: items fk_rails_d4b6334db2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.items
@@ -684,7 +670,7 @@ ALTER TABLE ONLY public.items
 
 
 --
--- Name: fk_rails_d85b4d9a08; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: items fk_rails_d85b4d9a08; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.items
@@ -692,7 +678,7 @@ ALTER TABLE ONLY public.items
 
 
 --
--- Name: fk_rails_dc3ce95beb; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: person_idea_sets fk_rails_dc3ce95beb; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_idea_sets
@@ -700,7 +686,7 @@ ALTER TABLE ONLY public.person_idea_sets
 
 
 --
--- Name: fk_rails_e1bb872bea; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: links fk_rails_e1bb872bea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.links
@@ -708,7 +694,7 @@ ALTER TABLE ONLY public.links
 
 
 --
--- Name: fk_rails_f2d3454ee0; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: topic_relations fk_rails_f2d3454ee0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_relations
