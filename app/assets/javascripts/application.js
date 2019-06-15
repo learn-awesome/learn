@@ -23,19 +23,19 @@ function animateHeadline(){
 	var versions = [
 	  {
 	  	msg: "Show me <u>podcasts</u> about <u>machine learning</u> which are <u>30 to 60 minutes</u> long and are <u>challenging</u>.",
-	  	link: "item_type=audio&length=30-60&quality=challenging&topic_name=machine-learning"
+	  	link: "item_type=audio&length=30-60&quality=challenging&topic=machine-learning&commit=Search"
 	  },
 	  {
 	  	msg: "Show me <u>books</u> about <u>abstract algebra</u> which are <u>more than 3 hours</u> long and are <u>visual</u>.",
-	  	link: "item_type=book&length=180-9999&quality=visual&topic_name=abstract-algebra"
+	  	link: "item_type=book&length=180-9999&quality=visual&topic=abstract-algebra&commit=Search"
 	  },
 	  {
 	  	msg: "Show me <u>group chats</u> about <u>cooking</u>.",
-	  	link: "item_type=chat&topic_name=cooking"
+	  	link: "item_type=chat&topic=cooking&commit=Search"
 	  },
 	  {
-	  	msg: "Show me <u>MOOCs</u> about <u>learning</u> which are <u>20 to 60 hours</u> long and are <u>inspirational</u>.",
-	  	link: "item_type=course&length=1200-3600&quality=inspirational&topic_name=learning"
+	  	msg: "Show me <u>MOOCs</u> about <u>learning</u> which are <u>10 to 20 hours</u> long and are <u>inspirational</u>.",
+	  	link: "item_type=course&length=180-9999&quality=inspirational&topic=learning&commit=Search"
 	  }
 	];
 	
