@@ -10,7 +10,7 @@
 	  				<h1 class="display-4 mu-4 mb-4" id="queryheadline" style="position: absolute; top: 0px;">Show me <u>podcasts</u> about <u>machine learning</u> which are <u>30 to 60 minutes</u> long and are <u>challenging</u>.</h1>
 	  			</div><br/>
 
-	  			<div class="text-center"><a id="querylink" href="<%= query_items_path(topic_name: 'logic', item_type: 'audio', length: '30-60', quality: 'challenging') %>" class="btn btn-success btn-lg btn-pill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+	  			<div class="text-center"><a id="querylink" href="<%= query_items_path(topic: 'machine-learning', item_type: 'audio', length: '30-60', quality: 'challenging') %>" class="btn btn-success btn-lg btn-pill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 	  			<br/><br/>
 
 	  			<h1 class="display-5 mu-4"><%= Topic.count %> topics. <%= ItemType.count %> formats. <b><big><%= Item.count %></big></b> learning resources. All about YOU - the lifelong learner.</h1>
