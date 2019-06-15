@@ -61,7 +61,7 @@ class Item < ApplicationRecord
     results = Item.all
 
     if topic_name.present?
-      topic = Topic.where(name: topic_name).first
+      topic = Topic.where(search_index: topic_name).first
       results = results.where(id: topic.items.map(&:id)) if topic
     end
 
@@ -75,7 +75,7 @@ class Item < ApplicationRecord
       results = results.where(["case when time_unit = 'minutes' then estimated_time when time_unit = 'hours' then estimated_time * 60 end between :start and :finish", {start: range_start, finish: range_finish}])
     end
 
-    if quality.present?
+    if ['inspirational', 'educational', 'challenging', 'entertaining', 'visual', 'interactive'].include?(quality)
       results = results.where("#{quality}_score >= 4.0")
     end
     return results.limit(20)
