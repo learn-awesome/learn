@@ -23,8 +23,8 @@ namespace :import do
 
 			item_type_hash['links'].each do |item_hash|
 				next if item_hash['sourceText'].length < 3
-				idea_set = IdeaSet.find_or_create_by!(name: item_hash['sourceText'])
-				item = Item.find_or_create_by!(name: item_hash['sourceText'], idea_set: idea_set, item_type: item_type, user: user)
+				idea_set = IdeaSet.create!(name: item_hash['sourceText'])
+				item = Item.create!(name: item_hash['sourceText'], idea_set: idea_set, item_type: item_type, user: user)
 
 				TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
 				Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length > 8
