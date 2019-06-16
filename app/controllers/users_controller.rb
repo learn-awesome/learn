@@ -28,4 +28,16 @@ class UsersController < ApplicationController
   		redirect_back fallback_location: root_path
   	end
   end
+
+  def reviews
+    @user = User.find(params[:id])
+    @item_type = params[:item_type] or 'book'
+    @status = params[:status] or 'learned'
+
+    @reviews = @user.get_reviews(@item_type, @status)
+    respond_to do |format|
+      format.html
+      format.json { render json: @reviews }
+    end
+  end
 end

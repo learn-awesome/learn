@@ -43,4 +43,18 @@ class User < ApplicationRecord
 	def is_admin?
 		self.role == "admin"
 	end
+
+	def get_reviews(item_type, status)
+		results = self.reviews
+		if status.present?
+			results = results.where(status: status)
+		end
+
+		results = results.all.to_a
+
+		if item_type.present?
+			results = results.select { |r| r.item.item_type_id == item_type_id }
+		end
+		return results
+	end
 end
