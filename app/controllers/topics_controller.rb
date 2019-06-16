@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
 			@user_topics = current_user.user_topics
 			@topic_action = @user_topics.find { |ut| ut.topic_id == @topic.id }
 		end
+		@item_type_items = @topic.items.group_by(&:item_type)
 	end
 
 	def toggle_follow

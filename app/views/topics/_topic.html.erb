@@ -6,7 +6,36 @@
 	<%= link_to "Gitter Chat", ("https://gitter.im/learn-awesome/" + topic.chat_room), class: "btn btn-sm btn-pill btn-warning", target: :_blank %>
 
 </h2>
-<div><br/><br/></div>
-<% topic.items.group_by(&:item_type).each do |item_type, items| %>
-	<%= render items %>
+
+<% @item_type_items.map(&:first).each_slice(2).to_a.each do |pair| %>
+      <div class="row">
+        <!-- Cards with Tabs -->
+        <% pair.each do |it| %>
+	        <div class="col-md-6 mb-4">
+	          <div class="card">
+	            <div class="card-header d-md-flex align-items-center">
+	              <h2 class="h3 card-header-title"><%= link_to it.display_name_plural, it, class: "btn #{ItemType.button_style}" %></h2>
+
+	            </div>
+
+	            <div class="card-body">
+            		<% @item_type_items[it].each do |item| %>
+            		<div class="mb-2">
+            			<%= link_to item.name.capitalize, item %>
+        			</div>
+            		<% end %>
+	            </div>
+
+	          </div>
+	        </div>
+        <% end %>
+      </div>
 <% end %>
+
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'learn-awesome/<%= topic.chat_room %>'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
