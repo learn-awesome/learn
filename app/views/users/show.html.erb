@@ -69,7 +69,7 @@
 
 						<div class="d-flex flex-wrap align-items-center">
 							<% @user.fav_topics.each do |topic| %>
-								<%= link_to topic.name.capitalize, topic, class: "btn btn-sm btn-soft-secondary mr-1" %>
+								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style} mr-1" %>
 							<% end %>
 						</div>
 					</div>

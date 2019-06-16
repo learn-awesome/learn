@@ -19,6 +19,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
+require 'uri'
 
 class Item < ApplicationRecord
   belongs_to :idea_set
@@ -30,6 +31,8 @@ class Item < ApplicationRecord
   validates :item_type, presence: true
   validates :idea_set, presence: true
   validates :user, presence: true
+  validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
+  validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
   
   accepts_nested_attributes_for :links, allow_destroy: true
 
