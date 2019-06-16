@@ -98,3 +98,9 @@ $star-off-color: #CCCCCC;
 	color: white;
 	background-color: #21693c;
 }
+
+.item_links .btn {
+	max-width: 250px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
