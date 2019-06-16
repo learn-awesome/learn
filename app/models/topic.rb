@@ -18,6 +18,14 @@ class Topic < ApplicationRecord
 	has_many :items, :through => :idea_sets
 	has_many :user_topics
 
+	def to_param
+		self.id.to_s + "-" + self.name.to_s.parameterize
+	end
+
+	def self.from_param(id)
+		self.find(id.to_s.split("-")[0..4].join("-"))
+	end
+
 	def self.button_style
 		"btn-success"
 	end

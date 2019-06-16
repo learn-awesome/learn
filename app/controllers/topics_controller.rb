@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 	end
 
 	def show
-		@topic = Topic.find(params[:id])
+		@topic = Topic.from_param(params[:id])
 		if current_user
 			@user_topics = current_user.user_topics
 			@topic_action = @user_topics.find { |ut| ut.topic_id == @topic.id }
@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
 	end
 
 	def toggle_follow
-		@topic = Topic.find(params[:id])
+		@topic = Topic.from_param(params[:id])
 		if current_user
 			@user_topics = current_user.user_topics
 			@topic_action = @user_topics.find { |ut| ut.topic_id == @topic.id }

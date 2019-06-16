@@ -36,6 +36,14 @@ class Item < ApplicationRecord
   scope :recent, -> { order("created_at DESC").limit(3) }
   scope :popular, -> { order("(inspirational_score + educational_score + challenging_score + entertaining_score + visual_score + interactive_score) DESC").limit(3) }
 
+  def to_param
+    self.id.to_s + "-" + self.name.to_s.parameterize
+  end
+
+  def self.from_param(id)
+    self.find(id.to_s.split("-")[0..4].join("-"))
+  end
+
   def creators
     self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).collect(&:name).join(", ")
   end

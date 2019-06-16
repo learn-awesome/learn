@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-  	@item = Item.find(params[:id])
+  	@item = Item.from_param(params[:id])
   end
 
   def new
