@@ -14,6 +14,7 @@ require 'uri/http'
 class Link < ApplicationRecord
   belongs_to :item
   validates :url, presence: true, length: { in: 8..350 }
+  validates :url, format: URI::regexp(%w[http https])
   validates :item, presence: true
 
   def top_domain
