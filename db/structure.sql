@@ -148,7 +148,8 @@ CREATE TABLE public.items (
     visual_score integer,
     interactive_score integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    typical_age_range character varying
 );
 
 
@@ -720,6 +721,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190519045414'),
 ('20190519061036'),
 ('20190604140829'),
-('20190610164206');
+('20190610164206'),
+('20190616171344');
 
 

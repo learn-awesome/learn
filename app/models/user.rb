@@ -10,6 +10,7 @@
 #  bio         :string
 #  description :text
 #  score       :integer          default(100), not null
+#  role        :integer          default(0), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
