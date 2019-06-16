@@ -1,66 +1,81 @@
-<h1>
-	<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
-	<%= @item.name.titleize %>
-	<% if (rev = Review.where(item: @item, user: current_user).first) %>
-		<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
-	<% else %>
-		<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
-	<% end %>
-</h1>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+	<div class="d-flex justify-content-between">
+		<div class="item_topics">
+			<% @item.topics.map do |topic| %>
+				<%= link_to topic.name, topic, class: "btn btn-sm dark-green" %>
+			<% end %>
+		</div>
+		<div class="item_actions">
+			<% if (rev = Review.where(item: @item, user: current_user).first) %>
+				<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
+			<% else %>
+				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
+			<% end %>
+			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary disabled" %>
+		</div>
+	</div>
+	<div class="card-body">
+		<h2 class="card-title">
+			<span>
+				<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
+			</span>
+			<%= @item.name.titleize %>
+		</h2>
 
-<p>Topics: 
-<% @item.topics.map do |topic| %>
-	<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
-<% end %>
-</p>
-
-<p>Links:
-<% @item.links.map do |link| %>
-	<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-soft-primary", target: :_blank %>
-<% end %>
-</p>
-
-<% if @item.reviews.any? %>
-<div class="row">
-	<div class="col-md-6 mb-4">
-	  <div class="card">
-        <div class="card-header d-md-flex align-items-center">
-        	<h2 class="h3 card-header-title">Reviews</h2>
-        </div>
-        <div class="card-body">
-        	<div class="list-group list-lg-group list-group-flush">
-        	<% @item.reviews.each do |rev| %>
-
-					<div class="list-group-item">
-
-							<div class="media">
-								<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
-
-								<div class="media-body">
-									<div class="d-md-flex align-items-center">
-										<h4 class="mb-1">
-											<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.status %></span>
-										</h4>
-										<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-									</div>
-
-									<p class="mb-0"><%= rev.notes %></p><br/>
-									<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
-									<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
-									<p class="mb-0"><code>Challenging&nbsp;&nbsp;:</code> <%= "★" * rev.challenging_score.to_i %></p>
-									<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
-									<p class="mb-0"><code>Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.visual_score.to_i %></p>
-									<p class="mb-0"><code>Interactive&nbsp;&nbsp;:</code> <%= "★" * rev.interactive_score.to_i %></p>
-								</div>
-							</div>
-					</div>
-
-    		<% end %>
-    		</div>
-        </div>
-	  </div>
+		<div class="item_links">
+			<% @item.links.map do |link| %>
+				<span>&#8599; </span> &nbsp;
+				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
+			<% end %>
+		</div>
 	</div>
 </div>
-<% else %>
-	<p>No reviews available for this.</p>
-<% end %>
+<br>
+<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+	<div class="card-body">
+		<% if @item.reviews.any? %>
+		<div class="row">
+			<div class="col-md-6 mb-4">
+			  <div class="card">
+				<div class="card-header d-md-flex align-items-center">
+					<h2 class="h3 card-header-title">Reviews</h2>
+				</div>
+				<div class="card-body">
+					<div class="list-group list-lg-group list-group-flush">
+					<% @item.reviews.each do |rev| %>
+
+							<div class="list-group-item">
+
+									<div class="media">
+										<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
+
+										<div class="media-body">
+											<div class="d-md-flex align-items-center">
+												<h4 class="mb-1">
+													<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.status %></span>
+												</h4>
+												<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
+											</div>
+
+											<p class="mb-0"><%= rev.notes %></p><br/>
+											<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
+											<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
+											<p class="mb-0"><code>Challenging&nbsp;&nbsp;:</code> <%= "★" * rev.challenging_score.to_i %></p>
+											<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
+											<p class="mb-0"><code>Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.visual_score.to_i %></p>
+											<p class="mb-0"><code>Interactive&nbsp;&nbsp;:</code> <%= "★" * rev.interactive_score.to_i %></p>
+										</div>
+									</div>
+							</div>
+
+					<% end %>
+					</div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<% else %>
+			<p>No reviews available for this.</p>
+		<% end %>
+	</div>
+</div>
