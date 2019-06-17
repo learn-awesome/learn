@@ -5,7 +5,15 @@
         	<h2 class="h3 card-header-title"><%= @person.name %></h2>
         </div>
         <div class="card-body">
-        	<p><%= @person.description %></p>
+        	<p><%= @person.description %></p><hr/>
+        	<h3>Works</h3>
+        	<ul>
+        	<% @person.items.group_by(&:item_type).each do |it, items| %>
+        		<% items.each do |i| %>
+        			<li><%= render i %></li>
+        		<% end %>
+        	<% end %>
+        	</ul>
         </div>
         <footer class="card-footer">
 			<ul class="list-inline mb-0">
