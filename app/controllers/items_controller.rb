@@ -67,37 +67,10 @@ class ItemsController < ApplicationController
     # search or add
   	@q = params[:q]
   	if @q.present?
-  		@items = Item.search(@q, 10).to_a
-  		if @items.any?
-        if @items.size == 1
-          respond_to do |format|
-            format.html { redirect_to @items.first }
-            format.json { render json: @items }
-          end
-        else
-          # render search
-          respond_to do |format|
-            format.html
-            format.json { render json: @items }
-          end
-        end
-  		elsif current_user
-        respond_to do |format|
-          format.html {
-            flash[:danger] = "No items found with name or link as: #{@q}"
-            if is_url?(@q)
-              redirect_to new_item_path(url: @q)
-            else
-              redirect_to new_item_path(name: @q)
-            end
-          }
-          format.json { render json: [] }
-        end
-      else
-        respond_to do |format|
-          format.html
-          format.json { render json: [] }
-        end
+  		@items = Item.search(@q, 10, is_fuzzy=true).to_a
+      respond_to do |format|
+        format.html
+        format.json { render json: @items }
       end
   	end
     # render search form

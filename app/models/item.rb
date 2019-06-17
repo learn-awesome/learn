@@ -62,12 +62,16 @@ class Item < ApplicationRecord
     'english'
   end
 
-  def self.search(q, max)
+  def self.search(q, max, is_fuzzy=true)
   	if q.start_with?('http')
       #TODO: Fetch the canonical URL and use that instead
-  		Link.where(url: q).limit(max).map(&:item)
+  		return Link.where(url: q).limit(max).map(&:item)
   	else
-      Item.fuzzy_search(name: q).limit(max)
+      if is_fuzzy
+        return Item.fuzzy_search(name: q).limit(max)
+      else
+        return Item.where(name: q).limit(max)
+      end
   	end
   end
 
