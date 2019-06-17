@@ -148,7 +148,6 @@
           <nav class="u-sidebar-nav">
             <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
 
-              <% if current_user.present? %>
               <!-- Forms -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link active" href="/items/search">
@@ -158,6 +157,7 @@
               </li>
               <!-- End Forms -->
 
+              <% if current_user.present? %>
               <!-- Dashboard -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'dashboard' && params[:action] == 'show' %>" href="/dashboard">

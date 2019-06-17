@@ -1,4 +1,7 @@
 class PeopleController < ApplicationController
+	include Secured
+  	before_action :logged_in_using_omniauth?, except: [:show]
+
 	def new
 		@person = Person.new
 	end

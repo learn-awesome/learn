@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+	include Secured
+  	before_action :logged_in_using_omniauth?
+
 	def edit
 		@review = Review.where(user: current_user).where(id: params[:id]).first
 	end

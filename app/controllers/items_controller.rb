@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  # include Secured
+  include Secured
+  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update]
+
   def index
   end
 
@@ -99,8 +101,4 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-  def is_url?(q)
-    q.start_with?('http://') or q.start_with?('https://')
-  end
 end

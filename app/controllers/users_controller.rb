@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  # include Secured
+  include Secured
+  before_action :logged_in_using_omniauth?, only: [:edit, :update]
+
   def index
   end
 
