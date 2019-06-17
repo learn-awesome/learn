@@ -11,7 +11,7 @@
 			<% else %>
 				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
 			<% end %>
-			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary disabled" %>
+			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
 		</div>
 	</div>
 	<div class="card-body">

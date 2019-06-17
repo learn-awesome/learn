@@ -58,6 +58,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def search
     # search or add
   	@q = params[:q]
