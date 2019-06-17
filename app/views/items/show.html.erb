@@ -6,12 +6,7 @@
 			<% end %>
 		</div>
 		<div class="item_actions">
-			<% if (rev = Review.where(item: @item, user: current_user).first) %>
-				<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
-			<% else %>
-				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
-			<% end %>
-			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary disabled" %>
+			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
 		</div>
 	</div>
 	<div class="card-body">
@@ -32,14 +27,21 @@
 </div>
 <br>
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+	<div class="d-flex header justify-content-between">
+		<h2 class="h3 card-header-title">Reviews</h2>
+		<div class="item_actions">
+			<% if (rev = Review.where(item: @item, user: current_user).first) %>
+				<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
+			<% else %>
+				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
+			<% end %>
+		</div>
+	</div>
 	<div class="card-body">
 		<% if @item.reviews.any? %>
 		<div class="row">
 			<div class="col-md-6 mb-4">
 			  <div class="card">
-				<div class="card-header d-md-flex align-items-center">
-					<h2 class="h3 card-header-title">Reviews</h2>
-				</div>
 				<div class="card-body">
 					<div class="list-group list-lg-group list-group-flush">
 					<% @item.reviews.each do |rev| %>
