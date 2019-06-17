@@ -31,6 +31,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     reset_session
-    redirect_to root_path
+    logout_url = root_url(only_path: false)
+    redirect_to 'https://learnawesome.eu.auth0.com/v2/logout?client_id=' + Rails.application.credentials.auth0[:public] + '&returnTo=' + logout_url
   end
 end
