@@ -16,9 +16,11 @@ class ItemsController < ApplicationController
       idea_set = IdeaSet.new
       idea_set.name = params[:item][:name]
 
-      idea_set.people.build
-      idea_set.people.first.role = params[:item][:role]
-      idea_set.people.first.person_id = params[:item][:person_id]
+      if params[:item][:person_id].present?
+        idea_set.person_idea_set.build
+        idea_set.person_idea_set.first.role = params[:item][:role]
+        idea_set.person_idea_set.first.person_id = params[:item][:person_id]
+      end
 
       unless idea_set.save
         raise idea_set.errors.first.inspect
