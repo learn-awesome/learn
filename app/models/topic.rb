@@ -31,7 +31,8 @@ class Topic < ApplicationRecord
 	end
 
 	def chat_room
-		self.gitter_room or self.name.downcase
+		#self.gitter_room or self.name.downcase
+		'community'
 	end
 
 	def display_name
