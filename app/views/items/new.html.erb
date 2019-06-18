@@ -36,6 +36,13 @@
           </div>
 
           <div class="form-group mb-4">
+            <%= form.label :typical_age_range, 'Typical Age Range' %>
+            <div class="form-inline">
+              <%= form.select :typical_age_range, [['All ages',''],['Upto 6 yrs','-6'],['6 yrs+','6-'],['Upto 13yrs','-13'],['13 yrs+','13-'],['18 yrs+','18-']], {required: false}, class: "form-control" %> 
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
             <%= form.label :person, "Creators: " %> &nbsp; &nbsp; &nbsp; &nbsp;
             <div class="form-inline">
             <%= form.select :role, [['Creator(s)','creator'],['Publisher(s)','publisher']], {required: true}, class: "form-control" %> &nbsp; &nbsp;
