@@ -35,10 +35,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @item_type = params[:item_type] or 'book'
     @status = params[:status] or 'learned'
+    @quality = params[:quality]
+    @min_quality_score = (params[:min_quality_score] or 4).to_i
 
-    @reviews = @user.get_reviews(@item_type, @status)
+    @reviews = @user.get_reviews(@item_type, @status, @quality, @min_quality_score)
     respond_to do |format|
-      format.html
+      format.html { render layout: false }
       format.json { render json: @reviews }
     end
   end

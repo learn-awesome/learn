@@ -44,10 +44,14 @@ class User < ApplicationRecord
 		self.role == "admin"
 	end
 
-	def get_reviews(item_type, status)
+	def get_reviews(item_type, status, quality = nil, min_quality_score = 0)
 		results = self.reviews
 		if status.present?
 			results = results.where(status: status)
+		end
+
+		if quality and min_quality_score and Review::SCORE_TYPES.include?(quality)
+			results = results.where(quality: quality).where("? > ?", "#{quality}_score", min_quality_score)
 		end
 
 		results = results.all.to_a
