@@ -104,3 +104,7 @@ $star-off-color: #CCCCCC;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+.nohover:hover {
+	cursor:default !important;
+}

@@ -14,6 +14,11 @@
 			<span>
 				<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
 			</span>
+			<% if @item.estimated_time %>
+				<span class="nohover btn btn-sm btn-soft-info">
+					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
+				</span>
+			<% end %>
 			<%= @item.name.titleize %>
 		</h2>
 
