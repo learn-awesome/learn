@@ -8,7 +8,7 @@
       <div class="card-body">
         <%= form_with scope: :item, url: items_path, local: true do |form| %>
           <div class="form-group mb-4">
-            <%= form.label :item_type_id %><br>
+            <%= form.label :item_type_id, "Type" %><br>
             <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true}, class: "form-control form-pill" %>
           </div>
 
@@ -51,80 +51,85 @@
             <%= link_to "Add People", new_person_path, {target: "_blank"} %>
           </div>
 
-          <fieldset>
-            <leged>Add your review</leged>
-            <div class="form-group mb-4">
-              <%= form.label :status %>
-              <%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true}, class: "form-control form-pill" %>
-            </div>
-            <div>
-              <div class="form-group mb-4">
-                <span>How inspirational?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="instar<%= score %>" name="item[inspirational_score]" value="<%= score %>" />
-                  <label for="instar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-
-              <div class="form-group mb-4">
-                <span>How educational?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="edstar<%= score %>" name="item[educational_score]" value="<%= score %>" />
-                  <label for="edstar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-
-              <div class="form-group mb-4">
-                <span>How challenging?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="distar<%= score %>" name="item[challenging_score]" value="<%= score %>" />
-                  <label for="distar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-
-              <div class="form-group mb-4">
-                <span>How entertaining?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="enstar<%= score %>" name="item[entertaining_score]" value="<%= score %>" />
-                  <label for="enstar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-
-              <div class="form-group mb-4">
-                <span>How visual?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="vistar<%= score %>" name="item[visual_score]" value="<%= score %>" />
-                  <label for="vistar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-
-              <div class="form-group mb-4">
-                <span>How interactive?</span>
-                <span class="rating">
-                <% (1..5).to_a.reverse.each do |score| %>
-                  <input type="radio" id="actstar<%= score %>" name="item[interactive_score]" value="<%= score %>" />
-                  <label for="actstar<%= score %>"></label>
-                <% end %>
-                </span>
-              </div>
-            </div>
-            <div class="form-group mb-4">
-              <%= form.label :notes, "Comments" %>
-              <%= form.text_area :notes, class: "form-control" %>
-            </div>
-          </fieldset>
           <div class="form-group mb-4">
-            <%= form.submit "Add resource and review", class: "btn btn-primary" %>
+          <button class="btn btn-soft-primary" type="button" data-toggle="collapse" data-target="#reviewfields" aria-expanded="false" aria-controls="reviewfields">
+            Add your review
+          </button>
+          <div class="collapse" id="reviewfields">
+              <div class="form-group mb-4">
+                <%= form.label :status, "Your status" %>
+                <%= form.select :status, [['select one',''],['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: false}, class: "form-control form-pill" %>
+              </div>
+              <div>
+                <div class="form-group mb-4">
+                  <span>How inspirational?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="instar<%= score %>" name="item[inspirational_score]" value="<%= score %>" />
+                    <label for="instar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+
+                <div class="form-group mb-4">
+                  <span>How educational?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="edstar<%= score %>" name="item[educational_score]" value="<%= score %>" />
+                    <label for="edstar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+
+                <div class="form-group mb-4">
+                  <span>How challenging?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="distar<%= score %>" name="item[challenging_score]" value="<%= score %>" />
+                    <label for="distar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+
+                <div class="form-group mb-4">
+                  <span>How entertaining?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="enstar<%= score %>" name="item[entertaining_score]" value="<%= score %>" />
+                    <label for="enstar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+
+                <div class="form-group mb-4">
+                  <span>How visual?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="vistar<%= score %>" name="item[visual_score]" value="<%= score %>" />
+                    <label for="vistar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+
+                <div class="form-group mb-4">
+                  <span>How interactive?</span>
+                  <span class="rating">
+                  <% (1..5).to_a.reverse.each do |score| %>
+                    <input type="radio" id="actstar<%= score %>" name="item[interactive_score]" value="<%= score %>" />
+                    <label for="actstar<%= score %>"></label>
+                  <% end %>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <%= form.label :notes, "Comments" %>
+                <%= form.text_area :notes, class: "form-control" %>
+              </div>
+          </div>
+          </div>
+
+          <div class="form-group mb-4 mu-4">
+            <%= form.submit "Save", class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

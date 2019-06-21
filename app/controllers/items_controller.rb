@@ -40,16 +40,18 @@ class ItemsController < ApplicationController
       item.links.build
       item.links.first.url = params[:item][:url]
 
-      item.reviews.build
-      item.reviews.first.user = current_user
-      item.reviews.first.status = params[:item][:status]
-      item.reviews.first.inspirational_score = params[:item][:inspirational_score]
-      item.reviews.first.educational_score = params[:item][:educational_score]
-      item.reviews.first.challenging_score = params[:item][:challenging_score]
-      item.reviews.first.entertaining_score = params[:item][:entertaining_score]
-      item.reviews.first.visual_score = params[:item][:visual_score]
-      item.reviews.first.interactive_score = params[:item][:interactive_score]
-      item.reviews.first.notes = params[:item][:notes]
+      unless params[:item][:status].blank?
+        item.reviews.build
+        item.reviews.first.user = current_user
+        item.reviews.first.status = params[:item][:status]
+        item.reviews.first.inspirational_score = params[:item][:inspirational_score]
+        item.reviews.first.educational_score = params[:item][:educational_score]
+        item.reviews.first.challenging_score = params[:item][:challenging_score]
+        item.reviews.first.entertaining_score = params[:item][:entertaining_score]
+        item.reviews.first.visual_score = params[:item][:visual_score]
+        item.reviews.first.interactive_score = params[:item][:interactive_score]
+        item.reviews.first.notes = params[:item][:notes]
+      end
 
       unless item.save
         raise item.errors.first.inspect
