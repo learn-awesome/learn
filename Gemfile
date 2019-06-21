@@ -79,3 +79,5 @@ gem 'jquery-rails'
 gem 'public_suffix'
 
 gem 'textacular', '~> 5.0'
+
+gem "omniauth-rails_csrf_protection" # mitigation for CVE-2015-9284
