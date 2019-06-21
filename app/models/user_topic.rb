@@ -16,4 +16,6 @@ class UserTopic < ApplicationRecord
 	validates :user_id, presence: true
 	validates :topic_id, presence: true
 	validates :action, presence: true
+
+	validates_uniqueness_of :user_id, :scope => [:topic_id, :action]
 end

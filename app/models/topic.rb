@@ -17,6 +17,7 @@ class Topic < ApplicationRecord
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :items, :through => :idea_sets
 	has_many :user_topics
+	has_many :users, through: :user_topics
 
 	def to_param
 		self.id.to_s + "-" + self.name.to_s.parameterize
@@ -41,5 +42,13 @@ class Topic < ApplicationRecord
 		else
 			self.name
 		end
+	end
+
+	def curators
+		self.user_topics.where(action: "curate").collect(&:user)
+	end
+
+	def followers
+		self.user_topics.where(action: "follow").collect(&:user)
 	end
 end

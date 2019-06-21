@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 		@topic = Topic.from_param(params[:id])
 		if current_user
 			@user_topics = current_user.user_topics
-			@topic_action = @user_topics.find { |ut| ut.topic_id == @topic.id }
+			@does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
 		end
 		@item_type_items = @topic.items.group_by(&:item_type)
 	end
