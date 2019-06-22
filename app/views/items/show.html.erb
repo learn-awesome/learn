@@ -12,7 +12,7 @@
 	<div class="card-body">
 		<h2 class="card-title">
 			<span>
-				<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
+				<%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
 			</span>
 			<%= @item.name.titleize %>
 		</h2>
