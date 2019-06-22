@@ -106,4 +106,14 @@ class Item < ApplicationRecord
   def topics
     self.idea_set.topics
   end
+
+  def self.extract_canonical_url(url)
+    require 'nokogiri'
+    require 'open-uri'
+
+    # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
+    page = Nokogiri::HTML(open(url))
+
+    return page.at('link[rel="canonical"]')&.attributes["href"]&.value
+  end
 end
