@@ -1,9 +1,9 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider(
     :auth0,
-    Rails.application.credentials.auth0[:public],
-    Rails.application.credentials.auth0[:private],
-    Rails.application.credentials.auth0[:domain],
+    ENV['AUTH0_PUBKEY'],
+    ENV['AUTH0_PRIVKEY'],
+    ENV['AUTH0_DOMAIN'],
     callback_path: '/auth/oauth2/callback',
     authorize_params: {
       scope: 'openid profile'

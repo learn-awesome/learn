@@ -8,14 +8,14 @@
 
 # Development Setup with Docker
 
-Put the master key (get from core team) in `config/master.key`. This is needed for Auth0-based authentication to work. If you have set up a tenant on Auth0 yourself, just modify `config/initializers/auth0.rb`. Please be sure NOT to commit `master.key` file in version control.
-
 One-time commands can be run as:
 ```
 docker-compose run web rake db:drop db:create db:migrate db:seed
 docker-compose run web rake import:import['public/data1.json']
 docker-compose run web rake import:import['public/data2.json']
 ```
+
+Need to specigy `hostname: db`, `username: postgres` and `password: ` in `config/database.yml`.
 
 Then the app can be launched with `docker-compose up`
 
@@ -32,13 +32,11 @@ rake import:import['public/data1.json']
 rake import:import['public/data2.json']
 ```
 
-Add secret keys and domain for auth0:
+Start the app with some secrets:
 ```
-EDITOR=vi bin/rails credentials:edit
+SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s
+
+Either use your own Auth0 tenant (which needs some configuration) or contact us to get the values of the above environment variables.
 ```
 
-Start the app
-```
-rails s
-```
 For the admin interface, login at http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
