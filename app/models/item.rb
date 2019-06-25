@@ -39,6 +39,7 @@ class Item < ApplicationRecord
   
   accepts_nested_attributes_for :links, allow_destroy: true
 
+  scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }
   scope :popular, -> { order("(inspirational_score + educational_score + challenging_score + entertaining_score + visual_score + interactive_score) DESC").limit(3) }
 

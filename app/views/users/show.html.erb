@@ -37,7 +37,10 @@
 						<% if @user.id == current_user.id %>
 							<a class="btn btn-primary mb-2" href="/users/<%= @user.id %>/edit">Edit Profile</a>
 						<% else %>
-							<!-- <a class="btn btn-primary mb-2" href="#!">Follow</a> -->
+					        <form method='post' action='/users/<%= @user.id %>/toggle_follow'>
+					          <input type="hidden" value="" name="authenticity_token"/>
+					          <input type='submit' class="btn btn-primary mb-2" value="<%= (@does_follow ? "Unfollow" : "Follow") %>"/>
+					        </form>
 						<% end %>
 					<% end %>
 				</div>
