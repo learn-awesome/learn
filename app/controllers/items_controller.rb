@@ -63,6 +63,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.from_param(params[:id])
   end
 
   def search

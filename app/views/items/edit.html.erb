@@ -1,0 +1,32 @@
+<div class="card shadow p-3 mb-5 bg-white rounded">
+	<div class="d-flex justify-content-between">
+		<div class="item_topics">
+			<% @item.topics.map do |topic| %>
+				<%= link_to topic.name, topic, class: "btn btn-sm dark-green" %>
+			<% end %>
+		</div>
+		<div class="item_actions">
+			<button class="btn btn-sm btn-success">Save</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<h2 class="card-title">
+			<span>
+				<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
+			</span>
+			<% if @item.estimated_time %>
+				<span class="nohover btn btn-sm btn-soft-info">
+					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
+				</span>
+			<% end %>
+			<%= @item.name.titleize %>
+		</h2>
+
+		<div class="item_links">
+			<% @item.links.map do |link| %>
+				<span>&#8599; </span> &nbsp;
+				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
+			<% end %>
+		</div>
+	</div>
+</div>
