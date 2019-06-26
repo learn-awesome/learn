@@ -1,9 +1,20 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="d-flex justify-content-between">
 		<div class="item_topics">
-			<% @item.topics.map do |topic| %>
-				<%= link_to topic.name, topic, class: "btn btn-sm dark-green" %>
-			<% end %>
+			<div id="search_topic" class="input-group input-group-sm mb-3">
+				<input type="text" class="form-control rounded" placeholder="Search Topics" aria-label="Search Topics">
+				<div class="input-group-append">
+					<button class="btn dark-green" type="button">Add</button>
+					<% @item.topics.map do |topic| %>
+						<div class="btn-group">
+							<div class= "btn btn-sm grey-btn"><%= topic.name %></div>
+							<div class="btn btn-sm remove_item">
+								<i class="fa fa-times" aria-hidden="true"></i>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
 		</div>
 		<div class="item_actions">
 			<button class="btn btn-sm btn-success">Save</button>
@@ -12,14 +23,23 @@
 	<div class="card-body">
 		<h2 class="card-title">
 			<span>
-				<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
+				<span class="small">Type: </span>
+				<div class="btn-group">
+					<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
+					<div class="btn btn-sm edit_item_type_btn">
+						<i class="fa fa-pencil-square" aria-hidden="true"></i>
+					</div>
+				</div>
 			</span>
+			&nbsp;
 			<% if @item.estimated_time %>
 				<span class="nohover btn btn-sm btn-soft-info">
 					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
 				</span>
 			<% end %>
-			<%= @item.name.titleize %>
+			<br>
+			<br>
+			<input id="item_name_input" type="text" value="<%= @item.name.titleize %>" >
 		</h2>
 
 		<div class="item_links">
