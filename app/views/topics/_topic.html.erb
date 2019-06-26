@@ -1,11 +1,12 @@
 <h2>
 	<%= link_to topic.name.capitalize, topic_path(topic) %>
 	<% if current_user %>
-	<%= link_to (@topic_action ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@topic_action ? "btn-danger" : "btn-success") %>
+	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
 	<%= link_to "Gitter Chat", ("https://gitter.im/learn-awesome/" + topic.chat_room), class: "btn btn-sm btn-pill btn-warning", target: :_blank %>
 
 </h2>
+<h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4>
 
 <% @item_type_items.map(&:first).each_slice(2).to_a.each do |pair| %>
       <div class="row">
@@ -32,6 +33,23 @@
       </div>
 <% end %>
 
+<% if topic.followers.any? %>
+<div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card">
+        <div class="card-header d-md-flex align-items-center">
+          <h2 class="h3 card-header-title">Users who're following this topic</h2>
+
+        </div>
+
+        <div class="card-body">
+    		<%= topic.followers.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %>
+        </div>
+
+      </div>
+    </div>
+</div>
+<% end %>
 
 <script>
   ((window.gitter = {}).chat = {}).options = {

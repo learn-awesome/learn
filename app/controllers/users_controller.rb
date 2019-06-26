@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    if current_user
+      @following = current_user.from_user_relations
+      @does_follow = @following.find { |ut| (ut.to_user_id == @user.id) && (ut.action == 'follow') }
+    end
   end
 
   def edit
@@ -43,5 +47,19 @@ class UsersController < ApplicationController
       format.html { render layout: false }
       format.json { render json: @reviews }
     end
+  end
+
+  def toggle_follow
+    @user = User.find(params[:id])
+    if current_user
+      @following = current_user.from_user_relations
+      @user_action = @following.find { |u| u.to_user_id == @user.id }
+      if @user_action
+        @user_action.destroy
+      else
+        @following.create(to_user: @user, action: "follow")
+      end
+    end
+    redirect_to @user
   end
 end

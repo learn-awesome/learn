@@ -112,7 +112,8 @@ CREATE TABLE public.idea_sets (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    description text
 );
 
 
@@ -149,7 +150,9 @@ CREATE TABLE public.items (
     interactive_score integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    typical_age_range character varying
+    typical_age_range character varying,
+    description text,
+    metadata json DEFAULT '"{}"'::json NOT NULL
 );
 
 
@@ -178,7 +181,8 @@ CREATE TABLE public.people (
     email character varying,
     twitter character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    metadata json DEFAULT '"{}"'::json NOT NULL
 );
 
 
@@ -235,7 +239,8 @@ CREATE TABLE public.topic_idea_sets (
     topic_id uuid NOT NULL,
     idea_set_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    rating integer
 );
 
 
@@ -277,6 +282,20 @@ CREATE TABLE public.user_topics (
     user_id uuid NOT NULL,
     topic_id uuid NOT NULL,
     action character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: user_user_relations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.user_user_relations (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    from_user_id uuid NOT NULL,
+    to_user_id uuid NOT NULL,
+    action character varying DEFAULT 'follow'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -426,6 +445,14 @@ ALTER TABLE ONLY public.topics
 
 ALTER TABLE ONLY public.user_topics
     ADD CONSTRAINT user_topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_user_relations user_user_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_user_relations
+    ADD CONSTRAINT user_user_relations_pkey PRIMARY KEY (id);
 
 
 --
@@ -584,6 +611,20 @@ CREATE INDEX index_user_topics_on_user_id ON public.user_topics USING btree (use
 
 
 --
+-- Name: index_user_user_relations_on_from_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_user_relations_on_from_user_id ON public.user_user_relations USING btree (from_user_id);
+
+
+--
+-- Name: index_user_user_relations_on_to_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_user_relations_on_to_user_id ON public.user_user_relations USING btree (to_user_id);
+
+
+--
 -- Name: trgm_items_name_indx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -596,6 +637,14 @@ CREATE INDEX trgm_items_name_indx ON public.items USING gist (name public.gist_t
 
 ALTER TABLE ONLY public.user_topics
     ADD CONSTRAINT fk_rails_0aa5b25f82 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: user_user_relations fk_rails_10bcd883e4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_user_relations
+    ADD CONSTRAINT fk_rails_10bcd883e4 FOREIGN KEY (from_user_id) REFERENCES public.users(id);
 
 
 --
@@ -671,6 +720,14 @@ ALTER TABLE ONLY public.items
 
 
 --
+-- Name: user_user_relations fk_rails_d52301166a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_user_relations
+    ADD CONSTRAINT fk_rails_d52301166a FOREIGN KEY (to_user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: items fk_rails_d85b4d9a08; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -722,6 +779,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190519061036'),
 ('20190604140829'),
 ('20190610164206'),
-('20190616171344');
+('20190616171344'),
+('20190625190258'),
+('20190625194234');
 
 

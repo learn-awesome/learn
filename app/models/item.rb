@@ -39,6 +39,7 @@ class Item < ApplicationRecord
   
   accepts_nested_attributes_for :links, allow_destroy: true
 
+  scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }
   scope :popular, -> { order("(inspirational_score + educational_score + challenging_score + entertaining_score + visual_score + interactive_score) DESC").limit(3) }
 
@@ -105,5 +106,15 @@ class Item < ApplicationRecord
 
   def topics
     self.idea_set.topics
+  end
+
+  def self.extract_canonical_url(url)
+    require 'nokogiri'
+    require 'open-uri'
+
+    # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
+    page = Nokogiri::HTML(open(url))
+
+    return page.at('link[rel="canonical"]')&.attributes["href"]&.value
   end
 end
