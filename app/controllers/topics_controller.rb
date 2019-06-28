@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
 	end
 
 	def search
-		results = Topic.where("name like ?", "%#{params[:search_term]}%").pluck(:id, :name)
-		render :json => results
+		results = Topic.where("name like ?", "%#{params[:q]}%")
+		render :json => results.as_json(only: [:id, :name])
 	end
 end

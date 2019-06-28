@@ -1,8 +1,8 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="d-flex justify-content-between">
-		<div class="item_topics">
+		<div class="item_topics" id="topformdiv">
 			<div id="search_topic" class="input-group input-group-sm mb-3">
-				<input type="text" class="form-control rounded" placeholder="Search Topics" aria-label="Search Topics">
+				<input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics">
 				<div class="input-group-append">
 					<button class="btn dark-green" type="button">Add</button>
 					<% @item.topics.map do |topic| %>

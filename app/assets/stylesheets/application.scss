@@ -91,6 +91,16 @@ $star-off-color: #CCCCCC;
 	color: white;
 }
 
+#search_topic .tt-menu {
+	min-width: 120px;
+	max-width: 300px;
+	border: thin solid #6b15b6;
+}
+
+#search_topic a {
+	cursor: pointer;
+}
+
 .dark-green {
 	background-color: #2b7d4a;
 	color: white;
