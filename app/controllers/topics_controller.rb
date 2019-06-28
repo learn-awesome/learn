@@ -27,4 +27,9 @@ class TopicsController < ApplicationController
 		end
 		redirect_to @topic
 	end
+
+	def search
+		results = Topic.where("name like ?", "%#{params[:search_term]}%").pluck(:id, :name)
+		render :json => results
+	end
 end

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     member do
       post 'toggle_follow'
     end
+    collection do
+      get 'search'
+    end
   end
   resources :people
   resources  :items do
