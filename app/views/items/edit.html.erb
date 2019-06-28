@@ -23,12 +23,17 @@
 	<div class="card-body">
 		<h2 class="card-title">
 			<span>
-				<span class="small">Type: </span>
-				<div class="btn-group">
-					<%= link_to @item.item_type.id.capitalize, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
-					<div class="btn btn-sm edit_item_type_btn">
-						<i class="fa fa-pencil-square" aria-hidden="true"></i>
-					</div>
+				<div class="form-inline">
+					<span class="small">Type: </span> &nbsp;
+					<select class="form-control form-control-sm" id="item_type">
+						<% ItemType.all.each do |type| %>
+							<% if type.id == @item.item_type_id %>
+								<option value="<%= type.id %>" selected="selected"><%= type.display_name_plural %></option>
+							<% else %>
+								<option value="<%= type.id %>"><%= type.display_name_plural %></option>
+							<% end %>
+						<% end %>
+					</select>
 				</div>
 			</span>
 			&nbsp;
