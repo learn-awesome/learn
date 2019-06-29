@@ -4,20 +4,20 @@
 			<div id="search_topic" class="input-group input-group-sm mb-3">
 				<input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics">
 				<div class="input-group-append">
-					<button class="btn dark-green" type="button">Add</button>
 					<% @item.topics.map do |topic| %>
-						<div class="btn-group">
+						<div class="btn-group topic" data-id="<%= topic.id %>">
 							<div class= "btn btn-sm grey-btn"><%= topic.name %></div>
-							<div class="btn btn-sm remove_item" data-id="<%= topic.id %>">
+							<div class="btn btn-sm remove_topic">
 								<i class="fa fa-times" aria-hidden="true"></i>
 							</div>
 						</div>
 					<% end %>
 				</div>
 			</div>
+			<span class="form-error topic_count_error hidden">Add minimum 1 topic.</span>
 		</div>
 		<div class="item_actions">
-			<button class="btn btn-sm btn-success">Save</button>
+			<button id="saveItemBtn" class="btn btn-sm btn-success">Save</button>
 		</div>
 	</div>
 	<div class="card-body">
@@ -45,6 +45,7 @@
 			<br>
 			<br>
 			<input id="item_name_input" type="text" value="<%= @item.name.titleize %>" >
+			<span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
 		</h2>
 
 		<div class="item_links">

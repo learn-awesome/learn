@@ -126,11 +126,11 @@ $star-off-color: #CCCCCC;
 	cursor:default !important;
 }
 
-.remove_item {
+.remove_topic {
 	background-color: #ff7072;
 }
 
-.remove_item:hover {
+.remove_topic:hover {
 	background-color: #f54b4d;
 }
 
@@ -153,4 +153,13 @@ $star-off-color: #CCCCCC;
 #item_name_input {
 	width: 100%;
 	padding: 10px;
+}
+
+.form-error {
+	color: red;
+	font-size: 11px;
+}
+
+.hidden {
+	display: none;
 }

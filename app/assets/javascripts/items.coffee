@@ -38,12 +38,40 @@ $(document).on 'click', '.topic_result', ->
 	$('#search_topic input').val('')
 
 addNewTopic = (topic_id, topic_name) ->
-	$('#search_topic .input-group-append').append(topic_btn_template(topic_id, topic_name))
+	if !topic_already_exists(topic_id)
+		$('#search_topic .input-group-append').append(topic_btn_template(topic_id, topic_name))
+
+topic_already_exists = (topic_id) ->
+	return $('#search_topic').find('.topic[data-id=' + topic_id + ']').length > 0
 
 topic_btn_template = (topic_id, topic_name) ->
-	return '<div class="btn-group">
+	return '<div class="btn-group topic" data-id="' + topic_id + '">
 		<div class= "btn btn-sm grey-btn">' + topic_name + '</div>
-		<div class="btn btn-sm remove_item" data-id="' + topic_id + '">
+		<div class="btn btn-sm remove_topic">
 			<i class="fa fa-times" aria-hidden="true"></i>
 		</div>
 		</div>'
+
+$(document).on 'click', '#saveItemBtn', ->
+	if validate_item_name_input() && validate_topics_count()
+		console.log 'begin'
+
+validate_item_name_input = ->
+	item_name = $('#item_name_input').val()
+	if item_name == '' || item_name.length < 3
+		$('.item_name_error').removeClass('hidden')
+		return false
+	else
+		$('.item_name_error').addClass('hidden')
+		return true
+
+validate_topics_count = ->
+	if $('#search_topic').find('.topic').length == 0
+		$('.topic_count_error').removeClass('hidden')
+		return false
+	else
+		$('.topic_count_error').addClass('hidden')
+		return true
+
+$(document).on 'click', '.remove_topic', ->
+	$(this).parent().remove()
