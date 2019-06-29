@@ -70,8 +70,16 @@ class ItemsController < ApplicationController
   def search
     # search or add
   	@q = params[:q]
+    is_browser_addon = (params[:ext].to_s == 'true')
   	if @q.present?
   		@items = Item.search(@q, 10, is_fuzzy=true).to_a
+      if is_browser_addon # search or add by URL 
+        if @items.first
+          redirect_to @items.first and return
+        else
+          redirect_to new_item_path(url: @q) and return
+        end
+      end
       respond_to do |format|
         format.html
         format.json { render json: @items }
