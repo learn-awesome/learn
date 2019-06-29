@@ -68,6 +68,10 @@ class ItemsController < ApplicationController
     @item = Item.from_param(params[:id])
   end
 
+  def update
+    render json: params
+  end
+
   def search
     # search or add
   	@q = params[:q]

@@ -86,3 +86,13 @@ saveTheItem = ->
 		itemJson.topics.push($(this).attr('data-id'))
 
 	# now make an api call that will save the data
+	$.ajax {
+		url: '/items/' + item_id,
+		type: 'put',
+		data: itemJson,
+		json: true,
+		beforeSend: (xhr) ->
+			xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+		success: ->
+			window.location.href = '/items/' + item_id
+	}
