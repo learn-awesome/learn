@@ -8,7 +8,7 @@
 					<% @item.topics.map do |topic| %>
 						<div class="btn-group">
 							<div class= "btn btn-sm grey-btn"><%= topic.name %></div>
-							<div class="btn btn-sm remove_item">
+							<div class="btn btn-sm remove_item" data-id="<%= topic.id %>">
 								<i class="fa fa-times" aria-hidden="true"></i>
 							</div>
 						</div>
