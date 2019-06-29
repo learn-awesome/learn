@@ -65,6 +65,23 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.from_param(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item
+      item.name = params[:name]
+      item.item_type_id = params[:item_type_id] if ItemType.find(params[:item_type_id])
+      item.idea_set.topic_ids = params[:topics]
+      if item.save
+        render json: {stats: 'ok'}
+      else
+        render json: {status: 'error', message: item.errors}
+      end
+    else
+      render json: {status: 'error', message: 'Item not found'}
+    end
   end
 
   def search

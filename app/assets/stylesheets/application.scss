@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
 
+ *= require font-awesome
+
  */
 
 
@@ -89,6 +91,16 @@ $star-off-color: #CCCCCC;
 	color: white;
 }
 
+#search_topic .tt-menu {
+	min-width: 120px;
+	max-width: 300px;
+	border: thin solid #6b15b6;
+}
+
+#search_topic a {
+	cursor: pointer;
+}
+
 .dark-green {
 	background-color: #2b7d4a;
 	color: white;
@@ -99,8 +111,55 @@ $star-off-color: #CCCCCC;
 	background-color: #21693c;
 }
 
+.grey-btn {
+	background-color: #5a6a7e;
+	color: white;
+}
+
 .item_links .btn {
 	max-width: 250px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.nohover:hover {
+	cursor:default !important;
+}
+
+.remove_topic {
+	background-color: #ff7072;
+}
+
+.remove_topic:hover {
+	background-color: #f54b4d;
+}
+
+.edit_item_type_btn {
+	background-color: #f9b248;
+}
+
+.edit_item_type_btn:hover {
+	background-color: #f9a82e;
+}
+
+#search_topic input {
+	width: 120px;
+}
+
+#search_topic .input-group-append .btn-group {
+	margin-left: 10px;
+}
+
+#item_name_input {
+	width: 100%;
+	padding: 10px;
+}
+
+.form-error {
+	color: red;
+	font-size: 11px;
+}
+
+.hidden {
+	display: none;
 }

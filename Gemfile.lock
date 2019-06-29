@@ -118,6 +118,8 @@ GEM
     ffi (1.11.1)
     flattened_active_admin (0.0.7)
       rails (>= 3.2.0)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     formadmin (0.2.1)
       activeadmin
     formtastic (3.1.5)
@@ -319,6 +321,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   flattened_active_admin
+  font-awesome-rails
   formadmin
   jbuilder (~> 2.5)
   jquery-rails

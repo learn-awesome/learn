@@ -1,0 +1,62 @@
+<div class="card shadow p-3 mb-5 bg-white rounded">
+	<div class="d-flex justify-content-between">
+		<div class="item_topics" id="topformdiv">
+			<div id="search_topic" class="input-group input-group-sm mb-3">
+				<input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics">
+				<div class="input-group-append">
+					<% @item.topics.map do |topic| %>
+						<div class="btn-group topic" data-id="<%= topic.id %>">
+							<div class= "btn btn-sm grey-btn"><%= topic.name %></div>
+							<div class="btn btn-sm remove_topic">
+								<i class="fa fa-times" aria-hidden="true"></i>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<span class="form-error topic_count_error hidden">Add minimum 1 topic.</span>
+		</div>
+		<div class="item_actions">
+			<button id="saveItemBtn" class="btn btn-sm btn-success">Save</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<h2 class="card-title">
+			<span>
+				<div class="form-inline">
+					<span class="small">Type: </span> &nbsp;
+					<select class="form-control form-control-sm" id="item_type">
+						<% ItemType.all.each do |type| %>
+							<% if type.id == @item.item_type_id %>
+								<option value="<%= type.id %>" selected="selected"><%= type.display_name_plural %></option>
+							<% else %>
+								<option value="<%= type.id %>"><%= type.display_name_plural %></option>
+							<% end %>
+						<% end %>
+					</select>
+				</div>
+			</span>
+			&nbsp;
+			<% if @item.estimated_time %>
+				<span class="nohover btn btn-sm btn-soft-info">
+					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
+				</span>
+			<% end %>
+			<br>
+			<br>
+			<input id="item_name_input" type="text" value="<%= @item.name.titleize %>" >
+			<span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
+		</h2>
+
+		<div class="item_links">
+			<% @item.links.map do |link| %>
+				<span>&#8599; </span> &nbsp;
+				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script>
+  item_id = "<%= @item.id %>";
+</script>
