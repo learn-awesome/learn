@@ -54,7 +54,7 @@ topic_btn_template = (topic_id, topic_name) ->
 
 $(document).on 'click', '#saveItemBtn', ->
 	if validate_item_name_input() && validate_topics_count()
-		console.log 'begin'
+		saveTheItem()
 
 validate_item_name_input = ->
 	item_name = $('#item_name_input').val()
@@ -75,3 +75,14 @@ validate_topics_count = ->
 
 $(document).on 'click', '.remove_topic', ->
 	$(this).parent().remove()
+
+saveTheItem = ->
+	itemJson = {
+		name: $('#item_name_input').val(),
+		item_type_id: $('#item_type').val(),
+		topics: []
+	}
+	$('#search_topic').find('.topic').each ->
+		itemJson.topics.push($(this).attr('data-id'))
+
+	# now make an api call that will save the data
