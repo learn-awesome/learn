@@ -116,10 +116,8 @@ $star-off-color: #CCCCCC;
 	color: white;
 }
 
-.item_links .btn {
-	max-width: 250px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+.item_links input {
+	min-width: 70%;
 }
 
 .nohover:hover {

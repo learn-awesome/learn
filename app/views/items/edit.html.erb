@@ -51,7 +51,7 @@
 		<div class="item_links">
 			<% @item.links.map do |link| %>
 				<span>&#8599; </span> &nbsp;
-				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
+				<input data-id="<%= link.id %>" type="text" value="<%= link.url %>">
 			<% end %>
 		</div>
 	</div>

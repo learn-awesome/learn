@@ -74,6 +74,12 @@ class ItemsController < ApplicationController
       item.name = params[:name]
       item.item_type_id = params[:item_type_id] if ItemType.find(params[:item_type_id])
       item.idea_set.topic_ids = params[:topics]
+
+      params[:links].each do |key, link_params|
+        link = item.links.find(link_params[:id])
+        link.update(url: link_params[:url]) if link
+      end
+
       if item.save
         render json: {stats: 'ok'}
       else

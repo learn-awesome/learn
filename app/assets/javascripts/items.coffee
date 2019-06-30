@@ -80,10 +80,14 @@ saveTheItem = ->
 	itemJson = {
 		name: $('#item_name_input').val(),
 		item_type_id: $('#item_type').val(),
-		topics: []
+		topics: [],
+		links: []
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))
+
+	$('.item_links').find('input').each ->
+		itemJson.links.push({id: $(this).attr('data-id'), url: $(this).val()})
 
 	# now make an api call that will save the data
 	$.ajax {
