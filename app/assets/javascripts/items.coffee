@@ -53,8 +53,11 @@ topic_btn_template = (topic_id, topic_name) ->
 		</div>'
 
 $(document).on 'click', '#saveItemBtn', ->
+	$(this).addClass('disabled')
 	if validate_item_name_input() && validate_topics_count()
 		saveTheItem()
+	else
+		$(this).removeClass('disabled')
 
 validate_item_name_input = ->
 	item_name = $('#item_name_input').val()
@@ -73,7 +76,7 @@ validate_topics_count = ->
 		$('.topic_count_error').addClass('hidden')
 		return true
 
-$(document).on 'click', '.remove_topic', ->
+$(document).on 'click', '.remove_topic, .item_links .fa-trash', ->
 	$(this).parent().remove()
 
 saveTheItem = ->
@@ -100,3 +103,11 @@ saveTheItem = ->
 		success: ->
 			window.location.href = '/items/' + item_id
 	}
+
+$(document).on 'click', '#addNewLink', ->
+	$('.item_links').append('<div class="input-group input-group-sm mb-3">
+		<span>&#8599; </span> &nbsp;
+		<input class="form-control form-control-sm" data-id="" type="text">
+		<i class="fa fa-trash" aria-hidden="true"></i>
+		</div>')
+

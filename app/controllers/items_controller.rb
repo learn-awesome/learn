@@ -69,15 +69,20 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
+    item = Item.find_by(id: params[:id])
     if item
       item.name = params[:name]
       item.item_type_id = params[:item_type_id] if ItemType.find(params[:item_type_id])
       item.idea_set.topic_ids = params[:topics]
-
+      item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
       params[:links].each do |key, link_params|
-        link = item.links.find(link_params[:id])
-        link.update(url: link_params[:url]) if link
+        link = item.links.find_by(id: link_params[:id])
+        next if link_params[:url].blank?
+        if link
+          link.update(url: link_params[:url])
+        else
+          item.links.create(url: link_params[:url])
+        end
       end
 
       if item.save

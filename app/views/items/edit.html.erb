@@ -48,10 +48,15 @@
 			<span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
 		</h2>
 
+		<br>
+		<h4>Links: &nbsp;<i id="addNewLink" class="fa fa-plus-circle" aria-hidden="true"></i></h4>
 		<div class="item_links">
 			<% @item.links.map do |link| %>
-				<span>&#8599; </span> &nbsp;
-				<input data-id="<%= link.id %>" type="text" value="<%= link.url %>">
+				<div class="input-group input-group-sm mb-3">
+					<span>&#8599; </span> &nbsp;
+					<input class="form-control form-control-sm" data-id="<%= link.id %>" type="text" value="<%= link.url %>">
+					<i class="fa fa-trash" aria-hidden="true"></i>
+				</div>
 			<% end %>
 		</div>
 	</div>

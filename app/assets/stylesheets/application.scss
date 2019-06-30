@@ -161,3 +161,19 @@ $star-off-color: #CCCCCC;
 .hidden {
 	display: none;
 }
+
+.item_links .fa {
+	font-size: 15px;
+}
+
+.item_links .fa-trash {
+	margin: 5px;
+	color: red;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#addNewLink {
+	font-size: 20px;
+	cursor: pointer;
+}
