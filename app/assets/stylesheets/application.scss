@@ -116,10 +116,8 @@ $star-off-color: #CCCCCC;
 	color: white;
 }
 
-.item_links .btn {
-	max-width: 250px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+.item_links input {
+	min-width: 70%;
 }
 
 .nohover:hover {
@@ -162,4 +160,20 @@ $star-off-color: #CCCCCC;
 
 .hidden {
 	display: none;
+}
+
+.item_links .fa {
+	font-size: 15px;
+}
+
+.item_links .fa-trash {
+	margin: 5px;
+	color: red;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#addNewLink {
+	font-size: 20px;
+	cursor: pointer;
 }
