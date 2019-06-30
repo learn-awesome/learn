@@ -132,10 +132,8 @@
         <!-- End User Profile -->
 
         <% else %>
-        <form method='post' action='/auth/auth0'>
-          <input type="hidden" value="" name="authenticity_token"/>
-          <input type='submit' class="btn btn-info" value="Sign In"/>
-        </form>
+
+        <a class="btn btn-info" href="/auth/auth0">Sign In <%= current_user %></a>
 
         <% end %>
       </div>
