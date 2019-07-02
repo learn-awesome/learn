@@ -16,10 +16,10 @@
 	              <!-- Tabs Nav -->
 	              <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
 	               <li class="nav-item">
-	                 <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
+	                 <a href="#<%= topic.id %>panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
 	               </li>
 	               <li class="nav-item">
-	                 <a href="#panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
+	                 <a href="#<%= topic.id %>panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
 	               </li>
 	              </ul>
 	              <!-- End Tabs Nav -->
@@ -28,13 +28,13 @@
 	            <div class="card-body">
 	              <!-- Tabs Content -->
 	              <div class="tab-content">
-	                <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
+	                <div class="tab-pane fade show active" id="<%= topic.id %>panelWithTabsTab1" role="tabpanel">
 	                		<% topic.items.recent.each do |item| %>
 	                		<div><%= render item %></div>
 	                		<% end %>
 	                </div>
 
-	                <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
+	                <div class="tab-pane fade" id="<%= topic.id %>panelWithTabsTab2" role="tabpanel">
 	                		<% topic.items.popular.each do |item| %>
 	                		<div><%= render item %></div>
 	                		<% end %>

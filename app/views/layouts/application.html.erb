@@ -21,6 +21,11 @@
     <meta name="description" content="Learn Awesome">
     <meta name="author" content="learnawesome.org">
 
+    <link rel="search"
+      type="application/opensearchdescription+xml"
+      title="LearnAwesome"
+      href="/opensearch.xml">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -28,7 +33,7 @@
     <%= javascript_include_tag 'application' %>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
     <!-- Web Fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -127,10 +132,8 @@
         <!-- End User Profile -->
 
         <% else %>
-        <form method='post' action='/auth/auth0'>
-          <input type="hidden" value="" name="authenticity_token"/>
-          <input type='submit' class="btn btn-info" value="Sign In"/>
-        </form>
+
+        <a class="btn btn-info" href="/auth/auth0">Sign In <%= current_user %></a>
 
         <% end %>
       </div>

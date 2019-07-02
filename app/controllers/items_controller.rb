@@ -105,7 +105,12 @@ class ItemsController < ApplicationController
         if @items.first
           redirect_to @items.first and return
         else
-          redirect_to new_item_path(url: @q) and return
+          if current_user
+            redirect_to new_item_path(url: @q) and return
+          else
+            flash[:danger] = "You need to log in to add links."
+            redirect_to root_path
+          end
         end
       end
       respond_to do |format|
