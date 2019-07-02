@@ -25,15 +25,13 @@
 			<span>
 				<div class="form-inline">
 					<span class="small">Type: </span> &nbsp;
-					<select class="form-control form-control-sm" id="item_type">
+					<input class="form-control form-control-sm" list="item_types" id="item_type" name="item_type" placeholder="type here..." value="<%= @item.item_type_id %>" >
+					<!-- This is the best way to have searchable dropdowns! -->
+					<datalist id="item_types">
 						<% ItemType.all.each do |type| %>
-							<% if type.id == @item.item_type_id %>
-								<option value="<%= type.id %>" selected="selected"><%= type.display_name_plural %></option>
-							<% else %>
-								<option value="<%= type.id %>"><%= type.display_name_plural %></option>
-							<% end %>
+							<option value="<%= type.id %>"><%= type.display_name_plural %></option>
 						<% end %>
-					</select>
+					</datalist>
 				</div>
 			</span>
 			&nbsp;
