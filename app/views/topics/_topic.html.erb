@@ -7,6 +7,14 @@
 
 </h2>
 <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4>
+<h4>Popular searches:
+  <%= link_to "short videos", query_items_path(item_type: "video", topic: topic.search_index, length: "5-15") %>,
+  <%= link_to "learn by doing", query_items_path(topic: topic.search_index, quality: "interactive") %>,
+  <%= link_to "books", query_items_path(item_type: "book", topic: topic.search_index) %>,
+  <%= link_to "challenging", query_items_path(topic: topic.search_index, quality: "challenging") %>,
+  <%= link_to "visual", query_items_path(topic: topic.search_index, quality: "visual") %>,
+  <%= link_to "try your own advanced search", query_items_path(topic: topic.search_index) %>
+</h4>
 
 <% @item_type_items.map(&:first).each_slice(2).to_a.each do |pair| %>
       <div class="row">

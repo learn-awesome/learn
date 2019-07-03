@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
 			@user_topics = current_user.user_topics
 			@does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
 		end
-		@item_type_items = @topic.items.group_by(&:item_type)
+		@item_type_items = @topic.items.group_by(&:item_type).sort.to_h
 	end
 
 	def toggle_follow
