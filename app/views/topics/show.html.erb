@@ -1,1 +1,20 @@
+<% content_for :title do %>
+<%= @topic.display_name %> :: LearnAwesome.org
+<% end %>
+
+<% content_for :opengraph do %>
+  <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
+  <meta name="description" content="LearnAwesome.org :: Humanity's universal learning map">
+
+  <meta property="og:title" content="<%= @topic.display_name %> :: LearnAwesome.org">
+  <meta property="og:description" content="Humanity's universal learning map.">
+  <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+  <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+
+  <meta name="twitter:title" content="LearnAwesome.org">
+  <meta name="twitter:description" content="Humanity's universal learning map.">
+  <meta name="twitter:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+  <meta name="twitter:card" content="summary_large_image">
+<% end %>
+
 <%= render @topic %>

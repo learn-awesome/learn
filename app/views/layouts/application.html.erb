@@ -11,15 +11,26 @@
 
       gtag('config', 'UA-142191820-1');
     </script>
-    <title><%= content_for?(:title) ? yield(:title) : "LearnAwesome" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "LearnAwesome.org" %></title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="keywords" content="Humanity's universal skills graph">
-    <meta name="description" content="Learn Awesome">
-    <meta name="author" content="learnawesome.org">
+
+    <% if content_for?(:opengraph) %>
+      <%= yield(:opengraph) %>
+    <% else %>
+      <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
+      <meta name="description" content="Humanity's universal learning map">
+
+      <meta property="og:title" content="LearnAwesome.org">
+      <meta property="og:description" content="Humanity's universal learning map.">
+      <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+      <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+      <meta name="twitter:card" content="summary_large_image">
+    <% end %>
+    <meta name="twitter:site" content="@learn_awesome">
 
     <link rel="search"
       type="application/opensearchdescription+xml"

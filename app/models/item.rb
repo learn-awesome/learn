@@ -117,4 +117,8 @@ class Item < ApplicationRecord
 
     return page.at('link[rel="canonical"]')&.attributes["href"]&.value
   end
+
+  def display_name
+    self.name
+  end
 end
