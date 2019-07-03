@@ -51,4 +51,8 @@ class Topic < ApplicationRecord
 	def followers
 		self.user_topics.where(action: "follow").collect(&:user)
 	end
+
+	def self.discover
+		Topic.order('RANDOM()').first
+	end
 end

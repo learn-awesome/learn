@@ -32,4 +32,14 @@ class TopicsController < ApplicationController
 		results = Topic.where("name like ?", "%#{params[:q]}%")
 		render :json => results.as_json(only: [:id, :name])
 	end
+
+	def discover
+	    topic = Topic.discover
+	    if topic
+	      redirect_to topic
+	    else
+	      flash[:danger] = "No topics exist."
+	      redirect_to root_path
+	    end
+	end
 end
