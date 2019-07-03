@@ -7,7 +7,7 @@
 
 </h2>
 <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4>
-<h4>Popular searches:
+<h4>Quick search:
   <%= link_to "short videos", query_items_path(item_type: "video", topic: topic.search_index, length: "5-15") %>,
   <%= link_to "learn by doing", query_items_path(topic: topic.search_index, quality: "interactive") %>,
   <%= link_to "books", query_items_path(item_type: "book", topic: topic.search_index) %>,
