@@ -27,4 +27,7 @@ ActiveAdmin.register Item do
   	f.actions
   end
 
+  controller do
+    defaults :finder => :from_param
+  end
 end

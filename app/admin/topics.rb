@@ -2,7 +2,7 @@ ActiveAdmin.register Topic do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :name
+  permit_params :name, :namespace, :search_index, :gitter_room
 #
 # or
 #
@@ -11,5 +11,7 @@ ActiveAdmin.register Topic do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+	controller do
+	  defaults :finder => :from_param
+	end
 end
