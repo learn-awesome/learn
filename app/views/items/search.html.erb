@@ -26,7 +26,7 @@
   <div class="form-group mb-4">
   	<% if params[:commit].present? %>
   		<%= form.submit "Search", class: "btn btn-primary" %>
-  		<%= link_to "Add A New Link", (@q.start_with?('http://') or @q.start_with?('https://') ? new_item_path(url: @q) : new_item_path(name: @q)), class: "btn btn-primary" %>
+  		<%= link_to "Add A New Link", ((@q.start_with?('http://') or @q.start_with?('https://')) ? new_item_path(url: @q) : new_item_path(name: @q)), class: "btn btn-primary" %>
   	<% else %>
     	<%= form.submit current_user.present? ? "Search or Add" : "Search", class: "btn btn-primary" %>
     <% end %>
