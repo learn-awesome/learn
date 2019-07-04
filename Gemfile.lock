@@ -265,6 +265,8 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -331,6 +333,7 @@ DEPENDENCIES
   rails (~> 5.2.2, >= 5.2.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
   textacular (~> 5.0)

@@ -81,3 +81,6 @@ gem 'public_suffix'
 gem 'textacular', '~> 5.0'
 
 gem "font-awesome-rails"
+
+gem "sentry-raven"
+

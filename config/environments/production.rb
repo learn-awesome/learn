@@ -100,3 +100,8 @@ OmniAuth.config.on_failure = Proc.new { |env|
   new_path = "#{env['SCRIPT_NAME']}#{OmniAuth.config.path_prefix}/failure?message=#{message_key}&error_description=#{error_description}"
   Rack::Response.new(['302 Moved'], 302, 'Location' => new_path).finish
 }
+
+
+Raven.configure do |config|
+  config.dsn = 'https://607e84c7d0ad454f9cbd666ca4285cd0:45b994b08f194f6cab29798193900d1a@sentry.io/1497282'
+end
