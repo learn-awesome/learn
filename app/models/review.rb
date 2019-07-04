@@ -18,8 +18,8 @@
 #
 
 class Review < ApplicationRecord
-  belongs_to :user
-  belongs_to :item
+  belongs_to :user, inverse_of: :reviews
+  belongs_to :item, inverse_of: :reviews
 
   after_save :update_item_ratings
 

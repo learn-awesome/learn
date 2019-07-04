@@ -11,8 +11,8 @@
 #
 
 class PersonIdeaSet < ApplicationRecord
-	belongs_to :person
-	belongs_to :idea_set
+	belongs_to :person, inverse_of: :person_idea_sets
+	belongs_to :idea_set, inverse_of: :person_idea_sets
 	validates :person, presence: true
 	validates :idea_set, presence: true
 end

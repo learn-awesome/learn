@@ -12,7 +12,7 @@
 require 'uri/http'
 
 class Link < ApplicationRecord
-  belongs_to :item
+  belongs_to :item, inverse_of: :links
   validates :url, presence: true, length: { in: 8..350 }
   validates :url, format: URI::regexp(%w[http https])
   validates :item, presence: true

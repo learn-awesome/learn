@@ -28,8 +28,8 @@ class User < ApplicationRecord
 
 	validates_format_of :nickname, with: /\A[a-z][a-z0-9.\-]+[a-z0-9]\Z/
 
-	has_many :user_topics
-	has_many :reviews
+	has_many :user_topics, dependent: :destroy, inverse_of: :user
+	has_many :reviews, dependent: :destroy, inverse_of: :user
 	has_many :submissions, class_name: "Item"
 
 	has_many :following, through: :from_user_relations, source: :from_user
