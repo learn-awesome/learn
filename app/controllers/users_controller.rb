@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
     @reviews = @user.get_reviews(@item_type, @status, @quality, @min_quality_score)
     respond_to do |format|
-      format.html { render layout: false }
+      format.html { render layout: 'embed' }
       format.json { render json: @reviews }
     end
   end

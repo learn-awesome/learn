@@ -21,7 +21,9 @@
 			<% end %>
 		</div>
 		<div class="item_actions">
+			<% if current_user and current_user.score > 500 %>
 			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
+			<% end %>
 		</div>
 	</div>
 	<div class="card-body">

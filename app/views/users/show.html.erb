@@ -77,6 +77,15 @@
 						</div>
 					</div>
 				</div>
+
+				<% if current_user and (@user.id == current_user.id) %>
+				<div class="card-title">
+					<hr/>
+					<p>Embed your reviews: <input type="text" value="<iframe src=<%= reviews_user_url %> width=500 height=900/>" readonly/></p>
+					<!-- <p><%= link_to "Review JSON API", reviews_user_path(format: :json) %></p> -->
+					<p>You can use these filter parameters: <code>item_type, review_status, quality, min_quality_score</code></p>
+				</div>
+				<% end %>
 			</div>
 		</div>
 
