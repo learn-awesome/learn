@@ -80,7 +80,7 @@ class Item < ApplicationRecord
     results = Item.all
 
     if topic_name.present?
-      topic = Topic.where(search_index: topic_name).first
+      topic = Topic.where(name: topic_name).first
       results = results.where(id: topic.items.map(&:id)) if topic
     end
 

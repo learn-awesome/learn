@@ -12,7 +12,7 @@
 #
 
 class Topic < ApplicationRecord
-	validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :namespace }, length: { in: 1..50 }
+	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 }
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :topic
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :items, :through => :idea_sets
@@ -37,11 +37,7 @@ class Topic < ApplicationRecord
 	end
 
 	def display_name
-		if self.namespace.present?
-			self.namespace.to_s + "/" + self.name
-		else
-			self.name
-		end
+		self.name
 	end
 
 	def curators
@@ -54,5 +50,9 @@ class Topic < ApplicationRecord
 
 	def self.discover
 		Topic.order('RANDOM()').first
+	end
+
+	def namespace
+		raise 'topic.namespace called'
 	end
 end

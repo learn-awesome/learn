@@ -281,7 +281,6 @@ CREATE TABLE public.topics (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     search_index character varying NOT NULL,
-    namespace character varying,
     gitter_room character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -605,13 +604,6 @@ CREATE INDEX index_topic_relations_on_to_id ON public.topic_relations USING btre
 
 
 --
--- Name: index_topics_on_namespace_and_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_topics_on_namespace_and_name ON public.topics USING btree (namespace, name);
-
-
---
 -- Name: index_user_topics_on_topic_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -796,6 +788,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190610164206'),
 ('20190616171344'),
 ('20190625190258'),
-('20190625194234');
+('20190625194234'),
+('20190705003038');
 
 

@@ -40,7 +40,7 @@ class Review < ApplicationRecord
       item_name: self.item.name,
       image_url: self.item.image_url,
       creators: self.item.creators,
-      topics: self.item.topics.collect(&:search_index),
+      topics: self.item.topics.collect(&:name),
       item_type: self.item.item_type_id,
       notes: self.notes,
       inspirational_score: self.inspirational_score,
