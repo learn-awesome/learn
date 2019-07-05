@@ -5,7 +5,6 @@
 #  id           :uuid             not null, primary key
 #  name         :string           not null
 #  search_index :string           not null
-#  namespace    :string
 #  gitter_room  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -37,7 +36,7 @@ class Topic < ApplicationRecord
 	end
 
 	def display_name
-		self.name
+		self.name.gsub("-", " ")
 	end
 
 	def curators
@@ -50,9 +49,5 @@ class Topic < ApplicationRecord
 
 	def self.discover
 		Topic.order('RANDOM()').first
-	end
-
-	def namespace
-		raise 'topic.namespace called'
 	end
 end

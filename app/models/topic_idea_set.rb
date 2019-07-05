@@ -7,6 +7,7 @@
 #  idea_set_id :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  rating      :integer
 #
 
 class TopicIdeaSet < ApplicationRecord

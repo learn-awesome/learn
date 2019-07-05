@@ -10,6 +10,7 @@
 #  twitter     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  metadata    :json             not null
 #
 
 class Person < ApplicationRecord
