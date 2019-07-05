@@ -9,7 +9,13 @@
         <%= form_with scope: :item, url: items_path, local: true do |form| %>
           <div class="form-group mb-4">
             <%= form.label :item_type_id, "Type" %><br>
-            <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true}, class: "form-control form-pill" %>
+            <input class="form-control form-pill" list="item_types" id="item_type_id" name="item[item_type_id]" placeholder="type here..." >
+            <!-- This is the best way to have searchable dropdowns! -->
+            <datalist id="item_types">
+              <% ItemType.all.each do |type| %>
+                <option value="<%= type.id %>"><%= type.display_name_plural %></option>
+              <% end %>
+            </datalist>
           </div>
 
           <div class="form-group mb-4">
