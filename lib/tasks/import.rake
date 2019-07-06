@@ -1,3 +1,5 @@
+require 'uri/http'
+
 item_types_lookup = {
 	"apps" => :app, 
 	"articles" => :article, 
@@ -56,8 +58,7 @@ namespace :import do
 		ns = topic_name_array.first(topic_name_array.count - 1).join('/')
 
 		topic = Topic.where(
-			name: topic_name_array.last.sub('-language', '').sub('india-', ''),
-			namespace: ns.blank? ? nil : ns
+			name: topic_name_array.last.sub('-language', '').sub('india-', '')
 		).first
 
 		if topic.nil?
@@ -83,7 +84,11 @@ namespace :import do
 				item = Item.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''), idea_set: idea_set, item_type: item_type, user: user)
 
 				TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
-				Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length > 8
+				if item_hash['link'] =~ URI::regexp(%w[http https])
+					Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length >= 8
+				else
+					puts "invalid: #{item_hash['link']}"
+				end
 
 				puts "created Item #{item.name}"
 			end

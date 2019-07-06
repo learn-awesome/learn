@@ -6,7 +6,7 @@ class DropTopicsNamespace < ActiveRecord::Migration[5.2]
   end
 
   def down
-  	add_column :topics, :namespace
+  	add_column :topics, :namespace, :string
 
   	Topic.all.select { |t| t.name.include?("/") }.each do |t|
   		old_name = t.name.split("/")
