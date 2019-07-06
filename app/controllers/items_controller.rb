@@ -122,7 +122,16 @@ class ItemsController < ApplicationController
   end
 
   def discover
-    item = Item.discover
+    if current_user
+      if current_user.random_fav_topic
+        fav_topics = current_user.user_topics.map(&:topic)
+      else
+        fav_topics = nil
+      end
+      item = Item.discover(fav_topics, current_user.random_fav_item_types.to_s.split(","))
+    else
+      item = Item.discover
+    end
     if item
       redirect_to item
     else

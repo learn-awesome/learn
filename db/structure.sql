@@ -315,7 +315,9 @@ CREATE TABLE public.users (
     score integer DEFAULT 100 NOT NULL,
     role integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    random_fav_topic boolean DEFAULT false NOT NULL,
+    random_fav_item_types character varying
 );
 
 
@@ -781,6 +783,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190616171344'),
 ('20190625190258'),
 ('20190625194234'),
-('20190705003038');
+('20190705003038'),
+('20190706110136');
 
 

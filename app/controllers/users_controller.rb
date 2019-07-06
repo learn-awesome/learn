@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:edit, :update]
+  before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings]
 
   def index
   end
@@ -51,15 +51,37 @@ class UsersController < ApplicationController
 
   def toggle_follow
     @user = User.find(params[:id])
-    if current_user
-      @following = current_user.from_user_relations
-      @user_action = @following.find { |u| u.to_user_id == @user.id }
-      if @user_action
-        @user_action.destroy
-      else
-        @following.create(to_user: @user, action: "follow")
-      end
+    @following = current_user.from_user_relations
+    @user_action = @following.find { |u| u.to_user_id == @user.id }
+    if @user_action
+      @user_action.destroy
+    else
+      @following.create(to_user: @user, action: "follow")
     end
     redirect_to @user
+  end
+
+  def settings
+    @user = User.find(params[:id])
+    if @user.id != current_user.id # users can modify only their own settings
+      flash[:danger] = "Not authorized"
+      redirect_back(fallback_location: root_path) and return
+    end
+    if request.patch?
+      @user.random_fav_topic = (params[:user][:random_fav_topic].to_s == "1")
+      item_types = params[:user][:random_fav_item_types].reject { |s| s.blank? }
+      if item_types.blank?
+        @user.random_fav_item_types = nil
+      else
+        @user.random_fav_item_types = item_types.join(",")
+      end
+      if @user.save
+        flash[:success] = "Settings saved."
+        redirect_back fallback_location: settings_user_path(@user)
+      else
+        flash[:danger] = @users.errors.first
+        redirect_back fallback_location: settings_user_path(@user)
+      end
+    end
   end
 end

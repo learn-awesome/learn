@@ -28,6 +28,7 @@ require 'uri'
 
 class Item < ApplicationRecord
   belongs_to :idea_set, inverse_of: :items
+  has_many :topics, through: :idea_set
   belongs_to :item_type
   has_many :links, dependent: :destroy, inverse_of: :item
   has_many :reviews, dependent: :destroy, inverse_of: :item
@@ -102,12 +103,16 @@ class Item < ApplicationRecord
     return results.limit(20)
   end
 
-  def self.discover
-    Item.order('RANDOM()').first
-  end
-
-  def topics
-    self.idea_set.topics
+  def self.discover(topics = nil, item_type_ids = nil)
+    items = Item
+    items = items.where(item_type_id: item_type_ids) unless item_type_ids.blank?
+    items = items.includes(:topics).where('topic_idea_sets.topic_id' => topics.map(&:id)) unless topics.blank?
+    found = items.order('RANDOM()').first
+    if found.nil?
+      return Item.where(item_type_id: item_type_ids).order('RANDOM()').first
+    else
+      return found
+    end
   end
 
   def self.extract_canonical_url(url)

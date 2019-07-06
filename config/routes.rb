@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     member do
       get 'reviews'
       post 'toggle_follow'
+      get 'settings'
+      patch 'settings'
     end
   end
 

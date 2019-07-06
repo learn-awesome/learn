@@ -296,7 +296,7 @@ Topic.create(name: 'software-tools/unix', 'search_index': 'software-tools/unix',
 Topic.create(name: 'software-tools/v8engine', 'search_index': 'software-tools/v8engine', 'gitter_room': 'software-tools/v8engine')
 Topic.create(name: 'software-tools/vim', 'search_index': 'software-tools/vim', 'gitter_room': 'software-tools/vim')
 Topic.create(name: 'software-tools/webpack', 'search_index': 'software-tools/webpack', 'gitter_room': 'software-tools/webpack')
-Topic.create(name: 'software-tools/ordpress', 'search_index': 'software-tools/wordpress', 'gitter_room': 'software-tools/wordpress')
+Topic.create(name: 'software-tools/wordpress', 'search_index': 'software-tools/wordpress', 'gitter_room': 'software-tools/wordpress')
 Topic.create(name: 'sound-design', 'search_index': 'sound-design', 'gitter_room': 'sound-design')
 Topic.create(name: 'spaced-repetition', 'search_index': 'spaced-repetition', 'gitter_room': 'spaced-repetition')
 Topic.create(name: 'sports', 'search_index': 'sports', 'gitter_room': 'sports')
