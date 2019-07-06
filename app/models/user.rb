@@ -67,4 +67,15 @@ class User < ApplicationRecord
 		end
 		return results
 	end
+
+	def self.calculate_points
+		# points for submitting links
+		# points for submitting reviews
+		# points for adding item metadata
+		# points for inviting users
+		# points for correcting data / flagging items
+		# points for developer contribution
+		# points for financial contribution
+		# misc.
+	end
 end
