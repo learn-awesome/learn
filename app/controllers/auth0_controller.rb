@@ -16,7 +16,8 @@ class Auth0Controller < ApplicationController
         user = User.create(authinfo: session[:userinfo].to_json,
           auth0_uid: session[:userinfo]["uid"],
           nickname: session[:userinfo]["info"]["nickname"],
-          image_url: session[:userinfo]["info"]["image"])
+          image_url: session[:userinfo]["info"]["image"],
+          referrer: request.env['omniauth.params']['ref'])
       end
     end
 

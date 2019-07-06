@@ -84,6 +84,8 @@
 					<p>Embed your reviews: <input type="text" value="<iframe src=<%= reviews_user_url %> width=500 height=900/>" readonly/></p>
 					<!-- <p><%= link_to "Review JSON API", reviews_user_path(format: :json) %></p> -->
 					<p>You can use these filter parameters: <code>item_type, review_status, quality, min_quality_score</code></p>
+					<hr/>
+					<p>Invite your friends by sharing this link: <input type="text" value="<%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>" readonly/></p>
 				</div>
 				<% end %>
 			</div>
