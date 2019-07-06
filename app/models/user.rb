@@ -68,14 +68,59 @@ class User < ApplicationRecord
 		return results
 	end
 
+	def invited
+		User.where(referrer: self.id.to_s.split("-").first)
+	end
+
 	def self.calculate_points
-		# points for submitting links
-		# points for submitting reviews
-		# points for adding item metadata
-		# points for inviting users
-		# points for correcting data / flagging items
-		# points for developer contribution
-		# points for financial contribution
-		# misc.
+		User.all.each do |u|
+			u.score = 0
+			# points for signing up (early)
+			u.score += ('2019-12-31'.to_date - u.created_at.to_date).to_i
+
+			# points for submitting links: TODO- take quality into account
+			u.score += u.submissions.count * 10
+
+			# points for submitting reviews: TODO- take quality into account
+			u.score += u.reviews.count * 10
+
+			# points for adding item metadata
+			#TODO
+
+			# points for inviting users
+			u.score += u.invited.count * 50
+
+			# points for correcting data / flagging items
+			# TODO
+
+			# points for developer contribution
+			if User.core_devs.include?(u.id)
+				u.score += 5000
+			end
+
+			# points for financial contribution
+			# eshnil for domain, heroku hosting etc
+			if ['58175aad-22f9-4a40-a6d0-b665762c8f8d'].include?(u.id)
+				u.score += 5000
+			end
+
+			# For paid plans, gift etc: #TODO
+
+			# For local testing
+			if Rails.env.development? and User.order(:created_at).take(5).map(&:id).include?(u.id)
+				u.score += 10_000
+			end
+
+			u.save
+		end
+	end
+
+	def self.core_devs
+		[
+			'58175aad-22f9-4a40-a6d0-b665762c8f8d',
+			'321d1985-4713-41f4-8d9d-069e48ebf2de',
+			'02e667dc-08c9-4663-a139-c01abe83f8b8',
+			'a7586583-51b2-4715-87f8-85d506fd3af2'
+		]
 	end
 end
