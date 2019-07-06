@@ -68,8 +68,8 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: root_path) and return
     end
     if request.patch?
-      @user.random_fav_topic = (params[:user][:random_fav_topic].to_s == "1")
-      item_types = params[:user][:random_fav_item_types].reject { |s| s.blank? }
+      @user.random_fav_topic = (params[:user]["random_fav_topic"].to_s == "1")
+      item_types = params[:user]["random_fav_item_types"].reject { |s| s.blank? }
       if item_types.blank?
         @user.random_fav_item_types = nil
       else
