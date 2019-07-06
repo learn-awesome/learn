@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 autosuggestTopics = ->
-	topcisResults = new Bloodhound(
+	topicsResults = new Bloodhound(
 		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value')
 		queryTokenizer: Bloodhound.tokenizers.whitespace
 		remote:
@@ -17,11 +17,11 @@ autosuggestTopics = ->
 		name: 'best-items'
 		display: 'name'
 		limit: 10
-		source: topcisResults
+		source: topicsResults
 		templates:
 			empty: [
 				'<div class="empty-message">'
-				'No such topcis'
+				'No such topic'
 				'</div>'
 			].join('\n')
 			suggestion: (data) ->
