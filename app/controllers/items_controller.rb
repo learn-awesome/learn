@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
         raise idea_set.errors.first.inspect
       end
 
-      params[:item][:topic].each do |topic_id|
+      params[:item][:topics].each do |topic_id|
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 

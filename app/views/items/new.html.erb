@@ -27,21 +27,11 @@
 
             <div class="item_topics" id="topformdiv">
               <div id="search_topic" class="input-group input-group-sm mb-3">
-                <input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics">
-                <div class="input-group-append">
-                  <% [].map do |topic| %>
-                    <div class="btn-group topic" data-id="<%= topic.id %>">
-                      <div class= "btn btn-sm grey-btn"><%= topic.name %></div>
-                      <div class="btn btn-sm remove_topic">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
+                <input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics" id="topics_input">
+                <div class="input-group-append"></div>
               </div>
               <span class="form-error topic_count_error hidden">Add minimum 1 topic.</span>
             </div>
-                
           </div>
 
           <div class="form-group mb-4">
