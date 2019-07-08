@@ -35,7 +35,7 @@ document.addEventListener 'DOMContentLoaded', ->
 
 $(document).on 'click', '.topic_result', ->
 	addNewTopic($(this).attr('data-id'), $(this).attr('data-name'))
-	$('#search_topic input').val('')
+	$('#topics_input').val('')
 
 addNewTopic = (topic_id, topic_name) ->
 	if !topic_already_exists(topic_id)
@@ -46,6 +46,7 @@ topic_already_exists = (topic_id) ->
 
 topic_btn_template = (topic_id, topic_name) ->
 	return '<div class="btn-group topic" data-id="' + topic_id + '">
+		<input type="hidden" name="item[topics][]" value="' + topic_id + '">
 		<div class= "btn btn-sm grey-btn">' + topic_name + '</div>
 		<div class="btn btn-sm remove_topic">
 			<i class="fa fa-times" aria-hidden="true"></i>
