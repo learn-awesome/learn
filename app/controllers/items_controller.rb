@@ -73,6 +73,9 @@ class ItemsController < ApplicationController
     if item
       item.name = params[:name]
       item.item_type_id = params[:item_type_id] if ItemType.find(params[:item_type_id])
+      item.estimated_time = params[:estimated_time]
+      item.time_unit = params[:estimated_time_unit]
+      item.typical_age_range = params[:typical_age_range]
       item.idea_set.topic_ids = params[:topics]
       item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
       params[:links].each do |key, link_params|

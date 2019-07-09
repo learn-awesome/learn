@@ -108,7 +108,10 @@ saveTheItem = ->
 		name: $('#item_name_input').val(),
 		item_type_id: $('#item_type').val(),
 		topics: [],
-		links: []
+		links: [],
+		estimated_time: $('#item_estimated_time').val(),
+		estimated_time_unit: $('#item_time_unit').val(),
+		typical_age_range: $('#item_typical_age_range').val()
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))
