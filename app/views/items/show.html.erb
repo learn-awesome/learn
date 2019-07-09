@@ -31,12 +31,23 @@
 			<span>
 				<%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
 			</span>
+			<%= @item.name.titleize %>
+			<br>
+			<br>
 			<% if @item.estimated_time %>
 				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
 					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
 				</span>
 			<% end %>
-			<%= @item.name.titleize %>
+			<% if @item.typical_age_range %>
+				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
+					<% if @item.typical_age_range[0] == '-' %>
+						<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
+					<% else %>
+						<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
+					<% end %>
+				</span>
+			<% end %>
 		</h2>
 
 		<div class="item_links">

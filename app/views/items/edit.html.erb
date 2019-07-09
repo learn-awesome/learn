@@ -64,11 +64,26 @@
 					<option value="hours" >hours</option>
 				</select>
 			</div>
-		  </div>
+		</div>
+		<br>
+		<div class="form-group mb-4">
+			<div class="form-inline">
+				<label for="item_estimated_time">Typical age range: &nbsp;</label>
+				<select class="form-control form-control-sm" name="item[typical_age_range]" id="item_typical_age_range">
+					<option value="">All ages</option>
+					<option value="-6">Upto 6 yrs</option>
+					<option value="6-">6 yrs+</option>
+					<option value="-13">Upto 13yrs</option>
+					<option value="13-">13 yrs+</option>
+					<option value="18-">18 yrs+</option>
+				</select>
+			</div>
+		</div>
 	</div>
 </div>
 
 <script>
   item_id = "<%= @item.id %>";
   $('#item_time_unit').val("<%= @item.time_unit %>");
+  $('#item_typical_age_range').val("<%= @item.typical_age_range %>");
 </script>
