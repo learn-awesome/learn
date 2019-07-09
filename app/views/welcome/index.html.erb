@@ -13,7 +13,7 @@
 	  			<div class="text-center"><a id="querylink" href="<%= query_items_path(topic: 'machine-learning', item_type: 'audio', length: '30-60', quality: 'challenging', commit: 'Search') %>" class="btn btn-success btn-lg btn-pill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Try it!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 	  			<br/><br/>
 
-	  			<h1 class="display-5 mu-4"><%= Topic.count %> topics. <%= ItemType.count %> formats. <b><big><%= Item.count %></big></b> learning resources. <% if current_user.score >= 5000 %><%= User.count %> users. <%= Review.count %> reviews.<% end %> All about YOU - the lifelong learner.</h1>
+	  			<h1 class="display-5 mu-4"><%= Topic.count %> topics. <%= ItemType.count %> formats. <b><big><%= Item.count %></big></b> learning resources. <% if current_user && current_user.score >= 5000 %><%= User.count %> users. <%= Review.count %> reviews.<% end %> All about YOU - the lifelong learner.</h1>
 
 	  			<script type="text/javascript" defer>
 	  				document.addEventListener('DOMContentLoaded', function(){
