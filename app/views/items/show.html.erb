@@ -22,7 +22,7 @@
 		</div>
 		<div class="item_actions">
 			<% if current_user and current_user.score > 500 %>
-			<%= link_to "Edit", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
+			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
 			<% end %>
 		</div>
 	</div>
@@ -39,13 +39,19 @@
 					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
 				</span>
 			<% end %>
-			<% if @item.typical_age_range %>
+			<% if @item.typical_age_range.present? %>
 				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
 					<% if @item.typical_age_range[0] == '-' %>
 						<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
 					<% else %>
 						<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
 					<% end %>
+				</span>
+			<% end %>
+			<% if @item.year.present? %>
+				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
+					<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
+					<%= @item.year %>
 				</span>
 			<% end %>
 		</h2>

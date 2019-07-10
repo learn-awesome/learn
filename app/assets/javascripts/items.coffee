@@ -111,7 +111,8 @@ saveTheItem = ->
 		links: [],
 		estimated_time: $('#item_estimated_time').val(),
 		estimated_time_unit: $('#item_time_unit').val(),
-		typical_age_range: $('#item_typical_age_range').val()
+		typical_age_range: $('#item_typical_age_range').val(),
+		year: $('#item_year_of_publication').val()
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))

@@ -76,6 +76,7 @@ class ItemsController < ApplicationController
       item.estimated_time = params[:estimated_time]
       item.time_unit = params[:estimated_time_unit]
       item.typical_age_range = params[:typical_age_range]
+      item.year = params[:year]
       item.idea_set.topic_ids = params[:topics]
       item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
       params[:links].each do |key, link_params|
