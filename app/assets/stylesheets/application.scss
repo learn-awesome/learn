@@ -185,3 +185,26 @@ input#item_estimated_time {
 input#item_year_of_publication {
 	width: 6.0em;
 }
+
+.item_description {
+	font-size: 14px;
+	line-height: 1.5;
+	white-space: pre-line;
+}
+
+.item_extra_details {
+	margin-top: 10px;
+}
+
+#item_description_input {
+	padding: 10px;
+	width: 100%;
+}
+
+.description_card {
+	margin-top: 13px;
+}
+
+#item_time_unit, #item_typical_age_range {
+	max-width: 100px;
+}

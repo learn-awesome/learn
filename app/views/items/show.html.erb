@@ -33,27 +33,34 @@
 			</span>
 			<%= @item.name.titleize %>
 			<br>
-			<br>
-			<% if @item.estimated_time %>
-				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
-					🕐 <%= @item.estimated_time.to_s + @item.time_unit[0] %>
-				</span>
+			<% if @item.description.present? %>
+				<div class="card bg-white rounded description_card">
+					<div class="card-body item_description"><%= @item.description.strip %></div>
+				</div>
 			<% end %>
-			<% if @item.typical_age_range.present? %>
-				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
-					<% if @item.typical_age_range[0] == '-' %>
-						<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
-					<% else %>
-						<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
-					<% end %>
-				</span>
-			<% end %>
-			<% if @item.year.present? %>
-				<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
-					<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
-					<%= @item.year %>
-				</span>
-			<% end %>
+			<div class="item_extra_details">
+				<% if @item.estimated_time %>
+					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
+						<i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;
+						<%= @item.estimated_time.to_s + @item.time_unit[0] %>
+					</span>
+				<% end %>
+				<% if @item.typical_age_range.present? %>
+					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
+						<% if @item.typical_age_range[0] == '-' %>
+							<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
+						<% else %>
+							<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
+						<% end %>
+					</span>
+				<% end %>
+				<% if @item.year.present? %>
+					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
+						<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
+						<%= @item.year %>
+					</span>
+				<% end %>
+			</div>
 		</h2>
 
 		<div class="item_links">
