@@ -31,6 +31,7 @@ autosuggestTopics = ->
 
 document.addEventListener 'DOMContentLoaded', ->
 	setTimeout autosuggestTopics, 1000
+	$('#item_description_input').height($('#item_description_input').prop('scrollHeight') - 22)
 	return
 
 $(document).on 'click', '.topic_result', ->
@@ -100,6 +101,10 @@ $(document).on 'change paste keyup', '.link_input', ->
 		$(this).addClass('is-invalid')
 		$(this).removeClass('is-valid')
 
+$(document).on 'change paste keyup', '#item_description_input', ->
+	this.style.height = "1px"
+	this.style.height = (this.scrollHeight) + "px"
+
 $(document).on 'click', '.remove_topic, .item_links .fa-trash', ->
 	$(this).parent().remove()
 
@@ -111,7 +116,9 @@ saveTheItem = ->
 		links: [],
 		estimated_time: $('#item_estimated_time').val(),
 		estimated_time_unit: $('#item_time_unit').val(),
-		typical_age_range: $('#item_typical_age_range').val()
+		typical_age_range: $('#item_typical_age_range').val(),
+		year: $('#item_year_of_publication').val(),
+		description: $('#item_description_input').val()
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))
