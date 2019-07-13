@@ -91,6 +91,7 @@ is_url = (str) ->
   else
     false
 
+# to validate url links as user types
 $(document).on 'change paste keyup', '.link_input', ->
 	if is_url($(this).val())
 		$(this).addClass('is-valid')
@@ -118,7 +119,8 @@ saveTheItem = ->
 		estimated_time_unit: $('#item_time_unit').val(),
 		typical_age_range: $('#item_typical_age_range').val(),
 		year: $('#item_year_of_publication').val(),
-		description: $('#item_description_input').val()
+		description: $('#item_description_input').val(),
+		image_url: $('#item_image_url').val()
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))

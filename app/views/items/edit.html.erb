@@ -38,12 +38,15 @@
 			</span>
 			<br>
 			<input id="item_name_input" type="text" value="<%= @item.name.titleize %>" >
+			<span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
 			<div class="card bg-white rounded">
 				<div class="item_description">
 					<textarea id="item_description_input" placeholder="Write some description"><%= @item.description.try(:strip) %></textarea>
 				</div>
 			</div>
-			<span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
+			<div class="image_input">
+				Image Url: <input id="item_image_url" type="text" value="<%= @item.image_url %>">
+			</div>
 		</h2>
 
 		<br>
