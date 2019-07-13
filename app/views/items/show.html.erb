@@ -33,9 +33,10 @@
 			</span>
 			<%= @item.name.titleize %>
 			<br>
-			<% if @item.description.present? %>
+			<% if @item.description.present? || @item.image_url.present? %>
 				<div class="card bg-white rounded description_card">
-					<div class="card-body item_description"><%= @item.description.strip %></div>
+					<div class="card-body item_description"><% if @item.image_url.present? %><a href="<%= @item.image_url %>" target='_blank'><img class="item_image img-thumbnail float-left" src="<%= @item.image_url %>"></a><% end %><%= @item.description.strip %>
+					</div>
 				</div>
 			<% end %>
 			<div class="item_extra_details">

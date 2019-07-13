@@ -78,6 +78,7 @@ class ItemsController < ApplicationController
       item.typical_age_range = params[:typical_age_range]
       item.year = params[:year]
       item.description = params[:description].try(:strip)
+      item.image_url = params[:image_url]
       item.idea_set.topic_ids = params[:topics]
       item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
       params[:links].each do |key, link_params|
