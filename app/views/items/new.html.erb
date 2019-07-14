@@ -46,9 +46,9 @@
             <%= form.label :typical_age_range, 'Typical Age Range' %>
             <div class="form-inline">
               <%= form.select :typical_age_range, [['All ages',''],['Upto 6 yrs','-6'],['6 yrs+','6-'],['Upto 13yrs','-13'],['13 yrs+','13-'],['18 yrs+','18-']], {required: false}, class: "form-control" %> 
-              <%= form.text_field:image_url, value: @image_url %>
-              <%= form.text_field:metadata, value: @metadata %>
-              <%= form.text_field:description, value: @description %>
+              <%= form.hidden_field:image_url, value: @image_url %>
+              <%= form.hidden_field:metadata, value: @metadata %>
+              <%= form.hidden_field:description, value: @description %>
             </div>
           </div>
 
