@@ -50,4 +50,16 @@ class Topic < ApplicationRecord
 	def self.discover
 		Topic.order('RANDOM()').first
 	end
+
+	def self.searchable_language
+		'english'
+	end
+
+	def self.search(q, max=10, is_fuzzy=true)
+      if is_fuzzy
+        return Topic.where("search_index LIKE ?", "%#{q}%").limit(max)
+      else
+        return Topic.where(name: q).limit(max)
+      end
+	end
 end

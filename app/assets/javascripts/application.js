@@ -58,7 +58,7 @@ function autosuggest(){
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  remote: {
-	    url: '/items/search.json?q=%QUERY',
+	    url: '/search.json?q=%QUERY',
 	    wildcard: '%QUERY'
 	  }
 	});
@@ -75,15 +75,20 @@ function autosuggest(){
 	  templates: {
 	    empty: [
 	      '<div class="empty-message">',
-	        'No such items',
+	        'No such things',
 	      '</div>'
 	    ].join('\n'),
 	    suggestion: function(data) { 
-	    	var name = '<strong>' + data.name + '</strong>';
-	    	var type = data.item_type_id;
-	    	if(data.creators)
-	    		type += ' by ' + data.creators;
-	    	return '<a href="/items/' + data.id + '"><div>' + name + '<br/>' + type + '</div></a>'; }
+	    	var item_type = data.item_type_id;
+	    	var type = (item_type != undefined ? "item" : "topic"); //topics don't have item_type
+	    	if(type == "item"){
+		    	if(data.creators)
+		    		item_type += ' by ' + data.creators;
+		    	return '<a href="/items/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + item_type + '</div></a>';
+		    } else { // topic
+		    	return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
+		    }
+	    }
 	  }
 	});
 }

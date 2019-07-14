@@ -42,4 +42,5 @@ Rails.application.routes.draw do
   get '/logout' => 'auth0#logout'
   get '/formats' => 'item_types#index'
   get '/about' => 'welcome#about'
+  get '/search' => 'welcome#search'
 end
