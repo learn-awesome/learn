@@ -31,6 +31,7 @@
                 <div class="input-group-append">
                   <% @topics.map do |topic| %>
                     <div class="btn-group topic" data-id="<%= topic.id %>">
+                      <input type="hidden" name="item[topics][]" value="<%= topic.id %>">
                       <div class= "btn btn-sm grey-btn"><%= topic.name %></div>
                       <div class="btn btn-sm remove_topic">
                         <i class="fa fa-times" aria-hidden="true"></i>
