@@ -21,10 +21,18 @@ class ItemsController < ApplicationController
       @item_name = @extracted[:title] || @item_name
       @image_url = @extracted[:image_url]
       @creators = @extracted[:creators]
+      @topics = @extracted[:topics]
+      if @creators.present?
+        creator = Person.where(goodreads: @creators.first).first_or_create do |p|
+          p.name = @creators.first.split(".").last.gsub("_", " ")
+          p.description = @extracted[:creator_bio]
+        end
+        @creator_id = creator.id
+      end
       @description = @extracted[:description]
       @metadata = @extracted[:metadata].to_json
-      @creator_id = Person.where(goodreads: @creators.first).first&.id if @creators.present?
     end
+
   end
 
   def create

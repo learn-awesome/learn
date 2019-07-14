@@ -138,7 +138,12 @@ class Item < ApplicationRecord
         title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
         authors = page.search('meta[property="books:author"]').map { |x| x.attributes["content"] }.map(&:value)
         page_count = page.at('meta[property="books:page_count"]')&.attributes["content"]&.value.to_i
-        description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
+        # description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
+        description = (page.css("div#description") > "span:last").inner_text
+        topics = page.css("a.bookPageGenreLink").map {|n| n.attributes["href"]&.value }.select { |s| s.start_with?("/genres/") }.map { |s|
+          Topic.find_by_name(s.gsub("/genres/",""))
+        }.compact
+        creator_bio = (page.css("div.bookAuthorProfile__about") > "span:last").inner_text
 
         return {
           item_type: item_type,
@@ -146,13 +151,15 @@ class Item < ApplicationRecord
           image_url: image_url,
           title: title,
           description: description,
+          topics: topics,
           creators: authors,
+          creator_bio: creator_bio,
           metadata: {isbn: isbn, page_count: page_count}
         }
       elsif url.include?("youtube.com")
-        return {item_type: 'video'}
+        return {item_type: 'video', topics: []}
       elsif url.include?("wikipedia.org")
-        return {item_type: 'wiki'}
+        return {item_type: 'wiki', topics: []}
       else
         {}
       end
