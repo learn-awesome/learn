@@ -10,6 +10,21 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item_name = params[:name]
+    @item_url = params[:url].to_s
+
+    @extracted = Item.extract_opengraph_data(@item_url) if @item_url.present? 
+
+    if @extracted.present?
+      @item_type = @extracted[:item_type]
+      @item_url = @extracted[:canonical] || @item_url
+      @item_name = @extracted[:title] || @item_name
+      @image_url = @extracted[:image_url]
+      @creators = @extracted[:creators]
+      @description = @extracted[:description]
+      @metadata = @extracted[:metadata].to_json
+      @creator_id = Person.where(goodreads: @creators.first).first&.id if @creators.present?
+    end
   end
 
   def create
@@ -19,9 +34,9 @@ class ItemsController < ApplicationController
       idea_set.name = params[:item][:name]
 
       if params[:item][:person_id].present?
-        idea_set.person_idea_set.build
-        idea_set.person_idea_set.first.role = params[:item][:role]
-        idea_set.person_idea_set.first.person_id = params[:item][:person_id]
+        idea_set.person_idea_sets.build
+        idea_set.person_idea_sets.first.role = params[:item][:role]
+        idea_set.person_idea_sets.first.person_id = params[:item][:person_id]
       end
 
       unless idea_set.save
@@ -32,7 +47,7 @@ class ItemsController < ApplicationController
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
-      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :time_unit, :typical_age_range))
+      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :time_unit, :typical_age_range, :image_url, :description, :metadata))
       # item.search_index = params[:item][:name]
       item.user = current_user
       item.idea_set = idea_set

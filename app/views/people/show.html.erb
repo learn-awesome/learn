@@ -3,6 +3,9 @@
 	  <div class="card">
         <div class="card-header d-md-flex align-items-center">
         	<h2 class="h3 card-header-title"><%= @person.name %></h2>
+                <% if current_user.try(:score) > 500 %>
+                        &nbsp;&nbsp;<%= link_to "Edit", edit_person_path(@person) %>
+                <% end %>
         </div>
         <div class="card-body">
         	<p><%= @person.description %></p><hr/>
@@ -17,12 +20,15 @@
         </div>
         <footer class="card-footer">
 			<ul class="list-inline mb-0">
-				<% if @person.website.present? %>
-	            	<li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Website</a></li>
-	            <% end %>
-				<% if @person.twitter.present? %>
-	            	<li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Twitter</a></li>
-	            <% end %>
+			     <% if @person.website.present? %>
+                                <li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Website</a></li>
+                             <% end %>
+                             <% if @person.twitter.present? %>
+                                <li class="list-inline-item"><a href="<%= @person.twitter %>" target="_blank">Twitter</a></li>
+                             <% end %>
+                             <% if @person.goodreads.present? %>
+                                <li class="list-inline-item"><a href="<%= @person.goodreads %>" target="_blank">GoodReads Author Profile</a></li>
+                             <% end %>
 			</ul>
         </footer>
 	  </div>

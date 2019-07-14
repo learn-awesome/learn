@@ -32,6 +32,9 @@ rake import:import['public/data1.json']
 rake import:import['public/data2.json']
 ```
 
+Set-up caching in dev:
+`rails dev:cache`
+
 Start the app with some secrets:
 ```
 SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s

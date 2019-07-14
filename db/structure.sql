@@ -197,7 +197,8 @@ CREATE TABLE public.people (
     twitter character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    metadata json DEFAULT '"{}"'::json NOT NULL
+    metadata json DEFAULT '"{}"'::json NOT NULL,
+    goodreads character varying
 );
 
 
@@ -794,6 +795,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190625194234'),
 ('20190705003038'),
 ('20190706110136'),
-('20190706175347');
+('20190706175347'),
+('20190714025449');
 
 

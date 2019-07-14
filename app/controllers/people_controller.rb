@@ -13,6 +13,7 @@ class PeopleController < ApplicationController
 		@person.website = params[:person][:website]
 		@person.email = params[:person][:email]
 		@person.twitter = params[:person][:twitter]
+		@person.goodreads = params[:person][:goodreads]
 
 		if @person.save
 			redirect_to person_path(@person)
@@ -27,7 +28,7 @@ class PeopleController < ApplicationController
 	end
 
 	def update
-		unless current_user.is_admin?
+		unless current_user.try(:score) > 500
 			flash[:error] = "Operation not permitted"
 			redirect_back fallback_location: root_path
 		end
@@ -38,6 +39,7 @@ class PeopleController < ApplicationController
 		@person.website = params[:person][:website]
 		@person.email = params[:person][:email]
 		@person.twitter = params[:person][:twitter]
+		@person.goodreads = params[:person][:goodreads]
 
 		if @person.save
 			redirect_to person_path(@person)

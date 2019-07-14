@@ -25,6 +25,8 @@
 #  metadata            :json             not null
 #
 require 'uri'
+require 'nokogiri'
+require 'open-uri'
 
 class Item < ApplicationRecord
   belongs_to :idea_set, inverse_of: :items
@@ -116,13 +118,45 @@ class Item < ApplicationRecord
   end
 
   def self.extract_canonical_url(url)
-    require 'nokogiri'
-    require 'open-uri'
-
     # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
     page = Nokogiri::HTML(open(url))
 
     return page.at('link[rel="canonical"]')&.attributes["href"]&.value
+  end
+
+  def self.extract_opengraph_data(url)
+
+    Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
+      if url.include?("goodreads.com")
+        # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
+        item_type = 'book'
+        page = Nokogiri::HTML(open(url))
+
+        canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
+        isbn = page.at('meta[property="books:isbn"]')&.attributes["content"]&.value
+        image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
+        title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
+        authors = page.search('meta[property="books:author"]').map { |x| x.attributes["content"] }.map(&:value)
+        page_count = page.at('meta[property="books:page_count"]')&.attributes["content"]&.value.to_i
+        description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
+
+        return {
+          item_type: item_type,
+          canonical: canonical,
+          image_url: image_url,
+          title: title,
+          description: description,
+          creators: authors,
+          metadata: {isbn: isbn, page_count: page_count}
+        }
+      elsif url.include?("youtube.com")
+        return {item_type: 'video'}
+      elsif url.include?("wikipedia.org")
+        return {item_type: 'wiki'}
+      else
+        {}
+      end
+    end
   end
 
   def display_name
