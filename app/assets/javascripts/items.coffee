@@ -147,3 +147,10 @@ $(document).on 'click', '#addNewLink', ->
 		<i class="fa fa-trash" aria-hidden="true"></i>
 		</div>')
 	$('.item_links .input-group:last-child input').focus()
+
+$(document).on 'submit', 'form#item_new_form', (evt) ->
+	if !validate_topics_count()
+		evt.preventDefault()
+		$($(this).find(':submit')).removeAttr('data-disable-with')
+	else
+		$($(this).find(':submit')).attr('data-disable-with', 'Save')

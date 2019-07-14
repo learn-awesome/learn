@@ -6,7 +6,7 @@
       </header>
 
       <div class="card-body">
-        <%= form_with scope: :item, url: items_path, local: true do |form| %>
+        <%= form_with scope: :item, url: items_path, id: 'item_new_form', local: true do |form| %>
           <div class="form-group mb-4">
             <%= form.label :item_type_id, "Type" %><br>
             <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type}, class: "form-control" %>
