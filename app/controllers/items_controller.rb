@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
 
   def show
   	@item = Item.from_param(params[:id])
+    if @item.nil?
+      flash[:danger] = "We couldn't find this thing."
+      redirect_to root_path and return
+    end
   end
 
   def new
