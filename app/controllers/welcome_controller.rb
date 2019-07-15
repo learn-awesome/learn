@@ -13,14 +13,23 @@ class WelcomeController < ApplicationController
   def search
   	# search both items and topics for the top header
   	@q = params[:q]
-  	if @q.blank?
-  		render json: []
-  		return
-  	end
-  	@limit = params[:limit]
-  	is_fuzzy = (params[:fuzzy] || "true") == "true"
-  	@items = [] # Item.search(@q, 10, is_fuzzy).to_a
-  	@topics = Topic.search(@q, 10, is_fuzzy).to_a
-  	render json: (@topics + @items)
+  	if @q.present?
+    	@limit = params[:limit]
+    	is_fuzzy = (params[:fuzzy] || "true") == "true"
+    	@items = [] # Item.search(@q, 10, is_fuzzy).to_a
+    	@topics = Topic.search(@q, 10, is_fuzzy).to_a
+      respond_to do |format|
+        format.html {
+          if (@topics + @items).blank?
+            flash[:warning] = "#{@q}: No such topic found"
+            redirect_to new_topic_path(name: @q)
+            return
+          end
+        }
+    	  format.json { render json: (@topics + @items) }
+      end
+      return
+    end
+    # render welcome/search
   end
 end

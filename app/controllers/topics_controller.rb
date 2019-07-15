@@ -1,8 +1,25 @@
 class TopicsController < ApplicationController
 	include Secured
-  	before_action :logged_in_using_omniauth?, only: [:toggle_follow]
+  	before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create]
 
 	def index
+	end
+
+	def new
+		@topic = Topic.new
+		@topic.name = params[:name]
+	end
+
+	def create
+		@topic = Topic.new
+		@topic.name = params[:topic][:name]
+		@topic.search_index = @topic.name
+		if @topic.save
+			redirect_to @topic
+		else
+			flash[:danger] = @topic.errors.first
+			render :new
+		end
 	end
 
 	def show
