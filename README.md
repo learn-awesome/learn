@@ -5,19 +5,22 @@
 
 #### Awesome learning resources organized by topics, formats and difficulty.
 
+# Development Setup with Vagrant
 
-# Development Setup with Docker
-
-One-time commands can be run as:
 ```
-docker-compose run web rake db:drop db:create db:migrate db:seed
-docker-compose run web rake import:import['public/data1.json']
-docker-compose run web rake import:import['public/data2.json']
+vagrant up
+vagrant provision
+
+# connect to vm
+vagrant ssh
+
+# Start the app in vm. Make sure to specify Auth0 creds. Ask us if you don't have your own.
+SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s -b 0.0.0.0
+
+# To destroy the vm
+vagrant destroy
+
 ```
-
-Need to specigy `hostname: db`, `username: postgres` and `password: ` in `config/database.yml`.
-
-Then the app can be launched with `docker-compose up`
 
 # Local install
 

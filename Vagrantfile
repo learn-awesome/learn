@@ -63,7 +63,11 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    cd /vagrant && bundle install
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+cd /vagrant
+bundle install
+rails db:create db:migrate db:seed
+rake import:import['public/data1.json']
+rake import:import['public/data2.json']
   SHELL
 end
