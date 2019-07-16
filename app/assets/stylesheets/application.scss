@@ -101,6 +101,11 @@ $star-off-color: #CCCCCC;
 	cursor: pointer;
 }
 
+.items_for_topic {
+	max-height: 320px;
+	overflow-y: auto;
+}
+
 .dark-green {
 	background-color: #2b7d4a;
 	color: white;
