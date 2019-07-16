@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
       flash[:danger] = "We couldn't find this thing."
       redirect_to root_path and return
     end
+    @my_review = Review.where(item: @item, user: current_user).first || Review.new
   end
 
   def new

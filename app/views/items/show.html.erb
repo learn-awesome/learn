@@ -75,6 +75,24 @@
 				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
 			<% end %>
 		</div>
+
+		<div class="inplacereview">
+			<p>&nbsp;</p>
+			<%= form_with(model: @my_review) do |form| %>
+				<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true}, class: "form-control", onchange: 'this.form.submit();' %>
+
+
+				<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
+				  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
+				  <label class="btn btn-secondary <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
+				  	<input type="hidden" name="review[<%= quality %>_score]" value="0" />
+				    <input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();"> <%= quality.capitalize %>
+				  </label>
+				  <% end %>
+				</div>
+
+			<% end %>
+		</div>
 	</div>
 </div>
 <br>
@@ -82,7 +100,7 @@
 	<div class="d-flex header justify-content-between">
 		<h2 class="h3 card-header-title">Reviews</h2>
 		<div class="item_actions">
-			<% if (rev = Review.where(item: @item, user: current_user).first) %>
+			<% if (rev = @my_review) %>
 				<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
 			<% else %>
 				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
