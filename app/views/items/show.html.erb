@@ -17,7 +17,7 @@
 	<div class="d-flex justify-content-between">
 		<div class="item_topics">
 			<% @item.topics.map do |topic| %>
-				<%= link_to topic.name, topic, class: "btn btn-sm dark-green" %>
+				<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 			<% end %>
 		</div>
 		<div class="item_actions">

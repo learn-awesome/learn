@@ -25,6 +25,11 @@ class WelcomeController < ApplicationController
             redirect_to new_topic_path(name: @q)
             return
           end
+          if (@topics + @items).size == 1
+            redirect_to (@topics + @items).first
+          else
+            # render welcome/search
+          end
         }
     	  format.json { render json: (@topics + @items) }
       end

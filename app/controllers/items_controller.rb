@@ -131,10 +131,10 @@ class ItemsController < ApplicationController
   def search
     # search or add
   	@q = params[:q]
-    is_browser_addon = (params[:ext].to_s == 'true')
   	if @q.present?
   		@items = Item.search(@q, 10, is_fuzzy=true).to_a
-      if is_browser_addon # search or add by URL 
+      if @q.start_with?("http://") or @q.start_with?("https://")
+        # query is a URL, no point editing. Directly take to new
         if @items.first
           redirect_to @items.first and return
         else

@@ -1,5 +1,5 @@
 <h2>
-	<%= link_to topic.name.capitalize, topic_path(topic) %>
+	<%= link_to topic.display_name, topic_path(topic) %>
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>

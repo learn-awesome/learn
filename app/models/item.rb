@@ -127,6 +127,7 @@ class Item < ApplicationRecord
   def self.extract_opengraph_data(url)
 
     Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
+      puts "Not found in cache. Fetching from goodreads..."
       if url.include?("goodreads.com")
         # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
         item_type = 'book'
@@ -134,7 +135,8 @@ class Item < ApplicationRecord
 
         canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
         isbn = page.at('meta[property="books:isbn"]')&.attributes["content"]&.value
-        image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
+        #image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
+        image_url = "http://covers.openlibrary.org/b/isbn/#{isbn}.jpg" if isbn.present?
         title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
         authors = page.search('meta[property="books:author"]').map { |x| x.attributes["content"] }.map(&:value)
         page_count = page.at('meta[property="books:page_count"]')&.attributes["content"]&.value.to_i
@@ -145,7 +147,7 @@ class Item < ApplicationRecord
         }.compact
         creator_bio = (page.css("div.bookAuthorProfile__about") > "span:last").inner_text
 
-        return {
+        {
           item_type: item_type,
           canonical: canonical,
           image_url: image_url,
@@ -157,9 +159,9 @@ class Item < ApplicationRecord
           metadata: {isbn: isbn, page_count: page_count}
         }
       elsif url.include?("youtube.com")
-        return {item_type: 'video', topics: []}
+        {item_type: 'video', topics: []}
       elsif url.include?("wikipedia.org")
-        return {item_type: 'wiki', topics: []}
+        {item_type: 'wiki', topics: []}
       else
         {}
       end
