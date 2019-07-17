@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 		if @review.save
 			redirect_to item_path(@review.item)
 		else
-			flash[:error] = @review.errors.first
+			flash[:danger] = @review.errors.first
 			redirect_back fallback_location: root_path
 		end
 	end
