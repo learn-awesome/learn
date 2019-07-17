@@ -81,6 +81,10 @@
 			<%= form_with(model: @my_review) do |form| %>
 				<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true}, class: "form-inline", onchange: 'this.form.submit();' %>
 
+				<div class="form-group mb-2">
+		        <%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+		    	</div>
+
 				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 
 				<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
@@ -92,6 +96,7 @@
 				  <% end %>
 				</div>
 
+
 			<% end %>
 		</div>
 	</div>
@@ -102,9 +107,9 @@
 		<h2 class="h3 card-header-title">Reviews</h2>
 		<div class="item_actions">
 			<% if !@my_review.new_record? %>
-				<%= link_to "Modify my review", edit_review_path(@my_review), class: "btn btn-sm #{ItemType.button_style}" %>
+				<%= link_to "Modify my review", edit_review_path(@my_review), class: "btn btn-sm btn-info" %>
 			<% else %>
-				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
+				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm btn-info" %>
 			<% end %>
 		</div>
 	</div>
@@ -125,18 +130,11 @@
 										<div class="media-body">
 											<div class="d-md-flex align-items-center">
 												<h4 class="mb-1">
-													<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.status %></span>
+													<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
 												</h4>
 												<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 											</div>
-
 											<p class="mb-0"><%= rev.notes %></p><br/>
-											<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
-											<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
-											<p class="mb-0"><code>Challenging&nbsp;&nbsp;:</code> <%= "★" * rev.challenging_score.to_i %></p>
-											<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
-											<p class="mb-0"><code>Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.visual_score.to_i %></p>
-											<p class="mb-0"><code>Interactive&nbsp;&nbsp;:</code> <%= "★" * rev.interactive_score.to_i %></p>
 										</div>
 									</div>
 							</div>

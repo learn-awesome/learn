@@ -15,6 +15,7 @@
 #  notes               :text
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  overall_score       :integer
 #
 
 class Review < ApplicationRecord
