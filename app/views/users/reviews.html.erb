@@ -1,1 +1,49 @@
+<% content_for :title do %>
+<%= @user.nickname %>'s reviews :: LearnAwesome.org
+<% end %>
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+a {
+  color: blue;
+}
+
+.itemcover {
+  display: flex;
+  max-height: 200px;
+  max-width: 150px;
+  transition: all 0.3s ease;
+}
+
+.itemcover > img {
+  object-fit: contain;
+}
+
+.itemcover:hover {
+  transform: scale(1.1);
+}
+
+.itemname {
+  font-weight: 900;
+}
+
+.itemcreators {
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+.reviewrating {
+	font-size: 20px;
+}
+
+.reviewnotes {
+
+}
+</style>
+
+<div><p style="text-align: center;">I use <a href="<%= root_url %>" target="_blank">LearnAwesome</a> to learn new things.</p></div>
 <%= render @reviews %>

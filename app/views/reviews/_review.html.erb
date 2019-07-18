@@ -1,6 +1,16 @@
-<div>
-	<h2><%= review.item.name %></h2>
-	<p><%= review.item.description %></p>
-	<img src="<%= review.item.image_url %>"/>
-	<p><%= review.notes %></p>
+<div style="max-width: 600px; max-height: 300px; display: inline-block; margin-right: 1em;">
+<div style="display:flex; border: thin solid #eee; border-radius: 5px; margin-bottom: 2em;">
+		<div>
+			<a href="<%= item_url(review.item) %>" target="_blank" class="itemcover">
+				<img src="<%= review.item.image_url %>"/>
+			</a>
+		</div>
+
+		<div style="padding: 8px 12px;">
+			<h2 class="itemname"><a href="<%= item_url(review.item) %>" target="_blank"><%= review.item.name %></a></h2>
+			<h4 class="itemcreators"><%= review.item.creators %></h4>
+			<p class="reviewrating"><%= "⭐" * review.overall_score.to_i %></p>
+			<p class="reviewnotes"><%= review.notes.to_s.truncate(150) %></p>
+		</div>
+</div>
 </div>
