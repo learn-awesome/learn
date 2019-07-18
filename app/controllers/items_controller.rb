@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   def new
     @item_name = params[:name]
     @item_url = params[:url].to_s
+    @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
 
     @extracted = Item.extract_opengraph_data(@item_url) if @item_url.present? 
 
@@ -26,7 +27,7 @@ class ItemsController < ApplicationController
       @item_name = @extracted[:title] || @item_name
       @image_url = @extracted[:image_url]
       @creators = @extracted[:creators]
-      @topics = @extracted[:topics]
+      @topics += @extracted[:topics]
       if @creators.present?
         creator = Person.where(goodreads: @creators.first).first_or_create do |p|
           p.name = @creators.first.split(".").last.gsub("_", " ")
