@@ -4,6 +4,8 @@ class Auth0Controller < ApplicationController
     # and the IdP
     session[:userinfo] = request.env['omniauth.auth']
 
+    #Rails.logger.info session[:userinfo].inspect
+
     if session[:userinfo]
       user = User.find_by_auth0_uid(session[:userinfo]["uid"])
       if user
@@ -13,7 +15,7 @@ class Auth0Controller < ApplicationController
         user.image_url = session[:userinfo]["info"]["image"]
         user.save
       else
-        user = User.create(authinfo: session[:userinfo].to_json,
+        User.create(authinfo: session[:userinfo].to_json,
           auth0_uid: session[:userinfo]["uid"],
           nickname: session[:userinfo]["info"]["nickname"],
           image_url: session[:userinfo]["info"]["image"],

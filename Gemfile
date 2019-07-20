@@ -70,8 +70,8 @@ gem 'flattened_active_admin'
 gem 'bourbon'
 gem 'formadmin'
 
-gem 'omniauth', '~> 1.6.1'
-gem 'omniauth-auth0', '~> 2.0.0'
+gem 'omniauth'
+gem 'omniauth-auth0'
 
 gem 'bootstrap'
 gem 'jquery-rails'
