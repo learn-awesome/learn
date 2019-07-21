@@ -78,12 +78,16 @@
 
 		<%= form_with(model: @my_review) do |form| %>
 			<div class="inplacereview">
+				<br>
 				<hr>
-				<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "What's your current status?"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
+				<div class="form-group review_status_input">
+					<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
+					<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
+				</div>
 				<hr>
 				<div class="form-group mb-2 star_ratings">
-		        <%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
-		    	</div>
+				<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+				</div>
 
 				<br>
 				<br>
@@ -95,7 +99,7 @@
 					  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
 					  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
 					  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
-					    <input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+						<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
 					  </label>
 					  <% end %>
 					</div>

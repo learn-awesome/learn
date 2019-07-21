@@ -68,9 +68,12 @@ $star-off-color: #CCCCCC;
 }
 
 .inplacereview {
+	.review_status_input {
+		max-width: fit-content;
+		margin: auto;
+	}
 	#review_status {
 		max-width: 255px;
-		margin: auto;
 	}
 	.item_categorization {
 		max-width: 600px;
