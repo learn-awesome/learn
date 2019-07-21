@@ -21,23 +21,22 @@
 }
 
 $stars: 5;
-$star-size: 20px;
+$star-size: 40px;
 $star-spacing: 2px;
 $star-on-color: #F9DF4A;
 $star-off-color: #CCCCCC;
 
 .rating {
+	float: left;
 	width: ($star-size * $stars) + ($star-spacing * ($stars - 1));
 	height: $star-size;
 	margin: 0 auto;
 
 	label {
-		float: right;
-		position: relative;
 		width: $star-size;
 		height: $star-size;
 		cursor: pointer;
-		
+		float: right;
 		&:not(:first-of-type) {
 			padding-right: $star-spacing;
 		}
@@ -58,6 +57,28 @@ $star-off-color: #CCCCCC;
 	&:not(:checked) > label:hover:before,
 	&:not(:checked) > label:hover ~ label:before {
 		color: $star-on-color;
+	}
+}
+
+.star_ratings {
+	text-align: center;
+	width: 226px;
+	margin: 5px auto;
+	text-align: center;
+}
+
+.inplacereview {
+	#review_status {
+		max-width: 255px;
+		margin: auto;
+	}
+	.item_categorization {
+		max-width: 600px;
+		margin: auto;
+
+		.btn-group {
+			display: block;
+		}
 	}
 }
 
@@ -119,6 +140,10 @@ $star-off-color: #CCCCCC;
 .grey-btn {
 	background-color: #5a6a7e;
 	color: white;
+}
+
+.btn-success {
+	background-color: #12a78d !important;
 }
 
 .item_links input {
