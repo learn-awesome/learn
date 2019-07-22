@@ -3,7 +3,7 @@
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
-	<%= link_to "Gitter Chat", ("https://gitter.im/learn-awesome/" + topic.chat_room), class: "btn btn-sm btn-pill btn-warning", target: :_blank %>
+	<%= link_to "Add New", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
 
 </h2>
 <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4>
@@ -23,7 +23,7 @@
 	        <div class="col-md-6 mb-4">
 	          <div class="card">
 	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><%= link_to it.display_name_plural, it, class: "btn #{ItemType.button_style}" %></h2>
+	              <h2 class="h3 card-header-title"><%= it.display_name_plural %></h2>
 
 	            </div>
 

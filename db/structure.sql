@@ -233,7 +233,8 @@ CREATE TABLE public.reviews (
     interactive_score integer,
     notes text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    overall_score integer
 );
 
 
@@ -605,13 +606,6 @@ CREATE INDEX index_topic_relations_on_from_id ON public.topic_relations USING bt
 --
 
 CREATE INDEX index_topic_relations_on_to_id ON public.topic_relations USING btree (to_id);
-
-
---
--- Name: index_topics_on_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_topics_on_name ON public.topics USING btree (name);
 
 
 --

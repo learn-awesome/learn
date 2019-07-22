@@ -1,0 +1,14 @@
+<%
+	idprefix = local_assigns.fetch(:idprefix)
+	name = local_assigns.fetch(:name)
+	value = local_assigns.fetch(:value)
+	onchange = local_assigns.fetch(:onchange)
+%>
+<br>
+<h3>How would you rate this?</h3>
+<span class="rating">
+<% (1..5).to_a.reverse.each do |score| %>
+  <input type="radio" id="<%= idprefix %><%= score %>" name="<%= name %>" value="<%= score %>" <%= "checked" if value.to_i == score %> onchange="<%= onchange %>" />
+  <label for="<%= idprefix %><%= score %>"></label>
+<% end %>
+</span>

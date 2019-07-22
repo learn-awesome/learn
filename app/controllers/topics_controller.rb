@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
 	end
 
 	def search
-		results = Topic.where("name like ?", "%#{params[:q]}%")
+		results = Topic.search(params[:q])
 		render :json => results.as_json(only: [:id, :name])
 	end
 

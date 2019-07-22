@@ -27,7 +27,7 @@
 
             <div class="item_topics" id="topformdiv">
               <div id="search_topic" class="input-group input-group-sm mb-3">
-                <input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics" id="topics_input">
+                <input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics" id="topics_input" autocomplete="off">
                 <div class="input-group-append">
                   <% @topics.to_a.map do |topic| %>
                     <div class="btn-group topic" data-id="<%= topic.id %>">

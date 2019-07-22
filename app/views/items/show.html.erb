@@ -77,17 +77,47 @@
 		</div>
 	</div>
 </div>
-<br>
+
+<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+	<div class="card-body">
+		<%= form_with(model: @my_review) do |form| %>
+			<div class="inplacereview">
+				<div class="form-group review_status_input">
+					<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
+					<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
+				</div>
+				<hr>
+				<div class="form-group mb-2 star_ratings">
+				<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+				</div>
+
+				<br>
+				<br>
+
+				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+				<br>
+				<div class="item_categorization">
+					<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
+					  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
+					  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
+					  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
+						<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+					  </label>
+					  <% end %>
+					</div>
+				</div>
+				<div class="item_review_notes">
+					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
+					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
 		<h2 class="h3 card-header-title">Reviews</h2>
-		<div class="item_actions">
-			<% if (rev = Review.where(item: @item, user: current_user).first) %>
-				<%= link_to "Modify my review", edit_review_path(rev), class: "btn btn-sm #{ItemType.button_style}" %>
-			<% else %>
-				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm #{ItemType.button_style}" %>
-			<% end %>
-		</div>
 	</div>
 	<div class="card-body">
 		<% if @item.reviews.any? %>
@@ -96,33 +126,23 @@
 			  <div class="card">
 				<div class="card-body">
 					<div class="list-group list-lg-group list-group-flush">
-					<% @item.reviews.each do |rev| %>
-
+						<% @item.reviews.each do |rev| %>
 							<div class="list-group-item">
+								<div class="media">
+									<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
 
-									<div class="media">
-										<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
-
-										<div class="media-body">
-											<div class="d-md-flex align-items-center">
-												<h4 class="mb-1">
-													<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.status %></span>
-												</h4>
-												<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-											</div>
-
-											<p class="mb-0"><%= rev.notes %></p><br/>
-											<p class="mb-0"><code>Inspirational:</code> <%= "★" * rev.inspirational_score.to_i %></p>
-											<p class="mb-0"><code>Educational&nbsp;&nbsp;:</code> <%= "★" * rev.educational_score.to_i %></p>
-											<p class="mb-0"><code>Challenging&nbsp;&nbsp;:</code> <%= "★" * rev.challenging_score.to_i %></p>
-											<p class="mb-0"><code>Entertaining&nbsp;:</code> <%= "★" * rev.entertaining_score.to_i %></p>
-											<p class="mb-0"><code>Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</code> <%= "★" * rev.visual_score.to_i %></p>
-											<p class="mb-0"><code>Interactive&nbsp;&nbsp;:</code> <%= "★" * rev.interactive_score.to_i %></p>
+									<div class="media-body">
+										<div class="d-md-flex align-items-center">
+											<h4 class="mb-1">
+												<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
+											</h4>
+											<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 										</div>
+										<p class="mb-0"><%= rev.notes %></p><br/>
 									</div>
+								</div>
 							</div>
-
-					<% end %>
+						<% end %>
 					</div>
 				</div>
 			  </div>

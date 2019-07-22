@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
 		@review.entertaining_score = params[:review][:entertaining_score]
 		@review.visual_score = params[:review][:visual_score]
 		@review.interactive_score = params[:review][:interactive_score]
+		@review.overall_score = params[:review][:overall_score]
 		@review.notes = params[:review][:notes]
 		if @review.save
 			redirect_to item_path(@review.item)
@@ -39,11 +40,12 @@ class ReviewsController < ApplicationController
 		@review.entertaining_score = params[:review][:entertaining_score]
 		@review.visual_score = params[:review][:visual_score]
 		@review.interactive_score = params[:review][:interactive_score]
+		@review.overall_score = params[:review][:overall_score]
 		@review.notes = params[:review][:notes]
 		if @review.save
 			redirect_to item_path(@review.item)
 		else
-			flash[:error] = @review.errors.first
+			flash[:danger] = @review.errors.first
 			redirect_back fallback_location: root_path
 		end
 	end
