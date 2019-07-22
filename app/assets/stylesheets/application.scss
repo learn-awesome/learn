@@ -78,9 +78,18 @@ $star-off-color: #CCCCCC;
 	.item_categorization {
 		max-width: 600px;
 		margin: auto;
+		margin-bottom: 20px;
 
 		.btn-group {
 			display: block;
+		}
+	}
+	.item_review_notes {
+		max-width: 500px;
+		margin: auto;
+
+		textarea {
+			height: 100px;
 		}
 	}
 }

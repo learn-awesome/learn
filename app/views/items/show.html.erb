@@ -104,6 +104,9 @@
 					  <% end %>
 					</div>
 				</div>
+				<div class="item_review_notes">
+					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
+				</div>
 			</div>
 		<% end %>
 	</div>
@@ -112,13 +115,6 @@
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
 		<h2 class="h3 card-header-title">Reviews</h2>
-		<div class="item_actions">
-			<% if !@my_review.new_record? %>
-				<%= link_to "Modify my review", edit_review_path(@my_review), class: "btn btn-sm btn-info" %>
-			<% else %>
-				<%= link_to "Add my review", new_review_path(item_id: @item.id), class: "btn btn-sm btn-info" %>
-			<% end %>
-		</div>
 	</div>
 	<div class="card-body">
 		<% if @item.reviews.any? %>
