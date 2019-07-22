@@ -57,7 +57,7 @@ class Topic < ApplicationRecord
 
 	def self.search(q, max=10, is_fuzzy=true)
       if is_fuzzy
-        return Topic.where("search_index LIKE ?", "%#{q}%").limit(max)
+        return Topic.where("lower(search_index) LIKE ?", "%#{q.try(:downcase)}%").limit(max)
       else
         return Topic.where(name: q).limit(max)
       end
