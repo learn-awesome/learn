@@ -75,11 +75,13 @@
 				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
 			<% end %>
 		</div>
+	</div>
+</div>
 
+<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+	<div class="card-body">
 		<%= form_with(model: @my_review) do |form| %>
 			<div class="inplacereview">
-				<br>
-				<hr>
 				<div class="form-group review_status_input">
 					<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
 					<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
@@ -112,7 +114,7 @@
 		<% end %>
 	</div>
 </div>
-<br>
+
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
 		<h2 class="h3 card-header-title">Reviews</h2>
@@ -124,26 +126,23 @@
 			  <div class="card">
 				<div class="card-body">
 					<div class="list-group list-lg-group list-group-flush">
-					<% @item.reviews.each do |rev| %>
-
+						<% @item.reviews.each do |rev| %>
 							<div class="list-group-item">
+								<div class="media">
+									<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
 
-									<div class="media">
-										<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
-
-										<div class="media-body">
-											<div class="d-md-flex align-items-center">
-												<h4 class="mb-1">
-													<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
-												</h4>
-												<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-											</div>
-											<p class="mb-0"><%= rev.notes %></p><br/>
+									<div class="media-body">
+										<div class="d-md-flex align-items-center">
+											<h4 class="mb-1">
+												<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
+											</h4>
+											<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
 										</div>
+										<p class="mb-0"><%= rev.notes %></p><br/>
 									</div>
+								</div>
 							</div>
-
-					<% end %>
+						<% end %>
 					</div>
 				</div>
 			  </div>
