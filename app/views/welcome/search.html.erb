@@ -7,7 +7,7 @@
 </header>
 
 <div class="card-body">
-	<% @topics.each do |topic| %>
+	<% @topics.to_a.each do |topic| %>
 		<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>
 	<% end %>
 </div>
