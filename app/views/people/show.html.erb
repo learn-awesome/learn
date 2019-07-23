@@ -3,7 +3,7 @@
 	  <div class="card">
         <div class="card-header d-md-flex align-items-center">
         	<h2 class="h3 card-header-title"><%= @person.name %></h2>
-                <% if current_user.try(:score) > 500 %>
+                <% if current_user.try(:score).to_i > 500 %>
                         &nbsp;&nbsp;<%= link_to "Edit", edit_person_path(@person) %>
                 <% end %>
         </div>
