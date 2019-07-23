@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: learnawesome.org
+Token: e0eb3c1747a50d326041f380e82e9557cc5ca0ab9d31a9182a6de63f5efb1dad
