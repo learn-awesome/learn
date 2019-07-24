@@ -125,9 +125,7 @@ class Item < ApplicationRecord
   end
 
   def self.extract_opengraph_data(url)
-
     Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
-      puts "Not found in cache. Fetching from goodreads..."
       if url.include?("goodreads.com")
         # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
         item_type = 'book'
@@ -158,10 +156,28 @@ class Item < ApplicationRecord
           creator_bio: creator_bio,
           metadata: {isbn: isbn, page_count: page_count}
         }
-      elsif url.include?("youtube.com")
-        {item_type: 'video', topics: []}
+      elsif url.include?("youtube.com") or url.include?("vimeo.com")
+        canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
+        image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
+        title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
+        description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
+        {
+          item_type: 'video',
+          topics: [],
+          canonical: canonical,
+          image_url: image_url,
+          title: title,
+          description: description
+        }
       elsif url.include?("wikipedia.org")
-        {item_type: 'wiki', topics: []}
+        title = page.at('title')&.content
+        canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
+        {
+          item_type: 'wiki',
+          topics: [],
+          canonical: canonical,
+          title: title
+        }
       else
         {}
       end
