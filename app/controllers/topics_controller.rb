@@ -3,6 +3,10 @@ class TopicsController < ApplicationController
   	before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create]
 
 	def index
+      respond_to do |format|
+        format.html
+        format.json { render json: Topic.all }
+      end
 	end
 
 	def new

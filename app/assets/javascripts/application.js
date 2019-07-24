@@ -35,7 +35,7 @@ function animateHeadline(){
 	  	link: "item_type=chat&topic=cooking&commit=Search"
 	  },
 	  {
-	  	msg: "Show me <u>MOOCs</u> about <u>learning</u> which are <u>10 to 20 hours</u> long and are <u>inspirational</u>.",
+	  	msg: "Show me <u>courses</u> about <u>learning</u> which are <u>10 to 20 hours</u> long and are <u>inspirational</u>.",
 	  	link: "item_type=course&length=180-9999&quality=inspirational&topic=learning&commit=Search"
 	  }
 	];

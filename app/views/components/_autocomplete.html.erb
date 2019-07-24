@@ -1,0 +1,46 @@
+<%
+	containerid = local_assigns.fetch(:containerid)
+	placeholder = local_assigns.fetch(:placeholder)
+	source = local_assigns.fetch(:source)
+%>
+
+
+<div id="<%= containerid %>">
+  <input type="text" placeholder="<%= placeholder %>" autocomplete="off" class="form-control form-pill typeahead"/>
+</div>
+
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function (){
+		var topics = new Bloodhound({
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("search_index"),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace,
+		  prefetch: '<%= source %>'
+		});
+
+		$('#<%= containerid %> .typeahead').typeahead({
+		  hint: true,
+		  highlight: true,
+		  minLength: 1
+		},
+		{
+		  name: 'topics',
+		  display: 'name',
+		  source: topics,
+		  templates: {
+		    empty: [
+		      '<div class="empty-message">',
+		        'not found',
+		      '</div>'
+		    ].join('\n'),
+		    suggestion: function(data){
+		    	return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
+		    }
+		  }
+		});
+  }, 1000);
+});
+
+</script>
+

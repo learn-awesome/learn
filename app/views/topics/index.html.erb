@@ -1,3 +1,8 @@
+<div style="text-align: center; margin-bottom: 3.0em;" class="form-group">
+<h1>I want to learn</h1>
+<%= render 'components/autocomplete', containerid: 'maintopic', placeholder: 'e.g. machine learning', source: '/topics.json' %>
+</div>
+
 <div style="column-width: 300px;">
 <% Topic.all.sort_by(&:display_name).each do |topic| %>
 	<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>

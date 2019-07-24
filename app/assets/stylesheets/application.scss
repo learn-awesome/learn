@@ -261,3 +261,37 @@ input#item_year_of_publication {
 	max-height: 150px;
 	margin-right: 12px;
 }
+
+
+#maintopic .empty-message {
+  padding: 5px 10px;
+ text-align: center;
+}
+
+#maintopic .tt-menu {
+	background-color: white;
+	min-width: 350px;
+	max-width: 900px;
+	border: thin solid #6b15b6;
+}
+
+#maintopic .tt-dropdown-menu {
+	max-height: 150px;
+	overflow-y: auto;
+}
+
+#maintopic .tt-selectable {
+}
+
+#maintopic .tt-menu a div {
+  padding: 0.3em;
+}
+
+#maintopic .tt-menu a:hover div {
+	background-color: #6b15b6;
+	color: white;
+}
+
+#maintopic a {
+	cursor: pointer;
+}
