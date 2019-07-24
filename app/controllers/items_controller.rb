@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
-      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :time_unit, :typical_age_range, :image_url, :description, :metadata))
+      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata))
       # item.search_index = params[:item][:name]
       item.user = current_user
       item.idea_set = idea_set
