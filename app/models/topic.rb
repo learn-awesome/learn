@@ -26,6 +26,14 @@ class Topic < ApplicationRecord
 		self.find(id.to_s.split("-")[0..4].join("-"))
 	end
 
+	def as_json(options = {})
+		{
+			id: self.id,
+			name: self.name,
+			search_index: self.search_index
+		}
+	end
+
 	def self.button_style
 		"btn-success"
 	end
