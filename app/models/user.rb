@@ -53,6 +53,10 @@ class User < ApplicationRecord
 		self.role == "admin"
 	end
 
+	def is_from_twitter?
+		self.auth0_uid.to_s.start_with?("twitter|")
+	end
+
 	def get_reviews(item_type, status, quality = nil, min_quality_score = 0)
 		results = self.reviews
 		if status.present?

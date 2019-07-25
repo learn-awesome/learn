@@ -75,6 +75,11 @@ class UsersController < ApplicationController
       else
         @user.random_fav_item_types = item_types.join(",")
       end
+
+      if params[:user]["post_reviews_to_twitter"]
+        @user.post_reviews_to_twitter = (params[:user]["post_reviews_to_twitter"].to_s == "1")
+      end
+
       if @user.save
         flash[:success] = "Settings saved."
         redirect_back fallback_location: settings_user_path(@user)

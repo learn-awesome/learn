@@ -84,3 +84,5 @@ gem "font-awesome-rails"
 
 gem "sentry-raven"
 
+gem 'twitter'
+gem 'httparty'

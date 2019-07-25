@@ -335,7 +335,8 @@ CREATE TABLE public.users (
     updated_at timestamp without time zone NOT NULL,
     random_fav_topic boolean DEFAULT false NOT NULL,
     random_fav_item_types character varying,
-    referrer character varying
+    referrer character varying,
+    post_reviews_to_twitter boolean DEFAULT false NOT NULL
 );
 
 
@@ -805,6 +806,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190706110136'),
 ('20190706175347'),
 ('20190714025449'),
-('20190717185003');
+('20190717185003'),
+('20190725101714');
 
 

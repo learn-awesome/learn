@@ -18,11 +18,14 @@
 #  overall_score       :integer
 #
 
+require 'httparty'
+
 class Review < ApplicationRecord
   belongs_to :user, inverse_of: :reviews
   belongs_to :item, inverse_of: :reviews
 
   after_save :update_item_ratings
+  after_create :post_to_twitter
 
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
 
@@ -32,6 +35,14 @@ class Review < ApplicationRecord
   		self.item.write_attribute(quality_score, avg_score.to_f) if avg_score
   		self.item.save
   	end
+  end
+
+  def post_to_twitter
+    if self.user.is_from_twitter? && self.user.post_reviews_to_twitter
+      if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
+        # PostReviewToTwitterJob.perform_later(self.user_id, self.id)
+      end
+    end
   end
 
   def as_json(options = {})
