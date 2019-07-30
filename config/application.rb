@@ -23,6 +23,8 @@ module Learn
 
     config.active_job.queue_adapter = :sidekiq
 
+    config.active_job.default_url_options = { host: "https://learnawesome.org" }
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
