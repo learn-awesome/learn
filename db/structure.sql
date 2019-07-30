@@ -318,6 +318,21 @@ CREATE TABLE public.user_user_relations (
 
 
 --
+-- Name: user_vouchers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.user_vouchers (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    user_id bigint NOT NULL,
+    voucher_id bigint NOT NULL,
+    status character varying NOT NULL,
+    expires_at date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -337,6 +352,24 @@ CREATE TABLE public.users (
     random_fav_item_types character varying,
     referrer character varying,
     post_reviews_to_twitter boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: vouchers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.vouchers (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    code character varying NOT NULL,
+    max_limit integer,
+    payment_ref character varying,
+    domain character varying,
+    price integer,
+    period_days integer,
+    internal_description character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -476,11 +509,27 @@ ALTER TABLE ONLY public.user_user_relations
 
 
 --
+-- Name: user_vouchers user_vouchers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_vouchers
+    ADD CONSTRAINT user_vouchers_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vouchers vouchers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.vouchers
+    ADD CONSTRAINT vouchers_pkey PRIMARY KEY (id);
 
 
 --
@@ -642,6 +691,20 @@ CREATE INDEX index_user_user_relations_on_from_user_id ON public.user_user_relat
 --
 
 CREATE INDEX index_user_user_relations_on_to_user_id ON public.user_user_relations USING btree (to_user_id);
+
+
+--
+-- Name: index_user_vouchers_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_vouchers_on_user_id ON public.user_vouchers USING btree (user_id);
+
+
+--
+-- Name: index_user_vouchers_on_voucher_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_vouchers_on_voucher_id ON public.user_vouchers USING btree (voucher_id);
 
 
 --
@@ -807,6 +870,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190706175347'),
 ('20190714025449'),
 ('20190717185003'),
-('20190725101714');
+('20190725101714'),
+('20190725173959');
 
 
