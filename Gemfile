@@ -86,3 +86,4 @@ gem "sentry-raven"
 
 gem 'twitter'
 gem 'httparty'
+gem 'sidekiq'
