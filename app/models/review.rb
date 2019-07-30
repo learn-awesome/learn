@@ -38,9 +38,10 @@ class Review < ApplicationRecord
   end
 
   def post_to_twitter
+    return unless Rails.env.production?
     if self.user.is_from_twitter? && self.user.post_reviews_to_twitter
       if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
-        # PostReviewToTwitterJob.perform_later(self.user_id, self.id)
+        # PostReviewToTwitterJob.set(wait: 10.minutes).perform_later(self.id)
       end
     end
   end
