@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   		flash[:success] = "Changes saved."
   		redirect_to @user
   	else
-  		flash[:error] = "Changes could not be saved: #{@user.errors.first.inspect}"
+  		flash[:danger] = "Changes could not be saved: #{@user.errors.first.inspect}"
   		redirect_back fallback_location: root_path
   	end
   end

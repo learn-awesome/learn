@@ -15,11 +15,15 @@ class Auth0Controller < ApplicationController
         user.image_url = session[:userinfo]["info"]["image"]
         user.save
       else
-        User.create(authinfo: session[:userinfo].to_json,
+        user = User.new(authinfo: session[:userinfo].to_json,
           auth0_uid: session[:userinfo]["uid"],
           nickname: session[:userinfo]["info"]["nickname"],
           image_url: session[:userinfo]["info"]["image"],
           referrer: request.env['omniauth.params']['ref'])
+
+        unless user.save
+          Rails.logger.error user.errors.inspect
+        end
       end
     end
 

@@ -30,7 +30,7 @@ class User < ApplicationRecord
 	validates_length_of :bio, maximum: 140
 	validates_length_of :description, maximum: 400
 
-	validates_format_of :nickname, with: /\A[a-z][a-z0-9.\-]+[a-z0-9]\Z/
+	validates_format_of :nickname, with: /\A[a-zA-Z][a-zA-Z0-9\_.\-]+\Z/
 
 	has_many :user_topics, dependent: :destroy, inverse_of: :user
 	has_many :reviews, dependent: :destroy, inverse_of: :user

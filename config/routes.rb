@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create, :edit, :update, :show]
 
   get 'auth/oauth2/callback' => 'auth0#callback'
+  get 'auth/auth0/callback' => 'auth0#callback'
   get 'auth/failure' => 'auth0#failure'
+  get 'auth/logout' => 'auth0#logout'
   get '/logout' => 'auth0#logout'
   get '/formats' => 'item_types#index'
   get '/about' => 'welcome#about'
