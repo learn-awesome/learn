@@ -1,6 +1,12 @@
 class ReviewsController < ApplicationController
 	include Secured
-  	before_action :logged_in_using_omniauth?
+  	before_action :logged_in_using_omniauth?, except: [:show]
+
+  	def show
+  		@review = Review.find(params[:id])
+  		@item = @review.item
+  		@my_review = Review.where(item: @item, user: current_user).first || Review.new
+  	end
 
 	def edit
 		@review = Review.where(user: current_user).where(id: params[:id]).first
