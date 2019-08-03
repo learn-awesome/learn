@@ -1,7 +1,6 @@
 <%
 	containerid = local_assigns.fetch(:containerid)
 	placeholder = local_assigns.fetch(:placeholder)
-	source = local_assigns.fetch(:source)
 %>
 
 
@@ -16,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		var topics = new Bloodhound({
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("search_index"),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  prefetch: '<%= source %>'
+		  remote: {
+		    url: '/topics/search.json?q=%QUERY',
+		    wildcard: '%QUERY'
+		  }
 		});
 
 		$('#<%= containerid %> .typeahead').typeahead({
