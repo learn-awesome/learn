@@ -54,7 +54,7 @@
 				<h3 class="card-title">About me</h3>
 				<p class="mb-5"><%= @user.description %></p>
 
-				<div class="row">
+				<div class="row mb-3">
 					<div class="col-lg-4 mb-5 mb-lg-0">
 						<h4 class="h3 mb-3">Profile Rating</h4>
 
@@ -65,6 +65,8 @@
 
 						<p class="text-muted mb-0"><%= @user.submissions.count %> Submissions</p>
 						<p class="text-muted mb-0"><%= @user.reviews.count %> Reviews</p>
+						<p class="text-muted mb-0"><%= @user.followers.count %> Followers</p>
+						<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
 					</div>
 
 					<div class="col-lg-8">
@@ -75,6 +77,17 @@
 								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style} mr-1" %>
 							<% end %>
 						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<% if @user.followers.any? %>
+							<p>Followers: <% @user.followers.each do |f| %><%= link_to f.nickname, user_path(f) %><% end %></p>
+						<% end %>
+						<% if @user.following.any? %>
+							<p>Following: <% @user.following.each do |f| %><%= link_to f.nickname, user_path(f) %><% end %></p>
+						<% end %>
 					</div>
 				</div>
 
