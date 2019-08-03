@@ -157,6 +157,7 @@ class Item < ApplicationRecord
           metadata: {isbn: isbn, page_count: page_count}
         }
       elsif url.include?("youtube.com") or url.include?("vimeo.com")
+        page = Nokogiri::HTML(open(url))
         canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
         image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
         title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
@@ -170,6 +171,7 @@ class Item < ApplicationRecord
           description: description
         }
       elsif url.include?("wikipedia.org")
+        page = Nokogiri::HTML(open(url))
         title = page.at('title')&.content
         canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
         {
