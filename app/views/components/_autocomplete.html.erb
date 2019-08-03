@@ -1,6 +1,7 @@
 <%
 	containerid = local_assigns.fetch(:containerid)
 	placeholder = local_assigns.fetch(:placeholder)
+	is_remote = local_assigns.fetch(:is_remote)
 	source = local_assigns.fetch(:source)
 %>
 
@@ -13,11 +14,21 @@
 
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function (){
-		var topics = new Bloodhound({
+  		var bloodhoundConfig = {
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("search_index"),
-		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  prefetch: '<%= source %>'
-		});
+		  queryTokenizer: Bloodhound.tokenizers.whitespace
+		}
+
+		<% if is_remote == true %>
+			bloodhoundConfig.remote = {
+				url: '<%= source %>',
+				wildcard: '%QUERY'
+			}
+		<% else %>
+			bloodhoundConfig.prefetch = '<%= source %>'
+		<% end %>
+
+		var topics = new Bloodhound(bloodhoundConfig);
 
 		$('#<%= containerid %> .typeahead').typeahead({
 		  hint: true,
