@@ -45,4 +45,5 @@ Rails.application.routes.draw do
   get '/formats' => 'item_types#index'
   get '/about' => 'welcome#about'
   get '/search' => 'welcome#search'
+  get '/suggestions' => 'welcome#suggestions'
 end

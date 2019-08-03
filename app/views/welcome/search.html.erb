@@ -1,17 +1,35 @@
+<h3>Search results:</h3>
 <div class="row">
-<div class="col-md-6 mb-4">
-<div class="card">
+	<% if (@topics + @items).blank? %>
+		<div>No results for <%= @q %></div>
+	<% end %>
 
-<header class="card-header">
-	<h2 class="h3 card-header-title">Topics</h2>
-</header>
+	<% unless @topics.blank? %>
+		<div class="card col-md-5 mb-4 mr-2 ml-2">
+			<header class="card-header">
+				<h2 class="h3 card-header-title">Topics</h2>
+			</header>
 
-<div class="card-body">
-	<% @topics.to_a.each do |topic| %>
-		<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>
+			<div class="card-body">
+				<% @topics.to_a.each do |topic| %>
+				<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+
+	<% unless @items.blank? %>
+		<div class="card col-md-5 mb-4 mr-2 ml-2">
+			<header class="card-header">
+				<h2 class="h3 card-header-title">Items</h2>
+			</header>
+
+			<div class="card-body">
+				<% @items.to_a.each do |item| %>
+					<div><%= link_to item.name, item_path(item), class: "", style: "margin-bottom: 8px" %></div>
+				<% end %>
+			</div>
+		</div>
 	<% end %>
 </div>
 
-</div>
-</div>
-</div>

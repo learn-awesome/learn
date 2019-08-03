@@ -20,11 +20,7 @@ class WelcomeController < ApplicationController
     	@topics = Topic.search(@q, 10, is_fuzzy).to_a
       respond_to do |format|
         format.html {
-          if (@topics + @items).blank?
-            flash[:warning] = "#{@q}: No such topic found"
-            redirect_to new_topic_path(name: @q)
-            return
-          end
+          @items = Item.search(@q, 10, is_fuzzy).to_a
           if (@topics + @items).size == 1
             redirect_to (@topics + @items).first
           else
@@ -36,5 +32,10 @@ class WelcomeController < ApplicationController
       return
     end
     # render welcome/search
+  end
+
+  def suggestions
+    query = params[:q]
+    render json: [query] + Topic.search(query).map {|topic| topic.name} + Item.search(query).map {|item| item.name}
   end
 end
