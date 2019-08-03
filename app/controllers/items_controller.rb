@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
     Item.transaction do
       idea_set = IdeaSet.new
       idea_set.name = params[:item][:name]
+      idea_set.description = params[:item][:description]
 
       if params[:item][:person_id].present?
         idea_set.person_idea_sets.build
