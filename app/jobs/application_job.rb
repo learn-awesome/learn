@@ -1,9 +1,8 @@
 class ApplicationJob < ActiveJob::Base
   include Rails.application.routes.url_helpers
 
-  class << self
-	  def default_url_options
-	    Rails.application.config.active_job.default_url_options
-	  end
+  protected
+  def default_url_options
+    Rails.configuration.x.application_job.default_url_options
   end
 end
