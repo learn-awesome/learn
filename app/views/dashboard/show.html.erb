@@ -1,50 +1,75 @@
-<div class="mb-4">
-<nav aria-label="breadcrumb">
-  <h1 class="h3">Your Favorite Topics</h1>
-</nav>
+
+<div class="row">
+<!-- Cards with Tabs -->
+<div class="col-md-6 mb-4">
+<% if @user_topics.any? %>
+	<% @user_topics.map(&:topic).each do |topic| %>
+	      <div class="card">
+	        <div class="card-header d-md-flex align-items-center">
+	          <h2 class="h3 card-header-title"><%= link_to topic.name, topic, class: "btn #{Topic.button_style}" %></h2>
+
+	          <!-- Tabs Nav -->
+	          <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
+	           <li class="nav-item">
+	             <a href="#<%= topic.id %>panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
+	           </li>
+	           <li class="nav-item">
+	             <a href="#<%= topic.id %>panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
+	           </li>
+	          </ul>
+	          <!-- End Tabs Nav -->
+	        </div>
+
+	        <div class="card-body">
+	          <!-- Tabs Content -->
+	          <div class="tab-content">
+	            <div class="tab-pane fade show active" id="<%= topic.id %>panelWithTabsTab1" role="tabpanel">
+	            		<% topic.items.recent.each do |item| %>
+	            		<div><%= render item %></div>
+	            		<% end %>
+	            </div>
+
+	            <div class="tab-pane fade" id="<%= topic.id %>panelWithTabsTab2" role="tabpanel">
+	            		<% topic.items.popular.each do |item| %>
+	            		<div><%= render item %></div>
+	            		<% end %>
+	            </div>
+	          </div>
+	          <!-- End Tabs Content -->
+	        </div>
+
+	      </div>
+
+	<% end %>
+<% else %>
+	      <div class="card">
+	        <div class="card-header d-md-flex align-items-center">
+	          <h2 class="h3 card-header-title">Your favorite topics</h2>
+	        </div>
+	        <div class="card-body">
+	        	<p>No such topics. <%= link_to "Browse topics", topics_path %> and follow your favorite ones.</p>
+	        </div>
+	      </div>
+<% end %>
 </div>
 
-<% @user_topics.map(&:topic).each_slice(2).to_a.each do |pair| %>
-      <div class="row">
-        <!-- Cards with Tabs -->
-        <% pair.each do |topic| %>
-	        <div class="col-md-6 mb-4">
-	          <div class="card">
-	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><%= link_to topic.name, topic, class: "btn #{Topic.button_style}" %></h2>
+<div class="col-md-6 mb-4">
+     <div class="card">
+        <div class="card-header d-md-flex align-items-center">
+        	<h2>Reviews from users you're following</h2>
+        </div>
+        <div class="card-body">
+        	<% if !@following_reviews.blank? %>
+	        	<% @following_reviews.each do |rev| %>
+	        		<p><%= link_to rev.user.nickname, user_path(rev.user) %>: <%= "⭐" * rev.overall_score.to_i %> <%= link_to rev.item.name, review_path(rev) %></p>
+	        		<p><%= rev.notes[0..200] %>...</p>
+	        		<hr/>
+	        	<% end %>
+	        <% else %>
+	        	<p>No reviews. Try following more users?</p>
+	        <% end %>
+        </div>
+</div>
 
-	              <!-- Tabs Nav -->
-	              <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
-	               <li class="nav-item">
-	                 <a href="#<%= topic.id %>panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
-	               </li>
-	               <li class="nav-item">
-	                 <a href="#<%= topic.id %>panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
-	               </li>
-	              </ul>
-	              <!-- End Tabs Nav -->
-	            </div>
+</div>
 
-	            <div class="card-body">
-	              <!-- Tabs Content -->
-	              <div class="tab-content">
-	                <div class="tab-pane fade show active" id="<%= topic.id %>panelWithTabsTab1" role="tabpanel">
-	                		<% topic.items.recent.each do |item| %>
-	                		<div><%= render item %></div>
-	                		<% end %>
-	                </div>
-
-	                <div class="tab-pane fade" id="<%= topic.id %>panelWithTabsTab2" role="tabpanel">
-	                		<% topic.items.popular.each do |item| %>
-	                		<div><%= render item %></div>
-	                		<% end %>
-	                </div>
-	              </div>
-	              <!-- End Tabs Content -->
-	            </div>
-
-	          </div>
-	        </div>
-        <% end %>
-      </div>
-<% end %>

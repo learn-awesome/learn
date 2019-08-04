@@ -36,11 +36,11 @@ class User < ApplicationRecord
 	has_many :reviews, dependent: :destroy, inverse_of: :user
 	has_many :submissions, class_name: "Item"
 
-	has_many :following, through: :from_user_relations, source: :from_user
 	has_many :from_user_relations, foreign_key: :from_user_id, class_name: "UserUserRelation"
+	has_many :following, through: :from_user_relations, source: :to_user
 
-	has_many :followers, through: :to_user_relations, source: :to_user
 	has_many :to_user_relations, foreign_key: :to_user_id, class_name: "UserUserRelation"
+	has_many :followers, through: :to_user_relations, source: :from_user
 
 	def auth0
 		JSON.parse(self.authinfo)
