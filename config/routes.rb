@@ -46,4 +46,5 @@ Rails.application.routes.draw do
   get '/about' => 'welcome#about'
   get '/search' => 'welcome#search'
   get '/suggestions' => 'welcome#suggestions'
+  get '/whatsnew' => 'welcome#whatsnew'
 end
