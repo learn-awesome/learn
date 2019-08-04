@@ -59,7 +59,7 @@
         	<h2>Reviews from users you're following</h2>
         </div>
         <div class="card-body">
-        	<% if @following_reviews.any? %>
+        	<% if !@following_reviews.blank? %>
 	        	<% @following_reviews.each do |rev| %>
 	        		<p><%= link_to rev.user.nickname, user_path(rev.user) %>: <%= "⭐" * rev.overall_score.to_i %> <%= link_to rev.item.name, review_path(rev) %></p>
 	        		<p><%= rev.notes[0..200] %>...</p>
