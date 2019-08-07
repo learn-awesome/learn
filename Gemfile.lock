@@ -320,6 +320,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    trix-rails (2.0.0)
+      rails (> 4.1, < 6.0)
     twitter (6.2.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -385,6 +387,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   textacular (~> 5.0)
+  trix-rails
   twitter
   tzinfo-data
   uglifier (>= 1.3.0)

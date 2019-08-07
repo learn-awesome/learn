@@ -37,7 +37,8 @@
           <div class="form-group mb-4">
             <% if @syllabus %>
             <%= form.label :description, "Add links to items along with comments" %><br>
-            <%= form.text_area :description, required: true, size: "50x20", class: "form-control" %>
+            <%= form.hidden_field :description, required: true %>
+            <trix-editor input="job_description"></trix-editor>
             <% else %>
             <%= form.label :description, "Description" %><br>
             <%= form.text_area :description, required: false, class: "form-control" %>
