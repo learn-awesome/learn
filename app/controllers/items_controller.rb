@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @syllabus = (params[:syllabus].to_s == 'true')
     item = nil
     Item.transaction do
       idea_set = IdeaSet.new
@@ -68,8 +69,10 @@ class ItemsController < ApplicationController
       item.user = current_user
       item.idea_set = idea_set
 
-      item.links.build
-      item.links.first.url = params[:item][:url]
+      if !@syllabus
+        item.links.build
+        item.links.first.url = params[:item][:url]
+      end
 
       unless params[:item][:status].blank?
         item.reviews.build

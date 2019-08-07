@@ -8,7 +8,7 @@
       </header>
 
       <div class="card-body">
-        <%= form_with scope: :item, url: items_path, id: 'item_new_form', local: true do |form| %>
+        <%= form_with scope: :item, url: items_path(syllabus: @syllabus), id: 'item_new_form', local: true do |form| %>
           <% if @syllabus %>
             <%= form.hidden_field :item_type_id, value: 'learning_plan' %>
           <% else %>
@@ -67,7 +67,9 @@
               </div>
             </div>
           <% else %>
-            <input type="hidden" name="item[topics][]" value="<%= @topics.first.id %>">
+            <div id="search_topic"><div class="topic">
+              <input type="hidden" name="item[topics][]" value="<%= @topics.first.id %>">
+            </div></div>
           <% end %>
 
           <% if !@syllabus %>
@@ -183,7 +185,7 @@
           <% end %>
 
           <div class="form-group mb-4 mu-4">
-            <%= form.submit "Save", class: "btn btn-primary" %>
+            <%= form.submit (@syllabus? "Save Syllabus" : "Save"), class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
