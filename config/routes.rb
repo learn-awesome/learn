@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_topics
   root 'welcome#index'
 
   get 'dashboard' => 'dashboard#show'

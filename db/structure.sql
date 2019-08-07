@@ -299,7 +299,9 @@ CREATE TABLE public.user_topics (
     topic_id uuid NOT NULL,
     action character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    value integer,
+    by_user_id uuid
 );
 
 
@@ -666,6 +668,13 @@ CREATE UNIQUE INDEX index_topics_on_name ON public.topics USING btree (name);
 
 
 --
+-- Name: index_user_topics_on_by_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_topics_on_by_user_id ON public.user_topics USING btree (by_user_id);
+
+
+--
 -- Name: index_user_topics_on_topic_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -795,6 +804,14 @@ ALTER TABLE ONLY public.person_idea_sets
 
 
 --
+-- Name: user_topics fk_rails_d399e7a245; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_topics
+    ADD CONSTRAINT fk_rails_d399e7a245 FOREIGN KEY (by_user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: items fk_rails_d4b6334db2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -871,6 +888,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190714025449'),
 ('20190717185003'),
 ('20190725101714'),
-('20190725173959');
+('20190725173959'),
+('20190807061505');
 
 
