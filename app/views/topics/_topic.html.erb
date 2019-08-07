@@ -3,8 +3,8 @@
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
-	<%= link_to "Add New", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
-
+  <%= link_to "Add New", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+  <%= link_to "Add New Syllabus", new_item_path(topic: topic.id, syllabus: true), class: "btn btn-sm btn-pill btn-warning" %>
 </h2>
 <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4>
 <h4>Quick search:

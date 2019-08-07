@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     @item_name = params[:name]
     @item_url = params[:url].to_s
     @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
+    @syllabus = (params[:syllabus].to_s == 'true')
 
     @extracted = Item.extract_opengraph_data(@item_url) if @item_url.present? 
 
