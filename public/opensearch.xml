@@ -5,5 +5,5 @@
   <Image width="64" height="64" type="image/png">https://learnawesome.org/favicon.png</Image>
   <Url type="text/html" method="get" template="https://learnawesome.org/search?q={searchTerms}"/>
   <moz:SearchForm>https://learnawesome.org/search</moz:SearchForm>
-  <Url type="application/x-suggestions+json" rel="suggestions" template="https://learnawesome.org/suggestions?q={searchTerms}" />
+  <Url type="application/x-suggestions+json" method="get" rel="suggestions" template="https://learnawesome.org/suggestions?q={searchTerms}" />
 </OpenSearchDescription>
