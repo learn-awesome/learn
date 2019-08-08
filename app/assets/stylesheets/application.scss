@@ -31,6 +31,7 @@ $star-off-color: #CCCCCC;
 	width: ($star-size * $stars) + ($star-spacing * ($stars - 1));
 	height: $star-size;
 	margin: 0 auto;
+	margin-bottom: 30px;
 
 	label {
 		width: $star-size;
@@ -68,6 +69,8 @@ $star-off-color: #CCCCCC;
 }
 
 .inplacereview {
+	text-align: center;
+
 	.review_status_input {
 		max-width: fit-content;
 		margin: auto;
@@ -79,10 +82,10 @@ $star-off-color: #CCCCCC;
 	.item_categorization {
 		max-width: 600px;
 		margin: auto;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 
 		.btn-group {
-			display: block;
+			display: inline-block;
 		}
 	}
 	.item_review_notes {
@@ -91,6 +94,10 @@ $star-off-color: #CCCCCC;
 
 		textarea {
 			height: 100px;
+		}
+
+		.btn {
+			margin-top: 30px;
 		}
 	}
 }
@@ -260,4 +267,17 @@ input#item_year_of_publication {
 	max-width: 150px;
 	max-height: 150px;
 	margin-right: 12px;
+}
+
+
+
+
+.avatar {
+	height: 30px;
+    width: 30px;
+    background: url(https://i.ytimg.com/vi/cKhVupvyhKk/maxresdefault.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+    border: 2px solid #fff;
 }
