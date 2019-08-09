@@ -261,6 +261,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redcarpet (3.5.0)
     redis (4.1.2)
     regexp_parser (1.5.1)
     responders (2.4.1)
@@ -378,6 +379,7 @@ DEPENDENCIES
   public_suffix
   puma (~> 3.11)
   rails (~> 5.2.2, >= 5.2.2.1)
+  redcarpet
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
