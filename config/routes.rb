@@ -22,6 +22,11 @@ Rails.application.routes.draw do
       get 'query'
       get 'discover'
     end
+
+    member do
+      get 'combine'
+      post 'combine'
+    end
   end
 
   resources :item_types, only: [:index, :show]

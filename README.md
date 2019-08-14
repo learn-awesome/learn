@@ -46,3 +46,4 @@ Either use your own Auth0 tenant (which needs some configuration) or contact us 
 ```
 
 For the admin interface, login at http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
+★★★☆☆

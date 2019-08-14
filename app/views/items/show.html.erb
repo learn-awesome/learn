@@ -75,6 +75,17 @@
 				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
 			<% end %>
 		</div>
+		<div><br/><br/></div>
+		<% if @item.related_items.any? %>
+		<div class="related_items">
+			<p>Related items: 
+			<% @item.related_items.each do |rel| %>
+				<%= link_to rel.item_type.display_name_plural, rel.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
+				<%= link_to rel.display_name, rel %>, 
+			<% end %>
+			</p>
+		</div>
+		<% end %>
 	</div>
 </div>
 

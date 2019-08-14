@@ -44,6 +44,7 @@ class Item < ApplicationRecord
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
   
   accepts_nested_attributes_for :links, allow_destroy: true
+  attr_accessor :other_item_id
 
   scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }
@@ -228,4 +229,13 @@ class Item < ApplicationRecord
     # This will need a bunch of heuristics and can be improved gradually.
   end
 
+  def combine(other_item)
+    prev_idea_set = other_item.idea_set
+    prev_idea_set.items.update(idea_set_id: self.idea_set_id)
+    IdeaSet.find(prev_idea_set.id).destroy # destroy after reload
+  end
+
+  def related_items
+    self.idea_set.items.reject { |i| i.id == self.id }
+  end
 end

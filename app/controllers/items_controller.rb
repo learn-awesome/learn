@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update]
+  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine]
 
   def index
   end
@@ -95,6 +95,27 @@ class ItemsController < ApplicationController
   	  redirect_to item
     else
       redirect_back fallback_location: root_path
+    end
+  end
+
+  def combine
+    @item = Item.from_param(params[:id])
+    if request.post?
+      other_item_id = params[:item][:other_item_id].to_s.scan(/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/).first&.first
+      if other_item_id.blank? or Item.where(id: other_item_id).first.nil?
+        flash[:danger] = "Item not found"
+        redirect_back(fallback_location: root_path) and return
+      end
+
+      @other_item = Item.find(other_item_id)
+      
+      unless (msg = @item.combine(@other_item))
+        flash[:success] = "Successfully merged"
+        redirect_to item_path(@item)
+      else
+        flash[:danger] = msg
+        redirect_back fallback_location: root_path
+      end
     end
   end
 
