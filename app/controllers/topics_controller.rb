@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
 			if @topic_action
 				@topic_action.destroy
 			else
-				@user_topics.create(topic: @topic, action: "follow")
+				@user_topics.create!(topic: @topic, action: "follow")
 			end
 		end
 		redirect_to @topic
