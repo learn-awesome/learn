@@ -101,6 +101,11 @@ class ItemsController < ApplicationController
   def combine
     @item = Item.from_param(params[:id])
     if request.post?
+      unless current_user.can_combine_items?
+        flash[:danger] = "Not authorized"
+        redirect_back(fallback_location: root_path) and return
+      end
+      
       other_item_id = params[:item][:other_item_id].to_s.scan(/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/).first&.first
       if other_item_id.blank? or Item.where(id: other_item_id).first.nil?
         flash[:danger] = "Item not found"
