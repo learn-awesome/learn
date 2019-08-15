@@ -233,6 +233,7 @@ class Item < ApplicationRecord
     prev_idea_set = other_item.idea_set
     prev_idea_set.items.update(idea_set_id: self.idea_set_id)
     IdeaSet.find(prev_idea_set.id).destroy # destroy after reload
+    return nil # success. Return msg in case of failure
   end
 
   def related_items
