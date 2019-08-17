@@ -230,6 +230,7 @@ class Item < ApplicationRecord
   end
 
   def combine(other_item)
+    return nil if other.idea_set_id == self.idea_set_id
     prev_idea_set = other_item.idea_set
     prev_idea_set.items.update(idea_set_id: self.idea_set_id)
     IdeaSet.find(prev_idea_set.id).destroy # destroy after reload
