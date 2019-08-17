@@ -31,7 +31,7 @@
 			<span>
 				<%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
 			</span>
-			<%= @item.display_name %>
+			<%= @item.display_name %> <a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
 			<br>
 			<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
 				<small><%= link_to creator.name, creator %>&nbsp;</small>
