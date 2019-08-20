@@ -2,7 +2,7 @@ class UserTopicsController < InheritedResources::Base
   include Secured
   before_action :logged_in_using_omniauth?
 
-  before_filter :require_owner, only: [:show, :edit, :update, :destroy]
+  before_action :require_owner, only: [:show, :edit, :update, :destroy]
 
   protected
   	def require_owner

@@ -28,6 +28,10 @@ class TopicsController < ApplicationController
 
 	def show
 		@topic = Topic.from_param(params[:id])
+		if @topic.nil?
+	      flash[:danger] = "We couldn't find this topic."
+	      redirect_to root_path and return
+		end
 		if current_user
 			@user_topics = current_user.user_topics
 			@does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
@@ -43,7 +47,7 @@ class TopicsController < ApplicationController
 			if @topic_action
 				@topic_action.destroy
 			else
-				@user_topics.create(topic: @topic, action: "follow")
+				@user_topics.create!(topic: @topic, action: "follow")
 			end
 		end
 		redirect_to @topic

@@ -128,7 +128,16 @@ class User < ApplicationRecord
 			'58175aad-22f9-4a40-a6d0-b665762c8f8d',
 			'321d1985-4713-41f4-8d9d-069e48ebf2de',
 			'02e667dc-08c9-4663-a139-c01abe83f8b8',
-			'a7586583-51b2-4715-87f8-85d506fd3af2'
+			'a7586583-51b2-4715-87f8-85d506fd3af2',
+			'8a16a2e4-dcb7-4167-a2a2-51d3af9d1613'
 		]
+	end
+
+	def can_combine_items?
+		self.score.to_i >= 5000
+	end
+
+	def can_see_metrics?
+		self.score.to_i >= 5000
 	end
 end

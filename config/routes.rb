@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :user_topics
   root 'welcome#index'
 
   get 'dashboard' => 'dashboard#show'
@@ -23,6 +22,11 @@ Rails.application.routes.draw do
       get 'query'
       get 'discover'
     end
+
+    member do
+      get 'combine'
+      post 'combine'
+    end
   end
 
   resources :item_types, only: [:index, :show]
@@ -37,6 +41,8 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:new, :create, :edit, :update, :show]
+
+  # resources :user_topics
 
   get 'auth/oauth2/callback' => 'auth0#callback'
   get 'auth/auth0/callback' => 'auth0#callback'

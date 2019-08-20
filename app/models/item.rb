@@ -27,6 +27,7 @@
 require 'uri'
 require 'nokogiri'
 require 'open-uri'
+require 'redcarpet'
 
 class Item < ApplicationRecord
   belongs_to :idea_set, inverse_of: :items
@@ -43,6 +44,7 @@ class Item < ApplicationRecord
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
   
   accepts_nested_attributes_for :links, allow_destroy: true
+  attr_accessor :other_item_id
 
   scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }
@@ -188,5 +190,54 @@ class Item < ApplicationRecord
 
   def display_name
     self.name
+  end
+
+  def display_description
+    # TODO: Why not allow markdown for all item descriptions instead of only syllabuses?
+    # Could lead to styling abuse by using headings, links, lists etc
+    if self.item_type_id == 'learning_plan' and self.links.size == 0
+      # this is a native learning plan
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
+        filter_html: true,
+        no_images: true,
+        no_links: true,
+        no_styles: true
+      ))
+      html = markdown.render(self.description.to_s.strip).html_safe
+      return self.replace_la_links_with_embeds(html)
+    else
+      return self.description.to_s.strip
+    end
+  end
+
+  def replace_la_links_with_embeds(html)
+    # detect all URLs to items in given html string and replace them with their content_html
+    pattern = /(https?:\/\/[a-z.]+(:3000)?\/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-\S+)?)/
+    html.scan(pattern).each do |match|
+      # match = [url, port, itemid, idsuffix]
+      html.sub!(match.first, Item.find(match[2]).content_html(match.first))
+    end
+    html.html_safe
+  end
+
+  def content_html(url)
+    "<a href=\"" + url + "\" target='_blank'>" + self.display_name + "</a>"
+    # When items are included in syllabuses, we may want to avoid a few clicks
+    # by directly fetching the content of the first/primary link
+    # If the item has one link to youtube or soundcloud or image etc, they can directly be shown
+    # For some other cases, an <iframe> tag might suffice but that won't always be allowed.
+    # This will need a bunch of heuristics and can be improved gradually.
+  end
+
+  def combine(other_item)
+    return nil if other.idea_set_id == self.idea_set_id
+    prev_idea_set = other_item.idea_set
+    prev_idea_set.items.update(idea_set_id: self.idea_set_id)
+    IdeaSet.find(prev_idea_set.id).destroy # destroy after reload
+    return nil # success. Return msg in case of failure
+  end
+
+  def related_items
+    self.idea_set.items.reject { |i| i.id == self.id }
   end
 end

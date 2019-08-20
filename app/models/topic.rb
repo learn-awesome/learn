@@ -23,7 +23,7 @@ class Topic < ApplicationRecord
 	end
 
 	def self.from_param(id)
-		self.find(id.to_s.split("-")[0..4].join("-"))
+		self.where(id: id.to_s.split("-")[0..4].join("-")).first
 	end
 
 	def as_json(options = {})
