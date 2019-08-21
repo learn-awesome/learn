@@ -347,7 +347,7 @@ CREATE TABLE public.users (
     bio character varying,
     description text,
     score integer DEFAULT 100 NOT NULL,
-    role integer DEFAULT 0 NOT NULL,
+    role character varying DEFAULT 'regular'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     random_fav_topic boolean DEFAULT false NOT NULL,
@@ -890,6 +890,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190725101714'),
 ('20190725173959'),
 ('20190807061505'),
-('20190807165023');
+('20190807165023'),
+('20190821060649');
 
 
