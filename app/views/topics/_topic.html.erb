@@ -7,11 +7,11 @@
 </h2>
 <!-- <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4> -->
 <h4>Quick search:
-  <%= link_to "short videos", query_items_path(item_type: "video", topic: topic.name, length: "5-15") %>,
-  <%= link_to "learn by doing", query_items_path(topic: topic.name, quality: "interactive") %>,
-  <%= link_to "books", query_items_path(item_type: "book", topic: topic.name) %>,
-  <%= link_to "challenging", query_items_path(topic: topic.name, quality: "challenging") %>,
-  <%= link_to "visual", query_items_path(topic: topic.name, quality: "visual") %>,
+  <%= link_to "short videos", query_items_path(item_type: "video", topic: topic.name, length: "5-15", commit: "Search") %>,
+  <%= link_to "learn by doing", query_items_path(topic: topic.name, quality: "interactive", commit: "Search") %>,
+  <%= link_to "books", query_items_path(item_type: "book", topic: topic.name, commit: "Search") %>,
+  <%= link_to "challenging", query_items_path(topic: topic.name, quality: "challenging", commit: "Search") %>,
+  <%= link_to "visual", query_items_path(topic: topic.name, quality: "visual", commit: "Search") %>,
   <%= link_to "try your own advanced search", query_items_path(topic: topic.name) %>
 </h4>
 
