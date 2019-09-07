@@ -64,6 +64,10 @@ class ItemsController < ApplicationController
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
+      params[:item][:topic_names].each do |topic_name|
+        TopicIdeaSet.create(topic_id: Topie.where(name: topic_name).first.id, idea_set: idea_set) unless Topie.where(name: topic_name).first.nil?
+      end
+
       item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata))
       # item.search_index = params[:item][:name]
       item.user = current_user
@@ -72,6 +76,10 @@ class ItemsController < ApplicationController
       if !@syllabus
         item.links.build
         item.links.first.url = params[:item][:url]
+        if params[:item][:second_url].present?
+          item.links.build
+          item.links.last.url = params[:item][:second_url]
+        end
       end
 
       unless params[:item][:status].blank?
