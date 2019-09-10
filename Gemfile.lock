@@ -78,6 +78,11 @@ GEM
       io-like (~> 0.3.0)
     autoprefixer-rails (9.6.1)
       execjs
+    awesome_print (1.8.0)
+    awesome_rails_console (0.4.3)
+      awesome_print
+      pry-rails
+      railties
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -108,6 +113,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -129,6 +135,8 @@ GEM
     equalizer (0.0.11)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.2.2)
+      i18n (~> 1.6.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -234,6 +242,11 @@ GEM
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     popper_js (1.14.5)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -373,6 +386,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   annotate
+  awesome_rails_console
   bootsnap (>= 1.1.0)
   bootstrap
   bourbon
@@ -381,6 +395,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  faker
   flattened_active_admin
   font-awesome-rails
   formadmin
@@ -411,4 +426,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

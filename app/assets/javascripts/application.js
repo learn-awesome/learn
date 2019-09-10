@@ -70,7 +70,7 @@ function autosuggest(){
 	}, {
 	  name: 'best-items',
 	  display: 'name',
-	  limit: 10,
+	  limit: 15,
 	  source: bestResults,
 	  templates: {
 	    empty: [
@@ -78,16 +78,24 @@ function autosuggest(){
 	        'No such things',
 	      '</div>'
 	    ].join('\n'),
-	    suggestion: function(data) { 
-	    	var item_type = data.item_type_id;
-	    	var type = (item_type != undefined ? "item" : "topic"); //topics don't have item_type
-	    	if(type == "item"){
-		    	if(data.creators)
-		    		item_type += ' by ' + data.creators;
-		    	return '<a href="/items/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + item_type + '</div></a>';
-		    } else { // topic
-		    	return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
-		    }
+	    suggestion: function(data) {
+	        var entityType;
+	        entityType = data[0];
+            data = data[1];
+            switch(entityType) {
+                case 'Topic':
+                    return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
+                case 'Item':
+                    var itemType = data.item_type_id;
+                    if(data.creators) {
+                        itemType += ' by ' + data.creators;
+                    }
+                    return '<a href="/items/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
+                case 'Person':
+                    return '<a href="/users/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + 'User' + '</div></div></a>';
+                default:
+                console.error('unhandled entity: ' + data.type);
+            }
 	    }
 	  }
 	});
