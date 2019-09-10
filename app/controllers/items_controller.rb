@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
-      params[:item][:topic_names].each do |topic_name|
+      params[:item][:topic_names].to_a.each do |topic_name|
         TopicIdeaSet.create(topic_id: Topie.where(name: topic_name).first.id, idea_set: idea_set) unless Topie.where(name: topic_name).first.nil?
       end
 
