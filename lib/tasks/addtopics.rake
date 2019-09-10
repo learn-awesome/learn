@@ -26,7 +26,7 @@ namespace :addtopics do
       cleanlink = row[6]
       description = "By #{institute} via #{provider}"
 
-      topics = row[7].split("-").map { |r| Topic.where(name: r).first }.compact
+      topics = row[7].split(",").map { |r| Topic.where(name: r).first }.compact
 
       puts "Creating for #{name}"
 
