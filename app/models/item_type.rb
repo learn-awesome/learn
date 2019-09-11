@@ -18,4 +18,8 @@ class ItemType < ApplicationRecord
 	def self.button_style
 		"btn-soft-info"
 	end
+
+	def icon
+		"/icons/#{id}.svg"
+	end
 end

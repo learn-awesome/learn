@@ -14,8 +14,9 @@ class WelcomeController < ApplicationController
       else
     		render 'dashboard/show'
       end
-
-  	end
+  	else
+      redirect_to topics_path
+    end
   end
 
   def about

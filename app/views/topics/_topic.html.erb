@@ -35,10 +35,10 @@
       <div class="row">
         <!-- Cards with Tabs -->
         <% pair.each do |it| %>
-	        <div class="col-md-6 mb-4">
+	        <div class="col-md-12 mb-4">
 	          <div class="card">
 	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><%= it.display_name_plural %></h2>
+	              <h2 class="h3 card-header-title"><img src="<%= it.icon %>" width=24 height=24 /> &nbsp; <%= it.display_name_plural %></h2>
 
 	            </div>
 
