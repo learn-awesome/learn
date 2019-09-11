@@ -598,6 +598,13 @@ CREATE INDEX index_links_on_item_id ON public.links USING btree (item_id);
 
 
 --
+-- Name: index_people_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_people_on_name ON public.people USING gist (name public.gist_trgm_ops);
+
+
+--
 -- Name: index_person_idea_sets_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -891,6 +898,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190725173959'),
 ('20190807061505'),
 ('20190807165023'),
-('20190821060649');
+('20190821060649'),
+('20190907081656');
 
 

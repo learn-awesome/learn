@@ -31,8 +31,7 @@ class WelcomeController < ApplicationController
   	if @q.present?
     	@limit = params[:limit]
     	is_fuzzy = (params[:fuzzy] || "true") == "true"
-    	@items = [] # Item.search(@q, 10, is_fuzzy).to_a
-    	@topics = Topic.search(@q, 10, is_fuzzy).to_a
+      fetch_entities(is_fuzzy)
       respond_to do |format|
         format.html {
           @items = Item.search(@q, 10, is_fuzzy).to_a
@@ -42,15 +41,27 @@ class WelcomeController < ApplicationController
             # render welcome/search
           end
         }
-    	  format.json { render json: (@topics + @items) }
+        format.json { render json: add_types(@topics.first(5) + @items.first(5)+ @people.first(5))}
       end
       return
     end
     # render welcome/search
   end
 
+  def add_types(active_record_arr)
+    active_record_arr.map { |x| [x.class.name, x] }
+  end
+
   def suggestions
     query = params[:q]
     render json: [query] + Topic.search(query).map {|topic| topic.name} + Item.search(query).map {|item| item.name}
+  end
+
+  private
+
+  def fetch_entities(is_fuzzy)
+    @items = Item.search(@q, 10, is_fuzzy)
+    @topics = Topic.search(@q, 10, is_fuzzy)
+    @people = Person.search(@q, 10, is_fuzzy)
   end
 end
