@@ -39,8 +39,8 @@
       </header>
 
       <div class="card-body">
-        <% @people.to_a.each do |user| %>
-          <div><%= link_to user['name'], user_path(user), class: "", style: "margin-bottom: 8px" %></div>
+        <% @people.to_a.each do |person| %>
+          <div><%= link_to person['name'], person_path(person), class: "", style: "margin-bottom: 8px" %></div>
         <% end %>
       </div>
     </div>
