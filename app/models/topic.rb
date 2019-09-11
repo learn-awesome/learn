@@ -70,4 +70,13 @@ class Topic < ApplicationRecord
         return Topic.where(name: q).limit(max)
       end
 	end
+
+	def self.merge(original, duplicate)
+		Topic.transaction do
+			TopicIdeaSet.where(topic_id: duplicate.id).update_all(topic_id: original.id)
+			TopicRelation.where(from_id: duplicate.id).update_all(from_id: original)
+			TopicRelation.where(to_id: duplicate.id).update_all(to_id: original)
+			duplicate.destroy
+		end
+	end
 end
