@@ -27,6 +27,9 @@ class TopicsController < ApplicationController
 	end
 
 	def show
+		@item_type = params[:item_type]
+		@length = params[:length]
+		@quality = params[:quality]
 		@topic = Topic.from_param(params[:id])
 		if @topic.nil?
 	      flash[:danger] = "We couldn't find this topic."
@@ -36,7 +39,7 @@ class TopicsController < ApplicationController
 			@user_topics = current_user.user_topics
 			@does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
 		end
-		@item_type_items = @topic.items.group_by(&:item_type).sort.to_h
+		@item_type_items = @topic.advanced_search(@item_type, @length, @quality).group_by(&:item_type).sort.to_h
 	end
 
 	def toggle_follow

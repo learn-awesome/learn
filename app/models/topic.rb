@@ -43,6 +43,24 @@ class Topic < ApplicationRecord
 		'community'
 	end
 
+	def advanced_search(item_type, length, quality)
+		results = self.items
+	    if item_type.present?
+	      results = results.where(item_type_id: item_type)
+	    end
+	    
+	    if length.present?
+	      range_start = length.split("-").first.to_i
+	      range_finish = length.split("-").last.to_i
+	      results = results.where(["case when time_unit = 'minutes' then estimated_time when time_unit = 'hours' then estimated_time * 60 end between :start and :finish", {start: range_start, finish: range_finish}])
+	    end
+
+	    if ['inspirational', 'educational', 'challenging', 'entertaining', 'visual', 'interactive'].include?(quality)
+	      results = results.where("#{quality}_score >= 4.0")
+	    end
+	    return results
+	end
+
 	def display_name
 		self.name.gsub("-", " ")
 	end

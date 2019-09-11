@@ -1,21 +1,37 @@
 <h2>
-	<%= link_to topic.display_name, topic_path(topic) %>
+	<b><%= topic.display_name.titleize %></b>
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
-  <%= link_to "Add New", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+  <%= link_to "Add New Resource", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
 </h2>
 <!-- <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4> -->
-<h4>Quick search:
-  <%= link_to "short videos", query_items_path(item_type: "video", topic: topic.name, length: "5-15", commit: "Search") %>,
-  <%= link_to "learn by doing", query_items_path(topic: topic.name, quality: "interactive", commit: "Search") %>,
-  <%= link_to "books", query_items_path(item_type: "book", topic: topic.name, commit: "Search") %>,
-  <%= link_to "challenging", query_items_path(topic: topic.name, quality: "challenging", commit: "Search") %>,
-  <%= link_to "visual", query_items_path(topic: topic.name, quality: "visual", commit: "Search") %>,
-  <%= link_to "try your own advanced search", query_items_path(topic: topic.name) %>
+
+<hr/>
+<%= form_with local: true, method: :get, class: "form-inline" do |form| %>
+  Show me &nbsp; 
+  <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, {selected: @item_type, include_blank: "Any format"}, class: "form-control" %>  
+  &nbsp; which are &nbsp; 
+  <%= form.select :length, [["< 5 minutes", "0-5"], ["5 to 15 minutes", "5-15"],["15-30 minutes", "15-30"], ["30 to 60 minutes", "30-60"],["1 to 3 hours", "60-180"],["more than 3 hours", "180-9999"]], {selected: @length, include_blank: "Any length"}, class: "form-control" %> 
+  &nbsp; long and &nbsp; 
+  <%= form.select :quality, [["inspirational", "inspirational"],["educational", "educational"],["challenging", "challenging"], ["entertaining", "entertaining"],["visual", "visual"], ["interactive", "interactive"]], {selected: @quality, include_blank: "Any quality"}, class: "form-control" %> &nbsp; <% if current_user %><!-- which I haven't seen. --><% end %> &nbsp;
+
+  <div class="text-center"><%= form.submit "Search", class: "btn btn-primary" %></div>
+<% end %>
+
+<h4>Quick searches:
+  <%= link_to "Short Videos", topic_path(topic, item_type: "video", length: "5-15") %> |
+  <%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
+  <%= link_to "Books", topic_path(topic, item_type: "book") %> |
+  <%= link_to "Challenging", topic_path(topic, quality: "challenging") %> |
+  <%= link_to "Visual", topic_path(topic, quality: "visual") %> |
+  <%= link_to "All", topic_path(topic) %>
+  <!-- <%= link_to "try your own advanced search", query_items_path(topic: topic.name) %> -->
 </h4>
 
-<% @item_type_items.map(&:first).each_slice(2).to_a.each do |pair| %>
+<hr/>
+
+<% @item_type_items.map(&:first).each_slice(1).to_a.each do |pair| %>
       <div class="row">
         <!-- Cards with Tabs -->
         <% pair.each do |it| %>
