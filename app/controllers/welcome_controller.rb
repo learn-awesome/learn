@@ -15,12 +15,11 @@ class WelcomeController < ApplicationController
     		render 'dashboard/show'
       end
   	else
-      redirect_to topics_path
+      render :index
     end
   end
 
   def about
-  	render :index
   end
 
   def whatsnew
