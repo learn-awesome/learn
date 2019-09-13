@@ -66,6 +66,10 @@ class Item < ApplicationRecord
     {id: self.id, name: self.name.titleize, item_type_id: self.item_type_id.titleize, creators: self.creators}
   end
 
+  def thumbnail
+    "/icons/#{self.item_type_id}.svg"
+  end
+
   def self.searchable_language
     'english'
   end

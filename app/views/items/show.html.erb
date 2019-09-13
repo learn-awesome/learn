@@ -14,36 +14,35 @@
 <% end %>
 
 <div class="card shadow p-3 mb-5 bg-white rounded">
-	<div class="d-flex justify-content-between">
-		<div class="item_topics">
-			<% @item.topics.map do |topic| %>
-				<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
-			<% end %>
-		</div>
-		<div class="item_actions">
-			<% if current_user and current_user.score > 500 %>
-			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
-			<% end %>
-		</div>
-	</div>
 	<div class="card-body">
-		<h2 class="card-title">
-			<span>
-				<%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>&nbsp;
-			</span>
-			<%= @item.display_name %> <a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
-			<br>
+		<div class="container-fluid">
+			<div class="row">
+    <div class="col-2">
+      <img src="<%= @item.thumbnail %>" width=180 height=150/>
+    </div>
+    <div class="col-7">
+      <h2 class="card-title">
+      	<%= @item.display_name %>
+      	<a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
+      	<% if true or (current_user and current_user.score > 500) %>
+			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
+		<% end %>
+      </h2>
 			<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
 				<small><%= link_to creator.name, creator %>&nbsp;</small>
 			<% end %>
-			</div>		
+			</div>	
+      <%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in &nbsp;
+		<% @item.topics.map do |topic| %>
+			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+		<% end %>
+	  <p><%= @item.display_description %></p>
+	  <p>
+	  	<% @item.links.map do |link| %>
+				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
+	    <% end %>
+	  </p>
 
-			<% if @item.description.present? || @item.image_url.present? %>
-				<div class="card bg-white rounded description_card">
-					<div class="card-body item_description"><% if @item.image_url.present? %><a href="<%= @item.image_url %>" target='_blank'><img class="item_image img-thumbnail float-left" src="<%= @item.image_url %>"></a><% end %><%= @item.display_description %>
-					</div>
-				</div>
-			<% end %>
 			<div class="item_extra_details">
 				<% if @item.estimated_time %>
 					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
@@ -67,15 +66,7 @@
 					</span>
 				<% end %>
 			</div>
-		</h2>
 
-		<div class="item_links">
-			<span>&#8599; </span> &nbsp;
-			<% @item.links.map do |link| %>
-				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
-			<% end %>
-		</div>
-		<div><br/><br/></div>
 		<% if @item.related_items.any? %>
 		<div class="related_items">
 			<p>Related items: 
@@ -86,11 +77,8 @@
 			</p>
 		</div>
 		<% end %>
-	</div>
-</div>
-
-<div class="card shadow-sm p-3 mb-5 bg-white rounded">
-	<div class="card-body">
+    </div>
+    <div class="col-3">
 		<%= form_with(model: @my_review) do |form| %>
 			<div class="inplacereview">
 				<div class="form-group review_status_input">
@@ -117,20 +105,29 @@
 					  <% end %>
 					</div>
 				</div>
-				<div class="item_review_notes">
-					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
-					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
-				</div>
 			</div>
 		<% end %>
+    </div>
+			</div>
+		</div>
+
 	</div>
 </div>
+
 
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
 		<h2 class="h3 card-header-title">Reviews</h2>
 	</div>
 	<div class="card-body">
+		<%= form_with(model: @my_review) do |form| %>				
+				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+				<div class="item_review_notes">
+					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
+					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
+				</div>
+		<% end %>
+
 		<% if @item.reviews.any? %>
 		<div class="row">
 			<div class="col-md-6 mb-4">
@@ -160,7 +157,7 @@
 			</div>
 		</div>
 		<% else %>
-			<p>No reviews available for this.</p>
+			<p>No reviews available.</p>
 		<% end %>
 	</div>
 </div>
