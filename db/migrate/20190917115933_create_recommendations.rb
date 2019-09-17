@@ -3,7 +3,7 @@ class CreateRecommendations < ActiveRecord::Migration[6.0]
     create_table :recommendations, id: :uuid do |t|
       t.references :item, null: false, foreign_key: true
       t.references :person, null: false, foreign_key: true
-      t.uuid :from_item_id, null: false
+      t.references :idea_set, null: false, foreign_key: true
       t.text :metadata
 
       t.timestamps
