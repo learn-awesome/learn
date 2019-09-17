@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: one
+  person: one
+  from_item_id: 
+  metadata: MyText
+
+two:
+  item: two
+  person: two
+  from_item_id: 
+  metadata: MyText

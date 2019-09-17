@@ -35,6 +35,7 @@ class Item < ApplicationRecord
   belongs_to :item_type
   has_many :links, dependent: :destroy, inverse_of: :item
   has_many :reviews, dependent: :destroy, inverse_of: :item
+  has_many :recommendations, dependent: :destroy, inverse_of: :item
   belongs_to :user # submitter
   validates :name, presence: true, length: { in: 3..150 } # removed uniqeness validation
   validates :item_type, presence: true
