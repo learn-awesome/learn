@@ -67,8 +67,8 @@ CREATE TABLE public.active_admin_comments (
     resource_id bigint,
     author_type character varying,
     author_id bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -114,8 +114,8 @@ CREATE TABLE public.admin_users (
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -213,6 +213,21 @@ CREATE TABLE public.person_idea_sets (
     role character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: recommendations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.recommendations (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    item_id uuid NOT NULL,
+    person_id uuid NOT NULL,
+    idea_set_id uuid NOT NULL,
+    metadata text,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -363,6 +378,7 @@ CREATE TABLE public.users (
 
 CREATE TABLE public.vouchers (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    user_id bigint NOT NULL,
     code character varying NOT NULL,
     max_limit integer,
     payment_ref character varying,
@@ -370,6 +386,7 @@ CREATE TABLE public.vouchers (
     price integer,
     period_days integer,
     internal_description character varying,
+    status character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -452,6 +469,14 @@ ALTER TABLE ONLY public.people
 
 ALTER TABLE ONLY public.person_idea_sets
     ADD CONSTRAINT person_idea_sets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recommendations recommendations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recommendations
+    ADD CONSTRAINT recommendations_pkey PRIMARY KEY (id);
 
 
 --
@@ -598,13 +623,6 @@ CREATE INDEX index_links_on_item_id ON public.links USING btree (item_id);
 
 
 --
--- Name: index_people_on_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_people_on_name ON public.people USING gist (name public.gist_trgm_ops);
-
-
---
 -- Name: index_person_idea_sets_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -616,6 +634,27 @@ CREATE INDEX index_person_idea_sets_on_idea_set_id ON public.person_idea_sets US
 --
 
 CREATE INDEX index_person_idea_sets_on_person_id ON public.person_idea_sets USING btree (person_id);
+
+
+--
+-- Name: index_recommendations_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recommendations_on_idea_set_id ON public.recommendations USING btree (idea_set_id);
+
+
+--
+-- Name: index_recommendations_on_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recommendations_on_item_id ON public.recommendations USING btree (item_id);
+
+
+--
+-- Name: index_recommendations_on_person_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recommendations_on_person_id ON public.recommendations USING btree (person_id);
 
 
 --
@@ -696,6 +735,13 @@ CREATE INDEX index_user_topics_on_user_id ON public.user_topics USING btree (use
 
 
 --
+-- Name: index_user_topics_on_user_id_and_by_user_id_and_action; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_user_topics_on_user_id_and_by_user_id_and_action ON public.user_topics USING btree (user_id, by_user_id, action);
+
+
+--
 -- Name: index_user_user_relations_on_from_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -721,6 +767,13 @@ CREATE INDEX index_user_vouchers_on_user_id ON public.user_vouchers USING btree 
 --
 
 CREATE INDEX index_user_vouchers_on_voucher_id ON public.user_vouchers USING btree (voucher_id);
+
+
+--
+-- Name: index_vouchers_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_vouchers_on_user_id ON public.vouchers USING btree (user_id);
 
 
 --
@@ -771,6 +824,14 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
+-- Name: recommendations fk_rails_5057f7d09a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recommendations
+    ADD CONSTRAINT fk_rails_5057f7d09a FOREIGN KEY (idea_set_id) REFERENCES public.idea_sets(id);
+
+
+--
 -- Name: items fk_rails_6bed0f90a5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -787,11 +848,27 @@ ALTER TABLE ONLY public.reviews
 
 
 --
+-- Name: recommendations fk_rails_776fd0ec01; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recommendations
+    ADD CONSTRAINT fk_rails_776fd0ec01 FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
 -- Name: topic_idea_sets fk_rails_853a6f5036; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.topic_idea_sets
     ADD CONSTRAINT fk_rails_853a6f5036 FOREIGN KEY (idea_set_id) REFERENCES public.idea_sets(id);
+
+
+--
+-- Name: recommendations fk_rails_a7499a8cff; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recommendations
+    ADD CONSTRAINT fk_rails_a7499a8cff FOREIGN KEY (person_id) REFERENCES public.people(id);
 
 
 --
@@ -899,6 +976,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190807061505'),
 ('20190807165023'),
 ('20190821060649'),
-('20190907081656');
+('20190917115933');
 
 

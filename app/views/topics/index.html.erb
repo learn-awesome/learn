@@ -4,7 +4,5 @@
 </div>
 
 <div style="column-width: 300px;">
-<% Topic.all.sort_by(&:display_name).each do |topic| %>
-	<div><%= link_to topic.display_name, topic_path(topic), class: "", style: "margin-bottom: 8px" %></div>
-<% end %>
+<%= render partial: 'topics/topic_name', collection: Topic.all.sort_by(&:display_name), cached: false %>
 </div>
