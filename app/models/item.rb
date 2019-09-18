@@ -42,6 +42,8 @@ class Item < ApplicationRecord
   validates :user, presence: true
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
+  after_save :clear_cache
+  after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true
   attr_accessor :other_item_id
@@ -243,5 +245,11 @@ class Item < ApplicationRecord
 
   def related_items
     self.idea_set.items.reject { |i| i.id == self.id }
+  end
+
+  def clear_cache
+    self.topics.each do |t|
+      Rails.cache.delete("topic_items_#{t.id}")
+    end
   end
 end

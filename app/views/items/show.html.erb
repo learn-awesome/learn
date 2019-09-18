@@ -24,19 +24,26 @@
       <h2 class="card-title">
       	<%= @item.display_name %>
       	<a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
-      	<% if true or (current_user and current_user.score > 500) %>
+      	<% if current_user and current_user.score > 500 %>
 			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
 		<% end %>
+      	<% if current_user and current_user.score > 2000 %>
+			<%= link_to "Add Related Item", combine_item_path(@item), class: "btn btn-sm btn-soft-primary" %>
+		<% end %>
       </h2>
+
 			<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
 				<small><%= link_to creator.name, creator %>&nbsp;</small>
 			<% end %>
 			</div>	
+
       <%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in &nbsp;
 		<% @item.topics.map do |topic| %>
 			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 		<% end %>
+
 	  <p><%= @item.display_description %></p>
+
 	  <p>
 	  	<% @item.links.map do |link| %>
 				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
@@ -77,6 +84,16 @@
 			</p>
 		</div>
 		<% end %>
+
+		<% if @item.idea_set.recommendations.any? %>
+		<div class="recommendations">
+			<p>Recommended by: 
+			<% @item.idea_set.recommendations.each do |rec| %>
+				<%= link_to rec.display_name, rel.target %>
+			<% end %>
+			</p>
+		</div>
+		<% end %>		
     </div>
     <div class="col-3">
 		<%= form_with(model: @my_review) do |form| %>

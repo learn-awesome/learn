@@ -4,6 +4,10 @@
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
   <%= link_to "Add New Resource", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+
+  <% if current_user and current_user.score > 5000 %>
+    <%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>
+  <% end %>
 </h2>
 <!-- <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4> -->
 

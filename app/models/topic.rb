@@ -17,6 +17,8 @@ class Topic < ApplicationRecord
 	has_many :items, :through => :idea_sets
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
+	after_save :clear_cache
+	after_destroy :clear_cache
 
 	def to_param
 		self.id.to_s + "-" + self.name.to_s.parameterize
@@ -44,7 +46,9 @@ class Topic < ApplicationRecord
 	end
 
 	def advanced_search(item_type, length, quality)
-		results = self.items
+		results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
+			self.items
+		end
 	    if item_type.present?
 	      results = results.where(item_type_id: item_type)
 	    end
@@ -96,5 +100,15 @@ class Topic < ApplicationRecord
 			TopicRelation.where(to_id: duplicate.id).update_all(to_id: original)
 			duplicate.destroy
 		end
+	end
+
+	def self.get_all
+		Rails.cache.fetch("all_topics", expires_in: 24.hours) do
+			Topic.all.to_a.sort_by(&:display_name)
+		end
+	end
+
+	def clear_cache
+		Rails.cache.delete('all_topics')
 	end
 end

@@ -26,4 +26,8 @@ class Person < ApplicationRecord
 			Person.where(name: q).limit(max)
 		end
 	end
+
+	def display_name
+		self.name
+	end
 end

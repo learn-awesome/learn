@@ -4,5 +4,5 @@
 </div>
 
 <div style="column-width: 300px;">
-<%= render partial: 'topics/topic_name', collection: Topic.all.sort_by(&:display_name), cached: false %>
+<%= render partial: 'topics/topic_name', collection: Topic.get_all, cached: false %>
 </div>

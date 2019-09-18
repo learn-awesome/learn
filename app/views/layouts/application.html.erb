@@ -175,14 +175,23 @@
               <!-- End Forms -->
 
               <% if current_user.present? %>
-              <!-- Dashboard -->
-              <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'dashboard' && params[:action] == 'show' %>" href="/dashboard">
-                  <img src="/nounproject/icons/dashboard.svg" class="u-sidebar-nav-menu__item-icon"></img>
-                  <span class="u-sidebar-nav-menu__item-title">Dashboard</span>
-                </a>
-              </li>
-              <!-- End Dashboard -->
+                <!-- Dashboard -->
+                <li class="u-sidebar-nav-menu__item">
+                  <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'dashboard' && params[:action] == 'show' %>" href="/dashboard">
+                    <img src="/nounproject/icons/dashboard.svg" class="u-sidebar-nav-menu__item-icon"></img>
+                    <span class="u-sidebar-nav-menu__item-title">Dashboard</span>
+                  </a>
+                </li>
+                <!-- End Dashboard -->
+
+                <% if current_user.score > 2000 %>
+                <li class="u-sidebar-nav-menu__item">
+                  <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'items' && params[:action] == 'new' %>" href="/items/new?syllabus=true">
+                    <img src="/nounproject/icons/dashboard.svg" class="u-sidebar-nav-menu__item-icon"></img>
+                    <span class="u-sidebar-nav-menu__item-title">Add New LearningPlan</span>
+                  </a>
+                </li>
+                <% end %>
               <% end %>
 
               <!-- Tables -->
