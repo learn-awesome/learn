@@ -169,29 +169,20 @@
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link active" href="/items/search">
                   <i class="far fa-edit u-sidebar-nav-menu__item-icon"></i>
-                  <span class="u-sidebar-nav-menu__item-title">Search or Add a Link</span>
+                  <span class="u-sidebar-nav-menu__item-title">Add A Link</span>
                 </a>
               </li>
               <!-- End Forms -->
 
               <% if current_user.present? %>
-                <!-- Dashboard -->
+
                 <li class="u-sidebar-nav-menu__item">
                   <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'dashboard' && params[:action] == 'show' %>" href="/dashboard">
                     <img src="/nounproject/icons/dashboard.svg" class="u-sidebar-nav-menu__item-icon"></img>
                     <span class="u-sidebar-nav-menu__item-title">Dashboard</span>
                   </a>
                 </li>
-                <!-- End Dashboard -->
 
-                <% if current_user.score > 2000 %>
-                <li class="u-sidebar-nav-menu__item">
-                  <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'items' && params[:action] == 'new' %>" href="/items/new?syllabus=true">
-                    <img src="/nounproject/icons/dashboard.svg" class="u-sidebar-nav-menu__item-icon"></img>
-                    <span class="u-sidebar-nav-menu__item-title">Add New LearningPlan</span>
-                  </a>
-                </li>
-                <% end %>
               <% end %>
 
               <!-- Tables -->
@@ -246,13 +237,6 @@
                 </a>
               </li>
 
-              <li class="u-sidebar-nav-menu__item" style="background-color: yellow">
-                <a class="u-sidebar-nav-menu__link" href="https://book.learnawesome.org" target="_blank">
-                  <img src="/book.svg" class="u-sidebar-nav-menu__item-icon" width=24 height=24></img>
-                  <span class="u-sidebar-nav-menu__item-title">The Book Project</span>
-                </a>
-              </li>
-
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link" href="/whatsnew">
                   <img src="/nounproject/icons/whatsnew.svg" class="u-sidebar-nav-menu__item-icon"></img>
@@ -260,6 +244,13 @@
                 </a>
               </li>
 
+              <li class="u-sidebar-nav-menu__item" style="background-color: yellow">
+                <a class="u-sidebar-nav-menu__link" href="https://book.learnawesome.org" target="_blank">
+                  <img src="/book.svg" class="u-sidebar-nav-menu__item-icon" width=24 height=24></img>
+                  <span class="u-sidebar-nav-menu__item-title">The Book Project</span>
+                </a>
+              </li>
+              
             </ul>
           </nav>
         </div>

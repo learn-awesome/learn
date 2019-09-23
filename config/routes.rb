@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show, :new, :create] do
     member do
       post 'toggle_follow'
+      get  'merge'
     end
     collection do
       get 'search'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'query'
       get 'discover'
+      get 'new_syllabus'
     end
 
     member do

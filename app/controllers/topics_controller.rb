@@ -70,4 +70,8 @@ class TopicsController < ApplicationController
 	      redirect_to root_path
 	    end
 	end
+
+	def merge
+		@topic = Topic.from_param(params[:id])
+	end
 end

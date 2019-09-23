@@ -1,0 +1,159 @@
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <header class="card-header">
+        <h2 class="h3 card-header-title">
+          Add a new learning plan for <b><%= @topics.first.display_name.titleize %></b>
+        </h2>
+      </header>
+
+      <div class="card-body">
+        <%= form_with scope: :item, url: items_path(syllabus: @syllabus), id: 'item_new_form', local: true do |form| %>
+          <% if @syllabus %>
+            <%= form.hidden_field :item_type_id, value: 'learning_plan' %>
+          <% else %>
+            <div class="form-group mb-4">
+              <%= form.label :item_type_id, "Type" %><br>
+              <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type}, class: "form-control" %>
+            </div>
+          <% end %>
+
+          <% if @syllabus %>
+            <% if @topics.first.present? %>
+            <div class="form-group mb-4">
+            <%= form.text_field :name, value: "How to learn #{@topics.first.name} - by #{current_user.nickname}" %>
+            </div>
+            <% end %>
+          <% end %>
+
+          <% if !@syllabus %>
+          <div class="form-group mb-4">
+            <%= form.label :url, "URL" %><br>
+            <%= form.url_field :url, value: @item_url, required: true, class: "form-control" %>
+          </div>
+          <% end %>
+
+          <div class="form-group mb-4">
+            <% if @syllabus %>
+            <%= form.label :description, "Add links to items along with comments" %><br>
+            <%= form.text_area :description, required: true, size: "50x20", class: "form-control" %>
+            <% end %>
+          </div>
+
+          <% if !@syllabus %>
+            <div class="form-group mb-4">
+              <%= form.label :topic, "Topics (you can choose multiple)" %><br>
+
+              <div class="item_topics" id="topformdiv">
+                <div id="search_topic" class="input-group input-group-sm mb-3">
+                  <input type="text" class=" typehead form-control form-control-sm rounded" placeholder="Search Topics" aria-label="Search Topics" id="topics_input" autocomplete="off">
+                  <div class="input-group-append">
+                    <% @topics.to_a.map do |topic| %>
+                      <div class="btn-group topic" data-id="<%= topic.id %>">
+                        <input type="hidden" name="item[topics][]" value="<%= topic.id %>">
+                        <div class= "btn btn-sm grey-btn"><%= topic.name %></div>
+                        <div class="btn btn-sm remove_topic">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <span class="form-error topic_count_error hidden">Add minimum 1 topic.</span>
+              </div>
+            </div>
+          <% else %>
+            <div id="search_topic"><div class="topic">
+              <% if @topics.first.present? %>
+              <input type="hidden" name="item[topics][]" value="<%= @topics.first.id %>">
+              <% end %>
+            </div></div>
+          <% end %>
+
+          <% if !@syllabus %>
+            <div class="form-group mb-4">
+            <button class="btn btn-soft-primary" type="button" data-toggle="collapse" data-target="#reviewfields" aria-expanded="false" aria-controls="reviewfields">
+              Add your review
+            </button>
+            <div class="collapse" id="reviewfields">
+                <div class="form-group mb-4">
+                  <%= form.label :status, "Your status" %>
+                  <%= form.select :status, [['select one',''],['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: false}, class: "form-control form-pill" %>
+                </div>
+                <div>
+                  <div class="form-group mb-4">
+                    <span>How inspirational?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="instar<%= score %>" name="item[inspirational_score]" value="<%= score %>" />
+                      <label for="instar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <span>How educational?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="edstar<%= score %>" name="item[educational_score]" value="<%= score %>" />
+                      <label for="edstar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <span>How challenging?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="distar<%= score %>" name="item[challenging_score]" value="<%= score %>" />
+                      <label for="distar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <span>How entertaining?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="enstar<%= score %>" name="item[entertaining_score]" value="<%= score %>" />
+                      <label for="enstar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <span>How visual?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="vistar<%= score %>" name="item[visual_score]" value="<%= score %>" />
+                      <label for="vistar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <span>How interactive?</span>
+                    <span class="rating">
+                    <% (1..5).to_a.reverse.each do |score| %>
+                      <input type="radio" id="actstar<%= score %>" name="item[interactive_score]" value="<%= score %>" />
+                      <label for="actstar<%= score %>"></label>
+                    <% end %>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group mb-4">
+                  <%= form.label :notes, "Comments" %>
+                  <%= form.text_area :notes, class: "form-control" %>
+                </div>
+            </div>
+            </div>
+          <% end %>
+
+          <div class="form-group mb-4 mu-4">
+            <%= form.submit (@syllabus? "Save Learning Plan" : "Save"), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

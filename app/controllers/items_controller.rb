@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
     @syllabus = (params[:syllabus].to_s == 'true')
 
-    @extracted = Item.extract_opengraph_data(@item_url) if @item_url.present? 
+    @extracted = nil # Item.extract_opengraph_data(@item_url) if @item_url.present? 
 
     if @extracted.present?
       @item_type = @extracted[:item_type]
@@ -38,8 +38,15 @@ class ItemsController < ApplicationController
       end
       @description = @extracted[:description]
       @metadata = @extracted[:metadata].to_json
+    else
+      @item_type = Item.suggest_format(@item_url) if @item_url.present?
     end
 
+  end
+
+  def new_syllabus
+    @syllabus = true
+    @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
   end
 
   def create

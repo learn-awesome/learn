@@ -1,13 +1,13 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
-		<h2 class="card-title">Combine another item into <%= @item.display_name %></h2>
+		<h2 class="card-title">Add another item as related to <%= @item.display_name %></h2>
 		<%= form_for @item, url: combine_item_path(@item), method: :post do |form| %>
 			<div class="form-group mb-4">
 				<%= form.label :other_item_id %>
 				<%= form.text_field :other_item_id %>
 			</div>
 			<div class="form-group mb-4">
-				<%= form.submit "Combine", class: "btn btn-primary" %>
+				<%= form.submit "Add", class: "btn btn-primary" %>
 			</div>
 		<% end %>
 	</div>

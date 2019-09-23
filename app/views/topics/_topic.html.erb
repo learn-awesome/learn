@@ -3,7 +3,11 @@
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>
-  <%= link_to "Add New Resource", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+  <%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+
+  <% if current_user and current_user.score > 2000 %>
+    <%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+  <% end %>
 
   <% if current_user and current_user.score > 5000 %>
     <%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>

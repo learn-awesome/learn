@@ -252,4 +252,12 @@ class Item < ApplicationRecord
       Rails.cache.delete("topic_items_#{t.id}")
     end
   end
+
+  def self.suggest_format(url)
+    return "video" if ["youtube.com", "vimeo.com"].any? { |dom| url.include?(dom) }
+    return "wiki" if ["wikipedia.org"].any? { |dom| url.include?(dom) }
+    return "book" if ["goodreads.com"].any? { |dom| url.include?(dom) }
+    return "course" if ["classcentral.com", "coursera.org", "edx.org"].any? { |dom| url.include?(dom) }
+    return "article"
+  end
 end

@@ -2,9 +2,9 @@
 	idprefix = local_assigns.fetch(:idprefix)
 	name = local_assigns.fetch(:name)
 	value = local_assigns.fetch(:value)
-	onchange = local_assigns.fetch(:onchange)
+	onchange = local_assigns.fetch(:onchange, nil)
 %>
-<br>
+
 <h3>How would you rate this?</h3>
 <span class="rating">
 <% (1..5).to_a.reverse.each do |score| %>
