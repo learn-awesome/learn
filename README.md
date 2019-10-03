@@ -33,8 +33,6 @@ To import data from the JSON files:
 ```
 rake import:import['public/data1.json']
 rake import:import['public/data2.json']
-rake addtopics:addtopics['public/topics.csv']
-rake addtopics:additems['public/items.csv']
 ```
 
 Set-up caching in dev:

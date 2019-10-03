@@ -43,7 +43,6 @@
 		<% end %>
 
 	  <p><%= @item.display_description %></p>
-
 	  <p>
 	  	<% @item.links.map do |link| %>
 				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
@@ -74,6 +73,7 @@
 				<% end %>
 			</div>
 
+
 		<% if @item.related_items.any? %>
 		<div class="related_items">
 			<p>Related items: 
@@ -94,7 +94,9 @@
 			</p>
 		</div>
 		<% end %>		
-    </div>
+	</div>
+	
+
     <div class="col-3">
 		<%= form_with(model: @my_review) do |form| %>
 			<div class="inplacereview">
@@ -131,6 +133,9 @@
 	</div>
 </div>
 
+<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+	<div><iframe src="<%= @item.embed_url %>" style="width: 100%" height="600" frameborder="0" allowfullscreen></iframe></div>
+</div>
 
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
