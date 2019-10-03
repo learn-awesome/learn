@@ -6,17 +6,20 @@
       </header>
 
       <div class="card-body">
-        <%= form_with scope: :item, url: items_path, id: 'item_new_form', local: true do |form| %>
+
+        <%= form_for @idea_set do |form| %>
   
+          <%= form.fields_for :items, @idea_set.items do |itemform| %>
           <div class="form-inline mb-4">
-            <div class="form-group mr-2">
-              <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type, prompt: "Select Format"}, required: true, class: "form-control" %>
+            <div class="form-group mr-2 mb-4">
+              <%= itemform.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type, prompt: "Select Format"}, required: true, class: "form-control" %>
             </div>
 
-            <div class="form-group">
-              <%= form.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
+            <div class="form-group mb-4">
+              <%= itemform.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
             </div>
           </div>
+          <% end %>
 
             <div class="form-group mb-4">
               <%= form.label :topic, "Topics (you can choose multiple)" %><br>
@@ -45,9 +48,10 @@
               Add your review
             </button>
             <div class="collapse" id="reviewfields">
+                <%= form.fields_for :review do |review_form| %>
                 <div class="form-group mb-4">
                   <br/>
-                  <%= form.select :status, [['select your status',''],['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: false}, class: "form-control" %>
+                  <%= review_form.select :status, [['select your status',''],['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: false}, class: "form-control" %>
                 </div>
 
                 <div class="form-group mb-4 star_ratings">
@@ -55,8 +59,9 @@
                 </div>
 
                 <div class="form-group mb-4">
-                  <%= form.text_area :notes, class: "form-control" %>
+                  <%= review_form.text_area :notes, class: "form-control" %>
                 </div>
+                <% end %>
             </div>
             </div>
 
