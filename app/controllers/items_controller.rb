@@ -52,9 +52,10 @@ class ItemsController < ApplicationController
   def create
     @syllabus = (params[:syllabus].to_s == 'true')
     item = nil
+    @extracted = Item.extract_opengraph_data(params[:item][:url]) if params[:item][:url].present? 
     Item.transaction do
       idea_set = IdeaSet.new
-      idea_set.name = params[:item][:name]
+      idea_set.name = params[:item][:name] || @extracted[:title] || params[:item][:url]
       idea_set.description = params[:item][:description]
 
       if params[:item][:person_id].present?
@@ -77,6 +78,7 @@ class ItemsController < ApplicationController
 
       item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata))
       # item.search_index = params[:item][:name]
+      item.name = idea_set.name
       item.user = current_user
       item.idea_set = idea_set
 

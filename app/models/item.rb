@@ -194,7 +194,14 @@ class Item < ApplicationRecord
           title: title
         }
       else
-        {}
+        page = Nokogiri::HTML(open(url))
+        title = page.at('title')&.content
+        canonical = page.at('link[rel="canonical"]')&.attributes && page.at('link[rel="canonical"]')&.attributes["href"]&.value
+        {
+          topics: [],
+          canonical: canonical,
+          title: title.to_s.strip
+        }
       end
     end
   end
