@@ -17,10 +17,13 @@
 	<div class="card-body">
 		<div class="container-fluid">
 			<div class="row">
-    <div class="col-2">
-      <img src="<%= @item.thumbnail %>" width=180 height=150/>
+    <div class="col-2" style="min-width: 200px;">
+	  <div style="text-align: center;">
+	  	<div><img src="<%= @item.thumbnail %>" width=180 height=150/></div>
+		<div><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %></div>
+	  </div>
     </div>
-    <div class="col-7">
+    <div class="col-7" style="min-width: 400px;">
       <h2 class="card-title">
       	<%= @item.display_name %>
       	<a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
@@ -37,7 +40,7 @@
 			<% end %>
 			</div>	
 
-      <%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in &nbsp;
+
 		<% @item.topics.map do |topic| %>
 			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 		<% end %>
@@ -97,7 +100,8 @@
 	</div>
 	
 
-    <div class="col-3">
+	<div class="col-3" style="text-align: center; min-width: 250px;">
+		<% if user_signed_in? %>
 		<%= form_with(model: @my_review) do |form| %>
 			<div class="inplacereview">
 				<div class="form-group review_status_input">
@@ -126,6 +130,7 @@
 				</div>
 			</div>
 		<% end %>
+		<% end %>
     </div>
 			</div>
 		</div>
@@ -138,12 +143,14 @@
 		<h2 class="h3 card-header-title">Reviews</h2>
 	</div>
 	<div class="card-body">
+		<% if user_signed_in? %>
 		<%= form_with(model: @my_review) do |form| %>				
 				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 				<div class="item_review_notes">
 					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
 					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
 				</div>
+		<% end %>
 		<% end %>
 
 		<% if @item.reviews.any? %>
