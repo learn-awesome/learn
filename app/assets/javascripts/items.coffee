@@ -140,6 +140,12 @@ saveTheItem = ->
 			window.location.href = '/items/' + item_id
 	}
 
+removeParentDiv = (el) ->
+	$(el).parent('div').remove()
+
+$(document).on 'click', '.remove-parent-div', ->
+	removeParentDiv($(this).parent('div'))
+	
 $(document).on 'click', '#addNewLink', ->
 	$('.item_links').append('<div class="input-group input-group-sm mb-3">
 		<span>&#8599; </span> &nbsp;

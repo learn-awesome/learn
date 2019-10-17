@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     member do
       get 'combine'
       post 'combine'
+      post 'add_related_items'
     end
   end
 

@@ -3,12 +3,56 @@
 		<h2 class="card-title">Add another item as related to <%= @item.display_name %></h2>
 		<%= form_for @item, url: combine_item_path(@item), method: :post do |form| %>
 			<div class="form-group mb-4">
-				<%= form.label :other_item_id %>
+				<%= form.label :other_item_id, "Link to other item" %>
 				<%= form.text_field :other_item_id %>
 			</div>
 			<div class="form-group mb-4">
-				<%= form.submit "Add", class: "btn btn-primary" %>
+				<%= form.submit "Add as related", class: "btn btn-primary" %>
 			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+	<div class="card-body">
+		<h2 class="card-title">Create items related to <%= @item.display_name %></h2>
+		<%= form_for @item, url: add_related_items_item_path(@item), method: :post do |form| %>
+		  <div class="form-inline mb-4">
+            <div class="form-group mr-2">
+              <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type, prompt: "Select Format"}, required: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+			  <%= form.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
+			  &nbsp; <a href="#" class="remove-parent-div">Remove</a>
+            </div>
+          </div>
+
+		  <div class="form-inline mb-4">
+            <div class="form-group mr-2">
+              <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type, prompt: "Select Format"}, required: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+			  <%= form.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
+			  &nbsp; <a href="#" class="remove-parent-div">Remove</a>
+            </div>
+		  </div>
+		  
+		  <div class="form-inline mb-4">
+            <div class="form-group mr-2">
+              <%= form.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, selected: @item_type, prompt: "Select Format"}, required: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+			  <%= form.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
+			  &nbsp; <a href="#" class="remove-parent-div">Remove</a>
+            </div>
+		  </div>
+		  
+		  <div class="form-group mb-4">
+				<%= form.submit "Created related items", class: "btn btn-primary" %>
+		  </div>
 		<% end %>
 	</div>
 </div>

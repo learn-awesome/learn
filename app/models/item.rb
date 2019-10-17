@@ -68,6 +68,9 @@ class Item < ApplicationRecord
     {id: self.id, name: self.name.titleize, item_type_id: self.item_type_id.titleize, creators: self.creators}
   end
 
+  def related_items=(params)
+  end
+
   def thumbnail
     if self.links.any? { |l| l.url.include?("youtube.com") }
       videoid = Item.youtube_id(self.links.select { |l| l.url.include?("youtube.com") }.first.url)

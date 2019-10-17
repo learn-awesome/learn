@@ -115,6 +115,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def add_related_items(items)
+    self.idea_set.items << items.select(&:valid?)
+  end
+
   def combine
     @item = Item.from_param(params[:id])
     if request.post?
