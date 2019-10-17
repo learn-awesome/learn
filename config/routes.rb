@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   end
 
   resources :idea_sets, only: [:new, :create, :edit, :update]
+  
   resources :item_types, only: [:index, :show]
 
   resources :users, only: [:index, :show, :edit, :update] do

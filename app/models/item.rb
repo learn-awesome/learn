@@ -45,7 +45,8 @@ class Item < ApplicationRecord
   after_save :clear_cache
   after_destroy :clear_cache
   
-  accepts_nested_attributes_for :links, allow_destroy: true
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
+
   attr_accessor :other_item_id
 
   scope :curated, -> { where("1 = 1") }
@@ -271,6 +272,15 @@ class Item < ApplicationRecord
     return "book" if ["goodreads.com"].any? { |dom| url.include?(dom) }
     return "course" if ["classcentral.com", "coursera.org", "edx.org"].any? { |dom| url.include?(dom) }
     return "article"
+  end
+
+  def url
+    self.links.first.try(:url)
+  end
+
+  def url=(val)
+    self.links.build unless self.links.present?
+    self.links.first.url = val
   end
 
   def embed_url

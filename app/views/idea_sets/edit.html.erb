@@ -1,20 +1,13 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
 		<h2 class="card-title">Create items related to <%= @idea_set.display_name %></h2>
-		<%= form_for @idea_set, method: :post do |f| %>
+		<%= form_for @idea_set do |f| %>
 
-		  <% f.fields_for :items do |relitem| %>
-		  <div class="form-inline mb-4">
-            <div class="form-group mr-2">
-              <%= relitem.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-			  <%= relitem.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "form-control" %>
-			  &nbsp; <a href="#" class="remove-parent-div">Remove</a>
-            </div>
-		  </div>
+		  <%= f.fields_for :items do |relitem| %>
+		  	<%= render 'item_fields', f: relitem %>
 		  <% end %>
+
+		  <div><%= link_to_add_association 'add item', f, :items %></div>
 		  
 		  <div class="form-group mb-4">
 				<%= f.submit "Created related items", class: "btn btn-primary" %>

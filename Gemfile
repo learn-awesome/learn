@@ -91,3 +91,5 @@ gem 'sidekiq'
 
 gem 'redcarpet'
 gem 'faker'
+
+gem "cocoon"

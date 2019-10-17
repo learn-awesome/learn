@@ -1,0 +1,10 @@
+  <div class="form-inline mb-4 nested-fields">
+    <div class="form-group mr-2">
+      <%= f.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+	  <%= f.url_field :url, required: true, placeholder: "URL", class: "form-control" %>
+	  <%= link_to_remove_association "Remove", f %>
+    </div>
+  </div>

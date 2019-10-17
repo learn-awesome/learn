@@ -14,7 +14,7 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-
+//= require cocoon
 //= require_tree .
 
 function animateHeadline(){
