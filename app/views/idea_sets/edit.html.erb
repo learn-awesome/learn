@@ -1,20 +1,5 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
-		<h2 class="card-title">Add another item as related to <%= @idea_set.display_name %></h2>
-		<%= form_for @idea, url: combine_item_path(@item), method: :post do |form| %>
-			<div class="form-group mb-4">
-				<%= form.label :other_item_id, "Link to other item" %>
-				<%= form.text_field :other_item_id %>
-			</div>
-			<div class="form-group mb-4">
-				<%= form.submit "Add as related", class: "btn btn-primary" %>
-			</div>
-		<% end %>
-	</div>
-</div>
-
-<div class="card shadow p-3 mb-5 bg-white rounded">
-	<div class="card-body">
 		<h2 class="card-title">Create items related to <%= @idea_set.display_name %></h2>
 		<%= form_for @idea_set, method: :post do |f| %>
 
