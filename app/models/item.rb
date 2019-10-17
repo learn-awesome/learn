@@ -197,6 +197,9 @@ class Item < ApplicationRecord
       else
         page = Nokogiri::HTML(open(url))
         title = page.at('title')&.content
+        if title.blank? && url.end_with?(".pdf")
+          title = File.basename(URI.parse(url).path).sub(".pdf", "").gsub("_", " ").gsub("-", " ")
+        end
         canonical = page.at('link[rel="canonical"]')&.attributes && page.at('link[rel="canonical"]')&.attributes["href"]&.value
         {
           topics: [],

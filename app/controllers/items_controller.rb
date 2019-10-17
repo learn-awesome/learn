@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
 
       if !@syllabus
         item.links.build
-        item.links.first.url = params[:item][:url]
+        item.links.first.url = params[:item][:url] # why not @extracted[:canonical] ?
         if params[:item][:second_url].present?
           item.links.build
           item.links.last.url = params[:item][:second_url]
