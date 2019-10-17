@@ -115,7 +115,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def add_related_items(items)
+  def add_related_items
     self.idea_set.items << items.select(&:valid?)
   end
 

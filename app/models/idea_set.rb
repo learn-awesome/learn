@@ -28,7 +28,7 @@ class IdeaSet < ApplicationRecord
 	def review_attributes=(attributes)
 	end
 
-	def add_related_items(new_items)
-		self.items << new_items.select(&:valid?)
+	def display_name
+		name
 	end
 end

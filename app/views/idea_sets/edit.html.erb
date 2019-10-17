@@ -1,7 +1,7 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
-		<h2 class="card-title">Add another item as related to <%= @item.display_name %></h2>
-		<%= form_for @item, url: combine_item_path(@item), method: :post do |form| %>
+		<h2 class="card-title">Add another item as related to <%= @idea_set.display_name %></h2>
+		<%= form_for @idea, url: combine_item_path(@item), method: :post do |form| %>
 			<div class="form-group mb-4">
 				<%= form.label :other_item_id, "Link to other item" %>
 				<%= form.text_field :other_item_id %>
@@ -15,10 +15,10 @@
 
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
-		<h2 class="card-title">Create items related to <%= @item.display_name %></h2>
-		<%= form_for @item, url: add_related_items_item_path(@item), method: :post do |form| %>
+		<h2 class="card-title">Create items related to <%= @idea_set.display_name %></h2>
+		<%= form_for @idea_set, method: :post do |f| %>
 
-		<% form.fields_for :related_items do |relitem| %>
+		  <% f.fields_for :items do |relitem| %>
 		  <div class="form-inline mb-4">
             <div class="form-group mr-2">
               <%= relitem.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
@@ -29,11 +29,10 @@
 			  &nbsp; <a href="#" class="remove-parent-div">Remove</a>
             </div>
 		  </div>
-		<% end %>
-
+		  <% end %>
 		  
 		  <div class="form-group mb-4">
-				<%= form.submit "Created related items", class: "btn btn-primary" %>
+				<%= f.submit "Created related items", class: "btn btn-primary" %>
 		  </div>
 		<% end %>
 	</div>

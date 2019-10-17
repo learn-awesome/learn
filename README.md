@@ -1,9 +1,9 @@
-# Learn Awesome
+# LearnAwesome
 
 [![Gitter](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
 [![Twitter](https://img.shields.io/badge/-Twitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://twitter.com/learn_awesome)
 
-#### Awesome learning resources organized by topics, formats and difficulty.
+#### Awesome learning resources organized by topics, formats and difficulty. Optimal learning paths for any topic.
 
 # Development Setup with Vagrant
 

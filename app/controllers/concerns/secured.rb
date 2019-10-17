@@ -3,7 +3,7 @@ module Secured
 
   def logged_in_using_omniauth?
     if session[:userinfo].present?
-    	# user logged in. if cookie has original_path then clear it and redirect there
+		# user logged in. if cookie has original_path then clear it and redirect there
 		if session[:original_path].present?
 			path = session[:original_path]
 			session[:original_path] = nil

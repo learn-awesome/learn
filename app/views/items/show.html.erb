@@ -28,7 +28,7 @@
 			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
 		<% end %>
       	<% if current_user and current_user.score > 2000 %>
-			<%= link_to "Add Related Items", combine_item_path(@item), class: "btn btn-sm btn-soft-primary" %>
+			<%= link_to "Add Related Items", edit_idea_set_path(@item.idea_set), class: "btn btn-sm btn-soft-primary" %>
 		<% end %>
       </h2>
 
