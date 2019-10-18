@@ -79,10 +79,12 @@
 
 		<% if @item.related_items.any? %>
 		<div class="related_items">
-			<p>Related items: 
+			<p>Related items: </p>
 			<% @item.related_items.each do |rel| %>
+				<p>
 				<%= link_to rel.item_type.display_name_plural, rel.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
-				<%= link_to rel.display_name, rel %>, 
+				<%= link_to rel.display_name, rel %>
+				</p>
 			<% end %>
 			</p>
 		</div>
