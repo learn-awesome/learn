@@ -151,7 +151,7 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find_by(id: params[:id])
-    if item.is_syllabus? and item.user_id != current_user.id
+    if item.can_user_edit?(current_user) == false
       flash[:danger] = "Only the original user can update a learning plan."
       redirect_to item_path(@item)
     end

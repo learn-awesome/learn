@@ -86,6 +86,20 @@ class Item < ApplicationRecord
     self.item_type_id == 'learning_plan' and self.links.blank?
   end
 
+  def can_user_edit?(editor)
+    return false if editor.nil? or !editor.is_a?(User)
+    return false if editor.score < 500
+    return false if self.is_syllabus? and self.user_id != editor.id
+    return true
+  end
+
+  def can_user_change_related_items?(editor)
+    return false if editor.nil? or !editor.is_a?(User)
+    return false if editor.score < 500
+    return false if self.is_syllabus?
+    return true
+  end
+
   def self.search(q, max=10, is_fuzzy=true)
   	if q.start_with?('http://') or q.start_with?('https://')
       #TODO: Fetch the canonical URL and use that instead

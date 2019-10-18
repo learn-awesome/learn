@@ -29,7 +29,7 @@
                       </a>
 					</li>
 
-					<% if current_user and current_user.score > 500 %>
+					<% if @item.can_user_edit?(current_user) %>
                     <li class="list-inline-item">
                       <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>" title="Edit Item">
                         <i class="far fa-edit"></i>
@@ -37,7 +37,7 @@
 					</li>
 					<% end %>
 
-					<% if current_user and current_user.score > 2000 %>
+					<% if @item.can_user_change_related_items?(current_user) %>
                     <li class="list-inline-item">
                       <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
                         <i class="fas fa-cogs"></i>
