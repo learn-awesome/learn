@@ -27,6 +27,9 @@ class Review < ApplicationRecord
   after_save :update_item_ratings
   after_create :post_to_twitter
 
+  scope :recent, -> { order("created_at DESC").limit(10) }
+  scope :popular, -> { order("overall_score DESC").limit(10) }
+
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
 
   def update_item_ratings

@@ -13,132 +13,254 @@
   <meta name="twitter:card" content="summary_large_image">
 <% end %>
 
-<div class="card shadow p-3 mb-5 bg-white rounded">
-	<div class="card-body">
-		<div class="container-fluid">
-			<div class="row">
-    <div class="col-2" style="min-width: 200px;">
-	  <div style="text-align: center;">
-	  	<div><img src="<%= @item.thumbnail %>" width=180 height=150/></div>
-		<div><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %></div>
-	  </div>
-    </div>
-    <div class="col-7" style="min-width: 400px;">
-      <h2 class="card-title">
-      	<%= @item.display_name %>
-      	<a href="<%= item_url(@item) %>"><i class="fa fa-link"></i></a>
-      	<% if current_user and current_user.score > 500 %>
-			<%= link_to "Improve", edit_item_path(item_id: @item.id), class: "btn btn-sm btn-soft-primary" %>
-		<% end %>
-      	<% if current_user and current_user.score > 2000 %>
-			<%= link_to "Add Related Items", edit_idea_set_path(@item.idea_set), class: "btn btn-sm btn-soft-primary" %>
-		<% end %>
-      </h2>
 
-			<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
-				<small><%= link_to creator.name, creator %>&nbsp;</small>
-			<% end %>
-			</div>	
+<div class="row">
+						<!-- Current Projects -->
+						<div class="col-md-6 mb-4 mb-md-0">
+							<div class="card h-100">
+								<header class="card-header d-flex align-items-center">
+                  <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
+
+                  <!-- Card Header Icon -->
+				  <ul class="list-inline ml-auto mb-0">
+                    <li class="list-inline-item mr-3">
+                      <a class="link-muted h3" href="<%= item_url(@item) %>">
+                        <i class="far fa-link"></i>
+                      </a>
+					</li>
+
+					<% if current_user and current_user.score > 500 %>
+                    <li class="list-inline-item">
+                      <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>">
+                        <i class="far fa-edit"></i>
+                      </a>
+					</li>
+					<% end %>
+
+					<% if current_user and current_user.score > 2000 %>
+                    <li class="list-inline-item">
+                      <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>">
+                        <i class="far fa-cog"></i>
+                      </a>
+					</li>
+					<% end %>
+                  </ul>
+                  <!-- End Card Header Icon -->
+                </header>
+
+								<div class="card-body">
+									<p><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in 
+									<% @item.topics.map do |topic| %>
+										<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+									<% end %>
+									</p>
+									<div><img src="<%= @item.thumbnail %>" style="width: 50%"/></div>
+									<p><%= @item.display_description %></p>
+									<p>
+									<% @item.links.map do |link| %>
+										  <%= link_to link.top_domain, link.url, class: "btn btn-lg btn-primary", target: :_blank %>
+								  	<% end %>
+									</p>
+
+									<div class="item_extra_details">
+									<% if @item.estimated_time %>
+										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
+											<i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;
+											<%= @item.estimated_time.to_s + @item.time_unit[0] %>
+										</span>
+									<% end %>
+									<% if @item.typical_age_range.present? %>
+										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
+											<% if @item.typical_age_range[0] == '-' %>
+												<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
+											<% else %>
+												<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
+											<% end %>
+										</span>
+									<% end %>
+									<% if @item.year.present? %>
+										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
+											<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
+											<%= @item.year %>
+										</span>
+									<% end %>
+									</div>
+
+									<% if @item.idea_set.recommendations.any? %>
+									<div class="recommendations">
+										<p>Recommended by: 
+										<% @item.idea_set.recommendations.each do |rec| %>
+											<%= link_to rec.display_name, rel.target %>
+										<% end %>
+										</p>
+									</div>
+									<% end %>
+
+									<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
+										<small><%= link_to creator.name, creator %>&nbsp;</small>
+									<% end %>
+									</div>	
+
+									<% if user_signed_in? %>
+									<%= form_with(model: @my_review) do |form| %>
+										<div class="inplacereview">
+											<div class="form-group review_status_input">
+												<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
+												<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
+											</div>
+											<hr>
+											<div class="form-group mb-2 star_ratings">
+											<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+											</div>
+							
+											<br>
+											<br>
+							
+											<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+											<br>
+											<div class="item_categorization">
+												<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
+												  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
+												  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
+												  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
+													<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+												  </label>
+												  <% end %>
+												</div>
+											</div>
+										</div>
+									<% end %>
+									<% end %>
+								</div>
+
+								<footer class="card-footer">
+									<a class="u-link u-link--primary" href="#!"></a>
+								</footer>
+							</div>
+						</div>
+						<!-- End Current Projects -->
+
+						<!-- Comments -->
+						<div class="col-md-6">
 
 
-		<% @item.topics.map do |topic| %>
-			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
-		<% end %>
+						<div class="card mb-4">
+						<header class="card-header d-md-flex align-items-center">
+							<h2 class="h3 card-header-title">Related Items</h2>
+						</header>
 
-	  <p><%= @item.display_description %></p>
-	  <p>
-	  	<% @item.links.map do |link| %>
-				<%= link_to link.top_domain, link.url, class: "btn btn-sm btn-primary", target: :_blank %>
-	    <% end %>
-	  </p>
+						<div class="card-body p-0 m-0">
+							<div class="tab-content" id="commentsTabs">
+								<!-- Tabs Content -->
+								<div class="tab-pane fade show active" id="commentsTab1" role="tabpanel">
+									<div class="list-group list-lg-group list-group-flush">
+									<% @item.related_items.each do |rel| %>
+										<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
+										<div class="media">
+											<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
 
-			<div class="item_extra_details">
-				<% if @item.estimated_time %>
-					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
-						<i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;
-						<%= @item.estimated_time.to_s + @item.time_unit[0] %>
-					</span>
-				<% end %>
-				<% if @item.typical_age_range.present? %>
-					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
-						<% if @item.typical_age_range[0] == '-' %>
-							<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
-						<% else %>
-							<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
-						<% end %>
-					</span>
-				<% end %>
-				<% if @item.year.present? %>
-					<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
-						<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
-						<%= @item.year %>
-					</span>
-				<% end %>
-			</div>
+											<div class="media-body">
+												<div class="d-md-flex align-items-center">
+													<h4 class="mb-1">
+														<span class="btn btn-sm #{ItemType.button_style}"><%= rel.item_type.display_name_plural %></span>
+														<%= rel.display_name %> <span class="badge badge-soft-secondary mx-1"></span>
+													</h4>
+													<small class="text-muted ml-md-auto"></small>
+												</div>
 
+												<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> -->
+											</div>
+										</div>
+								  		</a>
+									<% end %>
+									</div>
+								</div>
+								<!-- End Tabs Content -->
+							</div>
+						</div>
 
-		<% if @item.related_items.any? %>
-		<div class="related_items">
-			<p>Related items: </p>
-			<% @item.related_items.each do |rel| %>
-				<p>
-				<%= link_to rel.item_type.display_name_plural, rel.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
-				<%= link_to rel.display_name, rel %>
-				</p>
-			<% end %>
-			</p>
-		</div>
-		<% end %>
-
-		<% if @item.idea_set.recommendations.any? %>
-		<div class="recommendations">
-			<p>Recommended by: 
-			<% @item.idea_set.recommendations.each do |rec| %>
-				<%= link_to rec.display_name, rel.target %>
-			<% end %>
-			</p>
-		</div>
-		<% end %>		
-	</div>
-	
-
-	<div class="col-3" style="text-align: center; min-width: 250px;">
-		<% if user_signed_in? %>
-		<%= form_with(model: @my_review) do |form| %>
-			<div class="inplacereview">
-				<div class="form-group review_status_input">
-					<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
-					<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
-				</div>
-				<hr>
-				<div class="form-group mb-2 star_ratings">
-				<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
-				</div>
-
-				<br>
-				<br>
-
-				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-				<br>
-				<div class="item_categorization">
-					<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
-					  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
-					  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
-					  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
-						<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
-					  </label>
-					  <% end %>
 					</div>
-				</div>
-			</div>
-		<% end %>
-		<% end %>
-    </div>
-			</div>
-		</div>
 
-	</div>
-</div>
+							<div class="card">
+								<header class="card-header d-md-flex align-items-center">
+									<h2 class="h3 card-header-title">Reviews</h2>
+
+									<!-- Nav Tabs -->
+									<ul id="commentsTabsControl" class="nav nav-tabs card-header-tabs ml-md-auto mt-4 mt-md-0">
+										<li class="nav-item">
+											<a class="nav-link active" href="#reviewsTab1" role="tab" aria-selected="true" data-toggle="tab">Popular
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#reviewsTab2" role="tab" aria-selected="false" data-toggle="tab">Recent
+											</a>
+										</li>
+									</ul>
+									<!-- End Nav Tabs -->
+								</header>
+
+								<div class="card-body p-0 m-0">
+									<div class="tab-content" id="commentsTabs">
+										<!-- Tabs Content -->
+										<div class="tab-pane fade show active" id="reviewsTab1" role="tabpanel">
+											<div class="list-group list-lg-group list-group-flush">
+											<% @item.reviews.popular.each do |rev| %>
+												<a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
+													  <div class="media">
+														  <img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
+  
+														  <div class="media-body">
+															  <div class="d-md-flex align-items-center">
+																  <h4 class="mb-1">
+																	  <%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
+																  </h4>
+																  <small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
+															  </div>
+  
+															  <p class="mb-0"><%= rev.notes %></p>
+														  </div>
+													  </div>
+												</a>
+											  <% end %>  
+											</div>
+										</div>
+										<!-- End Tabs Content -->
+
+										<!-- Tabs Content -->
+										<div class="tab-pane fade" id="reviewsTab2" role="tabpanel">
+											<div class="list-group list-lg-group list-group-flush">
+											<% @item.reviews.recent.each do |rev| %>
+											  <a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
+													<div class="media">
+														<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
+
+														<div class="media-body">
+															<div class="d-md-flex align-items-center">
+																<h4 class="mb-1">
+																	<%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
+																</h4>
+																<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
+															</div>
+
+															<p class="mb-0"><%= rev.notes %></p>
+														</div>
+													</div>
+											  </a>
+											<% end %>
+											</div>
+										</div>
+										<!-- End Tabs Content -->
+									</div>
+								</div>
+
+								<!-- <footer class="card-footer">
+									<a class="u-link u-link--primary" href="#!">All reviews</a>
+								</footer> -->
+							</div>
+						</div>
+					</div>
+
+
 
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
@@ -153,38 +275,6 @@
 					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
 				</div>
 		<% end %>
-		<% end %>
-
-		<% if @item.reviews.any? %>
-		<div class="row">
-			<div class="col-md-6 mb-4">
-			  <div class="card">
-				<div class="card-body">
-					<div class="list-group list-lg-group list-group-flush">
-						<% @item.reviews.each do |rev| %>
-							<div class="list-group-item">
-								<div class="media">
-									<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="Image description">
-
-									<div class="media-body">
-										<div class="d-md-flex align-items-center">
-											<h4 class="mb-1">
-												<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
-											</h4>
-											<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-										</div>
-										<p class="mb-0"><%= rev.notes %></p><br/>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				</div>
-			  </div>
-			</div>
-		</div>
-		<% else %>
-			<p>No reviews available.</p>
 		<% end %>
 	</div>
 </div>
