@@ -82,6 +82,10 @@ class Item < ApplicationRecord
     'english'
   end
 
+  def is_syllabus?
+    self.item_type_id == 'learning_plan' and self.links.blank?
+  end
+
   def self.search(q, max=10, is_fuzzy=true)
   	if q.start_with?('http://') or q.start_with?('https://')
       #TODO: Fetch the canonical URL and use that instead
