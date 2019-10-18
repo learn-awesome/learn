@@ -17,8 +17,8 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nickname: MyString
+# one:
+#   nickname: MyString
 
-two:
-  nickname: MyString
+# two:
+#   nickname: MyString

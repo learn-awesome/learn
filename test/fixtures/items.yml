@@ -25,16 +25,16 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  type: 
-  estimated_time: 1
-  required_expertise: 1
-  thing: one
+# one:
+#   name: MyString
+#   type: 
+#   estimated_time: 1
+#   required_expertise: 1
+#   thing: one
 
-two:
-  name: MyString
-  type: 
-  estimated_time: 1
-  required_expertise: 1
-  thing: two
+# two:
+#   name: MyString
+#   type: 
+#   estimated_time: 1
+#   required_expertise: 1
+#   thing: two

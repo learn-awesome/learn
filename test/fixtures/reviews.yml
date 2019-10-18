@@ -19,22 +19,22 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  item: one
-  status: MyString
-  inspirational_score: 1
-  educational_score: 1
-  difficulty_score: 1
-  entertaining_score: 1
-  notes: MyText
+# one:
+#   user: one
+#   item: one
+#   status: MyString
+#   inspirational_score: 1
+#   educational_score: 1
+#   difficulty_score: 1
+#   entertaining_score: 1
+#   notes: MyText
 
-two:
-  user: two
-  item: two
-  status: MyString
-  inspirational_score: 1
-  educational_score: 1
-  difficulty_score: 1
-  entertaining_score: 1
-  notes: MyText
+# two:
+#   user: two
+#   item: two
+#   status: MyString
+#   inspirational_score: 1
+#   educational_score: 1
+#   difficulty_score: 1
+#   entertaining_score: 1
+#   notes: MyText

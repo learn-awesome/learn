@@ -93,3 +93,4 @@ gem 'redcarpet'
 gem 'faker'
 
 gem "cocoon"
+gem "actionview-component"

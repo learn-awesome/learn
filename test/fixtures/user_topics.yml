@@ -12,12 +12,12 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
-  topic_id: 
-  action: MyString
+# one:
+#   user_id: 
+#   topic_id: 
+#   action: MyString
 
-two:
-  user_id: 
-  topic_id: 
-  action: MyString
+# two:
+#   user_id: 
+#   topic_id: 
+#   action: MyString

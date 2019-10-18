@@ -12,12 +12,12 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  from: one
-  to: one
-  kind: MyString
+# one:
+#   from: one
+#   to: one
+#   kind: MyString
 
-two:
-  from: two
-  to: two
-  kind: MyString
+# two:
+#   from: two
+#   to: two
+#   kind: MyString

@@ -14,14 +14,14 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  website: MyString
-  email: MyString
-  twitter: MyString
+# one:
+#   name: MyString
+#   website: MyString
+#   email: MyString
+#   twitter: MyString
 
-two:
-  name: MyString
-  website: MyString
-  email: MyString
-  twitter: MyString
+# two:
+#   name: MyString
+#   website: MyString
+#   email: MyString
+#   twitter: MyString
