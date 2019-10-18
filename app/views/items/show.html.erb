@@ -60,11 +60,11 @@
 										<p><%= @item.display_description %></p>
 									</div>
 
-									<p>
+									<div style="clear: both; margin-top: 2em;">
 									<% @item.links.map do |link| %>
 										  <%= link_to link.top_domain, link.url, class: "btn btn-lg btn-primary", target: :_blank %>
 								  	<% end %>
-									</p>
+									</div>
 
 									<div class="item_extra_details">
 									<% if @item.estimated_time %>

@@ -161,14 +161,17 @@ class ItemsController < ApplicationController
       item.description = params[:description].try(:strip)
       item.image_url = params[:image_url]
       item.idea_set.topic_ids = params[:topics]
-      item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
-      params[:links].each do |key, link_params|
-        link = item.links.find_by(id: link_params[:id])
-        next if link_params[:url].blank?
-        if link
-          link.update(url: link_params[:url])
-        else
-          item.links.create(url: link_params[:url])
+      if item.item_type_id != 'learning_plan' && item.links.present?
+        item.links.where.not(id: params[:links].values.map {|link| link['id'] }).destroy_all
+
+        params[:links].each do |key, link_params|
+          link = item.links.find_by(id: link_params[:id])
+          next if link_params[:url].blank?
+          if link
+            link.update(url: link_params[:url])
+          else
+            item.links.create(url: link_params[:url])
+          end
         end
       end
 

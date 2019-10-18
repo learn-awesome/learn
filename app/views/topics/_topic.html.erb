@@ -28,6 +28,7 @@
 <% end %>
 
 <h4>Quick searches:
+  <%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
   <%= link_to "Short Videos", topic_path(topic, item_type: "video", length: "5-15") %> |
   <%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
   <%= link_to "Books", topic_path(topic, item_type: "book") %> |
@@ -39,7 +40,7 @@
 
 <hr/>
 
-<% @item_type_items.map(&:first).each_slice(1).to_a.each do |pair| %>
+<% @item_type_items.map(&:first).sort_by { |x| x.id == 'learning_plan' ? 0 : 1 }.each_slice(1).to_a.each do |pair| %>
       <div class="row">
         <!-- Cards with Tabs -->
         <% pair.each do |it| %>
