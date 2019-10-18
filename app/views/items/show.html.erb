@@ -15,8 +15,8 @@
 
 
 <div class="row">
-						<!-- Current Projects -->
-						<div class="col-md-6 mb-4 mb-md-0">
+						<!-- Item details -->
+						<div class="<%= (@item.related_items.any? or (@item.reviews.count > 0)) ? 'col-md-6' : 'col-md-12' %> mb-4 mb-md-0">
 							<div class="card h-100">
 								<header class="card-header d-flex align-items-center">
                   <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
@@ -24,14 +24,14 @@
                   <!-- Card Header Icon -->
 				  <ul class="list-inline ml-auto mb-0">
                     <li class="list-inline-item mr-3">
-                      <a class="link-muted h3" href="<%= item_url(@item) %>">
-                        <i class="far fa-link"></i>
+                      <a class="link-muted h3" href="<%= item_url(@item) %>" title="Permalink">
+                        <i class="fas fa-link"></i>
                       </a>
 					</li>
 
 					<% if current_user and current_user.score > 500 %>
                     <li class="list-inline-item">
-                      <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>">
+                      <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>" title="Edit Item">
                         <i class="far fa-edit"></i>
                       </a>
 					</li>
@@ -39,8 +39,8 @@
 
 					<% if current_user and current_user.score > 2000 %>
                     <li class="list-inline-item">
-                      <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>">
-                        <i class="far fa-cog"></i>
+                      <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
+                        <i class="fas fa-cogs"></i>
                       </a>
 					</li>
 					<% end %>
@@ -49,13 +49,17 @@
                 </header>
 
 								<div class="card-body">
-									<p><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in 
+									<p class="mb-4"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in 
 									<% @item.topics.map do |topic| %>
 										<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
 									<% end %>
 									</p>
-									<div><img src="<%= @item.thumbnail %>" style="width: 50%"/></div>
-									<p><%= @item.display_description %></p>
+
+									<div class="mb-4">
+										<img src="<%= @item.thumbnail %>" style="width: 30%; float: left;"/>
+										<p><%= @item.display_description %></p>
+									</div>
+
 									<p>
 									<% @item.links.map do |link| %>
 										  <%= link_to link.top_domain, link.url, class: "btn btn-lg btn-primary", target: :_blank %>
@@ -102,34 +106,42 @@
 									</div>	
 
 									<% if user_signed_in? %>
-									<%= form_with(model: @my_review) do |form| %>
-										<div class="inplacereview">
-											<div class="form-group review_status_input">
-												<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
-												<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
-											</div>
-											<hr>
-											<div class="form-group mb-2 star_ratings">
-											<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
-											</div>
-							
-											<br>
-											<br>
-							
-											<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-											<br>
-											<div class="item_categorization">
-												<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
-												  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
-												  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
-												  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
-													<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
-												  </label>
-												  <% end %>
+										<%= form_with(model: @my_review) do |form| %>
+											<div class="inplacereview">
+												<div class="form-group review_status_input">
+													<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
+													<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
+												</div>
+												<hr>
+												<div class="form-group mb-2 star_ratings">
+												<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+												</div>
+								
+												<br>
+												<br>
+								
+												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+												<br>
+												<div class="item_categorization">
+													<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
+													  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
+													  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
+													  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
+														<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+													  </label>
+													  <% end %>
+													</div>
 												</div>
 											</div>
-										</div>
-									<% end %>
+										<% end %>
+
+										<%= form_with(model: @my_review) do |form| %>				
+												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+												<div class="item_review_notes">
+													<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
+													<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
+												</div>
+										<% end %>
 									<% end %>
 								</div>
 
@@ -138,49 +150,52 @@
 								</footer>
 							</div>
 						</div>
-						<!-- End Current Projects -->
+						<!-- End item details -->
 
-						<!-- Comments -->
+						<!-- Right side bar -->
+						<% if @item.related_items.any? or (@item.reviews.count > 0) %>
 						<div class="col-md-6">
 
 
+						<% if @item.related_items.any? %>
 						<div class="card mb-4">
-						<header class="card-header d-md-flex align-items-center">
-							<h2 class="h3 card-header-title">Related Items</h2>
-						</header>
+							<header class="card-header d-md-flex align-items-center">
+								<h2 class="h3 card-header-title">Related Items</h2>
+							</header>
 
-						<div class="card-body p-0 m-0">
-							<div class="tab-content" id="commentsTabs">
-								<!-- Tabs Content -->
-								<div class="tab-pane fade show active" id="commentsTab1" role="tabpanel">
-									<div class="list-group list-lg-group list-group-flush">
-									<% @item.related_items.each do |rel| %>
-										<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
-										<div class="media">
-											<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
+							<div class="card-body p-0 m-0">
+								<div class="tab-content" id="commentsTabs">
+									<!-- Tabs Content -->
+									<div class="tab-pane fade show active" id="commentsTab1" role="tabpanel">
+										<div class="list-group list-lg-group list-group-flush">
+										<% @item.related_items.each do |rel| %>
+											<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
+											<div class="media">
+												<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
 
-											<div class="media-body">
-												<div class="d-md-flex align-items-center">
-													<h4 class="mb-1">
-														<span class="btn btn-sm #{ItemType.button_style}"><%= rel.item_type.display_name_plural %></span>
-														<%= rel.display_name %> <span class="badge badge-soft-secondary mx-1"></span>
-													</h4>
-													<small class="text-muted ml-md-auto"></small>
+												<div class="media-body">
+													<div class="d-md-flex align-items-center">
+														<h4 class="mb-1">
+															<span class="btn btn-sm #{ItemType.button_style}"><%= rel.item_type.display_name_plural %></span>
+															<%= rel.display_name %> <span class="badge badge-soft-secondary mx-1"></span>
+														</h4>
+														<small class="text-muted ml-md-auto"></small>
+													</div>
+
+													<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> -->
 												</div>
-
-												<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> -->
 											</div>
+									  		</a>
+										<% end %>
 										</div>
-								  		</a>
-									<% end %>
 									</div>
+									<!-- End Tabs Content -->
 								</div>
-								<!-- End Tabs Content -->
 							</div>
 						</div>
+						<% end %>
 
-					</div>
-
+							<% if @item.reviews.count > 0 %>
 							<div class="card">
 								<header class="card-header d-md-flex align-items-center">
 									<h2 class="h3 card-header-title">Reviews</h2>
@@ -257,24 +272,8 @@
 									<a class="u-link u-link--primary" href="#!">All reviews</a>
 								</footer> -->
 							</div>
+							<% end %>
 						</div>
+						<% end %>
 					</div>
 
-
-
-<div class="card shadow-sm p-3 mb-5 bg-white rounded">
-	<div class="d-flex header justify-content-between">
-		<h2 class="h3 card-header-title">Reviews</h2>
-	</div>
-	<div class="card-body">
-		<% if user_signed_in? %>
-		<%= form_with(model: @my_review) do |form| %>				
-				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-				<div class="item_review_notes">
-					<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
-					<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
-				</div>
-		<% end %>
-		<% end %>
-	</div>
-</div>
