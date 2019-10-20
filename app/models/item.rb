@@ -169,7 +169,11 @@ class Item < ApplicationRecord
         image_url = "http://covers.openlibrary.org/b/isbn/#{isbn}.jpg" if isbn.present?
         title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
         authors = page.search('meta[property="books:author"]').map { |x| x.attributes["content"] }.map(&:value)
-        page_count = page.at('meta[property="books:page_count"]')&.attributes["content"]&.value.to_i
+        if page.at('meta[property="books:page_count"]')&.attributes
+          page_count = page.at('meta[property="books:page_count"]')&.attributes["content"]&.value.to_i
+        else
+          page_count = nil
+        end
         # description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
         description = (page.css("div#description") > "span:last").inner_text
         topics = page.css("a.bookPageGenreLink").map {|n| n.attributes["href"]&.value }.select { |s| s.start_with?("/genres/") }.map { |s|
@@ -235,7 +239,7 @@ class Item < ApplicationRecord
   def display_description
     # TODO: Why not allow markdown for all item descriptions instead of only syllabuses?
     # Could lead to styling abuse by using headings, links, lists etc
-    if self.item_type_id == 'learning_plan' and self.links.size == 0
+    if self.is_syllabus?
       # this is a native learning plan
       markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
         filter_html: true,
@@ -252,6 +256,7 @@ class Item < ApplicationRecord
 
   def replace_la_links_with_embeds(html)
     # detect all URLs to items in given html string and replace them with their content_html
+    # TODO: links are ending up with </p> in the URL
     pattern = /(https?:\/\/[a-z.]+(:3000)?\/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-\S+)?)/
     html.scan(pattern).each do |match|
       # match = [url, port, itemid, idsuffix]
