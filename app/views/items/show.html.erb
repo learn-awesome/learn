@@ -57,10 +57,18 @@
 									<% end %>
 									</p>
 
+
+
+									<% if @item.is_syllabus? %>
+									<div class="mb-4">
+										<%= @item.display_description %>
+									</div>
+									<% else %>
 									<div class="mb-4">
 										<img src="<%= @item.thumbnail %>" style="width: 30%; float: left;"/>
 										<p><%= @item.display_description %></p>
 									</div>
+									<% end %>
 
 									<div style="clear: both; margin-top: 2em;">
 									<% @item.links.map do |link| %>

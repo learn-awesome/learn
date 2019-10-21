@@ -256,7 +256,6 @@ class Item < ApplicationRecord
 
   def replace_la_links_with_embeds(html)
     # detect all URLs to items in given html string and replace them with their content_html
-    # TODO: links are ending up with </p> in the URL
     pattern = /(https?:\/\/[a-z.]+(:3000)?\/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-[a-zA-Z0-9\-_]+)?)/
     html.scan(pattern).each do |match|
       # match = [url, port, itemid, idsuffix]
@@ -266,7 +265,8 @@ class Item < ApplicationRecord
   end
 
   def content_html(url)
-    "<a href=\"" + url + "\" target='_blank'>" + self.display_name + "</a>"
+    "<a href=\"" + url + "\" target='_blank'>" + self.display_name + "</a><br/>"
+    # + "<iframe src='" + self.embed_url + "' width=600 height=600></iframe><br/>"
     # When items are included in syllabuses, we may want to avoid a few clicks
     # by directly fetching the content of the first/primary link
     # If the item has one link to youtube or soundcloud or image etc, they can directly be shown
@@ -293,7 +293,7 @@ class Item < ApplicationRecord
   end
 
   def self.suggest_format(url)
-    return "video" if ["youtube.com", "vimeo.com"].any? { |dom| url.include?(dom) }
+    return "video" if ["youtube.com", "vimeo.com", "youtu.be"].any? { |dom| url.include?(dom) }
     return "wiki" if ["wikipedia.org"].any? { |dom| url.include?(dom) }
     return "book" if ["goodreads.com"].any? { |dom| url.include?(dom) }
     return "course" if ["classcentral.com", "coursera.org", "edx.org"].any? { |dom| url.include?(dom) }
@@ -310,8 +310,9 @@ class Item < ApplicationRecord
   end
 
   def embed_url
-    if self.links.any? { |l| l.url.include?("youtube.com") or l.url.include?("vimeo.com") }
-      Item.video_embed(self.links.select { |l| l.url.include?("youtube.com") }.first.url)
+    if self.links.any? { |l| l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }
+      Item.video_embed(self.links.select { |l| 
+        l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }.first.url)
     else
       self.links.first.url
     end
