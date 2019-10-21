@@ -257,7 +257,7 @@ class Item < ApplicationRecord
   def replace_la_links_with_embeds(html)
     # detect all URLs to items in given html string and replace them with their content_html
     # TODO: links are ending up with </p> in the URL
-    pattern = /(https?:\/\/[a-z.]+(:3000)?\/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-\S+)?)/
+    pattern = /(https?:\/\/[a-z.]+(:3000)?\/items\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-[a-zA-Z0-9\-_]+)?)/
     html.scan(pattern).each do |match|
       # match = [url, port, itemid, idsuffix]
       html.sub!(match.first, Item.find(match[2]).content_html(match.first))

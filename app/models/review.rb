@@ -50,6 +50,10 @@ class Review < ApplicationRecord
     end
   end
 
+  def tags_text
+    SCORE_TYPES.select { |s| self.read_attribute(s).to_i >= 4 }.map { |s| s.to_s.sub("_score", "") }.join(", ")
+  end
+
   def as_json(options = {})
     {
       id: self.id,

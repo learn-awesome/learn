@@ -14,15 +14,15 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review = Review.where(user: current_user).where(id: params[:id]).first
-		@review.status = params[:review][:status]
-		@review.inspirational_score = params[:review][:inspirational_score]
-		@review.educational_score = params[:review][:educational_score]
-		@review.challenging_score = params[:review][:challenging_score]
-		@review.entertaining_score = params[:review][:entertaining_score]
-		@review.visual_score = params[:review][:visual_score]
-		@review.interactive_score = params[:review][:interactive_score]
-		@review.overall_score = params[:review][:overall_score]
-		@review.notes = params[:review][:notes]
+		@review.status = params[:review][:status] if params[:review].has_key?(:status)
+		@review.inspirational_score = params[:review][:inspirational_score] if params[:review].has_key?(:inspirational_score)
+		@review.educational_score = params[:review][:educational_score] if params[:review].has_key?(:educational_score)
+		@review.challenging_score = params[:review][:challenging_score] if params[:review].has_key?(:challenging_score)
+		@review.entertaining_score = params[:review][:entertaining_score] if params[:review].has_key?(:entertaining_score)
+		@review.visual_score = params[:review][:visual_score] if params[:review].has_key?(:visual_score)
+		@review.interactive_score = params[:review][:interactive_score] if params[:review].has_key?(:interactive_score)
+		@review.overall_score = params[:review][:overall_score] if params[:review].has_key?(:overall_score)
+		@review.notes = params[:review][:notes] if params[:review].has_key?(:notes)
 		if @review.save
 			redirect_to item_path(@review.item)
 		else

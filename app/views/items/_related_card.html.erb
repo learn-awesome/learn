@@ -1,0 +1,35 @@
+						<div class="card mb-4">
+							<header class="card-header d-md-flex align-items-center">
+								<h2 class="h3 card-header-title">Related Items</h2>
+							</header>
+
+							<div class="card-body p-0 m-0">
+								<div class="tab-content" id="commentsTabs">
+									<!-- Tabs Content -->
+									<div class="tab-pane fade show active" id="commentsTab1" role="tabpanel">
+										<div class="list-group list-lg-group list-group-flush">
+										<% @item.related_items.each do |rel| %>
+											<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
+											<div class="media">
+												<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
+
+												<div class="media-body">
+													<div class="d-md-flex align-items-center">
+														<h4 class="mb-1">
+															<span class="btn btn-sm #{ItemType.button_style}"><%= rel.item_type.display_name_plural %></span>
+															<%= rel.display_name %> <span class="badge badge-soft-secondary mx-1"></span>
+														</h4>
+														<small class="text-muted ml-md-auto"></small>
+													</div>
+
+													<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> -->
+												</div>
+											</div>
+									  		</a>
+										<% end %>
+										</div>
+									</div>
+									<!-- End Tabs Content -->
+								</div>
+							</div>
+						</div>
