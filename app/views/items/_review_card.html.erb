@@ -21,7 +21,7 @@
 										<!-- Tabs Content -->
 										<div class="tab-pane fade show active" id="reviewsTab1" role="tabpanel">
 											<div class="list-group list-lg-group list-group-flush">
-											<% @item.reviews.popular.each do |rev| %>
+											<% @item.reviews.completed.popular.each do |rev| %>
 												<a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
 													  <div class="media">
 														  <img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
@@ -48,7 +48,7 @@
 										<!-- Tabs Content -->
 										<div class="tab-pane fade" id="reviewsTab2" role="tabpanel">
 											<div class="list-group list-lg-group list-group-flush">
-											<% @item.reviews.recent.each do |rev| %>
+											<% @item.reviews.completed.recent.each do |rev| %>
 											  <a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
 													<div class="media">
 														<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">

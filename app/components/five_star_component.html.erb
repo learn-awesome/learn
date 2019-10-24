@@ -1,0 +1,6 @@
+<span class="rating">
+<% (1..5).to_a.reverse.each do |score| %>
+  <input type="radio" id="<%= id_prefix %><%= score %>" name="<%= name %>" value="<%= score %>" <%= "checked" if value.to_i == score %> onchange="<%= onchange %>" />
+  <label for="<%= id_prefix %><%= score %>"></label>
+<% end %>
+</span>

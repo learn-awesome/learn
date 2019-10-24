@@ -27,6 +27,7 @@ class Review < ApplicationRecord
   after_save :update_item_ratings
   after_create :post_to_twitter
 
+  scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
   scope :popular, -> { order("overall_score DESC").limit(10) }
 
