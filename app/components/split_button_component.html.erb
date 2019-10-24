@@ -1,0 +1,11 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-success"><%= labels.first %></button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <% labels.each do |label| %>
+    <a class="dropdown-item" href="#"><%= label %></a>
+    <% end %>
+  </div>
+</div>
