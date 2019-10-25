@@ -1,5 +1,8 @@
 <h2>
 	<b><%= topic.display_name.titleize %></b>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>&src=sdkpreparse" target="_blank">Share to Facebook</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>" target="_blank">Share to Twitter</a>
+
 	<% if current_user %>
 	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
 	<% end %>

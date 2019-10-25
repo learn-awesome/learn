@@ -20,6 +20,8 @@
 							<div class="card h-100">
 								<header class="card-header d-flex align-items-center">
                   <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
+				  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank">Share to Facebook</a>
+				  <a href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank">Share to Twitter</a>
 
                   <!-- Card Header Icon -->
 				  <ul class="list-inline ml-auto mb-0">
