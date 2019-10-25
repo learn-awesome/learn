@@ -1,11 +1,17 @@
 <div class="btn-group">
-  <button type="button" class="btn btn-success"><%= labels.first %></button>
+  <% if value %>
+  	<button type="button" class="btn btn-outline-success">✔</button>
+  	<button type="button" class="btn btn-outline-success" disabled><%= labels.find { |x| x.last == value }.first %></button>
+  <% else %>
+  	<button type="button" class="btn btn-success"><%= labels.first %></button>
+  <% end %>
   <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu dropdown-menu-right">
     <% labels.each do |label| %>
-    <a class="dropdown-item" href="#"><%= label %></a>
+    <% next if label.last == value %>
+    <a class="dropdown-item" href="#"><%= label.first %></a>
     <% end %>
   </div>
 </div>
