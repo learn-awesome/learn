@@ -119,13 +119,16 @@
                   <!-- Tabs Nav -->
                   <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
                    <li class="nav-item">
-                     <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Current Learning</a>
+                     <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Reviews</a>
                    </li>
                    <li class="nav-item">
                      <a href="#panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Have Learned From</a>
                    </li>
                    <li class="nav-item">
                      <a href="#panelWithTabsTab3" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Wants to Learn</a>
+                   </li>
+                   <li class="nav-item">
+                     <a href="#panelWithTabsTab4" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Currently Learning</a>
                    </li>
                   </ul>
                   <!-- End Tabs Nav -->
@@ -135,7 +138,7 @@
                   <!-- Tabs Content -->
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
-                      <% @user.reviews.where(status: 'learning').each do |rev| %>
+                      <% @user.reviews.limit(20).each do |rev| %>
                        <%= render rev.item %>
                       <% end %>
                     </div>
@@ -151,6 +154,12 @@
 
                     <div class="tab-pane fade" id="panelWithTabsTab3" role="tabpanel">
                       <% @user.reviews.where(status: 'want_to_learn').each do |rev| %>
+                       <%= render rev.item %>
+                      <% end %>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="panelWithTabsTab4" role="tabpanel">
+                      <% @user.reviews.where(status: 'learning').each do |rev| %>
                        <%= render rev.item %>
                       <% end %>
                     </div>

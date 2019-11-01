@@ -66,7 +66,11 @@
 	        		<hr/>
 	        	<% end %>
 	        <% else %>
-	        	<p>No reviews. Try following more users?</p>
+	        	<p>No reviews. Consider following more users: 
+	        		<% Review.recent.includes(:user).map(&:user).uniq.each do |u| %>
+	        			<%= link_to u.nickname, user_path(u) %>
+	        		<% end %>
+	        	</p>
 	        <% end %>
         </div>
 </div>

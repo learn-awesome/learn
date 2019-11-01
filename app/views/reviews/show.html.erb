@@ -18,6 +18,25 @@
 <div class="card shadow-sm p-3 mb-5 bg-white rounded">
 	<div class="d-flex header justify-content-between">
 		<h2 class="h2 card-header-title"><b><%= link_to @review.user.nickname, @review.user %>'s review for <%= link_to @review.item.display_name, @review.item %></b></h2>
+
+		<ul class="list-inline ml-auto mb-0">
+
+        <li class="list-inline-item mr-3">
+          <a class="link-muted h3" href="<%= review_url(@review) %>" title="Permalink">
+            <i class="fas fa-link"></i>
+          </a>
+		</li>
+
+
+		<li class="list-inline-item mr-3">
+		<a class="link-muted h3" href="https://www.facebook.com/sharer/sharer.php?u=<%= review_url(@review) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+		</li>
+	  	
+		<li class="list-inline-item mr-3">
+	  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= review_url(@review) %>" target="_blank"><i class="fab fa-twitter"></i></a>
+	  	</li>
+
+	  	</ul>
 	</div>
 	<div class="card-body">
 		<div class="row">
@@ -49,4 +68,8 @@
 			</div>
 		</div>
 	</div>
+
+	<footer class="card-footer">
+
+	</footer>
 </div>
