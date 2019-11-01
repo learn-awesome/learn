@@ -10,6 +10,8 @@
 #  twitter     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  metadata    :json             not null
+#  goodreads   :string
 #
 
 require 'test_helper'

@@ -69,6 +69,7 @@ class UsersController < ApplicationController
     end
     if request.patch?
       @user.random_fav_topic = (params[:user]["random_fav_topic"].to_s == "1")
+      @user.unsubscribe = (params[:user]["unsubscribe"].to_s == "1")
       item_types = params[:user]["random_fav_item_types"].reject { |s| s.blank? }
       if item_types.blank?
         @user.random_fav_item_types = nil

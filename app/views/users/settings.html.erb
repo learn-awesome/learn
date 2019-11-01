@@ -9,6 +9,12 @@
       <div class="card-body">
 
         <%= form_for @user, url: settings_user_path(@user) do |form| %>
+          <h4><b>Email Notifications</b></h4>
+            <div class="form-group mb-4">
+              <%= form.label :unsubscribe, "Unsubscribe from all emails" %>
+              <%= form.check_box :unsubscribe %>
+            </div>
+
         	<h4><b>Options for Random Item Search</b></h4>
             <div class="form-group mb-4">
               <%= form.label :random_fav_topic, "Search only in your favorite topics?" %>
@@ -26,6 +32,8 @@
               <%= form.check_box :post_reviews_to_twitter %>
             </div>
             <% end %>
+
+
     			<div class="form-group mb-4">
     			  <%= form.submit "Save Settings", class: "btn btn-primary" %>
     			</div>

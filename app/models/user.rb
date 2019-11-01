@@ -10,7 +10,7 @@
 #  bio                     :string
 #  description             :text
 #  score                   :integer          default(100), not null
-#  role                    :integer          default(0), not null
+#  role                    :string           default("regular"), not null
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  random_fav_topic        :boolean          default(FALSE), not null
@@ -139,5 +139,9 @@ class User < ApplicationRecord
 
 	def can_see_metrics?
 		self.score.to_i >= 5000
+	end
+
+	def email
+		self.auth0["info"]["email"]
 	end
 end

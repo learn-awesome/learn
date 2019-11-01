@@ -8,6 +8,8 @@
 #  action     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  value      :integer
+#  by_user_id :uuid
 #
 
 # This model allows one user to create a relation between a user (either self or other) and a topic.

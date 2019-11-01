@@ -8,6 +8,8 @@
 #  action     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  value      :integer
+#  by_user_id :uuid
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

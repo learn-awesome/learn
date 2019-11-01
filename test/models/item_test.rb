@@ -21,6 +21,8 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  typical_age_range   :string
+#  description         :text
+#  metadata            :json             not null
 #
 
 require 'test_helper'

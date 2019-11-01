@@ -369,7 +369,8 @@ CREATE TABLE public.users (
     random_fav_topic boolean DEFAULT false NOT NULL,
     random_fav_item_types character varying,
     referrer character varying,
-    post_reviews_to_twitter boolean DEFAULT false NOT NULL
+    post_reviews_to_twitter boolean DEFAULT false NOT NULL,
+    unsubscribe boolean DEFAULT false NOT NULL
 );
 
 
@@ -979,6 +980,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190821060649'),
 ('20190917115933'),
 ('20191021073641'),
-('20191101144409');
+('20191101144409'),
+('20191101172456');
 
 
