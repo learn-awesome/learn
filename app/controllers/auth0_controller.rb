@@ -22,7 +22,7 @@ class Auth0Controller < ApplicationController
           referrer: request.env['omniauth.params']['ref'])
 
         if user.save
-          # UserMailer.with(user: user).welcome_email.deliver_later
+          UserMailer.with(user: user).welcome_email.deliver_later
           Rails.logger.info "User #{user.auth0_uid} created"
         else
           Rails.logger.error user.errors.inspect

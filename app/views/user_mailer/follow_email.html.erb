@@ -1,1 +1,12 @@
 <h2><%= @follower.nickname %> has started following you. Consider <%= link_to "following them back", user_url(@follower) %>?</h2>
+
+<% if @follower.user_topics.any? %>
+<p>
+<%= @follower.nickname %> is interested in 
+<% @follower.user_topics.limit(3).each do |t| %>
+	<%= link_to t.topic.name, topic_url(t.topic) %>,
+<% end %>.
+</p>
+<% end %>
+
+<p><%= User.count %> users have joined recently and you can discover more of them by <%= link_to "browsing topics", topics_url %>.</p>

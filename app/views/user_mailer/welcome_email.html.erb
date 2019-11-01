@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to learnawesome.org, <%= @user.nickname %></h1>
+<h1>Welcome, <%= @user.nickname %>!</h1>
+<p>We’re thrilled to have you on board. To get the most out of LearnAwesome:</p>
 
-    <p>Thanks for joining and have a great day!</p>
-  </body>
-</html>
+<ul>
+  <li>Follow your favorite topics</li>
+  <li>Follow other users with similar interests</li>
+  <li>Participate in community chat</li>
+</ul>
+
+<p><%= User.count %> users have joined recently and you can discover more of them by <%= link_to "browsing topics", topics_url %>.</p>
+
+<p>If you have any questions, feel free to <a href="https://gitter.im/learn-awesome/meta">ask the developers</a>.</p>
+<p>Thanks for joining and have a great day!
+  <br>LearnAwesome Team</p>

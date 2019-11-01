@@ -1,4 +1,10 @@
 <%= @follower.nickname %> has started following you.
 =================================================
 
+<% if @follower.user_topics.any? %>
+<%= @follower.nickname %> is interested in 
+<%= @follower.user_topics.limit(3).map { |ut| ut.topic.name }.join(",") %>
+<% end %>
 Consider following them back? Visit their profile at: <%= user_url(@follower) %>
+
+<%= User.count %> users have joined recently and you can discover more of them by browsing topics: <%= topics_url %>
