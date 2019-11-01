@@ -5,6 +5,10 @@
 
 #### Awesome learning resources organized by topics, formats and difficulty. Optimal learning paths for any topic.
 
+This is the code that powers https://learnawesome.org
+
+This is built using Rails 6.0, Bootstrap 4 and [Stream Dashboard UI Kit](https://htmlstream.com/templates/stream-dashboard-ui-kit).
+
 # Development Setup with Vagrant
 
 ```
