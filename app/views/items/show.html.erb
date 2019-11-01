@@ -15,137 +15,30 @@
 
 
 <div class="row">
-						<!-- Item details -->
-						<div class="col-md-6 mb-4 mb-md-0">
-							<div class="card h-100">
-								<header class="card-header d-flex align-items-center">
-                  <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
+	<!-- Item details -->
+	<div class="col-md-6 mb-4 mb-md-0">
+		<%= render 'left_card' %>
+	</div>
+	<!-- End item details -->
 
-                  <!-- Card Header Icon -->
-				  <ul class="list-inline ml-auto mb-0">
-                    <li class="list-inline-item mr-3">
-                      <a class="link-muted h3" href="<%= item_url(@item) %>" title="Permalink">
-                        <i class="fas fa-link"></i>
-                      </a>
-					</li>
+	<!-- Right side bar -->
+	<div class="col-md-6">
+		<% if user_signed_in? %>
+			<div class="card mb-4">
+				<div class="card-body">
+					<%= render 'review_form' %>
+				</div>
+			</div>
+		<% end %>
 
-					<li class="list-inline-item mr-3">
-					<a class="link-muted h3" href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
-					</li>
-				  	
-					<li class="list-inline-item mr-3">
-				  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
-				  	</li>
+		<% if @item.related_items.any? %>
+			<%= render 'related_card' %>
+		<% end %>
 
-					<% if @item.can_user_edit?(current_user) %>
-                    <li class="list-inline-item">
-                      <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>" title="Edit Item">
-                        <i class="far fa-edit"></i>
-                      </a>
-					</li>
-					<% end %>
+		<% if @item.reviews.completed.count > 0 %>
+			<%= render 'review_card' %>
+		<% end %>
 
-					<% if @item.can_user_change_related_items?(current_user) %>
-                    <li class="list-inline-item">
-                      <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
-                        <i class="fas fa-cogs"></i>
-                      </a>
-					</li>
-					<% end %>
-                  </ul>
-                  <!-- End Card Header Icon -->
-                </header>
-
-								<div class="card-body">
-									<div class="row">
-									<div class="col-md-6">
-									<p class="mb-4"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in 
-									<% @item.topics.map do |topic| %>
-										<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
-									<% end %>
-									</p>
-
-
-
-									<% if @item.is_syllabus? %>
-									<div class="mb-4">
-										<%= @item.display_description %>
-									</div>
-									<% else %>
-									<div class="mb-4">
-										<img src="<%= @item.thumbnail %>" style="width: 30%; float: left;"/>
-										<p><%= @item.display_description %></p>
-									</div>
-									<% end %>
-
-									<div style="clear: both; margin-top: 2em;">
-									<% @item.links.map do |link| %>
-										  <%= link_to link.top_domain, link.url, class: "btn btn-lg btn-primary", target: :_blank %>
-								  	<% end %>
-									</div>
-
-									<div class="item_extra_details">
-									<% if @item.estimated_time %>
-										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
-											<i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;
-											<%= @item.estimated_time.to_s + @item.time_unit[0] %>
-										</span>
-									<% end %>
-									<% if @item.typical_age_range.present? %>
-										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
-											<% if @item.typical_age_range[0] == '-' %>
-												<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
-											<% else %>
-												<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
-											<% end %>
-										</span>
-									<% end %>
-									<% if @item.year.present? %>
-										<span class="nohover btn btn-sm btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
-											<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
-											<%= @item.year %>
-										</span>
-									<% end %>
-									</div>
-
-									<% if @item.idea_set.recommendations.any? %>
-									<div class="recommendations">
-										<p>Recommended by: 
-										<% @item.idea_set.recommendations.each do |rec| %>
-											<%= link_to rec.display_name, rel.target %>
-										<% end %>
-										</p>
-									</div>
-									<% end %>
-
-									<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
-										<small><%= link_to creator.name, creator %>&nbsp;</small>
-									<% end %>
-									</div>	
-
-									</div><div class="col-md-6">
-									<% if user_signed_in? %>
-										<%= render 'review_form' %>
-									<% end %>
-									</div></div>
-								</div>
-
-								<footer class="card-footer"><a class="u-link u-link--primary" href="#!"></a></footer>
-							</div>
-						</div>
-						<!-- End item details -->
-
-						<!-- Right side bar -->
-							<div class="col-md-6">
-								<% if @item.related_items.any? %>
-									<%= render 'related_card' %>
-								<% end %>
-
-								<% if @item.reviews.completed.count > 0 %>
-									<%= render 'review_card' %>
-								<% end %>
-
-								<%= render 'recommended_card' %>
-							</div>
-					</div>
-
+		<%= render 'recommended_card' %>
+	</div>
+</div>

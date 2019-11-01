@@ -16,6 +16,7 @@ class Link < ApplicationRecord
   validates :url, presence: true, length: { in: 8..350 }
   validates :url, format: URI::regexp(%w[http https]) #TODO Allow other protocols?
   validates :item, presence: true
+  validates :url, uniqueness: true
 
   def top_domain
   	PublicSuffix.parse(URI.parse(self.url).host).domain

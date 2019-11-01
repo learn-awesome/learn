@@ -78,6 +78,13 @@ class Item < ApplicationRecord
     end
   end
 
+  def large_thumbnail
+    if self.links.any? { |l| l.url.include?("youtube.com") }
+      videoid = Item.youtube_id(self.links.select { |l| l.url.include?("youtube.com") }.first.url)
+      return "https://img.youtube.com/vi/#{videoid}/0.jpg"
+    end
+  end
+
   def self.searchable_language
     'english'
   end
@@ -363,5 +370,9 @@ class Item < ApplicationRecord
 
   def recommended_items(user)
     [Item.discover]    
+  end
+
+  def primary_link
+    self.links.first
   end
 end
