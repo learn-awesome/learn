@@ -25,7 +25,7 @@ class Review < ApplicationRecord
   belongs_to :item, inverse_of: :reviews
 
   after_save :update_item_ratings
-  after_create :post_to_twitter
+  after_save :post_to_twitter
 
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
@@ -43,11 +43,13 @@ class Review < ApplicationRecord
 
   def post_to_twitter
     return unless Rails.env.production?
-    if self.user.is_from_twitter? && self.user.post_reviews_to_twitter
-      if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
-        # wait 10 minutes so that users can complete his review
-        PostReviewToTwitterJob.set(wait: 10.minutes).perform_later(self.id)
-      end
+    return if self.is_posted_on_social_media
+    return unless self.user.is_from_twitter?
+    return unless self.user.post_reviews_to_twitter
+
+    if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
+      # wait 10 minutes so that users can complete his review
+      PostReviewToTwitterJob.set(wait: 10.minutes).perform_later(self.id)
     end
   end
 
@@ -73,5 +75,17 @@ class Review < ApplicationRecord
       interactive_score: self.interactive_score,
       updated_at: self.updated_at
     }
+  end
+
+  def self.display_rating(score)
+    ("⭐" * score.to_i) + ("⚝" * (5 - score.to_i))
+  end
+
+  def display_rating
+    Review.display_rating(self.overall_score)
+  end
+
+  def display_title
+    self.user.nickname + "'s review for " + self.item.display_name
   end
 end
