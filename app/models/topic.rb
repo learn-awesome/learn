@@ -11,6 +11,7 @@
 #
 
 class Topic < ApplicationRecord
+	ActiveRecord::Base.connection.execute("SELECT set_limit(0.2);")
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 }
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :topic
 	has_many :idea_sets, :through => :topic_idea_sets
