@@ -56,15 +56,30 @@
 <div class="col-md-6 mb-4">
      <div class="card">
         <div class="card-header d-md-flex align-items-center">
-        	<h2>Reviews from users you're following</h2>
+        	<h2>Latest Reviews</h2>
         </div>
         <div class="card-body">
         	<% if @following_reviews.any? %>
+        		<div class="list-group list-lg-group list-group-flush">
 	        	<% @following_reviews.each do |rev| %>
-	        		<p><%= link_to rev.user.nickname, user_path(rev.user) %>: <%= "⭐" * rev.overall_score.to_i %> <%= link_to rev.item.name, review_path(rev) %></p>
-	        		<p><%= rev.notes[0..200] %>...</p>
-	        		<hr/>
+	        		<div class="list-group-item">
+						<div class="media">
+							<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>"/>
+
+							<div class="media-body">
+								<div class="d-md-flex align-items-center">
+									<h4 class="mb-1">
+										<%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.display_rating %></span> <%= link_to rev.item.name, review_path(rev) %>
+									</h4>
+									<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
+								</div>
+								<p><i><%= rev.tags_text %></i></p>
+								<p class="mb-0"><%= rev.notes.to_s[0..200] %></p><br/>
+							</div>
+						</div>
+	        		</div>
 	        	<% end %>
+	        	</div>
 	        <% else %>
 	        	<p>No reviews. Consider following more users: 
 	        		<% Review.recent.includes(:user).map(&:user).uniq.each do |u| %>
