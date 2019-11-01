@@ -79,6 +79,7 @@ class Item < ApplicationRecord
   end
 
   def large_thumbnail
+    return self.image_url if self.image_url.present?
     if self.links.any? { |l| l.url.include?("youtube.com") }
       videoid = Item.youtube_id(self.links.select { |l| l.url.include?("youtube.com") }.first.url)
       return "https://img.youtube.com/vi/#{videoid}/0.jpg"
