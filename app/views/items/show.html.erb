@@ -16,7 +16,7 @@
 
 <div class="row">
 						<!-- Item details -->
-						<div class="<%= (@item.related_items.any? or (@item.reviews.completed.count > 0)) ? 'col-md-6' : 'col-md-12' %> mb-4 mb-md-0">
+						<div class="col-md-6 mb-4 mb-md-0">
 							<div class="card h-100">
 								<header class="card-header d-flex align-items-center">
                   <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
@@ -136,7 +136,6 @@
 						<!-- End item details -->
 
 						<!-- Right side bar -->
-						<% if @item.related_items.any? or (@item.reviews.completed.count > 0) %>
 							<div class="col-md-6">
 								<% if @item.related_items.any? %>
 									<%= render 'related_card' %>
@@ -145,7 +144,8 @@
 								<% if @item.reviews.completed.count > 0 %>
 									<%= render 'review_card' %>
 								<% end %>
+
+								<%= render 'recommended_card' %>
 							</div>
-						<% end %>
 					</div>
 

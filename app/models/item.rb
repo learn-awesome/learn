@@ -360,4 +360,8 @@ class Item < ApplicationRecord
         "https://player.vimeo.com/video/#{video_id}"
     end
   end
+
+  def recommended_items(user)
+    [Item.discover]    
+  end
 end
