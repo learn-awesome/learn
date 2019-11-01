@@ -57,9 +57,8 @@ class TopicsController < ApplicationController
 	end
 
 	def search
-		basic_results = Topic.search(params[:q])
 		fuzzy_results = Topic.fuzzy_search(params[:q]).limit(10)
-		results = fuzzy_results.empty? ? basic_results : fuzzy_results
+		results = fuzzy_results.empty? ? Topic.search(params[:q]) : fuzzy_results
 		render :json => results.as_json(only: [:id, :name])
 	end
 

@@ -20,8 +20,6 @@
 							<div class="card h-100">
 								<header class="card-header d-flex align-items-center">
                   <h2 class="h2 card-header-title"><%= @item.display_name %></h2>
-				  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank">Share to Facebook</a>
-				  <a href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank">Share to Twitter</a>
 
                   <!-- Card Header Icon -->
 				  <ul class="list-inline ml-auto mb-0">
@@ -30,6 +28,14 @@
                         <i class="fas fa-link"></i>
                       </a>
 					</li>
+
+					<li class="list-inline-item mr-3">
+					<a class="link-muted h3" href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+					</li>
+				  	
+					<li class="list-inline-item mr-3">
+				  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
+				  	</li>
 
 					<% if @item.can_user_edit?(current_user) %>
                     <li class="list-inline-item">
