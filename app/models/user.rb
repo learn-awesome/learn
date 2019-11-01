@@ -46,6 +46,36 @@ class User < ApplicationRecord
 		JSON.parse(self.authinfo)
 	end
 
+	def avatar_image
+		self.auth0["info"]["image"]
+	end
+
+	def notifications
+		followers = UserUserRelation.where(to_user: self).all
+		following = UserUserRelation.where(from_user: self).all
+		return followers.map { |f|
+			Notification.new(
+				headline: "@#{f.from_user.nickname}",
+				msg: "started following you",
+				image: f.from_user.avatar_image,
+				target: f.from_user,
+				date: f.created_at.to_date
+		)} + following.map { |f|
+			Notification.new(
+				headline: "You",
+				msg: "started following @#{f.to_user.nickname}",
+				image: self.avatar_image,
+				target: f.to_user,
+				date: f.created_at.to_date
+		)} + [ Notification.new(
+				headline: "LearnAwesome",
+				msg: "invites you to learners community",
+				image: "/favicon.png",
+				target: "https://gitter.im/learn-awesome/community",
+				date: "2019-11-01"
+		)]
+	end
+
 	def fav_topics
 		user_topics.map(&:topic)
 	end

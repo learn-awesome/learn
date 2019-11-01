@@ -97,7 +97,61 @@
       </div>
 
       <div class="u-header-right">
+
         <% if current_user.present? %>
+        <!-- Notifications -->
+        <div class="dropdown mr-4">
+          <a class="link-muted" href="#!" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+            <span class="h3">
+              <i class="far fa-bell"></i>
+            </span>
+            <span class="u-indicator u-indicator-top-right u-indicator--xxs bg-info"></span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
+            <div class="card">
+              <div class="card-header d-flex align-items-center py-3">
+                <h2 class="h4 card-header-title">Notifications</h2>
+                <!-- <a class="ml-auto" href="#">Clear all</a> -->
+              </div>
+
+              <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                  <% current_user.notifications.each do |n| %>
+                  <!-- Notification -->
+                  <%= link_to(n.target, class: "list-group-item list-group-item-action", target: :_blank) do %>
+                  <!-- <a class="list-group-item list-group-item-action" href="<%= n.target %>"> -->
+                    <div class="media align-items-center">
+                      <img class="u-avatar--xs img-fluid rounded-circle mr-2" src="<%= n.image %>" alt="User Profile">
+
+
+                      <div class="media-body">
+                        <div class="d-flex align-items-center">
+                          <h4 class="mb-1"><%= n.headline %></h4>
+                          <small class="text-muted ml-auto"><%= n.date %></small>
+                        </div>
+
+                        <p class="text-truncate mb-0" style="max-width: 250px;">
+                          <%= n.msg %>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <% end %>
+                  <!-- End Notification -->
+                  <% end %>
+
+                </div>
+              </div>
+
+              <!--<div class="card-footer py-3">
+                <a class="btn btn-block btn-outline-primary" href="#">View all notifications</a>
+              </div>-->
+            </div>
+          </div>
+        </div>
+        <!-- End Notifications -->
+
 
         <!-- User Profile -->
         <div class="dropdown ml-2">
