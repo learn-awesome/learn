@@ -47,6 +47,7 @@ class Review < ApplicationRecord
     return if self.is_posted_on_social_media
     return unless self.user.is_from_twitter?
     return unless self.user.post_reviews_to_twitter
+    return if self.overall_score.nil? and self.notes.blank? # neither star ratings nor notes are given
 
     if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
       # wait a while so that users can complete his review notes
