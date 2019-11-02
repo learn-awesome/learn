@@ -102,7 +102,9 @@ class Review < ApplicationRecord
   end
 
   def og_image
-    self.item.image_url || self.item.thumbnail || "https://learnawesome.org/stream/assets/img/ogimage.png"
+    return self.item.image_url if self.item.image_url.present?
+    return self.item.thumbnail if self.item.thumbnail.present?
+    return "https://learnawesome.org/stream/assets/img/ogimage.png"
   end
 
   def og_description
@@ -115,7 +117,7 @@ class Review < ApplicationRecord
     if self.rating_msg.blank?
       return "Just reviewed #{self.item.display_name}. See my detailed review at #{url}"
     else
-      return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See full review at #{url}"
+      return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See my detailed review at #{url}"
     end
   end
 end
