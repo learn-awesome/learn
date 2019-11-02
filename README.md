@@ -9,6 +9,8 @@ This is the code that powers https://learnawesome.org
 
 This is built using Rails 6.0, Bootstrap 4 and [Stream Dashboard UI Kit](https://htmlstream.com/templates/stream-dashboard-ui-kit).
 
+For development, please come to [Gitter](https://gitter.im/learn-awesome/meta)
+
 # Development Setup with Vagrant
 
 ```
