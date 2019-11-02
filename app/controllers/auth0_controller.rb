@@ -19,7 +19,8 @@ class Auth0Controller < ApplicationController
           auth0_uid: session[:userinfo]["uid"],
           nickname: session[:userinfo]["info"]["nickname"],
           image_url: session[:userinfo]["info"]["image"],
-          referrer: request.env['omniauth.params']['ref'])
+          referrer: request.env['omniauth.params']['ref'],
+          post_reviews_to_twitter: true)
 
         if user.save
           UserMailer.with(user: user).welcome_email.deliver_later
