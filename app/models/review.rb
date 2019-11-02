@@ -103,7 +103,14 @@ class Review < ApplicationRecord
 
   def og_image
     return self.item.image_url if self.item.image_url.present?
-    return self.item.thumbnail if self.item.thumbnail.present?
+    if self.item.thumbnail.present?
+      if self.item.thumbnail.start_with?("/icons")
+        return "https://learnawesome.org#{self.item.thumbnail}"
+      else
+        return self.item.thumbnail
+      end
+    end
+    return self.user.avatar_image if self.user.avatar_image.present?
     return "https://learnawesome.org/stream/assets/img/ogimage.png"
   end
 
