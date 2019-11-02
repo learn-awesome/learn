@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 	include Secured
-  	before_action :logged_in_using_omniauth?, except: [:show]
+  	before_action :logged_in_using_omniauth?, except: [:show, :tweet]
 
   	def show
   		@review = Review.find(params[:id])
@@ -54,5 +54,10 @@ class ReviewsController < ApplicationController
 			flash[:danger] = @review.errors.first
 			redirect_back fallback_location: root_path
 		end
+	end
+
+	def tweet
+		@review = Review.find(params[:id])
+		@tweet = @review.tweet_msg
 	end
 end

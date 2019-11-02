@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  Rails.application.routes.default_url_options = { :host => 'localhost', :protocol => 'http', :port => 3000}
+
   config.cache_classes = false
 
   # Do not eager load code on boot. This avoids loading your whole application

@@ -49,8 +49,8 @@ class Review < ApplicationRecord
     return unless self.user.post_reviews_to_twitter
 
     if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
-      # wait 10 minutes so that users can complete his review
-      PostReviewToTwitterJob.set(wait: 10.minutes).perform_later(self.id)
+      # wait a while so that users can complete his review notes
+      PostReviewToTwitterJob.set(wait: 30.minutes).perform_later(self.id)
     end
   end
 
@@ -79,14 +79,42 @@ class Review < ApplicationRecord
   end
 
   def self.display_rating(score)
-    ("⭐" * score.to_i) + ("⚝" * (5 - score.to_i))
+    return "" if score.nil?
+    ("⭐" * score.to_i) + ("☆" * (5 - score.to_i))
   end
 
   def display_rating
     Review.display_rating(self.overall_score)
   end
 
+  def rating_msg
+    return "" if self.overall_score.nil?
+    return "#{self.overall_score.to_i} out of 5 stars"
+  end
+
   def display_title
     self.user.nickname + "'s review for " + self.item.display_name
+  end
+
+  def self.discover
+    Review.order('RANDOM()').first
+  end
+
+  def og_image
+    self.item.image_url || self.item.thumbnail || "https://learnawesome.org/stream/assets/img/ogimage.png"
+  end
+
+  def og_description
+    self.notes.to_s[0..100] + " ... see more at LearnAwesome.org :: Humanity's universal learning map"
+  end
+
+  def tweet_msg
+    url = Rails.application.routes.url_helpers.review_url(self)
+
+    if self.rating_msg.blank?
+      return "Just reviewed #{self.item.display_name}. See my detailed review at #{url}"
+    else
+      return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See full review at #{url}"
+    end
   end
 end

@@ -3,13 +3,13 @@
 <% end %>
 
 <% content_for :opengraph do %>
-  <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
-  <meta name="description" content="<%= @item.description %>: LearnAwesome.org :: Humanity's universal learning map">
+  <meta name="keywords" content="review, rating">
+  <meta name="description" content="<%= @review.og_description %>">
 
   <meta property="og:title" content="<%= @review.display_title %> at LearnAwesome.org">
-  <meta property="og:description" content="LearnAwesome.org :: Humanity's universal learning map">
-  <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
-  <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+  <meta property="og:description" content="<%= @review.og_description %>">
+  <meta property="og:image" content="<%= @review.og_image %>">
+  <meta property="og:url" content="<%= review_url(@review) %>">
   <meta name="twitter:card" content="summary_large_image">
 <% end %>
 

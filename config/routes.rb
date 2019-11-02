@@ -45,7 +45,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reviews, only: [:new, :create, :edit, :update, :show]
+  resources :reviews, only: [:new, :create, :edit, :update, :show] do
+    member do
+      get 'tweet' # only for testing and preview
+    end
+  end
 
   # resources :user_topics
 
