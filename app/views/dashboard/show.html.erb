@@ -82,7 +82,7 @@
 	        	</div>
 	        <% else %>
 	        	<p>No reviews. Consider following more users: 
-	        		<% Review.recent.includes(:user).map(&:user).uniq.each do |u| %>
+	        		<% Review.recent.where("user_id != ?", current_user.id).includes(:user).map(&:user).uniq.each do |u| %>
 	        			<%= link_to u.nickname, user_path(u) %>
 	        		<% end %>
 	        	</p>

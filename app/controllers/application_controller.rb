@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def allow_rack_mini_profiler
-	    if current_user && current_user.is_core_dev?
+	    if current_user && current_user.is_core_dev? && params[:rmp].to_s == 'true'
 	      Rack::MiniProfiler.authorize_request
 	    end
     end
