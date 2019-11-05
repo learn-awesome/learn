@@ -163,6 +163,10 @@ class User < ApplicationRecord
 		]
 	end
 
+	def is_core_dev?
+		User.core_devs.include?(self.id)
+	end
+
 	def can_combine_items?
 		self.score.to_i >= 5000
 	end

@@ -94,3 +94,12 @@ gem 'faker'
 
 gem "cocoon"
 gem "actionview-component"
+
+gem 'rack-mini-profiler'
+
+# For memory profiling
+gem 'memory_profiler'
+
+# For call-stack profiling flamegraphs
+gem 'flamegraph'
+gem 'stackprof'
