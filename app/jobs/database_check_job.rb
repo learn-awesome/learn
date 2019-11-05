@@ -4,8 +4,9 @@ class DatabaseCheckJob < ApplicationJob
   def perform(review_id)
   	begin
   		ideas_without_topics = IdeaSet.pluck(:id) - TopicIdeaSet.distinct.pluck(:idea_set_id)
-  		items_without_links  = Item.pluck(:id) - Link.distinct.pluck(:item_id)
+  		items_without_links  = Item.where.not(item_type_id: 'learning_plan').pluck(:id) - Link.distinct.pluck(:item_id)
       ideas_without_items  = IdeaSet.pluck(:id) - Item.distinct.pluck(:idea_set_id)
+      duplicate_links = Link.select([:url]).group(:url).having("count(id) > 1").map(&:url)
   		# TODO
   		# topics without wiki entry
 	rescue Exception => ex
