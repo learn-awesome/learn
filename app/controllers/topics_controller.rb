@@ -16,8 +16,9 @@ class TopicsController < ApplicationController
 
 	def create
 		@topic = Topic.new
-		@topic.name = params[:topic][:name]
+		@topic.name = params[:topic][:name].to_s.strip
 		@topic.search_index = @topic.name
+		@topic.gitter_room = @topic.name
 		if @topic.save
 			redirect_to @topic
 		else

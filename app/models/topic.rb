@@ -11,8 +11,12 @@
 #
 
 class Topic < ApplicationRecord
+	SLUG_FORMAT = /\A[0-9a-z\-]+\z/
 	ActiveRecord::Base.connection.execute("SELECT set_limit(0.2);")
-	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 }
+	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
+		format: {with: SLUG_FORMAT}
+	validates :search_index, presence: true
+
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :topic
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :items, :through => :idea_sets
@@ -67,7 +71,7 @@ class Topic < ApplicationRecord
 	end
 
 	def display_name
-		self.name.gsub("-", " ")
+		self.read_attribute(:display_name) || self.name.gsub("-", " ")
 	end
 
 	def curators

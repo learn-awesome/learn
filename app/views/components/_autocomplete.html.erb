@@ -3,6 +3,7 @@
 	placeholder = local_assigns.fetch(:placeholder)
 	is_remote = local_assigns.fetch(:is_remote)
 	source = local_assigns.fetch(:source)
+	notfound = local_assigns.fetch(:notfound, "not found")
 %>
 
 
@@ -40,11 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		  display: 'name',
 		  source: topics,
 		  templates: {
-		    empty: [
-		      '<div class="empty-message">',
-		        'not found',
-		      '</div>'
-		    ].join('\n'),
+		    empty: '<div class="empty-message">\n<%= notfound.html_safe %>\n</div>',
 		    suggestion: function(data){
 		    	return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
 		    }
