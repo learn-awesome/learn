@@ -9,23 +9,38 @@
 									<div class="tab-pane fade show active" id="commentsTab1" role="tabpanel">
 										<div class="list-group list-lg-group list-group-flush">
 										<% @item.recommended_items(current_user).each do |rel| %>
-											<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
-											<div class="media">
-												<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
+											<div class="row">
+												<div class="col-md-10">
+													<a class="list-group-item list-group-item-action" href="<%= item_path(rel) %>">
+													<div class="media">
+														<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="">
 
-												<div class="media-body">
-													<div class="d-md-flex align-items-center">
-														<h4 class="mb-1">
-															<span class="btn btn-sm #{ItemType.button_style}"><%= rel.item_type.display_name_plural %></span>
-															<%= rel.display_name %> <span class="badge badge-soft-secondary mx-1"></span>
-														</h4>
-														<small class="text-muted ml-md-auto"></small>
+														<div class="media-body">
+															<div class="d-md-flex align-items-center">
+																<h4 class="mb-1">
+																	<span class="btn btn-sm #{ItemType.button_style}">
+																		<%= rel.item_type.display_name_plural %>
+																	</span>
+																	<%= rel.display_name %>
+
+																	<span class="badge badge-soft-secondary mx-1"></span>
+																</h4>
+																<small class="text-muted ml-md-auto"></small>
+															</div>
+
+															<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> --> 
+														</div>
 													</div>
-
-													<!-- <p class="mb-0">We've just done the project. What's gonna be next?</p> -->
-												</div>
+											  		</a>
+											  	</div>
+											  	<div class="col-md-2">
+														<%= link_to rel.primary_link.url, target: :_blank, class: "list-group-item list-group-item-action", style: "height: 100%" do %>
+															<div style="width:100%; height: 100%; text-align: center">
+																<i class="fas fa-external-link-alt fa-2x" style="margin-top: 10px"></i>
+															</div>
+														<% end %>
+											  	</div>
 											</div>
-									  		</a>
 										<% end %>
 										</div>
 									</div>
