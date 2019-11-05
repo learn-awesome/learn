@@ -16,7 +16,7 @@ class IdeaSetsController < ApplicationController
     @idea_set = IdeaSet.find(params[:id])
 
     # User most likely wants to add related items. Build a new object to show in the form
-    @idea_set.items.build
+    @idea_set.items.build.links.build
 
   end
 
@@ -25,8 +25,8 @@ class IdeaSetsController < ApplicationController
     data = idea_set_params
 
     data[:items_attributes].each do |k,v|
-      v[:name] = @idea_set.name
-      v[:user_id] = current_user.id if v[:user_id].blank?
+      v[:name] = @idea_set.name if v[:id].blank?
+      v[:user_id] = current_user.id if v[:id].blank?
     end
     @idea_set.update!(data)
     redirect_to @idea_set.items.first
@@ -34,6 +34,13 @@ class IdeaSetsController < ApplicationController
 
   private
   def idea_set_params
-    params.require(:idea_set).permit(items_attributes: [:id, :description, :name, :url, :item_type_id, :_destroy])
+    params.require(:idea_set).permit(items_attributes: [
+      :id,
+      :description,
+      :name,
+      :item_type_id,
+      :_destroy,
+      links_attributes: [:id, :_destroy, :url]
+    ])
   end
 end

@@ -1,16 +1,16 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 	<div class="card-body">
-		<h2 class="card-title">Create items related to <%= @idea_set.display_name %></h2>
+		<h2 class="card-title"><b>Manage items related to <%= link_to @idea_set.display_name, :back %></b></h2>
 		<%= form_for @idea_set do |f| %>
 
 		  <%= f.fields_for :items do |relitem| %>
 		  	<%= render 'item_fields', f: relitem %>
 		  <% end %>
 
-		  <div><%= link_to_add_association 'add item', f, :items %></div>
+		  <div class="form-group mb-4"><%= link_to_add_association 'Add another related item', f, :items %><br/></div>
 		  
 		  <div class="form-group mb-4">
-				<%= f.submit "Created related items", class: "btn btn-primary" %>
+				<%= f.submit "Save related items", class: "btn btn-primary" %>
 		  </div>
 		<% end %>
 	</div>

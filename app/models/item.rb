@@ -42,6 +42,7 @@ class Item < ApplicationRecord
   validates :user, presence: true
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
+  validates :links, presence: true
   after_save :clear_cache
   after_destroy :clear_cache
   
@@ -306,15 +307,6 @@ class Item < ApplicationRecord
     return "book" if ["goodreads.com"].any? { |dom| url.include?(dom) }
     return "course" if ["classcentral.com", "coursera.org", "edx.org"].any? { |dom| url.include?(dom) }
     return "article"
-  end
-
-  def url
-    self.links.first.try(:url)
-  end
-
-  def url=(val)
-    self.links.build unless self.links.present?
-    self.links.first.url = val
   end
 
   def embed_url

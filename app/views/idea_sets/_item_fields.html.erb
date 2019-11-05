@@ -3,8 +3,10 @@
       <%= f.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
     </div>
 
+    <%= f.fields_for :links do |l| %>
     <div class="form-group">
-	  <%= f.url_field :url, required: true, placeholder: "URL", class: "form-control" %>
-	  <%= link_to_remove_association "Remove", f %>
+	  <%= l.url_field :url, required: true, placeholder: "URL", class: "form-control mr-2" %>
     </div>
+    <% end %>
+    <%= link_to_remove_association "Remove", f %>
   </div>
