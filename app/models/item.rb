@@ -165,6 +165,15 @@ class Item < ApplicationRecord
     return page.at('link[rel="canonical"]')&.attributes["href"]&.value
   end
 
+  def update_opengraph_data
+    extracted = Item.extract_opengraph_data(self.primary_link.url)
+    if extracted.present?
+      self.image_url = extracted[:image_url] # TODO: don't overwrite existing values
+      self.description = extracted[:description] # TODO: same
+      self.save
+    end
+  end
+
   def self.extract_opengraph_data(url)
     Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
       if url.include?("goodreads.com")
