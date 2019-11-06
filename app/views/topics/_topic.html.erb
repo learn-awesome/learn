@@ -52,7 +52,7 @@
 	        <div class="col-md-12 mb-4">
 	          <div class="card">
 	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><img src="<%= it.icon %>" width=24 height=24 /> &nbsp; <%= it.display_name_plural %></h2>
+	              <h2 class="h3 card-header-title"><img src="<%= it.icon %>" width=24 height=24 /> &nbsp; <b><%= it.display_name_plural %></b></h2>
 
 	            </div>
 
@@ -75,12 +75,12 @@
     <div class="col-md-12 mb-4">
       <div class="card">
         <div class="card-header d-md-flex align-items-center">
-          <h2 class="h3 card-header-title">Users who're following this topic</h2>
+          <h2 class="h3 card-header-title"><b>Users who're following this topic</b></h2>
 
         </div>
 
         <div class="card-body">
-    		<%= topic.followers.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %>
+    		<%= topic.followers.map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %>
         </div>
 
       </div>
