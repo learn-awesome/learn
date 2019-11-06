@@ -17,8 +17,8 @@ class IdeaSet < ApplicationRecord
 	has_many :person_idea_sets, dependent: :destroy, inverse_of: :idea_set
 	has_many :people, :through => :person_idea_sets
 	has_many :recommendations, dependent: :destroy, inverse_of: :idea_set
-	validates :items, presence: true
-	validates :topic_idea_sets, presence: true
+	validates :items, presence: true, on: :update # idea_set is saved before items
+	validates :topic_idea_sets, presence: true, on: :update # see items_controller#72
 	accepts_nested_attributes_for :items, allow_destroy: true
 	accepts_nested_attributes_for :topic_idea_sets, allow_destroy: true
 	accepts_nested_attributes_for :person_idea_sets, allow_destroy: true
