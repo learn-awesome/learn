@@ -30,4 +30,16 @@ class Person < ApplicationRecord
 	def display_name
 		self.name
 	end
+
+	def to_param
+		self.id.to_s + "-" + self.name.to_s.parameterize
+	end
+
+	def as_json
+		{
+			id: self.id,
+			name: self.name,
+			to_param: self.to_param
+		}
+	end
 end

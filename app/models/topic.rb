@@ -37,7 +37,8 @@ class Topic < ApplicationRecord
 		{
 			id: self.id,
 			name: self.name,
-			search_index: self.search_index
+			search_index: self.search_index,
+			to_param: self.to_param
 		}
 	end
 

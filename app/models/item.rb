@@ -67,7 +67,13 @@ class Item < ApplicationRecord
   end
 
   def as_json(options = {})
-    {id: self.id, name: self.name.titleize, item_type_id: self.item_type_id.titleize, creators: self.creators}
+    {
+      id: self.id,
+      name: self.name.titleize,
+      item_type_id: self.item_type_id.titleize,
+      creators: self.creators,
+      to_param: self.to_param
+    }
   end
 
   def thumbnail

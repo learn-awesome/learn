@@ -84,15 +84,15 @@ function autosuggest(){
             data = data[1];
             switch(entityType) {
                 case 'Topic':
-                    return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
+                    return '<a href="/topics/' + data.to_param + '"><div><strong>' + data.name + '</strong></div></a>';
                 case 'Item':
                     var itemType = data.item_type_id;
                     if(data.creators) {
                         itemType += ' by ' + data.creators;
                     }
-                    return '<a href="/items/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
+                    return '<a href="/items/' + data.to_param + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
                 case 'Person':
-                    return '<a href="/people/' + data.id + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
+                    return '<a href="/people/' + data.to_param + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
                 default:
                 console.error('unhandled entity: ' + data.type);
             }
