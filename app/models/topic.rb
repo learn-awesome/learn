@@ -11,7 +11,7 @@
 #
 
 class Topic < ApplicationRecord
-	SLUG_FORMAT = /\A[0-9a-z\-]+\z/
+	SLUG_FORMAT = /\A[0-9a-z\-\/]+\z/
 	ActiveRecord::Base.connection.execute("SELECT set_limit(0.2);")
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
 		format: {with: SLUG_FORMAT}

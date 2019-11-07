@@ -16,9 +16,11 @@ class TopicsController < ApplicationController
 
 	def create
 		@topic = Topic.new
-		@topic.name = params[:topic][:name].to_s.strip
+		@topic.display_name = params[:topic][:name].to_s.strip
+		@topic.name = @topic.display_name.gsub(" ", "-").downcase
 		@topic.search_index = @topic.name
 		@topic.gitter_room = @topic.name
+		@topic.user = current_user
 		if @topic.save
 			redirect_to @topic
 		else

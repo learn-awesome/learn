@@ -15,4 +15,5 @@ class TopicIdeaSet < ApplicationRecord
 	belongs_to :idea_set, inverse_of: :topic_idea_sets
 	validates :topic, presence: true
 	validates :idea_set, presence: true
+	validates :topic_id, uniqueness: { scope: :idea_set_id }
 end
