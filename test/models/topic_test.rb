@@ -8,6 +8,7 @@
 #  gitter_room  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  user_id      :uuid
 #
 
 require 'test_helper'

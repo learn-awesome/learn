@@ -1,9 +1,10 @@
+												<div class="form-group">
+													<%= render 'components/dropper' %>
+												</div>
+
 										<%= form_with(model: @my_review) do |form| %>
 											<div class="inplacereview">
-												<div class="form-group review_status_input">
-													<label for="review_status" class="col-form-label col-form-label-sm">What's your current status? &nbsp;</label>
-													<%= form.select :status, [['I have heard good things about it','recommending'], ['I have learned from this', 'learned'], ['I am currently going through this','learning'], ['I want to learn from this','want_to_learn']], {required: true, include_blank: "Select"}, class: "form-control form-control-sm", onchange: 'this.form.submit();' %>
-												</div>
+
 												<hr>
 												<div class="form-group mb-2 star_ratings">
 												<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>

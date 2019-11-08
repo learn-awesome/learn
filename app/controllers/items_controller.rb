@@ -12,6 +12,8 @@ class ItemsController < ApplicationController
       redirect_to root_path and return
     end
     @my_review = Review.where(item: @item, user: current_user).first || Review.new
+    @lists_added = CollectionItem.where(item: @item).where(collection_id: current_user.collections.pluck(:id)).pluck(:collection_id)
+    @open_status_menu = (params[:open_status_menu].to_s == 'true')
   end
 
   def new

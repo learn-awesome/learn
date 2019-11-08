@@ -1,0 +1,32 @@
+<div class="btn-group <%= 'show' if @open_status_menu %>">
+  <% if @my_review.persisted? and @my_review.status.present? %>
+    <%= button_to ("✔ " + Review::STATUSES[@my_review.status.to_sym]), review_path(@my_review, review: {status: ""}), method: :patch, class: "btn btn-info-outline" %>
+  <% elsif @my_review.persisted? %>
+    <%= button_to Review::STATUSES[:want_to_learn], review_path(@my_review, review: {status: "want_to_learn"}), method: :patch, class: "btn btn-success" %>
+  <% else %>
+    <%= button_to Review::STATUSES[:want_to_learn], reviews_path(review: {status: "want_to_learn", item_id: @item.id}), method: :post, class: "btn btn-success" %>
+  <% end %>
+
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<%= @open_status_menu.to_s %>">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right <%= 'show' if @open_status_menu %>" style="background-color: #e0e0e0;">
+    <% Review::STATUSES.keys.reject { |s| s == (@my_review.status.try(:to_sym) || :want_to_learn) }.each do |st| %>
+      <% if @my_review.new_record? %>
+        <%= link_to Review::STATUSES[st], reviews_path(review: {status: st, item_id: @item.id}), method: :post, class: "dropdown-item" %>
+      <% else %>
+        <%= link_to Review::STATUSES[st], review_path(@my_review, review: {status: st}), method: :patch, class: "dropdown-item" %>
+      <% end %>
+    <% end %>
+
+    <% current_user.collections.each do |coll| %>
+      <%= link_to toggle_item_user_collection_path(current_user, coll, item_id: @item.id), method: :post, class: "dropdown-item" do %>
+        <% if @lists_added.include?(coll.id) %>✔<% else %>☐<% end %>
+        <%= coll.name %>
+      <% end %>
+    <% end %>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="<%= new_user_collection_path(current_user) %>">Create New Collection</a>
+  </div>
+</div>

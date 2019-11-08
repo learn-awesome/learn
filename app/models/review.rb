@@ -25,6 +25,8 @@ class Review < ApplicationRecord
   belongs_to :user, inverse_of: :reviews
   belongs_to :item, inverse_of: :reviews
 
+  validates_inclusion_of :status, in: ['want_to_learn', 'learning', 'learned'], allow_nil: true, allow_blank: false
+
   after_save :update_item_ratings
   after_save :post_to_twitter
 
@@ -33,6 +35,7 @@ class Review < ApplicationRecord
   scope :popular, -> { order("overall_score DESC").limit(10) }
 
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
+  STATUSES = {want_to_learn: "Want to learn", learning: "Currently learning", learned: "Already learned"}
 
   def update_item_ratings
   	SCORE_TYPES.each do |quality_score|

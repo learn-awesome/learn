@@ -44,7 +44,11 @@ Rails.application.routes.draw do
       patch 'settings'
     end
 
-    resources :collections
+    resources :collections do
+      member do
+        post 'toggle_item'
+      end
+    end
   end
 
   resources :reviews, only: [:new, :create, :edit, :update, :show] do

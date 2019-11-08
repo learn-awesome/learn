@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: collections
+#
+#  id          :uuid             not null, primary key
+#  name        :string           not null
+#  user_id     :uuid             not null
+#  is_public   :boolean          default(FALSE), not null
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the
