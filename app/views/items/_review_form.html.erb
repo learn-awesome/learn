@@ -1,18 +1,25 @@
-												<div class="form-group">
-													<%= render 'components/dropper' %>
-												</div>
+<div class="row">
+	<%= render 'components/dropper' %>
+	
+	<div style="display: inline-block">
+		<%= form_with(model: @my_review, style: "display: inline") do |form| %>
+			<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
+			<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+		<% end %>
 
+		<div style="text-align: center">
+			<% if @my_review.persisted? and @my_review.overall_score.present? %>
+			<%= link_to "clear", review_path(@my_review, review: {overall_score: ""}), method: :patch %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
 										<%= form_with(model: @my_review) do |form| %>
 											<div class="inplacereview">
 
-												<hr>
-												<div class="form-group mb-2 star_ratings">
-												<%= render 'components/fivestar_input', idprefix: 'overallstar', name: "review[overall_score]", value: @my_review.overall_score, onchange: 'this.form.submit();' %>
-												</div>
-								
-												<br>
-												<br>
-								
 												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 												<br>
 												<div class="item_categorization">
@@ -35,3 +42,4 @@
 													<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
 												</div>
 										<% end %>
+</div>

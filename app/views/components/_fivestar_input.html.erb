@@ -5,7 +5,7 @@
 	onchange = local_assigns.fetch(:onchange, nil)
 %>
 
-<h3>How would you rate this?</h3>
+
 <span class="rating">
 <% (1..5).to_a.reverse.each do |score| %>
   <input type="radio" id="<%= idprefix %><%= score %>" name="<%= name %>" value="<%= score %>" <%= "checked" if value.to_i == score %> onchange="<%= onchange %>" />

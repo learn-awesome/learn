@@ -44,7 +44,7 @@ class Topic < ApplicationRecord
 	end
 
 	def self.button_style
-		"btn-success"
+		"btn btn-sm btn-success"
 	end
 
 	def chat_room

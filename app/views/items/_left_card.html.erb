@@ -27,9 +27,9 @@
 
 	<div class="card-body">
 		<div>
-		<p class="mb-4"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "btn btn-sm #{ItemType.button_style}" %> in 
+		<p class="mb-4"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "#{ItemType.button_style}" %> in 
 		<% @item.topics.map do |topic| %>
-			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+			<%= link_to topic.name, topic, class: "#{Topic.button_style}" %>
 		<% end %>
 		</p>
 
