@@ -6,7 +6,7 @@ class CollectionsController < InheritedResources::Base
   belongs_to :user
 
   def create
-  	@collection = Collection.new(params[:collection])
+  	@collection = Collection.new(collection_params)
   	@collection.user = current_user
   	create!
   end
