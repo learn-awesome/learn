@@ -1,15 +1,16 @@
 # LearnAwesome
 
-[![Gitter](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
+[![Chat for users](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
+[![Chat for developers](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
 [![Twitter](https://img.shields.io/badge/-Twitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://twitter.com/learn_awesome)
 
 #### Awesome learning resources organized by topics, formats and difficulty. Optimal learning paths for any topic.
 
 This is the code that powers https://learnawesome.org
 
-This is built using Rails 6.0, Bootstrap 4 and [Stream Dashboard UI Kit](https://htmlstream.com/templates/stream-dashboard-ui-kit).
+This is built using Rails 6.0, PostgreSQL, Bootstrap 4 and [Stream Dashboard UI Kit](https://htmlstream.com/templates/stream-dashboard-ui-kit).
 
-For development, please come to [Gitter](https://gitter.im/learn-awesome/meta)
+For development, please come to [Gitter](https://gitter.im/learn-awesome/meta). There's also a [community chat room](https://gitter.im/learn-awesome/community).
 
 # Development Setup with Vagrant
 

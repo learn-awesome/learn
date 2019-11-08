@@ -42,13 +42,14 @@ class Item < ApplicationRecord
   validates :user, presence: true
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
-  validates :links, presence: true, if: -> { item_type_id != 'learning_plan' }
+  validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
   after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
 
   attr_accessor :other_item_id
+  attr_accessor :allow_without_links
 
   scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }

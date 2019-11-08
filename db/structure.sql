@@ -330,6 +330,7 @@ CREATE TABLE public.topics (
     gitter_room character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    display_name character varying,
     user_id uuid
 );
 

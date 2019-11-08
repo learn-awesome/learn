@@ -80,17 +80,26 @@ namespace :import do
 
 			item_type_hash['links'].each do |item_hash|
 				next if item_hash['sourceText'].length < 3
-				idea_set = IdeaSet.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''))
-				item = Item.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''), idea_set: idea_set, item_type: item_type, user: user)
 
-				TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
 				if item_hash['link'] =~ URI::regexp(%w[http https])
-					Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length >= 8
+					begin
+						idea_set = IdeaSet.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''))
+						item = Item.create!(
+							name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''),
+							idea_set: idea_set,
+							item_type: item_type,
+							allow_without_links: true,
+							user: user)
+
+						TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
+						Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length >= 8
+						puts "created Item #{item.name}"
+					rescue Exception => ex
+						puts ex.message
+					end
 				else
 					puts "invalid: #{item_hash['link']}"
 				end
-
-				puts "created Item #{item.name}"
 			end
 		end
 	end

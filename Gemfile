@@ -77,8 +77,6 @@ gem 'omniauth-auth0'
 gem 'bootstrap'
 gem 'jquery-rails'
 
-gem 'public_suffix'
-
 gem 'textacular', '5.2.0'
 
 gem "font-awesome-rails"

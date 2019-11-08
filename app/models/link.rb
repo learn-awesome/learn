@@ -19,6 +19,6 @@ class Link < ApplicationRecord
   validates :url, uniqueness: true
 
   def top_domain
-  	PublicSuffix.parse(URI.parse(self.url).host).domain
+  	URI.parse(self.url).host
   end
 end
