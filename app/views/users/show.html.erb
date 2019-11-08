@@ -64,7 +64,7 @@
 						</div>
 
 						<p class="text-muted mb-0"><%= @user.submissions.count %> Submissions</p>
-						<p class="text-muted mb-0"><%= @user.reviews.count %> Reviews</p>
+						<p class="text-muted mb-0"><%= @user.reviews.completed.count %> Reviews</p>
 						<p class="text-muted mb-0"><%= @user.followers.count %> Followers</p>
 						<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
 						<p class="text-muted mb-0"><%= link_to @user.collections.count.to_s + " Collections", user_collections_path(@user) %></p>
@@ -139,7 +139,7 @@
                   <!-- Tabs Content -->
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
-                      <% @user.reviews.limit(20).each do |rev| %>
+                      <% @user.reviews.completed.limit(20).each do |rev| %>
                        <%= render rev.item %>
                       <% end %>
                     </div>

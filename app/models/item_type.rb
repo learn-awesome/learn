@@ -16,7 +16,7 @@ class ItemType < ApplicationRecord
 	end
 
 	def self.button_style
-		"btn btn-sm btn-soft-info"
+		"btn btn-sm btn-soft-info btn-pill"
 	end
 
 	def icon

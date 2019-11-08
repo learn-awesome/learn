@@ -8,6 +8,7 @@ class DatabaseCheckJob < ApplicationJob
       ideas_without_items  = IdeaSet.pluck(:id) - Item.distinct.pluck(:idea_set_id)
       duplicate_links = Link.select([:url]).group(:url).having("count(id) > 1").map(&:url)
   		# TODO
+      # Reviews where all the score, status, notes and tags fields are missing
   		# topics without wiki entry
 	rescue Exception => ex
 		Rails.logger.error("Error in DatabaseCheckJob: #{ex.message}")

@@ -29,6 +29,7 @@ class Review < ApplicationRecord
 
   after_save :update_item_ratings
   after_save :post_to_twitter
+  after_save :change_status
 
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
@@ -43,6 +44,13 @@ class Review < ApplicationRecord
   		self.item.write_attribute(quality_score, avg_score.to_f) if avg_score
   		self.item.save
   	end
+  end
+
+  def change_status
+    # if self.overall_score.present? and self.status.nil?
+    #   self.status = 'learned'
+    #   self.save
+    # end
   end
 
   def post_to_twitter
