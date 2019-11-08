@@ -22,6 +22,7 @@
 require 'json'
 
 class User < ApplicationRecord
+  has_many :collections
 	validates :nickname, presence: true
 	validates :authinfo, presence: true
 	validates :auth0_uid, presence: true
@@ -41,6 +42,8 @@ class User < ApplicationRecord
 
 	has_many :to_user_relations, foreign_key: :to_user_id, class_name: "UserUserRelation"
 	has_many :followers, through: :to_user_relations, source: :from_user
+
+	has_many :collections
 
 	def auth0
 		JSON.parse(self.authinfo)

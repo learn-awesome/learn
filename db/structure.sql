@@ -120,6 +120,34 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: collection_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.collection_items (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    collection_id uuid NOT NULL,
+    item_id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: collections; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.collections (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    name character varying NOT NULL,
+    user_id uuid NOT NULL,
+    is_public boolean DEFAULT false NOT NULL,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: idea_sets; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -427,6 +455,22 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: collection_items collection_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.collection_items
+    ADD CONSTRAINT collection_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: collections collections_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.collections
+    ADD CONSTRAINT collections_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idea_sets idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -595,6 +639,27 @@ CREATE UNIQUE INDEX index_admin_users_on_email ON public.admin_users USING btree
 --
 
 CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON public.admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_collection_items_on_collection_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_collection_items_on_collection_id ON public.collection_items USING btree (collection_id);
+
+
+--
+-- Name: index_collection_items_on_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_collection_items_on_item_id ON public.collection_items USING btree (item_id);
+
+
+--
+-- Name: index_collections_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_collections_on_user_id ON public.collections USING btree (user_id);
 
 
 --
@@ -818,6 +883,14 @@ ALTER TABLE ONLY public.reviews
 
 
 --
+-- Name: collection_items fk_rails_29c02f6872; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.collection_items
+    ADD CONSTRAINT fk_rails_29c02f6872 FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
 -- Name: topic_relations fk_rails_4e9299d5db; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -882,11 +955,27 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
+-- Name: collections fk_rails_9b33697360; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.collections
+    ADD CONSTRAINT fk_rails_9b33697360 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: recommendations fk_rails_a7499a8cff; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.recommendations
     ADD CONSTRAINT fk_rails_a7499a8cff FOREIGN KEY (person_id) REFERENCES public.people(id);
+
+
+--
+-- Name: collection_items fk_rails_b1a778644b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.collection_items
+    ADD CONSTRAINT fk_rails_b1a778644b FOREIGN KEY (collection_id) REFERENCES public.collections(id);
 
 
 --
@@ -998,6 +1087,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191021073641'),
 ('20191101144409'),
 ('20191101172456'),
-('20191105105946');
+('20191105105946'),
+('20191108051151');
 
 

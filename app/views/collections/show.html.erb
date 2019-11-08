@@ -1,0 +1,14 @@
+<h1><%= link_to parent.nickname, parent %>'s collections > <%= resource.name %></h1>
+
+<p><%= resource.description %></p>
+
+<ul>
+<% resource.items.each do |item| %>
+	<li><%= link_to item.name, item %></li>
+<% end %>
+</ul>
+
+<% if current_user == parent %>
+<%= link_to 'Edit', edit_resource_path(@collection) %> |
+<% end %>
+<%= link_to 'Back', collection_url %>

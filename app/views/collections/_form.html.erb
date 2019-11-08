@@ -1,0 +1,27 @@
+<%= form_for [parent, resource] do |form| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %><br/>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br/>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <br/><%= form.submit %>
+  </div>
+<% end %>

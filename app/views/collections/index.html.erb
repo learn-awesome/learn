@@ -1,0 +1,23 @@
+<h1><%= link_to parent.nickname, parent %>'s collections</h1>
+
+
+
+<ul>
+  <% @collections.each do |collection| %>
+    <li>
+      <%= link_to collection.name, resource_url(collection) %>
+      <% if current_user == parent %>
+        <%= link_to edit_resource_url(collection) do %><i class="far fa-edit"></i><% end %>
+        <%= link_to resource_url(collection), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<% if current_user == parent %>
+<%= link_to 'New Collection', new_resource_url %>
+<% end %>

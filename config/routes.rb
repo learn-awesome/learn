@@ -43,6 +43,8 @@ Rails.application.routes.draw do
       get 'settings'
       patch 'settings'
     end
+
+    resources :collections
   end
 
   resources :reviews, only: [:new, :create, :edit, :update, :show] do
