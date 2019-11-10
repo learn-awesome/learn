@@ -182,4 +182,8 @@ class User < ApplicationRecord
 	def email
 		self.auth0["info"]["email"]
 	end
+
+	def self.learnawesome
+		User.find_by_nickname('learnawesome')
+	end
 end

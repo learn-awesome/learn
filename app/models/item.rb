@@ -181,6 +181,125 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.create_book(book)
+    Item.transaction do
+      idea_set = IdeaSet.new(name: book.title, description: book.description)
+      if book.author_link.present?
+        author = Person.where(website: book.author_link, goodreads: book.author_link).first
+        author = Person.create!(name: book.author_name, website: book.author_link) if author.nil?
+        idea_set.person_idea_sets.build
+        idea_set.person_idea_sets.first.role = 'author'
+        idea_set.person_idea_sets.first.person_id = author.id
+      end
+      idea_set.save!
+
+      book.topics.each do |t|
+        idea_set.topic_idea_sets.create!(topic_id: Topic.find_by_name(t).id)
+      end
+
+      item = Item.new(name: book.title, item_type_id: 'book', image_url: book.cover_image, user: User.learnawesome)
+      item.idea_set = idea_set
+
+      if book.openlibrary_link.present?
+        item.links.build
+        item.links.last.url = book.openlibrary_link
+      end
+
+      if book.goodreads_link.present?
+        item.links.build
+        item.links.last.url = book.goodreads_link
+      end
+
+      if book.google_books_link.present?
+        item.links.build
+        item.links.last.url = book.google_books_link
+      end
+
+      if item.save
+        Rails.logger.info("Item created #{item.id}")
+        # Now save all related items
+        if book.four_minute_books_link.present?
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: book.title + " - Summary by FourMinuteBooks",
+            user: User.learnawesome,
+            item_type_id: 'summary')
+          relitem.links.build
+          relitem.links.first.url = book.four_minute_books_link
+          relitem.save!
+        end
+
+        if book.derek_sivers_link.present?
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: book.title + " - Summary by Derek Sivers",
+            user: User.learnawesome,
+            item_type_id: 'summary')
+          relitem.links.build
+          relitem.links.first.url = book.derek_sivers_link
+          relitem.save!
+        end
+      else
+        Rails.logger.error(item.errors.first.inspect)
+        raise "couldn't save item"
+      end
+    end
+  end
+
+  def update_book(book)
+    if links.where(url: book.goodreads_link).first.nil?
+      links.create!(url: book.goodreads_link)
+    end
+
+    if links.where(url: book.openlibrary_link).first.nil?
+      links.create!(url: book.openlibrary_link)
+    end
+
+    if links.where(url: book.google_books_link).first.nil?
+      links.create!(url: book.google_books_link)
+    end
+
+    if book.four_minute_books_link.present?
+      unless related_items.select { |i| i.links.where(url: book.four_minute_books_link).first.present? }.present?
+        relitem = Item.new(
+          idea_set: idea_set,
+          name: name + " - Summary by FourMinuteBooks",
+          user: User.learnawesome,
+          item_type_id: 'summary')
+        relitem.links.build
+        relitem.links.first.url = book.four_minute_books_link
+        relitem.save!
+      end
+    end
+
+    if book.derek_sivers_link.present?
+      unless related_items.select { |i| i.links.where(url: book.derek_sivers_link).first.present? }.present?
+        relitem = Item.new(
+          idea_set: idea_set,
+          name: name + " - Summary by Derek Sivers",
+          user: User.learnawesome,
+          item_type_id: 'summary')
+        relitem.links.build
+        relitem.links.first.url = book.derek_sivers_link
+        relitem.save!
+      end
+    end
+
+    item.image_url ||= book.cover_image
+    item.description ||= book.description
+    item.year ||= book.publish_date
+    item.save!
+  end
+
+  def self.create_or_update_book(book)
+    link = Link.where(url: [book.goodreads_link, book.openlibrary_link]).first
+    if link.present?
+      link.item.update_book(book)
+    else
+      Item.create_book(book)
+    end
+  end
+
   def self.extract_opengraph_data(url)
     Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
       if url.include?("goodreads.com")

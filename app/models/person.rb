@@ -35,6 +35,11 @@ class Person < ApplicationRecord
 		self.id.to_s + "-" + self.name.to_s.parameterize
 	end
 
+	def self.from_param(id)
+		# extract uuid
+		self.where(id: id.to_s.split("-")[0..4].join("-")).first
+	end
+
 	def as_json
 		{
 			id: self.id,

@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
 	end
 
 	def edit
-		@person = Person.find(params[:id])
+		@person = Person.from_param(params[:id])
 	end
 
 	def update
@@ -33,7 +33,7 @@ class PeopleController < ApplicationController
 			redirect_back fallback_location: root_path
 		end
 
-		@person = Person.find(params[:id])
+		@person = Person.from_param(params[:id])
 		@person.name = params[:person][:name]
 		@person.description = params[:person][:description]
 		@person.website = params[:person][:website]
@@ -50,6 +50,6 @@ class PeopleController < ApplicationController
 	end
 
 	def show
-		@person = Person.find(params[:id])
+		@person = Person.from_param(params[:id])
 	end
 end
