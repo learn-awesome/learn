@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings]
 
   def index
+    @users = User.order('RANDOM()').limit(100)
   end
 
   def show

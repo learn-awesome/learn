@@ -1,0 +1,27 @@
+<div class="row">
+<% @users.each do |u| %>
+	<div class="col-sm-6 col-xl-3 mb-4">
+		<div class="card">
+
+												<a class="list-group-item list-group-item-action" href="<%= user_path(u) %>">
+													  <div class="media">
+														  <img class="u-avatar rounded-circle mr-3" src="<%= u.avatar_image %>" alt="<%= u.nickname %>">
+  
+														  <div class="media-body">
+															  <div class="d-md-flex align-items-center">
+																  <h4 class="mb-1">
+																	  <b><%= u.nickname %></b>
+																  </h4>
+																  
+															  </div>
+
+  
+															  <p class="mb-0"><%= u.bio %></p>
+														  </div>
+													  </div>
+												</a>
+
+		</div>
+	</div>
+<% end %>
+</div>

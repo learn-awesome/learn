@@ -81,10 +81,10 @@
 	        	<% end %>
 	        	</div>
 	        <% else %>
-	        	<p>No reviews. Consider following more users: 
-	        		<% Review.recent.where("user_id != ?", current_user.id).includes(:user).map(&:user).uniq.each do |u| %>
-	        			<%= link_to u.nickname, user_path(u) %>
-	        		<% end %>
+	        	<p>No reviews. <%= link_to "Consider following more users?", users_path %> 
+	        		<%# Review.recent.where("user_id NOT IN (?)", Array.wrap([current_user.id] + current_user.following.map(&:id))).includes(:user).map(&:user).uniq.each do |u| %>
+	        			<%# link_to u.nickname, user_path(u) %>
+	        		<%# end %>
 	        	</p>
 	        <% end %>
         </div>
