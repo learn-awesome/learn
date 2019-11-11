@@ -21,4 +21,8 @@ class Link < ApplicationRecord
   def top_domain
   	URI.parse(self.url).host
   end
+
+  def is_broken?
+  	false
+  end
 end
