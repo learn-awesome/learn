@@ -17,6 +17,15 @@ class Book
 		books.each { |b| Item.create_or_update_book(b) }
 	end
 
+	def self.import_sivers_book_summaries
+		books = DerekSivers.list
+		books = books.map { |b| DerekSivers.extract(b) }
+		books = books.map { |b| Amazon.extract(b) }
+		books = books.map { |b| OpenLibrary.extract(b) }
+		books = books.map { |b| GoodReads.extract(b) }
+		books.each { |b| Item.create_or_update_book(b) }
+	end
+
 	def to_s
 		self.inspect
 	end

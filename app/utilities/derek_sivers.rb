@@ -27,6 +27,7 @@ class DerekSivers
 		doc = Nokogiri::HTML(open("https://sivers.org/book"))
 		doc.css('section#allbooks div.abook').map { |d|
 			Book.new(
+				# TODO extract link to amazon page
 				title: d.css('h2 a').text,
 				derek_sivers_link: ("https://sivers.org" + d.css('h2 a').first[:href]),
 				derek_sivers_description: d.css('p').first.text,
