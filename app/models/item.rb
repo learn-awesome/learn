@@ -67,6 +67,10 @@ class Item < ApplicationRecord
     self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).collect(&:name).join(", ")
   end
 
+  def authors
+    self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person)
+  end
+
   def as_json(options = {})
     {
       id: self.id,
@@ -103,6 +107,7 @@ class Item < ApplicationRecord
   end
 
   def can_user_edit?(editor)
+    return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
     return false if editor.score < 500
     return false if self.is_syllabus? and self.user_id != editor.id
@@ -110,6 +115,7 @@ class Item < ApplicationRecord
   end
 
   def can_user_change_related_items?(editor)
+    return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
     return false if editor.score < 500
     return false if self.is_syllabus?

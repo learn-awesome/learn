@@ -120,7 +120,8 @@ saveTheItem = ->
 		typical_age_range: $('#item_typical_age_range').val(),
 		year: $('#item_year_of_publication').val(),
 		description: $('#item_description_input').val(),
-		image_url: $('#item_image_url').val()
+		image_url: $('#item_image_url').val(),
+		person_ids: $('#item_person_ids').val()
 	}
 	$('#search_topic').find('.topic').each ->
 		itemJson.topics.push($(this).attr('data-id'))

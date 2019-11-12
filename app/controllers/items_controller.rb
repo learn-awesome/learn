@@ -184,6 +184,18 @@ class ItemsController < ApplicationController
         end
       end
 
+      params[:person_ids].to_a.reject(&:blank?).each do |x|
+        unless item.authors.map(&:id).include?(x)
+          item.idea_set.person_idea_sets.create!(person_id: x, role: "creator")
+        end
+      end
+
+      item.authors.each do |a|
+        unless params[:person_ids].to_a.reject(&:blank?).include?(a.id)
+          PersonIdeaSet.where(idea_set: item.idea_set, person: a, role: "creator").first.try(:destroy)
+        end
+      end
+
       if item.save
         render json: {stats: 'ok'}
       else
