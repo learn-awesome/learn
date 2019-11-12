@@ -23,6 +23,7 @@ class Topic < ApplicationRecord
 	has_many :items, :through => :idea_sets
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
+	belongs_to :user
 	after_save :clear_cache
 	after_destroy :clear_cache
 
