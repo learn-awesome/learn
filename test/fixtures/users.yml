@@ -22,8 +22,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   nickname: MyString
-
-# two:
-#   nickname: MyString
+first_user:
+  nickname: firstuser
+  auth0_uid: firstuser
+  authinfo: []

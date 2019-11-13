@@ -27,16 +27,14 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
-#   type: 
-#   estimated_time: 1
-#   required_expertise: 1
-#   thing: one
+first_item:
+  name: FirstItem
+  idea_set: first_idea
+  item_type: book
+  user: first_user
 
-# two:
-#   name: MyString
-#   type: 
-#   estimated_time: 1
-#   required_expertise: 1
-#   thing: two
+second_item:
+  name: second item
+  idea_set: second_idea
+  item_type: course
+  user: first_user

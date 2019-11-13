@@ -28,7 +28,11 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "search" do
+    assert_equal Item.search("firstitem").count, 1
+  end
+
+  test "advanced search" do
+  	assert_equal Item.advanced_search(nil,nil,nil,nil).count, Item.all.count
+  end
 end

@@ -8,12 +8,12 @@
 #  gitter_room  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  display_name :string
 #  user_id      :uuid
 #
 
 class Topic < ApplicationRecord
 	SLUG_FORMAT = /\A[0-9a-z\-\/]+\z/
-	ActiveRecord::Base.connection.execute("SELECT set_limit(0.2);")
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
 		format: {with: SLUG_FORMAT}
 	validates :search_index, presence: true
@@ -94,6 +94,7 @@ class Topic < ApplicationRecord
 	end
 
 	def self.search(q, max=10, is_fuzzy=true)
+	  ActiveRecord::Base.connection.execute("SELECT set_limit(0.2);")
       if is_fuzzy
         return Topic.where("lower(search_index) LIKE ?", "%#{q.try(:downcase)}%").limit(max)
       else
@@ -106,6 +107,7 @@ class Topic < ApplicationRecord
 			TopicIdeaSet.where(topic_id: duplicate.id).update_all(topic_id: original.id)
 			TopicRelation.where(from_id: duplicate.id).update_all(from_id: original)
 			TopicRelation.where(to_id: duplicate.id).update_all(to_id: original)
+			UserTopic.where(topic_id: duplicate.id).update_all(topic_id: original.id)
 			duplicate.destroy
 		end
 	end

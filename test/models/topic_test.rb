@@ -8,13 +8,19 @@
 #  gitter_room  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  display_name :string
 #  user_id      :uuid
 #
 
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "search" do
+    assert_equal Topic.search("first-topic").count, 1
+  end
+
+  test "advanced search" do
+  	t = Topic.first
+  	assert_equal t.advanced_search(nil,nil,nil), t.items
+  end
 end

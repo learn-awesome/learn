@@ -8,13 +8,16 @@
 #  gitter_room  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  display_name :string
 #  user_id      :uuid
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
+one:
+  name: first-topic
+  search_index: first-topic
 
-# two:
-#   name: MyString
+two:
+  name: second/topic
+  search_index: second/topic

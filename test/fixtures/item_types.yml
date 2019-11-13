@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: item_types
+#
+#  id                  :string           not null, primary key
+#  display_name_plural :string
+#
+
+
+book:
+  id: book
+  display_name_plural: 'books'
+
+course:
+  id: course
+  display_name_plural: 'courses'

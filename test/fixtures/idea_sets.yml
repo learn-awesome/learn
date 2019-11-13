@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: idea_sets
+#
+#  id          :uuid             not null, primary key
+#  name        :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
+
+
+first_idea:
+  name: FirstIdea
+
+second_idea:
+  name: Second idea

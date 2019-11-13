@@ -11,10 +11,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: MyString
-  item: one
+google_link:
+  url: http://google.com
+  item: first_item
 
-two:
-  url: MyString
-  item: two

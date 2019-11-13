@@ -12,7 +12,7 @@
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+	test "topdomain" do
+		assert_equal links(:google_link).top_domain, "google.com"
+	end
 end
