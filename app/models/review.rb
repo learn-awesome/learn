@@ -28,7 +28,7 @@ class Review < ApplicationRecord
   validates_inclusion_of :status, in: ['want_to_learn', 'learning', 'learned'], allow_nil: true, allow_blank: false
 
   after_save :update_item_ratings
-  after_save :post_to_twitter
+  after_save :post_to_social_media
   after_save :change_status
 
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
@@ -53,17 +53,50 @@ class Review < ApplicationRecord
     # end
   end
 
-  def post_to_twitter
+  def post_to_social_media
     return unless Rails.env.production?
     return if self.is_posted_on_social_media
-    return unless self.user.is_from_twitter?
-    return unless self.user.post_reviews_to_twitter
-    return if self.overall_score.nil? and self.notes.blank? # neither star ratings nor notes are given
 
-    if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
-      # wait a while so that users can complete his review notes
-      PostReviewToTwitterJob.set(wait: 30.minutes).perform_later(self.id)
-    end
+    PostReviewToSocialMediaJob.set(wait: 30.minutes).perform_later(self.id)
+  end
+
+  def activity_pub
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+
+      "id": "https://learnawesome.org/post-review-activity-pub/#{self.id}",
+      "type": "Create",
+      "actor": Rails.application.routes.url_helpers.actor_user_url(self),
+
+      "object": {
+        "id": "https://learnawesome.org/review-activity-pub/#{self.id}",
+        "type": "Note",
+        "published": self.created_at.iso8601,
+        "attributedTo": Rails.application.routes.url_helpers.actor_user_url(self),
+        # "inReplyTo": "https://mastodon.social/@Gargron/100254678717223630",
+        "content": self.tweet_msg,
+        "to": "https://www.w3.org/ns/activitystreams#Public"
+      }
+    }
+  end
+
+  def post_activity_pub(follower)
+    doc = self.activity_pub
+    inbox, host = follower.inbox_host
+
+    # from https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/
+    require 'http'
+    require 'openssl'
+
+    document      = doc
+    date          = Time.now.utc.httpdate
+    keypair       = OpenSSL::PKey::RSA.new(ENV['ACTIVITYPUB_PRIVKEY'].to_s)
+    signed_string = "(request-target): post #{inbox}\nhost: #{host}\ndate: #{date}"
+    signature     = Base64.strict_encode64(keypair.sign(OpenSSL::Digest::SHA256.new, signed_string))
+    header        = 'keyId="' + Rails.application.routes.url_helpers.actor_user_url(self) + '",headers="(request-target) host date",signature="' + signature + '"'
+
+    HTTP.headers({ 'Host': host, 'Date': date, 'Signature': header })
+        .post("https://#{host}#{inbox}", body: document)
   end
 
   def tags_text

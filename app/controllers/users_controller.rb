@@ -119,6 +119,7 @@ class UsersController < ApplicationController
 
   def actor
     @user = User.find(params[:id])
+    render json: @user.actor_json
   end
 
   def inbox
