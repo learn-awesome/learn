@@ -33,15 +33,13 @@ class ActivityPub
 	  if pubkey
 	  	key = OpenSSL::PKey::RSA.new(pubkey)
 	  else
-			actor = JSON.parse(HTTP.get(key_id).to_s)
-			key   = OpenSSL::PKey::RSA.new(actor['publicKey']['publicKeyPem'])
+		actor = JSON.parse(HTTP.get(key_id, headers: {'Accept': 'application/json'}).to_s)
+		key   = OpenSSL::PKey::RSA.new(actor['publicKey']['publicKeyPem'])
 	  end
 
 	  comparison_string = headers.split(' ').map do |signed_header_name|
 	    if signed_header_name == '(request-target)'
 	      "(request-target): post #{inbox}"
-	  	elsif signed_header_name == 'digest'
-	  		"digest: #{all_headers['HTTP_DIGEST']}"
 	    else
 	      "#{signed_header_name}: #{all_headers[ActivityPub.to_header_name(signed_header_name)]}"
 	    end
@@ -51,7 +49,10 @@ class ActivityPub
 	end
 
 	def self.to_header_name(name)
-		name.to_s.capitalize.gsub("-","_")
+		return 'HTTP_DIGEST' if name == 'digest'
+		return 'HTTP_HOST' if name == 'host'
+		return 'HTTP_DATE' if name == 'date'
+		name.to_s.upcase.gsub("-","_")
 	end
 
 	def self.test
