@@ -230,11 +230,14 @@ class User < ApplicationRecord
 	def add_to_inbox!(all_headers, body)
 	  # keyId="https://learnawesome.org/users/8a16a2e4-dcb7-4167-a2a2-51d3af9d1613/actor#main-key",headers="(request-target) host date",signature="..."
 	  # {'Host': 'learnawesome.org', 'Date': '2019-11-14T12:39:31+05:30'}
+	  inbox_url = Rails.application.routes.url_helpers.inbox_user_url(self)
 
-	  if ActivityPub.verify(nil, all_headers) and all_headers['Signature'].include?(self.id.to_s)
+	  if all_headers['Signature'].include?(self.id.to_s) and ActivityPub.verify(nil, all_headers, inbox_url)
 	  	if JSON.parse(body)["type"] == "Follow"
 	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
-	  		self.activity_pub_followers.create!(metadata: body)
+	  		afp = self.activity_pub_followers.create!(metadata: body)
+	  		# TODO: Send Accept response
+	  		# ActivityPubFollowAcceptedJob.perform_later(afp.id)
 	  	else
 	  		Rails.logger.info "Unknown ActivityType for #{self.id}"
 	  	end
