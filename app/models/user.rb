@@ -242,7 +242,7 @@ class User < ApplicationRecord
 	  		Rails.logger.info "Unknown ActivityType for #{self.id}"
 	  	end
 	  else
-	    raise 'Request signature could not be verified'
+	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end	
 	end
 end
