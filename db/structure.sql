@@ -92,17 +92,6 @@ ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_
 
 
 --
--- Name: activity_pub_followers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.activity_pub_followers (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    user_id uuid NOT NULL,
-    metadata json NOT NULL
-);
-
-
---
 -- Name: admin_users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -451,14 +440,6 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: activity_pub_followers activity_pub_followers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.activity_pub_followers
-    ADD CONSTRAINT activity_pub_followers_pkey PRIMARY KEY (id);
-
-
---
 -- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -645,13 +626,6 @@ CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_com
 --
 
 CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
-
-
---
--- Name: index_activity_pub_followers_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_activity_pub_followers_on_user_id ON public.activity_pub_followers USING btree (user_id);
 
 
 --
@@ -918,14 +892,6 @@ ALTER TABLE ONLY public.collection_items
 
 
 --
--- Name: activity_pub_followers fk_rails_3ce6f9a7a2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.activity_pub_followers
-    ADD CONSTRAINT fk_rails_3ce6f9a7a2 FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
---
 -- Name: topic_relations fk_rails_4e9299d5db; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1123,7 +1089,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191101144409'),
 ('20191101172456'),
 ('20191105105946'),
-('20191108051151'),
-('20191114042350');
+('20191108051151');
 
 
