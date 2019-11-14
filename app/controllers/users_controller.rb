@@ -125,7 +125,7 @@ class UsersController < ApplicationController
 
   def inbox
     @user = User.find(params[:id])
-    @user.add_to_inbox!(request.headers.env.reject { |key| key.to_s.include?('.') }, request.body)
+    @user.add_to_inbox!(request.headers.env.reject { |key| key.to_s.include?('.') }, request.raw_post)
     render json: {}
   end
 end
