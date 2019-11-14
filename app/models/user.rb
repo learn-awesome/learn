@@ -46,6 +46,10 @@ class User < ApplicationRecord
 
 	has_many :collections
 
+	def self.from_param(id)
+		self.where(id: id.to_s.split("-")[0..4].join("-")).first
+	end
+
 	def auth0
 		JSON.parse(self.authinfo)
 	end

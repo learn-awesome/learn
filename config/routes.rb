@@ -42,6 +42,12 @@ Rails.application.routes.draw do
       post 'toggle_follow'
       get 'settings'
       patch 'settings'
+      get 'actor'
+      get 'inbox'
+    end
+
+    collection do
+      get 'webfinger'
     end
 
     resources :collections do
@@ -69,4 +75,5 @@ Rails.application.routes.draw do
   get '/search' => 'welcome#search'
   get '/suggestions' => 'welcome#suggestions'
   get '/whatsnew' => 'welcome#whatsnew'
+  get '/.well-known/webfinger' => 'users#webfinger'
 end

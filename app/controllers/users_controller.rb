@@ -92,4 +92,32 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def webfinger
+    query = params[:resource]
+    domain = query.split("@").last
+    username = query.split("@").first
+    if domain != 'learnawesome.org'
+      render json: { error: "domain invalid in #{query}" }, status: :not_found
+      return
+    end
+    if username.split(":").first != 'acct'
+      render json: { error: "acct prefix not found in #{query}" }, status: :not_found
+      return
+    end
+    userid = username.split(":").last
+    @user = User.find(userid)
+    if @user.nil?
+      render json: { error: "user #{query} not found" }, status: :not_found
+      return
+    end
+  end
+
+  def actor
+    @user = User.find(params[:id])
+  end
+
+  def inbox
+    @user = User.find(params[:id])
+  end
 end

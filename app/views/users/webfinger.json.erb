@@ -1,0 +1,11 @@
+{
+	"subject": "acct:<%= @user.id %>@learnawesome.org",
+
+	"links": [
+		{
+			"rel": "self",
+			"type": "application/activity+json",
+			"href": "<%= actor_user_url(@user) %>"
+		}
+	]
+}
