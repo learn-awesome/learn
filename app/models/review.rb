@@ -81,21 +81,13 @@ class Review < ApplicationRecord
   end
 
   def post_activity_pub(follower)
-    doc = self.activity_pub
+    document = self.activity_pub
     inbox, host = follower.inbox_host
+    date = Time.now.utc.httpdate
 
-    # from https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/
-    require 'http'
-    require 'openssl'
+    signature_header = ActivityPub.sign(Rails.application.routes.url_helpers.actor_user_url(self), inbox, host, date)
 
-    document      = doc
-    date          = Time.now.utc.httpdate
-    keypair       = OpenSSL::PKey::RSA.new(ENV['ACTIVITYPUB_PRIVKEY'].to_s)
-    signed_string = "(request-target): post #{inbox}\nhost: #{host}\ndate: #{date}"
-    signature     = Base64.strict_encode64(keypair.sign(OpenSSL::Digest::SHA256.new, signed_string))
-    header        = 'keyId="' + Rails.application.routes.url_helpers.actor_user_url(self) + '",headers="(request-target) host date",signature="' + signature + '"'
-
-    HTTP.headers({ 'Host': host, 'Date': date, 'Signature': header })
+    HTTP.headers({ 'Host': host, 'Date': date, 'Signature': signature_header })
         .post("https://#{host}#{inbox}", body: document)
   end
 

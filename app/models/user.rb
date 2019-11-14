@@ -227,35 +227,17 @@ class User < ApplicationRecord
 		}
 	end
 
-	def inbox(orig_sig_header, all_headers, body)
-	  # keyId="https://my-example.com/actor#main-key",headers="(request-target) host date",signature="..."
+	def add_to_inbox!(all_headers, body)
+	  # keyId="https://learnawesome.org/users/8a16a2e4-dcb7-4167-a2a2-51d3af9d1613/actor#main-key",headers="(request-target) host date",signature="..."
 	  # {'Host': 'learnawesome.org', 'Date': '2019-11-14T12:39:31+05:30'}
-	  require 'json'
-	  require 'http'
 
-		signature_header = orig_sig_header.split(',').map do |pair|
-		  pair.split('=').map do |value|
-		    value.gsub(/\A"/, '').gsub(/"\z/, '') # "foo" -> foo
-		  end
-		end.to_h
-    
-	  key_id    = signature_header['keyId']
-	  headers   = signature_header['headers']
-	  signature = Base64.decode64(signature_header['signature'])
-
-	  actor = JSON.parse(HTTP.get(key_id).to_s)
-	  key   = OpenSSL::PKey::RSA.new(ENV['ACTIVITYPUB_PRIVKEY'].to_s)
-
-	  comparison_string = headers.split(' ').map do |signed_header_name|
-	    if signed_header_name == '(request-target)'
-	      '(request-target): post /inbox'
-	    else
-	      "#{signed_header_name}: #{all_headers[signed_header_name.capitalize]}"
-	    end
-	  end.join("\n")
-
-	  if key.verify(OpenSSL::Digest::SHA256.new, signature, comparison_string)
-	  	true # self.activity_pub_followers.create!(metadata: body)
+	  if ActivityPub.verify(nil, all_headers) and all_headers['Signature'].include?(self.id.to_s)
+	  	if JSON.parse(body)["type"] == "Follow"
+	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
+	  		self.activity_pub_followers.create!(metadata: body)
+	  	else
+	  		Rails.logger.info "Unknown ActivityType for #{self.id}"
+	  	end
 	  else
 	    raise 'Request signature could not be verified'
 	  end	
