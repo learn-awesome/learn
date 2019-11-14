@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       get 'settings'
       patch 'settings'
       get 'actor'
-      get 'inbox'
+      post 'inbox'
     end
 
     collection do
