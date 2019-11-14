@@ -4,7 +4,7 @@ class ActivityPubFollower < ApplicationRecord
   belongs_to :user
   validates_presence_of :user
   validates_presence_of :metadata
-  validates_uniqueness_of :metadata
+  validates_uniqueness_of :metadata # doesn't work with json type, hence text
 
   def inbox
     data = JSON.parse(self.metadata)
@@ -37,6 +37,9 @@ class ActivityPubFollower < ApplicationRecord
       ENV['ACTIVITYPUB_PRIVKEY'].to_s
     )
 
-    HTTP.post(full_inbox, body: doc.to_json, headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'})
+    HTTP.post(full_inbox,
+      body: doc.to_json,
+      headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
+    )
   end
 end

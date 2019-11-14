@@ -82,13 +82,21 @@ class Review < ApplicationRecord
 
   def post_activity_pub(follower)
     document = self.activity_pub
-    inbox, host = follower.inbox_host
+    full_inbox = follower.inbox
     date = Time.now.utc.httpdate
 
-    signature_header = ActivityPub.sign(Rails.application.routes.url_helpers.actor_user_url(self), inbox, host, date)
+    signature_header = ActivityPub.sign(
+      Rails.application.routes.url_helpers.actor_user_url(self.user),
+      URI.parse(full_inbox).path,
+      URI.parse(full_inbox).path,
+      date,
+      ENV['ACTIVITYPUB_PRIVKEY'].to_s
+    )
 
-    HTTP.headers({ 'Host': host, 'Date': date, 'Signature': signature_header })
-        .post("https://#{host}#{inbox}", body: document)
+    HTTP.post(full_inbox,
+      body: document.to_json, 
+      headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
+    )
   end
 
   def tags_text
