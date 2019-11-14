@@ -232,7 +232,7 @@ class User < ApplicationRecord
 	  # {'Host': 'learnawesome.org', 'Date': '2019-11-14T12:39:31+05:30'}
 	  inbox_url = Rails.application.routes.url_helpers.inbox_user_url(self)
 
-	  if all_headers['Signature'].include?(self.id.to_s) and ActivityPub.verify(nil, all_headers, inbox_url)
+	  if (all_headers['Signature'] || all_headers['SIGNATURE']).include?(self.id.to_s) and ActivityPub.verify(nil, all_headers, inbox_url)
 	  	if JSON.parse(body)["type"] == "Follow"
 	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)

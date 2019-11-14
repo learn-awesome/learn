@@ -16,7 +16,7 @@ class ActivityPub
 	end
 
 	def self.verify(pubkey, all_headers, inbox)
-	  orig_sig_header = all_headers['Signature']
+	  orig_sig_header = all_headers['SIGNATURE']
 
 	  signature_params = {}
 
