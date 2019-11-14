@@ -216,7 +216,7 @@ class User < ApplicationRecord
 
 			"id": Rails.application.routes.url_helpers.actor_user_url(self),
 			"type": "Person",
-			"preferredUsername": self.nickname,
+			"name": self.nickname,
 			"inbox": Rails.application.routes.url_helpers.inbox_user_url(self),
 
 			"publicKey": {

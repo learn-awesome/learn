@@ -1,42 +1,42 @@
 require 'json'
 
 class ActivityPubFollower < ApplicationRecord
-	belongs_to :user
-	validates_presence_of :user
-	validates_presence_of :metadata
+  belongs_to :user
+  validates_presence_of :user
+  validates_presence_of :metadata
+  validates_uniqueness_of :metadata
 
-	def inbox_host
-		# /inbox , mastodon.social
-		# data = JSON.parse(self.metadata)
-		# inbox, host = data["inbox"], data["host"]
-		inbox, host = "/inbox", "mastodon.social"
-	end
+  def inbox
+    data = JSON.parse(self.metadata)
+    actor = JSON.parse(HTTP.get(data["actor"], headers: {'Accept': 'application/json'}).to_s)
+    full_inbox = actor["inbox"]
+  end
 
-	def accept_follow_request
-    	doc = {
-	      "@context": "https://www.w3.org/ns/activitystreams",
+  def accept_follow_request
+    data = JSON.parse(self.metadata)
 
-	      "id": "https://learnawesome.org/post-review-activity-pub/#{self.id}",
-	      "type": "Create",
-	      "actor": Rails.application.routes.url_helpers.actor_user_url(self),
+    doc = {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "type": "Accept",
+      "actor": Rails.application.routes.url_helpers.actor_user_url(self),
 
-	      "object": {
-	        "id": "https://learnawesome.org/review-activity-pub/#{self.id}",
-	        "type": "Note",
-	        "published": self.created_at.iso8601,
-	        "attributedTo": Rails.application.routes.url_helpers.actor_user_url(self),
-	        # "inReplyTo": "https://mastodon.social/@Gargron/100254678717223630",
-	        "content": self.tweet_msg,
-	        "to": "https://www.w3.org/ns/activitystreams#Public"
-	      }
-	    }
+      "object": {
+        "type": data["type"],
+        "actor": data["actor"],
+      "object": data["object"]        }
+    }
 
-	    inbox, host = self.inbox_host
-	    date = Time.now.utc.httpdate
+    full_inbox = self.inbox
+    date = Time.now.utc.httpdate
 
-	    signature_header = ActivityPub.sign(Rails.application.routes.url_helpers.actor_user_url(self.user), inbox, host, date)
+    signature_header = ActivityPub.sign(
+      Rails.application.routes.url_helpers.actor_user_url(self.user),
+      URI.parse(full_inbox).path,
+      URI.parse(full_inbox).path,
+      date,
+      ENV['ACTIVITYPUB_PRIVKEY'].to_s
+    )
 
-	    HTTP.headers({ 'Host': host, 'Date': date, 'Signature': signature_header })
-	        .post("https://#{host}#{inbox}", body: document)
-	end
+    HTTP.post(full_inbox, body: doc.to_json, headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'})
+  end
 end
