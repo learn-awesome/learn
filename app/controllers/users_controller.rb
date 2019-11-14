@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Secured
   before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings]
-  skip_before_filter :verify_authenticity_token, :only => [:inbox]
+  skip_before_action :verify_authenticity_token, :only => [:inbox]
 
   def index
     @users = User.order('RANDOM()').limit(100)
