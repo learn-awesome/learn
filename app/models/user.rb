@@ -46,6 +46,8 @@ class User < ApplicationRecord
 
 	has_many :collections
 
+	has_many :activity_pub_followers
+
 	def self.from_param(id)
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
 	end
@@ -189,5 +191,18 @@ class User < ApplicationRecord
 
 	def self.learnawesome
 		User.find_by_nickname('learnawesome')
+	end
+
+	def webfinger_json
+		{
+			subject: "acct:#{self.id}@learnawesome.org",
+			links: [
+				{
+					rel: "self",
+					type: "application/activity+json",
+					href: Rails.application.routes.url_helpers.actor_user_url(self)
+				}
+			]
+		}
 	end
 end

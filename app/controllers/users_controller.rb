@@ -98,19 +98,23 @@ class UsersController < ApplicationController
     domain = query.split("@").last
     username = query.split("@").first
     if domain != 'learnawesome.org'
-      render json: { error: "domain invalid in #{query}" }, status: :not_found
-      return
+      error = "domain invalid in #{query}"
     end
     if username.split(":").first != 'acct'
-      render json: { error: "acct prefix not found in #{query}" }, status: :not_found
-      return
+      error = "acct prefix not found in #{query}"
     end
     userid = username.split(":").last
     @user = User.find(userid)
     if @user.nil?
-      render json: { error: "user #{query} not found" }, status: :not_found
-      return
+      error = "user #{query} not found"
     end
+
+    if error.present?
+      render json: {error: error}, status: :not_found
+    else
+      render json: @user.webfinger_json
+    end
+
   end
 
   def actor
