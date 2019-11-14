@@ -216,7 +216,7 @@ class User < ApplicationRecord
 
 			"id": Rails.application.routes.url_helpers.actor_user_url(self),
 			"type": "Person",
-			"name": self.nickname,
+			"name": self.id.to_s,
 			"inbox": Rails.application.routes.url_helpers.inbox_user_url(self),
 
 			"publicKey": {
@@ -234,11 +234,11 @@ class User < ApplicationRecord
 	  actor_url = Rails.application.routes.url_helpers.actor_user_url(self)
 
 	  if JSON.parse(body)["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
-	  	if JSON.parse(body)["type"] == "Follow"
+	  	if JSON.parse(body)["type"] == "Follow" # Do this check first
 	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)
-	  		# TODO: Send Accept response
-	  		# ActivityPubFollowAcceptedJob.perform_later(afp.id)
+	  		# Send Accept response
+	  		ActivityPubFollowAcceptedJob.perform_later(afp.id)
 	  	else
 	  		Rails.logger.info "Unknown ActivityType for #{self.id}"
 	  	end

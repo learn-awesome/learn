@@ -12,7 +12,7 @@ class ActivityPubFollower < ApplicationRecord
     full_inbox = actor["inbox"]
   end
 
-  def accept_follow_request
+  def accept_follow_request!
     data = JSON.parse(self.metadata)
 
     doc = {
