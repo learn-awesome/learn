@@ -16,7 +16,7 @@ class ActivityPub
 	end
 
 	def self.verify(pubkey, all_headers, inbox)
-	  orig_sig_header = all_headers['SIGNATURE']
+	  orig_sig_header = all_headers['HTTP_SIGNATURE']
 
 	  signature_params = {}
 
@@ -40,6 +40,8 @@ class ActivityPub
 	  comparison_string = headers.split(' ').map do |signed_header_name|
 	    if signed_header_name == '(request-target)'
 	      "(request-target): post #{inbox}"
+	  	elsif signed_header_name == 'digest'
+	  		"digest: #{all_headers['HTTP_DIGEST']}"
 	    else
 	      "#{signed_header_name}: #{all_headers[ActivityPub.to_header_name(signed_header_name)]}"
 	    end
@@ -49,7 +51,7 @@ class ActivityPub
 	end
 
 	def self.to_header_name(name)
-		name.split(/-/).map(&:capitalize).join('-')
+		name.to_s.capitalize.gsub("-","_")
 	end
 
 	def self.test
