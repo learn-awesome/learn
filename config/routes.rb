@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       patch 'settings'
       get 'actor'
       post 'inbox'
+      get 'outbox'
     end
 
     collection do

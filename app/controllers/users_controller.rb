@@ -132,4 +132,8 @@ class UsersController < ApplicationController
     @user.add_to_inbox!(headers, post_body)
     render json: {}
   end
+
+  def outbox
+    @user = User.find(params[:id])
+  end
 end

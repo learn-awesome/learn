@@ -216,8 +216,15 @@ class User < ApplicationRecord
 
 			"id": Rails.application.routes.url_helpers.actor_user_url(self),
 			"type": "Person",
-			"name": self.id.to_s.gsub("-","_"),
+			"preferredUsername": self.nickname.to_s,
+			"name": self.nickname.to_s,
+			"summary": self.bio.to_s,
+			"icon": [
+			    self.avatar_image.to_s
+			  ],
+
 			"inbox": Rails.application.routes.url_helpers.inbox_user_url(self),
+			"outbox": Rails.application.routes.url_helpers.outbox_user_url(self, format: :json),
 
 			"publicKey": {
 				"id": (Rails.application.routes.url_helpers.actor_user_url(self) + "#main-key"),
