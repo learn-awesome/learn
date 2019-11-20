@@ -58,3 +58,9 @@ Either use your own Auth0 tenant (which needs some configuration) or contact us 
 
 For the admin interface, login at http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
 ★★★☆☆
+
+
+For graphQL clients, first send the user to https://learnawesome.eu.auth0.com/login?client=h5wMQw9p9MsN53nkY4YeN08mv3Ao1mnB&protocol=oauth2&response_type=token%20id_token&redirect_uri=http://localhost:3000/callback&scope=openid%20profile
+
+After successful login/signup, `user.authinfo` will have a field called `id_token`.
+The value of that token can be used as the `Authorization` header with `Bearer` prefix. This ensures that user can only perform permitted operations via graphQL api.
