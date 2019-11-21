@@ -12,6 +12,7 @@ class GoodReads
 		elsif book.goodreads_id.present?
 			book.goodreads_link = "https://www.goodreads.com/book/show/" + book.goodreads_id
 		end
+		return book if book.goodreads_link.blank?
 		page = Nokogiri::HTML(open(book.goodreads_link))
 		book.goodreads_link = page.at('link[rel="canonical"]')&.attributes["href"]&.value
 		book.description = (page.css("div#description") > "span:last").inner_text
