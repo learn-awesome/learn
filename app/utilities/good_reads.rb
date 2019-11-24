@@ -11,6 +11,8 @@ class GoodReads
 			# do nothing
 		elsif book.goodreads_id.present?
 			book.goodreads_link = "https://www.goodreads.com/book/show/" + book.goodreads_id
+		else
+			self.search(book)
 		end
 		return book if book.goodreads_link.blank?
 		page = Nokogiri::HTML(open(book.goodreads_link))
@@ -24,5 +26,14 @@ class GoodReads
 	end
 
 	def self.search(book)
+		if book.isbn.present? or book.isbn13.present?
+			search_by_isbn = "https://www.goodreads.com/search?q=" + (book.isbn || book.isbn13)
+			begin
+				book.goodreads_link = Net::HTTP.get_response(URI(search_by_isbn))['location']
+			rescue Exception => ex
+				puts "Goodreads#search error: #{ex.message}"
+			end
+		end
+		return book
 	end
 end

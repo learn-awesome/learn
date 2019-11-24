@@ -301,6 +301,8 @@ class Item < ApplicationRecord
     link = Link.where(url: [book.goodreads_link, book.openlibrary_link]).first
     if link.present?
       link.item.update_book(book)
+    elsif (summary_link = Link.where(url: [book.four_minute_books_link, book.derek_sivers_link]).first).present?
+      summary_link.item.update_book(book)
     else
       Item.create_book(book)
     end

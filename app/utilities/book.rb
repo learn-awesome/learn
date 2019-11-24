@@ -17,7 +17,7 @@ class Book
 	end
 
 	def self.import_four_minute_book_summaries(json_file_name)
-		books = FourMinuteBooks.list[0..10] # title and four_minut_books_link
+		books = FourMinuteBooks.list[0..2] # title and four_minut_books_link
 		books = books.map { |b| FourMinuteBooks.extract(b) }
 		books = books.map { |b| Amazon.extract(b) }
 		books = books.map { |b| OpenLibrary.extract(b) }
@@ -26,8 +26,7 @@ class Book
 		# books.each { |b| Item.create_or_update_book(b) }
 		if json_file_name.present?
 			File.open(json_file_name,"w") do |f|
-				f.write(JSON.pretty_generate(books))
-				f.write(books.to_json)
+				f.write(JSON.pretty_generate(books.map(&:as_json)))
 			end
 		end
 		return books
