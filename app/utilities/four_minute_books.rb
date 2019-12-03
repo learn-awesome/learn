@@ -20,9 +20,13 @@ class FourMinuteBooks
 	def self.extract(book)
 		puts "\nFourMinuteBooks start: #{book}"
 		page = Nokogiri::HTML(open(book.four_minute_books_link))
-		book.amazon_link = page.at('a[href*="amzn.to"]')[:href]
-		book.author_link = page.at('a[text()*="Learn more about the author"]')[:href]
-		book.fmb_summary_length = page.at('strong[text()*="Read in"]').parent.text().scan(/Read in: (\d+) minutes/).first.first.to_i
+		book.direct_link = page.at('a[href*="wp-content"]').try(:[], :href)
+		book.amazon_link = page.at('a[href*="amzn.to"]').try(:[], :href)
+		book.author_link = page.at('a[text()*="Learn more about the author"]').try(:[], :href)
+		durationdiv = page.at('strong[text()*="Read in"]')
+		if durationdiv.present?
+			book.fmb_summary_length = durationdiv.parent.text().scan(/Read in: (\d+) minutes/).first.first.to_i
+		end
 		puts "\nFourMinuteBooks finish: #{book}"
 		return book
 	end

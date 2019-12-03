@@ -6,6 +6,7 @@ class Book
 	attr_accessor :number_of_pages, :publish_date, :cover_image
 	attr_accessor :goodreads_id, :goodreads_link, :description, :topics
 	attr_accessor :derek_sivers_link, :derek_sivers_description, :derek_sivers_rating
+	attr_accessor :direct_link
 
 	def self.load_json(json_file_name)
 		return if json_file.blank?
