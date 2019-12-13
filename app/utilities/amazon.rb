@@ -2,6 +2,7 @@ require 'uri'
 require 'nokogiri'
 require 'open-uri'
 require 'redcarpet'
+require 'net/http'
 
 class Amazon
 	def self.extract(book)
@@ -10,7 +11,13 @@ class Amazon
 		puts "\nAmazon start: #{book}"
 		tries = 5
 		begin
-			page = Nokogiri::HTML(open(book.amazon_link, "User-Agent"=>"curl/7.58.0"))
+			proxy_link = URI("https://api.proxycrawl.com")
+			proxy_link.query = URI.encode_www_form({
+				token: "",
+				url: book.amazon_link
+			})
+			# res = Net::HTTP.get_response(proxy_link)
+			page = Nokogiri::HTML(open(proxy_link))
 			book.isbn = page.css('table#productDetailsTable ul').at('li:contains("ISBN")').text.gsub("ISBN-10: ","")
 			book.amazon_link = page.at('link[rel="canonical"]')['href']
 		rescue Exception

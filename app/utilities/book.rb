@@ -18,7 +18,7 @@ class Book
 	end
 
 	def self.import_four_minute_book_summaries(json_file_name)
-		books = FourMinuteBooks.list[0..2] # title and four_minut_books_link
+		books = FourMinuteBooks.list # title and four_minut_books_link
 		books = books.map { |b| FourMinuteBooks.extract(b) }
 		books = books.map { |b| Amazon.extract(b) }
 		books = books.map { |b| OpenLibrary.extract(b) }
