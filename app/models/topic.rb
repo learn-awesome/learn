@@ -23,7 +23,7 @@ class Topic < ApplicationRecord
 	has_many :items, :through => :idea_sets
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
-	belongs_to :user
+	belongs_to :user, optional: true
 	after_save :clear_cache
 	after_destroy :clear_cache
 
@@ -102,13 +102,13 @@ class Topic < ApplicationRecord
       end
 	end
 
-	def self.merge(original, duplicate)
+	def self.merge(original_id, duplicate_id)
 		Topic.transaction do
-			TopicIdeaSet.where(topic_id: duplicate.id).update_all(topic_id: original.id)
-			TopicRelation.where(from_id: duplicate.id).update_all(from_id: original)
-			TopicRelation.where(to_id: duplicate.id).update_all(to_id: original)
-			UserTopic.where(topic_id: duplicate.id).update_all(topic_id: original.id)
-			duplicate.destroy
+			TopicIdeaSet.where(topic_id: duplicate_id).update_all(topic_id: original_id)
+			TopicRelation.where(from_id: duplicate_id).update_all(from_id: original_id)
+			TopicRelation.where(to_id: duplicate_id).update_all(to_id: original_id)
+			UserTopic.where(topic_id: duplicate_id).update_all(topic_id: original_id)
+			Topic.find(duplicate_id).destroy
 		end
 	end
 

@@ -10,7 +10,7 @@
     <%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
   <% end %>
 
-  <% if current_user and current_user.score > 5000 %>
+  <% if current_user and current_user.can_merge_topic? %>
     <%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>
   <% end %>
 

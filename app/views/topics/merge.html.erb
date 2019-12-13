@@ -1,1 +1,16 @@
-<h1>Topic merge: Not implemented</h1>
+<h1>Merge Topics</h1>
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="card">
+
+      <header class="card-header">
+        <%= form_with local: true, method: :post, id: @topic.id, class: "form-inline" do |form| %>
+          Merge To &nbsp; 
+          <%= form.select :duplicate_id, @topics.collect {|t| [t.name, t.id]}, { include_blank: "Select Duplicate"}, class: "form-control" %> &nbsp; 
+
+          <div class="text-center"><%= form.submit "Merge", class: "btn btn-primary" %></div>
+        <% end %>
+      </header>
+    </div>
+  </div>
+</div> 

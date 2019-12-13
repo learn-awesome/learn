@@ -181,6 +181,10 @@ class User < ApplicationRecord
 		self.score.to_i >= 5000
 	end
 
+	def can_merge_topic?
+		self.score.to_i >= 20000
+	end
+
 	def can_see_metrics?
 		self.score.to_i >= 5000
 	end
