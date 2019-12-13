@@ -25,7 +25,7 @@ class FourMinuteBooks
 		book.author_link = page.at('a[text()*="Learn more about the author"]').try(:[], :href)
 		durationdiv = page.at('strong[text()*="Read in"]')
 		if durationdiv.present?
-			book.fmb_summary_length = durationdiv.parent.text().scan(/Read in: (\d+) minutes/).first.first.to_i
+			book.fmb_summary_length = durationdiv.parent.text().scan(/Read in: (\d+) minutes/).first.try(&:first).try(&:to_i)
 		end
 		puts "\nFourMinuteBooks finish: #{book}"
 		return book
