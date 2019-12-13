@@ -103,6 +103,8 @@ class Topic < ApplicationRecord
 	end
 
 	def self.merge(original_id, duplicate_id)
+		return if original_id == duplicate_id
+		
 		Topic.transaction do
 			TopicIdeaSet.where(topic_id: duplicate_id).update_all(topic_id: original_id)
 			TopicRelation.where(from_id: duplicate_id).update_all(from_id: original_id)
