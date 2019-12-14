@@ -78,7 +78,7 @@ class TopicsController < ApplicationController
 
   def merge
     if request.post?
-      Topic.merge(params[:id], params[:duplicate_id])
+      Topic.merge(Topic.from_param(params[:id]).id, params[:duplicate_id])
       flash[:success] = "Topics merged successfully."
       redirect_to merge_topic_path(id: params[:id]) and return
     else
