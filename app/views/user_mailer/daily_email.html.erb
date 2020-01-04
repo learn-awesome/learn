@@ -1,0 +1,34 @@
+<h2>Hi <%= @user.nickname %></h2>
+
+<% @new_followers.each do |f| %>
+<p>You got new followers yesterday:<br/>
+
+<% @new_followers.each do |f| %>
+  <%= link_to f.nickname, user_url(f) %>
+<% end %>
+</p>
+<% end %>
+
+<% unless @new_fav_items.blank? %>
+<p>New items have been added to your favorite topics:<br/>
+
+<% @new_fav_items.each do |i| %>
+  <%= link_to i.name, item_url(i) %>
+<% end %>
+</p>
+<% end %>
+
+<% if @user.is_core_dev? %>
+  <% @new_global_users = User.where("created_at > ?", Time.now.beginning_of_day - 1.day).to_a %>
+  <p><%= @new_global_users.size %> new users joined yesterday:
+    <% @new_global_users.each do |f| %>
+    <%= link_to f.nickname, user_url(f) %>
+    <% end %>
+  </p>
+<% end %>
+
+<p>
+Happy learning :)
+<br/>
+Team LearnAwesome
+</p>
