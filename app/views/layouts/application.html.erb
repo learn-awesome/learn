@@ -300,6 +300,22 @@
                 </a>
               </li>
 
+              <% if request.user_agent.to_s.downcase.include?("firefox") %>
+              <li class="u-sidebar-nav-menu__item">
+                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/learnawesome/">
+                  <img src="/nounproject/icons/addon.svg" class="u-sidebar-nav-menu__item-icon"></img>
+                  <span class="u-sidebar-nav-menu__item-title">Get Browser Extension</span>
+                </a>
+              </li>
+              <% elsif request.user_agent.to_s.downcase.include?("chrome") %>
+              <li class="u-sidebar-nav-menu__item">
+                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie">
+                  <img src="/nounproject/icons/addon.svg" class="u-sidebar-nav-menu__item-icon"></img>
+                  <span class="u-sidebar-nav-menu__item-title">Get Browser Extension</span>
+                </a>
+              </li>
+              <% end %>
+
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link" href="https://github.com/learn-awesome/learn" target="_blank">
                   <img src="/nounproject/icons/github.svg" width=24 height=24 class="u-sidebar-nav-menu__item-icon"></img>
