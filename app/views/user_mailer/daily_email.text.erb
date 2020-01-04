@@ -1,0 +1,15 @@
+Hi <%= @user.nickname %>
+
+You got new followers yesterday:
+
+<% @new_followers.each do |f| %>
+  <%= link_to f.nickname, user_url(f) %>
+<% end %>
+
+New items have been added to your favorite topics:
+
+<% @new_fav_items.each do |i| %>
+  <%= link_to i.name, item_url(i) %>
+<% end %>
+
+Happy learning :)
