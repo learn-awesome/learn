@@ -12,7 +12,7 @@ class Amazon
 
 		proxy_link = URI("https://api.proxycrawl.com")
 		proxy_link.query = URI.encode_www_form({
-			token: "Xgm1svgrqWW4uz6k3iEPrg",
+			token: "",
 			url: book.amazon_link
 		})
 		# res = Net::HTTP.get_response(proxy_link)
