@@ -5,6 +5,7 @@ require 'redcarpet'
 
 class DerekSivers
 	def self.extract(book)
+		return book if book.skip_post_amazon_scrape
 		puts "\nDerekSivers start: #{book}"
 		found = search(book)
 		if found

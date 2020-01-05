@@ -5,6 +5,7 @@ require 'redcarpet'
 
 class GoodReads
 	def self.extract(book)
+		return book if book.skip_post_amazon_scrape
 		puts "\nGoodReads start: #{book}"
 		return book if book.goodreads_link.blank? and book.goodreads_id.blank? and book.isbn.blank? and book.isbn13.blank?
 		if book.goodreads_link.present?

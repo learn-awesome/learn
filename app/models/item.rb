@@ -369,17 +369,22 @@ class Item < ApplicationRecord
           title: title
         }
       else
-        page = Nokogiri::HTML(open(url))
-        title = page.at('title')&.content
-        if title.blank? && url.end_with?(".pdf")
-          title = File.basename(URI.parse(url).path).sub(".pdf", "").gsub("_", " ").gsub("-", " ")
+        begin
+          page = Nokogiri::HTML(open(url))
+          title = page.at('title')&.content
+          if title.blank? && url.end_with?(".pdf")
+            title = File.basename(URI.parse(url).path).sub(".pdf", "").gsub("_", " ").gsub("-", " ")
+          end
+          canonical = page.at('link[rel="canonical"]')&.attributes && page.at('link[rel="canonical"]')&.attributes["href"]&.value
+          {
+            topics: [],
+            canonical: canonical,
+            title: title.to_s.strip
+          }
+        rescue Exception => ex
+          Rails.logger.error "Error: #{ex.message} in extract_opengraph_data"
+          {}
         end
-        canonical = page.at('link[rel="canonical"]')&.attributes && page.at('link[rel="canonical"]')&.attributes["href"]&.value
-        {
-          topics: [],
-          canonical: canonical,
-          title: title.to_s.strip
-        }
       end
     end
   end
