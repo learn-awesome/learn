@@ -8,7 +8,9 @@ class CollectionsController < InheritedResources::Base
   def create
   	@collection = Collection.new(collection_params)
   	@collection.user = current_user
-  	create!
+    create! do |format|
+      format.html { redirect_to user_collections_path(@collection.user) }
+    end
   end
 
   def destroy

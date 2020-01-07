@@ -30,7 +30,10 @@
                       <% @collections.each_with_index do |collection, index| %>
                         <tr>
                           <td><%= index + 1 %></td>
-                          <td><%= link_to collection.name, resource_url(collection) %></td>
+                          <td>
+                            <%= link_to collection.name, resource_url(collection) %>
+                            <br/><p><%= collection.description %></p>
+                          </td>
                           <td><%= collection.items.count %></td>
                           <% if current_user == parent %>
                             <td class="text-center">
