@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
 	def daily_email
 		# preview at http://localhost:3000/rails/mailers/user_mailer/daily_email
 		@user = params[:user]
-		# return unless @user.email.present?
+		return unless @user.email.present?
 		@new_followers = params[:new_followers]
 		@new_fav_items = params[:new_fav_items]
 		mail(to: @user.email, subject: "Your daily update from LearnAwesome.org")
