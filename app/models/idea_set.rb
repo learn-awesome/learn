@@ -10,7 +10,7 @@
 #
 
 class IdeaSet < ApplicationRecord
-	validates :name, presence: true, length: { in: 3..150 }
+	validates :name, presence: true, length: { in: 3..250 }
 	has_many :items, dependent: :destroy, inverse_of: :idea_set
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :idea_set
 	has_many :topics, :through => :topic_idea_sets
