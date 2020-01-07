@@ -1,4 +1,4 @@
-<div class="btn-group <%= 'show' if @open_status_menu %>">
+<div class="btn-group btn-sm <%= 'show' if @open_status_menu %>">
   <% if @my_review.persisted? and @my_review.status.present? %>
     <%= button_to ("✔ " + Review::STATUSES[@my_review.status.to_sym]), review_path(@my_review, review: {status: ""}), method: :patch, class: "btn btn-info-outline" %>
   <% elsif @my_review.persisted? %>
@@ -20,9 +20,11 @@
     <% end %>
 
     <% current_user.collections.each do |coll| %>
-      <%= link_to toggle_item_user_collection_path(current_user, coll, item_id: @item.id), method: :post, class: "dropdown-item" do %>
-        <% if @lists_added.include?(coll.id) %>✔<% else %>☐<% end %>
-        <%= coll.name %>
+    <%= link_to toggle_item_user_collection_path(current_user, coll, item_id: @item.id), method: :post, class: "dropdown-item" do %>
+      <div class="custom-control custom-checkbox mb-2">
+        <input id="customCheck1" class="custom-control-input" type="checkbox" <%= @lists_added.include?(coll.id) ? "checked" : "" %> >
+        <label class="custom-control-label" for="customCheck1"><%= coll.name %></label>
+      </div>
       <% end %>
     <% end %>
 
