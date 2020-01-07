@@ -1,4 +1,4 @@
-<div class="row">
+<div class="rows">
 	<%= render 'components/dropper' %>
 	
 	<div style="display: inline-block">
@@ -16,14 +16,14 @@
 
 </div>
 
-<div class="row">
+<div class="rows">
 										<%= form_with(model: @my_review) do |form| %>
 											<div class="inplacereview">
 
 												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 												<br>
 												<div class="item_categorization">
-													<div class="btn-group btn-group-toggle btn-sm" data-toggle="buttons">
+													<div class="btn-group-toggle" data-toggle="buttons">
 													  <% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
 													  <input type="hidden" name="review[<%= quality %>_score]" value="0" />
 													  <label class="btn btn-sm btn-outline-info ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
@@ -37,9 +37,9 @@
 
 										<%= form_with(model: @my_review) do |form| %>				
 												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-												<div class="item_review_notes">
-													<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here...' %>
-													<%= form.submit 'Save', class: 'btn btn-sm btn-success' %>
+												<div class="form-group mb-4 pd-6">
+													<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here' %>
 												</div>
+												<%= form.submit 'Save', class: 'btn btn-sm btn-success ml-6' %>
 										<% end %>
 </div>
