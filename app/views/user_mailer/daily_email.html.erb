@@ -18,8 +18,7 @@
 </p>
 <% end %>
 
-<% if @user.is_core_dev? %>
-  <% @new_global_users = User.where("created_at > ?", Time.now.beginning_of_day - 1.day).to_a %>
+<% unless @new_global_users.blank? %>
   <p><%= @new_global_users.size %> new users joined yesterday:
     <% @new_global_users.each do |f| %>
     <%= link_to f.nickname, user_url(f) %>

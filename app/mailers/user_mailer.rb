@@ -21,6 +21,7 @@ class UserMailer < ApplicationMailer
 		return unless @user.email.present?
 		@new_followers = params[:new_followers]
 		@new_fav_items = params[:new_fav_items]
+		@new_global_users = params[:new_global_users]
 		mail(to: @user.email, subject: "Your daily update from LearnAwesome.org")
 	end
 end
