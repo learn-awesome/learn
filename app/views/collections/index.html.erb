@@ -1,23 +1,63 @@
-<h1><%= link_to parent.nickname, parent %>'s collections</h1>
+<h1 class="h2 font-weight-semibold mb-4"><%= link_to parent.nickname, parent %>'s collections</h1>
 
-
-
-<ul>
-  <% @collections.each do |collection| %>
-    <li>
-      <%= link_to collection.name, resource_url(collection) %>
-      <% if current_user == parent %>
-        <%= link_to edit_resource_url(collection) do %><i class="far fa-edit"></i><% end %>
-        <%= link_to resource_url(collection), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="fas fa-trash"></i>
+<div class="card mb-4">
+  <% if current_user == parent %>
+    <header class="card-header d-flex align-items-center">
+       <ul class="list-inline ml-auto mb-0">
+        <li class="list-inline-item">
+         <%= link_to new_resource_url do %>
+          <i class="fa fa-plus mr-2"></i>Add Collection
         <% end %>
-      <% end %>
-    </li>
+        </li>
+      </ul>
+    </header>
   <% end %>
-</ul>
+          <% if @collections.present? %>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Items</th>
+                      <% if current_user == parent %>
+                        <th class="text-center" scope="col">Actions</th>
+                      <%end%>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <% @collections.each_with_index do |collection, index| %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><%= link_to collection.name, resource_url(collection) %></td>
+                          <td><%= collection.items.count %></td>
+                          <% if current_user == parent %>
+                            <td class="text-center">
+                              <a id="actions2Invoker" class="link-muted" href="#!" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                                <i class="fa fa-sliders-h"></i>
+                              </a>
 
-<br>
+                              <div class="dropdown-menu dropdown-menu-right dropdown" style="width: 150px;" aria-labelledby="actions2Invoker">
+                                <ul class="list-unstyled mb-0">
+                                  <li>
+                                    <%= link_to edit_resource_url(collection), class: 'd-flex align-items-center link-muted py-2 px-3' do %><i class="fa fa-edit mr-2"></i>Edit<% end %>
+                                  </li>
+                                  <li>
+                                    <%= link_to resource_url(collection), method: :delete,class: 'd-flex align-items-center link-muted py-2 px-3', data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash mr-2"></i>Remove<% end %>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          <%end%>
 
-<% if current_user == parent %>
-<%= link_to 'New Collection', new_resource_url %>
-<% end %>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+            <%end%>
+          </div>
+
+          <br>
