@@ -22,6 +22,7 @@ class UserMailer < ApplicationMailer
 		@new_followers = params[:new_followers]
 		@new_fav_items = params[:new_fav_items]
 		@new_global_users = params[:new_global_users]
-		mail(to: @user.email, subject: "Your daily update from LearnAwesome.org")
+		@new_items = params[:new_items]
+		mail(to: @user.email, subject: "Updates from LearnAwesome.org")
 	end
 end

@@ -23,5 +23,15 @@ New items have been added to your favorite topics:
     <% end %>
 <% end %>
 
+<% unless @new_items.blank? %>
+  Some of the learning resources which were added yesterday:
+    <ul>
+    <% @new_items.each do |i| %><li>
+      <%= link_to i.name, item_url(i) %> in <% i.topics.each do |t| %><%= link_to t.name, topic_url(t) %> <% end %>
+    </li><% end %>
+    </ul>
+<% end %>
+
+
 Happy learning :)
 Team LearnAwesome

@@ -1,21 +1,21 @@
 <h2>Hi <%= @user.nickname %></h2>
 
-<% @new_followers.each do |f| %>
-<p>You got new followers yesterday:<br/>
+<% unless @new_followers.blank? %>
+  <p>You got new followers yesterday:<br/>
 
-<% @new_followers.each do |f| %>
-  <%= link_to f.nickname, user_url(f) %>
-<% end %>
-</p>
+  <% @new_followers.each do |f| %>
+    <%= link_to f.nickname, user_url(f) %>
+  <% end %>
+  </p>
 <% end %>
 
 <% unless @new_fav_items.blank? %>
-<p>New items have been added to your favorite topics:<br/>
+  <p>New items have been added to your favorite topics:<br/>
 
-<% @new_fav_items.each do |i| %>
-  <%= link_to i.name, item_url(i) %>
-<% end %>
-</p>
+  <% @new_fav_items.each do |i| %>
+    <%= link_to i.name, item_url(i) %>
+  <% end %>
+  </p>
 <% end %>
 
 <% unless @new_global_users.blank? %>
@@ -24,6 +24,15 @@
     <%= link_to f.nickname, user_url(f) %>
     <% end %>
   </p>
+<% end %>
+
+<% unless @new_items.blank? %>
+  Some of the learning resources which were added yesterday:
+    <ul>
+    <% @new_items.each do |i| %><li>
+      <%= link_to i.name, item_url(i) %> in <%= safe_join(i.topics.map { |t| link_to(t.name, topic_url(t)) }, ", ".html_safe) %>
+    </li><% end %>
+    </ul>
 <% end %>
 
 <p>
