@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
   include Secured
   before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine]
+  before_action :set_layout, :only => [:new, :show]
 
   def index
   end
 
   def show
+
   	@item = Item.from_param(params[:id])
     if @item.nil?
       flash[:danger] = "We couldn't find this thing."
@@ -215,9 +217,10 @@ class ItemsController < ApplicationController
         # query is a URL, no point editing. Directly take to new
         if @items.first
           redirect_to @items.first and return
+          redirect_to item_path(id: @items.first, ext: true)
         else
           if current_user
-            redirect_to new_item_path(url: @q) and return
+            redirect_to new_item_path(url: @q, ext: true) and return
           else
             flash[:danger] = "You need to log in to add links."
             redirect_to root_path
@@ -263,5 +266,11 @@ class ItemsController < ApplicationController
       @items = []
     end
   end
+
+  private
+
+    def set_layout
+      self.class.layout ( params['ext'].present? ? 'embed' :  'application')
+    end
 
 end
