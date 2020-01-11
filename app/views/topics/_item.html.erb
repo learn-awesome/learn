@@ -1,0 +1,22 @@
+<div class="card full_width mb-2">
+	<div class="card-body">
+		<div class="col-md-8">
+			<div class="row mb-4">
+				<h2 class="h3 card-header-title"><img src="<%= item.item_type.icon %>" width=24 height=24 /> &nbsp;
+					<b>
+						<%= link_to item do %>
+						<%= item.display_name %>
+						<small class="domain_text">
+							(<%= item.primary_link.top_domain %>)
+						</small>
+						<%end%>
+					</b>
+					
+				</h2>
+			</div>
+			<div class="row">
+				<button type="button" class="btn btn-outline-primary btn-sm"><%= item.item_type.display_name_plural%></button>
+			</div>
+		</div>
+	</div>
+</div>
