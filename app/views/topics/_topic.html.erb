@@ -1,90 +1,136 @@
-<h2>
-	<b><%= topic.display_name.titleize %></b>
-
-	<% if current_user %>
-	<%= link_to (@does_follow ? "Unfollow" : "Follow"), toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") %>
-	<% end %>
-  <%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
-
-  <% if current_user and current_user.score > 2000 %>
-    <%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
-  <% end %>
-
-  <% if current_user and current_user.can_merge_topic? %>
-    <%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>
-  <% end %>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
-
-  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>" target="_blank"><i class="fab fa-twitter"></i></a>
-</h2>
-<!-- <h4>Curators: <%= topic.curators.map do |c| link_to c.nickname, user_path(c) end.join(",").html_safe %></h4> -->
-
-<hr/>
-<%= form_with local: true, method: :get, class: "form-inline" do |form| %>
-  Show me &nbsp; 
-  <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, {selected: @item_type, include_blank: "Any format"}, class: "form-control" %>  
-  &nbsp; which are &nbsp; 
-  <%= form.select :length, [["< 5 minutes", "0-5"], ["5 to 15 minutes", "5-15"],["15-30 minutes", "15-30"], ["30 to 60 minutes", "30-60"],["1 to 3 hours", "60-180"],["more than 3 hours", "180-9999"]], {selected: @length, include_blank: "Any length"}, class: "form-control" %> 
-  &nbsp; long and &nbsp; 
-  <%= form.select :quality, [["inspirational", "inspirational"],["educational", "educational"],["challenging", "challenging"], ["entertaining", "entertaining"],["visual", "visual"], ["interactive", "interactive"]], {selected: @quality, include_blank: "Any quality"}, class: "form-control" %> &nbsp; <% if current_user %><!-- which I haven't seen. --><% end %> &nbsp;
-
-  <div class="text-center"><%= form.submit "Search", class: "btn btn-primary" %></div>
-<% end %>
-
-<h4>Quick searches:
-  <%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
-  <%= link_to "Short Videos", topic_path(topic, item_type: "video", length: "5-15") %> |
-  <%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
-  <%= link_to "Books", topic_path(topic, item_type: "book") %> |
-  <%= link_to "Challenging", topic_path(topic, quality: "challenging") %> |
-  <%= link_to "Visual", topic_path(topic, quality: "visual") %> |
-  <%= link_to "All", topic_path(topic) %>
-  <!-- <%= link_to "try your own advanced search", query_items_path(topic: topic.name) %> -->
-</h4>
-
-<hr/>
-
-<% @item_type_items.map(&:first).sort_by { |x| x.id == 'learning_plan' ? 0 : 1 }.each_slice(1).to_a.each do |pair| %>
-      <div class="row">
-        <!-- Cards with Tabs -->
-        <% pair.each do |it| %>
-	        <div class="col-md-12 mb-4">
-	          <div class="card">
-	            <div class="card-header d-md-flex align-items-center">
-	              <h2 class="h3 card-header-title"><img src="<%= it.icon %>" width=24 height=24 /> &nbsp; <b><%= it.display_name_plural %></b></h2>
-
-	            </div>
-
-	            <div class="card-body items_for_topic">
-            		<% @item_type_items[it].each do |item| %>
-            		<div class="mb-2">
-            			<%= link_to item.display_name, item %>
-        			</div>
-            		<% end %>
-	            </div>
-
-	          </div>
-	        </div>
-        <% end %>
-      </div>
-<% end %>
-
-<% if topic.followers.any? %>
+<% followers = topic.followers %>
 <div class="row">
-    <div class="col-md-12 mb-4">
-      <div class="card">
-        <div class="card-header d-md-flex align-items-center">
-          <h2 class="h3 card-header-title"><b>Users who're following this topic</b></h2>
-
-        </div>
-
-        <div class="card-body">
-    		<%= topic.followers.map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %>
-        </div>
-
-      </div>
-    </div>
+	<h1 class="col-md-10 mb-4">
+		<b><%= topic.display_name.titleize %></b>
+	</h1>
+	<div class="col-md-2 mb-4">
+		<% if current_user %>
+			<div class="rows">
+				<%=link_to toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm  " + (@does_follow ? "btn-outline-danger" : "btn-outline-success") do %>
+					<%= (@does_follow ? "Unfollow" : "Follow")%> <b><%= number_to_human(followers.count) %></b>
+				<% end %>
+			</div>
+		<% end %>
+		<% if followers.present? %>
+			<small><%= followers[0..4].map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %> <%= "and #{followers.count - 5 } others" if followers.count > 5 %> following</small>	
+		<%end %>
+	</div>
 </div>
-<% end %>
 
+<div class="row">
+	<h1 class="col-md-8 mb-4">
+			<%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+
+ 		<% if current_user and current_user.score > 2000 %>
+    	<%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+  	<% end %>
+
+  	<% if current_user and current_user.can_merge_topic? %>
+    	<%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>
+  	<% end %>
+
+  	<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+
+  	<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>" target="_blank"><i class="fab fa-twitter"></i></a>
+		
+	</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3 mb-4">
+		<div class="card">
+			<header class="card-header">
+				<h2 class="h3 card-header-title mb-2">Showing <b><%= @item_type_items.count %></b> Items </h2>
+				<small><b>Quick searches</b> :
+  				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
+  				<%= link_to "Short Videos", topic_path(topic, item_type: "video", length: "5-15") %> |
+  				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
+  				<%= link_to "Books", topic_path(topic, item_type: "book") %> |
+  				<%= link_to "Challenging", topic_path(topic, quality: "challenging") %> |
+  				<%= link_to "Visual", topic_path(topic, quality: "visual") %> |
+  				<%= link_to "All", topic_path(topic) %>		
+  			</small>
+			</header>
+
+		</div>
+		<%= form_tag({:action => 'show', :id => @topic.id },:id => 'filter_form',method: :get,:remote => true) do %>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<div class="accordion" id="accordion_filters">
+			<div class="card">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Type <small class="fa fa-angle-down text-muted ml-1"></small>
+						</button>
+					</h2>
+				</div>
+
+				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion_filters">
+					<div class="card-body">
+						<% ItemType.all.each do |item_type| %>
+						<div class="custom-control custom-checkbox mb-2">	
+							<input name="item_type[]" value=<%= item_type.id %> id=<%= item_type.id %> class="custom-control-input" type="checkbox" <%- if (@item_type.present? && @item_type.include?(item_type.id)) %>checked <%-end%> onclick="this.form.submit();">
+							<label class="custom-control-label" for=<%= item_type.id %>><%= item_type.display_name_plural %></label>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" id="headingTwo">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Length <small class="fa fa-angle-down text-muted ml-1"></small>
+						</button>
+					</h2>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion_filters">
+					<div class="card-body">
+						<% ItemType::LENGTH.each do |length| %>
+						<div class="custom-control custom-radio mb-2">
+							<input id=<%= length.last %> value=<%= length.last %> class="custom-control-input" type="radio" <%- if (@length.to_s == length.last) %>checked <%-end%> name="length" onclick="this.form.submit();">
+							<label class="custom-control-label" for=<%= length.last %>><%= length.first %></label>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header" id="headingThree">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							Quality <small class="fa fa-angle-down text-muted ml-1"></small>
+						</button>
+					</h2>
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion_filters">
+					<div class="card-body">
+						<% ItemType::QUALITY.each do |quality| %>
+						<div class="custom-control custom-radio mb-2">
+							<input value=<%= quality.last %> id=<%= quality.last %> class="custom-control-input" type="radio" <%- if (@quality.to_s == quality.last) %>checked <%-end%> name="quality", onclick="this.form.submit();">
+							<label class="custom-control-label" for=<%= quality.last %>><%= quality.first %></label>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+
+	<div class="col-md-9 mb-4">
+		<%if @item_type_items.present? %>
+			<% @item_type_items.each do |item| %>
+				<%= render partial: 'item', locals: {item: item} %>
+			<% end %>
+			<%else%>
+				<div class="alert alert-soft-danger fade show" role="alert">
+								<i class="fa fa-minus-circle alert-icon mr-3"></i>
+								<span>No Items</span>
+								<button type="button" class="close" aria-label="Close" data-dismiss="alert">
+								</button>
+							</div>
+		<% end %>
+
+	</div>
+</div>
