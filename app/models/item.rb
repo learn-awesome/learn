@@ -91,6 +91,11 @@ class Item < ApplicationRecord
     end
   end
 
+  def average_overall_score
+    return 0 unless reviews.present?
+    reviews.pluck(:overall_score).sum / reviews.count
+  end
+
   def large_thumbnail
     return self.image_url if self.image_url.present?
     if self.links.any? { |l| l.url.include?("youtube.com") }

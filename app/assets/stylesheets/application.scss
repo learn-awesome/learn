@@ -369,3 +369,20 @@ input#item_year_of_publication {
 .follow_btn{
 	float: right
 }
+.btn-list{
+	margin: 0px 2px;
+}
+.rating_disabled{
+	label::before {
+	    content: "\2605";
+	    font-size: 22px;
+	    color: #CCCCCC;
+	    line-height: 1;
+	}
+	label{
+		float:left;
+	}
+	label.checked:before{
+		color: #F9DF4A;
+	}
+}

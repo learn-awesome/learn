@@ -37,6 +37,28 @@
 </div>
 
 <div class="row">
+		<div class="col-md-9 mb-4">
+		<%if @item_type_items.present? %>
+			<% @item_type_items.each do |item| %>
+				<%= render partial: 'item', locals: {item: item} %>
+			<% end %>
+			
+			<% if @item_type_items.total_pages > 1 %>
+				<div class="paginations">
+	      	<%= will_paginate @item_type_items,:params => { item_type: @item_type, length: @length, quality: @quality }, :container => false %>
+	  		</div>
+  		<%end%>
+
+			<%else%>
+				<div class="alert alert-soft-danger fade show" role="alert">
+								<i class="fa fa-minus-circle alert-icon mr-3"></i>
+								<span>No Items</span>
+								<button type="button" class="close" aria-label="Close" data-dismiss="alert">
+								</button>
+							</div>
+		<% end %>
+
+	</div>
 	<div class="col-md-3 mb-4">
 		<div class="card">
 			<header class="card-header">
@@ -88,7 +110,7 @@
 					<div class="card-body">
 						<% ItemType::LENGTH.each do |length| %>
 						<div class="custom-control custom-radio mb-2">
-							<input id=<%= length.last %> value=<%= length.last %> class="custom-control-input" type="radio" <%- if (@length.to_s == length.last) %>checked <%-end%> name="length" onclick="this.form.submit();">
+							<input value="<%= length.last %>" id="<%= length.last %>" class="custom-control-input" type="radio" <%- if (@length.to_s == length.last) %>checked <%-end%> name="length" onclick="this.form.submit();">
 							<label class="custom-control-label" for=<%= length.last %>><%= length.first %></label>
 						</div>
 						<% end %>
@@ -107,7 +129,7 @@
 					<div class="card-body">
 						<% ItemType::QUALITY.each do |quality| %>
 						<div class="custom-control custom-radio mb-2">
-							<input value=<%= quality.last %> id=<%= quality.last %> class="custom-control-input" type="radio" <%- if (@quality.to_s == quality.last) %>checked <%-end%> name="quality", onclick="this.form.submit();">
+							<input value="<%= quality.last %>" id="<%= quality.last %>" class="custom-control-input" type="radio" <%- if (@quality.to_s == quality.last) %>checked <%-end%> name="quality", onclick="this.form.submit();">
 							<label class="custom-control-label" for=<%= quality.last %>><%= quality.first %></label>
 						</div>
 						<% end %>
@@ -116,21 +138,5 @@
 			</div>
 		</div>
 		<% end %>
-	</div>
-
-	<div class="col-md-9 mb-4">
-		<%if @item_type_items.present? %>
-			<% @item_type_items.each do |item| %>
-				<%= render partial: 'item', locals: {item: item} %>
-			<% end %>
-			<%else%>
-				<div class="alert alert-soft-danger fade show" role="alert">
-								<i class="fa fa-minus-circle alert-icon mr-3"></i>
-								<span>No Items</span>
-								<button type="button" class="close" aria-label="Close" data-dismiss="alert">
-								</button>
-							</div>
-		<% end %>
-
 	</div>
 </div>
