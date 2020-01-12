@@ -42,6 +42,13 @@
 			<% @item_type_items.each do |item| %>
 				<%= render partial: 'item', locals: {item: item} %>
 			<% end %>
+			
+			<% if @item_type_items.total_pages > 1 %>
+				<div class="paginations">
+	      	<%= will_paginate @item_type_items,:params => { item_type: @item_type, length: @length, quality: @quality }, :container => false %>
+	  		</div>
+  		<%end%>
+
 			<%else%>
 				<div class="alert alert-soft-danger fade show" role="alert">
 								<i class="fa fa-minus-circle alert-icon mr-3"></i>
