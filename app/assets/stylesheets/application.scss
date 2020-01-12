@@ -342,3 +342,30 @@ input#item_year_of_publication {
 .ml-6{
 	margin-left: 6px;
 }
+.full_width{
+	width: 100%;
+}
+.header-sm{
+	padding: 0.5rem 1.5rem !important;
+}
+.custom-control-label{
+	justify-content: left !important;
+}
+.domain_text{
+	color: #b3b3b3;
+}
+#accordion_filters{
+	.card-header{
+		padding: 0.25rem 0.5rem !important;
+	}
+	.btn-full{
+		width: 100%;
+		text-align: left;
+	}
+	.fa{
+		float: right;
+	}
+}
+.follow_btn{
+	float: right
+}
