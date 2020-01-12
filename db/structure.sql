@@ -413,7 +413,8 @@ CREATE TABLE public.users (
     random_fav_item_types character varying,
     referrer character varying,
     post_reviews_to_twitter boolean DEFAULT false NOT NULL,
-    unsubscribe boolean DEFAULT false NOT NULL
+    unsubscribe boolean DEFAULT false NOT NULL,
+    goodreads_token character varying
 );
 
 
@@ -1126,6 +1127,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191101172456'),
 ('20191105105946'),
 ('20191108051151'),
-('20191114042350');
+('20191114042350'),
+('20200112192301');
 
 

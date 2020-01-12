@@ -46,6 +46,9 @@ Rails.application.routes.draw do
       get 'actor'
       post 'inbox'
       get 'outbox'
+      get 'connectgoodreads'
+      get 'disconnectgoodreads'
+      get 'goodreads_oauth_callback'
     end
 
     collection do

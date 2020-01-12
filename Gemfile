@@ -104,3 +104,5 @@ gem 'stackprof'
 
 gem 'webpacker'
 gem 'react-rails'
+
+gem 'oauth' # for goodreads api

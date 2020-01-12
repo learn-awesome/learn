@@ -33,6 +33,14 @@
             </div>
             <% end %>
 
+            <p>
+              <% if @user.is_goodreads_connected? %>
+                <a href="<%= disconnectgoodreads_user_path(@user) %>" >Disconnect GoodReads</a>
+              <% else %>
+                <a href="<%= connectgoodreads_user_path(@user) %>" >Connect your GoodReads account for auto-posting of reviews</a>
+              <% end %>
+            </p>
+
 
     			<div class="form-group mb-4">
     			  <%= form.submit "Save Settings", class: "btn btn-primary" %>

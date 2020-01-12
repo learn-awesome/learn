@@ -171,4 +171,14 @@ class Review < ApplicationRecord
       return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See my detailed review at #{url}"
     end
   end
+
+  def goodreads_msg
+    url = Rails.application.routes.url_helpers.review_url(self)
+
+    if self.rating_msg.blank?
+      return "Just reviewed #{self.item.display_name}. See my detailed review at #{url}"
+    else
+      return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See my detailed review at #{url}"
+    end
+  end
 end
