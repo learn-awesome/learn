@@ -44,6 +44,10 @@ class TopicsController < ApplicationController
       @does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
     end
     @item_type_items = @topic.advanced_search(@item_type, @length, @quality)
+    respond_to do |format|
+      format.html
+      format.json { render json: Topic.all }
+    end
   end
 
   def toggle_follow
