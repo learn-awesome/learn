@@ -7,9 +7,11 @@
 						<b>
 							<%= link_to item do %>
 							<%= item.display_name %>
+							<% if item.primary_link %>
 							<small class="domain_text">
 								(<%= item.primary_link.top_domain %>)
 							</small>
+							<% end %>
 							<%end%>
 						</b>
 
