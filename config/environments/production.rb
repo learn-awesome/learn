@@ -70,14 +70,14 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'learnawesome.org' }
-  config.action_mailer.default_options = {from: 'team@learnawesome.org'}
+  config.action_mailer.default_options = {from: 'no-reply@mail.learnawesome.org'}
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.sendgrid.net',
+    address:              'smtp.mailgun.org',
     port:                 587,
-    domain:               'learnawesome.org',
-    user_name:            'apikey',
-    password:             ENV['SENDGRID_APIKEY'],
+    domain:               'mail.learnawesome.org',
+    user_name:            'postmaster@mail.learnawesome.org',
+    password:             ENV['SMTP_APIKEY'],
     authentication:       'plain',
     enable_starttls_auto: true
   }
