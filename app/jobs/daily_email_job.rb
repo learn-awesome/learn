@@ -6,14 +6,16 @@ class DailyEmailJob < ApplicationJob
     # Items added to their favorite topics
     # New followers
 
-    new_global_users = User.where("created_at > ?", Time.now.beginning_of_day - 1.day)
-    new_items = Item.where("created_at > ?", Time.now.beginning_of_day - 1.day).limit(5)
+    # TODO: Change 7.day to 1.day once we automate this job
+
+    new_global_users = User.where("created_at > ?", Time.now.beginning_of_day - 7.day)
+    new_items = Item.where("created_at > ?", Time.now.beginning_of_day - 7.day).limit(5)
 
     User.all.each do |u|
       next if u.email.blank?
       begin
-        new_fav_items = TopicIdeaSet.where(topic: u.fav_topics).where("created_at > ?", Time.now.beginning_of_day - 1.day)
-        new_followers = u.followers.where("user_user_relations.created_at > ?", Time.now.beginning_of_day - 1.day)
+        new_fav_items = TopicIdeaSet.where(topic: u.fav_topics).where("created_at > ?", Time.now.beginning_of_day - 7.day)
+        new_followers = u.followers.where("user_user_relations.created_at > ?", Time.now.beginning_of_day - 7.day)
         new_global_users_except_me = new_global_users.reject { |v| v.id == u.id }
 
         unless new_fav_items.blank? and new_followers.blank? and new_global_users_except_me.blank? and new_items.blank?
