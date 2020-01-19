@@ -93,13 +93,23 @@
 				</div>
 
 				<% if current_user and (@user.id == current_user.id) %>
-				<div class="card-title">
+				<div class="card-title text-center">
 					<hr/>
-					<p>Embed your reviews: <input type="text" value="<iframe src=<%= reviews_user_url %> width=500 height=900/>" readonly/></p>
-					<!-- <p><%= link_to "Review JSON API", reviews_user_path(format: :json) %></p> -->
-					<p>You can use these filter parameters: <code>item_type, review_status, quality, min_quality_score</code></p>
+					<button type="button" class="btn btn-light" data-toggle="modal" href=".bd-example-modal-lg"><i class="fas fa-code"></i> Embed Reviews</button>
 					<hr/>
-					<p>Invite your friends by sharing this link: <input type="text" value="<%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>" readonly/></p>
+					<div class="card col-sm-12">
+						<div class="card-body text-center">
+							<button type="button" class="btn btn-lg btn-primary btn-circle mb-1" onclick="copyToClipboard('<%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>')">
+								<i class="fas fa-link"></i>
+							</button>
+							<div class="text-muted mb-3"><small>Click to copy referral link</small></div>
+							<div class="text-muted mb-3">Or</div>
+							<textarea id="review_notes" class="form-control form-control-sm mb-2" readonly="true">Join Learn Awesome by clicking the link. <%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>. If link is not clickable, copy and paste to your favorite browser</textarea>
+
+							<p>Invite your friends by sharing this message</p>
+						</div>
+					</div>
+					
 				</div>
 				<% end %>
 			</div>
@@ -172,3 +182,6 @@
             </div>
             <!-- End Cards with Tabs -->
 		</div>
+		<%= content_for(:model) do%>
+			<%= render partial: 'embed_links' %>
+		<%end%>

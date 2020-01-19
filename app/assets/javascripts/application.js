@@ -17,6 +17,14 @@
 //= require cocoon
 //= require_tree .
 
+function copyToClipboard(link) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val(link).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
 function animateHeadline(){
 
 	var querylink = document.getElementById("querylink");

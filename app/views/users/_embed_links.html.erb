@@ -1,0 +1,25 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Embed Reviews</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+			<p class="mb-2">Embed below script in your blogs to showcase your reviews</p>
+
+			<textarea id="review_notes" class="form-control form-control-sm mb-2" readonly="true"><iframe src=<%= reviews_user_url %> width=500 height=900 frameborder=0/></textarea>
+
+					<!-- <p><%= link_to "Review JSON API", reviews_user_path(format: :json) %></p> -->
+			<small class="mb-2">You can customize the list of reviews by adding filter parameters in embed script. Allowed parameters are <code>item_type, review_status, quality, min_quality_score</code>.</small>
+			<p>
+				<small><b>Sample : </b>
+					<samp><%= reviews_user_url %>?item_type=book</samp>
+				</small>
+			</p>
+			</div>
+		</div>
+	</div>
+</div>
