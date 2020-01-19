@@ -124,7 +124,7 @@ class User < ApplicationRecord
 		User.all.each do |u|
 			u.score = 0
 			# points for signing up (early)
-			u.score += ('2019-12-31'.to_date - u.created_at.to_date).to_i
+			u.score += [('2019-12-31'.to_date - u.created_at.to_date).to_i, 0].max
 
 			# points for submitting links: TODO- take quality into account
 			u.score += u.submissions.count * 10

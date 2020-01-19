@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'team@learnawesome.org'
+  default from: 'no-reply@mail.learnawesome.org'
   layout 'mailer'
 end

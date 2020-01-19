@@ -1,5 +1,5 @@
 desc "Send daily email to all users"
-task :points => :environment do
+task :dailyemail => :environment do
   puts "Sending daily email"
   DailyEmailJob.perform_now
   puts "done."
