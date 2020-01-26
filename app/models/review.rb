@@ -48,7 +48,7 @@ class Review < ApplicationRecord
   end
 
   def update_points
-    UserPointsService.call(user: self.user, event: :reviews)
+    UserPointsService.call(self.user)
   end
 
   def change_status

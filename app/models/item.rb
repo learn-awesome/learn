@@ -464,7 +464,7 @@ class Item < ApplicationRecord
   end
 
   def update_points
-    UserPointsService.call(user: self.user, event: :submission)
+    UserPointsService.call(self.user)
   end
 
   def self.suggest_format(url)
