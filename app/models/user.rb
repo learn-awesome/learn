@@ -127,49 +127,6 @@ class User < ApplicationRecord
 		User.where(referrer: self.id.to_s.split("-").first)
 	end
 
-	def self.calculate_points
-		User.all.each do |u|
-			u.score = 0
-			# points for signing up (early)
-			u.score += [('2019-12-31'.to_date - u.created_at.to_date).to_i, 0].max
-
-			# points for submitting links: TODO- take quality into account
-			u.score += u.submissions.count * 10
-
-			# points for submitting reviews: TODO- take quality into account
-			u.score += u.reviews.count * 10
-
-			# points for adding item metadata
-			#TODO
-
-			# points for inviting users
-			u.score += u.invited.count * 50
-
-			# points for correcting data / flagging items
-			# TODO
-
-			# points for developer contribution
-			if User.core_devs.include?(u.id)
-				u.score += 5000
-			end
-
-			# points for financial contribution
-			# eshnil for domain, heroku hosting etc
-			if ['58175aad-22f9-4a40-a6d0-b665762c8f8d'].include?(u.id)
-				u.score += 5000
-			end
-
-			# For paid plans, gift etc: #TODO
-
-			# For local testing
-			if Rails.env.development? and User.order(:created_at).take(5).map(&:id).include?(u.id)
-				u.score += 10_000
-			end
-
-			u.save
-		end
-	end
-
 	def self.core_devs
 		[
 			'58175aad-22f9-4a40-a6d0-b665762c8f8d',
