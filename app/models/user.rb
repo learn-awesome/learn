@@ -64,8 +64,8 @@ class User < ApplicationRecord
 
 	def update_points
 		user = User.where("CAST (id AS TEXT) LIKE '%#{self.referrer}%'").first
-    	UserPointsService.call(user: user, event: :referral) if user.present?
-  	end
+		UserPointsService.call(user: user, event: :referral) if user.present?
+	end
 
 	def notifications
 		followers = UserUserRelation.where(to_user: self).all
