@@ -48,6 +48,8 @@ class User < ApplicationRecord
 
 	has_many :activity_pub_followers
 
+	after_create :update_points
+
 	def self.from_param(id)
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
 	end
@@ -59,6 +61,11 @@ class User < ApplicationRecord
 	def avatar_image
 		self.auth0["info"]["image"]
 	end
+
+	def update_points
+		user = User.where("CAST (id AS TEXT) LIKE '%#{self.referrer}%'").first
+    	UserPointsService.call(user: user, event: :referral) if user.present?
+  	end
 
 	def notifications
 		followers = UserUserRelation.where(to_user: self).all

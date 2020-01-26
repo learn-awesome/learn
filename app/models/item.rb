@@ -44,7 +44,7 @@ class Item < ApplicationRecord
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
-  after_create :notify_gitter
+  after_create :notify_gitter, :update_points
   after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
@@ -461,6 +461,10 @@ class Item < ApplicationRecord
       message = "New #{self.item_type} added in #{self.topics.map(&:name).join(',')}: #{self.name}: #{item_url}"
       GitterNotifyJob.perform_later message #TODO: send message in each topic room, instead of learn-awesome/community only
     end
+  end
+
+  def update_points
+    UserPointsService.call(user: self.user, event: :submission)
   end
 
   def self.suggest_format(url)
