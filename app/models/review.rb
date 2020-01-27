@@ -27,6 +27,7 @@ class Review < ApplicationRecord
 
   validates_inclusion_of :status, in: ['want_to_learn', 'learning', 'learned'], allow_nil: true, allow_blank: false
 
+  after_create :update_points
   after_save :update_item_ratings
   after_save :post_to_social_media
   after_save :change_status
@@ -44,6 +45,10 @@ class Review < ApplicationRecord
   		self.item.write_attribute(quality_score, avg_score.to_f) if avg_score
   		self.item.save
   	end
+  end
+
+  def update_points
+    UserPointsService.call(self.user)
   end
 
   def change_status
