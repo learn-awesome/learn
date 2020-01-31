@@ -156,4 +156,24 @@
       </div>
     </div>
   </div>
+
+
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <header class="card-header">
+        <h2 class="h3 card-header-title">
+          List of items on this topic
+        </h2>
+      </header>
+
+      <div class="card-body">
+        <% @topics.first.items.limit(100).each do |item| %>
+          <p>
+          <%= link_to item.item_type.display_name_plural, item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
+          <%= link_to item.name, item %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
