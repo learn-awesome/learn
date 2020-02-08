@@ -55,6 +55,12 @@ class ItemsController < ApplicationController
     @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
   end
 
+  def syllabus_editor
+    @syllabus = true
+    @topics = (params[:topic].present? ? [Topic.find(params[:topic])] : [])
+    render 'syllabus_editor', layout: false
+  end
+
   def create
     @syllabus = (params[:syllabus].to_s == 'true')
     item = nil

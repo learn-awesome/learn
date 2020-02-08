@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'query'
       get 'discover'
       get 'new_syllabus'
+      get 'syllabus_editor'
     end
 
     member do
