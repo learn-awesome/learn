@@ -1,0 +1,32 @@
+<%= form_with(model: flash_card, local: true) do |form| %>
+  <% if flash_card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flash_card.errors.count, "error") %> prohibited this flash_card from being saved:</h2>
+
+      <ul>
+        <% flash_card.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_area :question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_area :answer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :frequency %>
+    <%= form.text_field :frequency %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

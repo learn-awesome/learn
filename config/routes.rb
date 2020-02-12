@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :flash_cards
   root 'welcome#index'
 
   get 'dashboard' => 'dashboard#show'

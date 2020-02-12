@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  question: MyText
+  answer: MyText
+  frequency: MyString
+  last_practised_at: 2020-02-13 02:29:15
+
+two:
+  user: 
+  question: MyText
+  answer: MyText
+  frequency: MyString
+  last_practised_at: 2020-02-13 02:29:15

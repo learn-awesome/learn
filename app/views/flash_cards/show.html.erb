@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @flash_card.user %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @flash_card.question %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @flash_card.answer %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  <%= @flash_card.frequency %>
+</p>
+
+<p>
+  <strong>Last practised at:</strong>
+  <%= @flash_card.last_practised_at %>
+</p>
+
+<%= link_to 'Edit', edit_flash_card_path(@flash_card) %> |
+<%= link_to 'Back', flash_cards_path %>

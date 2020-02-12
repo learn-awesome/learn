@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flash Cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+      <th>Frequency</th>
+      <th>Last practised at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flash_cards.each do |flash_card| %>
+      <tr>
+        <td><%= flash_card.question %></td>
+        <td><%= flash_card.answer %></td>
+        <td><%= flash_card.frequency %></td>
+        <td><%= flash_card.last_practised_at %></td>
+        <td><%= link_to 'Show', flash_card %></td>
+        <td><%= link_to 'Edit', edit_flash_card_path(flash_card) %></td>
+        <td><%= link_to 'Destroy', flash_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flash Card', new_flash_card_path %>
