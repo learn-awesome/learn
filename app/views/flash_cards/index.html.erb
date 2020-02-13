@@ -1,32 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Flash Cards</h1>
+<div class="mb-4">
+    <nav aria-label="breadcrumb">
+      <h1 class="h3">Flash Cards</h1>
+    </nav>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th>Answer</th>
-      <th>Frequency</th>
-      <th>Last practised at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @flash_cards.each do |flash_card| %>
-      <tr>
-        <td><%= flash_card.question %></td>
-        <td><%= flash_card.answer %></td>
-        <td><%= flash_card.frequency %></td>
-        <td><%= flash_card.last_practised_at %></td>
-        <td><%= link_to 'Show', flash_card %></td>
-        <td><%= link_to 'Edit', edit_flash_card_path(flash_card) %></td>
-        <td><%= link_to 'Destroy', flash_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+<div class="col-md-6 col-xl-3 mb-4">
+    <% @flash_cards.each do |fc| %>
+              <div class="card">
+                <header class="card-header">
+                  <!-- <h5 class="h3 card-title">Card Title</h5> -->
+                  <h6 class="card-subtitle text-muted text-uppercase">From: </h6>
+                </header>
+                
+                <div class="card-body">
+                  <p class="card-text"><%= fc.question %></p>
+                  <hr/>
+                  <p class="card-text"><%= fc.answer %></p>
+                  <p><small>Did you recall the answer correctly?</small></p>
+                  <a href="#" class="btn btn-block btn-danger">No, I didn't recall it.</a>
+                  <a href="#" class="btn btn-block btn-success">Yes, I recalled it.</a>
+                </div>
+              </div>
+              <!-- End Card Header with Image  -->
+            </div>
     <% end %>
-  </tbody>
-</table>
+</div>
+
 
 <br>
 

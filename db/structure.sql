@@ -166,11 +166,13 @@ CREATE TABLE public.collections (
 
 CREATE TABLE public.flash_cards (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    user_id bigint,
-    question text,
-    answer text,
-    frequency character varying,
+    user_id bigint NOT NULL,
+    question text NOT NULL,
+    answer text NOT NULL,
+    frequency character varying NOT NULL,
+    url character varying,
     last_practised_at timestamp without time zone,
+    practice_count integer,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
