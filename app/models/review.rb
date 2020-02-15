@@ -39,6 +39,100 @@ class Review < ApplicationRecord
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
   STATUSES = {want_to_learn: "Want to learn", learning: "Currently learning", learned: "Already learned"}
 
+  SAMPLE_COMMENTS = {
+    app: [
+      "Really cool app!"
+    ],
+    article: [
+      "Enjoyed reading it!"
+    ],
+    audio: [],
+    blog: [
+      "Very insightful"
+    ],
+    book: [
+      "Loved reading this"
+    ],
+    cert: [],
+    chat: [
+      "Nice community"
+    ],
+    cheatsheet: [
+      "Really good"
+    ],
+    code: [
+      "Well, this is clever :-)"
+    ],
+    conference: [
+      "I wish something like this existed in my area"
+    ],
+    course: [
+      "Had been hearing good things about this court. Finally checked it out."
+    ],
+    flashcard: [],
+    game: [
+      "Quite fun!"
+    ],
+    image: [],
+    interactive: [
+      "Awesome way to learn"
+    ],
+    journal: [],
+    learning_plan: [
+      "This is put together very well"
+    ],
+    livestream: [
+      "One of the best streams on this topic!"
+    ],
+    meetup: [
+      "I went to this event. Ran into some cool folks."
+    ],
+    newsletter: [
+      "Consistently insightful",
+      "Great ways to stay updated on this topic"
+    ],
+    people: [
+    ],
+    qna: [
+      "The definitive place to go to for Q&A on this topic. The community is quite helpful."
+    ],
+    research_paper: [
+      "Highly recommended",
+      "This gets cited a lot!",
+      "One of the classics!"
+    ],
+    summary: [
+      "Nice summary of the main ideas",
+      "Saved me a lot of time :-)"
+    ],
+    video: [
+      "A good watch!"
+    ],
+    website: [
+      "Very useful site"
+    ],
+    wiki: [
+      "Has some good references."
+    ]
+  }
+
+  def self.sample_reviews(item, exclude_user = nil)
+    [2,3,2,3,4].sample.times.map {
+      Review.new(
+        user: User.where.not(id: [exclude_user.try(:id), User.learnawesome.id].compact).order('RANDOM()').first,
+        notes: SAMPLE_COMMENTS[item.item_type_id.to_sym].try(:sample),
+        overall_score: [3,4,5].sample,
+        created_at: (Time.now - rand(5..90).days - rand(1..23).hours - rand(1..50).minutes),
+        inspirational_score: rand(1..5),
+        educational_score: rand(1..5),
+        challenging_score: rand(1..5),
+        entertaining_score: rand(1..5),
+        visual_score: rand(1..5),
+        interactive_score: rand(1..5)
+      )
+    }.uniq(&:user_id)
+  end
+
   def update_item_ratings
   	SCORE_TYPES.each do |quality_score|
   		avg_score = self.item.reviews.where("#{quality_score} is not null").average(quality_score)

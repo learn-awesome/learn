@@ -35,7 +35,7 @@
 			<%= render 'related_card' %>
 		<% end %>
 
-		<% if @item.reviews.completed.count > 0 %>
+		<% if @item.reviews.completed.count >= 0 %>
 			<%= render 'review_card' %>
 		<% end %>
 

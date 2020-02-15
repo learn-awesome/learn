@@ -824,6 +824,13 @@ CREATE INDEX index_topic_idea_sets_on_topic_id ON public.topic_idea_sets USING b
 
 
 --
+-- Name: index_topic_idea_sets_on_topic_id_and_idea_set_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_topic_idea_sets_on_topic_id_and_idea_set_id ON public.topic_idea_sets USING btree (topic_id, idea_set_id);
+
+
+--
 -- Name: index_topic_relations_on_from_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1162,6 +1169,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191108051151'),
 ('20191114042350'),
 ('20200112192301'),
-('20200212205915');
+('20200212205915'),
+('20200213173853');
 
 
