@@ -9,6 +9,15 @@ class FlashCardsController < InheritedResources::Base
     create!
   end
 
+  def new
+    @flash_card = build_resource
+    @flash_card.url = params[:url] unless params[:url].blank?
+    @flash_card.question = params[:question] unless params[:question].blank?
+    @flash_card.answer = params[:answer] unless params[:answer].blank?
+
+    new!
+  end
+
   private
 
     def flash_card_params
