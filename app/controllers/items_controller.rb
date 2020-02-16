@@ -85,10 +85,12 @@ class ItemsController < ApplicationController
       end
 
       params[:item][:topic_names].to_a.each do |topic_name|
-        TopicIdeaSet.create(topic_id: Topie.where(name: topic_name).first.id, idea_set: idea_set) unless Topie.where(name: topic_name).first.nil?
+        topic = Topic.where(name: topic_name).first
+        next unless topic
+        TopicIdeaSet.find_or_create_by(topic_id: topic.id, idea_set: idea_set)
       end
 
-      item = Item.new(params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata))
+      item = Item.new(item_params)
       # item.search_index = params[:item][:name]
       item.name = idea_set.name
       item.user = current_user
@@ -104,16 +106,17 @@ class ItemsController < ApplicationController
       end
 
       unless params[:item][:status].blank?
-        item.reviews.build
-        item.reviews.first.user = current_user
-        item.reviews.first.status = params[:item][:status]
-        item.reviews.first.inspirational_score = params[:item][:inspirational_score]
-        item.reviews.first.educational_score = params[:item][:educational_score]
-        item.reviews.first.challenging_score = params[:item][:challenging_score]
-        item.reviews.first.entertaining_score = params[:item][:entertaining_score]
-        item.reviews.first.visual_score = params[:item][:visual_score]
-        item.reviews.first.interactive_score = params[:item][:interactive_score]
-        item.reviews.first.notes = params[:item][:notes]
+        item.reviews.build(
+          user: current_user,
+          status: params[:item][:status],
+          inspirational_score: params[:item][:inspirational_score],
+          educational_score: params[:item][:educational_score],
+          challenging_score: params[:item][:challenging_score],
+          entertaining_score: params[:item][:entertaining_score],
+          visual_score: params[:item][:visual_score],
+          interactive_score: params[:item][:interactive_score],
+          notes: params[:item][:notes]
+        )
       end
 
       unless item.save
@@ -277,6 +280,10 @@ class ItemsController < ApplicationController
 
     def set_layout
       self.class.layout ( params['ext'].present? ? 'embed' :  'application')
+    end
+
+    def item_params
+      params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata)
     end
 
 end
