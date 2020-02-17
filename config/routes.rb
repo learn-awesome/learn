@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :flash_cards
+  resources :flash_cards do
+    member do
+      post 'did_recall'
+      post 'did_not_recall'
+    end
+  end
+
   root 'welcome#index'
 
   get 'dashboard' => 'dashboard#show'

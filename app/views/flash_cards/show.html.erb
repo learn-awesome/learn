@@ -1,29 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @flash_card.user %>
-</p>
+  <div class="row">
+  <div class="col-md-6 mb-4">
+      <% @flash_card.tap do |fc| %>
+                <div class="card">
+                  <header class="card-header">
+                    <!-- <h5 class="h3 card-title">Card Title</h5> -->
+                    <h6 class="card-subtitle text-muted text-uppercase"></h6>
+                  </header>
+                  
+                  <div class="card-body">
+                    <p class="card-text"><%= fc.question %></p>
+                    <hr/>
+                    <p class="card-text"><%= fc.answer %></p>
+                    <p><small>Did you recall the answer correctly?</small></p>
+                    <a href="#" class="btn btn-block btn-danger">No, I didn't recall it.</a>
+                    <a href="#" class="btn btn-block btn-success">Yes, I recalled it.</a>
+                  </div>
+                </div>
+                <!-- End Card Header with Image  -->
+              </div>
+      <% end %>
+  </div>
 
-<p>
-  <strong>Question:</strong>
-  <%= @flash_card.question %>
-</p>
+  </div>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @flash_card.answer %>
-</p>
-
-<p>
-  <strong>Frequency:</strong>
-  <%= @flash_card.frequency %>
-</p>
-
-<p>
-  <strong>Last practised at:</strong>
-  <%= @flash_card.last_practised_at %>
-</p>
-
-<%= link_to 'Edit', edit_flash_card_path(@flash_card) %> |
-<%= link_to 'Back', flash_cards_path %>
+<p><%= link_to 'Edit', edit_flash_card_path(@flash_card) %> | <%= link_to 'Back', flash_cards_path %></p>

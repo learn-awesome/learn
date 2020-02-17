@@ -1,3 +1,9 @@
+<div class="row">
+<div class="col-md-6 mb-4">
+<div class="card">
+                
+                <div class="card-body">
+
 <%= form_with(model: flash_card, local: true) do |form| %>
   <% if flash_card.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +17,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :question %>
+  <div class="form-group mb-4">
+    <%= form.label :question %><br/>
     <%= form.text_area :question %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer %>
+  <div class="form-group mb-4">
+    <%= form.label :answer %><br/>
     <%= form.text_area :answer %>
   </div>
 
-  <div class="field">
-    <%= form.label :url %>
+  <div class="form-group mb-4">
+    <%= form.label :url %><br/>
     <%= form.text_field :url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :frequency %>
-    <%= form.text_field :frequency %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+
+</div>
+</div>
+</div>

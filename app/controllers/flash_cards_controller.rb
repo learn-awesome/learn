@@ -5,6 +5,7 @@ class FlashCardsController < InheritedResources::Base
   def create
     @flash_card = build_resource
     @flash_card.user = current_user
+    @flash_card.frequency ||= 1
 
     create!
   end
@@ -16,6 +17,17 @@ class FlashCardsController < InheritedResources::Base
     @flash_card.answer = params[:answer] unless params[:answer].blank?
 
     new!
+  end
+
+  def index
+    @flash_cards = current_user.flash_cards
+    index!
+  end
+
+  def did_recall
+  end
+
+  def did_not_recall
   end
 
   private

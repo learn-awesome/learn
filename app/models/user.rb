@@ -45,6 +45,7 @@ class User < ApplicationRecord
 	has_many :followers, through: :to_user_relations, source: :from_user
 
 	has_many :collections
+	has_many :flash_cards
 
 	has_many :activity_pub_followers
 

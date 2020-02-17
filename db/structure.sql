@@ -169,7 +169,7 @@ CREATE TABLE public.flash_cards (
     user_id bigint NOT NULL,
     question text NOT NULL,
     answer text NOT NULL,
-    frequency character varying NOT NULL,
+    frequency integer DEFAULT 1 NOT NULL,
     url character varying,
     last_practised_at timestamp without time zone,
     practice_count integer,
