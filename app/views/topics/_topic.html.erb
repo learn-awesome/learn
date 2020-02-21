@@ -1,27 +1,21 @@
 <% followers = topic.followers %>
 <div class="row">
-	<h1 class="col-md-10 mb-4">
+	<h1>
 		<b><%= topic.display_name.titleize %></b>
 	</h1>
-	<div class="col-md-2 mb-4">
-		<% if current_user %>
-			<div class="rows">
-				<%=link_to toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm  " + (@does_follow ? "btn-outline-danger" : "btn-outline-success") do %>
-					<%= (@does_follow ? "Unfollow" : "Follow")%> <b><%= number_to_human(followers.count) %></b>
-				<% end %>
-			</div>
-		<% end %>
-		<% if followers.present? %>
-			<small><%= followers[0..4].map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %> <%= "and #{followers.count - 5 } others" if followers.count > 5 %> following</small>	
-		<%end %>
-	</div>
 </div>
 
 <div class="row">
 	<h1 class="col-md-8 mb-4">
-			<%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+	<% if current_user %>
+	<%= link_to toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") do %>
+		<%= (@does_follow ? "Unfollow" : "Follow")%>
+	<% end %>
+	<% end %>
 
- 		<% if current_user and current_user.score > 2000 %>
+	<%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
+
+ 	<% if current_user and current_user.score > 2000 %>
     	<%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
   	<% end %>
 
@@ -34,6 +28,12 @@
   	<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnawesome.org%2Ftopics%2F<%= topic.id %>" target="_blank"><i class="fab fa-twitter"></i></a>
 		
 	</h1>
+</div>
+
+<div class="mb-4">
+	<% if followers.present? %>
+		<%= number_to_human(followers.count) %> followers: <%= followers[0..4].map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %> <%= " and #{followers.count - 5 } others" if followers.count > 5 %>
+	<% end %>
 </div>
 
 <div class="row">

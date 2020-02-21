@@ -4,7 +4,7 @@
 <div class="col-md-6 mb-4">
 <% if @user_topics.any? %>
 	<% @user_topics.map(&:topic).each do |topic| %>
-	      <div class="card">
+	      <div class="card mb-4">
 	        <div class="card-header d-md-flex align-items-center">
 	          <h2 class="h3 card-header-title"><%= link_to topic.name, topic, class: "btn #{Topic.button_style}" %></h2>
 
