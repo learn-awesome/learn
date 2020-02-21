@@ -128,6 +128,11 @@ class Item < ApplicationRecord
     return true
   end
 
+  def can_user_destroy?(user)
+    return true if user.is_core_dev?
+    return false
+  end
+
   def self.search(q, max=10, is_fuzzy=true)
   	if q.start_with?('http://') or q.start_with?('https://')
       #TODO: Fetch the canonical URL and use that instead

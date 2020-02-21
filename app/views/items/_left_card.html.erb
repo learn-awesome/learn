@@ -14,6 +14,14 @@
 		</li>
 		<% end %>
 
+		<% if @item.can_user_destroy?(current_user) %>
+        <li class="list-inline-item">
+		  <%= link_to @item, method: 'delete', class: 'link-muted h3' do %>
+		  	<i class="fas fa-trash-alt"></i>
+		  <% end %>
+		</li>
+		<% end %>
+
 		<% if @item.can_user_change_related_items?(current_user) %>
         <li class="list-inline-item">
           <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">

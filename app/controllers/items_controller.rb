@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine]
+  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine, :destroy]
   before_action :set_layout, :only => [:new, :show]
 
   def index
@@ -239,6 +239,18 @@ class ItemsController < ApplicationController
       end
   	end
     # render search form
+  end
+
+  def destroy
+    if current_user.is_core_dev?
+      @item = Item.from_param(params[:id])
+      @item.idea_set.destroy!
+      flash[:success] = "Item deleted"
+      redirect_to root_path
+    else
+      flash[:error] = "Operation not permitted"
+      redirect_to :back
+    end
   end
 
   def discover
