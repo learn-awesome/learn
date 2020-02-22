@@ -19,7 +19,7 @@ class ActivityPubFollower < ApplicationRecord
     doc = {
       "@context": "https://www.w3.org/ns/activitystreams",
       "type": "Accept",
-      "actor": Rails.application.routes.url_helpers.actor_user_url(self),
+      "actor": Rails.application.routes.url_helpers.actor_user_url(self.user),
 
       "object": {
         "type": data["type"],
