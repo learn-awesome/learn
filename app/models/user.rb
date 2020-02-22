@@ -166,9 +166,17 @@ class User < ApplicationRecord
 		self.goodreads_token.present? and JSON.parse(self.goodreads_token)["type"] == 'access_token'
 	end
 
+	def activitypub_id
+		id.to_s.gsub("-","_")
+	end
+
+	def activitypub_username
+		"#{activitypub_id}@learnawesome.org"
+	end
+
 	def webfinger_json
 		{
-			subject: "acct:#{self.id}@learnawesome.org",
+			subject: "acct:#{self.activitypub_id}@learnawesome.org",
 			links: [
 				{
 					rel: "self",

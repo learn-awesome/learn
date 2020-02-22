@@ -43,6 +43,7 @@
 					        </form>
 						<% end %>
 					<% end %>
+
 				</div>
 
 				<!--<a class="link-muted" href="#!">
@@ -178,6 +179,10 @@
                   </div>
                   <!-- End Tabs Content -->
                 </div>
+
+				<div class="card-footer">
+				You can follow <%= @user.nickname %>'s activity on Mastodon / ActivityPub by following <a href="mailto:<%= @user.activitypub_username %>"><%= @user.activitypub_username %></a>.
+				</div>
 
               </div>
             </div>

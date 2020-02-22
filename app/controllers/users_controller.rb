@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     if username.split(":").first != 'acct'
       error = "acct prefix not found in #{query}"
     end
-    userid = username.split(":").last
+    userid = username.split(":").last.gsub("_","-")
     @user = User.find(userid)
     if @user.nil?
       error = "user #{query} not found"
