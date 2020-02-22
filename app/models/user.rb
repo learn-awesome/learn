@@ -235,6 +235,6 @@ class User < ApplicationRecord
 	  	end
 	  else
 	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
-	  end	
+	  end
 	end
 end

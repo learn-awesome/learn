@@ -166,15 +166,16 @@ CREATE TABLE public.collections (
 
 CREATE TABLE public.flash_cards (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    user_id bigint NOT NULL,
     question text NOT NULL,
     answer text NOT NULL,
     frequency integer DEFAULT 1 NOT NULL,
     url character varying,
-    last_practised_at timestamp without time zone,
+    last_practiced_at timestamp without time zone,
     practice_count integer,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    next_practice_due_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    user_id uuid NOT NULL
 );
 
 
@@ -719,13 +720,6 @@ CREATE INDEX index_collections_on_user_id ON public.collections USING btree (use
 
 
 --
--- Name: index_flash_cards_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_flash_cards_on_user_id ON public.flash_cards USING btree (user_id);
-
-
---
 -- Name: index_items_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1129,6 +1123,14 @@ ALTER TABLE ONLY public.topic_relations
 
 
 --
+-- Name: flash_cards fk_rails_f949b3ea79; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.flash_cards
+    ADD CONSTRAINT fk_rails_f949b3ea79 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -1170,6 +1172,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191114042350'),
 ('20200112192301'),
 ('20200212205915'),
-('20200213173853');
-
-
+('20200213173853'),
+('20200222193438');
