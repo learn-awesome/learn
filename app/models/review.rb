@@ -187,12 +187,12 @@ class Review < ApplicationRecord
     signature_header = ActivityPub.sign(
       Rails.application.routes.url_helpers.actor_user_url(self.user),
       URI.parse(full_inbox).path,
-      URI.parse(full_inbox).path,
+      URI.parse(full_inbox).host,
       date,
       ENV['ACTIVITYPUB_PRIVKEY'].to_s
     )
 
-    HTTP.post(full_inbox,
+    HTTParty.post(full_inbox,
       body: document.to_json, 
       headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
     )

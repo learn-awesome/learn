@@ -33,7 +33,7 @@ class ActivityPubFollower < ApplicationRecord
     signature_header = ActivityPub.sign(
       Rails.application.routes.url_helpers.actor_user_url(self.user),
       URI.parse(full_inbox).path,
-      URI.parse(full_inbox).path,
+      URI.parse(full_inbox).host,
       date,
       ENV['ACTIVITYPUB_PRIVKEY'].to_s
     )
