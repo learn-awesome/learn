@@ -1,4 +1,5 @@
 require 'json'
+require 'httparty'
 
 class ActivityPubFollower < ApplicationRecord
   belongs_to :user
@@ -8,7 +9,7 @@ class ActivityPubFollower < ApplicationRecord
 
   def inbox
     data = JSON.parse(self.metadata)
-    actor = JSON.parse(HTTP.get(data["actor"], headers: {'Accept': 'application/json'}).to_s)
+    actor = JSON.parse(HTTParty.get(data["actor"], headers: {'Accept': 'application/json'}).body.to_s)
     full_inbox = actor["inbox"]
   end
 
@@ -37,7 +38,7 @@ class ActivityPubFollower < ApplicationRecord
       ENV['ACTIVITYPUB_PRIVKEY'].to_s
     )
 
-    HTTP.post(full_inbox,
+    HTTParty.post(full_inbox,
       body: doc.to_json,
       headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
     )

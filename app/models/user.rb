@@ -220,15 +220,18 @@ class User < ApplicationRecord
 	  # {'Host': 'learnawesome.org', 'Date': '2019-11-14T12:39:31+05:30'}
 	  inbox_path = Rails.application.routes.url_helpers.inbox_user_path(self)
 	  actor_url = Rails.application.routes.url_helpers.actor_user_url(self)
+	  body_hash = JSON.parse(body)
 
-	  if JSON.parse(body)["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
-	  	if JSON.parse(body)["type"] == "Follow" # Do this check first
+	  if body_hash["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
+	  	if body_hash["type"] == "Follow" # Do this check first
 	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)
 	  		# Send Accept response
 	  		ActivityPubFollowAcceptedJob.perform_later(afp.id)
-	  	else
-	  		Rails.logger.info "Unknown ActivityType for #{self.id}"
+		elsif body_hash["type"] == "Unollow" # Do this check first
+			Rails.logger.info "Unfollow request from ActivityPub for #{self.id}: #{body_hash.inspect}"
+		else
+	  		Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
 	  	end
 	  else
 	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
