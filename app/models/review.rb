@@ -159,21 +159,31 @@ class Review < ApplicationRecord
     PostReviewToSocialMediaJob.set(wait: 30.minutes).perform_later(self.id)
   end
 
+  def activity_pub_message
+    url = Rails.application.routes.url_helpers.review_url(self)
+
+    if self.rating_msg.blank?
+      return "I just reviewed #{self.item.display_name} (#{self.item.item_type_id} for #{self.item.topics.map(&:name).join(',')}). <a href='#{url}' target='_blank'>See my detailed review</a>."
+    else
+      return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name} (#{self.item.item_type_id} for #{self.item.topics.map(&:name).join(',')}). <a href='#{url}' target='_blank'>See my detailed review</a>."
+    end
+  end
+
   def activity_pub
     {
       "@context": "https://www.w3.org/ns/activitystreams",
 
       "id": "https://learnawesome.org/post-review-activity-pub/#{self.id}",
       "type": "Create",
-      "actor": Rails.application.routes.url_helpers.actor_user_url(self),
+      "actor": Rails.application.routes.url_helpers.actor_user_url(self.user),
 
       "object": {
         "id": "https://learnawesome.org/review-activity-pub/#{self.id}",
         "type": "Note",
         "published": self.created_at.iso8601,
-        "attributedTo": Rails.application.routes.url_helpers.actor_user_url(self),
+        "attributedTo": Rails.application.routes.url_helpers.actor_user_url(self.user),
         # "inReplyTo": "https://mastodon.social/@Gargron/100254678717223630",
-        "content": self.tweet_msg,
+        "content": self.activity_pub_message,
         "to": "https://www.w3.org/ns/activitystreams#Public"
       }
     }
