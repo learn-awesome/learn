@@ -178,7 +178,7 @@ class Review < ApplicationRecord
       "actor": Rails.application.routes.url_helpers.actor_user_url(self.user),
 
       "object": {
-        "id": "https://learnawesome.org/review-activity-pub/#{self.id}",
+        "id": Rails.application.routes.url_helpers.review_url(self),
         "type": "Note",
         "published": self.created_at.iso8601,
         "attributedTo": Rails.application.routes.url_helpers.actor_user_url(self.user),

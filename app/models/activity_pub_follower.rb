@@ -24,7 +24,8 @@ class ActivityPubFollower < ApplicationRecord
       "object": {
         "type": data["type"],
         "actor": data["actor"],
-      "object": data["object"]        }
+        "object": data["object"]
+      }
     }
 
     full_inbox = self.inbox

@@ -122,7 +122,10 @@ class UsersController < ApplicationController
 
   def actor
     @user = User.find(params[:id])
-    render json: @user.actor_json
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.json { render json: @user.actor_json }
+    end
   end
 
   def inbox
