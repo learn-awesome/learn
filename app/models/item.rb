@@ -129,7 +129,7 @@ class Item < ApplicationRecord
   end
 
   def can_user_destroy?(user)
-    return true if user.is_core_dev?
+    return true if user and user.is_core_dev?
     return false
   end
 
