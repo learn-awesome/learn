@@ -1,5 +1,5 @@
 require 'json'
-require 'http'
+require 'httparty'
 
 # See https://github.com/tootsuite/mastodon/blob/a8b0bb355d3e7351b9f3d53fe7a3fb6d3d011d33/app/controllers/concerns/signature_verification.rb
 
@@ -33,7 +33,7 @@ class ActivityPub
 	  if pubkey
 	  	key = OpenSSL::PKey::RSA.new(pubkey)
 	  else
-		actor = JSON.parse(HTTP.get(key_id, headers: {'Accept': 'application/json'}).to_s)
+		actor = JSON.parse(HTTParty.get(key_id, headers: {'Accept': 'application/json'}).body.to_s)
 		key   = OpenSSL::PKey::RSA.new(actor['publicKey']['publicKeyPem'])
 	  end
 

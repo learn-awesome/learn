@@ -67,7 +67,7 @@ class Review < ApplicationRecord
       "I wish something like this existed in my area"
     ],
     course: [
-      "Had been hearing good things about this court. Finally checked it out."
+      "Had been hearing good things about this course. Finally checked it out."
     ],
     flashcard: [],
     game: [
