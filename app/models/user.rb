@@ -197,7 +197,7 @@ class User < ApplicationRecord
 
 			"id": Rails.application.routes.url_helpers.actor_user_url(self),
 			"type": "Person",
-			"preferredUsername": self.nickname.to_s,
+			"preferredUsername": self.activitypub_id.to_s,
 			"name": self.nickname.to_s,
 			"summary": self.bio.to_s,
 			"icon": [
