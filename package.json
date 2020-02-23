@@ -8,6 +8,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-flippy": "^0.1.5",
     "react_ujs": "^2.6.0"
   },
   "devDependencies": {
