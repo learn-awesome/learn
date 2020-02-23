@@ -1,43 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <div class="mb-4">
     <nav aria-label="breadcrumb">
-      <h1 class="h3">Flash Cards</h1>
+      <h1>
+        Flash Cards
+
+        <%= link_to 'Add New Flash Card', new_flash_card_path, class: "float-right btn btn-success" %>
+      </h1>
     </nav>
 </div>
 
-<% if @flash_cards.blank? %>
-  <p>You can create Flash Cards using our browser extension and practice them using our spaced-repetition algorithm.
-  Flash cards help not just with memorization but also conceptual understanding.</p>
-<% else %>
 
   <div class="row">
-  <div class="col-md-6 mb-4">
-      <% FlashCard.card_to_practice_next(current_user).tap do |fc| %>
-                <div class="card">
-                  <header class="card-header">
-                    <!-- <h5 class="h3 card-title">Card Title</h5> -->
-                    <h6 class="card-subtitle text-muted text-uppercase"></h6>
-                  </header>
-
-                  <div class="card-body">
-                    <p class="card-text"><%= fc.question %></p>
-                    <hr/>
-                    <p class="card-text"><%= fc.answer %></p>
-                    <p><small>Did you recall the answer correctly?</small></p>
-                    <a href="#" class="btn btn-block btn-danger">No, I didn't recall it.</a>
-                    <a href="#" class="btn btn-block btn-success">Yes, I recalled it.</a>
-                  </div>
-                </div>
-                <!-- End Card Header with Image  -->
-              </div>
-      <% end %>
+    <div class="col-md-12 mb-4">
+      <%= react_component("FlashCardList", { flash_cards: @flash_cards.as_json }) %>
+    </div>
   </div>
-
-  </div>
-
-<% end %>
-
-<div class="col-md-4 mb-4">
-<%= link_to 'New Flash Card', new_flash_card_path, class: "btn btn-success" %>
-</div>

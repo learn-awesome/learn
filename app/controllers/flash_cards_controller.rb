@@ -24,6 +24,10 @@ class FlashCardsController < InheritedResources::Base
     index!
   end
 
+  def practice
+    @flash_card = FlashCard.card_to_practice_next(current_user)
+  end
+
   def did_recall
   end
 
