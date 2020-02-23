@@ -1,0 +1,14 @@
+<div class="mb-4">
+  <nav aria-label="breadcrumb">
+    <h1>
+      Practice Flash Cards
+      <%= link_to 'See All Flash Cards', flash_cards_path, class: "float-right btn btn-primary" %>
+    </h1>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <%= react_component("FlashCardPracticeApp", { flash_card: @flash_card.as_json }) %>
+  </div>
+</div>

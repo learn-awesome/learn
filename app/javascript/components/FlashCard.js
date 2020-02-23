@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-const FlashCard = props => {
+const FlashCard = ({ flashCard, wide, onFlip }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const onFlipHandler = () => {
+    onFlip(!isFlipped);
+    setIsFlipped(!isFlipped);
+  }
+
   const Actions = () => (
     <div style={{ ...styles.actions, ...(isHovered ? {} : styles.hidden) }}>
-      <a href={`/flash_cards/${props.id}/edit`} className="mr-2">
+      <a href={`/flash_cards/${flashCard.id}/edit`} className="mr-2">
         <span className="far fa-edit"></span>
       </a>
       <a
-        href={`/flash_cards/${props.id}`}
+        href={`/flash_cards/${flashCard.id}`}
         data-method="delete"
         data-confirm="Do you really want to delete the selected flash card?"
         rel="nofollow"
@@ -24,8 +30,11 @@ const FlashCard = props => {
 
   return (
     <div
-      style={styles.cardContainer}
-      onClick={() => setIsFlipped(!isFlipped)}
+      style={{
+        ...styles.cardContainer,
+        ...(wide ? { width: "50%", maxWidth: "50%" } : {})
+      }}
+      onClick={onFlipHandler}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -36,20 +45,22 @@ const FlashCard = props => {
       >
         <FrontSide style={{ ...styles.side, ...styles.frontSide }}>
           <Actions />
-          <div style={styles.content}>
-            {props.question}
-          </div>
+          <div style={styles.content}>{flashCard.question}</div>
         </FrontSide>
         <BackSide style={{ ...styles.side, ...styles.backSide }}>
           <Actions />
-          <div style={styles.content}>
-            {props.answer}
-          </div>
+          <div style={styles.content}>{flashCard.answer}</div>
         </BackSide>
       </Flippy>
     </div>
   );
 };
+
+FlashCard.propTypes = {
+  flashCard: PropTypes.object,
+  wide: PropTypes.boolean,
+  onFlip: PropTypes.func.isRequired
+}
 
 const styles = {
   cardContainer: {
@@ -86,10 +97,11 @@ const styles = {
     flex: "1",
     alignItems: "flex-start",
     justifyContent: "center",
-    padding: "20px",
+    padding: "30px 20px 20px",
     width: "100%",
     height: "300px",
     overflowY: "auto",
+    fontSize: '20px',
   },
   actions: {
     zIndex: 2,

@@ -18,7 +18,7 @@ const FlashCardList = ({ flash_cards: flashCards }) => {
   return (
     <div style={styles.list}>
       {flashCards.map(flashCard => (
-        <FlashCard key={flashCard.id} {...flashCard} />
+        <FlashCard key={flashCard.id} flashCard={flashCard} onFlip={() => {}} />
       ))}
     </div>
   );
