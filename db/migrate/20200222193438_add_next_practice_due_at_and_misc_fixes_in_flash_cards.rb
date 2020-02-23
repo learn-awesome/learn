@@ -7,7 +7,6 @@ class AddNextPracticeDueAtAndMiscFixesInFlashCards < ActiveRecord::Migration[6.0
     # an incorrect "user_id" column type (i.e. integer instead of an uuid),
     # SAFELY assuming that this table is NOT used anywhere yet; and therefore,
     # following is the only way I believe it can be properly fixed with.
-    # add_column :flash_cards, :uuid, :uuid, default: "gen_random_uuid()", null: false
     add_column :flash_cards, :user_uuid, :uuid, null: false
     remove_column :flash_cards, :user_id, :uuid
     rename_column :flash_cards, :user_uuid, :user_id
