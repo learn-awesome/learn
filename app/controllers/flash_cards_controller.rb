@@ -5,7 +5,7 @@ class FlashCardsController < InheritedResources::Base
   def create
     @flash_card = build_resource
     @flash_card.user = current_user
-    @flash_card.frequency ||= 1
+    @flash_card.level ||= 1
 
     create!
   end
@@ -33,7 +33,7 @@ class FlashCardsController < InheritedResources::Base
   private
 
     def flash_card_params
-      params.require(:flash_card).permit(:question, :answer, :frequency, :last_practised_at)
+      params.require(:flash_card).permit(:question, :answer, :level, :last_practised_at)
     end
 
 end

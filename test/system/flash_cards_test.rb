@@ -15,7 +15,7 @@ class FlashCardsTest < ApplicationSystemTestCase
     click_on "New Flash Card"
 
     fill_in "Answer", with: @flash_card.answer
-    fill_in "Frequency", with: @flash_card.frequency
+    fill_in "Level", with: @flash_card.level
     fill_in "Last practised at", with: @flash_card.last_practised_at
     fill_in "Question", with: @flash_card.question
     fill_in "User", with: @flash_card.user
@@ -30,7 +30,7 @@ class FlashCardsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Answer", with: @flash_card.answer
-    fill_in "Frequency", with: @flash_card.frequency
+    fill_in "Level", with: @flash_card.level
     fill_in "Last practised at", with: @flash_card.last_practised_at
     fill_in "Question", with: @flash_card.question
     fill_in "User", with: @flash_card.user

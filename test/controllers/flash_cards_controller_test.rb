@@ -17,7 +17,7 @@ class FlashCardsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create flash_card" do
     assert_difference('FlashCard.count') do
-      post flash_cards_url, params: { flash_card: { answer: @flash_card.answer, frequency: @flash_card.frequency, last_practised_at: @flash_card.last_practised_at, question: @flash_card.question, user: @flash_card.user } }
+      post flash_cards_url, params: { flash_card: { answer: @flash_card.answer, level: @flash_card.level, last_practised_at: @flash_card.last_practised_at, question: @flash_card.question, user: @flash_card.user } }
     end
 
     assert_redirected_to flash_card_url(FlashCard.last)
@@ -34,7 +34,7 @@ class FlashCardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update flash_card" do
-    patch flash_card_url(@flash_card), params: { flash_card: { answer: @flash_card.answer, frequency: @flash_card.frequency, last_practised_at: @flash_card.last_practised_at, question: @flash_card.question, user: @flash_card.user } }
+    patch flash_card_url(@flash_card), params: { flash_card: { answer: @flash_card.answer, level: @flash_card.level, last_practised_at: @flash_card.last_practised_at, question: @flash_card.question, user: @flash_card.user } }
     assert_redirected_to flash_card_url(@flash_card)
   end
 

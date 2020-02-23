@@ -168,7 +168,7 @@ CREATE TABLE public.flash_cards (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     question text NOT NULL,
     answer text NOT NULL,
-    frequency integer DEFAULT 1 NOT NULL,
+    level integer DEFAULT 1 NOT NULL,
     url character varying,
     last_practiced_at timestamp without time zone,
     practice_count integer,
@@ -1173,4 +1173,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200112192301'),
 ('20200212205915'),
 ('20200213173853'),
-('20200222193438');
+('20200222193438'),
+('20200223073231');
