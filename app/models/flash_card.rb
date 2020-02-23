@@ -4,7 +4,7 @@ class FlashCard < ApplicationRecord
     validates :level, inclusion: { in: 1..11 }
     validates :user, presence: true
 
-    scope :for_user, ->(user) { where(user: user) }
+    scope :of_user, ->(user_id) { where(user_id: user_id) }
     scope :least_practiced, -> { order(:next_practice_due_at, :practice_count, :last_practiced_at, :level) }
     scope :past_due_for_practice, -> { where("next_practice_due_at <= ?", Time.current) }
 
@@ -15,7 +15,7 @@ class FlashCard < ApplicationRecord
         self.last_practiced_at = Time.now
         self.set_next_practice_due_at_on_successful_recall
         self.save!
-        FlashCard.next(self.user)
+        FlashCard.card_to_practice_next(self.user)
     end
 
     def did_not_recall
@@ -23,7 +23,7 @@ class FlashCard < ApplicationRecord
         self.last_practiced_at = Time.now
         self.set_next_practice_due_at_on_failed_recall
         self.save!
-        FlashCard.next(self.user)
+        FlashCard.card_to_practice_next(self.user)
     end
 
     private
@@ -50,8 +50,8 @@ class FlashCard < ApplicationRecord
     end
 
     # Note that this method can return a nil response which means there are
-    # no eligible flash cards available for practice at this moment.
-    def self.next(user)
-        FlashCard.for_user(user).least_practiced.past_due_for_practice.first
+    # no eligible flash cards available to practice at this moment.
+    def self.card_to_practice_next(user)
+        FlashCardPracticeService.new(user.id).card_to_practice_next
     end
 end
