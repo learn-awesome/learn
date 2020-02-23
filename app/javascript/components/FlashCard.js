@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-const FlashCard = ({ flashCard, wide, onFlip }) => {
+const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(!!flipped);
 
   const onFlipHandler = () => {
     onFlip(!isFlipped);
     setIsFlipped(!isFlipped);
-  }
+  };
+
+  useEffect(() => {
+    setIsFlipped(!!flipped);
+  }, [flipped]);
 
   const Actions = () => (
     <div style={{ ...styles.actions, ...(isHovered ? {} : styles.hidden) }}>
@@ -58,9 +62,10 @@ const FlashCard = ({ flashCard, wide, onFlip }) => {
 
 FlashCard.propTypes = {
   flashCard: PropTypes.object,
-  wide: PropTypes.boolean,
-  onFlip: PropTypes.func.isRequired
-}
+  wide: PropTypes.bool,
+  onFlip: PropTypes.func.isRequired,
+  flipped: PropTypes.bool
+};
 
 const styles = {
   cardContainer: {
