@@ -13,13 +13,13 @@
 
   <div class="row">
   <div class="col-md-6 mb-4">
-      <% FlashCard.sample(current_user).tap do |fc| %>
+      <% FlashCard.card_to_practice_next(current_user).tap do |fc| %>
                 <div class="card">
                   <header class="card-header">
                     <!-- <h5 class="h3 card-title">Card Title</h5> -->
                     <h6 class="card-subtitle text-muted text-uppercase"></h6>
                   </header>
-                  
+
                   <div class="card-body">
                     <p class="card-text"><%= fc.question %></p>
                     <hr/>
