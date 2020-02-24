@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import "react-flippy/dist/styles.css";
+
 
 const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
   const [isHovered, setIsHovered] = useState(false);
