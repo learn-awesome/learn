@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
-import "react-flippy/dist/styles.css";
+import htmlToReact from "html-react-parser";
 
+import { markdownToHtml } from "../packs/js/markdown_to_html";
 
 const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -51,11 +52,25 @@ const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
       >
         <FrontSide style={{ ...styles.side, ...styles.frontSide }}>
           <Actions />
-          <div style={styles.content}>{flashCard.question}</div>
+          <div
+            style={{
+              ...styles.content,
+              ...(wide ? styles.wideContent : {})
+            }}
+          >
+            {htmlToReact(markdownToHtml(flashCard.question))}
+          </div>
         </FrontSide>
         <BackSide style={{ ...styles.side, ...styles.backSide }}>
           <Actions />
-          <div style={styles.content}>{flashCard.answer}</div>
+          <div
+            style={{
+              ...styles.content,
+              ...(wide ? styles.wideContent : {})
+            }}
+          >
+            {flashCard.answer}
+          </div>
         </BackSide>
       </Flippy>
     </div>
@@ -102,13 +117,18 @@ const styles = {
   content: {
     display: "flex",
     flex: "1",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    padding: "30px 20px 20px",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: "5px",
     width: "100%",
     height: "300px",
     overflowY: "auto",
-    fontSize: '20px',
+    fontSize: "20px"
+  },
+  wideContent: {
+    height: "60vh",
+    maxHeight: "450px"
   },
   actions: {
     zIndex: 2,
@@ -118,8 +138,8 @@ const styles = {
     alignItems: "center",
     margin: "-1rem",
     padding: "10px",
-    width: "100%",
     position: "absolute",
+    right: "20px",
     background: "#fff",
     transform: "none",
     boxShadow: "0px 1px 10px 10px #fff"

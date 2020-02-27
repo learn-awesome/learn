@@ -1,30 +1,17 @@
 import SimpleMDE from "simplemde";
-import MarkdownIt from "markdown-it";
-import MarkdownKaTexPlugin from "@zombie110year/markdown-it-katex";
 
-import "simplemde/dist/simplemde.min.css";
-import "katex/dist/katex.min.css";
-import "github-markdown-css/github-markdown.css";
-
-const renderMarkdownPreview = plainText => {
-  const markdownIt = new MarkdownIt({
-    html: true,
-    linkify: true,
-    typographer: true
-  });
-  return markdownIt.use(MarkdownKaTexPlugin).render(plainText);
-};
+import { markdownToHtml } from "./markdown_to_html";
 
 const defaultEditorConfig = {
   hideIcons: ["guide"],
   showIcons: ["code", "table"],
   status: false,
   spellChecker: false,
-  previewRender: renderMarkdownPreview,
+  previewRender: markdownToHtml,
   // Async method
-  previewRender: function(plainText, preview) {
+  previewRender: function(markdownText, preview) {
     setTimeout(function() {
-      preview.innerHTML = renderMarkdownPreview(plainText);
+      preview.innerHTML = markdownToHtml(markdownText);
     }, 250);
 
     return "Loading...";
