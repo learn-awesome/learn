@@ -1,6 +1,6 @@
 class FlashCard < ApplicationRecord
     validates :question, length: { in: 6..2000 }
-    validates :answer, length: { in: 1..200 }
+    validates :answer, length: { in: 1..2000 }
     validates :level, inclusion: { in: 1..11 }
     validates :user, presence: true
 
