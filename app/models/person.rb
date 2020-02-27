@@ -27,6 +27,11 @@ class Person < ApplicationRecord
 		end
 	end
 
+	def avatar_image
+		#TODO: Should be kept as a column
+		"/stream/assets/img/logo-mobile.png"
+	end
+
 	def display_name
 		self.name
 	end

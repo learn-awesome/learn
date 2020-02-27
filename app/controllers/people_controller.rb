@@ -52,4 +52,8 @@ class PeopleController < ApplicationController
 	def show
 		@person = Person.from_param(params[:id])
 	end
+
+	def index
+		@people = Person.order('RANDOM()').limit(100)
+	end
 end

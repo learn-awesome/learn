@@ -1,0 +1,23 @@
+<div class="row">
+<% @people.each do |p| %>
+	<div class="col-sm-6 col-xl-3 mb-4">
+		<div class="card">
+
+            <a class="list-group-item list-group-item-action" href="<%= person_path(p) %>">
+                    <div class="media">
+                        <img class="u-avatar rounded-circle mr-3" src="<%= p.avatar_image %>" alt="<%= p.name %>">
+
+                        <div class="media-body">
+                            <div class="d-md-flex align-items-center">
+                                <h4 class="mb-1">
+                                    <b><%= p.name %></b>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+            </a>
+
+		</div>
+	</div>
+<% end %>
+</div>
