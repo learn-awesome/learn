@@ -4,7 +4,7 @@
 
                 <div class="card-body">
 
-<%= form_with(model: flash_card, local: true) do |form| %>
+<%= form_with(model: flash_card, local: true, id: "flash_card_form") do |form| %>
   <% if flash_card.errors.any? %>
     <div class="card p-4 mb-4" id="error_explanation">
       <p><%= pluralize(flash_card.errors.count, "error") %> prohibited this flash card from being saved:</p>
