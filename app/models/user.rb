@@ -237,4 +237,12 @@ class User < ApplicationRecord
 	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end
 	end
+
+	def theme_variant
+		:tailwind
+	end
+
+	def theme_name
+		:default
+	end
 end

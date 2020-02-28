@@ -1,0 +1,60 @@
+  <!-- Head -->
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142191820-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-142191820-1');
+    </script>
+    <title><%= content_for?(:title) ? yield(:title) : "LearnAwesome.org" %></title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <% if content_for?(:opengraph) %>
+      <%= yield(:opengraph) %>
+    <% else %>
+      <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
+      <meta name="description" content="Humanity's universal learning map">
+
+      <meta property="og:title" content="LearnAwesome.org">
+      <meta property="og:description" content="Humanity's universal learning map.">
+      <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+      <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+      <meta name="twitter:card" content="summary_large_image">
+    <% end %>
+    <meta name="twitter:site" content="@learn_awesome">
+
+    <link rel="search"
+      type="application/opensearchdescription+xml"
+      title="LearnAwesome"
+      href="/opensearch.xml">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= javascript_pack_tag 'application' %>
+
+    <%= stylesheet_pack_tag 'application' %>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+
+    <!-- Web Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Components Vendor Styles -->
+    <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/stream/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="/stream/assets/css/theme.css">
+  </head>
+  <!-- End Head -->

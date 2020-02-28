@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 	include ApplicationHelper
 	before_action :set_raven_context
- 	before_action :allow_rack_mini_profiler
+	before_action :allow_rack_mini_profiler
+	before_action :set_variant 
 
 	private
 	def set_raven_context
@@ -15,5 +16,11 @@ class ApplicationController < ActionController::Base
 	    if current_user && current_user.is_core_dev? && params[:rmp].to_s == 'true'
 	      Rack::MiniProfiler.authorize_request
 	    end
-    end
+	end
+	
+	def set_variant
+		#var = current_user.try(:theme_variant)
+		#Rails.logger.info("Using variant = #{var}")
+		#request.variant = :tailwind
+	end
 end
