@@ -239,7 +239,11 @@ class User < ApplicationRecord
 	end
 
 	def theme_variant
-		:tailwind
+		if self.is_core_dev? or self.is_admin? or true
+			:tailwind
+		else
+			:bootstrap
+		end
 	end
 
 	def theme_name

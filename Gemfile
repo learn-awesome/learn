@@ -107,3 +107,5 @@ gem 'react-rails'
 
 gem 'oauth' # for goodreads api
 
+gem 'slim'
+gem 'slim-rails'

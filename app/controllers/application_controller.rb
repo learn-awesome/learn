@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 	before_action :allow_rack_mini_profiler
 	before_action :set_variant 
 
+	layout proc { |controller| controller.request.variant.first.to_s }
+
 	private
 	def set_raven_context
 		if session[:userinfo]
@@ -19,8 +21,8 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def set_variant
-		var = current_user.try(:theme_variant)
+		var = current_user.try(:theme_variant) || :bootstrap
 		Rails.logger.info("Using variant = #{var}")
-		request.variant = :tailwind
+		request.variant = var
 	end
 end
