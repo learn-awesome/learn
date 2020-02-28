@@ -43,7 +43,7 @@ const FlashCardPracticeApp = props => {
   const actions = isFlipped && (
     <div style={styles.actions}>
       <button
-        className="btn btn-lg btn-danger mr-4"
+        className="btn btn-danger mr-4"
         onClick={() => {
           onRecall("did_not_recall");
         }}
@@ -51,7 +51,7 @@ const FlashCardPracticeApp = props => {
         <span className="fa fa-repeat"></span> Didn't remember
       </button>
       <button
-        className="btn btn-lg btn-success"
+        className="btn btn-success"
         onClick={() => {
           onRecall("did_recall");
         }}
