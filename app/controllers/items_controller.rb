@@ -291,7 +291,7 @@ class ItemsController < ApplicationController
   private
 
     def set_layout
-      self.class.layout ( params['ext'].present? ? 'embed' :  'application')
+      self.class.layout ( params['ext'].present? ? "embed_#{request.variant.first}" :  request.variant.first.to_s)
     end
 
     def item_params
