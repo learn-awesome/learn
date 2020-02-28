@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def set_variant
-		#var = current_user.try(:theme_variant)
-		#Rails.logger.info("Using variant = #{var}")
-		#request.variant = :tailwind
+		var = current_user.try(:theme_variant)
+		Rails.logger.info("Using variant = #{var}")
+		request.variant = :tailwind
 	end
 end
