@@ -35,11 +35,16 @@ const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
     </div>
   );
 
+  const screenWidth =
+    window.innerWidth > 0 ? window.innerWidth : window.screen && screen.width;
+  const wideCardWidth = screenWidth <= 450 ? "90%" : "50%";
+  const wideCardStyle = wide ? { width: wideCardWidth, maxWidth: wideCardWidth } : {};
+
   return (
     <div
       style={{
         ...styles.cardContainer,
-        ...(wide ? { width: "50%", maxWidth: "50%" } : {})
+        ...wideCardStyle
       }}
       onClick={onFlipHandler}
       onMouseEnter={() => setIsHovered(true)}
@@ -69,7 +74,7 @@ const FlashCard = ({ flashCard, wide, onFlip, flipped }) => {
               ...(wide ? styles.wideContent : {})
             }}
           >
-            {flashCard.answer}
+            {htmlToReact(markdownToHtml(flashCard.answer))}
           </div>
         </BackSide>
       </Flippy>
