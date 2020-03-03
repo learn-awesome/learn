@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       post 'did_recall'
       post 'did_not_recall'
     end
+
+    collection do
+      get 'notes'
+      post 'notes'
+    end
   end
 
   root 'welcome#index'

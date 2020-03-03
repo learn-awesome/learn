@@ -23,6 +23,16 @@ class FlashCard < ApplicationRecord
         )
     end
 
+    def self.bulk_create_by_notes(user, subject, body)
+        #TODO: Split the text into sentences, pick the answer from string within brackets {},
+        # turn the rest of the sentence into a question with placeholder ____ and save as flashcard
+        body.split("\n").map do |sentence|
+            [question, answer]
+        end.each do |pair|
+            FlashCard.create(user: user, question: pair.first, answer: pair.last, level: 1)
+        end
+    end
+
     def did_recall
         self.level += 1
         self.last_practiced_at = Time.now

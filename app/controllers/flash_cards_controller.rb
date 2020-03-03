@@ -60,6 +60,14 @@ class FlashCardsController < ApplicationController
     render json: @flash_card.did_not_recall
   end
 
+  def notes
+    if request.post?
+      FlashCard.bulk_create_by_notes(current_user, params[:subject], params[:body])
+    else
+      # render a form
+    end
+  end
+
   private
 
     def load_flash_card
