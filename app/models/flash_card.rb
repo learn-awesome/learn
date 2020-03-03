@@ -1,5 +1,5 @@
 class FlashCard < ApplicationRecord
-    validates :question, length: { in: 6..2000 }
+    validates :question, length: { in: 1..2000 }
     validates :answer, length: { in: 1..2000 }
     validates :level, inclusion: { in: 1..11 }
     validates :user, presence: true
@@ -9,6 +9,19 @@ class FlashCard < ApplicationRecord
     scope :past_due_for_practice, -> { where("next_practice_due_at <= ?", Time.current) }
 
     belongs_to :user
+
+    attr_accessor :skip_callbacks
+    after_save :create_inverted_card, unless: :skip_inverted_card
+
+    def create_inverted_card
+        FlashCard.create(
+            user: self.user, 
+            level: 1, 
+            question: self.answer, 
+            answer: self.question,
+            skip_inverted_card: true
+        )
+    end
 
     def did_recall
         self.level += 1
