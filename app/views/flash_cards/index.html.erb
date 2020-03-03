@@ -19,11 +19,11 @@
   <div class="row">
   <p>You can also use our 
               <% if request.user_agent.to_s.downcase.include?("firefox") %>
-                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/learnawesome/">
+                <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/learnawesome/">
                   browser extension
                 </a>
               <% elsif request.user_agent.to_s.downcase.include?("chrome") %>
-                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie">
+                <a target="_blank" href="https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie">
                   browser extension
                 </a>
               <% end %>
