@@ -10,7 +10,7 @@ class FlashCard < ApplicationRecord
 
     belongs_to :user
 
-    attr_accessor :skip_callbacks
+    attr_accessor :skip_inverted_card
     after_save :create_inverted_card, unless: :skip_inverted_card
 
     def create_inverted_card
@@ -24,11 +24,17 @@ class FlashCard < ApplicationRecord
     end
 
     def self.bulk_create_by_notes(user, subject, body)
-        #TODO: Split the text into sentences, pick the answer from string within brackets {},
+        # Split the text into sentences, pick the answer from string within brackets {},
         # turn the rest of the sentence into a question with placeholder ____ and save as flashcard
-        body.split("\n").map do |sentence|
+        # TODO: use subject to create a deck object
+        body.split("\n").reject(&:blank?).map do |sentence|
+            answer = sentence.scan(/{[^}]+}/).first
+            return [] if answer.nil?
+            question = sentence.gsub(answer, " ___ ")
+            answer = answer.gsub("{","").gsub("}","")
             [question, answer]
         end.each do |pair|
+            next if pair.blank?
             FlashCard.create(user: user, question: pair.first, answer: pair.last, level: 1)
         end
     end
