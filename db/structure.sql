@@ -161,6 +161,23 @@ CREATE TABLE public.collections (
 
 
 --
+-- Name: decks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.decks (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    name character varying,
+    user_id uuid NOT NULL,
+    is_public boolean DEFAULT false NOT NULL,
+    description character varying,
+    image_url character varying,
+    tags character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: flash_cards; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -175,7 +192,8 @@ CREATE TABLE public.flash_cards (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     next_practice_due_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    user_id uuid NOT NULL
+    user_id uuid NOT NULL,
+    deck_id uuid NOT NULL
 );
 
 
@@ -513,6 +531,14 @@ ALTER TABLE ONLY public.collections
 
 
 --
+-- Name: decks decks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.decks
+    ADD CONSTRAINT decks_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: flash_cards flash_cards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -717,6 +743,20 @@ CREATE INDEX index_collection_items_on_item_id ON public.collection_items USING 
 --
 
 CREATE INDEX index_collections_on_user_id ON public.collections USING btree (user_id);
+
+
+--
+-- Name: index_decks_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_decks_on_user_id ON public.decks USING btree (user_id);
+
+
+--
+-- Name: index_flash_cards_on_deck_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_flash_cards_on_deck_id ON public.flash_cards USING btree (deck_id);
 
 
 --
@@ -947,6 +987,14 @@ ALTER TABLE ONLY public.reviews
 
 
 --
+-- Name: flash_cards fk_rails_1c774d0179; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.flash_cards
+    ADD CONSTRAINT fk_rails_1c774d0179 FOREIGN KEY (deck_id) REFERENCES public.decks(id);
+
+
+--
 -- Name: collection_items fk_rails_29c02f6872; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -984,6 +1032,14 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 ALTER TABLE ONLY public.recommendations
     ADD CONSTRAINT fk_rails_5057f7d09a FOREIGN KEY (idea_set_id) REFERENCES public.idea_sets(id);
+
+
+--
+-- Name: decks fk_rails_5d31349cbe; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.decks
+    ADD CONSTRAINT fk_rails_5d31349cbe FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -1174,4 +1230,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200212205915'),
 ('20200213173853'),
 ('20200222193438'),
-('20200223073231');
+('20200223073231'),
+('20200305015533');
+
+

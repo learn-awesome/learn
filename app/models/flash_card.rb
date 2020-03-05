@@ -9,6 +9,7 @@ class FlashCard < ApplicationRecord
     scope :past_due_for_practice, -> { where("next_practice_due_at <= ?", Time.current) }
 
     belongs_to :user
+    belongs_to :deck
 
     attr_accessor :skip_inverted_card
     after_save :create_inverted_card, unless: :skip_inverted_card
@@ -80,7 +81,7 @@ class FlashCard < ApplicationRecord
 
     # Note that this method can return a nil response which means there are
     # no eligible flash cards available to practice at this moment.
-    def self.card_to_practice_next(user)
-        FlashCardPracticeService.new(user.id).card_to_practice_next
+    def self.card_to_practice_next(user, deck=nil)
+        FlashCardPracticeService.new(user, deck).card_to_practice_next
     end
 end

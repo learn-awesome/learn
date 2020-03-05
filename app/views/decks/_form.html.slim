@@ -1,0 +1,30 @@
+div.col-md-6
+  = form_for @deck do |f|
+    - if @deck.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@deck.errors.count, "error")} prohibited this deck from being saved:"
+        ul
+          - @deck.errors.full_messages.each do |message|
+            li = message
+
+    .field.form-group.mb-4
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+
+    .field.form-group.mb-4
+      = f.label :description
+      = f.text_area :description, class: "form-control"
+
+    .field.form-group.mb-4
+      = f.label :image_url
+      = f.url_field :image_url, class: "form-control"
+
+    .field.form-group.mb-4
+      = f.label :tags
+      = f.text_field :tags, class: "form-control"
+
+    .field.form-group.mb-4
+      = f.label :is_public
+      = f.check_box :is_public, class: "form-control"
+
+    .actions = f.submit

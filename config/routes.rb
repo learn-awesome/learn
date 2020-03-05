@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :decks do
+    get 'practice', on: :member
+  end
+  
   resources :flash_cards do
     get 'practice', on: :collection
 

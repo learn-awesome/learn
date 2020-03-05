@@ -1,0 +1,23 @@
+div.mb-4
+  h2 Your flashcard decks
+
+div.row
+  - @decks.each do |deck|
+    div.col-md-6.col-xl-3.mb-4
+      div.card
+        header.card-header
+          h5.h3.card-title = deck.name
+        img.card-img-top.rounded-0 = deck.image_url
+        div.card-body
+          p.card-text = deck.description
+          p = deck.is_public
+
+          = link_to 'Practice', practice_deck_path(deck), class: "btn btn-block btn-primary"
+          p
+            = link_to 'Show', deck
+            = link_to 'Edit', edit_deck_path(deck)
+            = link_to 'Destroy', deck, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Deck', new_deck_path, class: "btn btn-success"

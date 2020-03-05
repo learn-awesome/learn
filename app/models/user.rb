@@ -46,10 +46,12 @@ class User < ApplicationRecord
 
 	has_many :collections
 	has_many :flash_cards
+	has_many :decks
 
 	has_many :activity_pub_followers
 
 	after_create :update_points
+	after_create :create_default_deck
 
 	def self.from_param(id)
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
@@ -61,6 +63,10 @@ class User < ApplicationRecord
 
 	def avatar_image
 		self.auth0["info"]["image"]
+	end
+
+	def create_default_deck
+		self.decks.create(name: 'default deck')
 	end
 
 	def update_points

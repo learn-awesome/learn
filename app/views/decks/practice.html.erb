@@ -1,7 +1,7 @@
 <div class="mb-4">
   <nav aria-label="breadcrumb">
     <h2>
-      Practice Flash Cards
+      Practice FlashCards from deck: <%= @deck.name %>
       <%= link_to 'See All Decks', decks_path, class: "float-right btn-sm btn-primary" %>
     </h2>
   </nav>
@@ -18,7 +18,7 @@
   <div class="col-md-12 mb-4">
     You can also practice cards in a specific deck:
     <% current_user.decks.each do |deck| %>
-      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-primary" %>
+      <%= link_to deck.name, practice_deck_path(deck) %>
     <% end %>
   </div>
 </div>

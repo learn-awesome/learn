@@ -1,0 +1,16 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @deck.name
+p
+  strong Public?:
+  = @deck.is_public
+
+=> link_to 'Edit', edit_deck_path(@deck)
+'|
+=< link_to 'Back', decks_path
+
+div.row
+  div.col-md-12.mb-4
+    = react_component("FlashCardList", {flash_cards: @deck.flash_cards.as_json })

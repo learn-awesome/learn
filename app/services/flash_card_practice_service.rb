@@ -1,11 +1,14 @@
 class FlashCardPracticeService
-  attr_reader :user_id
+  attr_reader :user
+  attr_reader :deck
 
-  def initialize(user_id)
-    @user_id = user_id
+  def initialize(user, deck = nil)
+    @user = user
+    @deck = deck
   end
 
   def card_to_practice_next
-    FlashCard.of_user(user_id).least_practiced.past_due_for_practice.first
+    # practice across all decks or a single deck
+    (deck || user).flash_cards.least_practiced.past_due_for_practice.first
   end
 end
