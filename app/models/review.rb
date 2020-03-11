@@ -16,7 +16,7 @@
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #  overall_score             :integer
-#  is_posted_on_social_media :boolean          default(FALSE)
+#  is_posted_on_social_media :boolean          default("false")
 #
 
 require 'httparty'
@@ -41,24 +41,31 @@ class Review < ApplicationRecord
 
   SAMPLE_COMMENTS = {
     app: [
-      "Really cool app!"
+      "Really cool app!",
+      "Loved this app!"
     ],
     article: [
-      "Enjoyed reading it!"
+      "Enjoyed reading it!",
+      "Great writing"
     ],
-    audio: [],
+    audio: [
+      "Well worth listening"
+    ],
     blog: [
-      "Very insightful"
+      "Very insightful",
+      "Great writing"
     ],
     book: [
       "Loved reading this"
     ],
     cert: [],
     chat: [
-      "Nice community"
+      "Nice community of like-minded people!",
+      "Helpful and supportive folks"
     ],
     cheatsheet: [
-      "Really good"
+      "Really good",
+      "Very helpful!"
     ],
     code: [
       "Well, this is clever :-)"
@@ -67,11 +74,13 @@ class Review < ApplicationRecord
       "I wish something like this existed in my area"
     ],
     course: [
-      "Had been hearing good things about this course. Finally checked it out."
+      "Had been hearing good things about this course. Finally checked it out.",
+      "Highly recommended"
     ],
     flashcard: [],
     game: [
-      "Quite fun!"
+      "Quite fun!",
+      "Both entertaining and educational"
     ],
     image: [],
     interactive: [
@@ -79,19 +88,21 @@ class Review < ApplicationRecord
     ],
     journal: [],
     learning_plan: [
-      "This is put together very well"
+      "This is put together very well!"
     ],
     livestream: [
-      "One of the best streams on this topic!"
+      "One of the best streams on this topic!",
+      "Worth watching!"
     ],
     meetup: [
       "I went to this event. Ran into some cool folks."
     ],
     newsletter: [
       "Consistently insightful",
-      "Great ways to stay updated on this topic"
+      "Great way to stay updated on this topic"
     ],
     people: [
+      "Worth following"
     ],
     qna: [
       "The definitive place to go to for Q&A on this topic. The community is quite helpful."
@@ -103,13 +114,16 @@ class Review < ApplicationRecord
     ],
     summary: [
       "Nice summary of the main ideas",
-      "Saved me a lot of time :-)"
+      "Saved me a lot of time :-)",
+      "Good summary"
     ],
     video: [
-      "A good watch!"
+      "A good watch!",
+      "Highly recommended!"
     ],
     website: [
-      "Very useful site"
+      "Very useful site",
+      "I found it very useful."
     ],
     wiki: [
       "Has some good references."

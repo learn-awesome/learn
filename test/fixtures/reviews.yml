@@ -16,7 +16,7 @@
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #  overall_score             :integer
-#  is_posted_on_social_media :boolean          default(FALSE)
+#  is_posted_on_social_media :boolean          default("false")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

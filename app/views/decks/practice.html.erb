@@ -18,7 +18,7 @@
   <div class="col-md-12 mb-4">
     You can also practice cards in a specific deck:
     <% current_user.decks.each do |deck| %>
-      <%= link_to deck.name, practice_deck_path(deck) %>
+      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
