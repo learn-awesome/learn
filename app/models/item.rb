@@ -93,7 +93,9 @@ class Item < ApplicationRecord
 
   def average_overall_score
     return 0 unless reviews.present?
-    reviews.pluck(:overall_score).sum / reviews.count
+    scores = reviews.pluck(:overall_score).compact
+    return 0 if scores.blank?
+    return scores.sum / scores.size
   end
 
   def large_thumbnail
