@@ -6,17 +6,26 @@ div.row
     div.col-md-6.col-xl-3.mb-4
       div.card
         header.card-header
-          h5.h3.card-title = deck.name
-        img.card-img-top.rounded-0 = deck.image_url
+          h5.h3.card-title
+            span.badge.badge-soft-primary.mr-2 = deck.is_public ? 'public' : 'private'
+            = deck.name
+        img.card-img-top.rounded-0 src=deck.image
         div.card-body
           p.card-text = deck.description
-          p = deck.is_public
 
           = link_to 'Practice', practice_deck_path(deck), class: "btn btn-block btn-primary"
-          p
-            = link_to 'Show', deck
-            = link_to 'Edit', edit_deck_path(deck)
-            = link_to 'Destroy', deck, data: { confirm: 'Are you sure?' }, method: :delete
+        
+        footer.card-footer
+          ul.list-inline.mr-auto.mb-0
+            li.list-inline-item.mr-3
+              a href=deck_path(deck)
+                i.fas.fa-external-link-alt
+            li.list-inline-item.mr-3
+              a href=edit_deck_path(deck)
+                i.far.fa-edit
+            li.list-inline-item.mr-3
+              = link_to(deck, data: { confirm: 'Are you sure?' }, method: :delete)
+                i.fas.fa-trash-alt
 
 br
 

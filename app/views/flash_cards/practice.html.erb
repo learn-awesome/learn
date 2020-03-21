@@ -18,8 +18,15 @@
   <div class="col-md-12 mb-4">
     You can also practice cards in a specific deck:
     <% current_user.decks.each do |deck| %>
-      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-primary" %>
+      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-outline-primary" %>
     <% end %>
   </div>
 </div>
 <% end %>
+
+<div class="row">
+  <div class="col-md-12 mb-4">
+    You can create new flash cards either <%= link_to 'manually', new_flash_card_path %>, using our <a target="_blank" href="<%= browser_extension(request) %>">browser extension</a>, or in bulk
+    via our <%= link_to 'quick note-taking feature', notes_flash_cards_path %>.
+  </div>
+</div>

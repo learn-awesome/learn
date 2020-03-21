@@ -189,25 +189,20 @@
 
               <% end %>
 
-              <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'topics' && params[:action] == 'index' %>" href="/topics">
                   <img src="/nounproject/icons/browse_by_topic.svg" class="u-sidebar-nav-menu__item-icon"></img>
                   <span class="u-sidebar-nav-menu__item-title">Browse by Topic</span>
                 </a>
               </li>
-              <!-- End Tables -->
 
-              <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'item_types' && params[:action] == 'index' %>" href="/formats">
                   <img src="/nounproject/icons/browse_by_format.svg" class="u-sidebar-nav-menu__item-icon"></img>
                   <span class="u-sidebar-nav-menu__item-title">Browse by Format</span>
                 </a>
               </li>
-              <!-- End Tables -->
 
-              <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link" href="/items/discover">
                   <img src="/nounproject/icons/random_item.svg" class="u-sidebar-nav-menu__item-icon"></img>
@@ -221,16 +216,20 @@
                   <span class="u-sidebar-nav-menu__item-title">Random Topic</span>
                 </a>
               </li>
-              <!-- End Tables -->
 
-              <!-- Tables -->
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link" href="/items/query">
                   <img src="/nounproject/icons/advanced_search.svg" class="u-sidebar-nav-menu__item-icon"></img>
                   <span class="u-sidebar-nav-menu__item-title">Advanced Search</span>
                 </a>
               </li>
-              <!-- End Tables -->
+
+              <li class="u-sidebar-nav-menu__item">
+                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'flash_cards' && params[:action] == 'practice' %>" href="/flash_cards/practice">
+                  <img src="/icons/flashcard.svg" class="u-sidebar-nav-menu__item-icon" width=26 height=26></img>
+                  <span class="u-sidebar-nav-menu__item-title">Practice Flash Cards</span>
+                </a>
+              </li>
 
               <hr>
 
@@ -248,21 +247,13 @@
                 </a>
               </li>
 
-              <% if request.user_agent.to_s.downcase.include?("firefox") %>
               <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/learnawesome/">
+                <a class="u-sidebar-nav-menu__link" target="_blank" href="<%= browser_extension(request) %>">
                   <img src="/nounproject/icons/addon.svg" class="u-sidebar-nav-menu__item-icon"></img>
                   <span class="u-sidebar-nav-menu__item-title">Get Browser Extension</span>
                 </a>
               </li>
-              <% elsif request.user_agent.to_s.downcase.include?("chrome") %>
-              <li class="u-sidebar-nav-menu__item">
-                <a class="u-sidebar-nav-menu__link" target="_blank" href="https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie">
-                  <img src="/nounproject/icons/addon.svg" class="u-sidebar-nav-menu__item-icon"></img>
-                  <span class="u-sidebar-nav-menu__item-title">Get Browser Extension</span>
-                </a>
-              </li>
-              <% end %>
+
 
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link" href="https://github.com/learn-awesome/learn" target="_blank">

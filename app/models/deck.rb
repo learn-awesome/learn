@@ -20,4 +20,8 @@ class Deck < ApplicationRecord
   belongs_to :user
   has_many :flash_cards
 
+  def image
+    self.image_url || "https://picsum.photos/seed/#{self.id}/200/100"
+  end
+
 end
