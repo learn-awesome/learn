@@ -75,7 +75,7 @@ class FlashCardsController < ApplicationController
     end
 
     def flash_card_params
-      params.require(:flash_card).permit(:question, :answer, :url, :level, :last_practised_at)
+      params.require(:flash_card).permit(:question, :answer, :url, :level, :deck_id, :last_practised_at)
     end
 
 end

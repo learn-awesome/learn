@@ -4,7 +4,8 @@
         Flash Cards
 
         <%= link_to 'Practice', practice_flash_cards_path, class: "ml-2 float-right btn-sm btn-primary" %>
-        <%= link_to 'Add New Flash Card', new_flash_card_path, class: "float-right btn-sm btn-success" %>
+        <%= link_to 'Add New Flash Card', new_flash_card_path, class: "ml-2 float-right btn-sm btn-success" %>
+        <%= link_to 'See All Decks', decks_path, class: "float-right btn-sm btn-primary" %>
       </h2>
     </nav>
 </div>
@@ -16,16 +17,9 @@
     </div>
   </div>
 
-  <div class="row">
-  <p>You can also use our 
-              <% if request.user_agent.to_s.downcase.include?("firefox") %>
-                <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/learnawesome/">
-                  browser extension
-                </a>
-              <% elsif request.user_agent.to_s.downcase.include?("chrome") %>
-                <a target="_blank" href="https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie">
-                  browser extension
-                </a>
-              <% end %>
-              to quickly add flashcard to practice and memorize anything you are reading on the web.</p>
+<div class="row">
+  <div class="col-md-12 mb-4">
+    You can create new flash cards either <%= link_to 'manually', new_flash_card_path %>, using our <a target="_blank" href="<%= browser_extension(request) %>">browser extension</a>, or in bulk
+    via our <%= link_to 'quick note-taking feature', notes_flash_cards_path %>.
   </div>
+</div>
