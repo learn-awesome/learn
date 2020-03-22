@@ -14,7 +14,7 @@
 
       <div class="form-group mb-4">
         <%= form.label :deck_id, "Choose a deck", class: "font-weight-bold" %>
-        <%= form.collection_select :deck_id, current_user.decks, :id, :name, {required: true, selected: current_user.decks.first.id}, class: "form-control" %>
+        <%= form.collection_select :deck_id, current_user.decks, :id, :name, {required: true}, class: "form-control" %>
       </div>
 
       <div class="form-group mb-4">

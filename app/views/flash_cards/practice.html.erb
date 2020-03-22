@@ -3,6 +3,7 @@
     <h2>
       Practice Flash Cards
       <%= link_to 'See All Decks', decks_path, class: "ml-2 float-right btn-sm btn-primary" %>
+      <%= link_to 'New Deck', new_deck_path, class: "ml-2 float-right btn-sm btn-success" %>
       <%= link_to 'Add New Flash Card', new_flash_card_path, class: "ml-2 float-right btn-sm btn-success" %>
     </h2>
   </nav>
@@ -19,7 +20,7 @@
   <div class="col-md-12 mb-4">
     You can also practice cards in a specific deck:
     <% current_user.decks.each do |deck| %>
-      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-outline-primary" %>
+      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-soft-primary" %>
     <% end %>
   </div>
 </div>
