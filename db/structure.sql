@@ -753,6 +753,13 @@ CREATE INDEX index_decks_on_user_id ON public.decks USING btree (user_id);
 
 
 --
+-- Name: index_decks_on_user_id_and_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_decks_on_user_id_and_name ON public.decks USING btree (user_id, name);
+
+
+--
 -- Name: index_flash_cards_on_deck_id; Type: INDEX; Schema: public; Owner: -
 --
 
