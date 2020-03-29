@@ -19,8 +19,16 @@ class Person < ApplicationRecord
 	has_many :idea_sets, :through => :person_idea_sets
 	has_many :items, :through => :idea_sets
 
+	validates :name, presence: true, length: {minimum: 4, maximum: 255}
+	validates :website, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
+	validates :email, presence: true, allow_nil: true, length: {minimum: 4, maximum: 30}
+	validates :twitter, presence: true, allow_nil: true, length: {minimum: 2, maximum: 25}
+	validates :goodreads, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
+	validates :description, presence: true, allow_nil: true, length: {minimum: 8, maximum: 4096}
+
+
 	def self.search(q, max=10, is_fuzzy=true)
-    if is_fuzzy
+    	if is_fuzzy
 			Person.where("lower(name) ILIKE ?", "%#{q}%").limit(max)
 		else
 			Person.where(name: q).limit(max)
@@ -45,7 +53,7 @@ class Person < ApplicationRecord
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
 	end
 
-	def as_json
+	def as_json(options = {})
 		{
 			id: self.id,
 			name: self.name,

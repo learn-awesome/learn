@@ -8,12 +8,16 @@ class Book
 	attr_accessor :derek_sivers_link, :derek_sivers_description, :derek_sivers_rating
 	attr_accessor :direct_link, :skip_post_amazon_scrape
 
-	def self.load_json(json_file_name)
-		return if json_file.blank?
-		books = JSON.parse(File.read(json_file))
+	def self.load_json(json_file_name, creator)
+		return if json_file_name.blank?
+		books = JSON.parse(File.read(json_file_name))
 		books.each do |book|
-			book_model = Book.new.from_json(book.to_json)
-			Item.create_or_update_book(b)
+			book_model = Book.new(book)
+			if book_model.author_link.present? && book_model.author_name.blank?
+				book_model.author_name = "Author of #{book_model.title}"
+			end
+			Rails.logger.info "Processing #{book_model.title}"
+			Item.create_or_update_book(book_model, creator)
 		end
 	end
 
@@ -69,4 +73,5 @@ class Book
 	def to_s
 		self.inspect
 	end
+	
 end

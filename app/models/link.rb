@@ -14,12 +14,12 @@ require 'uri/http'
 class Link < ApplicationRecord
   belongs_to :item, inverse_of: :links
   validates :url, presence: true, length: { in: 8..350 }
-  validates :url, format: URI::regexp(%w[http https]) #TODO Allow other protocols?
+  validates :url, format: URI::regexp(%w[http https]) #TODO Allow other protocols like IPFS / magnet 
   validates :item, presence: true
   validates :url, uniqueness: true
 
   def top_domain
-  	URI.parse(self.url).host
+  	URI.parse(self.url).host.downcase.gsub("www.","")
   end
 
   def is_broken?
