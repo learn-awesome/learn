@@ -23,7 +23,6 @@ class Auth0Controller < ApplicationController
           post_reviews_to_twitter: true)
 
         if user.save
-          user.decks.create(name: 'default deck')
           UserMailer.with(user: user).welcome_email.deliver_later
           Rails.logger.info "User #{user.auth0_uid} created"
         else

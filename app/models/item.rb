@@ -203,16 +203,14 @@ class Item < ApplicationRecord
   def self.create_book(book, creator)
     Item.transaction do
       idea_set = IdeaSet.new(name: book.title, description: book.description)
-      if book.author_link.present?
+      if book.author_link.present? or book.author_name.present?
         author = Person.where(website: book.author_link).or(Person.where(goodreads: book.author_link)).or(Person.where(name: book.author_name)).first
         if author.nil?
           author = Person.create!(name: book.author_name, website: book.author_link)
         else
           author.update_attributes!(name: book.author_name, website: book.author_link)
         end
-        idea_set.person_idea_sets.build
-        idea_set.person_idea_sets.first.role = 'author'
-        idea_set.person_idea_sets.first.person_id = author.id
+        idea_set.person_idea_sets.build(role: 'creator', person_id: author.id)
       end
       idea_set.save!
 
@@ -286,6 +284,17 @@ class Item < ApplicationRecord
 
   def update_book(book, creator)
     Item.transaction do
+
+      if book.author_link.present? or book.author_name.present?
+        author = Person.where(website: book.author_link).or(Person.where(goodreads: book.author_link)).or(Person.where(name: book.author_name)).first
+        if author.nil?
+          author = Person.create!(name: book.author_name, website: book.author_link)
+        else
+          author.update_attributes!(name: book.author_name, website: book.author_link)
+        end
+        idea_set.person_idea_sets.create!(role: 'creator', person_id: author.id)
+      end
+
       if book.goodreads_link.present? && links.where(url: book.goodreads_link).first.nil?
         links.create!(url: book.goodreads_link)
       end
