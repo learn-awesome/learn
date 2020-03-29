@@ -11,14 +11,20 @@ class Book
 	def self.load_json(json_file_name, creator)
 		return if json_file_name.blank?
 		books = JSON.parse(File.read(json_file_name))
+		failed = []
 		books.each do |book|
-			book_model = Book.new(book)
-			if book_model.author_link.present? && book_model.author_name.blank?
-				book_model.author_name = "Author of #{book_model.title}"
+			begin
+				book_model = Book.new(book)
+				if book_model.author_link.present? && book_model.author_name.blank?
+					book_model.author_name = "Author of #{book_model.title}"
+				end
+				Rails.logger.info "Processing #{book_model.title}"
+				Item.create_or_update_book(book_model, creator)
+			rescue Exception => ex
+				failed << book['title']
 			end
-			Rails.logger.info "Processing #{book_model.title}"
-			Item.create_or_update_book(book_model, creator)
 		end
+		return failed
 	end
 
 	def self.import_four_minute_book_summaries(old_file_name, new_file_name)

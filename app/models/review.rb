@@ -131,6 +131,7 @@ class Review < ApplicationRecord
   }
 
   def self.sample_reviews(item, exclude_user = nil)
+    return [] if User.where.not(id: [exclude_user.try(:id), User.learnawesome.id].compact).count == 0
     [2,3,2,3,4].sample.times.map {
       Review.new(
         user: User.where.not(id: [exclude_user.try(:id), User.learnawesome.id].compact).order('RANDOM()').first,
