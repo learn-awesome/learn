@@ -192,14 +192,21 @@
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'topics' && params[:action] == 'index' %>" href="/topics">
                   <img src="/nounproject/icons/browse_by_topic.svg" class="u-sidebar-nav-menu__item-icon"></img>
-                  <span class="u-sidebar-nav-menu__item-title">Browse by Topic</span>
+                  <span class="u-sidebar-nav-menu__item-title">Browse Topics</span>
                 </a>
               </li>
 
               <li class="u-sidebar-nav-menu__item">
                 <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'item_types' && params[:action] == 'index' %>" href="/formats">
                   <img src="/nounproject/icons/browse_by_format.svg" class="u-sidebar-nav-menu__item-icon"></img>
-                  <span class="u-sidebar-nav-menu__item-title">Browse by Format</span>
+                  <span class="u-sidebar-nav-menu__item-title">Browse Formats</span>
+                </a>
+              </li>
+
+              <li class="u-sidebar-nav-menu__item">
+                <a class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == 'people' && params[:action] == 'index' %>" href="/people">
+                  <img src="/nounproject/icons/browse_experts.svg" class="u-sidebar-nav-menu__item-icon"></img>
+                  <span class="u-sidebar-nav-menu__item-title">Browse Experts</span>
                 </a>
               </li>
 
