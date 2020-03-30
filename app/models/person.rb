@@ -70,14 +70,15 @@ class Person < ApplicationRecord
 	def twitter_url
 		return nil if self.twitter.blank?
 		return self.twitter if self.twitter.include?("twitter.com")
-		return "https://twitter.com/#{self.goodreads}"
+		return "https://twitter.com/#{self.twitter}"
 	end
 
 	def self.wikidata_search(name)
 		# First get entity ID
 		# https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&limit=20&format=json&search=steven%20pinker
 		r = HTTParty.get("https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&limit=10&format=json&search=" + name.gsub(" ","%20"))
-		entity = JSON.parse(r.body)['search'].first
+		entity = JSON.parse(r.body)['search'].try(&:first)
+		return {} if entity.nil?
 		uri = entity['concepturi'] # http://www.wikidata.org/entity/Q212730
 		data = JSON.parse(HTTParty.get(uri + ".json").body)
 		# https://commons.wikimedia.org/wiki/Special:FilePath/Ad-tech_London_2010_(2).JPG?width=200 v/s https://commons.wikimedia.org/wiki/File:

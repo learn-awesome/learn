@@ -32,10 +32,10 @@ class PeopleController < ApplicationController
 		@person = Person.from_param(params[:id])
 		data = Person.wikidata_search(@person.name)
 		@person.name = data[:name]
-		@person.description = data[:description]
+		@person.description = data[:description].to_s + "\n\n" + @person.description
 		@person.image_url = data[:image_url]
 		@person.website = data[:website]
-		@person.goodreads = data[:goodreads]
+		@person.goodreads = data[:goodreads] unless @person.goodreads.present?
 		@person.twitter = data[:twitter]
 
 		render 'edit'
