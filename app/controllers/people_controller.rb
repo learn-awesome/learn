@@ -28,6 +28,19 @@ class PeopleController < ApplicationController
 		@person = Person.from_param(params[:id])
 	end
 
+	def wikidata
+		@person = Person.from_param(params[:id])
+		data = Person.wikidata_search(@person.name)
+		@person.name = data[:name]
+		@person.description = data[:description]
+		@person.image_url = data[:image_url]
+		@person.website = data[:website]
+		@person.goodreads = data[:goodreads]
+		@person.twitter = data[:twitter]
+
+		render 'edit'
+	end
+
 	def update
 		unless current_user.try(:score) > 500
 			flash[:error] = "Operation not permitted"
@@ -56,6 +69,6 @@ class PeopleController < ApplicationController
 	end
 
 	def index
-		@people = Person.order('RANDOM()').limit(100)
+		@people = Person.order(:image_url).limit(100)
 	end
 end

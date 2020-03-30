@@ -35,7 +35,13 @@ Rails.application.routes.draw do
       get 'discover'
     end
   end
-  resources :people
+  
+  resources :people do
+    member do
+      get 'wikidata'
+    end
+  end
+
   resources  :items do
     collection do
       get 'search'

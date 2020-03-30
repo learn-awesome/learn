@@ -26,11 +26,11 @@
 			     <% if @person.website.present? %>
                                 <li class="list-inline-item"><a href="<%= @person.website %>" target="_blank">Website</a></li>
                              <% end %>
-                             <% if @person.twitter.present? %>
-                                <li class="list-inline-item"><a href="<%= @person.twitter %>" target="_blank">Twitter</a></li>
+                             <% if @person.twitter_url.present? %>
+                                <li class="list-inline-item"><a href="<%= @person.twitter_url %>" target="_blank">Twitter</a></li>
                              <% end %>
-                             <% if @person.goodreads.present? %>
-                                <li class="list-inline-item"><a href="<%= @person.goodreads %>" target="_blank">GoodReads Author Profile</a></li>
+                             <% if @person.goodreads_url.present? %>
+                                <li class="list-inline-item"><a href="<%= @person.goodreads_url %>" target="_blank">GoodReads Author Profile</a></li>
                              <% end %>
 			</ul>
         </footer>

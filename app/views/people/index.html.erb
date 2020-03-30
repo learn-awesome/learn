@@ -8,10 +8,11 @@
                         <img class="u-avatar rounded-circle mr-3" src="<%= p.avatar_image %>" alt="<%= p.name %>">
 
                         <div class="media-body">
-                            <div class="d-md-flex align-items-center">
+                            <div class="align-items-center">
                                 <h4 class="mb-1">
                                     <b><%= p.name %></b>
                                 </h4>
+                                <p><%= p.description.to_s.truncate(50) %></p>
                             </div>
                         </div>
                     </div>
