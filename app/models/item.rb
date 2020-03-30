@@ -241,44 +241,66 @@ class Item < ApplicationRecord
         item.links.build(url: book.direct_link)
       end
 
-      if item.save
+      if item.links.any?
+        item.save
         Rails.logger.info("Item created #{item.id}")
-        # Now save all related items
-        if book.four_minute_books_link.present?
-          if (exlink = Link.where(url: book.four_minute_books_link).first).present?
-            # Merge the idea_sets
-            exlink.item.idea_set = idea_set
-            exlink.item.save!
-          else
-            relitem = Item.new(
-              idea_set: idea_set,
-              name: book.title + " - Summary by FourMinuteBooks",
-              user: creator,
-              item_type_id: 'summary')
-            relitem.links.build(url: book.four_minute_books_link)
-            relitem.save!
-          end
-        end
-
-        if book.derek_sivers_link.present?
-          if (exlink = Link.where(url: book.derek_sivers_link).first).present?
-            # Merge the idea_sets
-            exlink.item.idea_set = idea_set
-            exlink.item.save!
-          else
-            relitem = Item.new(
-              idea_set: idea_set,
-              name: book.title + " - Summary by Derek Sivers",
-              user: creator,
-              item_type_id: 'summary')
-            relitem.links.build(url: book.derek_sivers_link)
-            relitem.save!
-          end
-        end
-      else
-        Rails.logger.error(item.errors.first.inspect)
-        raise "couldn't save item"
       end
+
+      # Now save all related items
+      if book.four_minute_books_link.present?
+        if (exlink = Link.where(url: book.four_minute_books_link).first).present?
+          # Merge the idea_sets
+          exlink.item.idea_set = idea_set
+          exlink.item.save!
+        else
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: book.title + " - Summary by FourMinuteBooks",
+            image_url: book.cover_image,
+            description: book.description,
+            user: creator,
+            item_type_id: 'summary')
+          relitem.links.build(url: book.four_minute_books_link)
+          relitem.save!
+        end
+      end
+
+      if book.derek_sivers_link.present?
+        if (exlink = Link.where(url: book.derek_sivers_link).first).present?
+          # Merge the idea_sets
+          exlink.item.idea_set = idea_set
+          exlink.item.save!
+        else
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: book.title + " - Summary by Derek Sivers",
+            image_url: book.cover_image,
+            description: book.description,
+            user: creator,
+            item_type_id: 'summary')
+          relitem.links.build(url: book.derek_sivers_link)
+          relitem.save!
+        end
+      end
+
+      if book.blas_link.present?
+        if (exlink = Link.where(url: book.blas_link).first).present?
+          # Merge the idea_sets
+          exlink.item.idea_set = idea_set
+          exlink.item.save!
+        else
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: book.title + " - Summary at Blas.com",
+            image_url: book.cover_image,
+            description: book.description,
+            user: creator,
+            item_type_id: 'summary')
+          relitem.links.build(url: book.blas_link)
+          relitem.save!
+        end
+      end
+
     end
   end
 
@@ -351,6 +373,24 @@ class Item < ApplicationRecord
         end
       end
 
+      if book.blas_link.present?
+        if related_items.select { |i| i.links.where(url: book.blas_link).first.present? }.present?
+          # pass
+        elsif (exlink = Link.where(url: book.blas_link).first).present?
+          # Merge the idea_sets
+          exlink.item.idea_set = idea_set
+          exlink.item.save!
+        else
+          relitem = Item.new(
+            idea_set: idea_set,
+            name: name + " - Summary at Blas.com",
+            user: creator,
+            item_type_id: 'summary')
+          relitem.links.build(url: book.blas_link)
+          relitem.save!
+        end
+      end
+
       self.image_url ||= book.cover_image
       self.description ||= book.description
       self.year ||= book.publish_date
@@ -369,7 +409,7 @@ class Item < ApplicationRecord
     if link.present?
       Rails.logger.info "Update 1 #{book.title}"
       link.item.update_book(book, creator)
-    elsif (summary_link = Link.where(url: [book.four_minute_books_link, book.derek_sivers_link]).first).present?
+    elsif (summary_link = Link.where(url: [book.four_minute_books_link, book.derek_sivers_link, book.blas_link]).first).present?
       Rails.logger.info "Update 2 #{book.title}"
       summary_link.item.update_book(book, creator)
     else

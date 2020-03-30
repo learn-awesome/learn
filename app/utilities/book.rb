@@ -6,7 +6,7 @@ class Book
 	attr_accessor :number_of_pages, :publish_date, :cover_image
 	attr_accessor :goodreads_id, :goodreads_link, :description, :topics
 	attr_accessor :derek_sivers_link, :derek_sivers_description, :derek_sivers_rating
-	attr_accessor :direct_link, :skip_post_amazon_scrape
+	attr_accessor :direct_link, :skip_post_amazon_scrape, :blas_link
 
 	def self.load_json(json_file_name, creator)
 		return if json_file_name.blank?
@@ -78,6 +78,32 @@ class Book
 
 	def to_s
 		self.inspect
+	end
+
+	def self.import_blas(creator)
+		require 'nokogiri'
+		data = JSON.parse(File.read('blas.json'))['data']
+		data.each do |book| # has keys: "__attributes", "image", "title", "excerpt", "tags", "date", "tags_hfilter"
+			title = Nokogiri::HTML(book['title']).at('a').text
+			puts "Now processing: #{title}"
+			if title == "Mistakes Were Made (but not by me) by Carol Tavris and Elliot Aronson" # by is usually followed by author name
+				btitle = title
+				auname = nil
+			else
+				btitle = title.split(" by ").first
+				auname = title.split(" by ")[1]
+			end
+			book_model = Book.new(
+				title: btitle,
+				author_name: auname,
+				blas_link: Nokogiri::HTML(book['title']).at('a')['href'],
+				description: Nokogiri::HTML(book['excerpt']).at('p').text.sub("Summary ", ""),
+				topics: Nokogiri::HTML(book['tags']).search('a').map(&:text).map(&:downcase).map do |s| s.gsub(" ", "-").gsub("&","").gsub(".","").gsub("'","").gsub("\"",""); end,
+				cover_image: Nokogiri::HTML(book['image']).at('img').try('[]', 'src')
+			)
+			puts "Now processing: #{book_model.title} by #{book_model.author_name}"
+			Item.create_or_update_book(book_model, creator)
+		end
 	end
 	
 end
