@@ -276,7 +276,8 @@ CREATE TABLE public.people (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     metadata json DEFAULT '"{}"'::json NOT NULL,
-    goodreads character varying
+    goodreads character varying,
+    image_url character varying
 );
 
 
@@ -1238,6 +1239,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200213173853'),
 ('20200222193438'),
 ('20200223073231'),
-('20200305015533');
+('20200305015533'),
+('20200330145935');
 
 

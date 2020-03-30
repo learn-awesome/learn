@@ -20,11 +20,11 @@ class Person < ApplicationRecord
 	has_many :items, :through => :idea_sets
 
 	validates :name, presence: true, length: {minimum: 4, maximum: 255}
-	validates :website, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
-	validates :email, presence: true, allow_nil: true, length: {minimum: 4, maximum: 30}
-	validates :twitter, presence: true, allow_nil: true, length: {minimum: 2, maximum: 25}
-	validates :goodreads, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
-	validates :description, presence: true, allow_nil: true, length: {minimum: 8, maximum: 4096}
+	# validates :website, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
+	# validates :email, presence: true, allow_nil: true, length: {minimum: 4, maximum: 30}
+	# validates :twitter, presence: true, allow_nil: true, length: {minimum: 2, maximum: 25}
+	# validates :goodreads, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
+	# validates :description, presence: true, allow_nil: true, length: {minimum: 8, maximum: 4096}
 
 
 	def self.search(q, max=10, is_fuzzy=true)
@@ -37,7 +37,7 @@ class Person < ApplicationRecord
 
 	def avatar_image
 		#TODO: Should be kept as a column
-		"/stream/assets/img/logo-mobile.png"
+		self.image_url || "/stream/assets/img/logo-mobile.png"
 	end
 
 	def display_name

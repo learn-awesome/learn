@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
 		@person.email = params[:person][:email]
 		@person.twitter = params[:person][:twitter]
 		@person.goodreads = params[:person][:goodreads]
+		@person.image_url = params[:person][:image_url]
 
 		if @person.save
 			redirect_to person_path(@person)
@@ -40,6 +41,7 @@ class PeopleController < ApplicationController
 		@person.email = params[:person][:email]
 		@person.twitter = params[:person][:twitter]
 		@person.goodreads = params[:person][:goodreads]
+		@person.image_url = params[:person][:image_url]
 
 		if @person.save
 			redirect_to person_path(@person)
