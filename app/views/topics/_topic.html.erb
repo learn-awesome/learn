@@ -65,7 +65,7 @@
 				<h2 class="h3 card-header-title mb-2">Showing <b><%= @item_type_items.count %></b> Items </h2>
 				<small><b>Quick searches</b> :
   				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
-  				<%= link_to "Short Videos", topic_path(topic, item_type: "video", length: "5-15") %> |
+  				<%= link_to "Videos", topic_path(topic, item_type: "video") %> |
   				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
   				<%= link_to "Books", topic_path(topic, item_type: "book") %> |
   				<%= link_to "Challenging", topic_path(topic, quality: "challenging") %> |

@@ -105,5 +105,6 @@ Rails.application.routes.draw do
   get '/search' => 'welcome#search'
   get '/suggestions' => 'welcome#suggestions'
   get '/whatsnew' => 'welcome#whatsnew'
+  get '/kids' => 'welcome#kids'
   get '/.well-known/webfinger' => 'users#webfinger'
 end

@@ -1,0 +1,19 @@
+<%
+	controller_name = local_assigns.fetch(:controller_name)
+	action_name = local_assigns.fetch(:action_name)
+	icon_path = local_assigns.fetch(:icon_path)
+    target = local_assigns.fetch(:target)
+    label = local_assigns.fetch(:label)
+%>
+
+
+<li class="u-sidebar-nav-menu__item">
+    <a
+      class="u-sidebar-nav-menu__link <%= 'selectedtab' if params[:controller] == controller_name && params[:action] == action_name %>"
+      href="<%= target %>"
+      <% if target.start_with?('http') %>target='_blank'<% end %>
+    >
+        <img src="<%= icon_path %>" class="u-sidebar-nav-menu__item-icon" width=24 height=24></img>
+        <span class="u-sidebar-nav-menu__item-title"><%= label %></span>
+    </a>
+</li>

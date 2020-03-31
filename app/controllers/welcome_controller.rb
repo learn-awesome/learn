@@ -64,4 +64,7 @@ class WelcomeController < ApplicationController
     @topics = Topic.search(@q, 10, is_fuzzy)
     @people = Person.search(@q, 10, is_fuzzy)
   end
+
+  def kids
+  end
 end

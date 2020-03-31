@@ -1,0 +1,36 @@
+          <nav class="u-sidebar-nav">
+            <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
+
+              <li class="u-sidebar-nav-menu__item">
+                <a class="u-sidebar-nav-menu__link active" href="/items/search">
+                  <i class="far fa-edit u-sidebar-nav-menu__item-icon"></i>
+                  <span class="u-sidebar-nav-menu__item-title">Add A Link</span>
+                </a>
+              </li>
+
+              <% if current_user.present? %>
+                <%= render 'components/nav_item', {controller_name: 'dashboard', action_name: 'show', icon_path: '/nounproject/icons/dashboard.svg', target: '/dashboard', label: 'Dashboard'} %>
+              <% end %>
+
+              <% nav_links = [
+                  {controller_name: 'topics', action_name: 'index', icon_path: '/nounproject/icons/browse_by_topic.svg', target: '/topics', label: 'Browse Topics'},
+                  {controller_name: 'item_types', action_name: 'index', icon_path: '/nounproject/icons/browse_by_format.svg', target: '/formats', label: 'Browse Formats'},
+                  {controller_name: 'people', action_name: 'index', icon_path: '/nounproject/icons/browse_experts.svg', target: '/people', label: 'Browse Experts'},
+                  {controller_name: 'items', action_name: 'discover', icon_path: '/nounproject/icons/random_item.svg', target: '/items/discover', label: 'Random Item'},
+                  {controller_name: 'topics', action_name: 'discover', icon_path: '/nounproject/icons/random_topic.svg', target: '/topics/discover', label: 'Random Topic'},
+                  {controller_name: 'items', action_name: 'query', icon_path: '/nounproject/icons/advanced_search.svg', target: '/items/query', label: 'Advanced Search'},
+                  {controller_name: 'flash_cards', action_name: 'practice', icon_path: '/icons/flashcard.svg', target: '/flash_cards/practice', label: 'Practice Flash Cards'},
+                  # {controller_name: 'welcome', action_name: 'kids', icon_path: '/nounproject/icons/kids.svg', target: '/kids', label: 'Kids Corner'},
+                  {controller_name: 'welcome', action_name: 'about', icon_path: '/nounproject/icons/about.svg', target: '/about', label: 'About LearnAwesome'},
+                  {controller_name: 'welcome', action_name: 'whatsnew', icon_path: '/nounproject/icons/whatsnew.svg', target: '/whatsnew', label: 'What\'s New'},
+                  {controller_name: 'welcome', action_name: 'addon', icon_path: '/nounproject/icons/addon.svg', target: browser_extension(request), label: 'Get Browser Extension'},
+                  {controller_name: 'welcome', action_name: 'github', icon_path: '/nounproject/icons/github.svg', target: 'https://github.com/learn-awesome/learn', label: 'Send a PR'},
+                  # {controller_name: 'welcome', action_name: 'book', icon_path: '/book.svg', target: 'https://book.learnawesome.org', label: 'The Book Project'},
+              ] %>
+
+                <% nav_links.each do |nav_link_locals| %>
+                    <% if nav_link_locals[:target] == '/about' %><hr/><% end %>
+                    <%= render 'components/nav_item', nav_link_locals %>
+                <% end %>
+            </ul>
+          </nav>
