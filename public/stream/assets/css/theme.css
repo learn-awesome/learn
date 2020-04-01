@@ -11087,7 +11087,6 @@ body.side-nav-on-action .u-content {
   width: 100%;
   height: calc(100% + 3.75rem);
   font-size: 0.875rem;
-  z-index: 1;
 }
 
 .u-sidebar::before {

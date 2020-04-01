@@ -43,9 +43,10 @@ class WelcomeController < ApplicationController
         }
         format.json { render json: add_types(@topics.first(5) + @items.first(5)+ @people.first(5))}
       end
-      return
+      return # render welcome/search
+    else
+      redirect_to '/items/query' and return
     end
-    # render welcome/search
   end
 
   def add_types(active_record_arr)
