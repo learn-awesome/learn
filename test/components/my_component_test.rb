@@ -1,8 +1,7 @@
 require 'test_helper'
-require "action_view/component/test_helpers"
 
-class MyComponentTest < ActiveSupport::TestCase
-  include ActionView::Component::TestHelpers
+class MyComponentTest < ViewComponent::TestCase
+  include ViewComponent::TestHelpers
 
   def test_render_component
     assert_equal(
