@@ -1,5 +1,4 @@
 class FiveStarComponent < ViewComponent::Base
-    validates :id_prefix, :name, presence: true
 
     def initialize(id_prefix:, name:, value:, onchange: "", label: "Rate it", color: "yellow", size: 1.0)
       @label = label
