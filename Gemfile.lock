@@ -75,11 +75,6 @@ GEM
       activesupport (>= 3.0.0)
     autoprefixer-rails (9.6.1)
       execjs
-    awesome_print (1.8.0)
-    awesome_rails_console (0.4.4)
-      awesome_print
-      pry-rails
-      railties
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -107,7 +102,6 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     cocoon (1.2.14)
-    coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -238,11 +232,6 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.14.5)
-    pry (0.13.0)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -407,7 +396,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   annotate
-  awesome_rails_console
   bootsnap (>= 1.1.0)
   bootstrap
   bourbon
