@@ -85,7 +85,7 @@
       }
     });
 
-    $(window).on('resize', function () {
+    (function () {
       var windowWidth = window.innerWidth;
 
       if (windowWidth < 768) {
@@ -121,6 +121,6 @@
           openEffect(target, closedItems);
         }
       }
-    }).resize();
+    })();
   });
 })(jQuery);
