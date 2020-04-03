@@ -20,6 +20,7 @@ class Topic < ApplicationRecord
 
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :topic
 	has_many :idea_sets, :through => :topic_idea_sets
+	has_many :people, :through => :idea_sets
 	has_many :items, :through => :idea_sets
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
@@ -46,6 +47,10 @@ class Topic < ApplicationRecord
 
 	def self.button_style
 		"btn btn-sm btn-soft-primary btn-pill"
+	end
+
+	def experts
+		@experts ||= self.people.uniq
 	end
 
 	def chat_room

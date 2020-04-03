@@ -34,6 +34,9 @@
 	<% if followers.present? %>
 		<%= number_to_human(followers.count) %> followers: <%= followers[0..4].map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %> <%= " and #{followers.count - 5 } others" if followers.count > 5 %>
 	<% end %>
+	<% if topic.experts.present? %>
+		<%= number_to_human(topic.experts.count) %> experts: <%= topic.experts.take(5).map do |c| link_to c.name, person_path(c) end.join(", ").html_safe %> <%= " and #{topic.experts.count - 5 } others" if topic.experts.count > 5 %>
+	<% end %>
 </div>
 
 <div class="row">
