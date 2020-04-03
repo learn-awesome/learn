@@ -1,0 +1,29 @@
+<%
+	title = local_assigns.fetch(:title)
+	subtitle = local_assigns.fetch(:subtitle, nil)
+	image_url = local_assigns.fetch(:image_url, nil)
+    body = local_assigns.fetch(:body, nil)
+    href = local_assigns.fetch(:href)
+    # this partial is used in views/topics/_topic
+%>
+
+<a href="<%= href %>">
+<div class="card mr-2 mb-2 rounded-8">
+    <header class="card-header">
+        <h5 class="h3 card-title" style="height: 3.0em"><%= title %></h5>
+        <% if !subtitle.blank? %>
+            <h3 class="card-subtitle text-uppercase"><%= subtitle %></h3>
+        <% end %>
+    </header>
+
+    <% if image_url.present? %>
+        <img class="card-img-top rounded-0" src="<%= image_url %>" alt="">
+    <% end %>
+
+    <% unless body.blank? %>
+    <div class="card-body">
+        <p class="card-text"><%= body %></p>
+    </div>
+    <% end %>
+</div>
+</a>

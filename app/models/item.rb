@@ -499,6 +499,10 @@ class Item < ApplicationRecord
     end
   end
 
+  def display_rating
+    Review.display_rating(self.average_overall_score)
+  end
+
   def display_name
     self.name
   end

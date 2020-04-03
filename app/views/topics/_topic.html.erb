@@ -32,13 +32,39 @@
 
 <div class="mb-4">
 	<% if followers.present? %>
-		<%= number_to_human(followers.count) %> followers: <%= followers[0..4].map do |c| link_to c.nickname, user_path(c) end.join(", ").html_safe %> <%= " and #{followers.count - 5 } others" if followers.count > 5 %>
+		<%= number_to_human(followers.count) %>
+		<%= "follower".pluralize(followers.count) %>:
+		<% followers[0..4].each do |c| %>
+			<%= link_to c.nickname, user_path(c) %>
+		<% end %>
+		<%= " and #{followers.count - 5 } others" if followers.count > 5 %>
 	<% end %>
 	<% if topic.experts.present? %>
-		<%= number_to_human(topic.experts.count) %> experts: <%= topic.experts.take(5).map do |c| link_to c.name, person_path(c) end.join(", ").html_safe %> <%= " and #{topic.experts.count - 5 } others" if topic.experts.count > 5 %>
+		<%= number_to_human(topic.experts.count) %>
+		<%= "expert".pluralize(topic.experts.size) %>:
+		<% topic.experts.take(5).each do |c| %>
+			<%= link_to c.name, person_path(c) %>
+		<% end%>
+		<%= " and #{topic.experts.count - 5 } others" if topic.experts.count > 5 %>
 	<% end %>
 </div>
 
+<h3><b>Learning Plans:</b></h3>
+<div class="row mb-4">
+	<% topic.advanced_search('learning_plan', nil, nil).each do |lp| %>
+		<div class="col-md-3">
+		<%= render 'components/card', { 
+			title: lp.name,
+			href: item_path(lp),
+			subtitle: lp.display_rating,
+			# body: lp.description.to_s.truncate(20),
+			# image_url: lp.image_url # || "https://htmlstream.com/preview/stream-dashboard-ui-kit/assets/img/800x500/img1.jpg"
+		} %>
+		</div>
+	<% end %>
+</div>
+
+<h3><b>Items:</b></h3>
 <div class="row">
 		<div class="col-md-9 mb-4">
 		<%if @item_type_items.present? %>
@@ -68,6 +94,7 @@
 				<h2 class="h3 card-header-title mb-2">Showing <b><%= @item_type_items.count %></b> Items </h2>
 				<small><b>Quick searches</b> :
   				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
+				<%= link_to "Courses", topic_path(topic, item_type: "course") %> |
   				<%= link_to "Videos", topic_path(topic, item_type: "video") %> |
   				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
   				<%= link_to "Books", topic_path(topic, item_type: "book") %> |
