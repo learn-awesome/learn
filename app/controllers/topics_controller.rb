@@ -44,6 +44,7 @@ class TopicsController < ApplicationController
       @does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
     end
     @item_type_items = @topic.advanced_search(@item_type, @length, @quality).paginate(page: params[:page])
+    @learning_plans = @topic.advanced_search('learning_plan', nil, nil)
   end
 
   def toggle_follow

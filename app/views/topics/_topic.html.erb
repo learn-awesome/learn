@@ -49,9 +49,10 @@
 	<% end %>
 </div>
 
+<% if @learning_plans.any? %>
 <h3><b>Learning Plans:</b></h3>
 <div class="row mb-4">
-	<% topic.advanced_search('learning_plan', nil, nil).each do |lp| %>
+	<% @learning_plans.each do |lp| %>
 		<div class="col-md-3">
 		<%= render 'components/card', { 
 			title: lp.name,
@@ -63,6 +64,7 @@
 		</div>
 	<% end %>
 </div>
+<% end %>
 
 <h3><b>Items:</b></h3>
 <div class="row">
