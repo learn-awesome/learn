@@ -31,21 +31,23 @@
 </div>
 
 <div class="mb-4">
-	<% if followers.present? %>
-		<%= number_to_human(followers.count) %>
-		<%= "follower".pluralize(followers.count) %>:
-		<% followers[0..4].each do |c| %>
-			<%= link_to c.nickname, user_path(c) %>
-		<% end %>
-		<%= " and #{followers.count - 5 } others" if followers.count > 5 %>
-	<% end %>
+
 	<% if topic.experts.present? %>
 		<%= number_to_human(topic.experts.count) %>
 		<%= "expert".pluralize(topic.experts.size) %>:
 		<% topic.experts.take(5).each do |c| %>
-			<%= link_to c.name, person_path(c) %>
+			<%= link_to c.name, person_path(c), class: 'btn btn-sm btn-soft-info btn-pill' %>
 		<% end%>
 		<%= " and #{topic.experts.count - 5 } others" if topic.experts.count > 5 %>
+	<% end %>
+	<br/><br/>
+	<% if followers.present? %>
+		<%= number_to_human(followers.count) %>
+		<%= "follower".pluralize(followers.count) %>:
+		<% followers[0..4].each do |c| %>
+			<%= link_to c.nickname, user_path(c), class: 'btn btn-sm btn-soft-info btn-pill' %>
+		<% end %>
+		<%= " and #{followers.count - 5 } others" if followers.count > 5 %>
 	<% end %>
 </div>
 

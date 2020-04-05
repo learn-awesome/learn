@@ -228,11 +228,27 @@ class ItemsController < ApplicationController
           redirect_to @items.first and return
           redirect_to item_path(id: @items.first, ext: true)
         else
-          if current_user
-            redirect_to new_item_path(url: @q, ext: true) and return
+          canonical = Item.extract_canonical_url(@q)
+          if !canonical.blank? and canonical != @q
+            @items = Item.search(canonical, 10, is_fuzzy=false).to_a
+            if @items.first
+              redirect_to @items.first and return
+              redirect_to item_path(id: @items.first, ext: true)
+            else
+              if current_user
+                redirect_to new_item_path(url: canonical, ext: true) and return
+              else
+                flash[:danger] = "You need to log in to add links."
+                redirect_to root_path
+              end
+            end
           else
-            flash[:danger] = "You need to log in to add links."
-            redirect_to root_path
+            if current_user
+              redirect_to new_item_path(url: @q, ext: true) and return
+            else
+              flash[:danger] = "You need to log in to add links."
+              redirect_to root_path
+            end
           end
         end
       end

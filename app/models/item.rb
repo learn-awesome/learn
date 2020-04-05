@@ -137,7 +137,7 @@ class Item < ApplicationRecord
 
   def self.search(q, max=10, is_fuzzy=true)
   	if q.start_with?('http://') or q.start_with?('https://')
-      #TODO: Fetch the canonical URL and use that instead
+      # canonical URL is now handled in items_controller#search
   		return Link.where(url: q).limit(max).map(&:item)
   	else
       if is_fuzzy
@@ -186,9 +186,13 @@ class Item < ApplicationRecord
 
   def self.extract_canonical_url(url)
     # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
-    page = Nokogiri::HTML(open(url))
+    begin
+      page = Nokogiri::HTML(open(url))
 
-    return page.at('link[rel="canonical"]')&.attributes["href"]&.value
+      return page.at('link[rel="canonical"]')&.attributes["href"]&.value
+    rescue Exception => ex
+      return nil
+    end
   end
 
   def update_opengraph_data
