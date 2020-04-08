@@ -1,0 +1,10 @@
+<div class="row">
+<% @people.each do |p| %>
+    <%= render partial: 'components/profile_card', locals: { 
+        link: person_path(p), 
+        avatar_image: p.avatar_image,
+        name: p.name,
+        description: p.description.to_s.truncate(50)
+    } %>
+<% end %>
+</div>
