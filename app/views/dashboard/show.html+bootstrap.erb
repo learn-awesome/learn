@@ -44,7 +44,7 @@
 <% else %>
 	      <div class="card">
 	        <div class="card-header d-md-flex align-items-center">
-	          <h2 class="h3 card-header-title">Your favorite topics</h2>
+	          <h2 class="card-header-title"><b>Your favorite topics</b></h2>
 	        </div>
 	        <div class="card-body">
 	        	<p>No such topics. <%= link_to "Browse topics", topics_path %> and follow your favorite ones.</p>
@@ -62,7 +62,7 @@
         	<% if @following_reviews.any? %>
         		<div class="list-group list-lg-group list-group-flush">
 	        	<% @following_reviews.each do |rev| %>
-					<%= render 'review_card', locals: {rev: rev} %>
+					<%= render partial: 'components/review_card', locals: {rev: rev} %>
 	        	<% end %>
 	        	</div>
 	        <% else %>

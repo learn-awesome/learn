@@ -21,46 +21,8 @@
 										<!-- Tabs Content -->
 										<div class="tab-pane fade show active" id="reviewsTab1" role="tabpanel">
 											<div class="list-group list-lg-group list-group-flush">
-												<% @item.reviews.completed.popular.each do |rev| %>
-												<a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
-													  <div class="media">
-														  <img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
-  
-														  <div class="media-body">
-															  <div class="d-md-flex align-items-center">
-																  <h4 class="mb-1">
-																	  <%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= rev.display_rating %></span>
-																  </h4>
-																  <small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-															  </div>
-
-															  <p><i><%= rev.tags_text %></i></p>
-  
-															  <p class="mb-0"><%= rev.notes %></p>
-														  </div>
-													  </div>
-												</a>
-												<% end %>
-
-												<% Review.sample_reviews(@item, current_user).each do |rev| %>
-												<a class="list-group-item list-group-item-action">
-													  <div class="media">
-														  <img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
-  
-														  <div class="media-body">
-															  <div class="d-md-flex align-items-center">
-																  <h4 class="mb-1">
-																	  <%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= rev.display_rating %></span>
-																  </h4>
-																  <small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-															  </div>
-
-															  <p><i><%= rev.tags_text %></i></p>
-  
-															  <p class="mb-0"><%= rev.notes %></p>
-														  </div>
-													  </div>
-												</a>
+												<% (@item.reviews.completed.popular.to_a + Review.sample_reviews(@item, current_user)).each do |rev| %>
+													<%= render partial: 'components/review_card', locals: {rev: rev} %>
 												<% end %>
 											</div>
 										</div>
@@ -70,22 +32,7 @@
 										<div class="tab-pane fade" id="reviewsTab2" role="tabpanel">
 											<div class="list-group list-lg-group list-group-flush">
 											<% @item.reviews.completed.recent.each do |rev| %>
-											  <a class="list-group-item list-group-item-action" href="<%= review_path(rev) %>">
-													<div class="media">
-														<img class="u-avatar rounded-circle mr-3" src="<%= rev.user.auth0["info"]["image"] %>" alt="<%= rev.user.nickname %>">
-
-														<div class="media-body">
-															<div class="d-md-flex align-items-center">
-																<h4 class="mb-1">
-																	<%= rev.user.nickname %> <span class="badge badge-light mx-1"><%= "⭐" * rev.overall_score.to_i %></span>
-																</h4>
-																<small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-															</div>
-
-															<p class="mb-0"><%= rev.notes %></p>
-														</div>
-													</div>
-											  </a>
+												<%= render partial: 'components/review_card', locals: {rev: rev} %>
 											<% end %>
 											</div>
 										</div>

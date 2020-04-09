@@ -35,7 +35,7 @@
 											</div>
 										<% end %>
 
-										<%= form_with(model: @my_review) do |form| %>				
+										<%= form_with(model: @my_review, local: true) do |form| %>				
 												<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 												<div class="form-group mb-4 pd-6">
 													<%= form.text_area :notes, class: 'form-control form-control-sm', placeholder: 'Write your review here' %>

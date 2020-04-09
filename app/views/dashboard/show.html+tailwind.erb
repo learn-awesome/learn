@@ -62,7 +62,7 @@
         	<% if @following_reviews.any? %>
         		<div class="list-group list-lg-group list-group-flush">
 	        	<% @following_reviews.each do |rev| %>
-                    <%= render 'review_card', locals: {rev: rev} %>
+                    <%= render partial: 'components/review_card', locals: {rev: rev} %>
 	        	<% end %>
 	        	</div>
 	        <% else %>
