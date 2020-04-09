@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 mb-4">
-    <div class="card">
+    <div class="card mb-4">
 
       <header class="card-header">
         <h2 class="h3 card-header-title">Change Settings</h2>
@@ -26,13 +26,6 @@
               <%= form.collection_select :random_fav_item_types, ItemType.all, :id, :display_name_plural, {selected: @user.random_fav_item_types.to_s.split(",")}, {multiple: true, class: "form-control"} %>
             </div>
 
-            <% if @user.is_from_twitter? %>
-            <div class="form-group mb-4">
-              <%= form.label :post_reviews_to_twitter, "Post reviews to your Twitter?" %>
-              <%= form.check_box :post_reviews_to_twitter %>
-            </div>
-            <% end %>
-
             <p>
               <% if @user.is_goodreads_connected? %>
                 <a href="<%= disconnectgoodreads_user_path(@user) %>" >Disconnect GoodReads</a>
@@ -49,6 +42,22 @@
 
       </div>
 
+    </div>
+
+    <div class="card">
+
+      <header class="card-header">
+        <h2 class="h3 card-header-title">Connect Social Media Accounts</h2>
+      </header>
+
+      <div class="card-body">
+          <ul>
+          <% @user.social_logins.each do |sl| %>
+            <li><%= sl.auth0_uid %>: Auto-posting: <%= sl.post_reviews ? 'Enabled' : 'Disabled' %></li>
+          <% end %>
+          </ul>
+          <%= @user.social_logins.count %> connected. <%= link_to 'Connect Another', '/auth/auth0' %>
+      </div>
     </div>
   </div>
 </div>

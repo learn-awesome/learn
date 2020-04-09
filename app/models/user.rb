@@ -24,10 +24,7 @@
 require 'json'
 
 class User < ApplicationRecord
-  has_many :collections
 	validates :nickname, presence: true
-	validates :authinfo, presence: true
-	validates :auth0_uid, presence: true
 
 	validates_length_of :nickname, in: 4..20, allow_blank: false
 	validates_length_of :bio, maximum: 140
@@ -48,6 +45,7 @@ class User < ApplicationRecord
 	has_many :collections
 	has_many :flash_cards
 	has_many :decks
+	has_many :social_logins
 
 	has_many :activity_pub_followers
 

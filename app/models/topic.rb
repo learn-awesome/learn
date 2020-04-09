@@ -37,10 +37,6 @@ class Topic < ApplicationRecord
 		self.gitter_room = self.name
 	end
 
-	def display_name_str
-		self.read_attribute(:display_name) || self.name.gsub("-", " ").titleize
-	end
-
 	def to_param
 		self.id.to_s + "-" + self.name.to_s.parameterize
 	end

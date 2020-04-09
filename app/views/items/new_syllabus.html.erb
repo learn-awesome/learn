@@ -3,7 +3,7 @@
     <div class="card">
       <header class="card-header">
         <h2 class="h3 card-header-title">
-          Add a new learning plan for <b><%= @topics.first.display_name.titleize %></b>
+          Add a new learning plan for <b><%= @topics.first.display_name_str %></b>
         </h2>
       </header>
 
@@ -21,7 +21,8 @@
           <% if @syllabus %>
             <% if @topics.first.present? %>
             <div class="form-group mb-4">
-            <%= form.text_field :name, value: "How to learn #{@topics.first.name} - by #{current_user.nickname}" %>
+              <%= form.label :name, "Title" %>
+              <%= form.text_field :name, value: "How to learn #{@topics.first.name} - by #{current_user.nickname}", class: "form-control" %>
             </div>
             <% end %>
           <% end %>
@@ -161,16 +162,18 @@
   <div class="col-md-6 mb-4">
     <div class="card">
       <header class="card-header">
-        <h2 class="h3 card-header-title">
-          List of items on this topic
+        <h2 class="card-header-title">
+          <b>Learning resources for this topic</b>
         </h2>
       </header>
 
       <div class="card-body">
-        <% @topics.first.items.limit(100).each do |item| %>
+        <% @topics.first.idea_sets.limit(100).each do |is| %>
           <p>
-          <%= link_to item.item_type.display_name_plural, item.item_type, class: "btn btn-sm #{ItemType.button_style}" %>
-          <%= link_to item.name, item %>
+            <%= is.name %>: 
+            <% is.items.each do |item| %>
+              <%= link_to "#{item.item_type} at #{item.primary_link.top_domain}",item, class: "btn btn-sm #{ItemType.button_style}" %>
+            <% end %>
           </p>
         <% end %>
       </div>

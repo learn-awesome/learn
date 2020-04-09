@@ -3,10 +3,6 @@ class DashboardController < ApplicationController
   before_action :logged_in_using_omniauth?
   
   def show
-  	if current_user.nil?
-  		# Anubhav's error case. Need to debug.
-  		redirect_to("/logout") and return
-  	end
   	@user_topics = current_user.user_topics
     if current_user.following.any?
       @following_reviews = Review.where(user: current_user.following).order("created_at DESC").limit(20)
