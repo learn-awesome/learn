@@ -11,6 +11,15 @@
 #  display_name :string
 #  user_id      :uuid
 #
+# Indexes
+#
+#  index_topics_on_name     (name) UNIQUE
+#  index_topics_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 
 class Topic < ApplicationRecord
 	SLUG_FORMAT = /\A[0-9a-z\-\/]+\z/

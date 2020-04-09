@@ -9,6 +9,16 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_topic_relations_on_from_id  (from_id)
+#  index_topic_relations_on_to_id    (to_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (from_id => topics.id)
+#  fk_rails_...  (to_id => topics.id)
+#
 
 class TopicRelation < ApplicationRecord
   belongs_to :from, class_name: "Topic"

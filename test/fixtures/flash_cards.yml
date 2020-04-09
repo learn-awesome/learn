@@ -15,6 +15,15 @@
 #  user_id              :uuid             not null
 #  deck_id              :uuid             not null
 #
+# Indexes
+#
+#  index_flash_cards_on_deck_id  (deck_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (deck_id => decks.id)
+#  fk_rails_...  (user_id => users.id)
+#
 
 one:
   user:

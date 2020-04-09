@@ -9,6 +9,17 @@
 #  updated_at  :datetime         not null
 #  rating      :integer
 #
+# Indexes
+#
+#  index_topic_idea_sets_on_idea_set_id               (idea_set_id)
+#  index_topic_idea_sets_on_topic_id                  (topic_id)
+#  index_topic_idea_sets_on_topic_id_and_idea_set_id  (topic_id,idea_set_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (idea_set_id => idea_sets.id)
+#  fk_rails_...  (topic_id => topics.id)
+#
 
 class TopicIdeaSet < ApplicationRecord
 	belongs_to :topic, inverse_of: :topic_idea_sets

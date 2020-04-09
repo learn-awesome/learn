@@ -11,6 +11,19 @@
 #  value      :integer
 #  by_user_id :uuid
 #
+# Indexes
+#
+#  index_user_topics_on_by_user_id                         (by_user_id)
+#  index_user_topics_on_topic_id                           (topic_id)
+#  index_user_topics_on_user_id                            (user_id)
+#  index_user_topics_on_user_id_and_by_user_id_and_action  (user_id,by_user_id,action) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (by_user_id => users.id)
+#  fk_rails_...  (topic_id => topics.id)
+#  fk_rails_...  (user_id => users.id)
+#
 
 # This model allows one user to create a relation between a user (either self or other) and a topic.
 # The relationship label is called :action. A numeric score is possible. 

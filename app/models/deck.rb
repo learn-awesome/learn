@@ -12,6 +12,15 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Indexes
+#
+#  index_decks_on_user_id           (user_id)
+#  index_decks_on_user_id_and_name  (user_id,name) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 class Deck < ApplicationRecord
   validates :name, length: {in: 4..80}
   validates :user, presence: true

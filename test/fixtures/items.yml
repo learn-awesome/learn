@@ -24,6 +24,19 @@
 #  description         :text
 #  metadata            :json             not null
 #
+# Indexes
+#
+#  index_items_on_idea_set_id   (idea_set_id)
+#  index_items_on_item_type_id  (item_type_id)
+#  index_items_on_user_id       (user_id)
+#  trgm_items_name_indx         (name) USING gist
+#
+# Foreign Keys
+#
+#  fk_rails_...  (idea_set_id => idea_sets.id)
+#  fk_rails_...  (item_type_id => item_types.id)
+#  fk_rails_...  (user_id => users.id)
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 

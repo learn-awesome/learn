@@ -12,6 +12,7 @@
 #  updated_at  :datetime         not null
 #  metadata    :json             not null
 #  goodreads   :string
+#  image_url   :string
 #
 
 class Person < ApplicationRecord

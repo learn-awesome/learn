@@ -15,6 +15,10 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
+# Indexes
+#
+#  index_vouchers_on_user_id  (user_id)
+#
 
 class Voucher < ApplicationRecord
 	validates_length_of :code, in: 8..32, allow_blank: false

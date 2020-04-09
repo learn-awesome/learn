@@ -10,6 +10,18 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Indexes
+#
+#  index_recommendations_on_idea_set_id  (idea_set_id)
+#  index_recommendations_on_item_id      (item_id)
+#  index_recommendations_on_person_id    (person_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (idea_set_id => idea_sets.id)
+#  fk_rails_...  (item_id => items.id)
+#  fk_rails_...  (person_id => people.id)
+#
 
 require 'test_helper'
 
