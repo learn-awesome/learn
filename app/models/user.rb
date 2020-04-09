@@ -150,15 +150,23 @@ class User < ApplicationRecord
 	end
 
 	def can_combine_items?
-		self.score.to_i >= 5000
+		Rails.env.development? or self.score.to_i >= 5000
 	end
 
 	def can_merge_topic?
-		self.score.to_i >= 20000
+		Rails.env.development? or self.score.to_i >= 20000
+	end
+
+	def can_edit_topic?
+		Rails.env.development? or self.score.to_i >= 20000
 	end
 
 	def can_see_metrics?
-		self.score.to_i >= 5000
+		Rails.env.development? or self.score.to_i >= 5000
+	end
+
+	def can_add_syllabus?
+		Rails.env.development? or self.score.to_i >= 2000
 	end
 
 	def email

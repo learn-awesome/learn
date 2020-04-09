@@ -1,7 +1,7 @@
 <% followers = topic.followers %>
 <div class="row">
 	<h1>
-		<b><%= topic.display_name.titleize %></b>
+		<b><%= topic.display_name_str %></b>
 	</h1>
 </div>
 
@@ -15,11 +15,11 @@
 
 	<%= link_to "Add New Item", new_item_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
 
- 	<% if current_user and current_user.score > 2000 %>
+ 	<% if current_user.try(:can_add_syllabus?) %>
     	<%= link_to "Add New Learning Plan", new_syllabus_items_path(topic: topic.id), class: "btn btn-sm btn-pill btn-warning" %>
   	<% end %>
 
-  	<% if current_user and current_user.can_merge_topic? %>
+  	<% if current_user.try(:can_merge_topic?) %>
     	<%= link_to "Merge", merge_topic_path(topic), class: "btn btn-sm btn-pill btn-warning" %>
   	<% end %>
 

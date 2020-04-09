@@ -3,7 +3,7 @@
 <div class="card">
 
 <header class="card-header">
-	<h2 class="h3 card-header-title"><b>Add New Topic</b></h2>
+	<h2 class="h3 card-header-title"><b>Edit Topic: <%= @topic.display_name_str %></b></h2>
 </header>
 
 <div class="card-body">
@@ -21,7 +21,7 @@
   </div>
 
   <div class="form-group mb-4">
-    	<%= form.submit "Add Topic", class: "btn btn-primary" %>
+    	<%= form.submit "Save Topic", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>

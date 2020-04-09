@@ -17,6 +17,7 @@ class Topic < ApplicationRecord
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
 		format: {with: SLUG_FORMAT}
 	validates :search_index, presence: true
+	validates :display_name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 }
 
 	has_many :topic_idea_sets, dependent: :destroy, inverse_of: :topic
 	has_many :idea_sets, :through => :topic_idea_sets
@@ -25,8 +26,20 @@ class Topic < ApplicationRecord
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	belongs_to :user, optional: true
+	before_validation :set_properties, on: :create
 	after_save :clear_cache
 	after_destroy :clear_cache
+
+	def set_properties
+		self.display_name = self.display_name.strip.gsub(/\s+/, ' ')
+		self.name = self.display_name.gsub(" ", "-").downcase
+		self.search_index = self.name
+		self.gitter_room = self.name
+	end
+
+	def display_name_str
+		self.read_attribute(:display_name) || self.name.gsub("-", " ").titleize
+	end
 
 	def to_param
 		self.id.to_s + "-" + self.name.to_s.parameterize
@@ -76,10 +89,6 @@ class Topic < ApplicationRecord
 	      results = results.where("#{quality}_score >= 4.0")
 	    end
 	    return results
-	end
-
-	def display_name
-		self.read_attribute(:display_name) || self.name.gsub("-", " ")
 	end
 
 	def curators

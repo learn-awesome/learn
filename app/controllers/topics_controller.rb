@@ -1,34 +1,36 @@
-class TopicsController < ApplicationController
+class TopicsController < InheritedResources::Base
   include Secured
-    before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create]
-    before_action :merge_ability_check, only: [:merge]
+  before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update]
+  before_action :permission_check, only: [:merge, :edit, :update]
+  respond_to :html, :json
+  actions :all, except: [:destroy]
 
-  def index
-      respond_to do |format|
-        format.html
-        format.json { render json: Topic.all }
-      end
-  end
+  # def index
+  #     respond_to do |format|
+  #       format.html
+  #       format.json { render json: Topic.all }
+  #     end
+  # end
 
-  def new
-    @topic = Topic.new
-    @topic.name = params[:name]
-  end
+  # def new
+  #   @topic = Topic.new
+  #   @topic.name = params[:name]
+  # end
 
-  def create
-    @topic = Topic.new
-    @topic.display_name = params[:topic][:name].to_s.strip
-    @topic.name = @topic.display_name.gsub(" ", "-").downcase
-    @topic.search_index = @topic.name
-    @topic.gitter_room = @topic.name
-    @topic.user = current_user
-    if @topic.save
-      redirect_to @topic
-    else
-      flash[:danger] = @topic.errors.first
-      render :new
-    end
-  end
+  # def create
+  #   @topic = Topic.new
+  #   @topic.display_name = params[:topic][:name].to_s.strip
+  #   @topic.name = @topic.display_name.gsub(" ", "-").downcase
+  #   @topic.search_index = @topic.name
+  #   @topic.gitter_room = @topic.name
+  #   @topic.user = current_user
+  #   if @topic.save
+  #     redirect_to @topic
+  #   else
+  #     flash[:danger] = @topic.errors.first
+  #     render :new
+  #   end
+  # end
 
   def show
     @item_type = params[:item_type]
@@ -88,12 +90,22 @@ class TopicsController < ApplicationController
     end
   end
 
+  protected
+  def resource
+    @topic = Topic.from_param(params[:id])
+  end
+
   private
 
-  def merge_ability_check
-    if current_user.nil? || !current_user.can_merge_topic?
-      flash[:danger] = "Cant merge topic."
+  def permission_check
+   handlers = {edit: :can_edit_topic?, update: :can_edit_topic?, merge: :can_merge_topic?}
+    if !current_user.try(handlers[params[:action].to_sym])
+      flash[:danger] = "Not allowed"
       redirect_to topic_path(id: params[:id]) and return
     end
+  end
+
+  def topic_params
+    params.require(:topic).permit(:display_name)
   end
 end
