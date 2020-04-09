@@ -14,12 +14,13 @@ class CreateSocialLogins < ActiveRecord::Migration[6.0]
       u.social_logins.create!(auth0_uid: u.auth0_uid, auth0_info: u.authinfo)
     end
 
-    remove_column :users, :auth0_uid, :authinfo, :post_reviews_to_twitter
+    remove_columns :users, :auth0_uid, :authinfo, :post_reviews_to_twitter
   end
 
   def down
-    add_column :users, :auth0_uid, :string, null: false
-    add_column :users, :authinfo, :text, null: false
+    add_column :users, :auth0_uid, :string, null: true
+    add_column :users, :authinfo, :text, null: true
+    add_column :users, :post_reviews_to_twitter, :boolean, null: false
 
     drop_table :social_logins
   end

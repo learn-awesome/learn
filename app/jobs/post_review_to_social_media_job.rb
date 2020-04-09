@@ -11,11 +11,13 @@ class PostReviewToSocialMediaJob < ApplicationJob
 	    return if review.overall_score.nil? and review.notes.blank? # neither star ratings nor notes are given
 	    posted = false
 
-	    if user.is_from_twitter? and user.post_reviews_to_twitter
-	    	if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
-			    message = review.tweet_msg
-			    Auth0Client.post_tweet(user, message)
-			    posted = true
+		user.social_logins.each do |sl|
+			if sl.is_from_twitter? and sl.post_reviews
+				if ENV.has_key?("TWITTER_CONSUMER_KEY") && ENV.has_key?("TWITTER_CONSUMER_SECRET")
+					message = review.tweet_msg
+					Auth0Client.post_tweet(sl, message)
+					posted = true
+				end
 			end
 		end
 

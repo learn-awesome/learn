@@ -2,23 +2,20 @@
 #
 # Table name: users
 #
-#  id                      :uuid             not null, primary key
-#  nickname                :string           not null
-#  auth0_uid               :string           not null
-#  authinfo                :text             not null
-#  image_url               :string
-#  bio                     :string
-#  description             :text
-#  score                   :integer          default("100"), not null
-#  role                    :string           default("regular"), not null
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  random_fav_topic        :boolean          default("false"), not null
-#  random_fav_item_types   :string
-#  referrer                :string
-#  post_reviews_to_twitter :boolean          default("false"), not null
-#  unsubscribe             :boolean          default("false"), not null
-#  goodreads_token         :string
+#  id                    :uuid             not null, primary key
+#  nickname              :string           not null
+#  image_url             :string
+#  bio                   :string
+#  description           :text
+#  score                 :integer          default("100"), not null
+#  role                  :string           default("regular"), not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  random_fav_topic      :boolean          default("false"), not null
+#  random_fav_item_types :string
+#  referrer              :string
+#  unsubscribe           :boolean          default("false"), not null
+#  goodreads_token       :string
 #
 
 require 'json'
@@ -56,12 +53,8 @@ class User < ApplicationRecord
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
 	end
 
-	def auth0
-		JSON.parse(self.authinfo)
-	end
-
 	def avatar_image
-		self.auth0["info"]["image"]
+		self.image_url
 	end
 
 	def create_default_deck
@@ -107,10 +100,6 @@ class User < ApplicationRecord
 		self.role == "admin"
 	end
 
-	def is_from_twitter?
-		self.auth0_uid.to_s.start_with?("twitter|")
-	end
-
 	def get_reviews(item_type, status, quality = nil, min_quality_score = 0)
 		results = self.reviews
 		if status.present?
@@ -143,6 +132,10 @@ class User < ApplicationRecord
 		]
 	end
 
+	def email
+		self.social_logins.map(&:email).compact.uniq.first
+	end
+
 	def is_core_dev?
 		User.core_devs.include?(self.id)
 	end
@@ -165,10 +158,6 @@ class User < ApplicationRecord
 
 	def can_add_syllabus?
 		Rails.env.development? or self.score.to_i >= 2000
-	end
-
-	def email
-		self.auth0["info"]["email"]
 	end
 
 	def self.learnawesome

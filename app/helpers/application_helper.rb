@@ -1,6 +1,6 @@
 module ApplicationHelper
   def user_signed_in?
-    session[:userinfo].present?
+    session[:userinfo].present? and session[:userinfo].is_a?(String)
   end
 
   def current_user

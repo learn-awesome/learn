@@ -15,13 +15,13 @@ class Auth0Controller < ApplicationController
           sociallogin.user = present_user
           # move reviews, items, points and #followers
           # Take care not to violate unique constraints while merging things
-          Review.where(user_id: old_user_id).update_all(user_id: present_user.id)
-          Item.where(user_id: old_user_id).update_all(user_id: present_user.id)
-          UserUserRelation.where(from_user_id: old_user_id).update_all(from_user_id: present_user.id)
-          UserUserRelation.where(to_user_id: old_user_id).update_all(to_user_id: present_user.id)
-          Collection.where(user_id: old_user_id).update_all(user_id: present_user)
-          Deck.where(user_id: old_user_id).update_all(user_id: present_user)
-          FlashCard.where(user_id: old_user_id).update_all(user_id: present_user)
+          Review.where(user_id: old_user_id).update_all(user_id: present_user.id) rescue nil
+          Item.where(user_id: old_user_id).update_all(user_id: present_user.id) rescue nil
+          UserUserRelation.where(from_user_id: old_user_id).update_all(from_user_id: present_user.id) rescue nil
+          UserUserRelation.where(to_user_id: old_user_id).update_all(to_user_id: present_user.id) rescue nil
+          Collection.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
+          Deck.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
+          FlashCard.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
         end
 
         sociallogin.user.image_url = request.env['omniauth.auth']["info"]["image"]
@@ -34,8 +34,7 @@ class Auth0Controller < ApplicationController
           user = User.new(
             nickname: request.env['omniauth.auth']["info"]["nickname"],
             image_url: request.env['omniauth.auth']["info"]["image"],
-            referrer: request.env['omniauth.params']['ref'],
-            post_reviews_to_twitter: true)
+            referrer: request.env['omniauth.params']['ref'])
         end
 
         user.social_logins.build(
