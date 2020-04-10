@@ -32,7 +32,7 @@ class Auth0Controller < ApplicationController
           user.image_url = request.env['omniauth.auth']["info"]["image"]
         else
           user = User.new(
-            nickname: request.env['omniauth.auth']["info"]["nickname"],
+            nickname: request.env['omniauth.auth']["info"]["nickname"].gsub(" ", ""),
             image_url: request.env['omniauth.auth']["info"]["image"],
             referrer: request.env['omniauth.params']['ref'])
         end

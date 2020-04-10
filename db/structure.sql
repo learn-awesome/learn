@@ -438,7 +438,6 @@ CREATE TABLE public.user_vouchers (
 CREATE TABLE public.users (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     nickname character varying NOT NULL,
-    authinfo text NOT NULL,
     image_url character varying,
     bio character varying,
     description text,
@@ -449,7 +448,6 @@ CREATE TABLE public.users (
     random_fav_topic boolean DEFAULT false NOT NULL,
     random_fav_item_types character varying,
     referrer character varying,
-    post_reviews_to_twitter boolean DEFAULT false NOT NULL,
     unsubscribe boolean DEFAULT false NOT NULL,
     goodreads_token character varying
 );

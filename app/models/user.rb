@@ -164,10 +164,6 @@ class User < ApplicationRecord
 		User.find_by_nickname('learnawesome')
 	end
 
-	def is_goodreads_connected?
-		self.goodreads_token.present? and JSON.parse(self.goodreads_token)["type"] == 'access_token'
-	end
-
 	def activitypub_id
 		id.to_s.gsub("-","_")
 	end

@@ -32,6 +32,10 @@ class SocialLogin < ApplicationRecord
 		self.auth0_uid.to_s.start_with?("linkedin|")
 	end
 
+	def is_from_goodreads?
+		self.auth0_uid.include?("oauth1") and self.auth0_uid.include?("goodreads")
+	end
+
 	def linkedin_person_urn
 		self.auth0_uid.to_s.gsub("linkedin|","") if self.is_from_linkedin?
 	end

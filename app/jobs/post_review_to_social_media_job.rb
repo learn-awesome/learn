@@ -27,20 +27,20 @@ class PostReviewToSocialMediaJob < ApplicationJob
 					# posted = true
 				end
 			end
-		end
 
-		if user.is_goodreads_connected?
-			if ENV.has_key?("GOODREADS_CLIENTID") && ENV.has_key?("GOODREADS_CLIENTSECRET")
-				consumer = OAuth::Consumer.new(
-					ENV['GOODREADS_CLIENTID'],
-					ENV['GOODREADS_CLIENTSECRET'],
-					:site => 'https://www.goodreads.com')
-				token = JSON.parse(user.goodreads_token)["token"]
-				secret = JSON.parse(user.goodreads_token)["secret"]
-				access_token = OAuth::AccessToken.new(consumer, token, secret)
-				access_token.post('/user_status.xml', {
-					'user_status[body]' => review.goodreads_msg
-				})
+			if sl.is_from_goodreads? and sl.post_reviews
+				if ENV.has_key?("GOODREADS_CLIENTID") && ENV.has_key?("GOODREADS_CLIENTSECRET")
+					consumer = OAuth::Consumer.new(
+						ENV['GOODREADS_CLIENTID'],
+						ENV['GOODREADS_CLIENTSECRET'],
+						:site => 'https://www.goodreads.com')
+					token = JSON.parse(user.goodreads_token)["token"]
+					secret = JSON.parse(user.goodreads_token)["secret"]
+					access_token = OAuth::AccessToken.new(consumer, token, secret)
+					access_token.post('/user_status.xml', {
+						'user_status[body]' => review.goodreads_msg
+					})
+				end
 			end
 		end
 

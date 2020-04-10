@@ -54,4 +54,27 @@ class Auth0Client
 			headers: {'X-Restli-Protocol-Version': '2.0.0', 'Authorization': "Bearer #{linkedin_access_token}"},
 			body: payload.merge({"author": "urn:li:person:#{social_login.linkedin_person_urn}"}).to_json)
 	end
+
+	def self.post_goodreads(social_login, message)
+		auth0_access_token = self.get_access_token
+		auth0_user_profile = self.get_user_profile(auth0_access_token, social_login) if auth0_access_token
+		return false if auth0_user_profile.nil?
+
+		goodreads_access_token = auth0_user_profile["access_token"]
+
+		# consumer = OAuth::Consumer.new(
+		# 	ENV['GOODREADS_CLIENTID'],
+		# 	ENV['GOODREADS_CLIENTSECRET'],
+		# 	:site => 'https://www.goodreads.com')
+		# token = JSON.parse(user.goodreads_token)["token"]
+		# secret = JSON.parse(user.goodreads_token)["secret"]
+		# access_token = OAuth::AccessToken.new(consumer, token, secret)
+		# access_token.post('/user_status.xml', {
+		# 	'user_status[body]' => review.goodreads_msg
+		# })
+
+		HTTParty.post("https://www.goodreads.com/user_status.xml",
+			headers: {'Authorization': "Bearer #{goodreads_access_token}"},
+			body: {'user_status[body]' => message}.to_json)
+	end
 end

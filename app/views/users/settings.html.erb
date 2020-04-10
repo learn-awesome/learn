@@ -26,15 +26,6 @@
               <%= form.collection_select :random_fav_item_types, ItemType.all, :id, :display_name_plural, {selected: @user.random_fav_item_types.to_s.split(",")}, {multiple: true, class: "form-control"} %>
             </div>
 
-            <p>
-              <% if @user.is_goodreads_connected? %>
-                <a href="<%= disconnectgoodreads_user_path(@user) %>" >Disconnect GoodReads</a>
-              <% else %>
-                <a href="<%= connectgoodreads_user_path(@user) %>" >Connect your GoodReads account for auto-posting of reviews</a>
-              <% end %>
-            </p>
-
-
     			<div class="form-group mb-4">
     			  <%= form.submit "Save Settings", class: "btn btn-primary" %>
     			</div>
