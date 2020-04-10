@@ -19,6 +19,14 @@ class PostReviewToSocialMediaJob < ApplicationJob
 					posted = true
 				end
 			end
+
+			if sl.is_from_linkedin? and sl.post_reviews
+				if ENV.has_key?("LINKEDIN_CONSUMER_KEY") && ENV.has_key?("LINKEDIN_CONSUMER_SECRET")
+					# payload = review.linkedin_payload
+					# Auth0Client.post_linkedin_share(sl, payload)
+					# posted = true
+				end
+			end
 		end
 
 		if user.is_goodreads_connected?

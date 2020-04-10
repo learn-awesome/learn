@@ -28,6 +28,14 @@ class SocialLogin < ApplicationRecord
 		self.auth0_uid.to_s.start_with?("twitter|")
 	end
 
+	def is_from_linkedin?
+		self.auth0_uid.to_s.start_with?("linkedin|")
+	end
+
+	def linkedin_person_urn
+		self.auth0_uid.to_s.gsub("linkedin|","") if self.is_from_linkedin?
+	end
+
 	def email
 		self.auth0["info"]["email"]
 	end

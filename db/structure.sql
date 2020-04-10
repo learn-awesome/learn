@@ -5,23 +5,8 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -343,6 +328,21 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: social_logins; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.social_logins (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    auth0_uid character varying,
+    auth0_info json,
+    post_reviews boolean DEFAULT true NOT NULL,
+    user_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: topic_idea_sets; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -451,8 +451,7 @@ CREATE TABLE public.users (
     referrer character varying,
     post_reviews_to_twitter boolean DEFAULT false NOT NULL,
     unsubscribe boolean DEFAULT false NOT NULL,
-    goodreads_token character varying,
-    auth0_uid character varying
+    goodreads_token character varying
 );
 
 
@@ -617,6 +616,14 @@ ALTER TABLE ONLY public.reviews
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: social_logins social_logins_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.social_logins
+    ADD CONSTRAINT social_logins_pkey PRIMARY KEY (id);
 
 
 --
@@ -849,6 +856,13 @@ CREATE INDEX index_reviews_on_user_id ON public.reviews USING btree (user_id);
 --
 
 CREATE UNIQUE INDEX index_reviews_on_user_id_and_item_id ON public.reviews USING btree (user_id, item_id);
+
+
+--
+-- Name: index_social_logins_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_social_logins_on_user_id ON public.social_logins USING btree (user_id);
 
 
 --
@@ -1187,6 +1201,14 @@ ALTER TABLE ONLY public.topic_relations
 
 
 --
+-- Name: social_logins fk_rails_f53abcfb16; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.social_logins
+    ADD CONSTRAINT fk_rails_f53abcfb16 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: flash_cards fk_rails_f949b3ea79; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1240,6 +1262,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200222193438'),
 ('20200223073231'),
 ('20200305015533'),
-('20200330145935');
+('20200330145935'),
+('20200409195801');
 
 

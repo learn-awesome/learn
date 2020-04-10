@@ -317,4 +317,42 @@ class Review < ApplicationRecord
       return "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. See my detailed review at #{url}"
     end
   end
+
+  def linkedin_payload
+    # https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin
+    url = Rails.application.routes.url_helpers.review_url(self)
+
+    if self.rating_msg.blank?
+      comment = "Just reviewed #{self.item.display_name}. See my detailed review at #{url}"
+    else
+      comment = "#{self.display_rating} #{self.rating_msg} to #{self.item.display_name}. Read my detailed review here:"
+    end
+
+    {
+        "lifecycleState": "PUBLISHED",
+        "specificContent": {
+            "com.linkedin.ugc.ShareContent": {
+                "shareCommentary": {
+                    "text": comment
+                },
+                "shareMediaCategory": "ARTICLE",
+                "media": [
+                    {
+                        "status": "READY",
+                        "description": {
+                            "text": self.notes.to_s.truncate(100)
+                        },
+                        "originalUrl": url,
+                        "title": {
+                            "text": (self.user.nickname + "'s review for " + self.item.display_name)
+                        }
+                    }
+                ]
+            }
+        },
+        "visibility": {
+            "com.linkedin.ugc.MemberNetworkVisibility": "CONNECTIONS"
+        }
+    }
+  end
 end
