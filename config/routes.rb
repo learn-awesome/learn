@@ -71,6 +71,7 @@ Rails.application.routes.draw do
       get 'actor'
       post 'inbox'
       get 'outbox'
+      post 'toggle_reviewposting'
     end
 
     collection do

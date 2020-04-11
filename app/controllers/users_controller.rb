@@ -90,6 +90,27 @@ class UsersController < ApplicationController
         redirect_back fallback_location: settings_user_path(@user)
       end
     end
+
+    def toggle_reviewposting
+      @user = User.find(params[:id])
+      if @user.id != current_user.id or !request.post? # users can modify only their own settings
+        flash[:danger] = "Not authorized"
+        redirect_back(fallback_location: settings_user_path(@user)) and return
+      end
+      social_login = @user.social_logins.where(id: params[:social_login_id]).first
+      if !social_login
+        flash[:danger] = "Not found"
+        redirect_back(fallback_location: settings_user_path(@user)) and return
+      end
+      social_login.post_reviews = !social_login.post_reviews
+      if social_login.save
+        flash[:success] = "Settings saved."
+        redirect_back fallback_location: settings_user_path(@user)
+      else
+        flash[:danger] = "Something went wrong: #{social_login.errors.first.inspect}"
+        redirect_back fallback_location: settings_user_path(@user)
+      end
+    end
   end
 
   def webfinger
