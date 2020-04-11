@@ -5,8 +5,23 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -396,9 +411,7 @@ CREATE TABLE public.user_topics (
     topic_id uuid NOT NULL,
     action character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    value integer,
-    by_user_id uuid
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -412,7 +425,8 @@ CREATE TABLE public.user_user_relations (
     to_user_id uuid NOT NULL,
     action character varying DEFAULT 'follow'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT reject_self_reference CHECK ((from_user_id <> to_user_id))
 );
 
 
@@ -913,13 +927,6 @@ CREATE INDEX index_topics_on_user_id ON public.topics USING btree (user_id);
 
 
 --
--- Name: index_user_topics_on_by_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_user_topics_on_by_user_id ON public.user_topics USING btree (by_user_id);
-
-
---
 -- Name: index_user_topics_on_topic_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -931,13 +938,6 @@ CREATE INDEX index_user_topics_on_topic_id ON public.user_topics USING btree (to
 --
 
 CREATE INDEX index_user_topics_on_user_id ON public.user_topics USING btree (user_id);
-
-
---
--- Name: index_user_topics_on_user_id_and_by_user_id_and_action; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_user_topics_on_user_id_and_by_user_id_and_action ON public.user_topics USING btree (user_id, by_user_id, action);
 
 
 --
@@ -980,6 +980,20 @@ CREATE INDEX index_vouchers_on_user_id ON public.vouchers USING btree (user_id);
 --
 
 CREATE INDEX trgm_items_name_indx ON public.items USING gist (name public.gist_trgm_ops);
+
+
+--
+-- Name: uniq_from_to_action; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX uniq_from_to_action ON public.user_user_relations USING btree (from_user_id, to_user_id, action);
+
+
+--
+-- Name: uniq_user_topic_action; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX uniq_user_topic_action ON public.user_topics USING btree (user_id, topic_id, action);
 
 
 --
@@ -1143,14 +1157,6 @@ ALTER TABLE ONLY public.person_idea_sets
 
 
 --
--- Name: user_topics fk_rails_d399e7a245; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.user_topics
-    ADD CONSTRAINT fk_rails_d399e7a245 FOREIGN KEY (by_user_id) REFERENCES public.users(id);
-
-
---
 -- Name: items fk_rails_d4b6334db2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1261,6 +1267,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200223073231'),
 ('20200305015533'),
 ('20200330145935'),
-('20200409195801');
+('20200409195801'),
+('20200411150429');
 
 

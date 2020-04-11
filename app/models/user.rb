@@ -39,12 +39,12 @@ class User < ApplicationRecord
 	has_many :to_user_relations, foreign_key: :to_user_id, class_name: "UserUserRelation"
 	has_many :followers, through: :to_user_relations, source: :from_user
 
-	has_many :collections
-	has_many :flash_cards
-	has_many :decks
-	has_many :social_logins
+	has_many :collections, dependent: :destroy, inverse_of: :user
+	has_many :flash_cards, dependent: :destroy, inverse_of: :user
+	has_many :decks, dependent: :destroy, inverse_of: :user
+	has_many :social_logins, dependent: :destroy, inverse_of: :user
 
-	has_many :activity_pub_followers
+	has_many :activity_pub_followers, dependent: :destroy, inverse_of: :user
 
 	after_create :update_points
 	after_create :create_default_deck
@@ -246,5 +246,42 @@ class User < ApplicationRecord
 
 	def theme_name
 		:default
+	end
+
+	def merge_account(old_user_id)
+		Rails.logger.info "Merging accounts: #{old_user_id} into #{self.id}"
+		# move reviews, items, points, followers etc
+		# Take care not to violate unique constraints while merging things
+		raise "Merge account error" unless self.persisted?
+
+		Topic.where(user_id: old_user_id).update_all(user_id: self.id) rescue nil
+
+		UserTopic.where(user_id: old_user_id).each do |r|
+		r.update!(user_id: self.id) rescue nil
+		end
+
+		Review.where(user_id: old_user_id).each do |r|
+		r.update!(user_id: self.id) rescue nil
+		end
+		Item.where(user_id: old_user_id).update_all(user_id: self.id) rescue nil
+
+		UserUserRelation.where(from_user_id: old_user_id).each do |uu|
+		uu.update!(from_user_id: self.id) rescue nil
+		end
+
+		UserUserRelation.where(to_user_id: old_user_id).each do |uu|
+		uu.update!(to_user_id: self.id) rescue nil
+		end
+
+		Collection.where(user_id: old_user_id).update_all(user_id: self.id) rescue nil
+
+		Deck.where(user_id: old_user_id).each do |deck|
+			deck.update!(user_id: self.id, name: "#{deck.name} (copied from #{old_user_id})") rescue nil
+		end
+
+		FlashCard.where(user_id: old_user_id).update_all(user_id: self.id) rescue nil
+
+		User.find(old_user_id).destroy # clean up
+		UserPointsService.call(self)
 	end
 end

@@ -29,6 +29,7 @@ class FlashCard < ApplicationRecord
     validates :answer, length: { in: 1..2000 }
     validates :level, inclusion: { in: 1..11 }
     validates :user, presence: true
+    # TODO: validate that flashcard owner is same as its deck's owner
 
     scope :of_user, ->(user_id) { where(user_id: user_id) }
     scope :least_practiced, -> { order(:next_practice_due_at, :practice_count, :last_practiced_at, :level) }

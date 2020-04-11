@@ -40,7 +40,7 @@ class Topic < ApplicationRecord
 	after_destroy :clear_cache
 
 	def set_properties
-		self.display_name = self.display_name.strip.gsub(/\s+/, ' ')
+		self.display_name = self.display_name.to_s.strip.gsub(/\s+/, ' ')
 		self.name = self.display_name.gsub(" ", "-").downcase
 		self.search_index = self.name
 		self.gitter_room = self.name

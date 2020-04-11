@@ -13,19 +13,12 @@ class Auth0Controller < ApplicationController
           # It's not mapped to the currently logged_in user. Move and merge accounts
           old_user_id = sociallogin.user_id
           sociallogin.user = present_user
-          # move reviews, items, points and #followers
-          # Take care not to violate unique constraints while merging things
-          Review.where(user_id: old_user_id).update_all(user_id: present_user.id) rescue nil
-          Item.where(user_id: old_user_id).update_all(user_id: present_user.id) rescue nil
-          UserUserRelation.where(from_user_id: old_user_id).update_all(from_user_id: present_user.id) rescue nil
-          UserUserRelation.where(to_user_id: old_user_id).update_all(to_user_id: present_user.id) rescue nil
-          Collection.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
-          Deck.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
-          FlashCard.where(user_id: old_user_id).update_all(user_id: present_user) rescue nil
+          sociallogin.save!
+          present_user.merge_account(old_user_id)
+        else
+          sociallogin.user.image_url = request.env['omniauth.auth']["info"]["image"]
+          sociallogin.save! && sociallogin.user.save!
         end
-
-        sociallogin.user.image_url = request.env['omniauth.auth']["info"]["image"]
-        sociallogin.save! && sociallogin.user.save!
       else
         if present_user
           user = present_user
@@ -42,13 +35,13 @@ class Auth0Controller < ApplicationController
           auth0_uid: request.env['omniauth.auth']["uid"])
 
         if present_user
-          if user.save
+          if user.save!
             Rails.logger.info "SocialLogin #{uid} created for #{present_user.id}"
           else
             Rails.logger.error user.errors.inspect
           end
         else
-          if user.save
+          if user.save!
             UserMailer.with(user: user).welcome_email.deliver_later
             Rails.logger.info "User #{uid} created"
           else

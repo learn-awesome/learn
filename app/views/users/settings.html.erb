@@ -47,7 +47,7 @@
             <li style="display:flex"><%= sl.auth0_uid %>: Auto-posting: <%= sl.post_reviews ? 'Enabled' : 'Disabled' %> &nbsp; &nbsp; <%= button_to (sl.post_reviews ? 'Disable' : 'Enable'), toggle_reviewposting_user_path(sl.user, {social_login_id: sl.id}), form_class: "form-inline", class: "btn btn-sm btn-primary" %></li>
           <% end %>
           </ul>
-          <%= @user.social_logins.count %> accounts connected. <%= link_to 'Connect Another', '/auth/auth0?prompt=login' %>
+          <%= @user.social_logins.count %> accounts connected. <%= link_to 'Connect Another (Use "Connect with OAuth1" for GoodReads)', '/auth/auth0?prompt=login' %>
       </div>
     </div>
   </div>
