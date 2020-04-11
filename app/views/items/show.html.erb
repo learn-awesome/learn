@@ -8,7 +8,7 @@
 
   <meta property="og:title" content="<%= @item.display_name %> :: LearnAwesome.org">
   <meta property="og:description" content="LearnAwesome.org :: Humanity's universal learning map">
-  <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+  <meta property="og:image" content="<%= @item.image_url || 'https://learnawesome.org/stream/assets/img/ogimage.png' %>">
   <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
   <meta name="twitter:card" content="summary_large_image">
 <% end %>

@@ -142,10 +142,10 @@ class Review < ApplicationRecord
   }
 
   def self.sample_reviews(item, exclude_user = nil)
-    return [] if User.where.not(id: [exclude_user.try(:id), User.learnawesome.id, *item.reviews.pluck(&:user_id)].compact.uniq).count == 0
+    return [] if User.where.not(id: [exclude_user.try(:id), User.learnawesome.try(:id), *item.reviews.pluck(&:user_id)].compact.uniq).count == 0
     [2,3,2,3,4].sample.times.map {
       Review.new(
-        user: User.where.not(id: [exclude_user.try(:id), User.learnawesome.id, *item.reviews.pluck(&:user_id)].compact.uniq).order('RANDOM()').first,
+        user: User.where.not(id: [exclude_user.try(:id), User.learnawesome.try(:id), *item.reviews.pluck(&:user_id)].compact.uniq).order('RANDOM()').first,
         item: item,
         notes: SAMPLE_COMMENTS[item.item_type_id.to_sym].try(:sample),
         overall_score: [3,4,5].sample,
