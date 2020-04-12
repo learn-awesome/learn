@@ -318,7 +318,7 @@ class ItemsController < ApplicationController
     end
 
     def set_has_used_browser_extension
-      if current_user and params[:ext].to_s == 'true' and !current_user.has_used_browser_extension
+      if current_user and params['ext'].to_s == 'true' and !current_user.has_used_browser_extension
         current_user.has_used_browser_extension = true
         current_user.save
       end

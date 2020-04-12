@@ -289,7 +289,7 @@ class User < ApplicationRecord
 		@onboarding ||= {
 		  first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
 		  first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.user_url(self)],
-		  installed_browser_extension: [false, "/browser_addon"],
+		  installed_browser_extension: [self.has_used_browser_extension, "/browser_addon"],
 		  first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
 		  first_user_follow: [self.following.count > 0, "/users"],
 		  first_referral: [self.invited.count > 0, Rails.application.routes.url_helpers.settings_user_path(self)],
