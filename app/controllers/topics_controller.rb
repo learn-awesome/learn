@@ -49,6 +49,10 @@ class TopicsController < InheritedResources::Base
     @learning_plans = @topic.advanced_search('learning_plan', nil, nil)
   end
 
+  def explore
+    @topic = Topic.from_param(params[:id])
+  end
+
   def toggle_follow
     @topic = Topic.from_param(params[:id])
     if current_user
@@ -86,7 +90,7 @@ class TopicsController < InheritedResources::Base
       redirect_to merge_topic_path(id: params[:id]) and return
     else
       @topic = Topic.from_param(params[:id])
-      @topics = Topic.where.not(id: params[:id].to_s.split("-")[0..4].join("-"))
+      @topics = Topic.where.not(id: @topic.id).order(:name)
     end
   end
 
@@ -106,6 +110,6 @@ class TopicsController < InheritedResources::Base
   end
 
   def topic_params
-    params.require(:topic).permit(:display_name)
+    params.require(:topic).permit(:display_name, :name, :search_index, :gitter_room, :parent_id)
   end
 end

@@ -20,6 +20,28 @@
     <%= form.text_field :display_name, minlength: 4, maxlength: 50, class: "form-control form-pill", pattern: "^[0-9a-zA-Z\\-\\/ ]+$", required: true %>
   </div>
 
+  <% if params['advanced'].to_s == 'true' %>
+    <div class="form-group mb-4">
+      <%= form.label :name, "Name (use only a-z, 0-9, / and -)" %><br>
+      <%= form.text_field :name, minlength: 4, maxlength: 50, class: "form-control form-pill", pattern: "^[0-9a-z\\-\\/]+$", required: true %>
+    </div>
+
+    <div class="form-group mb-4">
+      <%= form.label :search_index, "Search Index" %><br>
+      <%= form.text_field :search_index, minlength: 4, maxlength: 250, class: "form-control form-pill", required: true %>
+    </div>
+
+    <div class="form-group mb-4">
+    <%= form.label :gitter_room, "Gitter Chat room (use only a-z, 0-9 and -)" %><br>
+    <%= form.text_field :gitter_room, minlength: 4, maxlength: 50, class: "form-control form-pill", pattern: "^[0-9a-z\\-]+$", required: true %>
+    </div>
+
+    <div class="form-group mb-4">
+    <%= form.label :parent_id, "Parent Topic" %><br>
+    <%= form.select :parent_id,  Topic.where.not(id: @topic.id).order(:name).collect {|t| [t.name, t.id]}, { include_blank: "--- Select ---"}, class: "form-control" %>
+    </div>
+    <% end %>
+
   <div class="form-group mb-4">
     	<%= form.submit "Save Topic", class: "btn btn-primary" %>
   </div>

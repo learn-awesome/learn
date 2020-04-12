@@ -71,10 +71,20 @@
 						<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
 						<p class="text-muted mb-0"><%= link_to @user.collections.count.to_s + " Collections", user_collections_path(@user) %></p>
 
-						<br/><br/><p class="text-muted mb-0"><%= link_to "Power user score: #{@user.onboarding_percentage}", onboarding_user_path(@user) %></p>
-						<div class="progress mb-3">
-							<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
+						<br/><br/>
+							<% if current_user == @user %>
+								<%= link_to onboarding_user_path(@user) do %>
+									<p class="text-info mb-0">Power user score: <%= @user.onboarding_percentage %> / 100</p>
+									<div class="progress mb-3">
+										<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								<% end %>
+							<% else %>
+								<p class="text-muted mb-0">Power user score: <%= @user.onboarding_percentage %> / 100</p>
+								<div class="progress mb-3">
+									<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+							<% end %>
 					</div>
 
 					<div class="col-lg-8">

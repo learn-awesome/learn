@@ -35,6 +35,7 @@ class Topic < ApplicationRecord
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	belongs_to :user, optional: true
+	belongs_to :parent, class_name: "Topic"
 	before_validation :set_properties, on: :create
 	after_save :clear_cache
 	after_destroy :clear_cache
@@ -134,12 +135,24 @@ class Topic < ApplicationRecord
 	end
 
 	def self.get_all
-		Rails.cache.fetch("all_topics", expires_in: 24.hours) do
+		Rails.cache.fetch("all_topics", expires_in: 1.hours) do
 			Topic.all.to_a.sort_by(&:display_name)
 		end
 	end
 
 	def clear_cache
 		Rails.cache.delete('all_topics')
+	end
+
+	def ancestors
+		(parent.try(:ancestors).to_a + [parent]).compact
+	end
+
+	def image_url
+		"https://learnawesome.org/stream/assets/img/logo-mobile.png"
+	end
+
+	def display_name_without_ancestors
+		self.display_name.to_s.split("/").last.strip
 	end
 end

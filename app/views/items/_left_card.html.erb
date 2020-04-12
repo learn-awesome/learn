@@ -129,6 +129,11 @@
 	  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
 	  	</li>
 
+		<% if @item.user.present? %>
+			<li class="list-inline-item mr-3">
+				Added by <a href="<%= user_url(@item.user) %>" title="<%= @item.created_at.to_date.to_s %>"><%= @item.user.nickname %></a>
+			</li>
+		<% end %>
 	  	</ul>
 	</footer>
 </div>

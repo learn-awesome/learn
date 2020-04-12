@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       post 'toggle_follow'
       get  'merge'
       post 'merge'
+      get 'explore'
     end
     collection do
       get 'search'

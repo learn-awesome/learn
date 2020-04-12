@@ -6,6 +6,19 @@
 </div>
 
 <div class="row">
+	<div class="mb-4">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb bg-transparent small p-0">
+				<li class="breadcrumb-item"><a href="/topics">All Topics</a></li>
+				<% topic.ancestors.each do |par| %>
+					<li class="breadcrumb-item active" aria-current="page"><%= link_to topic_path(par) do %><%= par.display_name %><% end %></li>
+				<% end %>
+			</ol>
+		</nav>
+	</div>
+</div>
+
+<div class="row">
 	<h1 class="col-md-8 mb-4">
 	<% if current_user %>
 	<%= link_to toggle_follow_topic_path(topic), method: :post, class: "btn btn-sm btn-pill " + (@does_follow ? "btn-danger" : "btn-success") do %>
