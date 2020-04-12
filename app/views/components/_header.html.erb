@@ -104,6 +104,22 @@
           <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-3" aria-labelledby="dropdownMenuLink" style="width: 260px;">
             <div class="card">
 
+              <div class="card-header py-3">
+                <%= link_to onboarding_user_path(@current_user) do %>
+                <div class="d-flex align-items-center pb-3">
+                  <span class="h6 text-muted text-uppercase mb-0">Power user score</span>
+
+                  <div class="ml-auto text-muted">
+                    <strong class="text-dark"><%= current_user.onboarding_percentage %></strong> / 100
+                  </div>
+                </div>
+
+                <div class="progress">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: <%= current_user.onboarding_percentage %>%;" aria-valuenow="<%= current_user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <% end %>
+              </div>
+
               <div class="card-body">
                 <ul class="list-unstyled mb-0">
                   <li class="mb-4">

@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       post 'inbox'
       get 'outbox'
       post 'toggle_reviewposting'
+      get 'onboarding'
     end
 
     collection do
@@ -105,4 +106,5 @@ Rails.application.routes.draw do
   get '/whatsnew' => 'welcome#whatsnew'
   get '/kids' => 'welcome#kids'
   get '/.well-known/webfinger' => 'users#webfinger'
+  get '/browser_addon' => 'welcome#browser_addon'
 end

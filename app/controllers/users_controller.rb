@@ -156,4 +156,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def onboarding
+    @user = User.find(params[:id])
+  end
+
 end

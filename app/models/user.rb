@@ -284,4 +284,40 @@ class User < ApplicationRecord
 		User.find(old_user_id).destroy # clean up
 		UserPointsService.call(self)
 	end
+
+	def onboarding
+		@onboarding ||= {
+		  first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
+		  first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.user_url(self)],
+		  installed_browser_extension: [false, "/browser_addon"],
+		  first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
+		  first_user_follow: [self.following.count > 0, "/users"],
+		  first_referral: [false, Rails.application.routes.url_helpers.settings_user_path(self)],
+		  first_collection: [self.collections.count > 0, Rails.application.routes.url_helpers.user_collections_path(self)],
+		  first_flashcard: [self.flash_cards.count > 0, "/flash_cards/practice"],
+		  first_activitypub_follower: [self.activity_pub_followers.count > 0, Rails.application.routes.url_helpers.user_path(self)],
+		  profile_score: [self.score >= 150, Rails.application.routes.url_helpers.user_url(self)],
+		  join_chat: [false, Rails.application.routes.url_helpers.user_url(self)]
+		}
+	end
+
+	def onboarding_percentage
+		(self.onboarding.keys.select { |k| self.onboarding[k].first }.size * 100.0 / self.onboarding.keys.size).round
+	end
+
+	def self.onboarding_steps
+		[
+			[:first_follow_topic, "Follow your first favorite topic"],
+			[:first_review, "Add your first review"],
+			[:installed_browser_extension, "Install the browser extension"],
+			[:first_item, "Add your first link"],
+			[:first_user_follow, "Follow another user"],
+			[:first_referral, "Invite a friend"],
+			[:first_collection, "Create your first collection"],
+			[:first_flashcard, "Create your first flashcard"],
+			[:first_activitypub_follower, "Get a follower on ActivityPub or Mastodon"],
+			[:profile_score, "Reach a profile score of 150"],
+			[:join_chat, "Join the community chat"]
+		]
+	end
 end

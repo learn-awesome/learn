@@ -58,6 +58,10 @@ class WelcomeController < ApplicationController
     render json: [query] + Topic.search(query).map {|topic| topic.name} + Item.search(query).map {|item| item.name}
   end
 
+  def browser_addon
+    redirect_to browser_extension(request)
+  end
+
   private
 
   def fetch_entities(is_fuzzy)

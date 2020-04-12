@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card mb-4">
+
+      <header class="card-header">
+        <h2 class="h3 card-header-title"><%= @user.nickname %>'s power user score</h2>
+      </header>
+
+      <div class="card-body">
+        <div class="progress mb-3">
+            <div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <% onboarding_status = @user.onboarding %>
+        <% User.onboarding_steps.each do |step| %>
+            <div class="mb-2"><%= onboarding_status[step.first].first ? '✓' : '✗' %> &nbsp;<%= link_to step[1], onboarding_status[step.first].last %></div>
+        <% end %>
+
+        </div>
+    </div>
+</div>
