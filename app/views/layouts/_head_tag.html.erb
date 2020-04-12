@@ -1,3 +1,4 @@
+    <% if Rails.env.production? %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142191820-1"></script>
     <script>
@@ -7,6 +8,8 @@
 
       gtag('config', 'UA-142191820-1');
     </script>
+    <% end %>
+    
     <title><%= content_for?(:title) ? yield(:title) : "LearnAwesome.org" %></title>
 
     <!-- Meta -->
