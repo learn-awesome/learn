@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   include Secured
   before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine, :destroy]
   before_action :set_layout, :only => [:new, :show]
+  before_action :set_has_used_browser_extension
 
   def index
   end
@@ -219,24 +220,26 @@ class ItemsController < ApplicationController
 
   def search
     # search or add
-  	@q = params[:q]
+    @q = params[:q]
+    is_ext = params[:ext].to_s == 'true'
+
   	if @q.present?
   		@items = Item.search(@q, 10, is_fuzzy=true).to_a
       if @q.start_with?("http://") or @q.start_with?("https://")
         # query is a URL, no point editing. Directly take to new
         if @items.first
           redirect_to @items.first and return
-          redirect_to item_path(id: @items.first, ext: true)
+          redirect_to item_path(id: @items.first, ext: is_ext)
         else
           canonical = Item.extract_canonical_url(@q)
           if !canonical.blank? and canonical != @q
             @items = Item.search(canonical, 10, is_fuzzy=false).to_a
             if @items.first
               redirect_to @items.first and return
-              redirect_to item_path(id: @items.first, ext: true)
+              redirect_to item_path(id: @items.first, ext: is_ext)
             else
               if current_user
-                redirect_to new_item_path(url: canonical, ext: true) and return
+                redirect_to new_item_path(url: canonical, ext: is_ext) and return
               else
                 flash[:danger] = "You need to log in to add links."
                 redirect_to root_path
@@ -244,7 +247,7 @@ class ItemsController < ApplicationController
             end
           else
             if current_user
-              redirect_to new_item_path(url: @q, ext: true) and return
+              redirect_to new_item_path(url: @q, ext: is_ext) and return
             else
               flash[:danger] = "You need to log in to add links."
               redirect_to root_path
@@ -307,11 +310,17 @@ class ItemsController < ApplicationController
   private
 
     def set_layout
-      self.class.layout ( params['ext'].present? ? "embed_#{request.variant.first}" :  request.variant.first.to_s)
+      self.class.layout ( params['ext'].to_s == 'true' ? "embed_#{request.variant.first}" :  request.variant.first.to_s)
     end
 
     def item_params
       params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata)
     end
 
+    def set_has_used_browser_extension
+      if current_user and params[:ext].to_s == 'true' and !current_user.has_used_browser_extension
+        current_user.has_used_browser_extension = true
+        current_user.save
+      end
+    end
 end

@@ -448,7 +448,7 @@ CREATE TABLE public.users (
     random_fav_item_types character varying,
     referrer character varying,
     unsubscribe boolean DEFAULT false NOT NULL,
-    goodreads_token character varying
+    has_used_browser_extension boolean DEFAULT false NOT NULL
 );
 
 
@@ -1253,6 +1253,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200305015533'),
 ('20200330145935'),
 ('20200409195801'),
-('20200411150429');
+('20200411150429'),
+('20200412035642');
 
 

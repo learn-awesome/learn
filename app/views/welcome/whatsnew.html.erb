@@ -4,17 +4,24 @@
 	  	<div class="card-header d-md-flex align-items-center">
 	  		<h2><b>What's New</b></h2>
 	  	</div>
-	  	<div class="card-body">
-		  	<%= react_component("WhatsNewItem", { message: "2020-03-22: You can now practice flashcards to remember things. Flashcards can be created conveniently via browser extension or via note-taking form or manually." }) %>
-		  	<%= react_component("WhatsNewItem", { message: "2020-01-15: Reviews can now be posted to your GoodReads profile. Topic page improvements. Daily update via email." }) %>
-	  		<%= react_component("WhatsNewItem", { message: "2019-11-01: Better search. Easy sharing of items and topics on FB and Twitter. Layout fixes." }) %>
+		  <div class="card-body">
+			  <h3>2020-04-12</h3>
+			  <p>You can now connect multiple social networks in the same account for automatic posting of reviews and learning progress.</p>
 
-	  		<%= react_component("WhatsNewItem", { message: "2019-08-04: Dashboard now shows latest reviews from people you follow." }) %>
+			  <h3>2020-03-22</h3>
+			  <p>You can now practice flashcards to remember things. Flashcards can be created conveniently via browser extension or via note-taking form or manually.</p>
 
-	  		<p>2019-08-03: Your reviews can now automatically be posted to Twitter. Check <% if current_user and current_user.is_from_twitter? %><a href="/users/<%= current_user.id %>/settings">settings</a><% else %>settings page<% end %> to enable it.</p>
+			  <h3>2020-01-15</h3>
+			  <p>Reviews can now be posted to your GoodReads profile. Topic page improvements. Daily update via email.</p>
 
-	  		<%= react_component("WhatsNewItem", { message: "2019-08-02: Reviews have their own URLs now." }) %>
+			  <h3>2019-11-01</h3>
+			  <p>Better search. Easy sharing of items and topics on FB and Twitter. Layout fixes.</p>
 
+			  <h3>2019-08-04</h3>
+			  <p>Dashboard now shows latest reviews from people you follow.</p>
+
+			  <h3>2019-08-02</h3>
+			  <p>Reviews have their own URLs now.</p>
 	  	</div>
 	  </div>
 	</div>

@@ -13,7 +13,10 @@
 
         <% onboarding_status = @user.onboarding %>
         <% User.onboarding_steps.each do |step| %>
-            <div class="mb-2"><%= onboarding_status[step.first].first ? '✓' : '✗' %> &nbsp;<%= link_to step[1], onboarding_status[step.first].last %></div>
+            <div class="mb-2">
+              <%= onboarding_status[step.first].first ? '✓' : '✗' %> &nbsp;
+              <a href="<%= onboarding_status[step.first].last %>" <%= [:installed_browser_extension, :join_chat].include?(step.first) ? 'target=_blank' : '' %>><%= step[1] %></a>
+            </div>
         <% end %>
 
         </div>
