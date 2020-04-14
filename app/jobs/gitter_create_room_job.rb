@@ -23,9 +23,8 @@ class GitterCreateRoomJob < ApplicationJob
         },
         body: {
             "name" => topic.name.gsub("/","-"),
-            "topic" => "Discussions about #{topic.display_name}"),
-            "security" => {"type"=>"GROUP", "linkPath"=>nil, "security"=>"PUBLIC"},
-            "addBadge":true
+            "topic" => "Discussions about #{topic.display_name}",
+            "security" => {"type"=>"GROUP", "linkPath"=>nil, "security"=>"PUBLIC"}
         }.to_json
       )
       if resp.code >= 200 and resp.code < 300
