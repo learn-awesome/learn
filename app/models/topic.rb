@@ -35,7 +35,7 @@ class Topic < ApplicationRecord
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	belongs_to :user, optional: true
-	belongs_to :parent, class_name: "Topic"
+	belongs_to :parent, class_name: "Topic", optional: true
 	has_many :children, class_name: "Topic", foreign_key: "parent_id"
 	before_validation :set_properties, on: :create
 	after_save :clear_cache
@@ -172,7 +172,7 @@ class Topic < ApplicationRecord
 		misc = Topic.new(display_name: 'Other Topics')
 		result = {}
 		misc_child = []
-		children.each do |child|
+		children.to_a.each do |child|
 			if by_parent_id[child.id].present? # it has children
 				result[child] = by_parent_id[child.id]
 			else

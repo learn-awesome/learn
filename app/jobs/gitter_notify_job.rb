@@ -3,12 +3,12 @@ require 'httparty'
 class GitterNotifyJob < ApplicationJob
   queue_as :default
 
-  def perform(message, room_id = '5ca7a4aed73408ce4fbced18')
+  def perform(message, room_id)
     return if ENV['GITTER_TOKEN'].blank?
     return if room_id.blank?
-    # return unless Rails.env.production?
+    return unless Rails.env.production?
 
-    # curl -X POST -i -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer token" "https://api.gitter.im/v1/rooms/5ca7a4aed73408ce4fbced18/chatMessages" -d '{"text":"Testing Gitter API"}'
+    # https://developer.gitter.im/docs/messages-resource
     begin
       HTTParty.post(
         "https://api.gitter.im/v1/rooms/#{room_id}/chatMessages",

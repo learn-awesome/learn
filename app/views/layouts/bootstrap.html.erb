@@ -60,7 +60,7 @@
 
     <script>
       ((window.gitter = {}).chat = {}).options = {
-        room: 'learn-awesome/community'
+        room: 'learn-awesome/<%= (@topic && @topic.gitter_room_id.presence) ? @topic.gitter_room.gsub("/","-") : "community" %>'
       };
     </script>
     <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>

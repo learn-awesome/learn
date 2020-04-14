@@ -584,7 +584,9 @@ class Item < ApplicationRecord
     if Rails.env.production?
       item_url = Rails.application.routes.url_helpers.item_url(self)
       message = "New #{self.item_type} added in #{self.topics.map(&:name).join(',')}: #{self.name}: #{item_url}"
-      GitterNotifyJob.perform_later message #TODO: send message in each topic room, instead of learn-awesome/community only
+      self.topics.map { |t| t.gitter_room_id.presence || '5ca7a4aed73408ce4fbced18'}.compact.uniq.each do |room_id| # learn-awesome/community
+        GitterNotifyJob.perform_later(message,room_id)
+      end
     end
   end
 
