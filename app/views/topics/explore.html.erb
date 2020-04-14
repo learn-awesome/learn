@@ -1,2 +1,2 @@
 <h1>Exploring <%= @topic.display_name %></h1>
-<%= render partial: 'hierarchy', locals: {root_topic: @topic} %>
+<%= render partial: 'hierarchy', locals: {root_topic: @topic, show_max: (params['show_max'].present? ? params['show_max'].to_i : 20)} %>

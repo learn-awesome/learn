@@ -17,7 +17,7 @@
             </header>
 
             <div class="card-body">
-                <% children.take(20).each do |child| %>
+                <% children.take(show_max).each do |child| %>
                     <%= link_to child.display_name_without_ancestors, topic_path(child), class: "mr-3" %>
                 <% end %>
             </div>

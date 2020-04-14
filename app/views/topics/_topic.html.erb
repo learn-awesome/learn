@@ -47,9 +47,9 @@
 	<% if topic.all_children.present? %>
 		<b>Related: </b>
 		<% topic.all_children.take(5).each do |tt| %>
-			<%= link_to tt.display_name, topic_path(tt), class: 'btn btn-sm btn-soft-info btn-pill' %>
+			<%= link_to tt.display_name_without_ancestors, topic_path(tt), class: 'btn btn-sm btn-soft-info btn-pill' %>
 		<% end%>
-		<%= " and #{topic.all_children.count - 5 } others" if topic.all_children.count > 5 %>
+		<%= link_to(" and #{topic.all_children.count - 5 } others", explore_topic_path(topic, show_max: 100)) if topic.all_children.count > 5 %>
 	<% end %>
 	<% if topic.experts.present? %>
 		<%= number_to_human(topic.experts.count) %>
