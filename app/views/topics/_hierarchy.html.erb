@@ -1,21 +1,17 @@
 <% 
-    all_topics = Topic.get_all
-    top = all_topics.group_by(&:parent_id)
+    groups = Topic.get_hierarchy(root_topic)
 %>
 <div class="row">
-<% top.each do |parent_id, children| %>
-    <% parent = all_topics.find { |t| t.id == parent_id } %>
-    <% next if parent.try(&:parent_id) %>
-    <% next if context and (!parent or parent.parent_id != context.id) %>
+<% groups.each do |parent, children| %>
     <div class="col-4 mb-4">
         <div class="card">
             <header class="card-header">
                 <h2 class="h3 card-header-title">
-                <img class="u-avatar rounded-circle mr-3" src="<%= parent.try(:image_url) || 'https://learnawesome.org/stream/assets/img/logo-mobile.png' %>" alt="<%= parent.try(&:display_name) || 'Miscellaneous' %>">
-                    <% if parent %>
-                        <%= link_to parent.display_name, topic_path(parent) %>
+                <img class="u-avatar rounded-circle mr-3" src="<%= parent.image_url %>" alt="<%= parent.display_name %>">
+                    <% if parent.persisted? %>
+                        <%= link_to parent.display_name, explore_topic_path(parent) %>
                     <% else %>
-                        Miscellaneous
+                        <%= parent.display_name %>
                     <% end %>
                 </h2>
             </header>

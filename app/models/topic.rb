@@ -36,6 +36,7 @@ class Topic < ApplicationRecord
 	has_many :users, through: :user_topics
 	belongs_to :user, optional: true
 	belongs_to :parent, class_name: "Topic"
+	has_many :children, class_name: "Topic", foreign_key: "parent_id"
 	before_validation :set_properties, on: :create
 	after_save :clear_cache
 	after_destroy :clear_cache
@@ -148,11 +149,37 @@ class Topic < ApplicationRecord
 		(parent.try(:ancestors).to_a + [parent]).compact
 	end
 
+	def all_children
+		@all_children ||= (self.children.to_a + Topic.where(second_parent_id: self.id).to_a).uniq
+	end
+
 	def image_url
 		"https://learnawesome.org/stream/assets/img/logo-mobile.png"
 	end
 
 	def display_name_without_ancestors
 		self.display_name.to_s.split("/").last.strip
+	end
+
+	def self.get_hierarchy(root_topic)
+		all_topics = Topic.get_all
+		by_parent_id = all_topics.group_by(&:parent_id) # includes nil as a key with value as array of all top-level topics
+		all_topics.select { |t| t.second_parent_id.present? }.each do |tt|
+			by_parent_id[tt.second_parent_id] ||= []
+			by_parent_id[tt.second_parent_id].push(tt)
+		end
+		children = by_parent_id[root_topic.try(&:id)]
+		misc = Topic.new(display_name: 'Other Topics', image_url: 'https://learnawesome.org/stream/assets/img/logo-mobile.png')
+		result = {}
+		misc_child = []
+		children.each do |child|
+			if by_parent_id[child.id].present? # it has children
+				result[child] = by_parent_id[child.id]
+			else
+				misc_child << child
+			end
+		end
+		result[misc] = misc_child unless misc_child.blank?
+		return result
 	end
 end

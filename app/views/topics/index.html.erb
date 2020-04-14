@@ -3,4 +3,4 @@
 <%= render 'components/autocomplete', containerid: 'maintopic', placeholder: 'e.g. machine learning', source: '/topics/search.json?q=%QUERY', is_remote: true, notfound: 'not found. <a href="/topics/new">Add new topic?</a>' %>
 </div>
 
-<%= render partial: 'hierarchy', locals: {context: nil} %>
+<%= render partial: 'hierarchy', locals: {root_topic: nil} %>

@@ -5,8 +5,23 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -383,7 +398,9 @@ CREATE TABLE public.topics (
     updated_at timestamp without time zone NOT NULL,
     display_name character varying,
     user_id uuid,
-    parent_id uuid
+    parent_id uuid,
+    second_parent_id uuid,
+    image_url character varying
 );
 
 
@@ -913,6 +930,13 @@ CREATE INDEX index_topics_on_parent_id ON public.topics USING btree (parent_id);
 
 
 --
+-- Name: index_topics_on_second_parent_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topics_on_second_parent_id ON public.topics USING btree (second_parent_id);
+
+
+--
 -- Name: index_topics_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1027,6 +1051,14 @@ ALTER TABLE ONLY public.flash_cards
 
 ALTER TABLE ONLY public.collection_items
     ADD CONSTRAINT fk_rails_29c02f6872 FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
+-- Name: topics fk_rails_2dbda122e8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topics
+    ADD CONSTRAINT fk_rails_2dbda122e8 FOREIGN KEY (second_parent_id) REFERENCES public.topics(id);
 
 
 --

@@ -44,7 +44,13 @@
 </div>
 
 <div class="mb-4">
-
+	<% if topic.all_children.present? %>
+		<b>Related: </b>
+		<% topic.all_children.take(5).each do |tt| %>
+			<%= link_to tt.display_name, topic_path(tt), class: 'btn btn-sm btn-soft-info btn-pill' %>
+		<% end%>
+		<%= " and #{topic.all_children.count - 5 } others" if topic.all_children.count > 5 %>
+	<% end %>
 	<% if topic.experts.present? %>
 		<%= number_to_human(topic.experts.count) %>
 		<%= "expert".pluralize(topic.experts.size) %>:
