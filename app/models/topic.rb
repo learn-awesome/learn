@@ -169,7 +169,7 @@ class Topic < ApplicationRecord
 			by_parent_id[tt.second_parent_id].push(tt)
 		end
 		children = by_parent_id[root_topic.try(&:id)]
-		misc = Topic.new(display_name: 'Other Topics', image_url: 'https://learnawesome.org/stream/assets/img/logo-mobile.png')
+		misc = Topic.new(display_name: 'Other Topics')
 		result = {}
 		misc_child = []
 		children.each do |child|
