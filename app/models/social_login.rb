@@ -28,6 +28,10 @@ class SocialLogin < ApplicationRecord
 		self.auth0_uid.to_s.start_with?("twitter|")
 	end
 
+	def is_from_google?
+		self.auth0_uid.to_s.start_with?("google-oauth2|")
+	end
+
 	def is_from_linkedin?
 		self.auth0_uid.to_s.start_with?("linkedin|")
 	end
@@ -42,6 +46,13 @@ class SocialLogin < ApplicationRecord
 
 	def email
 		self.auth0["info"]["email"]
+	end
+
+	def email=(val)
+		# TO fill in missing email for old users
+		data = self.auth0
+		data["info"]["email"] = val
+		self.auth0_info = data.to_json
 	end
 
 	def auth0

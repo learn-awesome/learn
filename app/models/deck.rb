@@ -27,7 +27,7 @@ class Deck < ApplicationRecord
 
   scope :of_user, ->(user_id) { where(user_id: user_id) }
   belongs_to :user
-  has_many :flash_cards
+  has_many :flash_cards, dependent: :destroy
 
   def image
     self.image_url || "https://picsum.photos/seed/#{self.id}/200/100"

@@ -7,6 +7,9 @@
 				<img class="img-fluid rounded-circle mb-3" src="<%= @user.avatar_image %>" alt="photo" width="84">
 
 				<h2 class="mb-2"><%= @user.nickname %></h2>
+				<% if @user.email.present? and (@user.id == current_user.try(&:id) || current_user.try(&:is_core_dev?)) %>
+					<h5 class="text-muted mb-4"><%= @user.email %></h5>
+				<% end %>
 				<h5 class="text-muted mb-4"><%= @user.bio %></h5>
 
 				<!-- <ul class="list-inline mb-4">

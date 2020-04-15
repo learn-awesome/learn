@@ -61,7 +61,7 @@ class UsersController < ApplicationController
       @user_action.destroy
     else
       @following.create(to_user: @user, action: "follow")
-      UserMailer.with(user: @user, follower: current_user).follow_email.deliver_later
+      UserMailer.with(user: @user, follower: current_user).follow_email.deliver_later if @user.email.present?
     end
     redirect_to @user
   end
