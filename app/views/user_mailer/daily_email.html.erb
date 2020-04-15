@@ -19,7 +19,7 @@
 <% end %>
 
 <% unless @new_global_users.blank? %>
-  <p><%= @new_global_users.size %> new users joined yesterday:
+  <p><%= link_to "#{@new_global_users.size} new users", users_url %> joined yesterday:
     <% @new_global_users.each do |f| %>
     <%= link_to f.nickname, user_url(f) %>
     <% end %>
@@ -34,6 +34,9 @@
     </li><% end %>
     </ul>
 <% end %>
+
+<p>We have been adding many advanced features lately. You can <%= link_to "explore them here", onboarding_user_url(@user) %> and
+increase your power user score.</p>
 
 <p>
 Happy learning :)

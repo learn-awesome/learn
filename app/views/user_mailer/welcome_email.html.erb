@@ -7,7 +7,9 @@
   <li>Participate in community chat</li>
 </ul>
 
-<p><%= User.count %> users have joined recently and you can discover more of them by <%= link_to "browsing topics", topics_url %>.</p>
+<p><%= User.where("created_at > ?", Time.now.beginning_of_day - 7.day).count %> users have joined recently and you can <%= link_to "discover more of them here", users_url %>. Also, we 
+have been adding many advanced features lately. You can <%= link_to "explore them here", onboarding_user_url(@user) %> and
+increase your power user score.</p>
 
 <p>If you have any questions, feel free to <a href="https://gitter.im/learn-awesome/meta">ask the developers</a>.</p>
 <p>Thanks for joining and have a great day!

@@ -449,7 +449,7 @@
                         <table class="body-sub" role="presentation">
                           <tr>
                             <td>
-                              <p class="f-fallback sub">To unsubscribe from email notifications, visit: <%= settings_user_url(@user) %></p>
+                              <p class="f-fallback sub">To unsubscribe from email notifications, <%= link_to "go to your settings page", settings_user_url(@user) %>.</p>
                             </td>
                           </tr>
                         </table>

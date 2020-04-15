@@ -5,7 +5,7 @@ class UserMailerPreview < ActionMailer::Preview
     end
 
     def daily_email
-        u = User.find_by_nickname('nilesh.tr')
+        u = User.order(:created_at).first
         new_global_users = User.where("created_at > ?", Time.now.beginning_of_day - 1.day)
         new_items = Item.where("created_at > ?", Time.now.beginning_of_day - 1.year).limit(5)
         new_fav_items = TopicIdeaSet.where(topic: u.fav_topics).where("created_at > ?", Time.now.beginning_of_day - 1.day)
