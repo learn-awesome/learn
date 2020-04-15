@@ -288,7 +288,8 @@ class User < ApplicationRecord
 	def onboarding
 		@onboarding ||= {
 		  first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
-		  first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.user_url(self)],
+		  first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.topics_path],
+		  profile_bio: [self.bio.to_s.present?, Rails.application.routes.url_helpers.edit_user_url(self)],
 		  installed_browser_extension: [self.has_used_browser_extension, "/browser_addon"],
 		  first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
 		  first_user_follow: [self.following.count > 0, "/users"],
@@ -310,6 +311,7 @@ class User < ApplicationRecord
 		[
 			[:first_follow_topic, "Follow your first favorite topic"],
 			[:first_review, "Add your first review"],
+			[:profile_bio, "Update your bio in profile"],
 			[:installed_browser_extension, "Install the browser extension"],
 			[:first_item, "Add your first link"],
 			[:first_user_follow, "Follow another user"],
