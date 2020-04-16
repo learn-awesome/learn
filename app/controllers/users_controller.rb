@@ -47,6 +47,10 @@ class UsersController < ApplicationController
     @min_quality_score = (params[:min_quality_score] or 4).to_i
 
     @reviews = @user.get_reviews(@item_type, @status, @quality, @min_quality_score)
+    if !@user.has_used_embed
+      @user.has_used_embed = true
+      @user.save
+    end
     respond_to do |format|
       format.html { render layout: 'embed' }
       format.json { render json: @reviews }
