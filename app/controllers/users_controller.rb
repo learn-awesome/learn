@@ -41,8 +41,8 @@ class UsersController < ApplicationController
 
   def reviews
     @user = User.find(params[:id])
-    @item_type = params[:item_type] or 'book'
-    @status = params[:status] or 'learned'
+    @item_type = params[:item_type].presence or 'book'
+    @status = params[:status].presence or 'learned'
     @quality = params[:quality]
     @min_quality_score = (params[:min_quality_score] or 4).to_i
 

@@ -100,7 +100,7 @@ class User < ApplicationRecord
 		self.role == "admin"
 	end
 
-	def get_reviews(item_type, status, quality = nil, min_quality_score = 0)
+	def get_reviews(item_type_id, status, quality = nil, min_quality_score = 0)
 		results = self.reviews
 		if status.present?
 			results = results.where(status: status)
@@ -112,7 +112,7 @@ class User < ApplicationRecord
 
 		results = results.all.to_a
 
-		if item_type.present?
+		if item_type_id.present?
 			results = results.select { |r| r.item.item_type_id == item_type_id }
 		end
 		return results
