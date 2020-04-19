@@ -25,6 +25,18 @@ class WelcomeController < ApplicationController
   def whatsnew
   end
 
+  def isbnsearch
+    @isbn = params[:q]
+    if @isbn.present?
+      item = Item.search_by_isbn(@isbn)
+      if item
+        redirect_to item and return
+      else
+        flash[:danger] = "#{@isbn} not found"
+      end
+    end
+  end
+
   def search
   	# search both items and topics for the top header
   	@q = params[:q]

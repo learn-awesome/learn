@@ -435,6 +435,12 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.search_by_isbn(isbn)
+    isbn = isbn.gsub(" ","").gsub("-","")
+    # ISBN is edition-specific
+    Item.where("metadata::text like '%#{isbn}%'").first
+  end
+
   def self.extract_opengraph_data(url)
     Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
       if url.include?("goodreads.com")
