@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for :opengraph do %>
+  <link rel="canonical" href="<%= item_url(@item) %>" />
   <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
   <meta name="description" content="<%= @item.description %>: LearnAwesome.org :: Humanity's universal learning map">
 

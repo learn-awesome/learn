@@ -48,7 +48,8 @@ namespace :import do
   task :import, [:file_name] => :environment do |task, args|
 
 	# creating a dummy user because Item needs some user
-	user = User.find_or_create_by!(nickname: 'learnawesome', auth0_uid: 'learnawesome', authinfo: '{"info": {"image": "https://learnawesome.org/stream/assets/img/logo-mobile.png"}}')
+	user = User.find_or_create_by!(nickname: 'learnawesome')
+	user.social_logins.create!(auth0_uid: 'learnawesome', auth0_info: '{"info": {"image": "https://learnawesome.org/stream/assets/img/logo-mobile.png"}}')
 
 	data = JSON.parse(File.read(args[:file_name]))
 	data.each do |topic_name, topic_hash|

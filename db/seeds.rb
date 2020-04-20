@@ -17,6 +17,9 @@ Topic.delete_all
 IdeaSet.delete_all
 ItemType.delete_all
 Review.delete_all
+FlashCard.delete_all
+Deck.delete_all
+SocialLogin.delete_all
 User.delete_all
 UserTopic.delete_all
 
