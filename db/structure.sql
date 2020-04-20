@@ -245,7 +245,7 @@ CREATE TABLE public.items (
     updated_at timestamp without time zone NOT NULL,
     typical_age_range character varying,
     description text,
-    metadata json DEFAULT '"{}"'::json NOT NULL
+    metadata json DEFAULT '{}'::json NOT NULL
 );
 
 
@@ -275,7 +275,7 @@ CREATE TABLE public.people (
     twitter character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    metadata json DEFAULT '"{}"'::json NOT NULL,
+    metadata json DEFAULT '{}'::json NOT NULL,
     goodreads character varying,
     image_url character varying
 );
@@ -1307,6 +1307,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200412035642'),
 ('20200412061911'),
 ('20200414183335'),
-('20200416185108');
+('20200416185108'),
+('20200419091150');
 
 

@@ -438,7 +438,7 @@ class Item < ApplicationRecord
   def self.search_by_isbn(isbn)
     isbn = isbn.gsub(" ","").gsub("-","")
     # ISBN is edition-specific
-    Item.where("metadata::text like '%#{isbn}%'").first
+    Item.where(item_type_id: 'book').where("metadata::text like '%#{isbn}%'").first
   end
 
   def self.extract_opengraph_data(url)

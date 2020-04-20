@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
         @creator_id = creator.id
       end
       @description = @extracted[:description]
-      @metadata = @extracted[:metadata].to_json
+      @metadata = @extracted[:metadata]
     else
       @item_type = Item.suggest_format(@item_url) if @item_url.present?
     end

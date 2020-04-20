@@ -73,3 +73,24 @@
 
 	</footer>
 </div>
+
+<!-- Review snippet for Google: https://developers.google.com/search/docs/data-types/review-snippet for other types -->
+<% if ['book','course'].include?(@review.item.item_type_id) %>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org/",
+	"@type": "Review",
+	"itemReviewed": {
+		"@type": "<%= @review.item.item_type_id.capitalize %>%",
+		"image": "<%= @review.item.image_url %>",
+		"name": "<%= @review.item.name %>"
+	},
+	"reviewRating": {
+		"@type": "Rating",
+		"ratingValue": "<%= @review.overall_score %>"
+	},
+	"name": "<%= @review.item.name %>",
+	"reviewBody": "<%= @review.notes %>"
+}
+</script>
+<% end %>
