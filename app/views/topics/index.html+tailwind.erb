@@ -1,0 +1,6 @@
+<div class="text-center mb-3">
+    <h1 class="font-semibold text-4xl">I want to learn</h1>
+    <%= render 'components/autocomplete', containerid: 'maintopic', placeholder: 'e.g. machine learning', source: '/topics/search.json?q=%QUERY', is_remote: true, notfound: 'not found. <a href="/topics/new">Add new topic?</a>' %>
+</div>
+
+<%= render partial: 'hierarchy', locals: {root_topic: nil, show_max: 20} %>

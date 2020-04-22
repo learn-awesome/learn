@@ -1,0 +1,29 @@
+<div class="mb-4">
+<nav aria-label="breadcrumb">
+  <h1 class="h3"><%= @item_type.display_name_plural %></h1>
+</nav>
+</div>
+<div class="flex flex-wrap">
+<!-- Cards with Tabs -->
+    <div class="md:w-1/2 pr-4 pl-4 mb-4">
+      <% @topics.each do |topic| %>
+      <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light mb-2">
+        <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
+          <h2 class="h3 card-header-title"><%= link_to topic.display_name, topic, class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline #{Topic.button_style}" %></h2>
+        </div>
+        <div class="flex-auto p-6">
+            		<% topic.items.each do |item| %>
+            		<div class="mb-2">
+            			<%= link_to item.display_name, item %>
+        			</div>
+            		<% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+</div>
+<% if @topics.present? %>
+  <div class="flex list-reset pl-0 roundeds">
+      <%= will_paginate @topics, :container => false %>
+  </div>
+<% end %>

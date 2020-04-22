@@ -1,0 +1,25 @@
+<% 
+    groups = Topic.get_hierarchy(root_topic)
+%>
+<% groups.each do |parent, children| %>
+
+    <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+        <div class="flex justify-center md:justify-end -mt-16">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="<%= parent.image_url %>"  alt="<%= parent.display_name %>">
+        </div>
+        <div>
+            <h2 class="text-gray-800 text-3xl font-semibold">
+            <% if parent.persisted? %>
+                <%= link_to parent.display_name, explore_topic_path(parent) %></h2>
+            <% else %>
+                <%= parent.display_name %>
+            <% end %>
+            </h2>
+            <p class="mt-2 text-gray-600">
+                <% children.take(show_max).each do |child| %>
+                    <%= link_to child.display_name_without_ancestors, topic_path(child), class: "hover:text-blue-500 px-2" %>
+                <% end %>
+            </p>
+        </div>
+  </div>
+<% end %>

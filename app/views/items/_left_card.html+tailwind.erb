@@ -1,0 +1,115 @@
+<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+	<header class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest flex align-items-center">
+      <h2 class="h2 card-header-title"><b><%= @item.display_name %></b></h2>
+      <!-- Card Header Icon -->
+	  <ul class="list-inline ml-auto mb-0">
+		<% if @item.can_user_edit?(current_user) %>
+        <li class="list-inline-item">
+          <a class="link-muted h3" href="<%= edit_item_path(item_id: @item.id) %>" title="Edit Item">
+            <i class="far fa-edit"></i>
+          </a>
+		</li>
+		<% end %>
+		<% if @item.can_user_destroy?(current_user) %>
+        <li class="list-inline-item">
+		  <%= link_to @item, method: 'delete', class: 'link-muted h3' do %>
+		  	<i class="fas fa-trash-alt"></i>
+		  <% end %>
+		</li>
+		<% end %>
+		<% if @item.can_user_change_related_items?(current_user) %>
+        <li class="list-inline-item">
+          <a class="link-muted h3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
+            <i class="fas fa-cogs"></i>
+          </a>
+		</li>
+		<% end %>
+      </ul>
+      <!-- End Card Header Icon -->
+    </header>
+	<div class="flex-auto p-6">
+		<div>
+		<p class="mb-4"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "#{ItemType.button_style}" %> in 
+		<% @item.topics.map do |topic| %>
+			<%= link_to topic.name, topic, class: "#{Topic.button_style}" %>
+		<% end %>
+		</p>
+		<% if @item.is_syllabus? %>
+			<div class="mb-4">
+				<%= @item.display_description %>
+			</div>
+		<% else %>
+			<div class="mb-4">
+				<% if @item.large_thumbnail.present? %>
+					<p><a href="<%= @item.primary_link.url %>" target="_blank"><img src="<%= @item.large_thumbnail %>" style="max-height: 400px"/></p></a>
+				<% end %>
+				<p><%= @item.display_description %></p>
+				<p><%= link_to "Visit on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "btn btn-block btn-lg btn-primary", target: :_blank %></p>
+			</div>
+		<% end %>
+		<% if @item.links.size > 1 %>
+		<div class="mb-4">Also on: 
+		<% (@item.links - [@item.primary_link]).map do |link| %>
+			  <%= link_to link.top_domain, link.url, class: "btn btn-soft-primary btn-sm mb-2", target: :_blank %>
+	  	<% end %>
+		</div>
+		<% end %>
+		<div class="item_extra_details">
+		<% if @item.estimated_time %>
+			<span class="nohover inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight btn-soft-info" data-toggle="tooltip" data-placement="top" title="Estimated time to complete">
+				<i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;
+				<%= @item.estimated_time.to_s + @item.time_unit[0] %>
+			</span>
+		<% end %>
+		<% if @item.typical_age_range.present? %>
+			<span class="nohover inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
+				<% if @item.typical_age_range[0] == '-' %>
+					<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
+				<% else %>
+					<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
+				<% end %>
+			</span>
+		<% end %>
+		<% if @item.year.present? %>
+			<span class="nohover inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight btn-soft-info" data-toggle="tooltip" data-placement="top" title="Year of publication">
+				<i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;
+				<%= @item.year %>
+			</span>
+		<% end %>
+		</div>
+		<% if @item.idea_set.recommendations.any? %>
+		<div class="recommendations">
+			<p>Recommended by: 
+			<% @item.idea_set.recommendations.each do |rec| %>
+				<%= link_to rec.display_name, rel.target %>
+			<% end %>
+			</p>
+		</div>
+		<% end %>
+		<div><% @item.idea_set.person_idea_sets.where(role: 'creator').collect(&:person).each do |creator| %>
+			<small><%= link_to creator.name, creator %>&nbsp;</small>
+		<% end %>
+		</div>	
+		</div>
+	</div>
+	<footer class="py-3 px-6 bg-grey-lighter border-t-1 border-grey-light">
+		<ul class="list-inline mr-auto mb-0">
+        <li class="list-inline-item mr-3">
+          <a class="link-muted h3" href="<%= item_url(@item) %>" title="Permalink">
+            <i class="fas fa-link"></i>
+          </a>
+		</li>
+		<li class="list-inline-item mr-3">
+		<a class="link-muted h3" href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+		</li>
+		<li class="list-inline-item mr-3">
+	  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
+	  	</li>
+		<% if @item.user.present? %>
+			<li class="list-inline-item mr-3">
+				Added by <a href="<%= user_url(@item.user) %>" title="<%= @item.created_at.to_date.to_s %>"><%= @item.user.nickname %></a>
+			</li>
+		<% end %>
+	  	</ul>
+	</footer>
+</div>

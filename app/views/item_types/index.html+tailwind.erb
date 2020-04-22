@@ -1,0 +1,55 @@
+<div class="mb-4">
+<nav aria-label="breadcrumb">
+  <h1 class="h3">Formats</h1>
+</nav>
+</div>
+<% ItemType.all.each_slice(2).to_a.each do |pair| %>
+      <div class="flex flex-wrap">
+        <!-- Cards with Tabs -->
+        <% pair.each do |it| %>
+	        <div class="md:w-1/2 pr-4 pl-4 mb-4">
+	          <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+	            <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
+	              <h2 class="h3 card-header-title"><%= link_to it.display_name_plural, it, class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline #{ItemType.button_style}" %></h2>
+	              <!-- Tabs Nav -->
+	              <ul class="flex flex-wrap list-reset pl-0 mb-0 border border-t-0 border-r-0 border-l-0 border-b-1 border-grey-light border-b-0 -ml-2 -mb-3 md:ml-auto mt-3 mt-md-0">
+	               <li class="">
+	                 <a href="#panelWithTabsTab1" class="inline-block py-2 px-4 no-underline active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
+	               </li>
+	               <li class="">
+	                 <a href="#panelWithTabsTab2" class="inline-block py-2 px-4 no-underline" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
+	               </li>
+	              </ul>
+	              <!-- End Tabs Nav -->
+	            </div>
+	            <div class="flex-auto p-6">
+	              <!-- Tabs Content -->
+	              <div class="tab-content">
+	                <div class="tab-pane opacity-0 opacity-100 block active" id="panelWithTabsTab1" role="tabpanel">
+	                		<% it.items.recent.each do |item| %>
+	                		<div class="mb-2">
+	                			<% item.topics.map do |topic| %>
+									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+								<% end %>
+	                			<%= link_to item.name.capitalize, item %>
+                			</div>
+	                		<% end %>
+	                </div>
+	                <div class="tab-pane opacity-0" id="panelWithTabsTab2" role="tabpanel">
+	                		<% it.items.popular.each do |item| %>
+	                		<div class="mb-2">
+	                			<% item.topics.map do |topic| %>
+									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+								<% end %>
+	                			<%= link_to item.name.capitalize, item %>
+                			</div>
+	                		<% end %>
+	                </div>
+	              </div>
+	              <!-- End Tabs Content -->
+	            </div>
+	          </div>
+	        </div>
+        <% end %>
+      </div>
+<% end %>

@@ -1,0 +1,46 @@
+						<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light mb-4">
+							<header class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
+								<h2 class="h3 card-header-title"><b>Also available as:</b></h2>
+							</header>
+							<div class="flex-auto p-6 p-0 m-0">
+								<div class="tab-content" id="commentsTabs">
+									<!-- Tabs Content -->
+									<div class="tab-pane opacity-0 opacity-100 block active" id="commentsTab1" role="tabpanel">
+										<div class="flex flex-col pl-0 mb-0 border rounded border-grey-light list-lg-group ">
+										<% @item.related_items.each do |rel| %>
+											<div class="flex flex-wrap">
+												<div class="md:w-1/6 pr-4 pl-40">
+													<a class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-grey-light no-underline w-fill" href="<%= item_path(rel) %>">
+													<div class="media">
+														<img class="u-avatar mr-3" src="<%= rel.thumbnail %>" alt="<%= rel.item_type.display_name_plural %>">
+														<div class="media-body">
+															<div class="d-mflex align-items-center">
+																<h4 class="mb-1">
+																	<span class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight #{ItemType.button_style}">
+																		<%= rel.item_type.display_name_plural %>
+																	</span>
+																	<%= rel.display_name %>
+																	<span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded badge-soft-secondary mx-1"></span>
+																</h4>
+																<small class="text-grey md:ml-auto"></small>
+															</div>
+															<p class="mb-0"><text-sm class="text-grey md:ml-auto"><%= rel.primary_link.top_domain %></small></p>
+														</div>
+													</div>
+											  		</a>
+											  	</div>
+											  	<div class="md:w-1/5 pr-4 pl-4">
+														<%= link_to rel.primary_link.url, target: :_blank, class: "list-group-item list-group-item-action", style: "height: 100%" do %>
+															<div style="width:100%; height: 100%; text-align: center">
+																<i class="fas fa-external-link-alt fa-2x" style="margin-top: 10px"></i>
+															</div>
+														<% end %>
+											  	</div>
+											</div>
+										<% end %>
+										</div>
+									</div>
+									<!-- End Tabs Content -->
+								</div>
+							</div>
+						</div>

@@ -1,0 +1,42 @@
+							<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light mb-4">
+								<header class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
+									<h2 class="h3 card-header-title">Reviews</h2>
+									<!-- Nav Tabs -->
+									<ul id="commentsTabsControl" class="flex flex-wrap list-reset pl-0 mb-0 border border-t-0 border-r-0 border-l-0 border-b-1 border-grey-light border-b-0 -ml-2 -mb-3 md:ml-auto mt-4 mt-md-0">
+										<li class="">
+											<a class="inline-block py-2 px-4 no-underline active" href="#reviewsTab1" role="tab" aria-selected="true" data-toggle="tab">Popular
+											</a>
+										</li>
+										<li class="">
+											<a class="inline-block py-2 px-4 no-underline" href="#reviewsTab2" role="tab" aria-selected="false" data-toggle="tab">Recent
+											</a>
+										</li>
+									</ul>
+									<!-- End Nav Tabs -->
+								</header>
+								<div class="flex-auto p-6 p-0 m-0">
+									<div class="tab-content" id="commentsTabs">
+										<!-- Tabs Content -->
+										<div class="tab-pane opacity-0 opacity-100 block active" id="reviewsTab1" role="tabpanel">
+											<div class="flex flex-col pl-0 mb-0 border rounded border-grey-light list-lg-group ">
+												<% (@item.reviews.completed.popular.to_a + Review.sample_reviews(@item, current_user)).each do |rev| %>
+													<%= render partial: 'components/review_card', locals: {rev: rev} %>
+												<% end %>
+											</div>
+										</div>
+										<!-- End Tabs Content -->
+										<!-- Tabs Content -->
+										<div class="tab-pane opacity-0" id="reviewsTab2" role="tabpanel">
+											<div class="flex flex-col pl-0 mb-0 border rounded border-grey-light list-lg-group ">
+											<% @item.reviews.completed.recent.each do |rev| %>
+												<%= render partial: 'components/review_card', locals: {rev: rev} %>
+											<% end %>
+											</div>
+										</div>
+										<!-- End Tabs Content -->
+									</div>
+								</div>
+								<!-- <footer class="py-3 px-6 bg-grey-lighter border-t-1 border-grey-light">
+									<a class="u-link u-link--primary" href="#!">All reviews</a>
+								</footer> -->
+							</div>
