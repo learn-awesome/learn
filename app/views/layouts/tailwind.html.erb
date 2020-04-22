@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <%= render 'layouts/head_tag' %>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <div class="min-h-screen">
+    <%= render 'components/header' %>
+
+    <div>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: ("alert alert-" + name + " fade show") %>
+      <% end -%>
+      <%= yield %>
+    </div>
+
+    <%= render 'components/footer' %>
+  </div>
+
+  </body>
+</html>
