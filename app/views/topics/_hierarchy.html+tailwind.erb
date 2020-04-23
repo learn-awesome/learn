@@ -1,9 +1,9 @@
 <% 
     groups = Topic.get_hierarchy(root_topic)
 %>
+<div class="flex flex-wrap justify-between">
 <% groups.each do |parent, children| %>
-
-    <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+    <div class="w-1/3 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="<%= parent.image_url %>"  alt="<%= parent.display_name %>">
         </div>
@@ -23,3 +23,4 @@
         </div>
   </div>
 <% end %>
+</div>
