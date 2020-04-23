@@ -93,23 +93,11 @@
 		</div>
 	</div>
 	<footer class="py-3 px-6 bg-grey-lighter border-t-1 border-grey-light">
-		<ul class="list-inline mr-auto mb-0">
-        <li class="list-inline-item mr-3">
-          <a class="link-muted h3" href="<%= item_url(@item) %>" title="Permalink">
-            <i class="fas fa-link"></i>
-          </a>
-		</li>
-		<li class="list-inline-item mr-3">
-		<a class="link-muted h3" href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
-		</li>
-		<li class="list-inline-item mr-3">
-	  	<a class="link-muted h3" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
-	  	</li>
+		<a class="link-muted h3 mr-2" href="<%= item_url(@item) %>" title="Permalink"><i class="fas fa-link"></i></a>
+		<a class="link-muted h3 mr-2" href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+	  	<a class="link-muted h3 mr-2" href="https://twitter.com/intent/tweet?url=<%= item_url(@item) %>" target="_blank"><i class="fab fa-twitter"></i></a>
 		<% if @item.user.present? %>
-			<li class="list-inline-item mr-3">
-				Added by <a href="<%= user_url(@item.user) %>" title="<%= @item.created_at.to_date.to_s %>"><%= @item.user.nickname %></a>
-			</li>
+				Added by <a href="<%= user_url(@item.user) %>" class="text-blue-400 hover:text-blue-600" title="<%= @item.created_at.to_date.to_s %>"><%= @item.user.nickname %></a>
 		<% end %>
-	  	</ul>
 	</footer>
 </div>

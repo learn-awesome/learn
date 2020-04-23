@@ -1,16 +1,9 @@
-<div class="list-group-item">
-    <div class="media">
-        <img class="u-avatar rounded-circle mr-3 h-16 w-16 rounded-full" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>"/>
-
-        <div class="media-body">
-            <div class="d-md-flex align-items-center">
-                <h4 class="mb-1">
-                    <%= link_to rev.user.nickname, user_path(rev.user) %> <span class="badge badge-light mx-1"><%= rev.display_rating %></span> <%= link_to rev.item.name, review_path(rev) %>
-                </h4>
-                <small class="text-muted ml-md-auto"><%= rev.created_at.to_date.to_s %></small>
-            </div>
-            <p><i><%= rev.tags_text %></i></p>
-            <p class="mb-0"><%= rev.notes.to_s[0..200] %></p><br/>
-        </div>
-    </div>
-</div>
+<a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
+<img class="w-8 h-8 rounded-full mr-3" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>">
+<p>
+    <%= rev.item.name %><br/>
+    <%= rev.display_rating %><br/>
+    <span class="text-sm text-gray-600"><%= rev.tags_text %></span>
+</p>
+<p><%= rev.notes.to_s.truncate(200) %></p>
+</a>

@@ -244,10 +244,6 @@ class User < ApplicationRecord
 		end
 	end
 
-	def theme_name
-		:default
-	end
-
 	def merge_account(old_user_id)
 		Rails.logger.info "Merging accounts: #{old_user_id} into #{self.id}"
 		# move reviews, items, points, followers etc
