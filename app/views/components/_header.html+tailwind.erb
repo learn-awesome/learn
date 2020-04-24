@@ -2,7 +2,9 @@
 <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
   <div x-data="{ open: true }" class="flex flex-col px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
     <div class="flex flex-row items-center justify-between p-4">
-      <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">LearnAwesome.org</a>
+      <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+        <img src="/stream/assets/img/logo.png" width="160" alt="LearnAwesome">
+      </a>
       <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
           <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -11,7 +13,11 @@
       </button>
     </div>
 
-    <div class="absolute md:relative top-0 left-0 right-0 mt-16 mx-6 md:m-0 flex-1 right-0"><input class="w-full my-2 border border-gray-400 rounded py-2 px-4 flex-1 focus:outline-none focus:border-gray-500" type="text" placeholder="Search"></div>
+    <div class="absolute md:relative top-0 left-0 right-0 mt-16 mx-6 md:m-0 flex-1 right-0">
+      <form action="/search?top=true" accept-charset="UTF-8" method="get" id="topformdiv">
+      <input name="q" value="<%= @q %>" autocomplete="off" minlength="3" maxlength="30" class="w-full my-2 border border-gray-400 rounded py-2 px-4 flex-1 focus:outline-none focus:border-gray-500 typeahead" id="topsearch" type="search" placeholder="What do you wanna learn?">
+      </form>
+    </div>
     
     <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
       <a class="px-4 py-2 mt-2 text-sm font-semibold bg-blue-500 text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/items/search">Add A Link</a>

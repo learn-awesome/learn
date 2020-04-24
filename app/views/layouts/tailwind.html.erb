@@ -22,5 +22,14 @@
     <%= render 'components/footer' %>
   </div>
 
+  <script src="/stream/assets/vendor/typeahead/typeahead.bundle.min.js"></script>
+    <script>
+      ((window.gitter = {}).chat = {}).options = {
+        room: 'learn-awesome/<%= (@topic && @topic.gitter_room_id.presence) ? @topic.gitter_room.gsub("/","-") : "community" %>'
+      };
+    </script>
+    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+    <%= content_for(:model) %>
+    
   </body>
 </html>
