@@ -1,0 +1,54 @@
+<%
+	containerid = local_assigns.fetch(:containerid)
+	placeholder = local_assigns.fetch(:placeholder)
+	is_remote = local_assigns.fetch(:is_remote)
+	source = local_assigns.fetch(:source)
+	notfound = local_assigns.fetch(:notfound, "not found")
+%>
+
+
+<div id="<%= containerid %>">
+  <input type="text" placeholder="<%= placeholder %>" autocomplete="off" class="my-2 border border-gray-400 rounded py-2 px-4 flex-1 focus:outline-none focus:border-gray-500 typeahead"/>
+</div>
+
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function (){
+  		var bloodhoundConfig = {
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("search_index"),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace
+		}
+
+		<% if is_remote == true %>
+			bloodhoundConfig.remote = {
+				url: '<%= source %>',
+				wildcard: '%QUERY'
+			}
+		<% else %>
+			bloodhoundConfig.prefetch = '<%= source %>'
+		<% end %>
+
+		var topics = new Bloodhound(bloodhoundConfig);
+
+		$('#<%= containerid %> .typeahead').typeahead({
+		  hint: true,
+		  highlight: true,
+		  minLength: 1
+		},
+		{
+		  name: 'topics',
+		  display: 'name',
+		  source: topics,
+		  templates: {
+		    empty: '<div class="empty-message">\n<%= notfound.html_safe %>\n</div>',
+		    suggestion: function(data){
+		    	return '<a href="/topics/' + data.id + '"><div><strong>' + data.name + '</strong></div></a>';
+		    }
+		  }
+		});
+  }, 1000);
+});
+
+</script>
+

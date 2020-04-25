@@ -18,7 +18,8 @@ class ItemType < ApplicationRecord
 		Item.where(item_type: self)
 	end
 
-	def self.button_style
+	def self.button_style(theme = :bootstrap)
+		return "rounded-full px-4 mr-2 bg-red-200 text-black p-2 rounded leading-none" if theme == :tailwind
 		"btn btn-sm btn-soft-info btn-pill"
 	end
 

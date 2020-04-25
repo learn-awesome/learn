@@ -22,8 +22,8 @@
 				<div class="btn-group-toggle" data-toggle="buttons">
 					<% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
 					<input type="hidden" name="review[<%= quality %>_score]" value="0" />
-					<label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight text-teal-dark border-teal bg-white hover:bg-teal-light hover:text-teal-darker ml-2 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %>">
-					<input type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+					<label class="inline-block align-middle text-center select-none border rounded py-2 px-2 cursor-pointer text-sm leading-tight ml-1 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'bg-blue-500 text-white' : '' %>">
+					<input class="hidden" type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
 					</label>
 					<% end %>
 				</div>

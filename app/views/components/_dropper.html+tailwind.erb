@@ -1,34 +1,43 @@
-<div class="btn-group btn-sm <%= 'show' if @open_status_menu %>">
+<style type="text/css">
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
+
+<div class="relative inline-flex align-middle py-1 px-2 leading-tight <%= 'opacity-100 block' if @open_status_menu %>">
   <% if @my_review.persisted? and @my_review.status.present? %>
-    <%= button_to ("✔ " + Review::STATUSES[@my_review.status.to_sym]), review_path(@my_review, review: {status: ""}), method: :patch, class: "btn btn-info-outline" %>
+    <%= button_to ("✔ " + Review::STATUSES[@my_review.status.to_sym]), review_path(@my_review, review: {status: ""}), method: :patch, class: "shadow bg-gray-400 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded" %>
   <% elsif @my_review.persisted? %>
-    <%= button_to Review::STATUSES[:want_to_learn], review_path(@my_review, review: {status: "want_to_learn"}), method: :patch, class: "btn btn-success" %>
+    <%= button_to Review::STATUSES[:want_to_learn], review_path(@my_review, review: {status: "want_to_learn"}), method: :patch, class: "shadow bg-teal-400 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
   <% else %>
-    <%= button_to Review::STATUSES[:want_to_learn], reviews_path(review: {status: "want_to_learn", item_id: @item.id}), method: :post, class: "btn btn-success" %>
+    <%= button_to Review::STATUSES[:want_to_learn], reviews_path(review: {status: "want_to_learn", item_id: @item.id}), method: :post, class: "shadow bg-teal-400 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
   <% end %>
 
-  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<%= @open_status_menu.to_s %>">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu dropdown-menu-right <%= 'show' if @open_status_menu %>" style="background-color: #e0e0e0;">
-    <% Review::STATUSES.keys.reject { |s| s == (@my_review.status.try(:to_sym) || :want_to_learn) }.each do |st| %>
-      <% if @my_review.new_record? %>
-        <%= link_to Review::STATUSES[st], reviews_path(review: {status: st, item_id: @item.id}), method: :post, class: "dropdown-item" %>
-      <% else %>
-        <%= link_to Review::STATUSES[st], review_path(@my_review, review: {status: st}), method: :patch, class: "dropdown-item" %>
-      <% end %>
-    <% end %>
+  <div class="dropdown">
+    <button type="button" class="dropdown inline-block shadow bg-teal-400 hover:bg-teal-600 focus:outline-none text-white font-bold py-2 px-4 rounded">
+      <i class="fa fa-caret-down"></i>
+    </button>
 
-    <% current_user.collections.each do |coll| %>
-    <%= link_to toggle_item_user_collection_path(current_user, coll, item_id: @item.id), method: :post, class: "dropdown-item" do %>
-      <div class="custom-control custom-checkbox mb-2">
-        <input id="customCheck1" class="custom-control-input" type="checkbox" <%= @lists_added.include?(coll.id) ? "checked" : "" %> >
-        <label class="custom-control-label" for="customCheck1"><%= coll.name %></label>
-      </div>
+    <div class="dropdown-content bg-gray-300 absolute pin-l z-50 float-left hidden list-reset	right-0 py-2text-base border border-grey-light rounded dropdown-menu-right <%= 'opacity-100 block' if @open_status_menu %>">
+      <% Review::STATUSES.keys.reject { |s| s == (@my_review.status.try(:to_sym) || :want_to_learn) }.each do |st| %>
+        <% if @my_review.new_record? %>
+          <%= link_to Review::STATUSES[st], reviews_path(review: {status: st, item_id: @item.id}), method: :post, class: "block px-6 py-2 hover:bg-gray-400" %>
+        <% else %>
+          <%= link_to Review::STATUSES[st], review_path(@my_review, review: {status: st}), method: :patch, class: "block px-6 py-2 hover:bg-gray-400" %>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="<%= new_user_collection_path(current_user) %>">Create New Collection</a>
+      <% current_user.collections.each do |coll| %>
+      <%= link_to toggle_item_user_collection_path(current_user, coll, item_id: @item.id), method: :post, class: "block px-6 py-2 hover:bg-gray-400" do %>
+        <div class="custom-control custom-checkbox mb-2">
+          <input id="customCheck1" class="bg-white" type="checkbox" <%= @lists_added.include?(coll.id) ? "checked" : "" %> >
+          <label class="custom-control-label" for="customCheck1"><%= coll.name %></label>
+        </div>
+        <% end %>
+      <% end %>
+      <hr class="bg-black"/>
+      <a class="block w-full px-6 py-2 hover:bg-gray-400 font-normal text-grey-darkest whitespace-no-wrap border-0" href="<%= new_user_collection_path(current_user) %>">Create New Collection</a>
+    </div>
   </div>
 </div>
