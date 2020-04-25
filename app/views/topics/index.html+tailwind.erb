@@ -1,6 +1,17 @@
-<div class="text-center mb-3">
-    <h1 class="font-semibold text-4xl">I want to learn</h1>
-    <%= render 'components/autocomplete', containerid: 'maintopic', placeholder: 'e.g. machine learning', source: '/topics/search.json?q=%QUERY', is_remote: true, notfound: 'not found. <a href="/topics/new">Add new topic?</a>' %>
+<% if params['list'] == 'true' %>
+<div style="column-width: 300px;">
+<%= render partial: 'topics/topic_name', collection: Topic.get_all, cached: false %>
+</div>
+
+<div class="text-center mt-8">
+    You can also  <a href="/topics" class="underline text-blue-700">browse topics subject-wise</a>.
+</div>
+<% else %>
+<div class="text-center">
+    You can also see the <a href="/topics?list=true" class="underline text-blue-700">entire list of topics here</a>.
 </div>
 
 <%= render partial: 'hierarchy', locals: {root_topic: nil, show_max: 20} %>
+
+
+<% end %>

@@ -1,105 +1,77 @@
-<h1 class="h2 font-weight-semibold mb-4">Profile</h1>
+<div class="flex">
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2 w-1/4">
+	<h1 class="text-gray-800 text-xl font-semibold mb-2">Profile</h1>
+	<div class="text-center">
+		<img class="w-16 h-16 rounded-full mx-auto" src="<%= @user.avatar_image %>" alt="photo" width="84">
 
-<div class="card mb-4">
-	<div class="card-body">
-		<div class="row">
-			<div class="col-md-4 border-md-right border-light text-center">
-				<img class="img-fluid rounded-circle mb-3" src="<%= @user.avatar_image %>" alt="photo" width="84">
+		<h2 class="mb-2"><%= @user.nickname %></h2>
+		<% if @user.email.present? and (@user.id == current_user.try(&:id) || current_user.try(&:is_core_dev?)) %>
+			<h5 class="text-gray-900 text-sm"><%= @user.email %></h5>
+		<% end %>
+		<h5 class="text-muted mb-4"><%= @user.bio %></h5>
 
-				<h2 class="mb-2"><%= @user.nickname %></h2>
-				<% if @user.email.present? and (@user.id == current_user.try(&:id) || current_user.try(&:is_core_dev?)) %>
-					<h5 class="text-muted mb-4"><%= @user.email %></h5>
-				<% end %>
-				<h5 class="text-muted mb-4"><%= @user.bio %></h5>
+		<% unless @user.description.blank? %>
+			<h1 class="text-gray-800 text-xl font-semibold mb-2">About</h1>
+			<p class="mb-5"><%= @user.description %></p>
+		<% end %>
 
-				<!-- <ul class="list-inline mb-4">
-					<li class="list-inline-item mr-3">
-						<a class="link-muted" href="#!">
-							<i class="fab fa-facebook"></i>
-						</a>
-					</li>
-					<li class="list-inline-item mr-3">
-						<a class="link-muted" href="#!">
-							<i class="fab fa-twitter"></i>
-						</a>
-					</li>
-					<li class="list-inline-item mr-3">
-						<a class="link-muted" href="#!">
-							<i class="fab fa-slack"></i>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="link-muted" href="#!">
-							<i class="fab fa-linkedin-in"></i>
-						</a>
-					</li>
-				</ul> -->
+		<div class="mb-3">
+		<% if current_user %>
+			<% if @user.id == current_user.id %>
+				<a class="px-4 py-2 mt-2 text-sm font-semibold bg-blue-500 text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/users/<%= @user.id %>/edit">Edit Profile</a>
+			<% else %>
+				<form method='post' action='/users/<%= @user.id %>/toggle_follow'>
+				<input type="hidden" value="" name="authenticity_token"/>
+				<input type='submit' class="px-4 py-2 mt-2 text-sm font-semibold bg-blue-500 text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" value="<%= (@does_follow ? "Unfollow" : "Follow") %>"/>
+				</form>
+			<% end %>
+		<% end %>
+		</div>
 
-				<div class="mb-3">
-					<% if current_user %>
-						<% if @user.id == current_user.id %>
-							<a class="btn btn-primary mb-2" href="/users/<%= @user.id %>/edit">Edit Profile</a>
-						<% else %>
-					        <form method='post' action='/users/<%= @user.id %>/toggle_follow'>
-					          <input type="hidden" value="" name="authenticity_token"/>
-					          <input type='submit' class="btn btn-primary mb-2" value="<%= (@does_follow ? "Unfollow" : "Follow") %>"/>
-					        </form>
-						<% end %>
-					<% end %>
+		<h4 class="h3">Profile Rating</h4>
+		<div class="text-4xl font-semibold text-black mb-2"><%= @user.score %></div>
 
-				</div>
+		<p class="text-muted mb-0"><%= @user.submissions.count %> Submissions</p>
+		<p class="text-muted mb-0"><%= @user.reviews.completed.count %> Reviews</p>
+		<p class="text-muted mb-0"><%= @user.invited.count %> Referred users</p>
+		<p class="text-muted mb-0"><%= @user.followers.count %> Followers</p>
+		<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
+		<p class="text-muted mb-0"><%= link_to @user.collections.count.to_s + " Collections", user_collections_path(@user), class: "underline text-blue-400" %></p>
 
-				<!--<a class="link-muted" href="#!">
-					<i class="fa fa-envelope mr-2"></i> Send Message
-				</a>-->
-			</div>
-
-			<div class="col-md-8">
-				<h3 class="card-title"><b>About</b></h3>
-				<p class="mb-5"><%= @user.description %></p>
-
-				<div class="row mb-3">
-					<div class="col-lg-4 mb-5 mb-lg-0">
-						<h4 class="h3 mb-3">Profile Rating</h4>
-
-						<div class="mb-1">
-							<span class="font-size-44 text-dark"><%= @user.score %></span>
-							<!-- <span class="h1 font-weight-light text-muted">/ 100</span> -->
-						</div>
-
-						<p class="text-muted mb-0"><%= @user.submissions.count %> Submissions</p>
-						<p class="text-muted mb-0"><%= @user.reviews.completed.count %> Reviews</p>
-						<p class="text-muted mb-0"><%= @user.invited.count %> Referred users</p>
-						<p class="text-muted mb-0"><%= @user.followers.count %> Followers</p>
-						<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
-						<p class="text-muted mb-0"><%= link_to @user.collections.count.to_s + " Collections", user_collections_path(@user) %></p>
-
-						<br/><br/>
-							<% if current_user == @user %>
-								<%= link_to onboarding_user_path(@user) do %>
-									<p class="text-info mb-0">Power user score: <%= @user.onboarding_percentage %> / 100</p>
-									<div class="progress mb-3">
-										<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								<% end %>
-							<% else %>
-								<p class="text-muted mb-0">Power user score: <%= @user.onboarding_percentage %> / 100</p>
-								<div class="progress mb-3">
-									<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							<% end %>
+		<br/><br/>
+			<% if current_user == @user %>
+				<%= link_to onboarding_user_path(@user) do %>
+					<p class="underline text-blue-400">Power user score: <%= @user.onboarding_percentage %> / 100</p>
+					<div class="progress mb-3">
+						<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
+				<% end %>
+			<% else %>
+				<p class="text-muted mb-0">Power user score: <%= @user.onboarding_percentage %> / 100</p>
+				<div class="progress mb-3">
+					<div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			<% end %>
 
-					<div class="col-lg-8">
-						<h4 class="h3 mb-3">Topics</h4>
+
+
+	</div>
+
+	<div class="px-6">
+	You can follow <%= @user.nickname %>'s activity on Mastodon or ActivityPub by <a class="underline text-blue-400" href="mailto:<%= @user.activitypub_username %>">following him/her</a>.
+	</div>
+</div>
+
+<div class="flex-1 flex flex-col">
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+
+	<h1 class="text-gray-800 text-xl font-semibold mb-2">Topics</h1>
 
 						<div class="d-flex flex-wrap align-items-center">
 							<% @user.fav_topics.each do |topic| %>
 								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style} mr-1" %>
 							<% end %>
 						</div>
-					</div>
-				</div>
 
 				<div class="row">
 					<div class="col-lg-12">
@@ -112,100 +84,65 @@
 					</div>
 				</div>
 
-				<% if current_user and (@user.id == current_user.id) %>
-				<div class="card-title text-center">
-					<hr/>
-					<button type="button" class="btn btn-light" data-toggle="modal" href=".bd-example-modal-lg"><i class="fas fa-code"></i> Embed Reviews</button>
-					<hr/>
-					<div class="card col-sm-12">
-						<div class="card-body text-center">
-							<button type="button" class="btn btn-lg btn-primary btn-circle mb-1" onclick="copyToClipboard('<%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>')">
-								<i class="fas fa-link"></i>
-							</button>
-							<div class="text-muted mb-3"><small>Click to copy referral link</small></div>
-							<div class="text-muted mb-3">Or</div>
-							<textarea id="review_notes" class="form-control form-control-sm mb-2" readonly="true">Join Learn Awesome by clicking the link. <%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>. If link is not clickable, copy and paste to your favorite browser</textarea>
+</div>
 
-							<p>Invite your friends by sharing this message</p>
-						</div>
-					</div>
-					
-				</div>
-				<% end %>
-			</div>
-		</div>
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Reviews</h1>
+	<div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
+	  <% @user.reviews.completed.limit(20).each do |rev| %>
+	   <%= render rev.item %>
+	  <% end %>
+	</div>
+</h1>
+</div>
 
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Have learned from</h1>
+	  <% @user.reviews.where(status: 'learned').each do |rev| %>
+	   <%= render rev.item %>
+	   <% rev.item.topics.map do |topic| %>
+			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+	   <% end %>
+	  <% end %>
+</div>
 
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Want to learn</h1>
+	<div class="tab-pane fade" id="panelWithTabsTab3" role="tabpanel">
+	  <% @user.reviews.where(status: 'want_to_learn').each do |rev| %>
+	   <%= render rev.item %>
+	  <% end %>
+	</div>
+</h1>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Currently learning</h1>
+	<div class="tab-pane fade show active" id="panelWithTabsTab4" role="tabpanel">
+	  <% @user.reviews.where(status: 'learning').each do |rev| %>
+	   <%= render rev.item %>
+	  <% end %>
 	</div>
 </div>
 
+<% if current_user and (@user.id == current_user.id) %>
+	<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+	<h1 class="text-gray-800 text-xl font-semibold mb-2">Embed Reviews</h1>
+	<%= render partial: 'embed_links' %>
+	</div>
 
-		<div class="row">
-            <!-- Cards with Tabs -->
-            <div class="col-md-12 mb-4">
-              <div class="card">
-                <div class="card-header d-md-flex align-items-center">
-                  <h2 class="h3 card-header-title">Activity</h2>
+	<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+	<h1 class="text-gray-800 text-xl font-semibold mb-2">Invite Friends</h1>
+	<button type="button" class="btn btn-lg btn-primary btn-circle mb-1" onclick="copyToClipboard('<%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>')">
+		<i class="fas fa-link"></i>
+	</button>
+	<div class="text-muted mb-3"><small>Click to copy referral link</small></div>
+	<div class="text-muted mb-3">Or</div>
+	<textarea id="review_notes" class="border-gray-200 border-2 bg-gray-300" readonly="true">Join Learn Awesome by clicking the link. <%= request.protocol + request.host_with_port + url_for("/auth/auth0?ref=" + current_user.id.split("-").first) %>. If link is not clickable, copy and paste to your favorite browser</textarea>
+	</div>
+<% end %>
 
-                  <!-- Tabs Nav -->
-                  <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
-                   <li class="nav-item">
-                     <a href="#panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Reviews</a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="#panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Have Learned From</a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="#panelWithTabsTab3" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Wants to Learn</a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="#panelWithTabsTab4" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Currently Learning</a>
-                   </li>
-                  </ul>
-                  <!-- End Tabs Nav -->
-                </div>
+</div>
 
-                <div class="card-body">
-                  <!-- Tabs Content -->
-                  <div class="tab-content">
-                    <div class="tab-pane fade show active" id="panelWithTabsTab1" role="tabpanel">
-                      <% @user.reviews.completed.limit(20).each do |rev| %>
-                       <%= render rev.item %>
-                      <% end %>
-                    </div>
+</div>
 
-                    <div class="tab-pane fade" id="panelWithTabsTab2" role="tabpanel">
-                      <% @user.reviews.where(status: 'learned').each do |rev| %>
-                       <%= render rev.item %>
-                       <% rev.item.topics.map do |topic| %>
-							<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
-					   <% end %>
-                      <% end %>
-                    </div>
-
-                    <div class="tab-pane fade" id="panelWithTabsTab3" role="tabpanel">
-                      <% @user.reviews.where(status: 'want_to_learn').each do |rev| %>
-                       <%= render rev.item %>
-                      <% end %>
-                    </div>
-
-                    <div class="tab-pane fade show active" id="panelWithTabsTab4" role="tabpanel">
-                      <% @user.reviews.where(status: 'learning').each do |rev| %>
-                       <%= render rev.item %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <!-- End Tabs Content -->
-                </div>
-
-				<div class="card-footer">
-				You can follow <%= @user.nickname %>'s activity on Mastodon / ActivityPub by following <a href="mailto:<%= @user.activitypub_username %>"><%= @user.activitypub_username %></a>.
-				</div>
-
-              </div>
-            </div>
-            <!-- End Cards with Tabs -->
-		</div>
-		<%= content_for(:model) do%>
-			<%= render partial: 'embed_links' %>
-		<%end%>

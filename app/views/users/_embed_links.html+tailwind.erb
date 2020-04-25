@@ -1,0 +1,14 @@
+
+<div class="modal-body">
+<p class="mb-2">Embed below script in your blogs to showcase your reviews</p>
+
+<textarea id="review_notes" class="font-mono bg-gray-400 border-2 mb-2" readonly="true"><iframe src=<%= reviews_user_url %> width=500 height=900 frameborder=0/></textarea>
+
+        <!-- <p><%= link_to "Review JSON API", reviews_user_path(format: :json) %></p> -->
+<small class="mb-2">You can customize the list of reviews by adding filter parameters in embed script. Allowed parameters are <code>item_type, review_status, quality, min_quality_score</code>.</small>
+<p>
+    <small><b>Sample : </b>
+        <samp><%= reviews_user_url %>?item_type=book</samp>
+    </small>
+</p>
+</div>

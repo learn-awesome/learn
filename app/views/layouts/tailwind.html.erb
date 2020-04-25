@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
   </head>
 
-  <body class="bg-gray-200">
+  <body class="font-sans bg-gray-200">
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <div class="min-h-screen">
@@ -14,7 +14,7 @@
 
     <div class="px-16 py-4">
       <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: ("alert alert-" + name + " fade show") %>
+        <%= content_tag :div, msg, class: ("flex items-center bg-green-400 text-white text-sm font-bold px-4 py-3") %>
       <% end -%>
       <%= yield %>
     </div>
