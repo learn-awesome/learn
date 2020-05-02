@@ -100,29 +100,29 @@
 			<header class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">
 				<h2 class="h3 card-header-title mb-2">Showing <b><%= @item_type_items.count %></b> Items </h2>
 				<small><b>Quick searches</b> :
-  				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan") %> |
-				<%= link_to "Courses", topic_path(topic, item_type: "course") %> |
-  				<%= link_to "Videos", topic_path(topic, item_type: "video") %> |
-  				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive") %> |
-  				<%= link_to "Books", topic_path(topic, item_type: "book") %> |
-  				<%= link_to "Challenging", topic_path(topic, quality: "challenging") %> |
-  				<%= link_to "Visual", topic_path(topic, quality: "visual") %> |
-  				<%= link_to "All", topic_path(topic) %>		
+  				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan"), class: "underline text-blue-400" %> |
+				<%= link_to "Courses", topic_path(topic, item_type: "course"), class: "underline text-blue-400" %> |
+  				<%= link_to "Videos", topic_path(topic, item_type: "video"), class: "underline text-blue-400" %> |
+  				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive"), class: "underline text-blue-400" %> |
+  				<%= link_to "Books", topic_path(topic, item_type: "book"), class: "underline text-blue-400" %> |
+  				<%= link_to "Challenging", topic_path(topic, quality: "challenging"), class: "underline text-blue-400" %> |
+  				<%= link_to "Visual", topic_path(topic, quality: "visual"), class: "underline text-blue-400" %> |
+  				<%= link_to "All", topic_path(topic), class: "underline text-blue-400" %>		
   			</small>
 			</header>
 		</div>
 		<%= form_tag({:action => 'show', :id => @topic.id },:id => 'filter_form',method: :get,:remote => true) do %>
 		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 		<div class="accordion" id="accordion_filters">
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
 				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingOne">
 					<h2 class="mb-0">
-						<button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 							Type <small class="fa fa-angle-down text-grey ml-1"></small>
 						</button>
 					</h2>
 				</div>
-				<div id="collapseOne" class="flex-growlapse" aria-labelledby="headingOne" data-parent="#accordion_filters">
+				<div id="collapseOne" class="flex-growlapse" aria-labelledby="headingOne" data-parent="#accordion_filters" x-show="open">
 					<div class="flex-auto p-6">
 						<% ItemType.all.each do |item_type| %>
 						<div class="custom-control custom-checkbox mb-2">	
@@ -133,15 +133,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
 				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingTwo">
 					<h2 class="mb-0">
-						<button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 							Length <small class="fa fa-angle-down text-grey ml-1"></small>
 						</button>
 					</h2>
 				</div>
-				<div id="collapseTwo" class="flex-growlapse" aria-labelledby="headingTwo" data-parent="#accordion_filters">
+				<div id="collapseTwo" class="flex-growlapse" aria-labelledby="headingTwo" data-parent="#accordion_filters" x-show="open">
 					<div class="flex-auto p-6">
 						<% ItemType::LENGTH.each do |length| %>
 						<div class="custom-control custom-radio mb-2">
@@ -152,15 +152,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
 				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingThree">
 					<h2 class="mb-0">
-						<button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 							Quality <small class="fa fa-angle-down text-grey ml-1"></small>
 						</button>
 					</h2>
 				</div>
-				<div id="collapseThree" class="flex-growlapse" aria-labelledby="headingThree" data-parent="#accordion_filters">
+				<div id="collapseThree" class="flex-growlapse" aria-labelledby="headingThree" data-parent="#accordion_filters" x-show="open">
 					<div class="flex-auto p-6">
 						<% ItemType::QUALITY.each do |quality| %>
 						<div class="custom-control custom-radio mb-2">
