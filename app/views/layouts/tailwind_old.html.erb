@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <%= render 'layouts/head_tag' %>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
+  </head>
+
+  <body class="font-sans bg-gray-200">
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <div class="min-h-screen">
+    <%= render 'components/header' %>
+
+    <div class="px-16 py-4">
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: ("flex items-center bg-green-400 text-white text-sm font-bold px-4 py-3") %>
+      <% end -%>
+      <%= yield %>
+    </div>
+
+    <%= render 'components/footer' %>
+  </div>
+
+  <script src="/stream/assets/vendor/typeahead/typeahead.bundle.min.js"></script>
+    <script>
+      ((window.gitter = {}).chat = {}).options = {
+        room: 'learn-awesome/<%= (@topic && @topic.gitter_room_id.presence) ? @topic.gitter_room.gsub("/","-") : "community" %>'
+      };
+    </script>
+    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+    <%= content_for(:model) %>
+    
+  </body>
+</html>
