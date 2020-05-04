@@ -1,11 +1,13 @@
 <% if params['list'] == 'true' %>
-<div style="column-width: 300px;">
-<%= render partial: 'topics/topic_name', collection: Topic.get_all, cached: false %>
+<div class="text-center mb-8">
+You can also  <a href="/topics" class="underline text-blue-700">browse topics subject-wise</a>.
 </div>
 
-<div class="text-center mt-8">
-    You can also  <a href="/topics" class="underline text-blue-700">browse topics subject-wise</a>.
-</div>
+    <div style="column-width: 300px;">
+    <%= render partial: 'topics/topic_name', collection: Topic.get_all, cached: false %>
+    </div>
+
+
 <% else %>
 <div class="text-center">
     You can also see the <a href="/topics?list=true" class="underline text-blue-700">entire list of topics here</a>.

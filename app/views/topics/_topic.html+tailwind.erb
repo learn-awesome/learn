@@ -58,120 +58,18 @@
 		<%= " and #{followers.count - 5 } others" if followers.count > 5 %>
 	<% end %>
 </div>
-<% if @learning_plans.any? %>
-<h3><b>Learning Plans:</b></h3>
-<div class="flex flex-wrap mb-4">
-	<% @learning_plans.each do |lp| %>
-		<div class="md:w-1/4 pr-4 pl-4">
-		<%= render 'components/card', { 
-			title: lp.name,
-			href: item_path(lp),
-			subtitle: lp.display_rating,
-			# body: lp.description.to_s.truncate(20),
-			# image_url: lp.image_url # || "https://htmlstream.com/preview/stream-dashboard-ui-kit/assets/img/800x500/img1.jpg"
-		} %>
-		</div>
+
+<% @item_type_items.group_by(&:item_type_id).sort_by { |itid,items| [ itid == 'learning_plan' ? 0 : itid ] }.to_h.each do |itid, items| %>
+<div class="mt-6">
+<div class="px-4 xl:px-8">
+    <h3 class="text-gray-900 text-xl"><%= ItemType.find(itid).display_name_plural %></h3>
+    <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
+</div>
+<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
+	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
+	<% items.each do |item| %>
+		<%= render partial: 'item', locals: {item: item} %>
 	<% end %>
+	</div>
 </div>
 <% end %>
-<h3><b>Items:</b></h3>
-<div class="flex flex-wrap">
-		<div class="md:w-3/4 pr-4 pl-4 mb-4">
-		<%if @item_type_items.present? %>
-			<% @item_type_items.each do |item| %>
-				<%= render partial: 'item', locals: {item: item} %>
-			<% end %>
-			<% if @item_type_items.total_pages > 1 %>
-				<div class="flex list-reset pl-0 roundeds">
-	      	<%= will_paginate @item_type_items,:params => { item_type: @item_type, length: @length, quality: @quality }, :container => false %>
-	  		</div>
-  		<%end%>
-			<%else%>
-				<div class="relative px-3 py-3 mb-4 border rounded alert-soft-danger opacity-0 opacity-100 block" role="alert">
-								<i class="fa fa-minus-circle alert-icon mr-3"></i>
-								<span>No Items</span>
-								<button type="button" class="absolute pin-t pin-b pin-r px-4 py-3" aria-label="Close" data-dismiss="relative px-3 py-3 mb-4 border rounded">
-								</button>
-							</div>
-		<% end %>
-	</div>
-	<div class="md:w-1/4 pr-4 pl-4 mb-4">
-		<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
-			<header class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">
-				<h2 class="h3 card-header-title mb-2">Showing <b><%= @item_type_items.count %></b> Items </h2>
-				<small><b>Quick searches</b> :
-  				<%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan"), class: "underline text-blue-400" %> |
-				<%= link_to "Courses", topic_path(topic, item_type: "course"), class: "underline text-blue-400" %> |
-  				<%= link_to "Videos", topic_path(topic, item_type: "video"), class: "underline text-blue-400" %> |
-  				<%= link_to "Learn By Doing", topic_path(topic, quality: "interactive"), class: "underline text-blue-400" %> |
-  				<%= link_to "Books", topic_path(topic, item_type: "book"), class: "underline text-blue-400" %> |
-  				<%= link_to "Challenging", topic_path(topic, quality: "challenging"), class: "underline text-blue-400" %> |
-  				<%= link_to "Visual", topic_path(topic, quality: "visual"), class: "underline text-blue-400" %> |
-  				<%= link_to "All", topic_path(topic), class: "underline text-blue-400" %>		
-  			</small>
-			</header>
-		</div>
-		<%= form_tag({:action => 'show', :id => @topic.id },:id => 'filter_form',method: :get,:remote => true) do %>
-		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-		<div class="accordion" id="accordion_filters">
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
-				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingOne">
-					<h2 class="mb-0">
-						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							Type <small class="fa fa-angle-down text-grey ml-1"></small>
-						</button>
-					</h2>
-				</div>
-				<div id="collapseOne" class="flex-growlapse" aria-labelledby="headingOne" data-parent="#accordion_filters" x-show="open">
-					<div class="flex-auto p-6">
-						<% ItemType.all.each do |item_type| %>
-						<div class="custom-control custom-checkbox mb-2">	
-							<input name="item_type[]" value=<%= item_type.id %> id=<%= item_type.id %> class="custom-control-input" type="checkbox" <%- if (@item_type.present? && @item_type.include?(item_type.id)) %>checked <%-end%> onclick="this.form.submit();">
-							<label class="custom-control-label" for=<%= item_type.id %>><%= item_type.display_name_plural %></label>
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
-				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingTwo">
-					<h2 class="mb-0">
-						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							Length <small class="fa fa-angle-down text-grey ml-1"></small>
-						</button>
-					</h2>
-				</div>
-				<div id="collapseTwo" class="flex-growlapse" aria-labelledby="headingTwo" data-parent="#accordion_filters" x-show="open">
-					<div class="flex-auto p-6">
-						<% ItemType::LENGTH.each do |length| %>
-						<div class="custom-control custom-radio mb-2">
-							<input value="<%= length.last %>" id="<%= length.last %>" class="custom-control-input" type="radio" <%- if (@length.to_s == length.last) %>checked <%-end%> name="length" onclick="this.form.submit();">
-							<label class="custom-control-label" for=<%= length.last %>><%= length.first %></label>
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
-			<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light" x-data="{ open: false }">
-				<div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest" id="headingThree">
-					<h2 class="mb-0">
-						<button @click="open = !open" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal blue bg-transparent flex-growlapsed btn-full" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							Quality <small class="fa fa-angle-down text-grey ml-1"></small>
-						</button>
-					</h2>
-				</div>
-				<div id="collapseThree" class="flex-growlapse" aria-labelledby="headingThree" data-parent="#accordion_filters" x-show="open">
-					<div class="flex-auto p-6">
-						<% ItemType::QUALITY.each do |quality| %>
-						<div class="custom-control custom-radio mb-2">
-							<input value="<%= quality.last %>" id="<%= quality.last %>" class="custom-control-input" type="radio" <%- if (@quality.to_s == quality.last) %>checked <%-end%> name="quality", onclick="this.form.submit();">
-							<label class="custom-control-label" for=<%= quality.last %>><%= quality.first %></label>
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-		<% end %>
-	</div>
-</div>
