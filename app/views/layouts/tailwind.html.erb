@@ -13,7 +13,7 @@
     <header class="bg-gray-900 sm:flex sm:items-center sm:justify-between xl:bg-white xl:flex-shrink-0">
         <div class="flex justify-between px-4 py-3 xl:w-72 xl:bg-white xl:justify-center xl:py-5">
             <div>
-            <img src="/stream/assets/img/logo.png" width="160" alt="LearnAwesome">
+            <a href="/"><img src="/stream/assets/img/logo.png" width="160" alt="LearnAwesome"></a>
             </div>
             <div class="flex sm:hidden">
                 <button type="button" class="px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white">
@@ -41,15 +41,31 @@
                     <a href="/items/discover" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Random Item</a>
                     <a href="/people" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Experts</a>
                 </div>
-                <div class="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
-                    <div class="flex items-center sm:hidden"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=256&amp;q=80" alt="" class="h-10 w-10 object-cover rounded-full border-2 border-gray-600"><span class="ml-4 font-semibold text-gray-200 sm:hidden">Isla Schoger</span></div>
-                    <div class="mt-5 sm:hidden"><a href="#account" class="block text-gray-400 hover:text-white">Account settings</a><a href="#support" class="mt-3 block text-gray-400 hover:text-white">Support</a><a href="#sign-out" class="mt-3 block text-gray-400 hover:text-white">Sign out</a></div>
+                <div class="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0" x-data="{ open: false }">
+                    <div class="flex items-center sm:hidden">
+                        <img src="<%= current_user.avatar_image %>" alt="" class="h-10 w-10 object-cover rounded-full border-2 border-gray-600">
+                        <span class="ml-4 font-semibold text-gray-200 sm:hidden"><%= current_user.nickname %></span>
+                    </div>
+                    <div class="mt-5 sm:hidden" x-show="open">
+                        <a href="/flash_cards/practice"  class="block text-gray-400 hover:text-white">Practice FlashCards</a>
+                        <a href="/users/<%= current_user.id %>" class="block text-gray-400 hover:text-white">Account settings</a>
+                        <a href="/users/<%= current_user.id %>/settings" class="mt-3 block text-gray-400 hover:text-white">Support</a>
+                        <a href="/logout" class="mt-3 block text-gray-400 hover:text-white">Sign out</a>
+                    </div>
                     <div class="relative hidden sm:block">
-                        <button type="button" class="block focus:outline-none"><span class="block h-8 w-8 overflow-hidden rounded-full border-2  border-gray-600 xl:border-gray-300"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=256&amp;q=80" alt="" class="h-full w-full object-cover"></span></button>
-                        <div class="hidden">
-                            <button type="button" class="z-30 block fixed inset-0 w-full h-full cursor-default"></button>
+                        <button @click="open = true" type="button" class="block focus:outline-none">
+                            <span class="block h-8 w-8 overflow-hidden rounded-full border-2  border-gray-600 xl:border-gray-300">
+                            <img src="<%= current_user.avatar_image %>" alt="" class="h-full w-full object-cover"></span>
+                        </button>
+                        <div x-show="open">
+                            <button @click="open = false" type="button" class="z-30 block fixed inset-0 w-full h-full bg-black opacity-50 cursor-default"></button>
                             <div class="absolute z-40 right-0">
-                                <div class="mt-3 bg-white xl:border rounded-lg w-48 py-2 shadow-xl"><a href="#account" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-indigo-500">Account settings</a><a href="#support" class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500">Support</a><a href="#sign-out" class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500">Sign out</a></div>
+                                <div class="mt-3 bg-white xl:border rounded-lg w-48 py-2 shadow-xl">
+                                    <a href="/flash_cards/practice" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-indigo-500">Practice FlashCards</a>
+                                    <a href="/users/<%= current_user.id %>" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-indigo-500">Profile</a>
+                                    <a href="/users/<%= current_user.id %>/settings" class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500">Settings</a>
+                                    <a href="/logout" class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500">Sign out</a>
+                                </div>
                             </div>
                         </div>
                     </div>
