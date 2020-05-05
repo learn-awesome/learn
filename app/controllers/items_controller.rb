@@ -299,7 +299,15 @@ class ItemsController < ApplicationController
     @item_type = params[:item_type]
     @length = params[:length]
     @quality = params[:quality]
-    if params[:commit].present?
+    if params[:commit].present? or params[:twcommit].present?
+
+      if params[:twcommit].present?
+        if @topic_name.present? and Topic.find_by_name(@topic_name).present?
+          redirect_to topic_path(Topic.find_by_name(@topic_name), item_type: @item_type, length: @length, quality: @quality)
+        elsif @item_type.present? and ItemType.find(@item_type).present?
+          redirect_to item_type_path(ItemType.find(@item_type), length: @length, quality: @quality)
+        end
+      end
       # query items
       @items = Item.advanced_search(@topic_name, @item_type, @length, @quality)
     else

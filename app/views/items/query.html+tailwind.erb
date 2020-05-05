@@ -1,0 +1,14 @@
+<% @items.group_by(&:item_type_id).each do |itype, items| %>
+<div class="mt-6">
+<div class="px-4 xl:px-8">
+    <h3 class="text-gray-900 text-xl"><%= ItemType.find(itype).display_name_plural %></h3>
+    <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
+</div>
+<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
+	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
+	<% items.each do |item| %>
+		<%= render partial: 'topics/item', locals: {item: item} %>
+	<% end %>
+	</div>
+</div>
+<% end %>

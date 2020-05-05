@@ -1,0 +1,73 @@
+        <section class="bg-gray-800 xl:w-72">
+            <div class="flex justify-between px-4 py-3 xl:hidden">
+                <div class="relative max-w-xs w-full">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current text-gray-600">
+                            <path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41l.01-.01zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path>
+                        </svg>
+                    </div>
+                    <form action="/search?top=true" accept-charset="UTF-8" method="get" id="topformdiv2">
+                    <input id="topsearch2" placeholder="Search by keywords" class="block w-full bg-gray-900 focus:outline-none focus:bg-white focus:text-gray-900 text-white rounded-lg pl-10 pr-4 py-2 typeahead" type="search">
+                    </form>
+                </div>
+                <button type="button" class="ml-4 inline-flex items-center hover:bg-gray-600 focus:outline-none focus:shadow-outline rounded-lg shadow pl-3 pr-4 bg-gray-700">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current text-gray-500">
+                        <path d="M3 6a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm3 6a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1zm4 5a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-4z"></path>
+                    </svg><span class="ml-1 text-white font-medium">Filters</span></button>
+            </div>
+
+            <%= form_tag({:action => 'query', :controller => 'items', :commit => true }, method: :get, class: "xl:block xl:h-full xl:flex xl:flex-col xl:justify-between hidden") do %>
+                <input type="hidden" name="twcommit" value="true"/>
+                <div class="lg:flex xl:block xl:overflow-y-auto">
+                    <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full"><span class="block text-sm font-semibold text-gray-500">Quick Searches</span>
+                        <div class="sm:flex sm:-mx-2 lg:block lg:mx-0">
+                        <%= link_to "Learning Plans", (@topic.present? ? topic_path(@topic, item_type: "learning_plan") : query_items_path(item_type: "learning_plan") ), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Courses", (@topic.present? ? topic_path(@topic, item_type: "course") : query_items_path(item_type: "course")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Videos", (@topic.present? ? topic_path(@topic, item_type: "video") : query_items_path(item_type: "video")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Learn By Doing", (@topic.present? ? topic_path(@topic, quality: "interactive") : query_items_path(item_type: "interactive")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Books", (@topic.present? ? topic_path(@topic, item_type: "book") : query_items_path(item_type: "book")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Challenging", (@topic.present? ? topic_path(@topic, quality: "challenging") : query_items_path(item_type: "challenging")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "Visual", (@topic.present? ? topic_path(@topic, quality: "visual") : query_items_path(item_type: "visual")), class: "underline text-gray-200" %><br/>
+                        <%= link_to "All", (@topic.present? ? topic_path(@topic) : query_items_path), class: "underline text-gray-200" %>	
+                        </div>
+                    </div>
+
+                    <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
+                        <div class="flex flex-wrap -mx-2">
+                        <label class="mt-3 block w-full px-2 sm:mt-0 sm:w-1/2 lg:w-full"><span class="text-sm font-semibold text-gray-500">Length</span>
+                            <select class="mt-1 form-select block w-full text-white shadow focus:bg-gray-600" name="length">
+                            <% ItemType::LENGTH.each do |length| %><option value="<%= length.last %>"><%= length.first %></option><% end %>
+                            </select>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
+                        <div class="flex flex-wrap -mx-2">
+                        <label class="mt-3 block w-full px-2 sm:mt-0 sm:w-1/2 lg:w-full"><span class="text-sm font-semibold text-gray-500">Quality</span>
+                            <select class="mt-1 form-select block w-full text-white shadow focus:bg-gray-600" name="quality">
+                            <% ItemType::QUALITY.each do |quality| %><option value="<%= quality.last %>"><%= quality.first %></option><% end %>
+                            </select>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
+                        <div class="flex flex-wrap -mx-2">
+                        <label class="mt-3 block w-full px-2 sm:mt-0 sm:w-1/2 lg:w-full"><span class="text-sm font-semibold text-gray-500">Type</span>
+                            <%= select_tag :item_type, options_from_collection_for_select(ItemType.all, "id", "display_name_plural", selected: @item_type), include_blank: "Any format", class: "mt-1 form-select block w-full text-white shadow focus:bg-gray-600" %>
+                        </label>
+                        </div>
+                    </div>
+
+                    <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
+                        <div class="flex flex-wrap -mx-2">
+                        <label class="mt-3 block w-full px-2 sm:mt-0 sm:w-1/2 lg:w-full"><span class="text-sm font-semibold text-gray-500">Topic</span>
+                            <%= select_tag :topic, options_from_collection_for_select(Topic.all, "name", "display_name", selected: @topic.try(:name)), include_blank: "Any topic", class: "mt-1 form-select block w-full text-white shadow focus:bg-gray-600" %>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-900 px-4 py-4 sm:text-right">
+                    <button class="block w-full sm:w-auto sm:inline-block bg-indigo-500 hover:bg-indigo-400 font-semibold text-white px-4 py-2 rounded-lg xl:block xl:w-full">Search</button>
+                </div>
+            <% end %>
+        </section>

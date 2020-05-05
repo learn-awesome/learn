@@ -1,29 +1,42 @@
-<div class="mb-4">
-<nav aria-label="breadcrumb">
-  <h1 class="h3"><%= @item_type.display_name_plural %></h1>
-</nav>
-</div>
+<% content_for :title do %>
+<%= @item_type.display_name_plural %> :: LearnAwesome.org
+<% end %>
+
+<% content_for :opengraph do %>
+  <link rel="canonical" href="<%= item_type_url(@item_type) %>" />
+  <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
+  <meta name="description" content="LearnAwesome.org :: Humanity's universal learning map">
+
+  <meta property="og:title" content="<%= @item_type.display_name_plural %> :: LearnAwesome.org">
+  <meta property="og:description" content="Humanity's universal learning map.">
+  <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+  <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+  <meta name="twitter:card" content="summary_large_image">
+<% end %>
+
+
 <div class="flex flex-wrap">
-<!-- Cards with Tabs -->
-    <div class="md:w-1/2 pr-4 pl-4 mb-4">
-      <% @topics.each do |topic| %>
-      <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light mb-2">
-        <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
-          <h2 class="h3 card-header-title"><%= link_to topic.display_name, topic, class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline #{Topic.button_style}" %></h2>
-        </div>
-        <div class="flex-auto p-6">
-            		<% topic.items.each do |item| %>
-            		<div class="mb-2">
-            			<%= link_to item.display_name, item %>
-        			</div>
-            		<% end %>
-        </div>
-      </div>
-      <% end %>
-    </div>
+	<h1 class="font-semibold text-3xl"><%= @item_type.display_name_plural %></h1>
 </div>
-<% if @topics.present? %>
-  <div class="flex list-reset pl-0 roundeds">
-      <%= will_paginate @topics, :container => false %>
-  </div>
+
+<div class="flex flex-wrap">
+	<%= link_to "Add New Item", new_item_path(item_type: @item_type), class: "p-2 mr-2 bg-orange-500 rounded-lg text-white " %>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearnawesome.org%2Fitem_types%2F<%= @item_type %>&src=sdkpreparse" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flearnawesome.org%2Fitem_types%2F<%= @item_type %>" target="_blank"><i class="fab fa-twitter"></i></a>
+</div>
+
+
+<% @item_type_items.group_by { |item| item.topics.first }.each do |topic, items| %>
+<div class="mt-6">
+<div class="px-4 xl:px-8">
+    <h3 class="text-gray-900 text-xl"><%= topic.display_name %></h3>
+    <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
+</div>
+<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
+	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
+	<% items.each do |item| %>
+		<%= render partial: 'topics/item', locals: {item: item} %>
+	<% end %>
+	</div>
+</div>
 <% end %>

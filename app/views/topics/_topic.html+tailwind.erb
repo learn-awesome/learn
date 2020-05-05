@@ -59,7 +59,7 @@
 	<% end %>
 </div>
 
-<% @item_type_items.group_by(&:item_type_id).sort_by { |itid,items| [ itid == 'learning_plan' ? 0 : itid ] }.to_h.each do |itid, items| %>
+<% @item_type_items.group_by(&:item_type_id).sort_by { |itid,items| [ itid == 'learning_plan' ? 0 : 1, itid ] }.to_h.each do |itid, items| %>
 <div class="mt-6">
 <div class="px-4 xl:px-8">
     <h3 class="text-gray-900 text-xl"><%= ItemType.find(itid).display_name_plural %></h3>
