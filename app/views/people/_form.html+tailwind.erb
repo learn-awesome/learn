@@ -1,0 +1,41 @@
+<%= form_for @person do |form| %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+        <div class="mb-4">
+            <%= form.label :name, class: "text-gray-700" %>
+            <%= form.text_field :name, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :description, class: "text-gray-700" %>
+            <%= form.text_area :description, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :website, class: "text-gray-700" %>
+            <%= form.text_field :website, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :email, class: "text-gray-700" %>
+            <%= form.text_field :email, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :twitter, class: "text-gray-700" %>
+            <%= form.text_field :twitter, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :goodreads, class: "text-gray-700" %>
+            <%= form.text_field :goodreads, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :image_url, class: "text-gray-700" %>
+            <%= form.text_field :image_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+    </div>
+    <div class="flex justify-end mt-4">
+        <%= form.submit "Save", class: "px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700" %>
+    </div>
+<% end %>

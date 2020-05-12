@@ -1,0 +1,6 @@
+<div class="max-w-4xl p-6 bg-white rounded-md shadow-md">
+    <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit person or organization's profile
+    (<%= link_to "Fetch from WikiData", wikidata_person_path(@person), class: "text-blue-500 underline" %>)
+    </h2>
+    <%= render :partial => 'form' %>
+</div>
