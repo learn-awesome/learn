@@ -41,6 +41,7 @@
                     <a href="/items/discover" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Random Item</a>
                     <a href="/people" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Experts</a>
                 </div>
+                <% if current_user.present? %>
                 <div class="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0" x-data="{ open: false }">
                     <div class="flex items-center sm:hidden">
                         <img src="<%= current_user.avatar_image %>" alt="" class="h-10 w-10 object-cover rounded-full border-2 border-gray-600">
@@ -77,6 +78,9 @@
                         </div>
                     </div>
                 </div>
+                <% else %>
+                <a class="px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700" href="/auth/auth0">Sign In</a>
+                <% end %>
             </div>
         </nav>
     </header>
