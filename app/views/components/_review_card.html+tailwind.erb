@@ -1,4 +1,8 @@
-<a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
+<% if rev.persisted? %>
+    <a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
+<% else %>
+    <a href="javascript:void(0)" class="block flex border-t-2 p-2 hover:bg-gray-200">
+<% end %>
 <img class="w-8 h-8 rounded-full mr-3" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>">
 <p>
     <%= rev.item.name %><br/>

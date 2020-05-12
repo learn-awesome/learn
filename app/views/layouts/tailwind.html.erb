@@ -47,9 +47,9 @@
                         <span class="ml-4 font-semibold text-gray-200 sm:hidden"><%= current_user.nickname %></span>
                     </div>
                     <div class="mt-5 sm:hidden" x-show="open">
-                        <div class="shadow w-full bg-gray-light">
-                            <div class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
-                        </div>
+                        <%= link_to onboarding_user_path(@current_user), class: "block shadow w-full bg-gray-light" do %>
+                            <div class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: <%= current_user.onboarding_percentage %>%"><%= current_user.onboarding_percentage %>%</div>
+                        <% end %>
                         <a href="/flash_cards/practice"  class="block text-gray-400 hover:text-white">Practice FlashCards</a>
                         <a href="/users/<%= current_user.id %>" class="block text-gray-400 hover:text-white">Account settings</a>
                         <a href="/users/<%= current_user.id %>/settings" class="mt-3 block text-gray-400 hover:text-white">Support</a>
@@ -64,9 +64,10 @@
                             <button @click="open = false" type="button" class="z-30 block fixed inset-0 w-full h-full bg-black opacity-50 cursor-default"></button>
                             <div class="absolute z-40 right-0">
                                 <div class="mt-3 bg-white xl:border rounded-lg w-48 py-2 shadow-xl">
-                                    <div class="shadow w-full bg-gray-light">
-                                        <div class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
-                                    </div>
+
+                                    <%= link_to onboarding_user_path(@current_user), class: "block shadow w-full bg-gray-light" do %>
+                                        <div class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: <%= current_user.onboarding_percentage %>%"><%= current_user.onboarding_percentage %>%</div>
+                                    <% end %>
                                     <a href="/flash_cards/practice" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-indigo-500">Practice FlashCards</a>
                                     <a href="/users/<%= current_user.id %>" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-indigo-500">Profile</a>
                                     <a href="/users/<%= current_user.id %>/settings" class="block hover:text-white text-gray-800 mt-0 px-4 py-2 hover:bg-indigo-500">Settings</a>

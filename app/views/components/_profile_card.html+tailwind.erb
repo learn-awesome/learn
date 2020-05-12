@@ -1,17 +1,13 @@
-<div class="sm:w-1/2 pr-4 pl-4 xl:w-1/4 pr-4 pl-4 mb-4">
-<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
-    <a class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-grey-light no-underline w-fill" href="<%= link %>">
-            <div class="media">
-                <img class="h-6 w-6 rounded-full mr-3" src="<%= avatar_image %>" alt="<%= name %>">
-                <div class="media-body">
-                    <div class="align-items-center">
-                        <h4 class="mb-1">
-                            <b><%= name %></b>
-                        </h4>
-                        <p><%= description %></p>
-                    </div>
-                </div>
-            </div>
-    </a>
-</div>
-</div>
+<a href="<%= link %>" class="inline-block max-w-xs my-10 mr-10 bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="bg-white rounded overflow-hidden shadow-lg">
+        <div class="text-center p-6  border-b">
+          <img
+            class="h-16 w-16 rounded-full mx-auto"
+            src="<%= avatar_image %>"
+            alt="<%= name %>"
+          />
+          <p class="pt-2 text-lg font-semibold"><%= name %></p>
+          <p class="text-sm text-gray-600"><%= description %></p>
+        </div>
+      </div>
+</a>

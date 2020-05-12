@@ -1,7 +1,11 @@
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Reviews</h1>
 	<% (@item.reviews.completed.popular.to_a + Review.sample_reviews(@item, current_user)).each do |rev| %>
-		<a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
+		<% if rev.persisted? %>
+			<a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
+		<% else %>
+			<a href="javascript:void(0)" class="block flex border-t-2 p-2 cursor-default">
+		<% end %>
 		<img class="w-8 h-8 rounded-full mr-3" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>">
 		<p>
 			<%= rev.display_rating %><br/>

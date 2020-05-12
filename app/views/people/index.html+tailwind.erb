@@ -1,4 +1,4 @@
-<div class="flex">
+<div class="flex flex-wrap">
 <% @people.each do |p| %>
     <%= render partial: 'components/profile_card', locals: { 
         link: person_path(p), 

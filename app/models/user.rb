@@ -239,6 +239,8 @@ class User < ApplicationRecord
 	def theme_variant
 		if Rails.env.development?
 			:tailwind
+		elsif self.is_core_dev?
+			:tailwind
 		else
 			:bootstrap
 		end
