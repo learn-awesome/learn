@@ -66,7 +66,8 @@ class Topic < ApplicationRecord
 	end
 
 	def self.button_style(theme = :bootstrap)
-		return "rounded-full px-4 mr-2 bg-blue-200 text-black p-2 rounded leading-none" if theme == :tailwind
+		return "px-4 mr-2 bg-blue-200 text-gray-900 p-2 rounded leading-none hover:bg-blue-300" if theme == :tailwind
+		# px-3 py-1 bg-gray-600 text-gray-100 text-sm font-bold rounded hover:bg-gray-500
 		"btn btn-sm btn-soft-primary btn-pill"
 	end
 

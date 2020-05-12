@@ -19,7 +19,7 @@ class ItemType < ApplicationRecord
 	end
 
 	def self.button_style(theme = :bootstrap)
-		return "rounded-full px-4 mr-2 bg-red-200 text-black p-2 rounded leading-none" if theme == :tailwind
+		return "px-4 mr-2 bg-red-200 hover:bg-red-300 text-black p-2 rounded leading-none" if theme == :tailwind
 		"btn btn-sm btn-soft-info btn-pill"
 	end
 
