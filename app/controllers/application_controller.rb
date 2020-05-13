@@ -21,7 +21,10 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def set_variant
-		var = (:tailwind if params[:tailwind].to_s == 'true') || (:bootstrap if params[:bootstrap].to_s == 'true') || current_user.try(:theme_variant) || :bootstrap
+		var = (:tailwind if params[:tailwind].to_s == 'true') ||
+			(:bootstrap if params[:bootstrap].to_s == 'true') ||
+			current_user.try(:theme_variant) ||
+			(Rails.env.development? ? :tailwind : :bootstrap)
 		Rails.logger.info("Using variant = #{var}")
 		request.variant = var
 	end
