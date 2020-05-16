@@ -30,7 +30,7 @@ $(() => {
       ...defaultEditorConfig,
       element: document.getElementById("flash_card_answer")
     });
-  } else if (document.getElementById("item_new_form") && document.getElementById("item_description")) {
+  } else if (document.getElementById("new_syllabus_form") && document.getElementById("item_description")) {
     // only on the new syllabus form
     const syllabusEditor = new SimpleMDE({
       ...defaultEditorConfig,
