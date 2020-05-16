@@ -27,7 +27,7 @@
 <a href="<%= item_path(item) %>" class="block max-w-xs bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
     <div class="py-5 px-4">
         <p href="#" class="block text-lg text-gray-800 font-semibold"><%= item.display_name %></p>
-        <span class="text-sm text-gray-700"><%= item.primary_link.top_domain %></span>
+        <span class="text-sm text-gray-700"><%= item.primary_link.try(:top_domain) %></span>
     </div>
 </a>
 <% end %>
