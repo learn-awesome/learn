@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   include Secured
   before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :combine, :destroy]
-  before_action :set_layout, :only => [:new, :show]
+  # before_action :set_layout, :only => [:new, :show]
   before_action :set_has_used_browser_extension
 
   def index
@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
         raise idea_set.errors.first.inspect
       end
 
-      params[:item][:topics].each do |topic_id|
+      params[:item][:topics].to_a.each do |topic_id|
         TopicIdeaSet.create(topic_id: topic_id, idea_set: idea_set)
       end
 
@@ -89,6 +89,13 @@ class ItemsController < ApplicationController
         topic = Topic.where(name: topic_name).first
         next unless topic
         TopicIdeaSet.find_or_create_by(topic_id: topic.id, idea_set: idea_set)
+      end
+
+      if params[:item][:first_topic]
+        TopicIdeaSet.create(topic_id: params[:item][:first_topic], idea_set: idea_set)
+        if params[:item][:second_topic]
+          TopicIdeaSet.create(topic_id: params[:item][:second_topic], idea_set: idea_set)
+        end
       end
 
       item = Item.new(item_params)
@@ -317,9 +324,9 @@ class ItemsController < ApplicationController
 
   private
 
-    def set_layout
-      self.class.layout ( params['ext'].to_s == 'true' ? "embed_#{request.variant.first}" :  request.variant.first.to_s)
-    end
+    # def set_layout
+    #   self.class.layout ( params['ext'].to_s == 'true' ? "embed_#{request.variant.first}" :  request.variant.first.to_s)
+    # end
 
     def item_params
       params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata)

@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
       end
 
       if @user_topics.blank? and @following_reviews.blank?
-        flash[:success] = "Follow your favorite topics and people to get a personalized dashboard."
+        # flash[:success] = "Follow your favorite topics and people to get a personalized dashboard."
         redirect_to topics_path
       else
     		render 'dashboard/show'
