@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
     		render 'dashboard/show'
       end
   	else
-      render :index
+      redirect_to topics_path
     end
   end
 

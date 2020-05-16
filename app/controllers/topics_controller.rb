@@ -45,7 +45,12 @@ class TopicsController < InheritedResources::Base
       @user_topics = current_user.user_topics
       @does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
     end
-    @item_type_items = @topic.advanced_search(@item_type, @length, @quality).paginate(page: params[:page])
+
+    if request.variant.to_s =~ /tailwind/
+      @item_type_items = @topic.advanced_search(@item_type, @length, @quality)
+    else
+      @item_type_items = @topic.advanced_search(@item_type, @length, @quality).paginate(page: params[:page])
+    end
  
     @learning_plans = @topic.advanced_search('learning_plan', nil, nil)
   end

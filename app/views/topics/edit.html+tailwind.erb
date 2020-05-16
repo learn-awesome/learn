@@ -1,0 +1,54 @@
+<div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md">
+    <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit Topic: <%= @topic.display_name %></h2>
+
+<ul>
+<% @topic.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
+
+    <%= form_for @topic do |form| %>
+
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :display_name, "Name (use only a-z, 0-9, <space> and -)", class: "text-gray-700" %><br>
+    <%= form.text_field :display_name, minlength: 4, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-zA-Z\\-\\/ ]+$", required: true %>
+  </div>
+
+  <% if params['advanced'].to_s == 'true' %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+      <%= form.label :name, "Name (use only a-z, 0-9, / and -)", class: "text-gray-700" %><br>
+      <%= form.text_field :name, minlength: 4, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-z\\-\\/]+$", required: true %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+      <%= form.label :search_index, "Search Index", class: "text-gray-700" %><br>
+      <%= form.text_field :search_index, minlength: 4, maxlength: 250, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", required: true %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :gitter_room, "Gitter Chat room (use only a-z, 0-9 and -)", class: "text-gray-700" %><br>
+    <%= form.text_field :gitter_room, minlength: 4, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-z\\-]+$", required: true %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :gitter_room_id, "Gitter Chat room ID (use only 0-9 and a-f)", class: "text-gray-700" %><br>
+    <%= form.text_field :gitter_room_id, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-f]+$", required: false %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :parent_id, "Parent Topic", class: "text-gray-700" %><br>
+    <%= form.select :parent_id,  Topic.where.not(id: @topic.id).order(:name).collect {|t| [t.name, t.id]}, { include_blank: "--- Select ---"}, class: "form-control" %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :second_parent_id, "Second Parent Topic", class: "text-gray-700" %><br>
+    <%= form.select :second_parent_id,  Topic.where.not(id: @topic.id).order(:name).collect {|t| [t.name, t.id]}, { include_blank: "--- Select ---"}, class: "form-control" %>
+    </div>
+    <% end %>
+
+    <div class="flex justify-end mt-4">
+        <%= form.submit "Save Topic", class: "px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700" %>
+    </div>
+    <% end %>
+</div>
