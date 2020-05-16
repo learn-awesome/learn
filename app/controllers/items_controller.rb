@@ -173,15 +173,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find_by(id: params[:id])
-    if item.can_user_edit?(current_user) == false
-      flash[:danger] = "Only the original user can update a learning plan."
-      redirect_to item_path(@item)
-    end
-
+    item = Item.find(params[:id])
     if item
+      unless item.can_user_edit?(current_user)
+        flash[:danger] = "Only the original user can update a learning plan."
+        redirect_to item_path(@item)
+      end
       item.name = params[:name]
-      item.item_type_id = params[:item_type_id] if ItemType.find(params[:item_type_id])
+      p params[:item_type_id]
+      item.item_type_id = params[:item_type_id] if params[:item_type_id] && ItemType.find(params[:item_type_id])
       item.estimated_time = params[:estimated_time]
       item.time_unit = params[:estimated_time_unit]
       item.typical_age_range = params[:typical_age_range]
@@ -203,15 +203,16 @@ class ItemsController < ApplicationController
         end
       end
 
-      params[:person_ids].to_a.reject(&:blank?).each do |x|
-        unless item.authors.map(&:id).include?(x)
-          item.idea_set.person_idea_sets.create!(person_id: x, role: "creator")
+      if params[:person_ids].try(:length) > 0
+        # params[:person_ids] is a String with just one author_id for now
+        unless item.authors.map(&:id).include?(params[:person_ids])
+          item.idea_set.person_idea_sets.create!(person_id: params[:person_ids], role: "creator")
         end
-      end
 
-      item.authors.each do |a|
-        unless params[:person_ids].to_a.reject(&:blank?).include?(a.id)
-          PersonIdeaSet.where(idea_set: item.idea_set, person: a, role: "creator").first.try(:destroy)
+        item.authors.each do |a|
+          unless params[:person_ids] == a.id
+            PersonIdeaSet.where(idea_set: item.idea_set, person: a, role: "creator").first.try(:destroy)
+          end
         end
       end
 
