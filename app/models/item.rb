@@ -530,19 +530,32 @@ class Item < ApplicationRecord
     self.name
   end
 
+  class CustomMarkdownRender < Redcarpet::Render::HTML
+    def block_quote(quote)
+      %(<blockquote class="my-custom-class">#{quote}</blockquote>)
+    end
+
+    def paragraph(text)
+        %(<p class="mb-2">#{text}</p>)
+    end
+
+    def header(text, header_level)
+        %(<h#{header_level} class="text-#{4-header_level}xl mt-2 mb-1 font-semibold">#{text}</h#{header_level}>)
+    end
+
+    def link(lk, target, content)
+        %(<a class="underline text-blue-500 hover:text-blue-700" href="#{lk}" target="_blank">#{content}</a>)
+    end
+end
+
   def display_description
     # TODO: Why not allow markdown for all item descriptions instead of only syllabuses?
     # Could lead to styling abuse by using headings, links, lists etc
     if self.is_syllabus?
       # this is a native learning plan
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
-        filter_html: true,
-        no_images: true,
-        no_links: true,
-        no_styles: true
-      ))
+      markdown = Redcarpet::Markdown.new(CustomMarkdownRender)
       html = markdown.render(self.description.to_s.strip).html_safe
-      return self.replace_la_links_with_embeds(html)
+      return html #self.replace_la_links_with_embeds(html)
     else
       return self.description.to_s.strip
     end
