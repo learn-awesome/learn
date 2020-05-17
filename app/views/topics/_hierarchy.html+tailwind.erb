@@ -2,19 +2,11 @@
     groups = Topic.get_hierarchy(root_topic)
 %>
 
-<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden" id="topicgrid">
-    <div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
-        <% groups.each do |parent, children| %>
-        <div class="sm:mt-0 sm:w-80 sm:flex-shrink-0 mt-10 sm:ml-4">
-            <div>
-                <!-- <div class="relative pb-5/6"><img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="" class="absolute inset-0 h-full w-full rounded-lg shadow-md object-cover"></div> -->
-                <div class="relative px-4 mb-4">
-                    <div class="bg-white rounded-lg px-4 py-4 shadow-lg transition duration-200 transform hover:scale-105">
-                        <!-- <div class="flex items-baseline"><span class="inline-block px-2 py-1 leading-none bg-teal-200 text-teal-800 rounded-full font-semibold uppercase tracking-wide text-xs">Plus</span>
-                            <div class="ml-2 text-xs text-gray-600 font-semibold uppercase tracking-wide">
-                                4 beds • 1 bath
-                            </div>
-                        </div> -->
+
+<div class="mt-6" style="columns: 6 200px; column-gap: 1rem;">
+<% groups.each do |parent, children| %>
+    <!-- background-image: url('https://picsum.photos/seed/<%= parent.name %>/300/500?blur=1');  -->
+  <div style="margin: 0 1rem 1rem 0; display: inline-block; width: 100%;" class="bg-white rounded-lg px-4 py-4 shadow-2xl transition duration-200 transform hover:scale-105">
                         <h4 class="mt-1 text-gray-900 font-semibold text-lg">
                         <% if parent.persisted? %>
                         <%= link_to parent.display_name, topic_path(parent) %></h2>
@@ -23,16 +15,11 @@
                         <% end %>
                         </h4>
                         <!-- <div class="mt-1"><span class="text-gray-900">$1,750.00</span><span class="ml-1 text-sm text-gray-600">/wk</span></div> -->
-                        <div class="mt-2 flex flex-wrap text-sm text-gray-600">
+                        <div class="mt-2 flex flex-wrap text-sm text-gray-900">
                         <% children.take(show_max).each do |child| %>
                             <%= link_to child.display_name_without_ancestors, topic_path(child), class: "hover:text-blue-500 px-2" %>
                         <% end %>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% end %>
-    </div>
-</div>
+  </div>
+<% end %>
 </div>
