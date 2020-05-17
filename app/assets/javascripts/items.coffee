@@ -46,10 +46,10 @@ topic_already_exists = (topic_id) ->
 	return $('#search_topic').find('.topic[data-id=' + topic_id + ']').length > 0
 
 topic_btn_template = (topic_id, topic_name) ->
-	return '<div class="btn-group topic" data-id="' + topic_id + '">
+	return '<div class="btn-group topic inline-flex mb-2" data-id="' + topic_id + '">
 		<input type="hidden" name="item[topics][]" value="' + topic_id + '">
-		<div class= "btn btn-sm grey-btn">' + topic_name + '</div>
-		<div class="btn btn-sm remove_topic">
+		<div class= "btn btn-sm grey-btn p-2">' + topic_name + '</div>
+		<div class="btn btn-sm remove_topic p-2">
 			<i class="fa fa-times" aria-hidden="true"></i>
 		</div>
 		</div>'

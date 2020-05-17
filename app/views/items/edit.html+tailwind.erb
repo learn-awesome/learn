@@ -13,13 +13,13 @@
             <div class="mt-4">
                 <label class="text-gray-700">Topics:</label>
                 <div class="item_topics" id="topformdiv">
-                    <div id="search_topic" class="input-group input-group-sm mb-3 inline-flex">
+                    <div id="search_topic" class="input-group input-group-sm mb-3 inline-block">
                         <span class="w-48">
                             <input type="text" class=" typehead mt-4 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" placeholder="Search Topics" aria-label="Search Topics">
                         </span>
-                        <div class="input-group-append inline-flex">
+                        <div class="input-group-append inline-block mt-3">
                             <% @item.topics.map do |topic| %>
-                                <div class="btn-group topic inline-flex" data-id="<%= topic.id %>">
+                                <div class="btn-group topic inline-flex mb-2" data-id="<%= topic.id %>">
                                     <div class= "btn btn-sm grey-btn p-2"><%= topic.name %></div>
                                     <div class="btn btn-sm remove_topic p-2">
                                         <i class="fa fa-times" aria-hidden="true"></i>
