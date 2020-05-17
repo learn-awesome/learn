@@ -49,36 +49,23 @@
     <!-- Web Fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-    <!-- Components Vendor Styles -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/workcation.css" rel="stylesheet">
     <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" href="/stream/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-
-    <!-- Theme Styles -->
-    <link rel="stylesheet" href="/stream/assets/css/theme.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   </head>
   <!-- End Head -->
 
   <body>
-    <main class="u-main" role="main" style="padding-left: 0;">
-      <div class="u-content">
-        <div class="u-body">
+    <main>
+      <div>
+        <div>
           <%= yield %>
         </div>
       </div>
     </main>
 
-    <!-- Global Vendor -->
-    <script src="/stream/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="/stream/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-    <script src="/stream/assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/stream/assets/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="/stream/assets/vendor/typeahead/typeahead.bundle.min.js"></script>
 
-    <!-- Plugins -->
-    <script src="/stream/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-
-    <!-- Initialization  -->
-    <script src="/stream/assets/js/sidebar-nav.js"></script>
-    <script src="/stream/assets/js/main.js"></script>
   </body>
 </html>

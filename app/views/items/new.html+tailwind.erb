@@ -5,9 +5,9 @@
 
         <%= form.url_field :url, value: @item_url, required: true, placeholder: "URL", class: "w-full mt-6 py-2 px-4 bg-gray-200 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white" %>
 
-        <%= form.collection_select :first_topic, Topic.all, :id, :display_name, {prompt: 'Choose main topic'}, required: true, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow" %>
+        <%= form.collection_select :first_topic, Topic.all.sort_by(&:name), :id, :name, {prompt: 'Choose main topic'}, required: true, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow" %>
 
-        <%= form.collection_select :second_topic, Topic.all, :id, :display_name, {prompt: 'Choose secondary topic'}, required: false, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow" %>
+        <%= form.collection_select :second_topic, Topic.all.sort_by(&:name), :id, :name, {prompt: 'Choose secondary topic'}, required: false, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow" %>
 
         <div class="flex justify-between items-center mt-6">
         <%= form.submit "Save", class: "py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-600 focus:outline-none" %>
