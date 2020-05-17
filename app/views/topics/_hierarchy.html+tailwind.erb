@@ -3,23 +3,31 @@
 %>
 
 
-<div class="mt-6" style="columns: 6 200px; column-gap: 1rem;">
+<div class="mt-6" style="columns: 6 240px; column-gap: 1rem;">
 <% groups.each do |parent, children| %>
     <!-- background-image: url('https://picsum.photos/seed/<%= parent.name %>/300/500?blur=1');  -->
-  <div style="margin: 0 1rem 1rem 0; display: inline-block; width: 100%;" class="bg-white rounded-lg px-4 py-4 shadow-2xl transition duration-200 transform hover:scale-105">
-                        <h4 class="mt-1 text-gray-900 font-semibold text-lg">
+  <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-2xl transition duration-200 transform hover:scale-105 hover:bg-blue-100 focus:bg-blue-100 focus:outline-none group">
+
                         <% if parent.persisted? %>
-                        <%= link_to parent.display_name, topic_path(parent) %></h2>
+                            <%= link_to parent.display_name, topic_path(parent), class: "mt-1 p-1 text-gray-900 font-semibold text-lg hover:text-blue-500" %></h2>
                         <% else %>
-                            <%= parent.display_name %>
+                            <h4 class="mt-1 p-1 text-gray-900 font-semibold text-lg hover:text-blue-500"><%= parent.display_name %></h4>
                         <% end %>
-                        </h4>
+
                         <!-- <div class="mt-1"><span class="text-gray-900">$1,750.00</span><span class="ml-1 text-sm text-gray-600">/wk</span></div> -->
                         <div class="mt-2 flex flex-wrap text-sm text-gray-900">
-                        <% children.take(show_max).each do |child| %>
+                        <% children.take(show_max).sort_by(&:name).each do |child| %>
                             <%= link_to child.display_name_without_ancestors, topic_path(child), class: "hover:text-blue-500 px-2" %>
                         <% end %>
                         </div>
+                        <% if children.size > show_max %>
+                        <p class="mt-2 text-sm underline text-blue-700 hover:text-blue-900 text-right group-focus:hidden"><span class="cursor-pointer">and <%= children.size - show_max %> more.</span></p>
+                        <div class="mt-2 hidden group-focus:flex flex-wrap text-sm text-gray-900 ">
+                        <% children[show_max..-1].sort_by(&:name).each do |child| %>
+                            <%= link_to child.display_name_without_ancestors, topic_path(child), class: "hover:text-blue-500 px-2" %>
+                        <% end %>
+                        </div>
+                        <% end %>
   </div>
 <% end %>
 </div>

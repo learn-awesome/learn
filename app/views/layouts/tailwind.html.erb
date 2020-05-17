@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
   <head>
     <%= render 'layouts/head_tag' %>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="/latwfull.css" rel="stylesheet">
     <link href="/workcation.css" rel="stylesheet">
     <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -10,9 +10,9 @@
 
   <body class="font-sans bg-gray-200">
 
-<div id="app" class="min-h-screen bg-gray-200 antialiased xl:flex xl:flex-col xl:h-screen">
-    <header class="bg-gray-900 sm:flex sm:items-center sm:justify-between xl:bg-white xl:flex-shrink-0">
-        <div class="flex justify-between px-4 py-3 xl:w-72 xl:bg-white xl:justify-center xl:py-5">
+<div id="app" class="min-h-screen antialiased xl:flex xl:flex-col xl:h-screen">
+    <header class="sm:flex sm:items-center sm:justify-between bg-white xl:flex-shrink-0">
+        <div class="flex justify-between px-4 py-3 xl:w-72 xl:justify-center xl:py-5">
             <div>
             <a href="/"><img src="/stream/assets/img/logo.png" width="160" alt="LearnAwesome"></a>
             </div>
@@ -38,9 +38,9 @@
             </div>
             <div class="sm:flex sm:items-center">
                 <div class="px-2 pt-2 pb-5 border-b border-gray-800 sm:flex sm:border-b-0 sm:py-0 sm:px-0">
-                    <a href="/topics" class="block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:text-sm sm:px-2 xl:text-gray-900 xl:hover:bg-gray-200">Browse Topics</a>
-                    <a href="/items/discover" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Random Item</a>
-                    <a href="/people" class="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900 xl:hover:bg-gray-200">Experts</a>
+                    <a href="/topics" class="block px-3 py-1 rounded font-semibold text-white sm:text-sm sm:px-2 text-gray-900 hover:bg-gray-200">Browse Topics</a>
+                    <a href="/items/discover" class="mt-1 block px-3 py-1 rounded font-semibold sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 text-gray-900 hover:bg-gray-200">Random Item</a>
+                    <a href="/people" class="mt-1 block px-3 py-1 rounded font-semibold sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 text-gray-900 hover:bg-gray-200">Experts</a>
                 </div>
                 <% if current_user.present? %>
                 <div class="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0" x-data="{ open: false }">
