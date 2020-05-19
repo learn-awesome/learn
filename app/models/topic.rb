@@ -156,7 +156,7 @@ class Topic < ApplicationRecord
 	end
 
 	def image_url
-		"https://picsum.photos/seed/#{self.name}/400/400"
+		"https://source.unsplash.com/1600x900/?" + self.name.gsub("/",",").gsub("-",",")
 	end
 
 	def display_name_without_ancestors
