@@ -156,7 +156,7 @@ class Topic < ApplicationRecord
 	end
 
 	def image_url
-		"https://learnawesome.org/stream/assets/img/logo-mobile.png"
+		"https://picsum.photos/seed/#{self.name}/400/400"
 	end
 
 	def display_name_without_ancestors

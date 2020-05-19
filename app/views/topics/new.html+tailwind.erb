@@ -1,0 +1,18 @@
+<div class="card max-w-sm mx-auto">
+<%= form_for @topic, html: {class: "simple-form"} do |form| %>
+    <h1>Add New Topic</h1>
+
+    <% if @topic.errors.any? %>
+    <ul>
+    <% @topic.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+    </ul>
+    <% end %>
+
+    <%= form.label :display_name, "Topic name (use only a-z, 0-9, <space> and -)" %>
+    <%= form.text_field :display_name, minlength: 4, maxlength: 50, pattern: "^[0-9a-zA-Z\\-\\/ ]+$", required: true %>
+    
+    <%= form.submit "Add Topic" %>
+<% end %>
+</div>

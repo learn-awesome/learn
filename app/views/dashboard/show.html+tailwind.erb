@@ -1,59 +1,32 @@
-
-<div class="row">
-<!-- Cards with Tabs -->
-<div class="col-md-6 mb-4">
+<div class="flex flex-no-wrap md:flex-wrap overflow-auto">
 <% if @user_topics.any? %>
 	<% @user_topics.map(&:topic).each do |topic| %>
-	      <div class="card mb-4">
-	        <div class="card-header d-md-flex align-items-center">
-	          <h2 class="h3 card-header-title"><%= link_to topic.name, topic, class: "btn #{Topic.button_style}" %></h2>
-
-	          <!-- Tabs Nav -->
-	          <ul class="nav nav-tabs card-header-tabs ml-md-auto mt-3 mt-md-0">
-	           <li class="nav-item">
-	             <a href="#<%= topic.id %>panelWithTabsTab1" class="nav-link active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
-	           </li>
-	           <li class="nav-item">
-	             <a href="#<%= topic.id %>panelWithTabsTab2" class="nav-link" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
-	           </li>
-	          </ul>
-	          <!-- End Tabs Nav -->
-	        </div>
-
-	        <div class="card-body">
-	          <!-- Tabs Content -->
-	          <div class="tab-content">
-	            <div class="tab-pane fade show active" id="<%= topic.id %>panelWithTabsTab1" role="tabpanel">
-	            		<% topic.items.recent.each do |item| %>
-	            		<div><%= render item %></div>
-	            		<% end %>
-	            </div>
-
-	            <div class="tab-pane fade" id="<%= topic.id %>panelWithTabsTab2" role="tabpanel">
-	            		<% topic.items.popular.each do |item| %>
-	            		<div><%= render item %></div>
-	            		<% end %>
-	            </div>
-	          </div>
-	          <!-- End Tabs Content -->
-	        </div>
-
-	      </div>
-
+	          <%= link_to topic, class: "block w-56 mr-4 mt-4 text-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+			  	<img src="<%= topic.image_url %>" alt="avatar" class="w-full h-48 object-cover object-center">
+				<div class="flex items-center px-6 py-3 bg-gray-900">
+					<h1 class="mx-3 text-white font-semibold text-lg"><%= topic.display_name %></h1>
+				</div>
+			  <% end %>
 	<% end %>
+			<%= link_to Topic.find_by_name('machine-learning'), class:"block w-56 mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
+				<div class="flex items-center px-6 py-3 bg-gray-900">
+					<h1 class="mx-3 text-white font-semibold text-lg">Machine Learning for Managers</h1>
+				</div>
+			<% end %>
+			<%= link_to Topic.find_by_name('programming-languages/scratch'), class:"block w-56 mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
+				<div class="flex items-center px-6 py-3 bg-gray-900">
+					<h1 class="mx-3 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
+				</div>
+			<% end %>
+
 <% else %>
-	      <div class="card">
-	        <div class="card-header d-md-flex align-items-center">
-	          <h2 class="h3 card-header-title">Your favorite topics</h2>
-	        </div>
-	        <div class="card-body">
 	        	<p>No such topics. <%= link_to "Browse topics", topics_path %> and follow your favorite ones.</p>
-	        </div>
-	      </div>
 <% end %>
 </div>
 
-<div class="col-md-6 mb-4">
+<div class="flex-grow">
      <div class="card">
         <div class="card-header d-md-flex align-items-center">
         	<h2><b>Latest Reviews</b></h2>
@@ -66,7 +39,7 @@
 	        	<% end %>
 	        	</div>
 	        <% else %>
-	        	<p>No reviews. <%= link_to "Consider following more users?", users_path %> 
+	        	<p>No reviews. <%= link_to "Consider following more users?", users_path, class: "underline text-blue-500" %> 
 	        		<%# Review.recent.where("user_id NOT IN (?)", Array.wrap([current_user.id] + current_user.following.map(&:id))).includes(:user).map(&:user).uniq.each do |u| %>
 	        			<%# link_to u.nickname, user_path(u) %>
 	        		<%# end %>
@@ -74,6 +47,3 @@
 	        <% end %>
         </div>
 </div>
-
-</div>
-
