@@ -2,7 +2,7 @@
 <% if @user_topics.any? %>
 	<% @user_topics.map(&:topic).each do |topic| %>
 	          <%= link_to topic, class: "block w-56 mr-4 mt-4 text-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
-			  	<img src="<%= topic.image_url %>" alt="avatar" class="w-full h-48 object-cover object-center">
+			  	<img src="<%= topic.image_url(true) %>" alt="avatar" class="w-full h-48 object-cover object-center">
 				<div class="flex items-center px-6 py-3 bg-gray-900">
 					<h1 class="mx-3 text-white font-semibold text-lg"><%= topic.display_name %></h1>
 				</div>

@@ -155,8 +155,12 @@ class Topic < ApplicationRecord
 		@all_children ||= (self.children.to_a + Topic.where(second_parent_id: self.id).to_a).uniq
 	end
 
-	def image_url
-		"https://source.unsplash.com/1600x900/?" + self.name.gsub("/",",").gsub("-",",")
+	def image_url(tailwind=false)
+		if tailwind and self.persisted? and self.name.present?
+			"https://source.unsplash.com/1600x900/?" + self.name.gsub("/",",").gsub("-",",")
+		else
+			"https://learnawesome.org/stream/assets/img/logo-mobile.png"
+		end
 	end
 
 	def display_name_without_ancestors
