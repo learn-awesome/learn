@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
       redirect_to root_path and return
     end
 
-    if @item.is_syllabus?
+    if @item.is_syllabus? and !current_user
       flash[:success] = "The learning plans are only available to logged-in users."
       redirect_to root_path and return
     end
