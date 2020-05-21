@@ -75,6 +75,7 @@ class ItemsController < ApplicationController
     Item.transaction do
       idea_set = IdeaSet.new
       idea_set.name = params[:item][:name] || @extracted[:title] || params[:item][:url]
+      idea_set.name = idea_set.name[0..255]
       idea_set.description = params[:item][:description]
 
       if params[:item][:person_id].present?
