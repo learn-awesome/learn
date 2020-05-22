@@ -52,16 +52,16 @@
             </div>
 
             <h4 class="mt-8">Links: &nbsp;<i id="addNewLink" class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;
-            <span class="form-error item_links_error hidden">Make sure the links are valid</span>
+                <span class="form-error item_links_error hidden">Make sure the links are valid</span>
+                <div class="item_links">
+                    <% @item.links.map do |link| %>
+                        <div class="input-group input-group-sm mb-3">
+                            <input class="form-control form-control-sm link_input w-5/6 mt-1 px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" data-id="<%= link.id %>" type="text" value="<%= link.url %>">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </div>
+                    <% end %>
+                </div>
             </h4>
-            <div class="item_links">
-                <% @item.links.map do |link| %>
-                    <div class="input-group input-group-sm mb-3">
-                        <input class="form-control form-control-sm link_input w-5/6 mt-1 px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" data-id="<%= link.id %>" type="text" value="<%= link.url %>">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </div>
-                <% end %>
-            </div>
 
             <div class="form-group mb-4 mt-8">
                 <div class="form-inline">
