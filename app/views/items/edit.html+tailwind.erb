@@ -1,115 +1,75 @@
-<div class="max-w-4xl p-6 bg-white rounded-md shadow-md">
-    <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit: <%= @item.display_name %></h2>
-    <form>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+<div class="card max-w-4xl mx-auto">
+<%= form_for @item, html: {class: "simple-form"} do |form| %>
+    <h1>Edit: <%= @item.display_name %></h1>
 
-            <div>
-                <input id="item_name_input" type="text" class="w-full mt-4 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" value="<%= @item.name %>" >
-			    <span class="form-error item_name_error hidden">Item name must be minimum 3 characters</span>
-            </div>
+    <% if @item.errors.any? %>
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+    </ul>
+    <% end %>
 
-            <textarea id="item_description_input" class="mt-4 bg-gray-200 rounded text-gray-800 border border-gray-300 focus:bg-white" placeholder="Write some description"><%= @item.description.try(:strip) %></textarea>
+    <%= form.label :name, "Name:" %>
+    <%= form.text_field :name, minlength: 3, maxlength: 255, required: true %>
 
-            <div class="mt-4">
-                <label class="text-gray-700">Topics:</label>
-                <div class="item_topics" id="topformdiv">
-                    <div id="search_topic" class="input-group input-group-sm mb-3 inline-block">
-                        <span class="w-48">
-                            <input type="text" class=" typehead mt-4 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" placeholder="Search Topics" aria-label="Search Topics">
-                        </span>
-                        <div class="input-group-append inline-block mt-3">
-                            <% @item.topics.map do |topic| %>
-                                <div class="btn-group topic inline-flex mb-2" data-id="<%= topic.id %>">
-                                    <div class= "btn btn-sm grey-btn p-2"><%= topic.name %></div>
-                                    <div class="btn btn-sm remove_topic p-2">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-                    </div>
-                    <span class="form-error topic_count_error hidden">Add minimum 1 topic.</span>
-                </div>
-            </div>
+    <%= form.label :description, "Description:" %>
+    <%= form.text_area :description %>
 
-            <div class="mt-4">
-                <label class="text-gray-700" for="edit_item_type">Type:</label>
-                <div><select class="mt-1 px-4 py-2 block rounded" id="edit_item_type">
-                    <% ItemType.all.each do |type| %>
-                        <% if type.id == @item.item_type_id %>
-                            <option value="<%= type.id %>" selected="selected"><%= type.display_name_plural %></option>
-                        <% else %>
-                            <option value="<%= type.id %>"><%= type.display_name_plural %></option>
-                        <% end %>
-                    <% end %>
-                </select></div>
-            </div>
+    <%= form.label :item_type_id, "Format" %>
+    <%= form.select :item_type_id, ItemType.order(:display_name_plural).collect {|t| [t.display_name_plural, t.id]}, { include_blank: "--- Select Type ---"} %>
 
+    <br>
+    <h2>Links: <%= link_to_add_association form, :links, {'data-association-insertion-method' => 'after'} do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    <% end %>
+    </h2>
+    <%= form.fields_for :links do |link| %>
+        <%= render 'link_fields', f: link %>
+    <% end %>
 
-            <div class="mt-8">
-                <label class="text-gray-700" for="item_image_url">Image URL:</label>
-                <input id="item_image_url" type="url" value="<%= @item.image_url %>" class="w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white">
-            </div>
+    <br>
+    <%= form.fields_for :idea_set do |iform| %>
+        <h2>Topics: <%= link_to_add_association iform, :topic_idea_sets, {'data-association-insertion-method' => 'after'} do %>
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <% end %>
+        </h2>
+        <%= iform.fields_for :topic_idea_sets do |topic_idea_set| %>
+            <%= render 'topic_idea_set_fields', f: topic_idea_set %>
+        <% end %>
+    <% end %>
 
-            <h4 class="mt-8">Links: &nbsp;<i id="addNewLink" class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;
-                <span class="form-error item_links_error hidden">Make sure the links are valid</span>
-                <div class="item_links">
-                    <% @item.links.map do |link| %>
-                        <div class="input-group input-group-sm mb-3">
-                            <input class="form-control form-control-sm link_input w-5/6 mt-1 px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" data-id="<%= link.id %>" type="text" value="<%= link.url %>">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </div>
-                    <% end %>
-                </div>
-            </h4>
+    <%= form.label :image_url, "Image URL:" %>
+    <%= form.text_field :image_url, minlength: 8, maxlength: 1024 %>
 
-            <div class="form-group mb-4 mt-8">
-                <div class="form-inline">
-                    <label class="text-gray-700" for="item_estimated_time">Estimated time to complete: &nbsp;</label>
-                    <input min="0" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[estimated_time]" id="item_estimated_time" value="<%= @item.estimated_time %>">&nbsp;
-                    <select class="mt-1 px-4 py-2 rounded" name="item[time_unit]" id="item_time_unit" >
-                        <option value="minutes" >minutes</option>
-                        <option value="hours" >hours</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="mt-8">
-                <label class="text-gray-700" for="item_estimated_time">Typical age range:</label>
-                <select class="mt-1 px-2 py-2 rounded w-64" name="item[typical_age_range]" id="item_typical_age_range">
-                    <option value="">All ages</option>
-                    <option value="-6">Upto 6 yrs</option>
-                    <option value="6-">6 yrs+</option>
-                    <option value="-13">Upto 13yrs</option>
-                    <option value="13-">13 yrs+</option>
-                    <option value="18-">18 yrs+</option>
-                </select>
-            </div>
-
-            <div class="mt-8">
-                <label for="item_year_of_publication" class="text-gray-700">Year of Publication/Creation:</label>
-                <input type="number" min='1900' max="<%= Date.today.year.to_i + 5 %>" id="item_year_of_publication" value="<%= @item.year %>" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white">
-            </div>
-
-            <div class="mt-8">
-                <label for="item_person_id"class="text-gray-700">Creators:</label>
-                <select class="mt-1 px-2 py-2 rounded" id="item_person_ids">
-                    <option value="">-- select --</option>
-                    <% Person.order(:name).all.each do |p| %>
-                        <option value="<%= p.id %>" <% if @item.authors.map(&:id).include?(p.id) %>selected<% end %>>
-                            <%= p.name %>
-                        </option>
-                    <% end %>
-                </select>
-            </div>
-
+    <div class="flex justify-between">
+        <div class="form-inline">
+            <label class="text-gray-700" for="item_estimated_time">Estimated time to complete: &nbsp;</label>
+            <input min="0" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[estimated_time]" id="item_estimated_time" value="<%= @item.estimated_time %>">&nbsp;
+            <select class="mt-1 px-4 py-2 rounded" name="item[time_unit]" id="item_time_unit" >
+                <option value="minutes" >minutes</option>
+                <option value="hours" >hours</option>
+            </select>
         </div>
-        <div class="flex justify-end mt-4"><button id="saveItemBtn" class="px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Save</button></div>
-    </form>
-</div>
 
-<script>
-  item_id = "<%= @item.id %>";
-  $('#item_time_unit').val("<%= @item.time_unit %>");
-  $('#item_typical_age_range').val("<%= @item.typical_age_range %>");
-</script>
+        <div>
+        <label for="item_typical_age_range">Typical age range:</label>
+        <select name="item[typical_age_range]" id="item_typical_age_range">
+            <option value="">All ages</option>
+            <option value="-6">Upto 6 yrs</option>
+            <option value="6-">6 yrs+</option>
+            <option value="-13">Upto 13yrs</option>
+            <option value="13-">13 yrs+</option>
+            <option value="18-">18 yrs+</option>
+        </select>
+        </div>
+
+        <div>
+        <%= form.label :year, "Year of publication:" %>
+        <%= form.number_field :year %>
+        </div>
+    </div>
+
+    <%= form.submit "Save" %>
+<% end %>
+</div>

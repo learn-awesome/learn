@@ -44,6 +44,7 @@ require 'redcarpet'
 
 class Item < ApplicationRecord
   belongs_to :idea_set, inverse_of: :items
+  has_many :topic_idea_sets, through: :idea_set
   has_many :topics, through: :idea_set
   belongs_to :item_type
   has_many :links, dependent: :destroy, inverse_of: :item
@@ -61,6 +62,7 @@ class Item < ApplicationRecord
   after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :idea_set
 
   attr_accessor :other_item_id
   attr_accessor :allow_without_links

@@ -180,11 +180,21 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
+    item = Item.from_param(params[:id])
     if item
       unless item.can_user_edit?(current_user)
         flash[:danger] = "Only the original user can update a learning plan."
-        redirect_to item_path(@item)
+        redirect_to item_path(item)
+      end
+
+      if request.variant.first == :tailwind
+        if item.update!(params[:item].permit!)
+          redirect_to item_path(item)
+          return
+        else
+          render 'edit'
+          return
+        end
       end
       item.name = params[:name]
       p params[:item_type_id]
