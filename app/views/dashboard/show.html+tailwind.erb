@@ -1,26 +1,37 @@
 <div class="flex flex-no-wrap md:flex-wrap overflow-auto">
 <% if @user_topics.any? %>
 	<% @user_topics.map(&:topic).each do |topic| %>
-	          <%= link_to topic, class: "block w-56 mr-4 mt-4 text-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+	          <%= link_to topic, class: "block min-w-56 whitespace-no-wrap mr-4 mt-4 text-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
 			  	<img src="<%= topic.image_url(true) %>" alt="avatar" class="w-full h-48 object-cover object-center">
 				<div class="flex items-center px-6 py-3 bg-gray-900">
 					<h1 class="mx-3 text-white font-semibold text-lg"><%= topic.display_name %></h1>
 				</div>
 			  <% end %>
 	<% end %>
-			<%= link_to Topic.find_by_name('machine-learning'), class:"block w-56 mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"block min-w-56 whitespace-no-wrap mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
 				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
 				<div class="flex items-center px-6 py-3 bg-gray-900">
 					<h1 class="mx-3 text-white font-semibold text-lg">Machine Learning for Managers</h1>
 				</div>
 			<% end %>
-			<%= link_to Topic.find_by_name('programming-languages/scratch'), class:"block w-56 mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+			<%= link_to Item.find_by_name('Syllabus: Scratch programming for kids'), class:"block min-w-56 whitespace-no-wrap mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
 				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
 				<div class="flex items-center px-6 py-3 bg-gray-900">
 					<h1 class="mx-3 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
 				</div>
 			<% end %>
-
+			<%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"block min-w-56 whitespace-no-wrap mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
+				<div class="flex items-center px-6 py-3 bg-gray-900">
+					<h1 class="mx-3 text-white font-semibold text-lg">Cooking with Food Science</h1>
+				</div>
+			<% end %>
+			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"block min-w-56 whitespace-no-wrap mr-4 mt-4 bg-white shadow-lg rounded-lg overflow-hidden transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="avatar" class="w-full h-48 object-cover object-center">
+				<div class="flex items-center px-6 py-3 bg-gray-900">
+					<h1 class="mx-3 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
+				</div>
+			<% end %>
 <% else %>
 	        	<p>No such topics. <%= link_to "Browse topics", topics_path %> and follow your favorite ones.</p>
 <% end %>

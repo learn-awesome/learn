@@ -15,11 +15,6 @@ class ItemsController < ApplicationController
       redirect_to root_path and return
     end
 
-    if @item.is_syllabus? and !current_user
-      flash[:success] = "The learning plans are only available to logged-in users."
-      redirect_to root_path and return
-    end
-
     @my_review = Review.where(item: @item, user: current_user).first || Review.new
     if current_user
       @lists_added = CollectionItem.where(item: @item).where(collection_id: current_user.collections.pluck(:id)).pluck(:collection_id)

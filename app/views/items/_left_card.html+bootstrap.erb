@@ -44,9 +44,11 @@
 
 
 		<% if @item.is_syllabus? %>
-			<div class="mb-4">
+			<% if @item.display_blurb.present? %>
+				<%= @item.display_blurb %>
+			<% else %>
 				<%= @item.display_description %>
-			</div>
+			<% end %>
 		<% else %>
 			<div class="mb-4">
 				<% if @item.large_thumbnail.present? %>
