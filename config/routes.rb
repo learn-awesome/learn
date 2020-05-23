@@ -109,4 +109,5 @@ Rails.application.routes.draw do
   get '/kids' => 'welcome#kids'
   get '/.well-known/webfinger' => 'users#webfinger'
   get '/browser_addon' => 'welcome#browser_addon'
+  get '/join_slack' => 'welcome#slack'
 end

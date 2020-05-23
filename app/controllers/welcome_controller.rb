@@ -74,6 +74,10 @@ class WelcomeController < ApplicationController
     redirect_to browser_extension(request)
   end
 
+  def slack
+    redirect_to "https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ"
+  end
+
   private
 
   def fetch_entities(is_fuzzy)
