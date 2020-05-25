@@ -78,6 +78,10 @@ class WelcomeController < ApplicationController
     redirect_to "https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ"
   end
 
+  def program
+    redirect_to "https://airtable.com/shrwVW2ihB43qgTmm/tblvYQzpnMRApGWvF"
+  end
+
   private
 
   def fetch_entities(is_fuzzy)
