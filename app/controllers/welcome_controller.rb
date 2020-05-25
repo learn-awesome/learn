@@ -78,7 +78,7 @@ class WelcomeController < ApplicationController
     redirect_to "https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ"
   end
 
-  def program
+  def programs
     redirect_to "https://airtable.com/shrwVW2ihB43qgTmm/tblvYQzpnMRApGWvF"
   end
 
