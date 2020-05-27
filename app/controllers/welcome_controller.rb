@@ -70,6 +70,10 @@ class WelcomeController < ApplicationController
     render json: [query] + Topic.search(query).map {|topic| topic.name} + Item.search(query).map {|item| item.name}
   end
 
+  def digitalgardensetup
+    request.variant = :tailwind #override as we just have one version
+  end
+
   def browser_addon
     redirect_to browser_extension(request)
   end

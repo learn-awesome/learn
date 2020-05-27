@@ -74,6 +74,8 @@ Rails.application.routes.draw do
       get 'outbox'
       post 'toggle_reviewposting'
       get 'onboarding'
+      get 'garden'
+      post 'garden'
     end
 
     collection do
@@ -111,4 +113,6 @@ Rails.application.routes.draw do
   get '/browser_addon' => 'welcome#browser_addon'
   get '/join_slack' => 'welcome#slack'
   get '/programs' => 'welcome#programs'
+  get '/digitalgardensetup' => 'welcome#digitalgardensetup'
+  get '/digitalgarden' => 'users#garden'
 end

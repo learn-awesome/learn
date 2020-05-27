@@ -24,6 +24,13 @@
               <%= form.text_area :description, class: "form-control" %>
             </div>
 
+            <div class="form-group mb-4">
+              <%= form.label :tiddlywiki_url do %>
+                    <a href='/digitalgardensetup' target='_blank' class='text-blue-400 underline'><u>Digital Garden</u></a>
+                <% end %>
+              <%= form.url_field :tiddlywiki_url, class: "form-control" %>
+            </div>
+
           <div class="form-group mb-4">
             <%= form.submit "Save", class: "btn btn-primary" %>
           </div>

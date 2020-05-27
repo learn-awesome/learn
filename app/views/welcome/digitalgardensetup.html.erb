@@ -1,0 +1,54 @@
+<div class="max-w-4xl p-6 bg-white rounded-md shadow-md">
+    <h2 class="text-lg text-gray-700 font-semibold mb-4">Create your own Digital Garden</h2>
+
+    <p class="mb-4">
+    <a href='https://notes.andymatuschak.org/About_these_notes' target='_blank' class='underline text-blue-400'>Everyone</a> is
+    <a href='https://www.mentalnodes.com/about' target='_blank' class='underline text-blue-400'>talking</a>
+    about <a href='https://tomcritchlow.com/blogchains/digital-gardens/' target='_blank' class='underline text-blue-400'>digital gardens</a>
+    these days. We have had private note-taking and public blogging for a while. Digital
+    gardens fit somewhere in the middle. Anne-Laure Le Cunff calls it "a place to share your evergreen notes—not raw notes you may have stored in your 
+    note-taking app, but not quite the level of polish you would expect on a blog."</p>
+
+    <p class="mb-4">Proprietary note-taking apps will come and go. I came across <a href="https://tiddlywiki.com/" target="_blank" class="underline text-blue-400">TiddlyWiki</a> 
+    which is an amazing piece of software. It's a single-page notes-taking system with features like bidirectional-linking of nodes, transclusion, links autocomplete, and more.
+    You can choose any of the pluggable data storage options, and there is a strong <a href="https://tiddlywiki.com/#Community" target="_blank" class="underline text-blue-400">user community</a> too.</p>
+
+    <div class="mb-4"><img src="https://nesslabs.com/wp-content/uploads/2020/05/gif-digital-garden-tw.gif" /></div>
+    <p class="text-xs mb-4">Image credit: <a href="https://nesslabs.com/digital-garden-tiddlywiki" target="_blank" class="text-blue-400 underline">Ness Labs</a></p>
+    
+    <p class="mb-4">Configuring TiddlyWiki with a free cloud-based storage and all the desirable features via plugins can be a bit cumbersome, so we thought of helping you out.
+
+    <% if current_user %>
+    <div class="bg-green-200 p-2 rounded border-2 border-orange-400 mb-4">
+    <p class="mb-4">We'll serve you an empty but properly configured (read: opinionated) TiddlyWiki page. You should <a class="underline" href="https://tiddlywiki.com/static/Saving%2520to%2520a%2520Git%2520service.html" target='_blank'>choose GitHub or GitLab as your notes storage</a> and use
+    a personal access token. This will allow you to publish your notes as a static website - even with a 
+    custom domain name. Later you can visit your TiddlyWiki install on that static website for note-taking.</p>
+
+    <ul class="list-disc px-4 mb-4">
+        <li>Create a repository on GitHub / GitLab (for eg: <code>eshnil/notes</code>) and enable serving it as <a href='https://guides.github.com/features/pages/' target='_blank' class='underline'>static pages</a>.</li>
+        <li>Generate a personal access token with access to this repo. Instructions for <a class="underline" href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line" target="_blank">GitHub</a>, 
+            <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token" class="underline">GitLab</a>. Note it down as you will need this a couple of times.</li>
+        <li><a href='/tiddlywiki.html' class='underline' target='_blank'>Open our version of TiddlyWiki</a></li>
+        <li>Open the control panel (Gear icon), go to <code>Saving -> GitHub/GitLab Saver</code> and fill in the details of your repo.</li>
+        <li>Don't worry. Your personal access token for GitHub or GitLab will only be saved in your browser's localStorage.</li>
+        <li>Choose "path to target file" as <code>/</code> and "filename" as <code>index.html</code></li>
+        <li>Now saving your wiki should work. It will use your token to commit the changes.</li>
+        <li>Now you can access your digital garden at your static site URL.</li>
+        <li>But because the domain has changed, you need to save the personal access token once again. Repeat step 4 to save it in the control panel.</li>
+        <li>Remember, TiddlyWiki is a truly server-less, single-page app. You can add new plugins very easily. And with the above setup, they will
+        be saved in your git repo, thus accessible from all your devices - along with your notes.</li>
+    </ul>
+
+    <p class="mb-4">You can <%= link_to "save the URL of your digital garden here", edit_user_path(current_user), class: "underline" %> for other LearnAwesome users to discover your digital garden. The link
+    will be shown on your <%= link_to "LearnAwesome profile", user_path(current_user), class: "underline" %>.</p>
+    </div>
+
+    <p class="mb-4">And you're all set. Happy gardening and happy learning! :-)</p>
+    <% end %>
+
+    <div>
+    <% if !current_user %>
+    <a class="inline-block shadow bg-gray-800 hover:bg-gray-700 focus:shadow-outline focus:outline-none text-gray-200 py-3 px-4 rounded mb-8" href="/digitalgarden">Sign-in to see detailed instructions</a>
+    <% end %>
+    </div>
+</div>

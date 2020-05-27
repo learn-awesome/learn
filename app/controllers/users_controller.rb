@@ -2,7 +2,7 @@ require 'oauth'
 
 class UsersController < ApplicationController
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings]
+  before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings, :garden]
   skip_before_action :verify_authenticity_token, :only => [:inbox]
 
   def index
@@ -20,6 +20,11 @@ class UsersController < ApplicationController
   def edit
   	@user = User.find(params[:id])
   end
+
+  def garden
+    # Just ensuring that user is signed in
+    redirect_to '/digitalgardensetup'
+  end
   
   def update
   	@user = User.find(params[:id])
@@ -29,7 +34,8 @@ class UsersController < ApplicationController
   	end
   	@user.nickname = params[:user][:nickname]
   	@user.bio = params[:user][:bio]
-  	@user.description = params[:user][:description]
+    @user.description = params[:user][:description]
+    @user.tiddlywiki_url = params[:user][:tiddlywiki_url]
   	if @user.save
   		flash[:success] = "Changes saved."
   		redirect_to @user

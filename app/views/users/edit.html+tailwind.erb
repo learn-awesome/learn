@@ -16,6 +16,13 @@
                 <%= form.label :description, class: "text-gray-700" %>
                 <%= form.text_area :description, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
             </div>
+
+            <div class="mb-4">
+                <%= form.label :tiddlywiki_url, class: "text-gray-700" do %>
+                    <a href='/digitalgardensetup' target='_blank' class='text-blue-400 underline'>Digital Garden</a>
+                <% end %>
+                <%= form.url_field :tiddlywiki_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+            </div>
         </div>
         <div class="flex justify-end mt-4">
             <%= form.submit "Save", class: "px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700" %>
