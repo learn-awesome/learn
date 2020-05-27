@@ -44,7 +44,7 @@
 
 
 		<% if @item.is_syllabus? %>
-			<% if @item.display_blurb.present? %>
+			<% if @item.display_blurb.present? and params['syllabus'] != 'true' %>
 				<%= @item.display_blurb %>
 			<% else %>
 				<%= @item.display_description %>
