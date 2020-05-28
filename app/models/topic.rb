@@ -157,7 +157,7 @@ class Topic < ApplicationRecord
 
 	def image_url(tailwind=false)
 		return self.read_attribute(:image_url) if self.read_attribute(:image_url).present?
-		response = HTTParty.get("https://source.unsplash.com/400x300/?" + self.name.gsub("/",",").gsub("-",","), follow_redirects: false)
+		response = HTTParty.get("https://source.unsplash.com/400x300/?" + self.name.to_s.gsub("/",",").gsub("-",","), follow_redirects: false)
 		if response.code >= 300 && response.code < 400
 			redirect_url = response.headers['location']
 			self.write_attribute(:image_url, redirect_url)
