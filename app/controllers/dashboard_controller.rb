@@ -7,11 +7,7 @@ class DashboardController < ApplicationController
     if current_user.following.any?
       @following_reviews = Review.where(user: current_user.following).order("created_at DESC").limit(20)
     else
-      @following_reviews = []
+      @following_reviews = Review.order("created_at DESC").limit(20)
     end
-  	if @user_topics.blank? and @following_reviews.blank?
-  		flash[:success] = "Follow your favorite topics and people to get a personalized dashboard."
-  		redirect_to topics_path
-  	end
   end
 end

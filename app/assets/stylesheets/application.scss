@@ -118,6 +118,7 @@ $star-off-color: #CCCCCC;
 
 #topformdiv .tt-menu a div {
   padding: 0.3em;
+  color: black;
 }
 
 #topformdiv .tt-menu a:hover div {
@@ -389,4 +390,6 @@ input#item_year_of_publication {
 
 .twitter-typeahead {
 	width: 100%;
+	height: 100%;
+	display: block;
 }

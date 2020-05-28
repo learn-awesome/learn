@@ -1,11 +1,12 @@
 <div class="overflow-auto whitespace-no-wrap md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-hidden md:gap-6">
-<% if @user_topics.any? %>
+
 	<% @user_topics.map(&:topic).each do |topic| %>
 	          <%= link_to topic, class: "inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
 			  	<img src="<%= topic.image_url(true) %>" alt="<%= topic.display_name %>" class="w-full h-48 object-cover object-center">
 				<h3 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg"><%= topic.display_name %></h3>
 			  <% end %>
 	<% end %>
+	<!-- 
 			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
 				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-48 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Machine Learning for Managers</h1>
@@ -22,29 +23,17 @@
 				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-48 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
 			<% end %>
-<% else %>
-	        	<p><%= link_to "Browse topics", topics_path %> and follow your favorite ones.</p>
-<% end %>
+	-->
 </div>
 
-<div class="flex-grow">
-     <div class="card">
-        <div class="card-header d-md-flex align-items-center">
-        	<h2><b>Latest Reviews</b></h2>
-        </div>
-        <div class="card-body">
-        	<% if @following_reviews.any? %>
-        		<div class="list-group list-lg-group list-group-flush">
-	        	<% @following_reviews.each do |rev| %>
-                    <%= render partial: 'components/review_card', locals: {rev: rev} %>
-	        	<% end %>
-	        	</div>
-	        <% else %>
-	        	<p>No reviews. <%= link_to "Consider following more users?", users_path, class: "underline text-blue-500" %> 
-	        		<%# Review.recent.where("user_id NOT IN (?)", Array.wrap([current_user.id] + current_user.following.map(&:id))).includes(:user).map(&:user).uniq.each do |u| %>
-	        			<%# link_to u.nickname, user_path(u) %>
-	        		<%# end %>
-	        	</p>
-	        <% end %>
-        </div>
+<div class="bg-white mt-4 px-4 py-5 border-b border-gray-200 sm:px-6 rounded shadow-lg">
+  <h3 class="text-lg leading-6 font-medium text-gray-900">
+    Latest Updates
+  </h3>
+  <p class="mt-1 text-sm leading-5 text-gray-500">
+    <%= link_to "Discover and follow more learners?", users_path, class: "underline text-blue-500" %>
+  </p>
+
+
 </div>
+
