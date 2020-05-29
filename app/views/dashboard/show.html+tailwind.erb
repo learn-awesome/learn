@@ -1,3 +1,4 @@
+<% if @user_topics.present? %>
 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Your Topics</h3>
 
 <div class="overflow-auto whitespace-no-wrap md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-hidden md:gap-6 mb-4">
@@ -27,8 +28,32 @@
 			<% end %>
 	-->
 </div>
+<% end %>
 
-<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Reviews</h3>
+<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Our Ongoing Programs</h3>
+
+<div class="overflow-auto whitespace-no-wrap md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-hidden md:gap-6 mb-4">
+
+			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-48 object-cover object-center">
+				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Machine Learning for Managers</h1>
+			<% end %>
+			<%= link_to Item.find_by_name('Syllabus: Scratch programming for kids'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="scratch-programming" class="w-full h-48 object-cover object-center">
+				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
+			<% end %>
+			<%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-48 object-cover object-center">
+				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Cooking with Food Science</h1>
+			<% end %>
+			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
+				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-48 object-cover object-center">
+				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
+			<% end %>
+
+</div>
+
+<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Activity</h3>
 
 <div class="grid gap-5 max-w-lg mx-auto lg:grid-cols-4 lg:max-w-none">
 	  <% @following_reviews.each do |rev| %>
@@ -39,11 +64,11 @@
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-sm leading-5 font-medium text-indigo-600">
-              <a href="#" class="hover:underline">
+              <a href="<%= topic_path(rev.item.topics.first) %>" class="hover:underline">
                 <%= rev.item.item_type_id %> in <%= rev.item.topics.first.display_name %>
               </a>
             </p>
-            <a href="#" class="block">
+            <a href="<%= review_path(rev) %>" class="block">
               <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
                 <%= rev.item.name %>
               </h3>
@@ -54,13 +79,13 @@
           </div>
           <div class="mt-6 flex items-center">
             <div class="flex-shrink-0">
-              <a href="#">
+              <a href="<%= user_path(rev.user) %>">
                 <img class="h-10 w-10 rounded-full" src="<%= rev.user.avatar_image %>" alt="">
               </a>
             </div>
             <div class="ml-3">
               <p class="text-sm leading-5 font-medium text-gray-900">
-                <a href="#" class="hover:underline">
+                <a href="<%= user_path(rev.user) %>" class="hover:underline">
                   <%= rev.user.nickname %>
                 </a>
               </p>
@@ -72,7 +97,7 @@
                   ·
                 </span>
                 <span>
-                  <%= rev.status %>
+                  <%= rev.display_status %> <%= rev.display_rating %>
                 </span>
               </div>
             </div>

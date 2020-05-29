@@ -264,6 +264,10 @@ class Review < ApplicationRecord
     ("⭐" * score.to_i) + ("☆" * (5 - score.to_i))
   end
 
+  def display_status
+    self.status.to_s.gsub("_", " ").sub("want ","wants ").capitalize
+  end
+
   def display_rating
     Review.display_rating(self.overall_score)
   end

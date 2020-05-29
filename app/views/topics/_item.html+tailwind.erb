@@ -15,7 +15,7 @@
 </a>
 
 <% elsif item.item_type_id == 'video'%>
-<a href="<%= item_path(item) %>" class="block max-w-xs bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-xs bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
     <img src="<%= item.thumbnail %>" alt="videocover" class="w-full h-56 object-cover">
     <div class="py-5 text-center">
         <p href="#" class="block text-lg text-gray-800 font-semibold"><%= item.display_name %></p>
@@ -24,7 +24,7 @@
 </a>
 
 <% else %>
-<a href="<%= item_path(item) %>" class="block max-w-xs bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-xs bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
     <div class="py-5 px-4">
         <p href="#" class="block text-lg text-gray-800 font-semibold"><%= item.display_name %></p>
         <span class="text-sm text-gray-700"><%= item.primary_link.try(:top_domain) %></span>

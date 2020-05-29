@@ -113,7 +113,7 @@ class Item < ApplicationRecord
     elsif self.image_url.present?
       return self.image_url
     else
-      "https://source.unsplash.com/400x300/?" + self.topics.first.name.to_s.gsub("/",",").gsub("-",",")
+      "https://source.unsplash.com/640x400/?" + self.topics.first.name.to_s.gsub("/",",").gsub("-",",")
     end
   end
 
