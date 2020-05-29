@@ -106,6 +106,17 @@ class Item < ApplicationRecord
     end
   end
 
+  def new_thumbnail
+    if self.links.any? { |l| l.url.include?("youtube.com") }
+      videoid = Item.youtube_id(self.links.select { |l| l.url.include?("youtube.com") }.first.url)
+      return "https://img.youtube.com/vi/#{videoid}/0.jpg"
+    elsif self.image_url.present?
+      return self.image_url
+    else
+      "https://source.unsplash.com/400x300/?" + self.topics.first.name.to_s.gsub("/",",").gsub("-",",")
+    end
+  end
+
   def average_overall_score
     return 0 unless reviews.present?
     scores = reviews.pluck(:overall_score).compact

@@ -4,11 +4,13 @@ class WelcomeController < ApplicationController
       @user_topics = current_user.user_topics
       if current_user.following.any?
         @following_reviews = Review.where(user: current_user.following).order("created_at DESC").limit(20)
-      else
-        @following_reviews = Review.order("created_at DESC").limit(20)
+      end
+      if @following_reviews and @following_reviews.to_a.size < 20
+        @following_reviews = (@following_reviews.to_a + Review.order("created_at DESC").limit(20).to_a).uniq
       end
     	render 'dashboard/show'
-  	else
+    else
+      @following_reviews = Review.order("created_at DESC").limit(20)
       redirect_to topics_path
     end
   end
@@ -77,6 +79,7 @@ class WelcomeController < ApplicationController
   end
 
   def programs
+    render layout: 'tailwind'
     # redirect_to "https://airtable.com/shrwVW2ihB43qgTmm/tblvYQzpnMRApGWvF"
   end
 
