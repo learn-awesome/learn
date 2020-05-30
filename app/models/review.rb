@@ -265,7 +265,8 @@ class Review < ApplicationRecord
   end
 
   def display_status
-    self.status.to_s.gsub("_", " ").sub("want ","wants ").capitalize
+    return "Wants to learn" if self.status.to_s == 'want_to_learn'
+    return ""
   end
 
   def display_rating

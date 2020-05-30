@@ -5,28 +5,11 @@
 
 	<% @user_topics.map(&:topic).each do |topic| %>
 	          <%= link_to topic, class: "inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-			  	<img src="<%= topic.image_url(true) %>" alt="<%= topic.display_name %>" class="w-full h-48 object-cover object-center">
+			  	<img src="<%= topic.image_url(true) %>" alt="<%= topic.display_name %>" class="w-full h-24 object-cover object-center">
 				<h3 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg"><%= topic.display_name %></h3>
 			  <% end %>
 	<% end %>
-	<!-- 
-			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-48 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Machine Learning for Managers</h1>
-			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Scratch programming for kids'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="scratch-programming" class="w-full h-48 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
-			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-48 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Cooking with Food Science</h1>
-			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-48 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
-			<% end %>
-	-->
+
 </div>
 <% else %>
 
@@ -60,19 +43,19 @@
 <div class="overflow-auto whitespace-no-wrap md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-hidden md:gap-6 mb-4">
 
 			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-48 object-cover object-center">
+				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Machine Learning for Managers</h1>
 			<% end %>
 			<%= link_to Item.find_by_name('Syllabus: Scratch programming for kids'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="scratch-programming" class="w-full h-48 object-cover object-center">
+				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="scratch-programming" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
 			<% end %>
 			<%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-48 object-cover object-center">
+				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Cooking with Food Science</h1>
 			<% end %>
 			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-48 object-cover object-center">
+				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
 			<% end %>
 
@@ -84,7 +67,7 @@
 	  <% @following_reviews.each do |rev| %>
       <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
         <div class="flex-shrink-0">
-          <img class="h-48 w-full object-cover" src="<%= rev.item.new_thumbnail %>" alt="">
+          <a href="<%= item_path(rev.item) %>"><img class="h-48 w-full object-cover" src="<%= rev.item.new_thumbnail %>" alt=""></a>
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
@@ -93,7 +76,7 @@
                 <%= rev.item.item_type_id %> in <%= rev.item.topics.first.display_name %>
               </a>
             </p>
-            <a href="<%= review_path(rev) %>" class="block">
+            <a href="<%= item_path(rev.item) %>" class="block">
               <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
                 <%= rev.item.name %>
               </h3>

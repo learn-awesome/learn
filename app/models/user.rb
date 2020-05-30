@@ -243,7 +243,7 @@ class User < ApplicationRecord
 		elsif self.is_core_dev?
 			:tailwind
 		else
-			:bootstrap
+			:tailwind
 		end
 	end
 
