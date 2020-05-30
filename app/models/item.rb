@@ -147,8 +147,8 @@ class Item < ApplicationRecord
   def can_user_edit?(editor)
     return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
+    return true if self.is_syllabus? and self.user_id == editor.id
     return false if editor.score < 500
-    return false if self.is_syllabus? and self.user_id != editor.id
     return true
   end
 
@@ -609,7 +609,7 @@ HEREDOC
 				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
 				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
         <br><br>
-        The program for Cooking with Home Science is curated by <a href="https://krishashok.me/" target="_blank" class="underline text-blue-500">Krish Ashok</a> 
+        The program for Cooking with Food Science is curated by <a href="https://krishashok.me/" target="_blank" class="underline text-blue-500">Krish Ashok</a> 
         who is popular columnist and is currently working on a book about cooking with Penguin India.
         You can <a href="https://www.twitter.com/krishashok" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
         <br><br>
@@ -627,7 +627,7 @@ elsif self.topics.first.name == 'personal-finance'
   There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
   a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
   <br><br>
-  The program for Cooking with Home Science is curated by <a href="https://anshulkhare.in/" target="_blank" class="underline text-blue-500">Anshul Khare</a> 
+  The program for Personal Finance is curated by <a href="https://anshulkhare.in/" target="_blank" class="underline text-blue-500">Anshul Khare</a> 
   who is well-known expert on finance and investment.
   You can <a href="https://www.twitter.com/anshul81" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
   <br><br>
