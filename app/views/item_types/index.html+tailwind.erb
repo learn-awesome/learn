@@ -1,55 +1,33 @@
-<div class="mb-4">
-<nav aria-label="breadcrumb">
-  <h1 class="h3">Formats</h1>
-</nav>
+<div class="md:flex md:items-center md:justify-between mb-4">
+  <div class="flex-1 min-w-0">
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+      Formats
+    </h2>
+  </div>
 </div>
-<% ItemType.all.each_slice(2).to_a.each do |pair| %>
-      <div class="flex flex-wrap">
-        <!-- Cards with Tabs -->
-        <% pair.each do |it| %>
-	        <div class="md:w-1/2 pr-4 pl-4 mb-4">
-	          <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
-	            <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest d-mflex align-items-center">
-	              <h2 class="h3 card-header-title"><%= link_to it.display_name_plural, it, class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal #{ItemType.button_style(:tailwind)}" %></h2>
-	              <!-- Tabs Nav -->
-	              <ul class="flex flex-wrap list-reset pl-0 mb-0 border border-t-0 border-r-0 border-l-0 border-b-1 border-grey-light border-b-0 -ml-2 -mb-3 md:ml-auto mt-3 mt-md-0">
-	               <li class="">
-	                 <a href="#panelWithTabsTab1" class="inline-block py-2 px-4 no-underline active" role="tab" aria-selected="true" data-toggle="tab">Most Recent</a>
-	               </li>
-	               <li class="">
-	                 <a href="#panelWithTabsTab2" class="inline-block py-2 px-4 no-underline" role="tab" aria-selected="true" data-toggle="tab">Most Popular</a>
-	               </li>
-	              </ul>
-	              <!-- End Tabs Nav -->
-	            </div>
-	            <div class="flex-auto p-6">
-	              <!-- Tabs Content -->
-	              <div class="tab-content">
-	                <div class="tab-pane opacity-0 opacity-100 block active" id="panelWithTabsTab1" role="tabpanel">
-	                		<% it.items.recent.each do |item| %>
-	                		<div class="mb-2">
-	                			<% item.topics.map do |topic| %>
-									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style(:tailwind)}" %>
-								<% end %>
-	                			<%= link_to item.name.capitalize, item, class: "underline text-blue-400" %>
-                			</div>
-	                		<% end %>
-	                </div>
-	                <div class="tab-pane opacity-0" id="panelWithTabsTab2" role="tabpanel">
-	                		<% it.items.popular.each do |item| %>
-	                		<div class="mb-2">
-	                			<% item.topics.map do |topic| %>
-									<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style(:tailwind)}" %>
-								<% end %>
-	                			<%= link_to item.name.capitalize, item, class: "underline text-blue-400" %>
-                			</div>
-	                		<% end %>
-	                </div>
-	              </div>
-	              <!-- End Tabs Content -->
-	            </div>
-	          </div>
-	        </div>
-        <% end %>
-      </div>
+
+<div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+<% ItemType.all.each do |it| %>
+<div class="flex flex-col rounded-lg shadow-lg bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+  <%= link_to it, class: "text-lg leading-6 font-medium text-gray-900" do %>
+    <%= it.display_name_plural %>
+  <% end %>
+  <p class="mt-1 text-sm leading-5 text-gray-500">
+    
+  </p>
+  <hr>
+  <% it.items.recent.each do |item| %>
+	<% next if item.topics.first.nil? %>
+	<span class="mt-4">
+          <a href="<%= topic_path(item.topics.first) %>" class="mr-2">
+            <span class="px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+              <%= item.topics.first.try(:display_name) %>
+            </span>
+          </a>
+
+	<%= link_to item.display_name, item, class: "underline text-indigo-600" %>
+	</span>
+  <% end %>
+</div>
 <% end %>
+</div>

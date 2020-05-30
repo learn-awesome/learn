@@ -2,7 +2,7 @@
 <div class="row">
 <!-- Cards with Tabs -->
 <div class="col-md-6 mb-4">
-<% if @user_topics.any? %>
+<% if @user_topics.present? %>
 	<% @user_topics.map(&:topic).each do |topic| %>
 	      <div class="card mb-4">
 	        <div class="card-header d-md-flex align-items-center">
