@@ -620,7 +620,7 @@ HEREDOC
 			</div>
 			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
-elsif self.topics.first.name == 'finance'
+elsif self.topics.first.name == 'personal-finance'
   body = <<-HEREDOC
   <div class="mt-2 mb-4">
   We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Personal Finance</b>.
