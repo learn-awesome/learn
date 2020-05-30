@@ -8,19 +8,15 @@
 #  action     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  value      :integer
-#  by_user_id :uuid
 #
 # Indexes
 #
-#  index_user_topics_on_by_user_id                         (by_user_id)
-#  index_user_topics_on_topic_id                           (topic_id)
-#  index_user_topics_on_user_id                            (user_id)
-#  index_user_topics_on_user_id_and_by_user_id_and_action  (user_id,by_user_id,action) UNIQUE
+#  index_user_topics_on_topic_id  (topic_id)
+#  index_user_topics_on_user_id   (user_id)
+#  uniq_user_topic_action         (user_id,topic_id,action) UNIQUE
 #
 # Foreign Keys
 #
-#  fk_rails_...  (by_user_id => users.id)
 #  fk_rails_...  (topic_id => topics.id)
 #  fk_rails_...  (user_id => users.id)
 #

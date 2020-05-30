@@ -1,7 +1,17 @@
-<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2 max-w-2xl">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Change Settings</h1>
 
         <%= form_for @user, url: settings_user_path(@user) do |form| %>
+
+          <h4><b>Choose Theme</b></h4>
+            <div class="form-group mb-4">
+              <%= form.label :theme, "Select theme variant" %>
+              <select class="form-control" id="user_theme" name="user[theme]">
+                <option selected value="tailwind">Default</option>
+                <option value="bootstrap">Old</option>
+              </select>
+            </div>
+
           <h4><b>Email Notifications</b></h4>
             <div class="form-group mb-4">
               <%= form.label :unsubscribe, "Unsubscribe from all emails" %>
@@ -25,7 +35,7 @@
         <% end %>
 </div>
 
-<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2 max-w-2xl">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Connect Social Media Accounts</h1>
           <ul>
           <% @user.social_logins.each do |sl| %>

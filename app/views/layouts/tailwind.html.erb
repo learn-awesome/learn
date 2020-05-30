@@ -137,10 +137,11 @@
     </div>
 
     <main class="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none pattern" tabindex="0">
-      <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-      </div>  -->
       <div class="mx-auto px-4 sm:px-6 md:px-8">
+
+        <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: "flex items-center #{name} text-white text-sm font-bold px-4 py-3 rounded mb-4 max-w-md mx-auto" %>
+        <% end -%>
         <%= yield %>
       </div>
     </main>

@@ -570,7 +570,7 @@ class Item < ApplicationRecord
       if self.topics.first.name == 'machine-learning'
         body = <<-HEREDOC
         <div class="mt-2 mb-4">
-				We're currently running a <a href="/project-based-learning.html" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Machine Learning for Managers</b>.
+				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Machine Learning for Managers</b>.
 				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
 				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
         <br><br>
@@ -582,12 +582,12 @@ class Item < ApplicationRecord
 				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
 				and get at least 5 of your friends to join their own topics of interest.
 			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ">Join our Slack</a><br>
+			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
       elsif self.topics.first.name == 'programming-languages/scratch'
         body = <<-HEREDOC
         <div class="mt-2 mb-4">
-				We're currently running a <a href="/project-based-learning.html" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Scratch Programming for Kids</b>.
+				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Scratch Programming for Kids</b>.
 				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
 				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
         <br><br>
@@ -600,12 +600,12 @@ HEREDOC
 				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
 				and get at least 5 of your friends to join their own topics of interest.
 			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ">Join our Slack</a><br>
+			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
       elsif self.topics.first.name == 'cooking'
         body = <<-HEREDOC
         <div class="mt-2 mb-4">
-				We're currently running a <a href="/project-based-learning.html" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Cooking with Food Science</b>.
+				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Cooking with Food Science</b>.
 				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
 				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
         <br><br>
@@ -618,12 +618,30 @@ HEREDOC
 				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
 				and get at least 5 of your friends to join their own topics of interest.
 			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ">Join our Slack</a><br>
+			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
+HEREDOC
+elsif self.topics.first.name == 'finance'
+  body = <<-HEREDOC
+  <div class="mt-2 mb-4">
+  We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Personal Finance</b>.
+  There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
+  a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
+  <br><br>
+  The program for Cooking with Home Science is curated by <a href="https://anshulkhare.in/" target="_blank" class="underline text-blue-500">Anshul Khare</a> 
+  who is well-known expert on finance and investment.
+  You can <a href="https://www.twitter.com/anshul81" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
+  <br><br>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Dilbert’s One Page Personal Finance List — the best investment advice in 123 words.<br><br>I guess in India,<br> <br>401K is equivalent to EPF and,<br>IRA is equivalent to PPF<br><br>Source: <a href="https://t.co/35dGYFOBTX">https://t.co/35dGYFOBTX</a> <a href="https://t.co/r8bdzhTVWF">pic.twitter.com/r8bdzhTVWF</a></p>&mdash; Anshul Khare (@anshul81) <a href="https://twitter.com/anshul81/status/1264823927982833664?ref_src=twsrc%5Etfw">May 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+  <br><br>
+  Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
+  and get at least 5 of your friends to join their own topics of interest.
+</div>
+<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
       elsif self.topics.first.name == 'fiction-writing'
         body = <<-HEREDOC
         <div class="mt-2 mb-4">
-				We're currently running a <a href="/project-based-learning.html" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Fiction Writing for Beginners</b>.
+				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Fiction Writing for Beginners</b>.
 				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
 				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
         <br><br>
@@ -636,7 +654,7 @@ HEREDOC
 				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
 				and get at least 5 of your friends to join their own topics of interest.
 			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ">Join our Slack</a><br>
+			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
       end
       return body.html_safe

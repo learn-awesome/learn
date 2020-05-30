@@ -2,22 +2,30 @@
 #
 # Table name: topics
 #
-#  id           :uuid             not null, primary key
-#  name         :string           not null
-#  search_index :string           not null
-#  gitter_room  :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  display_name :string
-#  user_id      :uuid
+#  id               :uuid             not null, primary key
+#  name             :string           not null
+#  search_index     :string           not null
+#  gitter_room      :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  display_name     :string
+#  user_id          :uuid
+#  parent_id        :uuid
+#  second_parent_id :uuid
+#  image_url        :string
+#  gitter_room_id   :string
 #
 # Indexes
 #
-#  index_topics_on_name     (name) UNIQUE
-#  index_topics_on_user_id  (user_id)
+#  index_topics_on_name              (name) UNIQUE
+#  index_topics_on_parent_id         (parent_id)
+#  index_topics_on_second_parent_id  (second_parent_id)
+#  index_topics_on_user_id           (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (parent_id => topics.id)
+#  fk_rails_...  (second_parent_id => topics.id)
 #  fk_rails_...  (user_id => users.id)
 #
 

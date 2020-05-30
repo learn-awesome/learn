@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.where(id: params[:id]).first
+    if @user.nil?
+      flash[:danger] = "We couldn't find this user."
+      redirect_to root_path and return
+    end
     if current_user
       @following = current_user.from_user_relations
       @does_follow = @following.find { |ut| (ut.to_user_id == @user.id) && (ut.action == 'follow') }
@@ -85,6 +89,8 @@ class UsersController < ApplicationController
     if request.patch?
       @user.random_fav_topic = (params[:user]["random_fav_topic"].to_s == "1")
       @user.unsubscribe = (params[:user]["unsubscribe"].to_s == "1")
+      @user.theme = params[:user]["theme"]
+
       item_types = params[:user]["random_fav_item_types"].reject { |s| s.blank? }
       if item_types.blank?
         @user.random_fav_item_types = nil
