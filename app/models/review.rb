@@ -261,7 +261,7 @@ class Review < ApplicationRecord
 
   def self.display_rating(score)
     return "" if score.nil?
-    ("⭐" * score.to_i) + ("☆" * (5 - score.to_i))
+    ("★" * score.to_i) + ("☆" * (5 - score.to_i))
   end
 
   def display_status

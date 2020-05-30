@@ -97,6 +97,10 @@ class Item < ApplicationRecord
     }
   end
 
+  def display_item_type
+		ItemType.display_name_singular(self.item_type_id)
+	end
+
   def thumbnail
     if self.links.any? { |l| l.url.include?("youtube.com") }
       videoid = Item.youtube_id(self.links.select { |l| l.url.include?("youtube.com") }.first.url)

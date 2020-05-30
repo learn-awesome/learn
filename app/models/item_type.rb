@@ -26,4 +26,16 @@ class ItemType < ApplicationRecord
 	def icon
 		"/icons/#{id}.svg"
 	end
+
+	def self.display_name_singular(item_type_id)
+		{
+			'cert' => "Certification",
+			'chat' => 'Forum',
+			'learning_plan' => 'Syllabus',
+			'qna' => "Q&A site",
+			'thing' => "Thing or Toy",
+			'webconf' => "Online conference",
+			'webmeet' => "Online meetup"
+		}[item_type_id.to_sym] || item_type_id.capitalize
+	end
 end
