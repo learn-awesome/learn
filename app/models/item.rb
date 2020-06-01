@@ -656,6 +656,8 @@ HEREDOC
 			</div>
 			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
 HEREDOC
+      else
+        body = ""
       end
       return body.html_safe
     end
