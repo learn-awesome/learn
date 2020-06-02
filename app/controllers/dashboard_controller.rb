@@ -13,4 +13,14 @@ class DashboardController < ApplicationController
       @following_reviews = (@following_reviews.to_a + Review.order("updated_at DESC").limit(20).to_a).uniq.shuffle
     end
   end
+
+  def forcelogin
+    url = params[:redirect_to]
+    if url.present? and url.start_with?("/")
+      redirect_to url
+    else
+      flash[:danger] = "Invalid redirect URL"
+      redirect_to root_path
+    end
+  end
 end
