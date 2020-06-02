@@ -1,10 +1,8 @@
 <% if item.item_type_id == 'book' and item.large_thumbnail.present? %>
-<a href="<%= item_path(item) %>" class="block flex min-w-sm max-w-md bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-64 bg-white shadow-lg rounded-lg mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<div class="flex">
     <div class="w-1/3 bg-cover" style="background-image: url(&quot;<%= item.large_thumbnail %>&quot;);"></div>
     <div class="w-2/3 p-4 md:p-4">
-        <span class="inline-block px-2 py-1 leading-none bg-teal-200 text-teal-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-                    <%= item.item_type.display_name_plural %>
-                </span>
         <h1 class="text-gray-900 font-semibold text-lg"><%= item.display_name %></h1>
         <p class="mt-2 text-gray-600 text-sm"><%= item.primary_link.top_domain %></p>
         <!-- <div class="flex item-center mt-2 text-sm text-gray-600">
@@ -12,6 +10,7 @@
                 <span class="ml-2"><%=item.reviews.count%> reviews</span>
         </div> -->
     </div>
+</div>
 </a>
 
 <% elsif item.item_type_id == 'video'%>
