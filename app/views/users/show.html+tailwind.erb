@@ -22,7 +22,7 @@
 			<% else %>
 				<form method='post' action='/users/<%= @user.id %>/toggle_follow'>
 				<input type="hidden" value="" name="authenticity_token"/>
-				<input type='submit' class="px-4 py-2 mt-2 text-sm font-semibold bg-blue-500 text-white rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" value="<%= (@does_follow ? "Unfollow" : "Follow") %>"/>
+				<input type='submit' class="px-4 py-2 mt-2 text-sm font-semibold <%= (@does_follow ? "bg-red-500" : "bg-blue-500") %> text-white cursor-pointer rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" value="<%= (@does_follow ? "Unfollow" : "Follow") %>"/>
 				</form>
 			<% end %>
 		<% end %>
@@ -113,7 +113,7 @@
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
-<h1 class="text-gray-800 text-xl font-semibold mb-2">Want to learn</h1>
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Wants to learn</h1>
 	<div class="tab-pane fade" id="panelWithTabsTab3" role="tabpanel">
 	  <% @user.reviews.where(status: 'want_to_learn').each do |rev| %>
 	   <%= render rev.item %>

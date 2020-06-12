@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
     @extracted = Item.extract_opengraph_data(params[:item][:url]) if params[:item][:url].present? 
     Item.transaction do
       idea_set = IdeaSet.new
-      idea_set.name = params[:item][:name] || @extracted[:title] || params[:item][:url]
+      idea_set.name = params[:item][:name].presence || @extracted[:title].presence || params[:item][:url]
       idea_set.name = idea_set.name[0..255]
       idea_set.description = params[:item][:description]
 
