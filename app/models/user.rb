@@ -299,7 +299,7 @@ class User < ApplicationRecord
 		  first_activitypub_follower: [self.activity_pub_followers.count > 0, Rails.application.routes.url_helpers.user_path(self)],
 		  profile_score: [self.score >= 150, Rails.application.routes.url_helpers.user_url(self)],
 		  social_login: [self.social_logins.count > 1, Rails.application.routes.url_helpers.settings_user_path(self)],
-		  join_chat: [false, "https://gitter.im/learn-awesome/community"]
+		  join_chat: [false, "/join_slack"]
 		}
 	end
 
@@ -320,7 +320,7 @@ class User < ApplicationRecord
 			[:embed_reviews, "Embed your reviews on your blog or other sites"],
 			[:first_flashcard, "Create your first flashcard"],
 			[:profile_score, "Reach a profile score of 150"],
-			[:join_chat, "Join the community chat"],
+			[:join_chat, "Join our community Slack"],
 			[:social_login, "Connect another social network"],
 			[:first_activitypub_follower, "Get a follower on ActivityPub or Mastodon"]
 		]

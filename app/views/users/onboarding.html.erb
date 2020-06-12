@@ -3,19 +3,21 @@
     <div class="card mb-4">
 
       <header class="card-header">
-        <h2 class="h3 card-header-title"><%= @user.nickname %>'s power user score: <%= @user.onboarding_percentage %> / 100</h2>
+        <h2 class="h3 card-header-title"><%= @user == current_user ? "Your" : "#{@user.nickname}'s" %> power user score: <%= @user.onboarding_percentage %> / 100</h2>
       </header>
 
       <div class="card-body">
-        <div class="progress mb-3">
-            <div class="progress-bar bg-success" role="progressbar" style="width: <%= @user.onboarding_percentage %>%;" aria-valuenow="<%= @user.onboarding_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+                <div class="block max-w-md mb-4" href="<%= onboarding_user_path(@user) %>">
+                  <div class="shadow w-full bg-gray-300">
+                    <div class="bg-green-400 text-xs leading-none py-1 text-center text-white" style="width: <%= @user.onboarding_percentage %>%"><%= @user.onboarding_percentage %></div>
+                  </div>
+                </div>
 
         <% onboarding_status = @user.onboarding %>
         <% User.onboarding_steps.each do |step| %>
             <div class="mb-2">
               <%= onboarding_status[step.first].first ? '✓' : '✗' %> &nbsp;
-              <a href="<%= onboarding_status[step.first].last %>" <%= [:installed_browser_extension, :join_chat].include?(step.first) ? 'target=_blank' : '' %>><%= step[1] %></a>
+              <a class="underline text-blue-500 hover:text-blue-700" href="<%= onboarding_status[step.first].last %>" <%= [:installed_browser_extension, :join_chat].include?(step.first) ? 'target=_blank' : '' %>><%= step[1] %></a>
             </div>
         <% end %>
 

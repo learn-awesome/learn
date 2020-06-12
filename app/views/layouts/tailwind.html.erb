@@ -124,8 +124,8 @@
             <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" x-show="showMenu" @click.away="showMenu = false"">
               <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                 <a class="block w-full" href="<%= onboarding_user_path(current_user) %>">
-                  <div class="shadow w-full bg-grey-light">
-                    <div class="bg-blue text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
+                  <div class="shadow w-full bg-gray-300">
+                    <div class="bg-green-400 text-xs leading-none py-1 text-center text-white" style="width: <%= current_user.onboarding_percentage %>%"><%= current_user.onboarding_percentage %>%</div>
                   </div>
                 </a>
                 <a href="/flash_cards/practice" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150" role="menuitem">Practice FlashCards</a>
