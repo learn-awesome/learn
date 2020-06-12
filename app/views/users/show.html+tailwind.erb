@@ -64,7 +64,7 @@
 	</div>
 
 	<div class="px-6">
-	You can follow <%= @user.nickname %>'s activity on Mastodon or ActivityPub by <a class="underline text-blue-400" href="mailto:<%= @user.activitypub_username %>">following him/her</a>.
+	<%= @user.nickname %> joined <%= time_ago_in_words(@user.created_at) %> ago. You can follow <%= @user.nickname %>'s activity on Mastodon or ActivityPub by <a class="underline text-blue-400" href="mailto:<%= @user.activitypub_username %>">following him/her</a>.
 	</div>
 </div>
 

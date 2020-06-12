@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:inbox]
 
   def index
-    @users = User.order('RANDOM()').limit(100)
+    @users = User.order('created_at DESC').limit(300)
   end
 
   def show

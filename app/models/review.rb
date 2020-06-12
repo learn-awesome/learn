@@ -46,6 +46,7 @@ class Review < ApplicationRecord
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
   scope :popular, -> { order("overall_score DESC").limit(10) }
+  scope :interested, -> { where(status: 'want_to_learn') }
 
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
   STATUSES = {want_to_learn: "Want to learn", learning: "Currently learning", learned: "Already learned"}

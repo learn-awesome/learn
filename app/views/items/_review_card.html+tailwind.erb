@@ -1,4 +1,13 @@
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+	<h1 class="text-gray-800 text-xl font-semibold mb-2">Users learning from this</h1>
+	<div class="flex relative z-0 overflow-hidden">
+	<% @item.reviews.interested.each do |rev| %>
+		<a title="<%= rev.user.nickname %>" href="<%= user_path(rev.user) %>"><img class="relative inline-block h-10 w-10 rounded-full text-white shadow-solid" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>" /></a>
+	<% end %>
+	</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Reviews</h1>
 	<% (@item.reviews.completed.popular.to_a + Review.sample_reviews(@item, current_user)).each do |rev| %>
 		<% if rev.persisted? %>
