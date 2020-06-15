@@ -23,6 +23,10 @@ class ItemType < ApplicationRecord
 		"btn btn-sm btn-soft-info btn-pill"
 	end
 
+	def self.discover
+		ItemType.order('RANDOM()').first
+	end
+
 	def icon
 		"/icons/#{id}.svg"
 	end

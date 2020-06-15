@@ -21,4 +21,14 @@ class ItemTypesController < ApplicationController
 
 	def index
 	end
+
+	def discover
+		item_type = ItemType.discover
+		if item_type
+		  redirect_to item_type
+		else
+		  flash[:danger] = "No formats exist."
+		  redirect_to root_path
+		end
+	end
 end

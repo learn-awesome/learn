@@ -1,3 +1,4 @@
+<% if @item.reviews.interested.any? %>
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Users learning from this</h1>
 	<div class="flex relative z-0 overflow-hidden">
@@ -6,6 +7,7 @@
 	<% end %>
 	</div>
 </div>
+<% end %>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Reviews</h1>

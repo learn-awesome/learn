@@ -61,7 +61,11 @@ Rails.application.routes.draw do
 
   resources :idea_sets, only: [:new, :create, :edit, :update]
 
-  resources :item_types, only: [:index, :show]
+  resources :item_types, only: [:index, :show] do
+    collection do
+      get 'discover'
+    end
+  end
 
   resources :users, only: [:index, :show, :edit, :update] do
     member do

@@ -1,36 +1,25 @@
 
-<div class="col-md-6 mb-4">
-                <div class="card">
+<div class="card max-w-md mx-auto">
+    <%= form_for [parent, resource], html: {class: "simple-form"} do |form| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this collection from being saved:</h2>
 
-                  <div class="card-body">
-                    <%= form_for [parent, resource] do |form| %>
-                      <% if resource.errors.any? %>
-                        <div id="error_explanation">
-                          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this collection from being saved:</h2>
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-                          <ul>
-                            <% resource.errors.full_messages.each do |message| %>
-                              <li><%= message %></li>
-                            <% end %>
-                          </ul>
-                        </div>
-                      <% end %>
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true, class: 'form-control', placeholder: 'Name'%>
 
-                      <div class="form-group mb-4">
-                        <%= form.label :name %>
-                        <%= form.text_field :name, required: true, class: 'form-control', placeholder: 'Name'%>
-                      </div>
-                      <hr class="my-4">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: 'form-control', placeholder: 'Description'%>
 
-                      <div class="form-group mb-4">
-                        <%= form.label :description %>
-                        <%= form.text_area :description, class: 'form-control', placeholder: 'Description'%>
-                      </div>
-                      <hr class="my-4">
-                      <%= form.submit 'submit', class: 'btn btn-sm btn-primary' %>
-                      <%= link_to 'Back', :back, class: 'btn btn-sm btn-default' %>
-                    <%end%>
-
-                  </div>
-                </div>
-              </div>
+      <%= form.submit 'submit', class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Back', :back, class: 'btn btn-sm btn-default' %>
+    <% end %>
+</div>

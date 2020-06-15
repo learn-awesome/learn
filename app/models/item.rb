@@ -668,7 +668,7 @@ HEREDOC
     # Could lead to styling abuse by using headings, links, lists etc
     if self.is_syllabus?
       # this is a native learning plan
-      markdown = Redcarpet::Markdown.new(CustomMarkdownRender)
+      markdown = Redcarpet::Markdown.new(CustomMarkdownRender, autolink: false)
       html = markdown.render(self.description.to_s.strip).html_safe
       return html #self.replace_la_links_with_embeds(html)
     else
