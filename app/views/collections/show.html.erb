@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<% resource.items.group_by { |item| item.topics.first }.each do |topic, items| %>
+<% resource.items.inject({}) { |acc,item| item.topics.each { |t| acc[t] ||= []; acc[t] << item }; acc }.sort_by { |k,v| k.name }.each do |topic, items| %>
 <div class="mt-6">
 <div class="px-4 xl:px-8">
     <h3 class="text-gray-900 text-xl"><%= topic.display_name %></h3>

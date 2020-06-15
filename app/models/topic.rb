@@ -30,7 +30,7 @@
 #
 
 class Topic < ApplicationRecord
-	SLUG_FORMAT = /\A[0-9a-z\-\/]+\z/
+	SLUG_FORMAT = /\A[0-9a-z\-\/\+]+\z/
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
 		format: {with: SLUG_FORMAT}
 	validates :search_index, presence: true

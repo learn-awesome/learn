@@ -1,0 +1,1909 @@
+behavioral-science,anxiety
+Social Anxiety and Social Phobia in Youth
+By Christopher Kearney
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-22592-0
+
+neuroscience,brain
+Acquired Brain Injury
+By Jean Elbaum, Deborah Benson
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-37575-5
+
+psychology,religion,spirituality
+Psychology, Religion, and Spirituality
+By James M. Nelson
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-87573-6
+
+psychology,neuropsychology
+Child Neuropsychology
+By Margaret Semrud-Clikeman, Phyllis Anne Teeter Ellison
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-88963-4
+
+psychology
+Clinical Assessment of Child and Adolescent Personality and Behavior
+By Paul J. Frick, Christopher T. Barry, Randy W. Kamphaus
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-0641-0
+
+psychology,stress
+A Clinical Guide to the Treatment of the Human Stress Response
+By George S. Everly, Jr., Jeffrey M. Lating
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-5538-7
+
+psychology
+The Psychology of Social Status
+By Joey T. Cheng, Jessica L. Tracy, Cameron Anderson
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-0867-7
+
+psychology
+Psychoeducational Assessment and Report Writing
+By Stefan C. Dombrowski
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-1911-6
+
+behavioral-science
+Evidence-Based Interventions for Children with Challenging Behavior
+By Kathleen Hague Armstrong, Julia A. Ogg, Ashley N. Sundman-Wheat, Audra St. John Walsh
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-7807-2
+
+psychology,software-tools/matlab
+MATLAB for Psychologists
+By Mauro Borgo, Alessandro Soranzo, Massimo Grassi
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-2197-9
+
+psychology
+International Perspectives on Psychotherapy
+By Stefan G. Hofmann
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-56194-3
+
+psychology
+Applied Behavior Analysis
+By Kimberly Maich, Darren Levine, Carmen Hall
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-44794-0
+
+psychology,perception
+Psychology of Perception
+By Simon Grondin
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-31791-5
+
+psychology,consumer-finance
+Handbook of Consumer Finance Research
+By Jing Jian Xiao
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-28887-1
+
+psychology,medicine
+Clinical Methods in Medical Family Therapy
+By Tai Mendenhall, Angela Lamson, Jennifer Hodgson, Macaran Baird
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-68834-3
+
+psychology,motivation
+Motivation and Action
+By Jutta Heckhausen, Heinz Heckhausen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-65094-4
+
+psychology
+Perceptual Organization
+By Stephen Handel
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-96337-2
+
+behavioral-science
+Foundations of Behavioral Health
+By Bruce Lubotsky Levin, Ardis Hanson
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-18435-3
+
+psychology
+Social Psychology in Action
+By Kai Sassenberg, Michael L.W. Vliek
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-13788-5
+
+neurobiology
+Developmental Neurobiology
+By Mahendra S. Rao, Marcus Jacobson
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-28117-9
+
+biomechanics,biology
+Fundamentals of Biomechanics
+By Duane Knudson
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-49312-1
+
+botany,ecology
+Plant Physiological Ecology
+By Hans Lambers, F Stuart Chapin III, Thijs L. Pons
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-78341-3
+
+evolution,biology,science
+The Joy of Science
+By Richard A. Lockshin
+http://link.springer.com/openurl?genre=book&isbn=978-1-4020-6099-1
+
+diseases,medicine
+Metabolism of Human Diseases
+By Eckhard Lammert, Martin Zeeb
+http://link.springer.com/openurl?genre=book&isbn=978-3-7091-0715-7
+
+medicine,biochemistry
+Integrative Human Biochemistry
+By Andrea T. da Poian, Miguel A. R. B. Castanho
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-3058-6
+
+biomechanics,biology
+Fundamentals of Biomechanics
+By Nihat Özkaya, Dawn Leger, David Goldsheyder, Margareta Nordin
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-44738-4
+
+genetics
+Human Chromosomes
+By Orlando J. Miller, Eeva Therman
+http://link.springer.com/openurl?genre=book&isbn=978-1-4613-0139-4
+
+genetics
+Phylogenomics
+By Christoph Bleidorn
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-54064-1
+
+ecology
+Principles of Terrestrial Ecosystem Ecology
+By F Stuart Chapin III, Pamela A. Matson, Peter Vitousek
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-9504-9
+
+ecology
+Learning Landscape Ecology
+By Sarah E. Gergel, Monica G. Turner
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-6374-4
+
+epidemiology
+Epidemiological Research: Terms and Concepts
+By O. S. Miettinen
+http://link.springer.com/openurl?genre=book&isbn=978-94-007-1171-6
+
+statistics,medicine
+Statistical Analysis of Clinical Data on a Pocket Calculator
+By Ton J. Cleophas, Aeilko H. Zwinderman
+http://link.springer.com/openurl?genre=book&isbn=978-94-007-1211-9
+
+statistics,medicine
+Clinical Data Analysis on a Pocket Calculator
+By Ton J. Cleophas, Aeilko H. Zwinderman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-27104-0
+
+neuroscience
+Essentials of Cerebellum and Cerebellar Disorders
+By Donna L. Gruol, Noriyuki Koibuchi, Mario Manto, Marco Molinari, Jeremy D. Schmahmann, Ying Shen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-24551-5
+
+anatomy
+Handbook of Cardiac Anatomy, Physiology, and Devices
+By Paul A. Iaizzo
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-19464-6
+
+anatomy
+The Gastrointestinal System
+By Po Sing Leung
+http://link.springer.com/openurl?genre=book&isbn=978-94-017-8771-0
+
+statistics,software-tools/spss
+SPSS for Starters and 2nd Levelers
+By Ton J. Cleophas, Aeilko H. Zwinderman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-20600-4
+
+machine-learning,medicine
+Machine Learning in Medicine - a Complete Overview
+By Ton J. Cleophas, Aeilko H. Zwinderman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-15195-3
+
+pharmacy,biotechnology
+Pharmaceutical Biotechnology
+By Daan J. A. Crommelin, Robert D. Sindelar, Bernd Meibohm
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6486-0
+
+biomechanics
+An Introduction to Biomechanics
+By Jay D. Humphrey, Sherry L. O’Rourke
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2623-7
+
+bioinformatics
+Bioinformatics for Evolutionary Biologists
+By Bernhard Haubold, Angelika Börsch-Haubold
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-67395-0
+
+biology
+Lessons on Synthetic Bioarchitectures
+By Eva-Kathrin Ehmoser-Sinner, Cherng-Wen Darren Tan
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-73123-0
+
+bioinformatics
+Applied Bioinformatics
+By Paul M. Selzer, Richard J. Marhöfer, Oliver Koch
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-68301-0
+
+biology
+ENZYMES: Catalysis, Kinetics and Mechanisms
+By N.S. Punekar
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-0785-0
+
+botany
+Plant Physiology, Development and Metabolism
+By Satish C Bhatla, Manju A. Lal
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-2023-1
+
+food
+Food Fraud Prevention
+By John W. Spink
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-9621-6
+
+ecology
+Plant Ecology
+By Ernst-Detlef Schulze, Erwin Beck, Nina Buchmann, Stephan Clemens, Klaus Müller-Hohenstein, Michael Scherer-Lorenzen
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-56233-8
+
+marketing
+Database Marketing
+By Robert C. Blattberg, Byung-Do Kim, Scott A. Neslin
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-72579-6
+
+microeconomics
+Microeconomics
+By Peter Dorman
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-37434-0
+
+design,informatics
+Design Research in Information Systems
+By Alan Hevner, Samir Chatterjee
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-5653-8
+
+strategic-management
+Strategic International Management
+By Dirk Morschett, Hanna Schramm-Klein, Joachim Zentes
+http://link.springer.com/openurl?genre=book&isbn=978-3-8349-6331-4
+
+international-trade,business
+International Trade Theory and Policy
+By Giancarlo Gandolfo
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-37314-5
+
+supply-chain
+Supply Chain Management and Advanced Planning
+By Hartmut Stadtler, Christoph Kilger, Herbert Meyr
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-55309-7
+
+strategic-management
+Strategic International Management
+By Dirk Morschett, Hanna Schramm-Klein, Joachim Zentes
+http://link.springer.com/openurl?genre=book&isbn=978-3-658-07884-3
+
+operations-research,optimization
+Search Methodologies
+By Edmund K. Burke, Graham Kendall
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6940-7
+
+linear-programming
+Linear Programming
+By Robert J Vanderbei
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-7630-6
+
+corporate-social-responsibility
+Corporate Social Responsibility
+By John O. Okpara, Samuel O. Idowu
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-40975-2
+
+ecommerce
+Electronic Commerce
+By Efraim Turban, David King, Jae Kyu Lee, Ting-Peng Liang, Deborrah C. Turban
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-10091-3
+
+econometrics
+Econometrics
+By Badi H. Baltagi
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-20059-5
+
+logistics
+Logistics
+By Harald Gleissner, J. Christian Femerling
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-01769-3
+
+statistics
+New Introduction to Multiple Time Series Analysis
+By Helmut Lütkepohl
+http://link.springer.com/openurl?genre=book&isbn=978-3-540-27752-1
+
+game-theory
+Game Theory
+By Hans Peters
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-46950-7
+
+asset-management,business
+Physical Asset Management
+By Nicholas Anthony John Hastings
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-14777-2
+
+operations-research,linear-programming,nonlinear-programming
+Linear and Nonlinear Programming
+By David G. Luenberger, Yinyu Ye
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-18842-3
+
+risk-management,business
+Enterprise Risk Management Models
+By David L. Olson, Desheng Dash Wu
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-53785-5
+
+ecommerce
+Introduction to Electronic Commerce and Social Commerce
+By Efraim Turban, Judy Whiteside, David King, Jon Outland
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-50091-1
+
+business-process-management
+Business Process Management Cases
+By Jan vom Brocke, Jan Mendling
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-58307-5
+
+social-media,business
+Social Media Management
+By Amy Van Looy
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-21990-5
+
+business,management,international-business
+Multinational Management
+By Rien Segers
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-23012-2
+
+leadership
+Leadership Today
+By Joan Marques, Satinder Dhiman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-31036-7
+
+supply-chain
+Sustainable Supply Chains
+By Yann Bouchery, Charles J. Corbett, Jan C. Fransoo, Tarkan Tan
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-29791-0
+
+retail,strategic-management
+Strategic Retail Management
+By Joachim Zentes, Dirk Morschett, Hanna Schramm-Klein
+http://link.springer.com/openurl?genre=book&isbn=978-3-658-10183-1
+
+travel,business
+Travel Marketing, Tourism Economics and the Airline Product
+By Mark Anthony Camilleri
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-49849-2
+
+ecommerce
+Electronic Commerce 2018
+By Efraim Turban, Jon Outland, David King, Jae Kyu Lee, Ting-Peng Liang, Deborrah C. Turban
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-58715-8
+
+marketing,market-research
+Market Research
+By Erik Mooi, Marko Sarstedt, Irma Mooi-Reci
+http://link.springer.com/openurl?genre=book&isbn=978-981-10-5218-7
+
+business,sustainability
+Managing Sustainable Business
+By Gilbert G. Lenssen, N. Craig Smith
+http://link.springer.com/openurl?genre=book&isbn=978-94-024-1144-7
+
+knowledge-management
+Knowledge Management
+By Klaus North, Gita Kumta
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-59978-6
+
+crm
+Customer Relationship Management
+By V. Kumar, Werner Reinartz
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-55381-7
+
+human-resources,strategic-management
+Strategic Human Resource Management and Employment Relations
+By Ashish Malik
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-0399-9
+
+entertainment
+Entertainment Science
+By Thorsten Hennig-Thurau, Mark B. Houston
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-89292-4
+
+corporate-finance
+Analytical Corporate Finance
+By Angelo Corelli
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-95762-3
+
+market-research,marketing
+A Concise Guide to Market Research
+By Marko Sarstedt, Erik Mooi
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-56707-4
+
+supply-chain,operations-management
+Global Supply Chain and Operations Management
+By Dmitry Ivanov, Alexander Tsipoulanidis, Jörn Schönberger
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-94313-8
+
+international-business
+International Business Management
+By Kamal Fatehi, Jeongho Choi
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-96622-9
+
+software-tools/excel,data-analysis
+Excel Data Analysis
+By Hector Guerrero
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-01279-3
+
+business
+Digital Business Models
+By Bernd W. Wirtz
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-13005-3
+
+marketing
+Social Marketing in Action
+By Debra Z. Basil, Gonzalo Diaz-Meneses, Michael D. Basil
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-13020-6
+
+material-science,ceramics
+Ceramic Materials
+By C. Barry Carter, M. Grant Norton
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-46271-4
+
+material-science,composite-materials
+Composite Materials
+By Krishan K. Chawla
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-74365-3
+
+electron-microscopy
+Transmission Electron Microscopy
+By David B. Williams, C. Barry Carter
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-76501-3
+
+food
+Sensory Evaluation of Food
+By Harry T. Lawless, Hildegarde Heymann
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-6488-5
+
+heat,engineering
+Engineering Flow and Heat Exchange
+By Octave Levenspiel
+http://link.springer.com/openurl?genre=book&isbn=978-1-4899-7454-9
+
+chemistry,thermodynamics
+Chemical Thermodynamics
+By Ernö Keszei
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-19864-9
+
+chemistry,electrochemistry
+Electrochemistry
+By Christine Lefrou, Pierre Fabry, Jean-Claude Poignet
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-30250-3
+
+chemistry
+Acid-Base Diagrams
+By Heike Kahlert, Fritz Scholz
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-37902-4
+
+brewing
+Brewing Science: A Multidisciplinary Approach
+By Michael Mosher, Kenneth Trantham
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-46394-0
+
+chemistry,polymer-chemistry
+Principles of Polymer Chemistry
+By A. Ravve
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-2212-9
+
+nanotechnology
+Nanotechnology: Principles and Practices
+By Sulabha K. Kulkarni
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-09171-6
+
+crystallography
+Structure Determination by X-ray Crystallography
+By Mark Ladd, Rex Palmer
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-3954-7
+
+material-science,ceramics
+Ceramic Materials
+By C. Barry Carter, M. Grant Norton
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-3523-5
+
+chemistry,analytical-chemistry
+Foundations of Analytical Chemistry
+By Miguel Valcárcel Cases, Ángela I. López-Lorente, Ma Ángeles López-Jiménez
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-62872-1
+
+spectrometry
+Mass Spectrometry
+By Jürgen H Gross
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-54398-7
+
+mechanics,statistical-mechanics
+Statistical Mechanics for Engineers
+By Isamu Kusaka
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-15018-5
+
+magnetism
+Magnetic Interactions in Molecules and Solids
+By Coen de Graaf, Ria Broer
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-22951-5
+
+material-science,polymers
+Polymer Synthesis: Theory and Practice
+By Dietrich Braun, Harald Cherdron, Matthias Rehahn, Helmut Ritter, Brigitte Voit
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-28980-4
+
+food
+Food Analysis Laboratory Manual
+By S. Suzanne Nielsen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-44127-6
+
+spectroscopy
+Electrochemical Impedance Spectroscopy and its Applications
+By Andrzej Lasia
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-8933-7
+
+group-theory,chemistry
+Group Theory Applied to Chemistry
+By Arnout Jozef Ceulemans
+http://link.springer.com/openurl?genre=book&isbn=978-94-007-6863-5
+
+chemistry,food,food-chemistry
+Food Chemistry
+By H.-D. Belitz, Werner Grosch, Peter Schieberle
+http://link.springer.com/openurl?genre=book&isbn=978-3-540-69934-7
+
+chemistry,physical-chemistry
+Exam Survival Guide: Physical Chemistry
+By Jochen Vogt
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-49810-2
+
+food
+Food Analysis
+By S. Suzanne Nielsen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-45776-5
+
+chemistry,physical-chemistry
+Physical Chemistry from a Different Angle
+By Georg Job, Regina Rüffler
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-15666-8
+
+food,food-science
+Essentials of Food Science
+By Vickie A. Vaclavik, Elizabeth W. Christian
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-9138-5
+
+chemical-engineering,bioproces-engineering
+Chemical and Bioprocess Engineering
+By Ricardo Simpson, Sudhir K. Sastry
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-9126-2
+
+chemistry
+Applied Chemistry
+By Oleg Roussak, H. D. Gesser
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-4262-2
+
+chemistry,organic-chemistry
+Advanced Organic Chemistry
+By Francis A. Carey, Richard J. Sundberg
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-44899-2
+
+chemistry,organic-chemistry
+Advanced Organic Chemistry
+By Francis A. Carey, Richard J. Sundberg
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-71481-3
+
+electron-microscopy,x-ray
+Scanning Electron Microscopy and X-Ray Microanalysis
+By Joseph I. Goldstein, Dale E. Newbury, Joseph R. Michael, Nicholas W.M. Ritchie, John Henry J. Scott, David C. Joy
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-6676-9
+
+computer-science,evolutionary-computing
+Introduction to Evolutionary Computing
+By A.E. Eiben, J.E. Smith
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-44874-8
+
+data-structures,programming-languages/python
+Data Structures and Algorithms with Python
+By Kent D. Lee, Steve Hubbard
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-13072-9
+
+programming-languages/latex
+LaTeX in 24 Hours
+By Dilip Datta
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-47831-9
+
+computer-science,automata
+Automata and Computability
+By Dexter C. Kozen
+http://link.springer.com/openurl?genre=book&isbn=978-1-4612-1844-9
+
+computer-science,algorithms
+The Algorithm Design Manual
+By Steven S Skiena
+http://link.springer.com/openurl?genre=book&isbn=978-1-84800-070-4
+
+data-mining
+Principles of Data Mining
+By Max Bramer
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-7307-6
+
+business-process-management
+Fundamentals of Business Process Management
+By Marlon Dumas, Marcello La Rosa, Jan Mendling, Hajo A. Reijers
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-33143-5
+
+programming-languages/uml
+UML @ Classroom
+By Martina Seidl, Marion Scholz, Christian Huemer, Gerti Kappel
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-12742-2
+
+design
+Foundations for Designing User-Centered Systems
+By Frank E. Ritter, Gordon D. Baxter, Elizabeth F. Churchill
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-5134-0
+
+computer-science,computer-vision
+Computer Vision
+By Richard Szeliski
+http://link.springer.com/openurl?genre=book&isbn=978-1-84882-935-0
+
+data-mining
+Data Mining
+By Charu C. Aggarwal
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-14142-8
+
+geometry
+Computational Geometry
+By Mark de Berg, Otfried Cheong, Marc van Kreveld, Mark Overmars
+http://link.springer.com/openurl?genre=book&isbn=978-3-540-77974-2
+
+computer-science,cryptography
+Cryptography Made Simple
+By Nigel Smart
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-21936-3
+
+eye-tracking
+Eye Tracking Methodology
+By Andrew T. Duchowski
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-57883-5
+
+data-science
+The Data Science Design Manual
+By Steven S. Skiena
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-55444-0
+
+machine-learning
+An Introduction to Machine Learning
+By Miroslav Kubat
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-63913-0
+
+mathematics,discrete-mathematics
+Guide to Discrete Mathematics
+By Gerard O'Regan
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-44561-8
+
+computer-science
+Modelling Computing Systems
+By Faron Moller, Georg Struth
+http://link.springer.com/openurl?genre=book&isbn=978-1-84800-322-4
+
+computer-science,cryptography
+Understanding Cryptography
+By Christof Paar, Jan Pelzl
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-04101-3
+
+software-engineering
+Concise Guide to Software Engineering
+By Gerard O'Regan
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-57750-0
+
+multimedia
+Fundamentals of Multimedia
+By Ze-Nian Li, Mark S. Drew, Jiangchuan Liu
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-05290-8
+
+programming-languages/python
+The Python Workbook
+By Ben Stephenson
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-14240-1
+
+machine-learning,recommender-systems
+Recommender Systems
+By Charu C. Aggarwal
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-29659-3
+
+programming-languages/python
+Python Programming Fundamentals
+By Kent D. Lee
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-6642-9
+
+programming,object-oriented-programming
+Object-Oriented Analysis, Design and Implementation
+By Brahma Dathan, Sarnath Ramnath
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-24280-4
+
+data-science
+Introduction to Data Science
+By Laura Igual, Santi Seguí
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-50017-1
+
+computer-science,databases
+Concise Guide to Databases
+By Peter Lake, Paul Crowther
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-5601-7
+
+image-processing
+Digital Image Processing
+By Wilhelm Burger, Mark J. Burge
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-6684-9
+
+computer-science,computer-networks
+Guide to Computer Network Security
+By Joseph Migga Kizza
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-55606-2
+
+computer-science,programming
+Foundations of Programming Languages
+By Kent D. Lee
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-70790-7
+
+computer-science,probability,statistics
+Probability and Statistics for Computer Science
+By David Forsyth
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-64410-3
+
+programming
+Guide to Competitive Programming
+By Antti Laaksonen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-72547-5
+
+computer-science,artificial-intelligence
+Introduction to Artificial Intelligence
+By Wolfgang Ertel
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-58487-4
+
+machine-learning,deep-learning
+Introduction to Deep Learning
+By Sandro Skansi
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-73004-2
+
+business-process-management
+Fundamentals of Business Process Management
+By Marlon Dumas, Marcello La Rosa, Jan Mendling, Hajo A. Reijers
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-56509-4
+
+scientific-computing,programming-languages/c++
+Guide to Scientific Computing in C++
+By Joe Pitt-Francis, Jonathan Whiteley
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-73132-2
+
+programming-languages/java
+Fundamentals of Java Programming
+By Mitsunori Ogihara
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-89491-1
+
+cyber-physical-systems
+Logical Foundations of Cyber-Physical Systems
+By André Platzer
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-63588-0
+
+machine-learning,neural-networks,deep-learning
+Neural Networks and Deep Learning
+By Charu C. Aggarwal
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-94463-0
+
+computer-science,systems-programming,software-tools/unix,software-tools/linux
+Systems Programming in Unix/Linux
+By K.C. Wang
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-92429-8
+
+computer-science,parallel-computing
+Introduction to Parallel Computing
+By Roman Trobec, Boštjan Slivnik, Patricio Bulić, Borut Robič
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-98833-7
+
+computer-science
+Analysis for Computer Scientists
+By Michael Oberguggenberger, Alexander Ostermann
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-91155-7
+
+computer-science,computer-forensics
+Introductory Computer Forensics
+By Xiaodong Lin
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-00581-8
+
+civil-engineering,irrigation,drainage
+Irrigation and Drainage Engineering
+By Peter Waller, Muluneh Yitayew
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-05699-9
+
+climate-change
+Climate Change Science: A Modern Synthesis
+By G. Thomas Farmer, John Cook
+http://link.springer.com/openurl?genre=book&isbn=978-94-007-5757-8
+
+geoscience
+Petroleum Geoscience
+By Knut Bjørlykke
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-34132-8
+
+oceans
+The Sea Floor
+By Eugen Seibold, Wolfgang Berger
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-51412-3
+
+soil-mechanics
+An Introduction to Soil Mechanics
+By Arnold Verruijt
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-61185-3
+
+sustainability
+Sustainability Science
+By Harald Heinrichs, Pim Martens, Gerd Michelsen, Arnim Wiek
+http://link.springer.com/openurl?genre=book&isbn=978-94-017-7242-6
+
+gis,programming-languages/python
+Python For ArcGIS
+By Laura Tateosian
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-18398-5
+
+gis
+ArcGIS for Environmental and Water Issues
+By William Bajjali
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-61158-7
+
+simulation,modelling
+System Dynamics
+By Bilash Kanti Bala, Fatimah Mohamed Arshad, Kusairi Mohd Noh
+http://link.springer.com/openurl?genre=book&isbn=978-981-10-2045-2
+
+microeconomics
+Principles of Microeconomics
+By Martin Kolmar
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-57589-6
+
+econometrics
+Time Series Econometrics
+By Klaus Neusser
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-32862-1
+
+stochastic-processes,calculus
+Stochastic Processes and Calculus
+By Uwe Hassler
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-23428-1
+
+economics,ethics
+Economics as Applied Ethics
+By Wilfred Beckerman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-50319-6
+
+grammar,teaching
+Grammar for Teachers
+By Andrea DeCapua
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-33916-0
+
+writing,research
+Writing for Publication
+By Mary Renck Jalongo, Olivia N. Saracho
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-31650-5
+
+languages/english
+Language Across the Curriculum & CLIL in English as an Additional Language (EAL) Contexts
+By Angel M.Y. Lin
+http://link.springer.com/openurl?genre=book&isbn=978-981-10-1802-2
+
+research,phd
+The A-Z of the PhD Trajectory
+By Eva O. L. Lantsoght
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-77425-1
+
+languages/english
+Conferencing and Presentation English for Young Academics
+By Michael Guest
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-2475-8
+
+social-justice,research
+Research Methods for Social Justice and Equity in Education
+By Kamden K. Strunk, Leslie Ann Locke
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-05900-2
+
+education,edtech
+Educational Technology
+By Ronghuai Huang, J. Michael Spector, Junfeng Yang
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-6643-7
+
+education,nations/singapore
+School Leadership and Educational Change in Singapore
+By Benjamin Wong, Salleh Hairon, Pak Tee Ng
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-74746-0
+
+social-science
+A Course in Rasch Measurement Theory
+By David Andrich, Ida Marais
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-7496-8
+
+electrical-engineering
+Electrical Machines
+By Slobodan N. Vukosavic
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-0400-2
+
+energy
+Energy Storage
+By Robert Huggins
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-21239-5
+
+electrical-engineering
+Reactive Power Control in AC Power Systems
+By Naser Mahdavi Tabatabaei, Ali Jafari Aghbolaghi, Nicu Bizon, Frede Blaabjerg
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-51118-4
+
+energy,economics
+Energy Economics
+By Peter Zweifel, Aaron Praktiknjo, Georg Erdmann
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-53022-1
+
+solar-power,wind-power
+Solar PV and Wind Energy Conversion Systems
+By S. Sumathi, L. Ashok Kumar, P. Surekha
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-14941-7
+
+pollution,climate-change,environmental-science
+Air Pollution and Greenhouse Gases
+By Zhongchao Tan
+http://link.springer.com/openurl?genre=book&isbn=978-981-287-212-8
+
+energy
+Energy Harvesting and Energy Efficiency
+By Nicu Bizon, Naser Mahdavi Tabatabaei, Frede Blaabjerg, Erol Kurt
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-49875-1
+
+energy,economics
+Energy and the Wealth of Nations
+By Charles A.S. Hall, Kent Klitgaard
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-66219-0
+
+energy
+Building Energy Modeling with OpenStudio
+By Larry Brackney, Andrew Parker, Daniel Macumber, Kyle Benne
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-77809-9
+
+electrical-engineering
+Off-Grid Electrical Systems in Developing Countries
+By Henry Louie
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-91890-7
+
+electrical-engineering,power-electronics
+Fundamentals of Power Electronics
+By Robert W. Erickson, Dragan Maksimovic
+http://link.springer.com/openurl?genre=book&isbn=978-0-306-48048-5
+
+probability,software-tools/matlab
+Intuitive Probability and Random Processes using MATLAB®
+By Steven Kay
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-24158-6
+
+engineering,engineering-mechanics
+Fatigue of Structures and Materials
+By J. Schijve
+http://link.springer.com/openurl?genre=book&isbn=978-1-4020-6808-9
+
+engineering,robotics
+Fundamentals of Robotic Mechanical Systems
+By Jorge Angeles
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-01851-5
+
+electronics,verilog
+Introduction to Logic Circuits & Logic Design with Verilog
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-53883-9
+
+engineering,structural-analysis
+Structural Analysis
+By O. A. Bauchau, J.I. Craig
+http://link.springer.com/openurl?genre=book&isbn=978-90-481-2516-6
+
+engineering,manufacturing
+Additive Manufacturing Technologies
+By Ian Gibson, David W. Rosen, Brent Stucker
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-1120-9
+
+engineering,electromagnetism
+Engineering Electromagnetics
+By Nathan Ida
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-07806-9
+
+energy
+Alternative Energy Sources
+By Efstathios E (Stathis) Michaelides
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-20951-2
+
+engineering,engineering-mechanics
+Engineering Mechanics 1
+By Dietmar Gross, Werner Hauger, Jörg Schröder, Wolfgang A. Wall, Nimal Rajapakse
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-30319-7
+
+thermodynamics,energy
+Thermodynamics and Energy Conversion
+By Henning Struchtrup
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-43715-5
+
+telecommunication
+Principles of Mobile Communication
+By Gordon L. Stüber
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-55615-4
+
+semiconductors,physics
+Physics of Semiconductor Devices
+By Massimo Rudan
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-1151-6
+
+life-cycle-assessment,engineering
+Life Cycle Assessment
+By Michael Z. Hauschild, Ralph K. Rosenbaum, Stig Irving Olsen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-56475-3
+
+manufacturing,additive-manufacturing
+Additive Manufacturing Technologies
+By Ian Gibson, David Rosen, Brent Stucker
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2113-3
+
+robotics
+Robotics
+By Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, Giuseppe Oriolo
+http://link.springer.com/openurl?genre=book&isbn=978-1-84628-642-1
+
+structural-engineering
+Fundamentals of Structural Engineering
+By Jerome J. Connor, Susan Faraji
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-24331-3
+
+electrical-engineering
+Practical Electrical Engineering
+By Sergey N. Makarov, Reinhold Ludwig, Stephen J. Bitar
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-21173-2
+
+finite-element-method,engineering,software-tools/ansys
+The Finite Element Method and Applications in Engineering Using ANSYS®
+By Erdogan Madenci, Ibrahim Guven
+http://link.springer.com/openurl?genre=book&isbn=978-1-4899-7550-8
+
+embedded-systems
+Introduction to Embedded Systems
+By Manuel Jiménez, Rogelio Palomera, Isidoro Couvertier
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-3143-5
+
+fluid-dynamics
+The Finite Volume Method in Computational Fluid Dynamics
+By F. Moukalled, L. Mangani, M. Darwish
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-16874-6
+
+logic-circuits,electronics,vhdl
+Introduction to Logic Circuits & Logic Design with VHDL
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-34195-8
+
+engineering-mechanics
+Statics and Mechanics of Structures
+By Steen Krenk, Jan Høgsberg
+http://link.springer.com/openurl?genre=book&isbn=978-94-007-6113-1
+
+engineering-mechanics
+Engineering Mechanics 2
+By Dietmar Gross, Werner Hauger, Jörg Schröder, Wolfgang A. Wall, Javier Bonet
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-56272-7
+
+solid-state-engineering
+Fundamentals of Solid State Engineering
+By Manijeh Razeghi
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-75708-7
+
+electronics,digital-system-design
+Introduction to Digital Systems Design
+By Giuliano Donzellini, Luca Oneto, Domenico Ponta, Davide Anguita
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-92804-3
+
+internet-of-things
+Internet of Things From Hype to Reality
+By Ammar Rayes, Samer Salam
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-99516-8
+
+structural-dynamics,engineering
+Structural Dynamics
+By Mario Paz, Young Hoon Kim
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-94743-3
+
+vhdl,electronics
+Quick Start Guide to VHDL
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-04516-6
+
+astronautics,aerospace-engineering
+Astronautics
+By Ulrich Walter
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-74373-8
+
+verilog,electronics
+Quick Start Guide to Verilog
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-10552-5
+
+logic-circuits,vhdl
+Introduction to Logic Circuits & Logic Design with VHDL
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-12489-2
+
+logic-circuits,verilog
+Introduction to Logic Circuits & Logic Design with Verilog
+By Brock J. LaMeres
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-13605-5
+
+life,social-science,
+Handbook of the Life Course
+By Jeylan T. Mortimer, Michael J. Shanahan
+http://link.springer.com/openurl?genre=book&isbn=978-0-306-48247-2
+
+disasters
+Handbook of Disaster Research
+By Havidan Rodriguez, Enrico L. Quarantelli, Russell Dynes
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-32353-4
+
+gender,sociology
+Handbook of the Sociology of Gender
+By Janet Saltzman Chafetz
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-36218-2
+
+sociology
+Handbook of Sociological Theory
+By Jonathan H. Turner
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-36274-8
+
+archaeology
+International Handbook of Historical Archaeology
+By Teresita Majewski, David Gaimster
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-72071-5
+
+criminology
+Handbook of Quantitative Criminology
+By Alex R. Piquero, David Weisburd
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-77650-7
+
+lgbt
+LGBT-Parent Families
+By Abbie E. Goldberg, Katherine R. Allen
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-4556-2
+
+criminal-justics
+Statistics in Criminal Justice
+By David Weisburd, Chester Britt
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-9170-5
+
+research
+The Action Research Planner
+By Stephen Kemmis, Robin McTaggart, Rhonda Nixon
+http://link.springer.com/openurl?genre=book&isbn=978-981-4560-67-2
+
+marriage,family,social-science
+Handbook of Marriage and the Family
+By Gary W. Peterson, Kevin R. Bush
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-3987-5
+
+industrial-engineering
+Optimization of Process Flowsheets through Metaheuristic Techniques
+By José María Ponce-Ortega, Luis Germán Hernández-Pérez
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-91722-1
+
+robotics
+Robotics
+By Matjaž Mihelj, Tadej Bajd, Aleš Ude, Jadran Lenarčič, Aleš Stanovnik, Marko Munih, Jure Rejc, Sebastjan Šlajpah
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-72911-4
+
+control-engineering,stability-and-control
+Stability and Control of Linear Systems
+By Andrea Bacciotti
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-02405-5
+
+control-engineering
+Control Engineering
+By László Keviczky, Ruth Bars, Jenő Hetthéssy, Csilla Bányász
+http://link.springer.com/openurl?genre=book&isbn=978-981-10-8297-9
+
+control-engineering,software-tools/matlab
+Control Engineering: MATLAB Exercises
+By László Keviczky, Ruth Bars, Jenő Hetthéssy, Csilla Bányász
+http://link.springer.com/openurl?genre=book&isbn=978-981-10-8321-1
+
+control-engineering
+Automatic Control with Experiments
+By Victor Manuel Hernández-Guzmán, Ramón Silva-Ortigoza
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-75804-6
+
+multimedia,big-data,internet-of-things
+Multimedia Big Data Computing for IoT Applications
+By Sudeep Tanwar, Sudhanshu Tyagi, Neeraj Kumar
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-8759-3
+
+correctional-counseling
+Correctional Counseling and Treatment
+By Peter C. Kratcoski
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-54349-9
+
+taxation,european-union
+Taxation in European Union
+By Pietro Boria
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-53919-5
+
+law,european-union
+Legal Dynamics of EU External Relations
+By Henri de Waele
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-54817-2
+
+law
+Introduction to Law
+By Jaap Hage, Antonia Waltermann, Bram Akkermans
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-57252-9
+
+politics
+International Humanitarian Action
+By Hans-Joachim Heintze, Pierre Thielbörger
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-14454-2
+
+crime
+Perspectives on Elderly Crime and Victimization
+By Peter C. Kratcoski, Maximilian Edelbacher
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-72682-3
+
+criminal-justice,mental-health
+Criminal Justice and Mental Health
+By Jada Hector, David Khey
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-76442-9
+
+corruption,fraud
+Fraud and Corruption
+By Peter C. Kratcoski, Maximilian Edelbacher
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-92333-8
+
+law,policing
+Policing and Minority Communities
+By James F. Albrecht, Garth den Heyer, Perry Stanislas
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-19182-5
+
+medicine,ethics,medical-ethics
+Teaching Medicine and Medical Ethics Using Popular Culture
+By Evie Kendal, Basia Diug
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-65451-5
+
+film-making
+Empathetic Space on Screen
+By Amedeo D'Adamo
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-66772-0
+
+anthropology
+Of Cigarettes, High Heels, and Other Interesting Things
+By Marcel Danesi
+http://link.springer.com/openurl?genre=book&isbn=978-1-349-95348-6
+
+torture,human-rights
+Witnessing Torture
+By Alexandra S. Moore, Elizabeth Swanson
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-74965-5
+
+humanities,research
+Research Methods for the Digital Humanities
+By lewis levenberg, Tai Neilson, David Rheams
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-96713-4
+
+media-management
+Managing Media and Digital Organizations
+By Eli M. Noam
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-71288-8
+
+media-management
+Media and Digital Management
+By Eli M. Noam
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-72000-5
+
+literature
+An Anthology of London in Literature, 1558-1914
+By Geoffrey G. Hiller, Peter L. Groves, Alan F. Dilnot
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-05609-4
+
+theatre
+Mapping Global Theatre Histories
+By Mark Pizzato
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-12727-5
+
+statistics
+All of Statistics
+By Larry Wasserman
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-21736-9
+
+mathematics,discrete-mathematics
+Discrete Mathematics
+By László Lovász, József Pelikán, Katalin Vesztergombi
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-21777-2
+
+mathematics,optimization
+Numerical Optimization
+By Jorge Nocedal, Stephen Wright
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-40065-5
+
+optimization,time-series
+Time Series Analysis
+By Jonathan D. Cryer, Kung-Sik Chan
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-75959-3
+
+statistics,programming-languages/r
+Introductory Statistics with R
+By Peter Dalgaard
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-79054-1
+
+machine-learning
+The Elements of Statistical Learning
+By Trevor Hastie, Robert Tibshirani, Jerome Friedman
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-84858-7
+
+statistics,time-series,programming-languages/r
+Introductory Time Series with R
+By Paul S.P. Cowpertwait, Andrew V. Metcalfe
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-88698-5
+
+programming-languages/r
+A Beginner's Guide to R
+By Alain Zuur, Elena N. Ieno, Erik Meesters
+http://link.springer.com/openurl?genre=book&isbn=978-0-387-93837-0
+
+mathematics
+Reading, Writing, and Proving
+By Ulrich Daepp, Pamela Gorkin
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-9479-0
+
+calculus,partial-differential-equations
+Introduction to Partial Differential Equations
+By David Borthwick
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-48936-0
+
+mathematical-modelling
+Methods of Mathematical Modelling
+By Thomas Witelski, Mark Bowen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-23042-9
+
+statistics,data-analysis
+Introduction to Statistics and Data Analysis
+By Christian Heumann, Michael Schomaker,  Shalabh
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-46162-5
+
+fourier-analysis
+Classical Fourier Analysis
+By Loukas Grafakos
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-1194-3
+
+mathematics,quantum-physics
+Quantum Theory for Mathematicians
+By Brian C. Hall
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-7116-5
+
+stochastic-processes,brownian-motion
+Brownian Motion, Martingales, and Stochastic Calculus
+By Jean-François Le Gall
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-31089-3
+
+statistics,experiments
+Design and Analysis of Experiments
+By Angela Dean, Daniel Voss, Danel Draguljić
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-52250-0
+
+statistics
+Applied Multivariate Statistical Analysis
+By Wolfgang Karl Härdle, Léopold Simar
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-45171-7
+
+probability
+Probability
+By Jim Pitman
+http://link.springer.com/openurl?genre=book&isbn=978-1-4612-4374-8
+
+mathematics,biology,mathematical-biology
+Modeling Life
+By Alan Garfinkel, Jane Shevtsov, Yina Guo
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-59731-7
+
+scientific-computing,programming-languages/python
+A Primer on Scientific Programming with Python
+By Hans Petter Langtangen
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-49887-3
+
+statistics,data-visualization
+Statistical Analysis and Data Display
+By Richard M. Heiberger, Burt Holland
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2122-5
+
+calculus
+Elementary Analysis
+By Kenneth A. Ross
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6271-2
+
+probability
+Probability Theory
+By Alexandr A. Borovkov
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-5201-9
+
+statistics,data-analysis,financial-engineering,finance
+Statistics and Data Analysis for Financial Engineering
+By David Ruppert, David S. Matteson
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2614-5
+
+calculus,differential-equations
+Differential Equations and Their Applications
+By Martin Braun
+http://link.springer.com/openurl?genre=book&isbn=978-1-4612-4360-1
+
+calculus,partial-differential-equations
+Partial Differential Equations
+By Jürgen Jost
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-4809-9
+
+statistics,bayesian-statistics
+Bayesian and Frequentist Regression Methods
+By Jon Wakefield
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-0925-1
+
+time-series,forecasting
+Introduction to Time Series and Forecasting
+By Peter J. Brockwell, Richard A. Davis
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-29854-2
+
+mathematics,manifolds
+Introduction to Smooth Manifolds
+By John Lee
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-9982-5
+
+calculus,geometry
+Multivariate Calculus and Geometry
+By Seán Dineen
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-6419-7
+
+abstract-algebra
+Representation Theory
+By William Fulton, Joe Harris
+http://link.springer.com/openurl?genre=book&isbn=978-1-4612-0979-9
+
+linear-algebra
+Linear Algebra Done Right
+By Sheldon Axler
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-11080-6
+
+linear-algebra
+Linear Algebra
+By Jörg Liesen, Volker Mehrmann
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-24346-7
+
+mathematics,calculus,analysis
+Understanding Analysis
+By Stephen Abbott
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2712-8
+
+mathematics,calculus,differential-equations
+Ordinary Differential Equations
+By William A. Adkins, Mark G. Davidson
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-3618-8
+
+statistics,programming-languages/r
+Understanding Statistics Using R
+By Randall Schumacker, Sara Tomek
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6227-9
+
+survival-analysis
+Survival Analysis
+By David G. Kleinbaum, Mitchel Klein
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-6646-9
+
+machine-learning
+An Introduction to Statistical Learning
+By Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-7138-7
+
+machine-learning,regression-analysis
+Statistical Learning from a Regression Perspective
+By Richard A. Berk
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-44048-4
+
+calculus,partial-differential-equations
+Applied Partial Differential Equations
+By J. David Logan
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-12493-3
+
+regression-analysis
+Regression Modeling Strategies
+By Frank E. Harrell , Jr.
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-19425-7
+
+quantitative-finance
+Applied Quantitative Finance
+By Wolfgang Karl Härdle, Cathy Yi-Hsuan Chen, Ludger Overbeck
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-54486-0
+
+probability,statistics
+A Modern Introduction to Probability and Statistics
+By F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester
+http://link.springer.com/openurl?genre=book&isbn=978-1-84628-168-6
+
+complex-analysis,mathematics
+Complex Analysis
+By Joseph Bak, Donald J. Newman
+http://link.springer.com/openurl?genre=book&isbn=978-1-4419-7288-0
+
+mathematics,calculus
+Calculus With Applications
+By Peter D. Lax, Maria Shea Terrell
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-7946-8
+
+clinical-research
+Fundamentals of Clinical Trials
+By Lawrence M. Friedman, Curt D. Furberg, David L. DeMets, David M. Reboussin, Christopher B. Granger
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-18539-2
+
+mathematical-modelling
+Applied Predictive Modeling
+By Max Kuhn, Kjell Johnson
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6849-3
+
+mathematics,real-analysis
+Real Analysis
+By Miklós Laczkovich, Vera T. Sós
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-2766-1
+
+mathematics,probability
+Probability Theory
+By Achim Klenke
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-5361-0
+
+bayesian-statistics,programming-languages/r
+Bayesian Essentials with R
+By Jean-Michel Marin, Christian P. Robert
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-8687-9
+
+mathematics,abstract-algebra
+Abstract Algebra
+By Gregory T. Lee
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-77649-1
+
+mathematics,linear-algebra
+Applied Linear Algebra
+By Peter J. Olver, Chehrzad Shakiban
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-91041-3
+
+mathematics
+Proofs from THE BOOK
+By Martin Aigner, Günter M. Ziegler
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-57265-8
+
+mathematics,number-theory
+A Pythagorean Introduction to Number Theory
+By Ramin Takloo-Bighash
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-02604-2
+
+medicine
+Evidence-Based Critical Care
+By Robert C. Hyzy
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-43341-7
+
+bioinformatics
+Biomedical Informatics
+By Edward H. Shortliffe, James J. Cimino
+http://link.springer.com/openurl?genre=book&isbn=978-1-4471-4474-8
+
+biomechanics,heart
+Cardiovascular Biomechanics
+By Peter R. Hoskins, Patricia V. Lawford, Barry J. Doyle
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-46407-7
+
+medicine,evolution
+Evolutionary Thinking in Medicine
+By Alexandra Alvergne, Crispin Jenkinson, Charlotte Faurie
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-29716-3
+
+surgery,medicine
+The ASCRS Textbook of Colon and Rectal Surgery
+By Scott R. Steele, Tracy L. Hull, Thomas E. Read, Theodore J. Saclarides, Anthony J. Senagore, Charles B. Whitlow
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-25970-3
+
+medicine,breast-cancer
+Breast Cancer
+By Umberto Veronesi, Aron Goldhirsch, Paolo Veronesi, Oreste Davide Gentilini, Maria Cristina Leonardi
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-48848-6
+
+medicine,surgery
+Spine Surgery
+By Bernhard Meyer, Michael Rauschmann
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-98875-7
+
+astrophysics
+Essential Astrophysics
+By Kenneth R. Lang
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-35963-7
+
+data-analysis
+Data Analysis
+By Siegmund Brandt
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-03762-2
+
+physics,mechanics,thermodynamics
+Mechanics and Thermodynamics
+By Wolfgang Demtröder
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-27877-3
+
+physics,particle-physics
+Particles and Nuclei
+By Bogdan Povh, Klaus Rith, Christoph Scholz, Frank Zetsche, Werner Rodejohann
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-46321-5
+
+physics,cosmology
+Cosmology for the Curious
+By Delia Perlov, Alex Vilenkin
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-57040-2
+
+astronomy,cosmology
+Extragalactic Astronomy and Cosmology
+By Peter Schneider
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-54083-7
+
+physics,computational-physics
+Computational Physics
+By Philipp O.J. Scherer
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-61088-7
+
+physics,medicine,biology
+Intermediate Physics for Medicine and Biology
+By Russell K. Hobbie, Bradley J. Roth
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-12682-1
+
+astronomy
+Fundamental Astronomy
+By Hannu Karttunen, Pekka Kröger, Heikki Oja, Markku Poutanen, Karl Johan Donner
+http://link.springer.com/openurl?genre=book&isbn=978-3-662-53045-0
+
+mechanics,programming-languages/python
+Elementary Mechanics Using Python
+By Anders Malthe-Sørenssen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-19596-4
+
+plasma-physics,fusion
+Introduction to Plasma Physics and Controlled Fusion
+By Francis Chen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-22309-4
+
+fluid-dynamics
+Fluid Dynamics
+By Michel Rieutord
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-09351-2
+
+physics,computational-physics
+Basic Concepts in Computational Physics
+By Benjamin A. Stickler, Ewald Schachinger
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-27265-8
+
+physics,mathematical-physics
+Mathematical Physics
+By Sadri Hassani
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-01195-0
+
+statistics,science
+Statistics and Analysis of Scientific Data
+By Massimiliano Bonamente
+http://link.springer.com/openurl?genre=book&isbn=978-1-4939-6572-4
+
+astrophysics
+Stellar Structure and Evolution
+By Rudolf Kippenhahn, Alfred Weigert, Achim Weiss
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-30304-3
+
+computational-physics
+Computational Physics
+By Philipp Scherer
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-00401-3
+
+physics,quantum-mechanics
+Quantum Mechanics
+By Daniel Bes
+http://link.springer.com/openurl?genre=book&isbn=978-3-642-20556-9
+
+physics,quantum-mechanics
+Foundations of Quantum Mechanics
+By Travis Norsen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-65867-4
+
+physics,software-tools/mathematica
+Introduction to Mathematica® for Physicists
+By Andrey Grozin
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-00894-3
+
+astrophysics
+Principles of Astrophysics
+By Charles Keeton
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-9236-8
+
+physics,acoustics,music
+Principles of Musical Acoustics
+By William M. Hartmann
+http://link.springer.com/openurl?genre=book&isbn=978-1-4614-6786-1
+
+physics,laser,optics
+Basics of Laser Physics
+By Karl F. Renk
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-50651-7
+
+physics,solid-state-physics
+Solid-State Physics
+By Harald Ibach, Hans Lüth
+http://link.springer.com/openurl?genre=book&isbn=978-3-540-93804-0
+
+physics,quantum-mechanics
+Principles of Quantum Mechanics
+By R. Shankar
+http://link.springer.com/openurl?genre=book&isbn=978-1-4757-0576-8
+
+abstract-algebra,group-theory
+Group Theory
+By Mildred S. Dresselhaus, Gene Dresselhaus, Ado Jorio
+http://link.springer.com/openurl?genre=book&isbn=978-3-540-32899-5
+
+software-tools/matlab,mechanics
+Elementary Mechanics Using Matlab
+By Anders Malthe-Sørenssen
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-19587-2
+
+semiconductors,physics
+The Physics of Semiconductors
+By Marius Grundmann
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-23880-7
+
+physics,quantum-mechanics
+Quantum Mechanics
+By K.T. Hecht
+http://link.springer.com/openurl?genre=book&isbn=978-1-4612-1272-0
+
+electron-microscopy
+Transmission Electron Microscopy
+By David B. Williams, C. Barry Carter
+http://link.springer.com/openurl?genre=book&isbn=978-1-4757-2519-3
+
+quantum-mechanics
+Advanced Quantum Mechanics
+By RAINER DICK
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-25675-7
+
+physics
+Physics from Symmetry
+By Jakob Schwichtenberg
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-66631-0
+
+electromagnetism
+Problems in Classical Electromagnetism
+By Andrea Macchi, Giovanni Moruzzi, Francesco Pegoraro
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-63133-2
+
+quantum-mechanics
+Introductory Quantum Mechanics
+By Paul R. Berman
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-68598-4
+
+linear-algebra,analytical-geometry,physics
+Linear Algebra and Analytic Geometry for Physical Sciences
+By Giovanni Landi, Alessandro Zampini
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-78361-1
+
+physics,general-relativity
+Introduction to General Relativity
+By Cosimo Bambi
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-1090-4
+
+physics,particle-physics,astrophysics
+Introduction to Particle and Astroparticle Physics
+By Alessandro De Angelis, Mário Pimenta
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-78181-5
+
+physics,quantum-mechanics
+A First Introduction to Quantum Physics
+By Pieter Kok
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-92207-2
+
+physics,waves
+Physics of Oscillations and Waves
+By Arnt Inge Vistnes
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-72314-3
+
+physics,quantum-mechanics
+Quantum Mechanics for Pedestrians 1
+By Jochen Pade
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-00464-4
+
+physics,quantum-mechanics
+Quantum Mechanics for Pedestrians 2
+By Jochen Pade
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-00467-5
+
+philosophy-of-science,science,philosophy
+Philosophy of Science for Scientists
+By Lars-Göran Johansson
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-26551-3
+
+philosophy,epistemology
+Readings in Formal Epistemology
+By Horacio Arló-Costa, Vincent F. Hendricks, Johan van Benthem
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-20451-2
+
+philosophy-of-science
+The Nature of Scientific Knowledge
+By Kevin McCain
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-33405-9
+
+bioethics,philosophy
+Communication and Bioethics at the End of Life
+By Lori A. Roscoe, David P. Schenck
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-70920-8
+
+philosophy
+Philosophy of Race
+By Naomi Zack
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-78729-9
+
+ethics,business-ethics,philosophy
+Business Ethics - A Philosophical and Behavioral Approach
+By Christian A. Conrad
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-91575-3
+
+philosophy,argumentation-theory
+Argumentation Theory: A Pragma-Dialectical Perspective
+By Frans H. van Eemeren
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-95381-6
+
+logic,mathematical-logic
+Mathematical Logic
+By Roman Kossak
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-97298-5
+
+philosophy
+Introduction to Formal Philosophy
+By Sven Ove Hansson, Vincent F. Hendricks
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-77434-3
+
+philosophy,mathematical-logic,logic
+Philosophical and Mathematical Logic
+By Harrie de Swart
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-03255-5
+
+lgbt,social-science
+Handbook of LGBT Elders
+By Debra A. Harley, Pamela B. Teaster
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-03623-6
+
+social-science,disability
+Disability and Vocational Rehabilitation in Rural Settings
+By Debra A. Harley, Noel A. Ysasi, Malachy L. Bishop, Allison R. Fleming
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-64786-9
+
+social-science,politics
+Political Social Work
+By Shannon R. Lane, Suzanne Pritzker
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-68588-5
+
+social-science,demography
+Concepts, Methods and Practical Applications in Applied Demography
+By Richard K. Thomas
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-65439-3
+
+archaeology,zooarchaeology
+An Introduction to Zooarchaeology
+By Diane Gifford-Gonzalez
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-65682-3
+
+social-science,research
+Quantitative Methods for the Social Sciences
+By Daniel Stockemer
+http://link.springer.com/openurl?genre=book&isbn=978-3-319-99118-4
+
+social-justice,social-science
+Social Justice Theory and Practice for Social Work
+By Lynelle Watts, David Hodgson
+http://link.springer.com/openurl?genre=book&isbn=978-981-13-3621-8
+
+statistics,social-science
+Analyzing Qualitative Data with MAXQDA
+By Udo Kuckartz, Stefan Rädiker
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-15671-8
+
+archaeology
+Handbook of Evolutionary Research in Archaeology
+By Anna Marie Prentiss
+http://link.springer.com/openurl?genre=book&isbn=978-3-030-11117-5
