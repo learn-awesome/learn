@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       @user.save
     end
     respond_to do |format|
-      format.html { render layout: 'embed' }
+      format.html { render layout: 'embed_tailwind' }
       format.json { render json: @reviews }
     end
   end

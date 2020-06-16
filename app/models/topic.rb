@@ -180,6 +180,10 @@ class Topic < ApplicationRecord
 		self.display_name.to_s.split("/").last.strip
 	end
 
+	def search_keyword
+		self.display_name.to_s.gsub("-"," ")
+	end
+
 	def self.get_hierarchy(root_topic)
 		all_topics = Topic.get_all
 		by_parent_id = all_topics.group_by(&:parent_id) # includes nil as a key with value as array of all top-level topics

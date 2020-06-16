@@ -4,11 +4,15 @@
 
 <% content_for :opengraph do %>
   <link rel="canonical" href="<%= topic_url(@topic) %>" />
-  <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
-  <meta name="description" content="LearnAwesome.org :: Humanity's universal learning map">
+  <% if params['item_type'].present? %>
+  <meta name="keywords" content="best <%= ItemType.find(params['item_type']).display_name_plural %> for <%= @topic.search_keyword %>">
+  <% else %>
+  <meta name="keywords" content="best books for <%= @topic.search_keyword %>, best podcasts for <%= @topic.search_keyword %>, best videos for <%= @topic.search_keyword %>, learn <%= @topic.search_keyword %>, how to learn  for <%= @topic.search_keyword %>, learning path for <%= @topic.search_keyword %>">
+  <% end %>
+  <meta name="description" content="LearnAwesome has collected the best courses, podcasts, books blogs, videos, apps for learning for <%= @topic.search_keyword %>">
 
   <meta property="og:title" content="<%= @topic.display_name %> :: LearnAwesome.org">
-  <meta property="og:description" content="Humanity's universal learning map.">
+  <meta property="og:description" content="The best courses, podcasts, books blogs, videos, apps for learning <%= @topic.search_keyword %>">
   <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
   <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
   <meta name="twitter:card" content="summary_large_image">

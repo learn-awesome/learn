@@ -120,4 +120,5 @@ Rails.application.routes.draw do
   get '/programs' => 'welcome#programs'
   get '/digitalgardensetup' => 'welcome#digitalgardensetup'
   get '/digitalgarden' => 'users#garden'
+  get '/sitemap.xml' => 'welcome#sitemap'
 end

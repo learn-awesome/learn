@@ -108,3 +108,5 @@ gem 'oauth' # for goodreads api
 
 gem 'slim'
 gem 'slim-rails'
+
+gem 'sitemap_generator'

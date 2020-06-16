@@ -8,7 +8,7 @@
 <% @item_type_items.group_by(&:item_type_id).sort_by { |itid,items| [ itid == 'learning_plan' ? 0 : 1, itid ] }.to_h.each do |itid, items| %>
 <div class="mt-6">
 <div class="px-4 xl:px-8">
-    <h3 class="text-gray-900 text-xl"><%= ItemType.find(itid).display_name_plural %></h3>
+    <h3 class="text-gray-900 text-xl"><%= link_to ItemType.find(itid).display_name_plural, topic_path(topic, item_type: itid), class: "text-blue-500 underline" %></h3>
     <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
 </div>
 <div class="sm:overflow-x-auto sm:overflow-y-hidden">
