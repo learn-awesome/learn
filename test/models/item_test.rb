@@ -23,6 +23,13 @@
 #  typical_age_range   :string
 #  description         :text
 #  metadata            :json             not null
+#  page_count          :integer
+#  goodreads_rating    :decimal(3, 2)
+#  amazon_rating       :decimal(3, 2)
+#  isbn                :string
+#  isbn13              :string
+#  cost                :decimal(8, 2)
+#  language            :string
 #
 # Indexes
 #

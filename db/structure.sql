@@ -5,8 +5,23 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -220,17 +235,25 @@ CREATE TABLE public.items (
     user_id uuid NOT NULL,
     year integer,
     image_url character varying,
-    inspirational_score integer,
-    educational_score integer,
-    challenging_score integer,
-    entertaining_score integer,
-    visual_score integer,
-    interactive_score integer,
+    inspirational_score numeric(3,2),
+    educational_score numeric(3,2),
+    challenging_score numeric(3,2),
+    entertaining_score numeric(3,2),
+    visual_score numeric(3,2),
+    interactive_score numeric(3,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     typical_age_range character varying,
     description text,
-    metadata json DEFAULT '{}'::json NOT NULL
+    metadata json DEFAULT '{}'::json NOT NULL,
+    page_count integer,
+    goodreads_rating numeric(3,2),
+    amazon_rating numeric(3,2),
+    isbn character varying,
+    isbn13 character varying,
+    cost numeric(8,2),
+    language character varying,
+    overall_score numeric(3,2)
 );
 
 
@@ -262,7 +285,8 @@ CREATE TABLE public.people (
     updated_at timestamp without time zone NOT NULL,
     metadata json DEFAULT '{}'::json NOT NULL,
     goodreads character varying,
-    image_url character varying
+    image_url character varying,
+    kind character varying
 );
 
 
@@ -1299,6 +1323,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200513012642'),
 ('20200517043602'),
 ('20200527001352'),
-('20200530085910');
+('20200530085910'),
+('20200617194825');
 
 

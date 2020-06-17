@@ -319,6 +319,12 @@ class ItemsController < ApplicationController
     @item_type = params[:item_type]
     @length = params[:length]
     @quality = params[:quality]
+
+    @second_topic = params[:second_topic]
+    @person_kind = params[:person_kind]
+    @published_year = params[:published_year]
+    @min_score = params[:min_year]
+
     if params[:commit].present? or params[:twcommit].present?
 
       if params[:twcommit].present?
@@ -329,7 +335,7 @@ class ItemsController < ApplicationController
         end
       end
       # query items
-      @items = Item.advanced_search(@topic_name, @item_type, @length, @quality)
+      @items = Item.advanced_search(@topic_name, @item_type, @length, @quality, @second_topic, @person_kind, @published_year, @min_score)
     else
       @items = []
     end
@@ -342,7 +348,8 @@ class ItemsController < ApplicationController
     # end
 
     def item_params
-      params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, :description, :metadata)
+      params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, 
+      :description, :metadata, :page_count, :goodreads_rating, :isbn, :isbn13, :cost, :language)
     end
 
     def set_has_used_browser_extension

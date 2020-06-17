@@ -13,6 +13,7 @@
 #  metadata    :json             not null
 #  goodreads   :string
 #  image_url   :string
+#  kind        :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

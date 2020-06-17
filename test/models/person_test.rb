@@ -13,6 +13,7 @@
 #  metadata    :json             not null
 #  goodreads   :string
 #  image_url   :string
+#  kind        :string
 #
 
 require 'test_helper'

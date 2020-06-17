@@ -1,13 +1,7 @@
-<div class="row">
-<div class="col-md-6 mb-4">
-<div class="card">
-
-<header class="card-header">
+<div class="card max-w-md mx-auto">
 	<h2 class="h3 card-header-title"><b>Search by ISBN <% if @isbn.present? %>: <%= @isbn %><% end %></b></h2>
-</header>
 
-<div class="card-body">
-<%= form_with local: true, method: :get do |form| %>
+<%= form_with local: true, method: :get, html: {class: "simple-form"} do |form| %>
   <div class="form-group mb-4">
     <%= form.label :q, "ISBN of the book" %><br>
     <%= form.text_field :q, value: @isbn, minlength: 5, maxlength: 30, required: true, pattern: '[0-9 \\-]{10,18}', class: "form-control form-pill" %>
@@ -17,8 +11,5 @@
   		<%= form.submit "Search", class: "btn btn-primary" %>
   </div>
 <% end %>
-</div>
 
-</div>
-</div>
 </div>

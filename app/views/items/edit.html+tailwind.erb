@@ -40,9 +40,9 @@
     <% end %>
 
     <%= form.label :image_url, "Image URL:" %>
-    <%= form.text_field :image_url, minlength: 8, maxlength: 1024 %>
+    <%= form.url_field :image_url, minlength: 8, maxlength: 1024 %>
 
-    <div class="flex justify-between">
+    <div class="flex flex-wrap justify-between">
         <div class="form-inline">
             <label class="text-gray-700" for="item_estimated_time">Estimated time to complete: &nbsp;</label>
             <input min="0" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[estimated_time]" id="item_estimated_time" value="<%= @item.estimated_time %>">&nbsp;
@@ -69,6 +69,45 @@
         <%= form.number_field :year %>
         </div>
     </div>
+
+    <div class="flex flex-wrap justify-between">
+        <div class="form-inline">
+            <label class="text-gray-700" for="item_cost">Cost (USD): &nbsp;</label>
+            <input min="0" step="0.01" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[cost]" id="item_cost" value="<%= @item.cost %>">&nbsp;
+        </div>
+
+        <div>
+        <label for="item_language">Language:</label>
+        <input class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="string" name="item[language]" id="item_language" value="<%= @item.language %>">&nbsp;
+        </div>
+    </div>
+
+    <% if @item.item_type_id == 'book' %>
+    <h1>For Books:</h1>
+    <div class="flex flex-wrap justify-between">
+        <div class="form-inline">
+            <label class="text-gray-700" for="item_page_count">Page count: &nbsp;</label>
+            <input min="0" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[page_count]" id="item_page_count" value="<%= @item.page_count %>">&nbsp;
+        </div>
+
+        <div>
+        <label for="item_goodreads_rating">Rating on GoodReads:</label>
+        <input min="0.0" max="5.0" step="0.01" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[goodreads_rating]" id="item_goodreads_rating" value="<%= @item.goodreads_rating %>">&nbsp;
+        </div>
+    </div>
+
+    <div class="flex flex-wrap justify-between">
+        <div>
+        <%= form.label :isbn, "ISBN (10-digit):" %>
+        <%= form.text_field :isbn %>
+        </div>
+
+        <div>
+        <%= form.label :isbn13, "ISBN (13-digit):" %>
+        <%= form.text_field :isbn13 %>
+        </div>
+    </div>
+    <% end %>
 
     <%= form.submit "Save" %>
 <% end %>

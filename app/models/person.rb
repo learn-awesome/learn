@@ -13,6 +13,7 @@
 #  metadata    :json             not null
 #  goodreads   :string
 #  image_url   :string
+#  kind        :string
 #
 
 class Person < ApplicationRecord
@@ -20,7 +21,11 @@ class Person < ApplicationRecord
 	has_many :idea_sets, :through => :person_idea_sets
 	has_many :items, :through => :idea_sets
 
+	KINDS = ['popular_website', 'award', 'entrepreneur', 'executive', 'investor', 'scientist',
+	'designer','politician','economist','celebrity','author','historical_figure','journalist']
+
 	validates :name, presence: true, length: {minimum: 4, maximum: 255}
+	validates_inclusion_of :kind, in: KINDS, allow_nil: true, allow_blank: false
 	# validates :website, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
 	# validates :email, presence: true, allow_nil: true, length: {minimum: 4, maximum: 30}
 	# validates :twitter, presence: true, allow_nil: true, length: {minimum: 2, maximum: 25}

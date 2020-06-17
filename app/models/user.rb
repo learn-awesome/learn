@@ -18,6 +18,7 @@
 #  has_used_browser_extension :boolean          default("false"), not null
 #  has_used_embed             :boolean          default("false"), not null
 #  tiddlywiki_url             :string
+#  theme                      :string
 #
 
 require 'json'
@@ -140,7 +141,7 @@ class User < ApplicationRecord
 	end
 
 	def is_core_dev?
-		User.core_devs.include?(self.id)
+		Rails.env.development? or User.core_devs.include?(self.id)
 	end
 
 	def can_combine_items?

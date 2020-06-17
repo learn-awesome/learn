@@ -11,6 +11,11 @@
         </div>
 
         <div class="mb-4">
+            <%= form.label :kind, class: "text-gray-700" %>
+            <%= form.collection_select :kind, Person::KINDS, :to_s, :to_s, {prompt: 'Choose Category'}, required: false, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
             <%= form.label :website, class: "text-gray-700" %>
             <%= form.text_field :website, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
         </div>

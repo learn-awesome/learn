@@ -18,6 +18,7 @@
 #  has_used_browser_extension :boolean          default("false"), not null
 #  has_used_embed             :boolean          default("false"), not null
 #  tiddlywiki_url             :string
+#  theme                      :string
 #
 
 require 'test_helper'

@@ -23,6 +23,13 @@
 #  typical_age_range   :string
 #  description         :text
 #  metadata            :json             not null
+#  page_count          :integer
+#  goodreads_rating    :decimal(3, 2)
+#  amazon_rating       :decimal(3, 2)
+#  isbn                :string
+#  isbn13              :string
+#  cost                :decimal(8, 2)
+#  language            :string
 #
 # Indexes
 #
@@ -43,6 +50,8 @@ require 'open-uri'
 require 'redcarpet'
 
 class Item < ApplicationRecord
+  include ActionView::Helpers::TextHelper
+
   belongs_to :idea_set, inverse_of: :items
   has_many :topic_idea_sets, through: :idea_set
   has_many :topics, through: :idea_set
@@ -77,6 +86,16 @@ class Item < ApplicationRecord
 
   def self.from_param(id)
     self.where(id: id.to_s.split("-")[0..4].join("-")).first
+  end
+
+  def update_score
+  	Review::SCORE_TYPES.each do |quality_score|
+  		avg_score = self.reviews.where("#{quality_score} is not null").average(quality_score)
+  		self.write_attribute(quality_score, avg_score) if avg_score
+    end
+    avg_overall_score = self.reviews.where("overall_score is not null").average(:overall_score)
+    self.write_attribute(:overall_score, avg_overall_score) if avg_overall_score
+    self.save
   end
 
   def creators
@@ -178,12 +197,17 @@ class Item < ApplicationRecord
   	end
   end
 
-  def self.advanced_search(topic_name, item_type, length, quality)
+  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil)
     results = Item.all
 
     if topic_name.present?
       topic = Topic.where(name: topic_name).first
       results = results.where(id: topic.items.map(&:id)) if topic
+
+      if second_topic_name.present?
+        second_topic = Topic.where(name: second_topic_name).first
+        results = results.where(id: second_topic.items.map(&:id)) if second_topic
+      end
     end
 
     if item_type.present?
@@ -199,6 +223,17 @@ class Item < ApplicationRecord
     if ['inspirational', 'educational', 'challenging', 'entertaining', 'visual', 'interactive'].include?(quality)
       results = results.where("#{quality}_score >= 4.0")
     end
+
+    if published_year.present?
+      results = results.where(year: published_year.to_i..)
+    end
+
+    if min_score.present?
+      results = results.where(overall_score: min_score.to_f..)
+    end
+
+    #TODO: person_kind filter
+
     return results.limit(20)
   end
 
@@ -672,7 +707,7 @@ HEREDOC
       html = markdown.render(self.description.to_s.strip).html_safe
       return html #self.replace_la_links_with_embeds(html)
     else
-      return self.description.to_s.strip
+      return simple_format(self.description.to_s.strip)
     end
   end
 
