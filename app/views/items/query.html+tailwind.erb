@@ -1,21 +1,5 @@
-<% @items.group_by(&:item_type_id).each do |itype, items| %>
-<div class="mt-6">
-<div class="px-4 xl:px-8">
-    <h3 class="text-gray-900 text-xl"><%= ItemType.find(itype).display_name_plural %></h3>
-    <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
-</div>
-<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
-	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
-	<% items.each do |item| %>
-		<%= render partial: 'topics/item', locals: {item: item} %>
-	<% end %>
-	</div>
-</div>
-<% end %>
-
 <div class="card max-w-8xl mx-auto">
 
-<header class="card-header">
 <%= form_with local: true, method: :get, class: "simple-form-inline" do |form| %>
   Show me &nbsp; 
   <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, {selected: @item_type, include_blank: "Any format"}, class: "form-control" %> &nbsp; about &nbsp; 
@@ -29,18 +13,33 @@
   and published after <%= form.collection_select :published_year, [1900, 1920, 1940, 1960, 1980, 2000, 2010, 2020], :to_s, :to_s, {prompt: 'Choose year'}, required: false %> &nbsp;
   and have a rating higher than <%= form.collection_select :min_score, [3.0, 3.5, 4.0, 4.5], :to_s, :to_s, {prompt: 'Choose minimum rating'}, required: false %>
   <!-- TODO: goodreads/amazon rating, page_count, also recommended by -->
-  <div class="text-center"><%= form.submit "Search", class: "btn btn-primary" %></div>
+  <div class=""><%= form.submit "Search", class: "btn btn-primary" %></div>
 <% end %>
-</header>
+
+</div>
 
 <div class="card-body">
   <% if params[:commit].present? %>
     <% if @items.any? %>
-      <%= render @items %>
+      
+
+      <% @items.group_by(&:item_type_id).sort.each do |itype, items| %>
+        <div class="mt-6">
+        <div class="px-4 xl:px-8">
+            <h3 class="text-gray-900 text-xl"><%= ItemType.find(itype).display_name_plural %></h3>
+            <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
+        </div>
+        <div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
+          <div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
+          <% items.each do |item| %>
+            <%= render partial: 'topics/item', locals: {item: item} %>
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+
     <% else %>
       <h2>No such items.</h2>
     <% end %>
   <% end %>
-</div>
-
 </div>

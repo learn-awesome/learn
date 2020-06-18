@@ -86,6 +86,17 @@ class WelcomeController < ApplicationController
     # redirect_to "https://airtable.com/shrwVW2ihB43qgTmm/tblvYQzpnMRApGWvF"
   end
 
+  def sitemap
+    respond_to do |format|
+      format.xml
+    end
+  end
+
+  def collection_discover
+    coll = Collection.order('RANDOM()').first
+    redirect_to user_collection_path(coll.user, coll)
+  end
+
   private
 
   def fetch_entities(is_fuzzy)
@@ -95,11 +106,5 @@ class WelcomeController < ApplicationController
   end
 
   def kids
-  end
-
-  def sitemap
-    respond_to do |format|
-      format.xml
-    end
   end
 end

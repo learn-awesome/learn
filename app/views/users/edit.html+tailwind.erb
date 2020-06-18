@@ -1,31 +1,19 @@
-<div class="max-w-4xl p-6 bg-white rounded-md shadow-md">
+<div class="max-w-lg p-6 bg-white rounded-md shadow-md">
     <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit Profile</h2>
-    <%= form_for @user do |form| %>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-            <div class="mb-4">
+    <%= form_for @user, html: {class: "simple-form"} do |form| %>
                 <%= form.label :nickname, class: "text-gray-700" %>
                 <%= form.text_field :nickname, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
-            </div>
 
-            <div class="mb-4">
                 <%= form.label :bio, class: "text-gray-700" %>
                 <%= form.text_field :bio, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
-            </div>
 
-            <div class="mb-4">
                 <%= form.label :description, class: "text-gray-700" %>
                 <%= form.text_area :description, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
-            </div>
 
-            <div class="mb-4">
                 <%= form.label :tiddlywiki_url, class: "text-gray-700" do %>
-                    <a href='/digitalgardensetup' target='_blank' class='text-blue-400 underline'>Digital Garden</a>
+                    Website (<a href='/digitalgardensetup' target='_blank' class='text-blue-400 underline'>You can set up a digital Garden using TiddlyWiki</a>)
                 <% end %>
                 <%= form.url_field :tiddlywiki_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
-            </div>
-        </div>
-        <div class="flex justify-end mt-4">
             <%= form.submit "Save", class: "px-4 py-2 bg-gray-800 text-gray-200 rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700" %>
-        </div>
     <% end %>
 </div>

@@ -121,4 +121,5 @@ Rails.application.routes.draw do
   get '/digitalgardensetup' => 'welcome#digitalgardensetup'
   get '/digitalgarden' => 'users#garden'
   get '/sitemap.xml' => 'welcome#sitemap'
+  get '/collection_discover' => 'welcome#collection_discover'
 end
