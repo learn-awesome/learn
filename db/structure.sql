@@ -5,23 +5,8 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -310,12 +295,15 @@ CREATE TABLE public.person_idea_sets (
 
 CREATE TABLE public.recommendations (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    item_id uuid NOT NULL,
-    person_id uuid NOT NULL,
     idea_set_id uuid NOT NULL,
     metadata text,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    item_id uuid,
+    person_id uuid,
+    url character varying,
+    notes text,
+    score numeric(3,2)
 );
 
 
@@ -852,20 +840,6 @@ CREATE INDEX index_recommendations_on_idea_set_id ON public.recommendations USIN
 
 
 --
--- Name: index_recommendations_on_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_recommendations_on_item_id ON public.recommendations USING btree (item_id);
-
-
---
--- Name: index_recommendations_on_person_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_recommendations_on_person_id ON public.recommendations USING btree (person_id);
-
-
---
 -- Name: index_reviews_on_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1139,14 +1113,6 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: recommendations fk_rails_776fd0ec01; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.recommendations
-    ADD CONSTRAINT fk_rails_776fd0ec01 FOREIGN KEY (item_id) REFERENCES public.items(id);
-
-
---
 -- Name: topics fk_rails_7b812cfb44; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1168,14 +1134,6 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 ALTER TABLE ONLY public.collections
     ADD CONSTRAINT fk_rails_9b33697360 FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
---
--- Name: recommendations fk_rails_a7499a8cff; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.recommendations
-    ADD CONSTRAINT fk_rails_a7499a8cff FOREIGN KEY (person_id) REFERENCES public.people(id);
 
 
 --
@@ -1324,6 +1282,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200517043602'),
 ('20200527001352'),
 ('20200530085910'),
-('20200617194825');
+('20200617194825'),
+('20200623155710');
 
 

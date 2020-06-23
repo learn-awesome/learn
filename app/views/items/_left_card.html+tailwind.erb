@@ -63,7 +63,7 @@
 		<div class="recommendations">
 			<p>Recommended by: 
 			<% @item.idea_set.recommendations.each do |rec| %>
-				<%= link_to rec.display_name, rel.target %>
+				<%= link_to rec.display_name, rec.target, class: "text-blue-500 underline" %>
 			<% end %>
 			</p>
 		</div>

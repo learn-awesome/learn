@@ -1,0 +1,560 @@
+[
+    {
+        "image": "https://read-next.com/_nuxt/img/FirstRoundCapital.60.png",
+        "name": "First Round Capital",
+        "url": "https://read-next.com/recommended-by-first-round-capital",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/HackerNews.60.png",
+        "name": "Hacker News",
+        "url": "https://read-next.com/recommended-by-hacker-news",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/FarnamStreet.60.png",
+        "name": "Farnam Street",
+        "url": "https://read-next.com/recommended-by-farnam-street",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DesignerNews.60.png",
+        "name": "Designer News",
+        "url": "https://read-next.com/recommended-by-designer-news",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/UXTools.60.png",
+        "name": "UXTools",
+        "url": "https://read-next.com/recommended-by-uxtools",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/IndieHackers.60.png",
+        "name": "Indie Hackers",
+        "url": "https://read-next.com/recommended-by-indie-hackers",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/Reddit.60.png",
+        "name": "Reddit",
+        "url": "https://read-next.com/recommended-by-reddit",
+        "category": "popular_website"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/NobelPrize.60.png",
+        "name": "Nobel Prize",
+        "url": "https://read-next.com/recommended-by-nobel-prize",
+        "category": "award"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BookerPrize.60.png",
+        "name": "Booker Prize",
+        "url": "https://read-next.com/recommended-by-booker-prize",
+        "category": "award"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/HugoAwards.60.png",
+        "name": "Hugo Awards",
+        "url": "https://read-next.com/recommended-by-hugo-awards",
+        "category": "award"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/ElonMusk.60.png",
+        "name": "Elon Musk",
+        "url": "https://read-next.com/recommended-by-elon-musk",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DustinMoskovitz.60.png",
+        "name": "Dustin Moskovitz",
+        "url": "https://read-next.com/recommended-by-dustin-moskovitz",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JeffBezos.60.png",
+        "name": "Jeff Bezos",
+        "url": "https://read-next.com/recommended-by-jeff-bezos",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BillGates.60.png",
+        "name": "Bill Gates",
+        "url": "https://read-next.com/recommended-by-bill-gates",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MarkZuckerberg.60.png",
+        "name": "Mark Zuckerberg",
+        "url": "https://read-next.com/recommended-by-mark-zuckerberg",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JackDorsey.60.png",
+        "name": "Jack Dorsey",
+        "url": "https://read-next.com/recommended-by-jack-dorsey",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/TonyHsieh.60.png",
+        "name": "Tony Hsieh",
+        "url": "https://read-next.com/recommended-by-tony-hsieh",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PatrickCollison.60.png",
+        "name": "Patrick Collison",
+        "url": "https://read-next.com/recommended-by-patrick-collison",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/LarryPage.60.png",
+        "name": "Larry Page",
+        "url": "https://read-next.com/recommended-by-larry-page",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PavelDunrov.60.png",
+        "name": "Pavel Dunrov",
+        "url": "https://read-next.com/recommended-by-pavel-dunrov",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MaxLevchin.60.png",
+        "name": "Max Levchin",
+        "url": "https://read-next.com/recommended-by-max-levchin",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/RichardBranson.60.png",
+        "name": "Richard Branson",
+        "url": "https://read-next.com/recommended-by-richard-branson",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SalmanKhan.60.png",
+        "name": "Salman Khan",
+        "url": "https://read-next.com/recommended-by-salman-khan",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/EvanWilliams.60.png",
+        "name": "Evan Williams",
+        "url": "https://read-next.com/recommended-by-evan-williams",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MarkCuban.60.png",
+        "name": "Mark Cuban",
+        "url": "https://read-next.com/recommended-by-mark-cuban",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SteveJobs.60.png",
+        "name": "Steve Jobs",
+        "url": "https://read-next.com/recommended-by-steve-jobs",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/KevinRose.60.png",
+        "name": "Kevin Rose",
+        "url": "https://read-next.com/recommended-by-kevin-rose",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/ReidHoffman.60.png",
+        "name": "Reid Hoffman",
+        "url": "https://read-next.com/recommended-by-reid-hoffman",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/TravisKalanick.60.png",
+        "name": "Travis Kalanick",
+        "url": "https://read-next.com/recommended-by-travis-kalanick",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/KevinSystrom.60.png",
+        "name": "Kevin Systrom",
+        "url": "https://read-next.com/recommended-by-kevin-systrom",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DanielEk.60.png",
+        "name": "Daniel Ek",
+        "url": "https://read-next.com/recommended-by-daniel-ek",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AshtonKutcher.60.png",
+        "name": "Ashton Kutcher",
+        "url": "https://read-next.com/recommended-by-ashton-kutcher",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AustenAllred.60.png",
+        "name": "Austen Allred",
+        "url": "https://read-next.com/recommended-by-austen-allred",
+        "category": "entrepreneur"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SherylSandberg.60.png",
+        "name": "Sheryl Sandberg",
+        "url": "https://read-next.com/recommended-by-sheryl-sandberg",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SatyaNadella.60.png",
+        "name": "Satya Nadella",
+        "url": "https://read-next.com/recommended-by-satya-nadella",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/IndraNooyi.60.png",
+        "name": "Indra Nooyi",
+        "url": "https://read-next.com/recommended-by-indra-nooyi",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AriannaHuffington.60.png",
+        "name": "Arianna Huffington",
+        "url": "https://read-next.com/recommended-by-arianna-huffington",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MarissaMayer.60.png",
+        "name": "Marissa Mayer",
+        "url": "https://read-next.com/recommended-by-marissa-mayer",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DaymondJohn.60.png",
+        "name": "Daymond John",
+        "url": "https://read-next.com/recommended-by-daymond-john",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/EricSchmidt.60.png",
+        "name": "Eric Schmidt",
+        "url": "https://read-next.com/recommended-by-eric-schmidt",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MarthaStewart.60.png",
+        "name": "Martha Stewart",
+        "url": "https://read-next.com/recommended-by-martha-stewart",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/TimCook.60.png",
+        "name": "Tim Cook",
+        "url": "https://read-next.com/recommended-by-tim-cook",
+        "category": "executive"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PeterThiel.60.png",
+        "name": "Peter Thiel",
+        "url": "https://read-next.com/recommended-by-peter-thiel",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SamAltman.60.png",
+        "name": "Sam Altman",
+        "url": "https://read-next.com/recommended-by-sam-altman",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/WarrenBuffett.60.png",
+        "name": "Warren Buffett",
+        "url": "https://read-next.com/recommended-by-warren-buffett",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MarcAndreessen.60.png",
+        "name": "Marc Andreessen",
+        "url": "https://read-next.com/recommended-by-marc-andreessen",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BenHorowitz.60.png",
+        "name": "Ben Horowitz",
+        "url": "https://read-next.com/recommended-by-ben-horowitz",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BillAckman.60.png",
+        "name": "Bill Ackman",
+        "url": "https://read-next.com/recommended-by-bill-ackman",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/CharlieMunger.60.png",
+        "name": "Charlie Munger",
+        "url": "https://read-next.com/recommended-by-charlie-munger",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/WhitneyTilson.60.png",
+        "name": "Whitney Tilson",
+        "url": "https://read-next.com/recommended-by-whitney-tilson",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/NavalRavikant.60.png",
+        "name": "Naval Ravikant",
+        "url": "https://read-next.com/recommended-by-naval-ravikant",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/RayDalio.60.png",
+        "name": "Ray Dalio",
+        "url": "https://read-next.com/recommended-by-ray-dalio",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PaulGraham.60.png",
+        "name": "Paul Graham",
+        "url": "https://read-next.com/recommended-by-paul-graham",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/KeithRabois.60.png",
+        "name": "Keith Rabois",
+        "url": "https://read-next.com/recommended-by-keith-rabois",
+        "category": "investor"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/CarlSagan.60.png",
+        "name": "Carl Sagan",
+        "url": "https://read-next.com/recommended-by-carl-sagan",
+        "category": "scientist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AlbertEinstein.60.png",
+        "name": "Albert Einstein",
+        "url": "https://read-next.com/recommended-by-albert-einstein",
+        "category": "scientist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/RichardDawkins.60.png",
+        "name": "Richard Dawkins",
+        "url": "https://read-next.com/recommended-by-richard-dawkins",
+        "category": "scientist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/NeildeGrasseTyson.60.png",
+        "name": "Neil deGrasse Tyson",
+        "url": "https://read-next.com/recommended-by-neil-degrasse-tyson",
+        "category": "scientist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DonNorman.60.png",
+        "name": "Don Norman",
+        "url": "https://read-next.com/recommended-by-don-norman",
+        "category": "designer"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JakobNielsen.60.png",
+        "name": "Jakob Nielsen",
+        "url": "https://read-next.com/recommended-by-jakob-nielsen",
+        "category": "designer"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SteveKrug.60.png",
+        "name": "Steve Krug",
+        "url": "https://read-next.com/recommended-by-steve-krug",
+        "category": "designer"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AlanCooper.60.png",
+        "name": "Alan Cooper",
+        "url": "https://read-next.com/recommended-by-alan-cooper",
+        "category": "designer"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/DonaldTrump.60.png",
+        "name": "Donald Trump",
+        "url": "https://read-next.com/recommended-by-donald-trump",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BarackObama.60.png",
+        "name": "Barack Obama",
+        "url": "https://read-next.com/recommended-by-barack-obama",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/HillaryClinton.60.png",
+        "name": "Hillary Clinton",
+        "url": "https://read-next.com/recommended-by-hillary-clinton",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AngelaMerkel.60.png",
+        "name": "Angela Merkel",
+        "url": "https://read-next.com/recommended-by-angela-merkel",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/VladamirPutin.60.png",
+        "name": "Vladamir Putin",
+        "url": "https://read-next.com/recommended-by-vladamir-putin",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/GeorgeBush.60.png",
+        "name": "George Bush",
+        "url": "https://read-next.com/recommended-by-george-bush",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/TonyBlair.60.png",
+        "name": "Tony Blair",
+        "url": "https://read-next.com/recommended-by-tony-blair",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/BillClinton.60.png",
+        "name": "Bill Clinton",
+        "url": "https://read-next.com/recommended-by-bill-clinton",
+        "category": "politician"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/TylerCowen.60.png",
+        "name": "Tyler Cowen",
+        "url": "https://read-next.com/recommended-by-tyler-cowen",
+        "category": "economist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PaulKrugman.60.png",
+        "name": "Paul Krugman",
+        "url": "https://read-next.com/recommended-by-paul-krugman",
+        "category": "economist"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/EllenDeGeneres.60.png",
+        "name": "Ellen DeGeneres",
+        "url": "https://read-next.com/recommended-by-ellen-degeneres",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/OprahWinfrey.60.png",
+        "name": "Oprah Winfrey",
+        "url": "https://read-next.com/recommended-by-oprah-winfrey",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JohnnyDepp.60.png",
+        "name": "Johnny Depp",
+        "url": "https://read-next.com/recommended-by-johnny-depp",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/WoodyAllen.60.png",
+        "name": "Woody Allen",
+        "url": "https://read-next.com/recommended-by-woody-allen",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/AnthonyHopkins.60.png",
+        "name": "Anthony Hopkins",
+        "url": "https://read-next.com/recommended-by-anthony-hopkins",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MorganFreeman.60.png",
+        "name": "Morgan Freeman",
+        "url": "https://read-next.com/recommended-by-morgan-freeman",
+        "category": "celebrity"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/NassimNicholasTaleb.60.png",
+        "name": "Nassim Nicholas Taleb",
+        "url": "https://read-next.com/recommended-by-nassim-nicholas-taleb",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/SethGodin.60.png",
+        "name": "Seth Godin",
+        "url": "https://read-next.com/recommended-by-seth-godin",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/RyanHoliday.60.png",
+        "name": "Ryan Holiday",
+        "url": "https://read-next.com/recommended-by-ryan-holiday",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JKRowling.60.png",
+        "name": "JK Rowling",
+        "url": "https://read-next.com/recommended-by-jk-rowling",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/GeorgeRRMartin.60.png",
+        "name": "George RR Martin",
+        "url": "https://read-next.com/recommended-by-george-rr-martin",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/ErnestHemmingway.60.png",
+        "name": "Ernest Hemmingway",
+        "url": "https://read-next.com/recommended-by-ernest-hemmingway",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/PauloCoelho.60.png",
+        "name": "Paulo Coelho",
+        "url": "https://read-next.com/recommended-by-paulo-coelho",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/HarukiMurakami.60.png",
+        "name": "Haruki Murakami",
+        "url": "https://read-next.com/recommended-by-haruki-murakami",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/ChuckPalahniuk.60.png",
+        "name": "Chuck Palahniuk",
+        "url": "https://read-next.com/recommended-by-chuck-palahniuk",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/StephenKing.60.png",
+        "name": "Stephen King",
+        "url": "https://read-next.com/recommended-by-stephen-king",
+        "category": "author"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/NelsonMandela.60.png",
+        "name": "Nelson Mandela",
+        "url": "https://read-next.com/recommended-by-nelson-mandela",
+        "category": "historical_figure"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MahatmaGandhi.60.png",
+        "name": "Mahatma Gandhi",
+        "url": "https://read-next.com/recommended-by-mahatma-gandhi",
+        "category": "historical_figure"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/JosephStalin.60.png",
+        "name": "Joseph Stalin",
+        "url": "https://read-next.com/recommended-by-joseph-stalin",
+        "category": "historical_figure"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/MartinLutherKing.60.png",
+        "name": "Martin Luther King",
+        "url": "https://read-next.com/recommended-by-martin-luther-king",
+        "category": "historical_figure"
+    },
+    {
+        "image": "https://read-next.com/_nuxt/img/KevinKelly.60.png",
+        "name": "Kevin Kelly",
+        "url": "https://read-next.com/recommended-by-kevin-kelly",
+        "category": "journalist"
+    }
+]

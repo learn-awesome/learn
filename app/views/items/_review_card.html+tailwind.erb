@@ -19,7 +19,7 @@
 		<% end %>
 		<img class="w-8 h-8 rounded-full mr-3" src="<%= rev.user.avatar_image %>" alt="<%= rev.user.nickname %>">
 		<p>
-			<%= rev.display_rating %><br/>
+			<span class="text-orange-500 text-lg" style="letter-spacing: -0.2em;"><%= rev.display_rating %></span><br/>
 			<span class="text-sm text-gray-600"><%= rev.tags_text %></span><br/>
 			<%= rev.notes.to_s.truncate(200) %>
 		</p>

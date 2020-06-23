@@ -20,6 +20,8 @@ class Person < ApplicationRecord
 	has_many :person_idea_sets
 	has_many :idea_sets, :through => :person_idea_sets
 	has_many :items, :through => :idea_sets
+	has_many :recommendations
+	has_many :recommended_idea_sets, through: :recommendations, source: :idea_set
 
 	KINDS = ['popular_website', 'award', 'entrepreneur', 'executive', 'investor', 'scientist',
 	'designer','politician','economist','celebrity','author','historical_figure','journalist']

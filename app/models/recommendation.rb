@@ -27,8 +27,8 @@ class Recommendation < ApplicationRecord
   belongs_to :idea_set
 
   # one of the 2 below will be present
-  belongs_to :item
-  belongs_to :person
+  belongs_to :item, optional: true
+  belongs_to :person, optional: true
 
   def display_name
   	self.target.display_name
