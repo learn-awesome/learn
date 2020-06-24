@@ -1,10 +1,15 @@
+
+<% @people.group_by(&:kind).each do |kind, pp| %>
+
+<h1 class="text-2xl font-semibold"><%= kind.to_s.humanize.pluralize %></h1>
 <div class="flex flex-wrap">
-<% @people.each do |p| %>
+    <% pp.each do |p| %>
     <%= render partial: 'components/profile_card', locals: { 
         link: person_path(p), 
         avatar_image: p.avatar_image,
         name: p.name,
         description: p.description.to_s.truncate(50)
     } %>
-<% end %>
+    <% end %>
 </div>
+<% end %>
