@@ -80,8 +80,12 @@ namespace :readnext do
                         topic_name = book['Genre'] && book['Genre'].split(",").first.to_s.gsub("'","").gsub(/\Anone\Z/,"")
                         if topic_name.present? and topic_name.gsub(" ", "-").downcase =~ Topic::SLUG_FORMAT
                             # for now, map to the first entry found in Genre
-                            topic = Topic.find_or_create_by!(display_name: topic_name)
-                            TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
+                            begin
+                                topic = Topic.find_or_create_by!(display_name: topic_name)
+                                TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
+                            rescue Exception => ex
+                                puts "Couldn't create topic #{topic_name}"
+                            end
                         else
                             puts "No topic found"
                         end
