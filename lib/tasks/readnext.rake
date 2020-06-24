@@ -24,11 +24,38 @@ namespace :readnext do
             books = HTTParty.get(p['url'].sub("read-next.com/recommended","read-next.com/books/recommended") + ".json").parsed_response
             # objects with these keys: ["Book Name", "Goodreads Link", "Genre", "Author", "ISBN", "ImageURL", "Rating", "Pages", "Goodreads Title", "Formula"]
             books.each do |book|
-                puts "Book: #{book['Book Name']}"
+                if book['Goodreads Link'].blank?
+                    puts "Skipping book: #{book['Book Name']}"
+                    next
+                else
+                    puts "Book: #{book['Book Name']}"
+                end
+                
+                cover_image = nil
+                if book['ImageURL'] and book['ImageURL'].start_with?("http")
+                    if book['ImageURL'].to_s != 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1560618188i/46296822.jpg'
+                        # fails with 403 error
+                        cover_image = "https://learn-awesome.github.io/assets/book_covers/" + book['ImageURL'].split('/')[-1]
+                    end
+                    # if File.exist?("/home/nilesh/assets/book_covers/#{book['ImageURL'].split('/')[-1]}")
+                    #     puts "Skipping image: #{book['ImageURL']}"
+                    #     cover_image = "https://learn-awesome.github.io/assets/book_covers/" + book['ImageURL'].split('/')[-1]
+                    # else
+                    #     puts "Downloading image: #{book['ImageURL']}"
+                    #     begin
+                    #         download = URI.open(book['ImageURL'])
+                    #         IO.copy_stream(download, "/home/nilesh/assets/book_covers/#{download.base_uri.to_s.split('/')[-1]}")
+                    #         cover_image = "https://learn-awesome.github.io/assets/book_covers/" + book['ImageURL'].split('/')[-1]
+                    #     rescue Exception => ex
+                    #         puts "Error: #{ex.message}"
+                    #     end
+                    # end
+                end
+
                 link = Link.where(url: book['Goodreads Link']).first
                 if link # book found
                     item = link.item
-                    item.image_url = book['ImageURL']
+                    item.image_url = cover_image if cover_image.present?
                     item.page_count = book['Pages']
                     item.isbn = book['ISBN']
                     item.goodreads_rating = book['Rating']
@@ -40,7 +67,7 @@ namespace :readnext do
                     idea_set = IdeaSet.create!(name: book['Book Name'], description: "By #{book['Author']}")
                     item = Item.new(idea_set: idea_set)
                     item.links.build(url: book['Goodreads Link'])
-                    item.image_url = book['ImageURL']
+                    item.image_url = cover_image if cover_image.present?
                     item.page_count = book['Pages']
                     item.isbn = book['ISBN']
                     item.goodreads_rating = book['Rating']
@@ -48,9 +75,19 @@ namespace :readnext do
                     item.item_type_id = 'book'
                     item.description = "By #{book['Author']}"
                     item.user = learnawesome
-                    puts "failure: #{item.errors.first}" unless item.save
-
-                    #TODO: Can we figure out topics from genre tags?
+                    if item.save
+                        #TODO: Can we figure out topics from genre tags?
+                        topic_name = book['Genre'] && book['Genre'].split(",").first.to_s.gsub("'","").gsub(/\Anone\Z/,"")
+                        if topic_name.present? and topic_name.gsub(" ", "-").downcase =~ Topic::SLUG_FORMAT
+                            # for now, map to the first entry found in Genre
+                            topic = Topic.find_or_create_by!(display_name: topic_name)
+                            TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
+                        else
+                            puts "No topic found"
+                        end
+                    else
+                        puts "failure: #{item.errors.first}"
+                    end
                 end
 
                 unless Recommendation.where(person: person, idea_set: item.idea_set).first

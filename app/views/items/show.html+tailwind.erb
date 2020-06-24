@@ -19,7 +19,7 @@
 	<!-- End item details -->
 	<!-- Right side bar -->
 	<div class="md:w-1/2 pr-4 pl-4">
-		<% if user_signed_in? %>
+		<% if user_signed_in? and current_user %>
 			<%= render 'review_form' %>
 		<% end %>
 		<% if @item.related_items.any? %>

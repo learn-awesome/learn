@@ -23,6 +23,8 @@ SocialLogin.delete_all
 User.delete_all
 UserTopic.delete_all
 
+User.create!(nickname: 'learnawesome')
+
 # Create item types
 ItemType.create!(id: 'app', display_name_plural: "Apps and Software Tools")
 ItemType.create!(id: 'article', display_name_plural: "Articles and Essays")
