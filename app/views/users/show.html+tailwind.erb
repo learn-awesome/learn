@@ -36,6 +36,7 @@
 		<p class="text-muted mb-0"><%= @user.invited.count %> Referred users</p>
 		<p class="text-muted mb-0"><%= @user.followers.count %> Followers</p>
 		<p class="text-muted mb-0"><%= @user.following.count %> Following</p>
+		<p class="text-muted mb-0"><%= @user.activity_pub_followers.count %> followers on ActivityPub</p>
 		<p class="text-muted mb-0"><%= link_to @user.collections.count.to_s + " Collections", user_collections_path(@user), class: "underline text-blue-400" %></p>
 
 		<% if @user.tiddlywiki_url.present? %>

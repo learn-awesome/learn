@@ -1,3 +1,4 @@
+<% cache @item do %>
 <div class="px-8 py-4 bg-white rounded-lg shadow-md">
     <div class="flex justify-between items-center">
 		<span class="font-light text-gray-600 text-sm"><%= link_to @item.item_type.display_name_plural, @item.item_type, class: "" %></span>
@@ -101,3 +102,4 @@
 		</div>
     </div>
 </div>
+<% end %>

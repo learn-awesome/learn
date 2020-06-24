@@ -165,7 +165,7 @@ class User < ApplicationRecord
 	end
 
 	def self.learnawesome
-		User.find_by_nickname('learnawesome')
+		@la_user ||= User.find_by_nickname('learnawesome')
 	end
 
 	def activitypub_id
@@ -286,22 +286,24 @@ class User < ApplicationRecord
 	end
 
 	def onboarding
-		@onboarding ||= {
-		  first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
-		  first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.topics_path],
-		  profile_bio: [self.bio.to_s.present?, Rails.application.routes.url_helpers.edit_user_url(self)],
-		  installed_browser_extension: [self.has_used_browser_extension, "/browser_addon"],
-		  first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
-		  first_user_follow: [self.following.count > 0, "/users"],
-		  first_referral: [self.invited.count > 0, Rails.application.routes.url_helpers.settings_user_path(self)],
-		  first_collection: [self.collections.count > 0, Rails.application.routes.url_helpers.user_collections_path(self)],
-		  embed_reviews: [self.has_used_embed, Rails.application.routes.url_helpers.user_url(self)],
-		  first_flashcard: [self.flash_cards.count > 0, "/flash_cards/practice"],
-		  first_activitypub_follower: [self.activity_pub_followers.count > 0, Rails.application.routes.url_helpers.user_path(self)],
-		  profile_score: [self.score >= 150, Rails.application.routes.url_helpers.user_url(self)],
-		  social_login: [self.social_logins.count > 1, Rails.application.routes.url_helpers.settings_user_path(self)],
-		  join_chat: [false, "/join_slack"]
-		}
+		Rails.cache.fetch("user_onboarding_#{self.id}", expires_in: 30.minutes) do
+			 {
+				first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
+				first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.topics_path],
+				profile_bio: [self.bio.to_s.present?, Rails.application.routes.url_helpers.edit_user_url(self)],
+				installed_browser_extension: [self.has_used_browser_extension, "/browser_addon"],
+				first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
+				first_user_follow: [self.following.count > 0, "/users"],
+				first_referral: [self.invited.count > 0, Rails.application.routes.url_helpers.settings_user_path(self)],
+				first_collection: [self.collections.count > 0, Rails.application.routes.url_helpers.user_collections_path(self)],
+				embed_reviews: [self.has_used_embed, Rails.application.routes.url_helpers.user_url(self)],
+				first_flashcard: [self.flash_cards.count > 0, "/flash_cards/practice"],
+				first_activitypub_follower: [self.activity_pub_followers.count > 0, Rails.application.routes.url_helpers.user_path(self)],
+				profile_score: [self.score >= 150, Rails.application.routes.url_helpers.user_url(self)],
+				social_login: [self.social_logins.count > 1, Rails.application.routes.url_helpers.settings_user_path(self)],
+				join_chat: [false, "/join_slack"]
+			}
+		end
 	end
 
 	def onboarding_percentage
