@@ -232,9 +232,11 @@ class Item < ApplicationRecord
       results = results.where(overall_score: min_score.to_f..)
     end
 
-    #TODO: person_kind filter
+    if person_kind.present?
+      results = results.where(idea_set_id: Recommendation.where(person_id: Person.where(kind: person_kind).pluck(:id)).pluck(:idea_set_id))
+    end
 
-    return results.limit(20)
+    return results.limit(50)
   end
 
   def self.discover(topics = nil, item_type_ids = nil)

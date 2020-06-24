@@ -9,7 +9,7 @@
   <%= form.select :length, [["< 5 minutes", "0-5"], ["5 to 15 minutes", "5-15"],["15-30 minutes", "15-30"], ["30 to 60 minutes", "30-60"],["1 to 3 hours", "60-180"],["more than 3 hours", "180-9999"]], {selected: @length, include_blank: "Any length"}, class: "form-control" %> 
   &nbsp; long and &nbsp; 
   <%= form.select :quality, [["inspirational", "inspirational"],["educational", "educational"],["challenging", "challenging"], ["entertaining", "entertaining"],["visual", "visual"], ["interactive", "interactive"]], {selected: @quality, include_blank: "Any quality"}, class: "form-control" %> &nbsp; <% if current_user %><!-- which I haven't seen. --><% end %> &nbsp;
-  and are recommended by <%= form.collection_select :person_kind, Person::KINDS, :to_s, :to_s, {prompt: 'Choose Category'}, required: false %> &nbsp;
+  and are recommended by <%= form.collection_select :person_kind, Person::KINDS, :to_s, :to_s, {prompt: 'Choose Category', selected: @person_kind}, required: false %> &nbsp;
   and published after <%= form.collection_select :published_year, [1900, 1920, 1940, 1960, 1980, 2000, 2010, 2020], :to_s, :to_s, {prompt: 'Choose year'}, required: false %> &nbsp;
   and have a rating higher than <%= form.collection_select :min_score, [3.0, 3.5, 4.0, 4.5], :to_s, :to_s, {prompt: 'Choose minimum rating'}, required: false %>
   <!-- TODO: goodreads/amazon rating, page_count, also recommended by -->
