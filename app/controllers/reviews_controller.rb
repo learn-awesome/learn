@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
 		@review.interactive_score = params[:review][:interactive_score] if params[:review].has_key?(:interactive_score)
 		@review.overall_score = params[:review][:overall_score] if params[:review].has_key?(:overall_score)
 		@review.notes = params[:review][:notes] if params[:review].has_key?(:notes)
+		@review.private_notes = params[:review][:private_notes] if params[:review].has_key?(:private_notes)
 		if @review.save
 			redirect_to item_path(@review.item)
 		else
@@ -54,6 +55,7 @@ class ReviewsController < ApplicationController
 		@review.interactive_score = params[:review][:interactive_score]
 		@review.overall_score = params[:review][:overall_score]
 		@review.notes = params[:review][:notes]
+		@review.private_notes = params[:review][:private_notes]
 		if @review.save
 			redirect_to item_path(@review.item)
 		else

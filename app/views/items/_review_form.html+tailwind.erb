@@ -34,7 +34,13 @@
 	<%= form_with(model: @my_review, local: true) do |form| %>				
 			<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 			<div class="mb-4 mb-4 pd-6">
-				<%= form.text_area :notes, class: 'resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your review here' %>
+				<p>This is your public review</p>
+				<%= form.text_area :notes, class: 'resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your public review here' %>
+			</div>
+
+			<div class="mb-4 mb-4 pd-6">
+				<p>These are your private notes</p>
+				<%= form.text_area :private_notes, class: 'resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your private notes here' %>
 			</div>
 			<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
 	<% end %>
