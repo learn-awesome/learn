@@ -9,7 +9,7 @@
 <div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
 <% ItemType.all.each do |it| %>
 <div class="flex flex-col rounded-lg shadow-lg bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-  <%= link_to it, class: "text-lg leading-6 font-medium text-gray-900" do %>
+  <%= link_to it, class: "text-lg leading-6 font-medium text-indigo-600 underline" do %>
     <%= it.display_name_plural %>
   <% end %>
   <p class="mt-1 text-sm leading-5 text-gray-500">
@@ -17,14 +17,15 @@
   </p>
   <hr>
   <% it.items.recent.each do |item| %>
-	<% next if item.topics.first.nil? %>
-	<span class="mt-4">
+	
+  <span class="mt-4">
+          <% unless item.topics.first.nil? %>
           <a href="<%= topic_path(item.topics.first) %>" class="mr-2">
             <span class="px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
               <%= item.topics.first.try(:display_name) %>
             </span>
           </a>
-
+          <% end %>
 	<%= link_to item.display_name, item, class: "underline text-indigo-600" %>
 	</span>
   <% end %>

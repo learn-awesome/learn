@@ -1,10 +1,14 @@
-<div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden">
-    <% if @person.image_url.present? %>
-        <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="w-full h-56 object-cover object-center">
-
-    <% end %>
+<div class="max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="py-4 px-6">
-        <h1 class="text-xl font-semibold text-gray-800"><%= @person.name %> <% if @person.kind %>(<%= @person.kind %>)<% end %></h1>
+        <p class="mb-4">
+            <% if @person.image_url.present? %>
+                <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="inline h-64 object-cover object-center">
+            <% end %>
+            <span class="text-xl font-semibold text-gray-800">
+            <%= @person.name %>
+            <% if @person.kind %>(<%= @person.kind %>)<% end %>
+            </span>
+        </p>
         
         <% if current_user.try(:score).to_i > 500 %><%= link_to "Edit", edit_person_path(@person), class: "text-blue-500 underline" %><% end %>
         <p class="py-2 text-gray-700"><%= @person.description %></p>
