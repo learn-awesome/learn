@@ -16,6 +16,27 @@
     <h2 class="text-4xl font-bold leading-7 text-gray-900 sm:text-4xl sm:leading-9 sm:truncate">
       <%= topic.display_name %>
     </h2>
+    <p class="mt-4">
+      <% if @learning_plans.any? %>
+      <%= link_to "Learning Plans", topic_path(topic, item_type: "learning_plan"), class: "inline-block border border-teal-500 text-indigo-600 bg-gray-100 rounded-full px-4 py-2 mr-4" %>
+      <% end %>
+
+      <% if @item_type_items.group_by(&:item_type_id).has_key?('course') %>
+      <%= link_to "Courses", topic_path(topic, item_type: "course"), class: "inline-block border border-teal-500 text-indigo-600 bg-gray-100 rounded-full px-4 py-2 mr-4" %>
+      <% end %>
+
+      <% if @item_type_items.group_by(&:item_type_id).has_key?('video') %>
+      <%= link_to "Videos", topic_path(topic, item_type: "video"), class: "inline-block border border-teal-500 text-indigo-600 bg-gray-100 rounded-full px-4 py-2 mr-4" %>
+      <% end %>
+
+      <% if @item_type_items.group_by(&:item_type_id).has_key?('book') %>
+      <%= link_to "Books", topic_path(topic, item_type: "book"), class: "inline-block border border-teal-500 text-indigo-600 bg-gray-100 rounded-full px-4 py-2 mr-4" %>
+      <% end %>
+
+      <% if params['item_type'].present? %>
+      <%= link_to "All", topic_path(topic), class: "inline-block border border-teal-500 text-indigo-600 bg-gray-100 rounded-full px-4 py-2 mr-4" %>
+      <% end %>
+    </p>
   </div>
   <div class="mt-5 flex lg:mt-0 lg:ml-4">
 
