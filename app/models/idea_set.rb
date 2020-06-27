@@ -22,6 +22,7 @@ class IdeaSet < ApplicationRecord
 	accepts_nested_attributes_for :items, allow_destroy: true
 	accepts_nested_attributes_for :topic_idea_sets, allow_destroy: true
 	accepts_nested_attributes_for :person_idea_sets, allow_destroy: true
+	accepts_nested_attributes_for :recommendations, allow_destroy: true
 
 	def review
 		Review.new

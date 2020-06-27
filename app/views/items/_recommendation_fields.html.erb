@@ -1,0 +1,4 @@
+<div class="nested-fields">
+<%= f.select :person_id,  Person.order(:name).collect {|t| [t.name, t.id]}, { include_blank: "--- Select ---"}, class: "max-w-xs" %>
+<%= link_to_remove_association f do %><i class="fa fa-trash" aria-hidden="true"></i><% end %>
+</div>

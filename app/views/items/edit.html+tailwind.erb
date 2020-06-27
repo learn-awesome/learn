@@ -42,6 +42,17 @@
     <%= form.label :image_url, "Image URL:" %>
     <%= form.url_field :image_url, minlength: 8, maxlength: 1024 %>
 
+    <br>
+    <%= form.fields_for :idea_set do |iform| %>
+        <h2>Recommendations: <%= link_to_add_association iform, :recommendations, {'data-association-insertion-method' => 'after'} do %>
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <% end %>
+        </h2>
+        <%= iform.fields_for :recommendations do |rec| %>
+            <%= render 'recommendation_fields', f: rec %>
+        <% end %>
+    <% end %>
+
     <div class="flex flex-wrap justify-between">
         <div class="form-inline">
             <label class="text-gray-700" for="item_estimated_time">Estimated time to complete: &nbsp;</label>
