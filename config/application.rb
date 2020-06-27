@@ -18,7 +18,7 @@ module Learn
     config.active_record.schema_format = :sql
 
     config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
+      'X-Frame-Options' => 'ALLOW-FROM http://bizzy.polyglot.network'
     }
 
     config.active_job.queue_adapter = :sidekiq

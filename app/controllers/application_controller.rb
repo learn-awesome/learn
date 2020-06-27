@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
 	private
 	def set_raven_context
+		Rails.logger.info "ORIGIN = #{request.headers['origin']}"
 		if session[:userinfo]
 			Raven.user_context(id: session[:userinfo])
 		end

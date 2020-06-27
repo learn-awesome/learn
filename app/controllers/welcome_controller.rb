@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:csp_report]
+
   def index
   	if current_user
       @user_topics = current_user.user_topics
@@ -95,6 +97,10 @@ class WelcomeController < ApplicationController
   def collection_discover
     coll = Collection.order('RANDOM()').first
     redirect_to user_collection_path(coll.user, coll)
+  end
+
+  def csp_report
+    Rails.logger.info request.body.read
   end
 
   private

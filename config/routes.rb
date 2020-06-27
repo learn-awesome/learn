@@ -122,4 +122,5 @@ Rails.application.routes.draw do
   get '/digitalgarden' => 'users#garden'
   get '/sitemap.xml' => 'welcome#sitemap'
   get '/collection_discover' => 'welcome#collection_discover'
+  post '/csp-violation-report-endpoint' => 'welcome#csp_report'
 end
