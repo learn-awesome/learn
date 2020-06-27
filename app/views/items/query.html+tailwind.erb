@@ -4,7 +4,7 @@
   Show me &nbsp; 
   <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, {selected: @item_type, include_blank: "Any format"}, class: "form-control" %> &nbsp; about &nbsp; 
   <%= form.select :topic, Topic.all.sort_by(&:display_name).collect {|t| [t.display_name, t.name]}, {selected: @topic_name, include_blank: "Any topic"}, class: "form-control" %> and about &nbsp;
-  <%= form.select :second_topic, Topic.all.sort_by(&:display_name).collect {|t| [t.display_name, t.name]}, {selected: @topic_name, include_blank: "Any topic"}, class: "form-control" %>
+  <%= form.select :second_topic, Topic.all.sort_by(&:display_name).collect {|t| [t.display_name, t.name]}, {selected: @second_topic, include_blank: "Any topic"}, class: "form-control" %>
   &nbsp; which are &nbsp; 
   <%= form.select :length, [["< 5 minutes", "0-5"], ["5 to 15 minutes", "5-15"],["15-30 minutes", "15-30"], ["30 to 60 minutes", "30-60"],["1 to 3 hours", "60-180"],["more than 3 hours", "180-9999"]], {selected: @length, include_blank: "Any length"}, class: "form-control" %> 
   &nbsp; long and &nbsp; 

@@ -19,3 +19,10 @@
 	</div>
 </div>
 <% end %>
+
+<% if topic.all_children.any? %>
+<div class="mt-4 mb-8">
+  <h1 class="font-semibold text-2xl">Sub-topics</h1>
+  <%= render partial: 'hierarchy', locals: {root_topic: topic, show_max: 50} %>
+</div>
+<% end %>
