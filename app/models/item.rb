@@ -67,7 +67,7 @@ class Item < ApplicationRecord
   validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
-  after_create :notify_gitter, :update_points
+  after_create :update_points # :notify_gitter
   after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
