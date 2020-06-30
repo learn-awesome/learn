@@ -399,7 +399,8 @@ CREATE TABLE public.topics (
     parent_id uuid,
     second_parent_id uuid,
     image_url character varying,
-    gitter_room_id character varying
+    gitter_room_id character varying,
+    description text
 );
 
 
@@ -1285,6 +1286,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200530085910'),
 ('20200617194825'),
 ('20200623155710'),
-('20200624062708');
+('20200624062708'),
+('20200630171020');
 
 

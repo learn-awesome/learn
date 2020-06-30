@@ -12,12 +12,12 @@
 #  user_id             :uuid             not null
 #  year                :integer
 #  image_url           :string
-#  inspirational_score :integer
-#  educational_score   :integer
-#  challenging_score   :integer
-#  entertaining_score  :integer
-#  visual_score        :integer
-#  interactive_score   :integer
+#  inspirational_score :decimal(3, 2)
+#  educational_score   :decimal(3, 2)
+#  challenging_score   :decimal(3, 2)
+#  entertaining_score  :decimal(3, 2)
+#  visual_score        :decimal(3, 2)
+#  interactive_score   :decimal(3, 2)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  typical_age_range   :string
@@ -30,6 +30,7 @@
 #  isbn13              :string
 #  cost                :decimal(8, 2)
 #  language            :string
+#  overall_score       :decimal(3, 2)
 #
 # Indexes
 #

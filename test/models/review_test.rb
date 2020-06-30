@@ -17,6 +17,7 @@
 #  updated_at                :datetime         not null
 #  overall_score             :integer
 #  is_posted_on_social_media :boolean          default("false")
+#  private_notes             :text
 #
 # Indexes
 #

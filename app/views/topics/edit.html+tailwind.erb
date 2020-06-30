@@ -11,14 +11,19 @@
 
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-    <%= form.label :display_name, "Name (use only a-z, 0-9, <space> and -)", class: "text-gray-700" %><br>
+    <%= form.label :display_name, "Display Name (use only a-z, 0-9, <space> and -)", class: "text-gray-700" %><br>
     <%= form.text_field :display_name, minlength: 4, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-zA-Z\\-\\/ ]+$", required: true %>
   </div>
 
   <% if params['advanced'].to_s == 'true' %>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-      <%= form.label :name, "Name (use only a-z, 0-9, / and -)", class: "text-gray-700" %><br>
+      <%= form.label :name, "Internal Name (use only a-z, 0-9, / and -)", class: "text-gray-700" %><br>
       <%= form.text_field :name, minlength: 4, maxlength: 50, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white", pattern: "^[0-9a-z\\-\\/]+$", required: true %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+      <%= form.label :description, "Description", class: "text-gray-700" %><br>
+      <%= form.text_area :description, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">

@@ -14,6 +14,7 @@
 #  second_parent_id :uuid
 #  image_url        :string
 #  gitter_room_id   :string
+#  description      :text
 #
 # Indexes
 #
@@ -178,6 +179,18 @@ class Topic < ApplicationRecord
 
 	def display_name_without_ancestors
 		self.display_name.to_s.split("/").last.strip
+	end
+
+	def display_description
+		# TODO: Show a blurb from wikipedia, then talk about prerequisites and subtopics, and learning plans/paths
+		msg = ""
+		if parent and second_parent
+			msg += "This falls under <a href='/topics/#{parent.id}'>#{parent.display_name}</a> and <a href='/topics/#{second_parent.id}'>#{second_parent.display_name}</a>"
+		elsif parent
+			msg += "This falls under <a href='/topics/#{parent.id}'>#{parent.display_name}</a>."
+		end
+		msg += self.description.to_s
+		msg.html_safe
 	end
 
 	def search_keyword

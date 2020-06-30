@@ -2,7 +2,9 @@
 
 <%= render partial: 'topic_header', locals: {topic: topic} %>
 
-
+<% if topic.description.present? %>
+<div class="card"><%= simple_format(topic.display_description) %></div>
+<% end %>
 
 
 <% @item_type_items.group_by(&:item_type_id).sort_by { |itid,items| [ itid == 'learning_plan' ? 0 : 1, itid ] }.to_h.each do |itid, items| %>

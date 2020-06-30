@@ -14,6 +14,7 @@
 #  second_parent_id :uuid
 #  image_url        :string
 #  gitter_room_id   :string
+#  description      :text
 #
 # Indexes
 #
