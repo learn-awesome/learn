@@ -156,12 +156,16 @@ class User < ApplicationRecord
 		Rails.env.development? or self.score.to_i >= 20000
 	end
 
+	def can_wiki_update_topic?
+		Rails.env.development? or self.score.to_i >= 20000
+	end
+
 	def can_see_metrics?
 		Rails.env.development? or self.score.to_i >= 5000
 	end
 
 	def can_add_syllabus?
-		Rails.env.development? or self.score.to_i >= 2000
+		Rails.env.development? or self.score.to_i >= 20000
 	end
 
 	def self.learnawesome

@@ -1,7 +1,7 @@
 class TopicsController < InheritedResources::Base
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update]
-  before_action :permission_check, only: [:merge, :edit, :update]
+  before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update, :wiki_update]
+  before_action :permission_check, only: [:merge, :edit, :update, :wiki_update]
   respond_to :html, :json
   actions :all, except: [:destroy]
 
@@ -100,6 +100,14 @@ class TopicsController < InheritedResources::Base
     end
   end
 
+  def wiki_update
+    @topic = Topic.from_param(params[:id])
+    if @topic.update_from_wiki
+      flash[:success] = "Topic data updated from Wikipedia"
+    end
+    redirect_to @topic
+  end
+
   protected
   def resource
     @topic = Topic.from_param(params[:id])
@@ -108,7 +116,7 @@ class TopicsController < InheritedResources::Base
   private
 
   def permission_check
-   handlers = {edit: :can_edit_topic?, update: :can_edit_topic?, merge: :can_merge_topic?}
+   handlers = {edit: :can_edit_topic?, update: :can_edit_topic?, merge: :can_merge_topic?, wiki_update: :can_wiki_update_topic?}
     if !current_user.try(handlers[params[:action].to_sym])
       flash[:danger] = "Not allowed"
       redirect_to topic_path(id: params[:id]) and return
@@ -117,6 +125,6 @@ class TopicsController < InheritedResources::Base
 
   def topic_params
     params.require(:topic).permit(:display_name, :name, :search_index, :gitter_room,
-    :gitter_room_id, :parent_id, :second_parent_id, :description)
+    :gitter_room_id, :parent_id, :second_parent_id, :description, :image_url)
   end
 end

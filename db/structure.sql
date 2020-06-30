@@ -400,7 +400,8 @@ CREATE TABLE public.topics (
     second_parent_id uuid,
     image_url character varying,
     gitter_room_id character varying,
-    description text
+    description text,
+    wiki_title character varying
 );
 
 

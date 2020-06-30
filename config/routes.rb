@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get  'merge'
       post 'merge'
       get 'explore'
+      post 'wiki_update'
     end
     collection do
       get 'search'

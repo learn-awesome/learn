@@ -45,10 +45,12 @@ class Topic < ApplicationRecord
 	has_many :users, through: :user_topics
 	belongs_to :user, optional: true
 	belongs_to :parent, class_name: "Topic", optional: true
+	belongs_to :second_parent, class_name: "Topic", optional: true, foreign_key: "second_parent_id"
 	has_many :children, class_name: "Topic", foreign_key: "parent_id"
 	before_validation :set_properties, on: :create
 	after_save :clear_cache
 	after_destroy :clear_cache
+	after_create :update_from_wiki
 
 	def set_properties
 		self.display_name = self.display_name.to_s.strip.gsub(/\s+/, ' ')
@@ -181,15 +183,62 @@ class Topic < ApplicationRecord
 		self.display_name.to_s.split("/").last.strip
 	end
 
+	def self.fetch_wiki_summary(wiki_title)
+		resp = HTTParty.get("https://en.wikipedia.org/api/rest_v1/page/summary/#{wiki_title}")
+		if resp.code == 200
+			puts resp.body
+			data = JSON.parse(resp.body)
+			return {} if data["type"] == "disambiguation" # eg: Haskell
+			{image_url: data['thumbnail'] && data['thumbnail']['source'], summary: data['extract']}
+		else
+			{}
+		end
+	end
+
+	def self.search_wiki(term)
+		resp = HTTParty.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=#{term}&limit=1&namespace=0&format=json")
+		if resp.code == 200
+			puts resp.body
+			data = JSON.parse(resp.body)
+			data.select { |i| i.is_a? Array and i.any? and i.first.start_with?("https://en.wikipedia.org/wiki/") }.first.try(&:first).try { |s| s.sub("https://en.wikipedia.org/wiki/", "") }
+		else
+			nil
+		end
+	end
+
+	def update_from_wiki
+		wiki_title = self.wiki_title.presence || Topic.search_wiki(self.name)
+		if wiki_title
+			self.wiki_title = wiki_title
+			info = Topic.fetch_wiki_summary(wiki_title)
+			self.image_url ||= info[:image_url]
+			self.description = self.description.presence || info[:summary]
+			Rails.logger.debug "Saving #{self.wiki_title}"
+			self.save
+		end
+	end
+
 	def display_description
-		# TODO: Show a blurb from wikipedia, then talk about prerequisites and subtopics, and learning plans/paths
 		msg = ""
 		if parent and second_parent
-			msg += "This falls under <a href='/topics/#{parent.id}'>#{parent.display_name}</a> and <a href='/topics/#{second_parent.id}'>#{second_parent.display_name}</a>"
+			msg += "This is a topic under <a class='text-blue-500 underline' href='/topics/#{parent.id}'>#{parent.display_name}</a> and <a class='text-blue-500 underline' href='/topics/#{second_parent.id}'>#{second_parent.display_name}</a>.\n\n"
 		elsif parent
-			msg += "This falls under <a href='/topics/#{parent.id}'>#{parent.display_name}</a>."
+			msg += "This is a topic under <a class='text-blue-500 underline' href='/topics/#{parent.id}'>#{parent.display_name}</a>.\n\n"
+		end
+
+		if self.all_children.any?
+			msg += "Sub topics: "
+			msg += self.all_children.map do |ch| "<a class='text-blue-500 underline' href='/topics/#{ch.id}'>#{ch.display_name}</a>"; end.join(", ")
+			msg += "\n\n"
 		end
 		msg += self.description.to_s
+		
+		learning_plans = self.advanced_search('learning_plan', nil, nil)
+		if learning_plans.any?
+			msg += "\n\nWe have #{learning_plans.size} learning paths for this topic: "
+			msg += learning_plans.map do |lp| "<a class='text-blue-500 underline' href='/items/#{lp.id}'>#{lp.display_name}</a>"; end.join(", ")
+		end
+		
 		msg.html_safe
 	end
 

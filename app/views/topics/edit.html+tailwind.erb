@@ -1,6 +1,6 @@
 <div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md">
     <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit Topic: <%= @topic.display_name %></h2>
-
+    <%= button_to "Fetch from Wikipedia", wiki_update_topic_path(@topic), class: "px-4 py-2 mr-4 bg-gray-200 text-gray-800 rounded" %>
 <ul>
 <% @topic.errors.full_messages.each do |msg| %>
   <li><%= msg %></li>
@@ -24,6 +24,11 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
       <%= form.label :description, "Description", class: "text-gray-700" %><br>
       <%= form.text_area :description, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+      <%= form.label :image_url, "Image URL", class: "text-gray-700" %><br>
+      <%= form.url_field :image_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">

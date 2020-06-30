@@ -2,7 +2,7 @@
 
 <%= render partial: 'topic_header', locals: {topic: topic} %>
 
-<% if topic.description.present? %>
+<% if topic.display_description.present? %>
 <div class="card"><%= simple_format(topic.display_description) %></div>
 <% end %>
 
