@@ -605,99 +605,7 @@ class Item < ApplicationRecord
 
   def display_blurb
     if self.is_syllabus?
-      if self.topics.first.name == 'machine-learning'
-        body = <<-HEREDOC
-        <div class="mt-2 mb-4">
-				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Machine Learning for Managers</b>.
-				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
-				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
-        <br><br>
-        The program for Machine Learning for Managers is curated by <a href="http://jrajrohit.me/about/" target="_blank" class="underline text-blue-500">Jalem Raj Rohit</a> who is well-known expert in data-science, machine learning, NLP and DevOps circles such as StackOverflow, Kaggle, and other communities.
-        You can <a href="https://www.twitter.com/data__wizard" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
-        <br><br>
-        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">You bring your deep learning problems to me, I say &quot;your problem can be solved by an SVM&quot;, you pay me $10,000 for saving you $500,000. <a href="https://t.co/wQeLqMOxjF">https://t.co/wQeLqMOxjF</a></p>&mdash; Raj Rohit (@data__wizard) <a href="https://twitter.com/data__wizard/status/879387651563954176?ref_src=twsrc%5Etfw">June 26, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-        <br><br>
-				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
-				and get at least 5 of your friends to join their own topics of interest.
-			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
-HEREDOC
-      elsif self.topics.first.name == 'programming-languages/scratch'
-        body = <<-HEREDOC
-        <div class="mt-2 mb-4">
-				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Scratch Programming for Kids</b>.
-				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
-				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
-        <br><br>
-        The program for Scratch programming for kids is curated by <a href="https://nilesh.trivedi.pw" target="_blank" class="underline text-blue-500">Nilesh Trivedi</a>.
-        He's been programming for 15 years, and his 7yo daughter has been programming with Scratch for more than 2 years.
-        You can <a href="https://www.twitter.com/nileshtrivedi" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
-        <br><br>
-        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I successfully managed to get my 6yo interested in Scratch programming. 😃 Here are the things she has created: <a href="https://t.co/X9eYaCQHlh">https://t.co/X9eYaCQHlh</a> <br><br>I&#39;m now mentoring a group of kids. Idea is to avoid common traps &amp; give a glimpse of some deep ideas. Join if interested (and please RT) 🙏 <a href="https://t.co/teC2WX9eXL">https://t.co/teC2WX9eXL</a></p>&mdash; Nilesh Trivedi (@nileshtrivedi) <a href="https://twitter.com/nileshtrivedi/status/1261593530524291072?ref_src=twsrc%5Etfw">May 16, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-        <br><br>
-				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
-				and get at least 5 of your friends to join their own topics of interest.
-			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
-HEREDOC
-      elsif self.topics.first.name == 'cooking'
-        body = <<-HEREDOC
-        <div class="mt-2 mb-4">
-				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Cooking with Food Science</b>.
-				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
-				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
-        <br><br>
-        The program for Cooking with Food Science is curated by <a href="https://krishashok.me/" target="_blank" class="underline text-blue-500">Krish Ashok</a> 
-        who is popular columnist and is currently working on a book about cooking with Penguin India.
-        You can <a href="https://www.twitter.com/krishashok" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
-        <br><br>
-        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I am writing a book on food science for Indian cooking for <a href="https://twitter.com/PenguinIndia?ref_src=twsrc%5Etfw">@PenguinIndia</a> that should come out later this year. It will be a pop-science book that will explain in layman terms the chemistry of Indian food &amp; give you verified science tips on cooking delicious food in a home kitchen</p>&mdash; Krish Ashok (@krishashok) <a href="https://twitter.com/krishashok/status/1250078642194898945?ref_src=twsrc%5Etfw">April 14, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-        <br><br>
-				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
-				and get at least 5 of your friends to join their own topics of interest.
-			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
-HEREDOC
-elsif self.topics.first.name == 'personal-finance'
-  body = <<-HEREDOC
-  <div class="mt-2 mb-4">
-  We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Personal Finance</b>.
-  There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
-  a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
-  <br><br>
-  The program for Personal Finance is curated by <a href="https://anshulkhare.in/" target="_blank" class="underline text-blue-500">Anshul Khare</a> 
-  who is well-known expert on finance and investment.
-  You can <a href="https://www.twitter.com/anshul81" target="_blank" class="underline text-blue-500">follow him on Twitter</a>.
-  <br><br>
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Dilbert’s One Page Personal Finance List — the best investment advice in 123 words.<br><br>I guess in India,<br> <br>401K is equivalent to EPF and,<br>IRA is equivalent to PPF<br><br>Source: <a href="https://t.co/35dGYFOBTX">https://t.co/35dGYFOBTX</a> <a href="https://t.co/r8bdzhTVWF">pic.twitter.com/r8bdzhTVWF</a></p>&mdash; Anshul Khare (@anshul81) <a href="https://twitter.com/anshul81/status/1264823927982833664?ref_src=twsrc%5Etfw">May 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-  <br><br>
-  Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
-  and get at least 5 of your friends to join their own topics of interest.
-</div>
-<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
-HEREDOC
-      elsif self.topics.first.name == 'fiction-writing'
-        body = <<-HEREDOC
-        <div class="mt-2 mb-4">
-				We're currently running a <a href="/programs" target="_blank" class="underline text-blue-500">project-based learning program</a> for <b>Fiction Writing for Beginners</b>.
-				There will be a peer group of learners, practitioner-experts for mentoring and helping you if you get stuck, and most importantly, 
-				a meaningful project to accomplish by the end. The syllabus will be created from high-quality learning resources on the Web.
-        <br><br>
-        The program for Fiction Writing for Beginners is curated by <a href="https://neelimavinod.com/" target="_blank" class="underline text-blue-500">Neelima Vinod</a>
-        whose Young Author Program has been very well-received and was recently even featured on Business Line.
-        You can <a href="https://www.twitter.com/neelthemuse" target="_blank" class="underline text-blue-500">follow her on Twitter</a>.
-        <br><br>
-        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Young Author Program Anthology was featured in Business Line! Thanks so much <a href="https://twitter.com/Swati_Sanyal_T?ref_src=twsrc%5Etfw">@Swati_Sanyal_T</a><br> <br>You can buy the ebook here: <a href="https://t.co/2dB3LBEveV">https://t.co/2dB3LBEveV</a><br><br>Read the feature here: <a href="https://t.co/kOiPd2ge0a">https://t.co/kOiPd2ge0a</a><a href="https://twitter.com/pothidotcom?ref_src=twsrc%5Etfw">@pothidotcom</a> <a href="https://twitter.com/hashtag/Anthology?src=hash&amp;ref_src=twsrc%5Etfw">#Anthology</a> <a href="https://twitter.com/hashtag/childrensbook?src=hash&amp;ref_src=twsrc%5Etfw">#childrensbook</a> <a href="https://twitter.com/hashtag/quarantine2020?src=hash&amp;ref_src=twsrc%5Etfw">#quarantine2020</a></p>&mdash; Neelima (@neelthemuse) <a href="https://twitter.com/neelthemuse/status/1246642896263983106?ref_src=twsrc%5Etfw">April 5, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-        <br><br>
-				Your first topic will be free of cost. All we ask for is that you help us spread the word about this program in your social networks
-				and get at least 5 of your friends to join their own topics of interest.
-			</div>
-			<a class="btn btn-primary mx-auto bg-teal-500 text-white p-2 rounded text-center mb-4" target="_blank" href="/join_slack">Join our Slack</a><br>
-HEREDOC
-      else
-        body = ""
-      end
-      return body.html_safe
+      return self.description.to_s.split("--BLURBDOC--").first.html_safe if self.description.to_s.split("--BLURBDOC--").size > 1
     end
   end
 
@@ -707,7 +615,11 @@ HEREDOC
     if self.is_syllabus?
       # this is a native learning plan
       markdown = Redcarpet::Markdown.new(CustomMarkdownRender, autolink: false)
-      html = markdown.render(self.description.to_s.strip).html_safe
+      if self.description.to_s.split("--BLURBDOC--").size > 1
+        html = markdown.render(self.description.to_s.split("--BLURBDOC--").last.strip).html_safe
+      else
+        html = markdown.render(self.description.to_s.strip)
+      end
       return html #self.replace_la_links_with_embeds(html)
     else
       return simple_format(self.description.to_s.strip)
