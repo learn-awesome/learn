@@ -1,4 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   resources :decks do
     get 'practice', on: :member
   end
@@ -90,6 +97,8 @@ Rails.application.routes.draw do
     resources :collections do
       member do
         post 'toggle_item'
+        get 'import_goodreads_list'
+        post 'import_goodreads_list'
       end
     end
   end

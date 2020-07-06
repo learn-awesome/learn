@@ -54,7 +54,11 @@ class Topic < ApplicationRecord
 
 	def set_properties
 		self.display_name = self.display_name.to_s.strip.gsub(/\s+/, ' ')
-		self.name = self.display_name.gsub(" ", "-").downcase
+		if self.display_name.present? and self.name.blank?
+			self.name = self.display_name.gsub(" ", "-").downcase
+		elsif self.name.present? and self.display_name.blank?
+			self.display_name = self.name
+		end
 		self.search_index = self.name
 		self.gitter_room = self.name
 	end

@@ -272,7 +272,7 @@ class Item < ApplicationRecord
     end
   end
 
-  def self.create_book(book, creator)
+  def self.create_book(book, creator, collection = nil)
     Item.transaction do
       idea_set = IdeaSet.new(name: book.title, description: book.description)
       if book.author_link.present? or book.author_name.present?
@@ -316,6 +316,7 @@ class Item < ApplicationRecord
       if item.links.any?
         item.save
         Rails.logger.info("Item created #{item.id}")
+        CollectionItem.create(collection: collection, item: item) if collection
       end
 
       # Now save all related items
@@ -376,7 +377,7 @@ class Item < ApplicationRecord
     end
   end
 
-  def update_book(book, creator)
+  def update_book(book, creator, collection = nil)
     Item.transaction do
 
       if book.author_link.present? or book.author_name.present?
@@ -467,10 +468,11 @@ class Item < ApplicationRecord
       self.description ||= book.description
       self.year ||= book.publish_date
       self.save!
+      CollectionItem.create(collection: collection, item: self) if collection
     end
   end
 
-  def self.create_or_update_book(book, creator)
+  def self.create_or_update_book(book, creator, collection = nil)
     book.topics.each do |t|
       found = Topic.where(name: t).first
       if found.nil?
@@ -480,13 +482,13 @@ class Item < ApplicationRecord
     link = Link.where(url: [book.amazon_link, book.goodreads_link, book.openlibrary_link, book.direct_link]).first
     if link.present?
       Rails.logger.info "Update 1 #{book.title}"
-      link.item.update_book(book, creator)
+      link.item.update_book(book, creator, collection)
     elsif (summary_link = Link.where(url: [book.four_minute_books_link, book.derek_sivers_link, book.blas_link]).first).present?
       Rails.logger.info "Update 2 #{book.title}"
-      summary_link.item.update_book(book, creator)
+      summary_link.item.update_book(book, creator, collection)
     else
       Rails.logger.info "Create 1 #{book.title}"
-      Item.create_book(book, creator)
+      Item.create_book(book, creator, collection)
     end
   end
 

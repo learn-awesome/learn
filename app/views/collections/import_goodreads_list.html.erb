@@ -1,0 +1,21 @@
+<div class="card max-w-md mx-auto">
+    <%= form_with url: import_goodreads_list_user_collection_path(parent, resource), local: true, method: :post, html: {class: "simple-form"} do |form| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <%= form.label :goodreads_list_url %>
+        <%= form.url_field :goodreads_list_url, required: true, class: 'form-control', placeholder: 'GoodReads List URL'%>
+
+      <%= form.submit 'submit', class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Back', :back, class: 'btn btn-sm btn-default' %>
+    <% end %>
+</div>

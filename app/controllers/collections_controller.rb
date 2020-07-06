@@ -1,7 +1,7 @@
 class CollectionsController < InheritedResources::Base
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :destroy]
-  custom_actions :resource => :toggle_item
+  before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :destroy, :import_goodreads_list]
+  custom_actions :resource => [:import_goodreads_list, :toggle_item]
 
   belongs_to :user
 
@@ -44,8 +44,27 @@ class CollectionsController < InheritedResources::Base
     redirect_to item_path(item, open_status_menu: true)
   end
 
+  def import_goodreads_list
+    if resource.user != current_user
+      render :file => "public/422.html", status: :nauthorized
+    elsif request.post?
+      url = params[:goodreads_list_url].presence
+      if url
+        ImportGoodreadsListJob.perform_later(url, current_user.id, resource.id)
+        flash[:success] = "This list will be imported in some time."
+        redirect_to collection_path(resource)
+        return
+      else
+        flash[:danger] = "A valid GoodReads List URL must be given"
+        redirect_to import_goodreadsx_list_user_collection_path(current_user, resource)
+        return
+      end
+    end
+    # GET request -> show form
+  end
+
   private
   def collection_params
-  	params.require(:collection).permit(:name, :description)
+  	params.require(:collection).permit(:name, :description, :goodreads_list_url)
   end
 end
