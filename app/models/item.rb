@@ -168,7 +168,7 @@ class Item < ApplicationRecord
     return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
     return true if self.is_syllabus? and self.user_id == editor.id
-    return false if editor.score < 500
+    return false if editor.score < 10_000
     return true
   end
 
@@ -745,6 +745,6 @@ class Item < ApplicationRecord
   end
 
   def primary_link
-    self.links.first
+    self.links.find { |l| l.is_primary } or self.links.order(:created_at).first
   end
 end

@@ -251,7 +251,9 @@ CREATE TABLE public.links (
     url character varying NOT NULL,
     item_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    name character varying,
+    is_primary boolean
 );
 
 
@@ -1288,6 +1290,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200617194825'),
 ('20200623155710'),
 ('20200624062708'),
-('20200630171020');
+('20200630171020'),
+('20200708190856');
 
 
