@@ -3,6 +3,7 @@ class GroupMember < ApplicationRecord
 	belongs_to :user, inverse_of: :group_members
 	validates :group, presence: true
     validates :user, presence: true
+    validates :user_id, uniqueness: { scope: :group_id }
     
     def is_admin?
         self.role == 'admin'
