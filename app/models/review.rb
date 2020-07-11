@@ -268,7 +268,8 @@ class Review < ApplicationRecord
 
   def display_status
     return "Wants to learn" if self.status.to_s == 'want_to_learn'
-    return ""
+    return "Started learning" if self.status.to_s == 'learning'
+    return "Finished learning" if self.status.to_s == 'learned'
   end
 
   def display_rating

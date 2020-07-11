@@ -50,11 +50,18 @@ class User < ApplicationRecord
 
 	has_many :activity_pub_followers, dependent: :destroy, inverse_of: :user
 
+	has_many :group_members, dependent: :destroy, inverse_of: :user
+	has_many :groups, through: :group_members
+
 	after_create :update_points
 	after_create :create_default_deck
 
 	def self.from_param(id)
 		self.where(id: id.to_s.split("-")[0..4].join("-")).first
+	end
+
+	def self.lookup_all_by_email(email)
+		SocialLogin.all.select(:user_id, :auth0_info).select { |sl| sl.email == email }.map(&:user)
 	end
 
 	def avatar_image

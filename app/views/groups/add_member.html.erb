@@ -1,0 +1,21 @@
+<div class="card max-w-md mx-auto">
+    <%= form_with url: add_member_user_group_path(parent, resource), local: true, method: :post, html: {class: "simple-form"} do |form| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <%= form.label :identifier, "Username, email address or ID" %>
+        <%= form.text_field :identifier, required: true, class: 'form-control', placeholder: 'Username, email address or ID' %>
+
+      <%= form.submit 'submit', class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Back', :back, class: 'btn btn-sm btn-default' %>
+    <% end %>
+</div>

@@ -1,0 +1,51 @@
+<p>Hi <%= @user.try(:nickname) %>,</p>
+
+<% if @group %>
+
+<p><%= link_to @invited_by.nickname, user_url(@invited_by) %> has invited you to join the group <%= link_to @group.name, user_group_url(@invited_by, @group) %> on LearnAwesome.org</p>
+
+<% if @group.users.size > 1 %>
+    <p>Members of this group are:</p>
+
+    <table border="0">
+        <% @group.users.in_groups_of(3).each do |g| %>
+            <tr><% g.each do |member| %>
+                <td width="33%" style="padding: 2px 15px;">
+                    <% if member %>
+                    <%= link_to user_url(member) do %>
+                        <img src="<%= member.avatar_image %>" style="width: 50px; height: 50px; border-radius: 25px; vertical-align: middle;"/>
+                        <%= member.nickname %>
+                    <% end %>
+                    <% end %>
+                </td>
+            <% end %></tr>
+        <% end %>
+    </table>
+<% end %>
+
+<p>
+Here is some recent activity in this group:
+<ul>
+<% @group_reviews.each do |review| %>
+    <li><b><%= review.user.nickname %></b>: <%= review.display_status %> <%= review.display_rating %> (<%= review.item.display_item_type %> in <%= review.item.topics.first.display_name %>) <%= link_to review.item.name, item_url(review.item) %></li>
+<% end %>
+</ul>
+</p>
+
+<% else %>
+
+<p><%= link_to @invited_by.nickname, user_url(@invited_by) %> has invited you to join LearnAwesome.org</p>
+
+<% end %>
+
+<p>LearnAwesome is building <a href="<%= about_url %>">Humanity's universal learning map</a> by collecting learning resources like books,
+courses, videos, podcasts, newsletters, apps, games, interactive explorables etc. More than <% User.count.floor(-2) %> users have already
+joined and are using it for their learning projects.</p>
+
+<% if @user %>
+<!-- Already signed up -->
+<a style="display: block; margin: 4em; padding: 1em; font-size: 20px; text-align: center; font-weight: bold; border-radius: 8px; background-color: blue; color: white" href="<%= @group ? user_group_url(@invited_by, @group) : root_url %>">Join LearnAwesome.org</a>
+<% else %>
+<!-- TODO: Need to sign up first -->
+<a style="display: block; margin: 4em; padding: 1em; font-size: 20px; text-align: center; font-weight: bold; border-radius: 8px; background-color: blue; color: white" href="<%= @group ? user_group_url(@invited_by, @group) : root_url %>">Join LearnAwesome.org</a>
+<% end %>

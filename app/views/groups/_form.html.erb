@@ -1,0 +1,31 @@
+
+<div class="card max-w-md mx-auto">
+    <%= form_for [parent, resource], html: {class: "simple-form"} do |form| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true, class: 'form-control', placeholder: 'Name'%>
+
+        <%= form.label :description %>
+        <%= form.text_field :description, class: 'form-control', placeholder: 'Description'%>
+
+        <%= form.label :image_url %>
+        <%= form.url_field :image_url, required: false, class: 'form-control', placeholder: 'Image URL'%>
+
+        <%= form.label :website_url %>
+        <%= form.url_field :website_url, required: false, class: 'form-control', placeholder: 'Website URL'%>
+
+      <%= form.submit 'submit', class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Back', :back, class: 'btn btn-sm btn-default' %>
+    <% end %>
+</div>

@@ -22,4 +22,8 @@ class UserMailerPreview < ActionMailer::Preview
     def follow_email
         UserMailer.with(user: User.first, follower: User.last).follow_email
     end
+
+    def invite_email
+        UserMailer.with(invited_by: User.last, recipient_email: "abc@gmail.com", group: Group.last).invite_email
+    end
 end

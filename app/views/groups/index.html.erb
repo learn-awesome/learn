@@ -1,4 +1,4 @@
-<h1 class="h2 font-weight-semibold mb-4"><%= link_to parent.nickname, parent %>'s collections</h1>
+<h1 class="h2 font-weight-semibold mb-4"><%= link_to parent.nickname, parent %>'s groups</h1>
 
 <div class="flex flex-col">
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -13,7 +13,7 @@
               Description
             </th>
             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-              Count
+              Member Count
             </th>
             <% if current_user == parent %>
             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Actions</th>
@@ -21,21 +21,21 @@
           </tr>
         </thead>
         <tbody>
-          <% @collections.each_with_index do |collection, index| %>
+          <% @groups.each_with_index do |group, index| %>
           <tr class="bg-white">
             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-              <%= link_to collection.name, resource_url(collection), class: 'underline text-indigo-600 hover:text-indigo-900' %>
+              <%= link_to group.name, resource_url(group), class: 'underline text-indigo-600 hover:text-indigo-900' %>
             </td>
             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-              <%= collection.description %>
+              <%= group.description %>
             </td>
             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-              <%= collection.items.count %>
+              <%= group.group_members.count %>
             </td>
             <% if current_user == parent %>
             <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-              <%= link_to edit_resource_url(collection), class: 'text-indigo-600 hover:text-indigo-900 px-4' do %><i class="fa fa-edit mr-2"></i>Edit<% end %>
-              <%= link_to resource_url(collection), method: :delete, class: 'text-indigo-600 hover:text-indigo-900', data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash mr-2"></i>Remove<% end %>
+              <%= link_to edit_resource_url(group), class: 'text-indigo-600 hover:text-indigo-900 px-4' do %><i class="fa fa-edit mr-2"></i>Edit<% end %>
+              <%= link_to resource_url(group), method: :delete, class: 'text-indigo-600 hover:text-indigo-900', data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash mr-2"></i>Remove<% end %>
             </td>
             <% end %>
           </tr>
@@ -53,7 +53,7 @@
        <ul class="list-inline ml-auto mb-0">
         <li class="list-inline-item">
          <%= link_to new_resource_url do %>
-          <i class="fa fa-plus mr-2"></i>Add Collection
+          <i class="fa fa-plus mr-2"></i>Add Group
         <% end %>
         </li>
       </ul>

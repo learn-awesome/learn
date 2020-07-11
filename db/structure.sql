@@ -5,8 +5,23 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 --
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
@@ -179,6 +194,32 @@ CREATE TABLE public.flash_cards (
     next_practice_due_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     user_id uuid NOT NULL,
     deck_id uuid NOT NULL
+);
+
+
+--
+-- Name: group_members; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.group_members (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    group_id uuid NOT NULL,
+    user_id uuid NOT NULL,
+    role character varying NOT NULL,
+    status character varying NOT NULL
+);
+
+
+--
+-- Name: groups; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.groups (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    name character varying NOT NULL,
+    description text,
+    image_url character varying,
+    website_url character varying
 );
 
 
@@ -568,6 +609,22 @@ ALTER TABLE ONLY public.flash_cards
 
 
 --
+-- Name: group_members group_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_members
+    ADD CONSTRAINT group_members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idea_sets idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -793,6 +850,20 @@ CREATE UNIQUE INDEX index_decks_on_user_id_and_name ON public.decks USING btree 
 --
 
 CREATE INDEX index_flash_cards_on_deck_id ON public.flash_cards USING btree (deck_id);
+
+
+--
+-- Name: index_group_members_on_group_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_group_members_on_group_id ON public.group_members USING btree (group_id);
+
+
+--
+-- Name: index_group_members_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_group_members_on_user_id ON public.group_members USING btree (user_id);
 
 
 --
@@ -1150,6 +1221,14 @@ ALTER TABLE ONLY public.collection_items
 
 
 --
+-- Name: group_members fk_rails_bb66f6bca8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_members
+    ADD CONSTRAINT fk_rails_bb66f6bca8 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: user_topics fk_rails_bfe29ea272; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1203,6 +1282,14 @@ ALTER TABLE ONLY public.person_idea_sets
 
 ALTER TABLE ONLY public.links
     ADD CONSTRAINT fk_rails_e1bb872bea FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
+-- Name: group_members fk_rails_e9fdb70ec5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.group_members
+    ADD CONSTRAINT fk_rails_e9fdb70ec5 FOREIGN KEY (group_id) REFERENCES public.groups(id);
 
 
 --
@@ -1291,6 +1378,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200623155710'),
 ('20200624062708'),
 ('20200630171020'),
-('20200708190856');
+('20200708190856'),
+('20200710170939');
 
 

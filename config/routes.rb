@@ -101,6 +101,14 @@ Rails.application.routes.draw do
         post 'import_goodreads_list'
       end
     end
+
+    resources :groups do
+      member do
+        get 'add_member'
+        post 'add_member'
+        post 'accept_invite'
+      end
+    end
   end
 
   resources :reviews, only: [:new, :create, :edit, :update, :show] do
