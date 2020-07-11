@@ -7,4 +7,12 @@ class GroupMember < ApplicationRecord
     def is_admin?
         self.role == 'admin'
     end
+
+    def is_confirmed?
+        self.status == 'confirmed'
+    end
+
+    def is_invited?
+        self.status == 'pending'
+    end
 end

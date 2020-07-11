@@ -206,7 +206,9 @@ CREATE TABLE public.group_members (
     group_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role character varying NOT NULL,
-    status character varying NOT NULL
+    status character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -219,7 +221,10 @@ CREATE TABLE public.groups (
     name character varying NOT NULL,
     description text,
     image_url character varying,
-    website_url character varying
+    website_url character varying,
+    is_public boolean DEFAULT false NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 

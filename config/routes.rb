@@ -106,7 +106,8 @@ Rails.application.routes.draw do
       member do
         get 'add_member'
         post 'add_member'
-        post 'accept_invite'
+        get 'accept_invite' # Need GET for redirecting logged out users accepting invites from email
+        post 'accept_invite' # for links in the app
       end
     end
   end

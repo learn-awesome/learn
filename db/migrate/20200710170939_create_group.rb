@@ -5,6 +5,9 @@ class CreateGroup < ActiveRecord::Migration[6.0]
       t.text   :description, null: true
       t.string :image_url, null: true
       t.string :website_url, null: true
+      t.boolean :is_public, null: false, default: false
+
+      t.timestamps
     end
 
     create_table :group_members, id: :uuid do |t|
@@ -12,6 +15,8 @@ class CreateGroup < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true, type: :uuid
       t.string :role, null: false
       t.string :status, null: false
+
+      t.timestamps
     end
   end
 end

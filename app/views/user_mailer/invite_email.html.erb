@@ -47,5 +47,5 @@ joined and are using it for their learning projects.</p>
 <a style="display: block; margin: 4em; padding: 1em; font-size: 20px; text-align: center; font-weight: bold; border-radius: 8px; background-color: blue; color: white" href="<%= @group ? user_group_url(@invited_by, @group) : root_url %>">Join LearnAwesome.org</a>
 <% else %>
 <!-- TODO: Need to sign up first -->
-<a style="display: block; margin: 4em; padding: 1em; font-size: 20px; text-align: center; font-weight: bold; border-radius: 8px; background-color: blue; color: white" href="<%= @group ? user_group_url(@invited_by, @group) : root_url %>">Join LearnAwesome.org</a>
+<a style="display: block; margin: 4em; padding: 1em; font-size: 20px; text-align: center; font-weight: bold; border-radius: 8px; background-color: blue; color: white" href="<%= @group ? accept_invite_user_group_url(@invited_by, @group, code: @group.invite_code) : root_url %>">Join LearnAwesome.org</a>
 <% end %>

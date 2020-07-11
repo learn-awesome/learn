@@ -15,7 +15,7 @@ class CollectionsController < InheritedResources::Base
 
   def destroy
   	if resource.user != current_user
-  		render :file => "public/422.html", status: :nauthorized
+  		render :file => "public/422.html", status: :unauthorized
   	else
   		destroy!
   	end
@@ -23,7 +23,7 @@ class CollectionsController < InheritedResources::Base
 
   def update
   	if resource.user != current_user
-  		render :file => "public/422.html", status: :nauthorized
+  		render :file => "public/422.html", status: :unauthorized
   	else
   		update!
   	end
@@ -31,7 +31,7 @@ class CollectionsController < InheritedResources::Base
 
   def toggle_item
     if resource.user != current_user
-      render :file => "public/422.html", status: :nauthorized
+      render :file => "public/422.html", status: :unauthorized
     else
       item = Item.find(params[:item_id])
       collection_item = resource.collection_items.where(item_id: params[:item_id]).first
@@ -46,7 +46,7 @@ class CollectionsController < InheritedResources::Base
 
   def import_goodreads_list
     if resource.user != current_user
-      render :file => "public/422.html", status: :nauthorized
+      render :file => "public/422.html", status: :unauthorized
     elsif request.post?
       url = params[:goodreads_list_url].presence
       if url
