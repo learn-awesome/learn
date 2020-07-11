@@ -1,6 +1,0 @@
-<div style="text-align: center; margin-bottom: 3.0em;" class="form-group">
-<h1>I want to learn</h1>
-<%= render 'components/autocomplete', containerid: 'maintopic', placeholder: 'e.g. machine learning', source: '/topics/search.json?q=%QUERY', is_remote: true, notfound: 'not found. <a href="/topics/new">Add new topic?</a>' %>
-</div>
-
-<%= render partial: 'hierarchy', locals: {root_topic: nil, show_max: 20} %>
