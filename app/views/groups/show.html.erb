@@ -22,6 +22,7 @@
         <%= resource.name %>
       </h2>
 	  <p><%= resource.description %></p>
+    <% if @group.is_admin?(current_user) %><p>Invite link: <input class="bg-gray-200 p-2" type="text" size="40" value="<%= accept_invite_user_group_url(current_user, @group, invite_code: @group.invite_code) %>"/></p><% end %>
     </div>
     <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
   

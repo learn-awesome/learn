@@ -13,7 +13,10 @@
   and published after <%= form.collection_select :published_year, [1900, 1920, 1940, 1960, 1980, 2000, 2010, 2020], :to_s, :to_s, {prompt: 'Choose year'}, required: false %> &nbsp;
   and have a rating higher than <%= form.collection_select :min_score, [3.0, 3.5, 4.0, 4.5], :to_s, :to_s, {prompt: 'Choose minimum rating'}, required: false %>
   <!-- TODO: goodreads/amazon rating, page_count, also recommended by -->
-  <div class=""><%= form.submit "Search", class: "btn btn-primary" %></div>
+  <div class="">
+    <a href="/items/query" class="btn btn-info border-2 border-gray-200">Clear</a>
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 </div>

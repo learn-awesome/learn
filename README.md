@@ -14,6 +14,18 @@ This is built using Rails 6.0, PostgreSQL, Bootstrap 4 and [Stream Dashboard UI 
 
 For development, please come to [Gitter](https://gitter.im/learn-awesome/meta). There's also a [community chat room](https://gitter.im/learn-awesome/community).
 
+# To Do
+
+- Build a mobile app (currently, there is a minimal Android version built in Flutter and a website bundled an app for iOS). A learning assistant should be always near you.
+
+- Improve automatic extraction of metadata from links. I did this for books, but it remains for other formats like videos etc.
+
+- Improve the topic hierarchy for easy navigation.
+
+- Improve the browser extension or the flashcard module.
+
+- Add richer metadata to items so that advanced search becomes more useful.
+
 # Development Setup with Vagrant
 
 ```
