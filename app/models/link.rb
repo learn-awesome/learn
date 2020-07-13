@@ -25,6 +25,14 @@ class Link < ApplicationRecord
   validates :url, format: URI::regexp(%w[http https]) #TODO Allow other protocols like IPFS / magnet 
   validates :item, presence: true
   validates :url, uniqueness: true
+  validate :valid_url?
+
+  def valid_url?
+    uri = URI.parse(url)
+    uri.is_a?(URI::HTTP) && !uri.host.nil?
+  rescue URI::InvalidURIError
+    errors.add(:url, "is invalid")
+  end
 
   def top_domain
   	URI.parse(self.url).host.downcase.gsub("www.","")

@@ -28,6 +28,10 @@ class Auth0Controller < ApplicationController
             nickname: request.env['omniauth.auth']["info"]["nickname"].gsub(" ", ""),
             image_url: request.env['omniauth.auth']["info"]["image"],
             referrer: request.env['omniauth.params']['ref'])
+            if ["learnawesome", "admin", "root"].include?(user.nickname)
+              # Don't allow reserved names
+              user.nickname += rand(1000).to_s
+            end
         end
 
         user.social_logins.build(
