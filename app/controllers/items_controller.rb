@@ -244,8 +244,8 @@ class ItemsController < ApplicationController
     is_ext = params[:ext].to_s == 'true'
 
   	if @q.present?
-  		@items = Item.search(@q, 10, is_fuzzy=true).to_a
       if @q.start_with?("http://") or @q.start_with?("https://")
+        @items = Item.search(@q, 10, is_fuzzy=false).to_a
         # query is a URL, no point editing. Directly take to new
         if @items.first
           redirect_to @items.first and return
@@ -274,6 +274,8 @@ class ItemsController < ApplicationController
             end
           end
         end
+      else
+        @items = Item.search(@q, 10, is_fuzzy=true).to_a
       end
       respond_to do |format|
         format.html

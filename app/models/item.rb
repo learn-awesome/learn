@@ -255,7 +255,7 @@ class Item < ApplicationRecord
   def self.extract_canonical_url(url)
     # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
     begin
-      page = Nokogiri::HTML(open(url))
+      page = Nokogiri::HTML(URI.open(url, :read_timeout => 8))
 
       return page.at('link[rel="canonical"]')&.attributes["href"]&.value
     rescue Exception => ex

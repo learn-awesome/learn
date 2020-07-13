@@ -865,6 +865,13 @@ CREATE INDEX index_group_members_on_group_id ON public.group_members USING btree
 
 
 --
+-- Name: index_group_members_on_group_id_and_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_group_members_on_group_id_and_user_id ON public.group_members USING btree (group_id, user_id);
+
+
+--
 -- Name: index_group_members_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1384,6 +1391,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200624062708'),
 ('20200630171020'),
 ('20200708190856'),
-('20200710170939');
+('20200710170939'),
+('20200711173541');
 
 

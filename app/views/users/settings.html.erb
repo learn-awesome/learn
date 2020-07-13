@@ -3,15 +3,6 @@
 
         <%= form_for @user, url: settings_user_path(@user) do |form| %>
 
-          <h4><b>Choose Theme</b></h4>
-            <div class="form-group mb-4">
-              <%= form.label :theme, "Select theme variant" %>
-              <select class="form-control" id="user_theme" name="user[theme]">
-                <option selected value="tailwind">Default</option>
-                <option value="bootstrap">Old</option>
-              </select>
-            </div>
-
           <h4><b>Email Notifications</b></h4>
             <div class="form-group mb-4">
               <%= form.label :unsubscribe, "Unsubscribe from all emails" %>
