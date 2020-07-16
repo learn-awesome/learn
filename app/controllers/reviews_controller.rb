@@ -68,4 +68,10 @@ class ReviewsController < ApplicationController
 		@review = Review.find(params[:id])
 		@tweet = @review.tweet_msg
 	end
+
+	def add_reaction
+		@review = Review.find(params[:id])
+		@review.review_reactions.create!(user: current_user, kind: (params[:kind].presence || 'COMMENT'), body: params[:body])
+		redirect_to @review
+	end
 end

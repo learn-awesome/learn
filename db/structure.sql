@@ -242,6 +242,21 @@ CREATE TABLE public.idea_sets (
 
 
 --
+-- Name: item_reactions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.item_reactions (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    kind character varying NOT NULL,
+    body text,
+    user_id uuid NOT NULL,
+    item_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: item_types; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -356,6 +371,21 @@ CREATE TABLE public.recommendations (
 
 
 --
+-- Name: review_reactions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.review_reactions (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    kind character varying NOT NULL,
+    body text,
+    user_id uuid NOT NULL,
+    review_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: reviews; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -414,6 +444,21 @@ CREATE TABLE public.topic_idea_sets (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     rating integer
+);
+
+
+--
+-- Name: topic_reactions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.topic_reactions (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    kind character varying NOT NULL,
+    body text,
+    user_id uuid NOT NULL,
+    topic_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -638,6 +683,14 @@ ALTER TABLE ONLY public.idea_sets
 
 
 --
+-- Name: item_reactions item_reactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.item_reactions
+    ADD CONSTRAINT item_reactions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: item_types item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -686,6 +739,14 @@ ALTER TABLE ONLY public.recommendations
 
 
 --
+-- Name: review_reactions review_reactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.review_reactions
+    ADD CONSTRAINT review_reactions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -715,6 +776,14 @@ ALTER TABLE ONLY public.social_logins
 
 ALTER TABLE ONLY public.topic_idea_sets
     ADD CONSTRAINT topic_idea_sets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: topic_reactions topic_reactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topic_reactions
+    ADD CONSTRAINT topic_reactions_pkey PRIMARY KEY (id);
 
 
 --
@@ -879,6 +948,20 @@ CREATE INDEX index_group_members_on_user_id ON public.group_members USING btree 
 
 
 --
+-- Name: index_item_reactions_on_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_item_reactions_on_item_id ON public.item_reactions USING btree (item_id);
+
+
+--
+-- Name: index_item_reactions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_item_reactions_on_user_id ON public.item_reactions USING btree (user_id);
+
+
+--
 -- Name: index_items_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -928,6 +1011,20 @@ CREATE INDEX index_recommendations_on_idea_set_id ON public.recommendations USIN
 
 
 --
+-- Name: index_review_reactions_on_review_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_review_reactions_on_review_id ON public.review_reactions USING btree (review_id);
+
+
+--
+-- Name: index_review_reactions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_review_reactions_on_user_id ON public.review_reactions USING btree (user_id);
+
+
+--
 -- Name: index_reviews_on_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -974,6 +1071,20 @@ CREATE INDEX index_topic_idea_sets_on_topic_id ON public.topic_idea_sets USING b
 --
 
 CREATE UNIQUE INDEX index_topic_idea_sets_on_topic_id_and_idea_set_id ON public.topic_idea_sets USING btree (topic_id, idea_set_id);
+
+
+--
+-- Name: index_topic_reactions_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topic_reactions_on_topic_id ON public.topic_reactions USING btree (topic_id);
+
+
+--
+-- Name: index_topic_reactions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topic_reactions_on_user_id ON public.topic_reactions USING btree (user_id);
 
 
 --
@@ -1105,6 +1216,14 @@ ALTER TABLE ONLY public.user_user_relations
 
 
 --
+-- Name: item_reactions fk_rails_199c5d286b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.item_reactions
+    ADD CONSTRAINT fk_rails_199c5d286b FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
 -- Name: reviews fk_rails_1b37fb5a2a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1118,6 +1237,14 @@ ALTER TABLE ONLY public.reviews
 
 ALTER TABLE ONLY public.flash_cards
     ADD CONSTRAINT fk_rails_1c774d0179 FOREIGN KEY (deck_id) REFERENCES public.decks(id);
+
+
+--
+-- Name: review_reactions fk_rails_1e6125f51a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.review_reactions
+    ADD CONSTRAINT fk_rails_1e6125f51a FOREIGN KEY (review_id) REFERENCES public.reviews(id);
 
 
 --
@@ -1137,11 +1264,27 @@ ALTER TABLE ONLY public.topics
 
 
 --
+-- Name: item_reactions fk_rails_3604c6fade; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.item_reactions
+    ADD CONSTRAINT fk_rails_3604c6fade FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: activity_pub_followers fk_rails_3ce6f9a7a2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.activity_pub_followers
     ADD CONSTRAINT fk_rails_3ce6f9a7a2 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: topic_reactions fk_rails_42cd7106b8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topic_reactions
+    ADD CONSTRAINT fk_rails_42cd7106b8 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -1182,6 +1325,14 @@ ALTER TABLE ONLY public.decks
 
 ALTER TABLE ONLY public.topics
     ADD CONSTRAINT fk_rails_5f3c091f12 FOREIGN KEY (parent_id) REFERENCES public.topics(id);
+
+
+--
+-- Name: review_reactions fk_rails_6975d6d5df; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.review_reactions
+    ADD CONSTRAINT fk_rails_6975d6d5df FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -1305,6 +1456,14 @@ ALTER TABLE ONLY public.group_members
 
 
 --
+-- Name: topic_reactions fk_rails_ef81f07a8f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topic_reactions
+    ADD CONSTRAINT fk_rails_ef81f07a8f FOREIGN KEY (topic_id) REFERENCES public.topics(id);
+
+
+--
 -- Name: topic_relations fk_rails_f2d3454ee0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1392,6 +1551,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200630171020'),
 ('20200708190856'),
 ('20200710170939'),
-('20200711173541');
+('20200711173541'),
+('20200716071412');
 
 

@@ -115,6 +115,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create, :edit, :update, :show] do
     member do
       get 'tweet' # only for testing and preview
+      post 'add_reaction'
     end
   end
 

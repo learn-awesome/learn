@@ -36,6 +36,7 @@ require 'httparty'
 class Review < ApplicationRecord
   belongs_to :user, inverse_of: :reviews
   belongs_to :item, inverse_of: :reviews
+  has_many :review_reactions, inverse_of: :review
 
   validates_inclusion_of :status, in: ['want_to_learn', 'learning', 'learned'], allow_nil: true, allow_blank: false
 
