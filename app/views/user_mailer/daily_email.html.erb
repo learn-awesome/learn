@@ -20,7 +20,7 @@
 
 <% unless @new_global_users.blank? %>
   <p><%= link_to "#{@new_global_users.size} new users", users_url %> joined yesterday:
-    <% @new_global_users.each do |f| %>
+    <% @new_global_users[0..5].each do |f| %>
     <%= link_to f.nickname, user_url(f) %>
     <% end %>
   </p>
