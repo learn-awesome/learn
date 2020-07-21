@@ -29,7 +29,7 @@ class Person < ApplicationRecord
 	'actor','athlete','billionaire','chef','comedian','doctor','filmmaker','fitness-expert',
 	'model','musician','other', 'producer']
 
-	validates :name, presence: true, length: {minimum: 4, maximum: 255}
+	validates :name, presence: true, length: {minimum: 4, maximum: 255}, unique: true
 	validates_inclusion_of :kind, in: KINDS, allow_nil: true, allow_blank: false
 	# validates :website, presence: true, allow_nil: true, length: {minimum: 8, maximum: 255}
 	# validates :email, presence: true, allow_nil: true, length: {minimum: 4, maximum: 30}
