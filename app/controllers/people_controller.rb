@@ -71,6 +71,6 @@ class PeopleController < ApplicationController
 	end
 
 	def index
-		@people = Person.order(:image_url).limit(100)
+		@people = Person.order(:image_url).limit(500)
 	end
 end

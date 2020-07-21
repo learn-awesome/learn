@@ -15,6 +15,7 @@
 #  image_url   :string
 #  kind        :string
 #
+require 'nokogiri'
 
 class Person < ApplicationRecord
 	has_many :person_idea_sets
@@ -24,7 +25,9 @@ class Person < ApplicationRecord
 	has_many :recommended_idea_sets, through: :recommendations, source: :idea_set
 
 	KINDS = ['popular_website', 'award', 'entrepreneur', 'executive', 'investor', 'scientist',
-	'designer','politician','economist','celebrity','author','historical_figure','journalist']
+	'designer','politician','economist','celebrity','author','historical_figure','journalist',
+	'actor','athlete','billionaire','chef','comedian','doctor','filmmaker','fitness-expert',
+	'model','musician','other', 'producer']
 
 	validates :name, presence: true, length: {minimum: 4, maximum: 255}
 	validates_inclusion_of :kind, in: KINDS, allow_nil: true, allow_blank: false
@@ -98,5 +101,32 @@ class Person < ApplicationRecord
 			goodreads: data.dig('entities', entity['id'], 'claims', 'P2963').try { first.dig('mainsnak','datavalue', 'value') },
 			twitter: data.dig('entities', entity['id'], 'claims', 'P2002').try { first.dig('mainsnak','datavalue', 'value') },
 		}
+	end
+
+	def mrb_import
+		url = "https://mostrecommendedbooks.com/page-data/#{self.name.parameterize}-books/page-data.json"
+		r = HTTParty.get(url)
+		data = JSON.parse(r.body)
+		person_data = data["result"]["data"]["recommenderList"]["recommender"]
+		# booksCount, imageUrl, name, bio, wikipediaLink, twitterHandle, instagramHandle
+
+		recommendedBooks = data["result"]["data"]["recommenderBooks"]["recommenderBooks"]
+		# author, imageUrl, buyLink, title, subtitle, quote, source, recommenders[name]
+
+		authorBooks = data["result"]["data"]["authorBooks"]["authorBooks"]
+		#title, buyLink, imageUrl, yearPublished
+
+		recommendedBooks.each do |book|
+			item = Item.where(name: book["title"]).first
+			if item.nil?
+				# Should create an item and idea_set
+				puts "Skipping #{book['title']}"
+				next
+			end
+			recomm = self.recommendations.create(idea_set: item.idea_set, notes: book["quote"], url: book["source"])
+			if !recomm.persisted?
+				puts "Error: #{item.name} #{recomm.errors.first}"
+			end
+		end
 	end
 end
