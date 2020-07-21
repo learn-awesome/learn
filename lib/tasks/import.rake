@@ -53,25 +53,22 @@ namespace :import do
 
 	data = JSON.parse(File.read(args[:file_name]))
 	data.each do |topic_name, topic_hash|
-		topic_name = topic_name.sub('learn-awesome/', '').sub('.html', '')
-		topic_name_array = topic_name.split('/')
-
-		ns = topic_name_array.first(topic_name_array.count - 1).join('/')
-
+		topic_name = topic_name.sub('learn-awesome/','').sub('.html', '')
 		topic = Topic.where(
-			name: topic_name_array.last.sub('-language', '').sub('india-', '')
+			name: topic_name
 		).first
 
 		if topic.nil?
-			puts "skipping topic = #{topic_name_array.inspect} #{ns}"
-			next
+			# puts "skipping topic = #{topic_name}"
+			topic = Topic.create!(display_name: topic_name)
 		end
 
 		topic_hash.each do |item_type_name, item_type_hash|
 			# strings have diverged. Use the lookup table
 			item_type_id = item_types_lookup[item_type_name.split(',').first.parameterize.underscore]
 			if item_type_id.nil?
-				puts "skipping item_type = #{item_type_name}"
+				# Quotes
+				# puts "skipping item_type = #{item_type_name}"
 				next
 			end
 
@@ -83,23 +80,23 @@ namespace :import do
 				next if item_hash['sourceText'].length < 3
 
 				if item_hash['link'] =~ URI::regexp(%w[http https])
-					begin
-						idea_set = IdeaSet.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''))
-						item = Item.create!(
-							name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''),
-							idea_set: idea_set,
-							item_type: item_type,
-							allow_without_links: true,
-							user: user)
+					idea_set = IdeaSet.create!(name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''))
+					item = Item.create!(
+						name: item_hash['sourceText'].sub('📕 ', '').sub('📖 ', ''),
+						idea_set: idea_set,
+						item_type: item_type,
+						allow_without_links: true,
+						user: user)
 
-						TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
-						Link.find_or_create_by!(item: item, url: item_hash['link']) if item_hash['link'].length >= 8
+					TopicIdeaSet.find_or_create_by!(topic: topic, idea_set: idea_set)
+					link = Link.find_or_create_by(item: item, url: item_hash['link']) if item_hash['link'].length >= 8
+					if link.persisted?
 						puts "created Item #{item.name}"
-					rescue Exception => ex
-						puts ex.message
+					else
+						item.idea_set.destroy
 					end
 				else
-					puts "invalid: #{item_hash['link']}"
+					# puts "invalid: #{item_hash['link']}"
 				end
 			end
 		end

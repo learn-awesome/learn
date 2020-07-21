@@ -18,10 +18,10 @@
 			<div class="mt-2 mb-4 text-gray-600">
 				<p>
 				<% if @item.large_thumbnail.present? %>
-					<a href="<%= @item.primary_link.url %>" target="_blank"><img src="<%= @item.large_thumbnail %>" class="float-left mr-2 mb-2" style="max-height: 400px;"/></a>
+					<a href="<%= @item.primary_link.url %>" target="_blank"><img src="<%= @item.large_thumbnail %>" class="mr-2 mb-2" style="max-height: 400px;"/></a>
 				<% end %>
 				<%= @item.display_description %>
-				<p class="float-clear"><br/><br/></p>
+				
 				</p>
 				<p><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
 			</div>

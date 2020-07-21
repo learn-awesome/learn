@@ -46,7 +46,7 @@ class Auth0Controller < ApplicationController
           end
         else
           if user.save!
-            UserMailer.with(user: user).welcome_email.deliver_later
+            UserMailer.with(user: user).welcome_email.deliver_later rescue nil
             Rails.logger.info "User #{uid} created"
           else
             Rails.logger.error user.errors.inspect

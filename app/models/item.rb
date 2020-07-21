@@ -165,16 +165,16 @@ class Item < ApplicationRecord
   end
 
   def can_user_edit?(editor)
-    return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
+    return true if Rails.env.development?
     return true if self.is_syllabus? and self.user_id == editor.id
     return false if editor.score < 10_000
     return true
   end
 
   def can_user_change_related_items?(editor)
-    return true if Rails.env.development?
     return false if editor.nil? or !editor.is_a?(User)
+    return true if Rails.env.development?
     return false if editor.score < 500
     return false if self.is_syllabus?
     return true

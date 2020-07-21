@@ -25,7 +25,7 @@ require 'json'
 
 class User < ApplicationRecord
 	validates :nickname, presence: true
-	validates :nickname, exclusion: { in: %w(learnawesome admin root), message: "%{value} is reserved." }
+	validates :nickname, exclusion: { in: %w(learnawesome admin root), message: "%{value} is reserved." }, if: Proc.new { |a| Rails.env.production? }
 
 	validates_length_of :nickname, in: 4..20, allow_blank: false
 	validates_length_of :bio, maximum: 140

@@ -978,6 +978,13 @@ CREATE INDEX index_links_on_item_id ON public.links USING btree (item_id);
 
 
 --
+-- Name: index_people_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_people_on_name ON public.people USING btree (name);
+
+
+--
 -- Name: index_person_idea_sets_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -996,6 +1003,20 @@ CREATE INDEX index_person_idea_sets_on_person_id ON public.person_idea_sets USIN
 --
 
 CREATE INDEX index_recommendations_on_idea_set_id ON public.recommendations USING btree (idea_set_id);
+
+
+--
+-- Name: index_recommendations_on_item_id_and_idea_set_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_recommendations_on_item_id_and_idea_set_id ON public.recommendations USING btree (item_id, idea_set_id) WHERE (item_id IS NOT NULL);
+
+
+--
+-- Name: index_recommendations_on_person_id_and_idea_set_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_recommendations_on_person_id_and_idea_set_id ON public.recommendations USING btree (person_id, idea_set_id) WHERE (person_id IS NOT NULL);
 
 
 --
@@ -1541,6 +1562,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200710170939'),
 ('20200711173541'),
 ('20200716071412'),
-('20200721183427');
+('20200721183427'),
+('20200721201658');
 
 

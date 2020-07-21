@@ -10,9 +10,9 @@
 
 This is the code that powers https://learnawesome.org
 
-This is built using Rails 6.0, PostgreSQL, Bootstrap 4 and [Stream Dashboard UI Kit](https://htmlstream.com/templates/stream-dashboard-ui-kit).
+This is built using Rails 6.0, PostgreSQL, and Tailwind CSS
 
-For development, please come to [Gitter](https://gitter.im/learn-awesome/meta). There's also a [community chat room](https://gitter.im/learn-awesome/community).
+For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 # To Do
 
@@ -50,10 +50,9 @@ bundle install
 rake db:drop db:create db:migrate db:seed
 ```
 
-To import data from the JSON files:
+To import some data:
 ```
-rake import:import['public/data1.json']
-rake import:import['public/data2.json']
+rake import:import['public/data1.json'] import:import['public/data2.json'] mrb:import_experts
 ```
 
 Set-up caching in dev:
@@ -70,11 +69,7 @@ SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc814
 Either use your own Auth0 tenant (which needs some configuration) or contact us to get the values of the above environment variables.
 ```
 
-For the admin interface, login at http://localhost:3000/admin/ panel using `admin@example.com` and `password`.
-★★★☆☆
-
-
-For graphQL clients, first send the user to https://learnawesome.eu.auth0.com/login?client=h5wMQw9p9MsN53nkY4YeN08mv3Ao1mnB&protocol=oauth2&response_type=token%20id_token&redirect_uri=http://localhost:3000/callback&scope=openid%20profile
+For GraphQL clients, first send the user to https://learnawesome.eu.auth0.com/login?client=h5wMQw9p9MsN53nkY4YeN08mv3Ao1mnB&protocol=oauth2&response_type=token%20id_token&redirect_uri=http://localhost:3000/callback&scope=openid%20profile
 
 After successful login/signup, `user.authinfo` will have a field called `id_token`.
 The value of that token can be used as the `Authorization` header with `Bearer` prefix. This ensures that user can only perform permitted operations via graphQL api.

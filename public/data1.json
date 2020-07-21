@@ -1,5 +1,5 @@
 {
-  "human-languages/chinese-language.html": {
+  "human-languages/chinese": {
     "Apps": {
       "title": "Apps"
     },
@@ -105,7 +105,7 @@
       ]
     }
   },
-  "human-languages/english-language.html": {
+  "human-languages/english": {
     "Apps": {
       "title": "Apps"
     },
@@ -216,7 +216,7 @@
       ]
     }
   },
-  "human-languages/french-language.html": {
+  "human-languages/french": {
     "Apps": {
       "title": "Apps"
     },
@@ -322,7 +322,7 @@
       ]
     }
   },
-  "human-languages/german-language.html": {
+  "human-languages/german": {
     "Apps": {
       "title": "Apps"
     },
@@ -428,7 +428,7 @@
       ]
     }
   },
-  "human-languages/hindi-language.html": {
+  "human-languages/hindi": {
     "Apps": {
       "title": "Apps"
     },
@@ -520,7 +520,7 @@
       ]
     }
   },
-  "human-languages/italian-language.html": {
+  "human-languages/italian": {
     "Apps": {
       "title": "Apps"
     },
@@ -619,7 +619,7 @@
       ]
     }
   },
-  "human-languages/japanese-language.html": {
+  "human-languages/japanese": {
     "Apps": {
       "title": "Apps"
     },
@@ -725,7 +725,7 @@
       ]
     }
   },
-  "human-languages/kannada-language.html": {
+  "human-languages/kannada": {
     "Apps": {
       "title": "Apps",
       "links": [
@@ -824,7 +824,7 @@
       ]
     }
   },
-  "human-languages/russian-language.html": {
+  "human-languages/russian": {
     "Apps": {
       "title": "Apps"
     },
@@ -959,7 +959,7 @@
       ]
     }
   },
-  "human-languages/spanish-language.html": {
+  "human-languages/spanish": {
     "Apps": {
       "title": "Apps"
     },
@@ -1361,7 +1361,7 @@
       ]
     }
   },
-  "programming-languages/c-language.html": {
+  "programming-languages/c": {
     "Apps &amp; Websites": {
       "title": "Apps &amp; Websites"
     },
@@ -1808,7 +1808,7 @@
       ]
     }
   },
-  "programming-languages/d-language.html": {
+  "programming-languages/d": {
     "Apps &amp; Websites": {
       "title": "Apps &amp; Websites"
     },
@@ -4167,7 +4167,7 @@
       ]
     }
   },
-  "programming-languages/r-language.html": {
+  "programming-languages/r": {
     "Apps &amp; Websites": {
       "title": "Apps &amp; Websites"
     },
