@@ -2,7 +2,7 @@
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Also available as:</h1>
 	<% @item.related_items.each do |rel| %>
 		<a href="<%= item_path(rel) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
-			<img class="mr-3" src="<%= rel.thumbnail %>" alt="<%= rel.item_type.display_name_plural %>">
+			<img class="mr-3 h-24 w-24" src="<%= rel.thumbnail %>" alt="<%= rel.item_type.display_name_plural %>">
 			<p>
 				<%= rel.display_name %><br/>
 				<span class="text-sm text-gray-600"><%= rel.primary_link.top_domain %></span>
