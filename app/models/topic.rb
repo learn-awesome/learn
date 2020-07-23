@@ -30,6 +30,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
+require 'openai'
+
 class Topic < ApplicationRecord
 	SLUG_FORMAT = /\A[0-9a-záéíóúÁÉÍÓÚÑñ\-\/\+]+\z/
 	validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { in: 1..50 },
@@ -221,6 +223,26 @@ class Topic < ApplicationRecord
 			Rails.logger.debug "Saving #{self.wiki_title}"
 			self.save
 		end
+	end
+
+	def gpt_prompt
+		"How well do you know physics? Answer these questions about physics:\n\nQuestion: How do aeroplanes fly?\nQuestion: How does a motor work?\nQuestion:"
+	end
+
+	def is_gpt_enabled?
+		Rails.env.development? && ENV['GPT3_PUBLIC_KEY'].presence && ENV['GPT3_SECRET_KEY'].presence && self.gpt_prompt.presence
+	end
+
+	def gpt_questions(max_tokens: 70)
+		return nil unless self.is_gpt_enabled?
+		client = Openai::Client.new(pk: ENV['GPT3_PUBLIC_KEY'], sk: ENV['GPT3_SECRET_KEY'])
+		completions = client.completions(prompt: self.gpt_prompt, max_tokens: max_tokens)
+		completions["choices"].first["text"].split("Question: ").map(&:strip)
+	end
+
+	def gpt_check_answers(qna)
+		# TODO: qna is an array of [question, answer] pairs. Use GPT-3 to evaluate the answers
+		qna.map { |qa| qa + ["✅ You got it right!"]} # ❌
 	end
 
 	def display_description

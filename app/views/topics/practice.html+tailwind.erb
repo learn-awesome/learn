@@ -1,0 +1,12 @@
+<div class="card max-w-lg mx-auto">
+<%= form_tag practice_topic_path(@topic), class: "simple-form" do %>
+    <h1>Practice <%= @topic.display_name %> with OpenAI's GPT-3</h1>
+
+    <% @questions.each_with_index do |q,i| %>
+        <%= text_field_tag "question_#{i}", q, readonly: true, class: "w-full" %>
+        <%= text_area_tag "answer_#{i}", "", minlength: 4, maxlength: 200, required: true, class: "w-full", placeholder: "Type your answer here" %>
+    <% end %>
+    
+    <%= submit_tag "Check Answers with GPT-3" %>
+<% end %>
+</div>

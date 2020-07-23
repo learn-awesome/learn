@@ -1,0 +1,13 @@
+<div class="card max-w-lg mx-auto">
+<%= form_tag practice_topic_path(@topic), class: "simple-form" do %>
+    <h1>We checked your answers on <%= @topic.display_name %> questions with OpenAI's GPT-3</h1>
+
+    <% @qna.each_with_index do |q,i| %>
+        <%= text_field_tag "question_#{i}", q[0], readonly: true, class: "w-full" %>
+        <%= text_area_tag "answer_#{i}", q[1], readonly: true, class: "w-full" %>
+        <p class="mb-4"><%= q[2].to_s %> <%= q[3].to_s %></p>
+    <% end %>
+    
+    <%= link_to "Take another test", practice_topic_path(@topic), class: "btn btn-primary" %>
+<% end %>
+</div>

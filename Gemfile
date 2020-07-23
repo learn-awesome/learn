@@ -110,3 +110,5 @@ gem 'slim'
 gem 'slim-rails'
 
 gem 'sitemap_generator'
+
+gem 'openai'

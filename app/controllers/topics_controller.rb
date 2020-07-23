@@ -1,3 +1,5 @@
+require 'openai'
+
 class TopicsController < InheritedResources::Base
   include Secured
   before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update, :wiki_update]
@@ -106,6 +108,30 @@ class TopicsController < InheritedResources::Base
       flash[:success] = "Topic data updated from Wikipedia"
     end
     redirect_to @topic
+  end
+
+  def practice
+    @topic = Topic.from_param(params[:id])
+    unless @topic.is_gpt_enabled?
+      flash[:danger] = "GPT-3 is not enabled"
+      redirect_to @topic and return
+    end
+    if request.get?
+      @questions = @topic.gpt_questions
+    elsif request.post?
+      # check answers
+      qna = [
+        [params["question_0"], params["answer_0"]],
+        [params["question_1"], params["answer_1"]],
+        [params["question_2"], params["answer_2"]],
+        [params["question_3"], params["answer_3"]],
+        [params["question_4"], params["answer_4"]],
+        [params["question_5"], params["answer_5"]],
+        [params["question_6"], params["answer_6"]]
+    ].reject { |qa| qa.compact.empty? }
+      @qna = @topic.gpt_check_answers(qna)
+      render 'evaluate'
+    end
   end
 
   protected

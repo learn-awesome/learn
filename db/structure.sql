@@ -482,7 +482,8 @@ CREATE TABLE public.topics (
     image_url character varying,
     gitter_room_id character varying,
     description text,
-    wiki_title character varying
+    wiki_title character varying,
+    gpt_prompt text
 );
 
 
@@ -1563,6 +1564,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200711173541'),
 ('20200716071412'),
 ('20200721183427'),
-('20200721201658');
+('20200721201658'),
+('20200723051447');
 
 

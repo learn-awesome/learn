@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       post 'merge'
       get 'explore'
       post 'wiki_update'
+      get 'practice'
+      post 'practice'
     end
     collection do
       get 'search'
