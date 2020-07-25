@@ -55,6 +55,16 @@
     <%= form.label :second_parent_id, "Second Parent Topic", class: "text-gray-700" %><br>
     <%= form.select :second_parent_id,  Topic.where.not(id: @topic.id).order(:name).collect {|t| [t.name, t.id]}, { include_blank: "--- Select ---"}, class: "form-control" %>
     </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :gpt_quiz_prompt, "Prompt for GPT quiz", class: "text-gray-700" %><br>
+    <%= form.text_area :gpt_quiz_prompt, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+    <%= form.label :gpt_answer_prompt, "Prompt for GPT answers", class: "text-gray-700" %><br>
+    <%= form.text_area :gpt_answer_prompt, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+    </div>
     <% end %>
 
     <div class="flex justify-end mt-4">

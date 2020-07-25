@@ -112,12 +112,12 @@ class TopicsController < InheritedResources::Base
 
   def practice
     @topic = Topic.from_param(params[:id])
-    unless @topic.is_gpt_enabled?
+    unless @topic.is_gpt_enabled?(current_user)
       flash[:danger] = "GPT-3 is not enabled"
       redirect_to @topic and return
     end
     if request.get?
-      @questions = @topic.gpt_questions
+      @questions = @topic.gpt_questions(current_user)
     elsif request.post?
       # check answers
       qna = [
@@ -151,6 +151,6 @@ class TopicsController < InheritedResources::Base
 
   def topic_params
     params.require(:topic).permit(:display_name, :name, :search_index, :gitter_room,
-    :gitter_room_id, :parent_id, :second_parent_id, :description, :image_url)
+    :gitter_room_id, :parent_id, :second_parent_id, :description, :image_url, :gpt_quiz_prompt, :gpt_answer_prompt)
   end
 end

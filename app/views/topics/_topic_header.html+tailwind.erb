@@ -84,7 +84,7 @@
 
     <% if current_user %>
 
-    <% if topic.is_gpt_enabled? %>
+    <% if topic.is_gpt_enabled?(current_user) %>
     <span class="hidden sm:block ml-3 shadow-sm rounded-md">
       <%= link_to(practice_topic_path(topic), method: :get, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out") do %>
         <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">

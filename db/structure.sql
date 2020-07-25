@@ -483,7 +483,8 @@ CREATE TABLE public.topics (
     gitter_room_id character varying,
     description text,
     wiki_title character varying,
-    gpt_prompt text
+    gpt_quiz_prompt text,
+    gpt_answer_prompt text
 );
 
 

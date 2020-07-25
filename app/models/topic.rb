@@ -225,18 +225,15 @@ class Topic < ApplicationRecord
 		end
 	end
 
-	def gpt_prompt
-		"How well do you know physics? Answer these questions about physics:\n\nQuestion: How do aeroplanes fly?\nQuestion: How does a motor work?\nQuestion:"
+	def is_gpt_enabled?(user)
+		(Rails.env.development? || ['9f99ebd6-cf88-445c-ac1c-2d9243095264','8a16a2e4-dcb7-4167-a2a2-51d3af9d1613','87d3116b-07b2-42dd-abae-85382f8b1aa3'].include?(user.id)) && 
+			ENV['GPT3_PUBLIC_KEY'].presence && ENV['GPT3_SECRET_KEY'].presence && self.gpt_quiz_prompt.presence
 	end
 
-	def is_gpt_enabled?
-		Rails.env.development? && ENV['GPT3_PUBLIC_KEY'].presence && ENV['GPT3_SECRET_KEY'].presence && self.gpt_prompt.presence
-	end
-
-	def gpt_questions(max_tokens: 70)
-		return nil unless self.is_gpt_enabled?
+	def gpt_questions(user, max_tokens: 70)
+		return nil unless self.is_gpt_enabled?(user)
 		client = Openai::Client.new(pk: ENV['GPT3_PUBLIC_KEY'], sk: ENV['GPT3_SECRET_KEY'])
-		completions = client.completions(prompt: self.gpt_prompt, max_tokens: max_tokens)
+		completions = client.completions(prompt: self.gpt_quiz_prompt, max_tokens: max_tokens)
 		completions["choices"].first["text"].split("Question: ").map(&:strip)
 	end
 
