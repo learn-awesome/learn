@@ -2,8 +2,6 @@
 
 # LearnAwesome
 
-[![Chat for users](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
-[![Chat for developers](https://img.shields.io/badge/-Gitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gitter.im/learn-awesome/community)
 [![Twitter](https://img.shields.io/badge/-Twitter-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://twitter.com/learn_awesome)
 
 #### Awesome learning resources organized by topics, formats and difficulty. Optimal learning paths for any topic.
@@ -16,13 +14,13 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 # To Do
 
-- Build a mobile app (currently, there is a minimal Android version built in Flutter and a website bundled an app for iOS). A learning assistant should be always near you.
+- Build a mobile app (currently, there is a minimal Android version built in Flutter. A learning assistant should be always near you.
 
-- Improve automatic extraction of metadata from links. I did this for books, but it remains for other formats like videos etc.
+- Improve automatic extraction of metadata from links. I did this for books, but it remains pending for other formats like videos etc.
 
 - Improve the topic hierarchy for easy navigation.
 
-- Improve the browser extension or the flashcard module.
+- Improve the browser extension and the flashcard module.
 
 - Add richer metadata to items so that advanced search becomes more useful.
 

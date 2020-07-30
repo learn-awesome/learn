@@ -2,7 +2,7 @@
     <div class="py-4 px-6">
         <p class="mb-4">
             <% if @person.image_url.present? %>
-                <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="inline h-64 object-cover object-center">
+                <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="inline h-16 object-cover object-center">
             <% end %>
             <span class="text-xl font-semibold text-gray-800">
             <%= @person.name %>
