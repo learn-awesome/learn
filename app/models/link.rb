@@ -27,9 +27,13 @@ class Link < ApplicationRecord
   validates :url, uniqueness: true
   validate :valid_url?
 
+  BLACKLISTED_DOMAINS = [
+    ''
+  ]
+
   def valid_url?
     uri = URI.parse(url)
-    uri.is_a?(URI::HTTP) && !uri.host.nil?
+    uri.is_a?(URI::HTTP) && !uri.host.nil? && !BLACKLISTED_DOMAINS.include?(uri.host)
   rescue URI::InvalidURIError
     errors.add(:url, "is invalid")
   end
