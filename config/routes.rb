@@ -51,6 +51,10 @@ Rails.application.routes.draw do
     member do
       get 'wikidata'
     end
+
+    collection do
+      get 'discover'
+    end
   end
 
   resources  :items do
@@ -90,10 +94,13 @@ Rails.application.routes.draw do
       get 'onboarding'
       get 'garden'
       post 'garden'
+      get 'upgrade_role'
+      get 'downgrade_role'
     end
 
     collection do
       get 'webfinger'
+      get 'discover'
     end
 
     resources :collections do

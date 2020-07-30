@@ -2,7 +2,7 @@ require 'oauth'
 
 class UsersController < ApplicationController
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings, :garden]
+  before_action :logged_in_using_omniauth?, only: [:edit, :update, :toggle_follow, :settings, :garden, :upgrade_role, :downgrade_role]
   skip_before_action :verify_authenticity_token, :only => [:inbox]
 
   def index
@@ -24,6 +24,46 @@ class UsersController < ApplicationController
   def edit
   	@user = User.find(params[:id])
   end
+
+  def upgrade_role
+    @user = User.find(params[:id])
+    if @user and current_user and current_user.is_admin?
+      if @user.is_regular?
+        @user.role = 'moderator'
+      elsif @user.is_moderator?
+        @user.role = 'admin'
+      end
+      @user.save
+    else
+      flash[:danger] = "Not permitted"
+    end
+    redirect_to @user
+  end
+
+  def downgrade_role
+    @user = User.find(params[:id])
+    if @user and current_user and current_user.is_admin?
+      if @user.is_admin?
+        @user.role = 'moderator'
+      elsif @user.is_moderator?
+        @user.role = 'regular'
+      end
+      @user.save
+    else
+      flash[:danger] = "Not permitted"
+    end
+    redirect_to @user
+  end
+
+  def discover
+    user = User.discover
+    if user
+      redirect_to user
+    else
+      flash[:danger] = "No users exist."
+      redirect_to root_path
+    end
+end
 
   def garden
     # Just ensuring that user is signed in

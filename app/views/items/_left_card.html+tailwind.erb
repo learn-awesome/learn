@@ -19,7 +19,7 @@
 			</p>
 		</div>
 		<% if !@item.is_syllabus? %>
-		<p><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
+		<p class="mb-4"><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
 		<% end %>
 
 		<% if @item.links.size > 1 %>

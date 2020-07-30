@@ -6,7 +6,7 @@
 
 		<h2 class="mb-2"><%= @user.nickname %></h2>
 		<% if @user.email.present? and (@user.id == current_user.try(&:id) || current_user.try(&:is_core_dev?)) %>
-			<h5 class="text-gray-900 text-sm"><%= @user.email %></h5>
+			<h5 class="text-gray-900 text-sm"><%= @user.email %> (<%= @user.role %>)</h5>
 		<% end %>
 		<h5 class="text-muted mb-4"><%= @user.bio %></h5>
 
@@ -79,18 +79,16 @@
 								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style} mr-1" %>
 							<% end %>
 						</div>
+</div>
 
-				<div class="row">
-					<div class="col-lg-12">
-						<% if @user.followers.any? %>
-							<p>Followers: <% @user.followers.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
-						<% end %>
-						<% if @user.following.any? %>
-							<p>Following: <% @user.following.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
-						<% end %>
-					</div>
-				</div>
-
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Followers & Following</h1>
+	<% if @user.followers.any? %>
+	<p>Followers: <% @user.followers.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
+	<% end %>
+	<% if @user.following.any? %>
+	<p>Following: <% @user.following.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
+	<% end %>
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
@@ -100,7 +98,6 @@
 	   <%= render rev.item %>
 	  <% end %>
 	</div>
-</h1>
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
@@ -120,7 +117,6 @@
 	   <%= render rev.item %>
 	  <% end %>
 	</div>
-</h1>
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">

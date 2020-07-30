@@ -73,4 +73,14 @@ class PeopleController < ApplicationController
 	def index
 		@people = Person.order(:image_url).limit(500)
 	end
+
+	def discover
+		expert = Person.discover
+		if expert
+		  redirect_to expert
+		else
+		  flash[:danger] = "No experts exist."
+		  redirect_to root_path
+		end
+	end
 end

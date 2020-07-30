@@ -134,14 +134,7 @@ class User < ApplicationRecord
 	end
 
 	def self.core_devs
-		[
-			'58175aad-22f9-4a40-a6d0-b665762c8f8d',
-			'321d1985-4713-41f4-8d9d-069e48ebf2de',
-			'02e667dc-08c9-4663-a139-c01abe83f8b8',
-			'a7586583-51b2-4715-87f8-85d506fd3af2',
-			'1eeba9e9-6d4f-4a7a-b4df-585ae82fc441',
-			'8a16a2e4-dcb7-4167-a2a2-51d3af9d1613'
-		]
+		User.where(role: "admin").all.map(&:id)
 	end
 
 	def email
@@ -295,6 +288,10 @@ class User < ApplicationRecord
 
 		User.find(old_user_id).destroy # clean up
 		UserPointsService.call(self)
+	end
+
+	def self.discover
+		User.order('RANDOM()').first
 	end
 
 	def onboarding

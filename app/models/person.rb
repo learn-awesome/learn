@@ -46,6 +46,10 @@ class Person < ApplicationRecord
 		end
 	end
 
+	def self.discover
+		Person.order('RANDOM()').first
+	end
+
 	def avatar_image
 		#TODO: Should be kept as a column
 		self.image_url || "/stream/assets/img/logo-mobile.png"
@@ -117,7 +121,7 @@ class Person < ApplicationRecord
 		#title, buyLink, imageUrl, yearPublished
 
 		recommendedBooks.each do |book|
-			item = Item.where(name: book["title"]).first
+			item = Item.where(name: book["title"], item_type_id: 'book').first
 			if item.nil?
 				# Should create an item and idea_set
 				puts "Skipping #{book['title']}"
