@@ -285,7 +285,8 @@ CREATE TABLE public.items (
     isbn13 character varying,
     cost numeric(8,2),
     language character varying,
-    overall_score numeric(3,2)
+    overall_score numeric(3,2),
+    protected_description text
 );
 
 
@@ -1566,6 +1567,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200716071412'),
 ('20200721183427'),
 ('20200721201658'),
-('20200723051447');
+('20200723051447'),
+('20200730185439');
 
 

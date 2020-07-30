@@ -56,10 +56,10 @@
 				<img src="https://images.unsplash.com/photo-1550565118-3a14e8d0386f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="personal finance" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Personal Finance</h1>
 			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
+			<!-- <%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
 				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Cooking with Food Science</h1>
-			<% end %>
+			<% end %> -->
 			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
 				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-24 object-cover object-center">
 				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
@@ -67,8 +67,10 @@
 
 </div>
 
+<% if @following_reviews.any? %>
 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Activity</h3>
 
 <div class="grid gap-5 max-w-lg mx-auto lg:grid-cols-4 lg:max-w-none mb-4">
     <%= render partial: 'dashboard/review', collection: @following_reviews %>
 </div>
+<% end %>

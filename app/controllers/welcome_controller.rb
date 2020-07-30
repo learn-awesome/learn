@@ -72,7 +72,6 @@ class WelcomeController < ApplicationController
   end
 
   def digitalgardensetup
-    request.variant = :tailwind #override as we just have one version
   end
 
   def browser_addon
@@ -84,8 +83,6 @@ class WelcomeController < ApplicationController
   end
 
   def programs
-    render layout: 'tailwind'
-    # redirect_to "https://airtable.com/shrwVW2ihB43qgTmm/tblvYQzpnMRApGWvF"
   end
 
   def sitemap

@@ -9,23 +9,18 @@
 	</div>
     <div class="mt-2">
 		<p class="text-2xl text-gray-900 font-bold"><%= @item.display_name %></p>
-		<% if @item.is_syllabus? %>
-			<% if @item.display_blurb.present? and params['syllabus'] != 'true' %>
-				<%= @item.display_blurb %>
-			<% end %>
-			<%= @item.display_description %>
-		<% else %>
-			<div class="mt-2 mb-4 text-gray-600">
-				<p>
+		<div class="prose">
+			<p>
 				<% if @item.large_thumbnail.present? %>
 					<a href="<%= @item.primary_link.url %>" target="_blank"><img src="<%= @item.large_thumbnail %>" class="mr-2 mb-2" style="max-height: 400px;"/></a>
 				<% end %>
 				<%= @item.display_description %>
-				
-				</p>
-				<p><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
-			</div>
-		<% end %>
+				<%= @item.display_protected_description %>
+			</p>
+			<% if !@item.is_syllabus? %>
+			<p><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
+			<% end %>
+		</div>
 
 		<% if @item.links.size > 1 %>
 		<div class="mb-4">Also on: 

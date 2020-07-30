@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
       @description = @extracted[:description]
       @metadata = @extracted[:metadata]
     else
+      @item_type = params[:item_type].presence
       @item_type = Item.suggest_format(@item_url) if @item_url.present?
     end
 
@@ -199,6 +200,7 @@ class ItemsController < ApplicationController
       item.typical_age_range = params[:typical_age_range]
       item.year = params[:year]
       item.description = params[:description].try(:strip)
+      item.protected_description = params[:protected_description].try(:strip)
       item.image_url = params[:image_url]
       item.idea_set.topic_ids = params[:topics]
       if item.item_type_id != 'learning_plan' && item.links.present?
@@ -351,7 +353,7 @@ class ItemsController < ApplicationController
 
     def item_params
       params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, 
-      :description, :metadata, :page_count, :goodreads_rating, :isbn, :isbn13, :cost, :language)
+      :description, :metadata, :page_count, :goodreads_rating, :isbn, :isbn13, :cost, :language, :protected_description)
     end
 
     def set_has_used_browser_extension

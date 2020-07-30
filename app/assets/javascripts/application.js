@@ -25,42 +25,6 @@ function copyToClipboard(link) {
   $temp.remove();
 }
 
-function animateHeadline(){
-
-	var querylink = document.getElementById("querylink");
-
-	var versions = [
-	  {
-	  	msg: "Show me <u>podcasts</u> about <u>machine learning</u> which are <u>30 to 60 minutes</u> long and are <u>challenging</u>.",
-	  	link: "item_type=audio&length=30-60&quality=challenging&topic=machine-learning&commit=Search"
-	  },
-	  {
-	  	msg: "Show me <u>books</u> about <u>abstract algebra</u> which are <u>more than 3 hours</u> long and are <u>visual</u>.",
-	  	link: "item_type=book&length=180-9999&quality=visual&topic=abstract-algebra&commit=Search"
-	  },
-	  {
-	  	msg: "Show me <u>group chats</u> about <u>cooking</u>.",
-	  	link: "item_type=chat&topic=cooking&commit=Search"
-	  },
-	  {
-	  	msg: "Show me <u>courses</u> about <u>learning</u> which are <u>10 to 20 hours</u> long and are <u>inspirational</u>.",
-	  	link: "item_type=course&length=180-9999&quality=inspirational&topic=learning&commit=Search"
-	  }
-	];
-	
-	new Typed("#queryheadline", {
-		strings: versions.map((o) => o.msg),
-		typeSpeed: 10,
-		loop: true,
-		backDelay: 4000,
-		backSpeed: 10,
-		showCursor: false,
-		onStringTyped: function(arrayPos, self){
-			querylink.href = "/items/query?" + versions[arrayPos].link;
-		}
-	});
-}
-
 function autosuggest(){
 	var bestResults = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),

@@ -587,45 +587,18 @@ class Item < ApplicationRecord
     self.name
   end
 
-  class CustomMarkdownRender < Redcarpet::Render::HTML
-      def block_quote(quote)
-        %(<blockquote class="my-custom-class">#{quote}</blockquote>)
-      end
-
-      def paragraph(text)
-          %(<p class="mb-2">#{text}</p>)
-      end
-
-      def header(text, header_level)
-          %(<h#{header_level} class="text-#{4-header_level}xl mt-2 mb-1 font-semibold">#{text}</h#{header_level}>)
-      end
-
-      def link(lk, target, content)
-          %(<a class="underline text-blue-500 hover:text-blue-700" href="#{lk}" target="_blank">#{content}</a>)
-      end
-  end
-
-  def display_blurb
-    if self.is_syllabus?
-      return self.description.to_s.split("--BLURBDOC--").first.html_safe if self.description.to_s.split("--BLURBDOC--").size > 1
-    end
-  end
-
   def display_description
-    # TODO: Why not allow markdown for all item descriptions instead of only syllabuses?
-    # Could lead to styling abuse by using headings, links, lists etc
-    if self.is_syllabus?
-      # this is a native learning plan
-      markdown = Redcarpet::Markdown.new(CustomMarkdownRender, autolink: false)
-      if self.description.to_s.split("--BLURBDOC--").size > 1
-        html = markdown.render(self.description.to_s.split("--BLURBDOC--").last.strip).html_safe
-      else
-        html = markdown.render(self.description.to_s.strip)
-      end
-      return html #self.replace_la_links_with_embeds(html)
-    else
-      return simple_format(self.description.to_s.strip)
-    end
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: false)
+    html = markdown.render(self.description.to_s.strip)
+    return html.html_safe #self.replace_la_links_with_embeds(html)
+    # simple_format(self.description.to_s.strip)
+  end
+
+  def display_protected_description
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: false)
+    html = markdown.render(self.protected_description.to_s.strip)
+    return html.html_safe #self.replace_la_links_with_embeds(html)
+    # simple_format(self.protected_description.to_s.strip)
   end
 
   def replace_la_links_with_embeds(html)

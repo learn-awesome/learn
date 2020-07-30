@@ -16,6 +16,9 @@
     <%= form.label :description, "Description:" %>
     <%= form.text_area :description %>
 
+    <%= form.label :protected_description, "Protected Description (only shown if user is logged in):" %>
+    <%= form.text_area :protected_description %>
+
     <%= form.label :item_type_id, "Format" %>
     <%= form.select :item_type_id, ItemType.order(:display_name_plural).collect {|t| [t.display_name_plural, t.id]}, { include_blank: "--- Select Type ---"} %>
 

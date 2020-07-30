@@ -30,11 +30,16 @@ $(() => {
       ...defaultEditorConfig,
       element: document.getElementById("flash_card_answer")
     });
-  } else if (document.getElementById("new_syllabus_form") && document.getElementById("item_description")) {
-    // only on the new syllabus form
-    const syllabusEditor = new SimpleMDE({
+  } else if (document.getElementById("item_description")) {
+    
+    const protectedItemEditor = new SimpleMDE({
       ...defaultEditorConfig,
       element: document.getElementById("item_description")
+    });
+
+    const protectedItemDescEditor = new SimpleMDE({
+      ...defaultEditorConfig,
+      element: document.getElementById("item_protected_description")
     });
   } else return;
 });

@@ -4,9 +4,9 @@
 
     <% @questions.each_with_index do |q,i| %>
         <%= text_field_tag "question_#{i}", q, readonly: true, class: "w-full" %>
-        <%= text_area_tag "answer_#{i}", "", minlength: 4, maxlength: 200, required: true, class: "w-full", placeholder: "Type your answer here" %>
+        <!-- <%= text_area_tag "answer_#{i}", "", minlength: 4, maxlength: 200, required: true, class: "w-full", placeholder: "Type your answer here" %> -->
     <% end %>
     
-    <%= submit_tag "Check Answers with GPT-3" %>
+    <%= link_to "Get New Questions", practice_topic_path(@topic), class: "btn btn-primary" %>
 <% end %>
 </div>
