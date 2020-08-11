@@ -13,7 +13,7 @@
 
   <meta property="og:title" content="<%= @topic.display_name %> :: LearnAwesome.org">
   <meta property="og:description" content="The best courses, podcasts, books blogs, videos, apps for learning <%= @topic.search_keyword %>">
-  <meta property="og:image" content="https://learnawesome.org/stream/assets/img/ogimage.png">
+  <meta property="og:image" content="<%= @topic.image_url.html_safe %>">
   <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
   <meta name="twitter:card" content="summary_large_image">
 <% end %>
