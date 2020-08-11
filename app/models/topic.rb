@@ -126,7 +126,9 @@ class Topic < ApplicationRecord
 	end
 
 	def self.discover
-		Topic.order('RANDOM()').first
+		topic = Topic.order('RANDOM()').first
+		return topic if topic.items.count > 5
+		return Topic.discover
 	end
 
 	def self.searchable_language
@@ -223,6 +225,20 @@ class Topic < ApplicationRecord
 			Rails.logger.debug "Saving #{self.wiki_title}"
 			self.save
 		end
+	end
+
+	def message_for_twitter_update
+		topic = self
+		item_type_counts = topic.items.group_by(&:item_type).sort_by { |k,v| v.size * -1 }[0..3]
+		if item_type_counts.present?
+		  message = "Today's random topic is #{topic.display_name}."
+		  message += " We have "
+		  message += item_type_counts.map { |p| "#{p.last.size} #{p.first.display_name_plural}" }.join(", ")
+		  message += " on this topic. Check it out here: "
+		  message += Rails.application.routes.url_helpers.topic_url(topic)
+		  return message
+		end
+		return nil
 	end
 
 	def is_gpt_enabled?(user)
