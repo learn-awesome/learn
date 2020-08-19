@@ -1,6 +1,6 @@
   <div class="form-inline mb-4 nested-fields">
     <div class="form-group mr-2">
-      <%= f.collection_select :item_type_id, ItemType.all, :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
+      <%= f.collection_select :item_type_id, ItemType.all.sort_by(&:display_name_plural), :id, :display_name_plural, {required: true, prompt: "Select Format"}, required: true, class: "form-control" %>
     </div>
 
     <%= f.fields_for :links do |l| %>
