@@ -629,6 +629,15 @@ class Item < ApplicationRecord
     return nil # success. Return msg in case of failure
   end
 
+  def rss_content
+    "<a href='#{self.primary_link.url}'>#{self.primary_link.url}</a>".html_safe +
+    self.description.to_s
+  end
+
+  def rss_title
+    "#{self.item_type_id.to_s}: " + self.name.to_s
+  end
+
   def related_items
     self.idea_set.items.reject { |i| i.id == self.id }
   end
