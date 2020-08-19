@@ -16,6 +16,9 @@
   <meta property="og:image" content="<%= @topic.image_url.html_safe %>">
   <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
   <meta name="twitter:card" content="summary_large_image">
+
+  <%= auto_discovery_link_tag :atom, topic_url(@topic, format: :atom), title: "New learning resources on #{@topic.display_name} as ATOM" %>
+  <%= auto_discovery_link_tag :rss, topic_url(@topic, format: :rss), title: "New learning resources on #{@topic.display_name} as RSS" %>
 <% end %>
 
 <%= render @topic %>

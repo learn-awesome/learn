@@ -1,4 +1,4 @@
-items = @topic.items.sort_by { |i| i.created_at }
+items = @topic.items.sort_by { |i| i.created_at }.reverse.take(20)
 
 atom_feed do |feed|
     feed.title("Topic: #{@topic.display_name} at LearnAwesome.org")
