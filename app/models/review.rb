@@ -19,17 +19,6 @@
 #  is_posted_on_social_media :boolean          default("false")
 #  private_notes             :text
 #
-# Indexes
-#
-#  index_reviews_on_item_id              (item_id)
-#  index_reviews_on_user_id              (user_id)
-#  index_reviews_on_user_id_and_item_id  (user_id,item_id) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_rails_...  (item_id => items.id)
-#  fk_rails_...  (user_id => users.id)
-#
 
 require 'httparty'
 

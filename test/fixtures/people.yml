@@ -2,18 +2,20 @@
 #
 # Table name: people
 #
-#  id          :uuid             not null, primary key
-#  name        :string           not null
-#  description :text
-#  website     :string
-#  email       :string
-#  twitter     :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  metadata    :json             not null
-#  goodreads   :string
-#  image_url   :string
-#  kind        :string
+#  id            :uuid             not null, primary key
+#  name          :string           not null
+#  description   :text
+#  website       :string
+#  email         :string
+#  twitter       :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  metadata      :json             not null
+#  goodreads     :string
+#  image_url     :string
+#  kind          :string
+#  second_kind   :string
+#  wikipedia_url :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

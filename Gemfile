@@ -112,3 +112,5 @@ gem 'slim-rails'
 gem 'sitemap_generator'
 
 gem 'openai'
+
+gem 'slack-ruby-client'

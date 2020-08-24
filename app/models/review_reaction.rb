@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: review_reactions
+#
+#  id         :uuid             not null, primary key
+#  kind       :string           not null
+#  body       :text
+#  user_id    :uuid             not null
+#  review_id  :uuid             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class ReviewReaction < ApplicationRecord
     belongs_to :user
     belongs_to :review

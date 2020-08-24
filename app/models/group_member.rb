@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: group_members
+#
+#  id         :uuid             not null, primary key
+#  group_id   :uuid             not null
+#  user_id    :uuid             not null
+#  role       :string           not null
+#  status     :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class GroupMember < ApplicationRecord
 	belongs_to :group, inverse_of: :group_members
 	belongs_to :user, inverse_of: :group_members

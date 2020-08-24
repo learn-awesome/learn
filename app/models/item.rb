@@ -2,48 +2,36 @@
 #
 # Table name: items
 #
-#  id                  :uuid             not null, primary key
-#  name                :string           not null
-#  item_type_id        :string           not null
-#  estimated_time      :integer
-#  time_unit           :string           default("minutes"), not null
-#  required_expertise  :integer
-#  idea_set_id         :uuid             not null
-#  user_id             :uuid             not null
-#  year                :integer
-#  image_url           :string
-#  inspirational_score :decimal(3, 2)
-#  educational_score   :decimal(3, 2)
-#  challenging_score   :decimal(3, 2)
-#  entertaining_score  :decimal(3, 2)
-#  visual_score        :decimal(3, 2)
-#  interactive_score   :decimal(3, 2)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  typical_age_range   :string
-#  description         :text
-#  metadata            :json             not null
-#  page_count          :integer
-#  goodreads_rating    :decimal(3, 2)
-#  amazon_rating       :decimal(3, 2)
-#  isbn                :string
-#  isbn13              :string
-#  cost                :decimal(8, 2)
-#  language            :string
-#  overall_score       :decimal(3, 2)
-#
-# Indexes
-#
-#  index_items_on_idea_set_id   (idea_set_id)
-#  index_items_on_item_type_id  (item_type_id)
-#  index_items_on_user_id       (user_id)
-#  trgm_items_name_indx         (name) USING gist
-#
-# Foreign Keys
-#
-#  fk_rails_...  (idea_set_id => idea_sets.id)
-#  fk_rails_...  (item_type_id => item_types.id)
-#  fk_rails_...  (user_id => users.id)
+#  id                    :uuid             not null, primary key
+#  name                  :string           not null
+#  item_type_id          :string           not null
+#  estimated_time        :integer
+#  time_unit             :string           default("minutes"), not null
+#  required_expertise    :integer
+#  idea_set_id           :uuid             not null
+#  user_id               :uuid             not null
+#  year                  :integer
+#  image_url             :string
+#  inspirational_score   :decimal(3, 2)
+#  educational_score     :decimal(3, 2)
+#  challenging_score     :decimal(3, 2)
+#  entertaining_score    :decimal(3, 2)
+#  visual_score          :decimal(3, 2)
+#  interactive_score     :decimal(3, 2)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  typical_age_range     :string
+#  description           :text
+#  metadata              :json             not null
+#  page_count            :integer
+#  goodreads_rating      :decimal(3, 2)
+#  amazon_rating         :decimal(3, 2)
+#  isbn                  :string
+#  isbn13                :string
+#  cost                  :decimal(8, 2)
+#  language              :string
+#  overall_score         :decimal(3, 2)
+#  protected_description :text
 #
 require 'uri'
 require 'nokogiri'
@@ -69,6 +57,7 @@ class Item < ApplicationRecord
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
   after_create :update_points # :notify_gitter
+  after_create :notify_slack
   after_destroy :clear_cache
   
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
@@ -654,6 +643,16 @@ class Item < ApplicationRecord
       message = "New #{self.item_type} added in #{self.topics.map(&:name).join(',')}: #{self.name}: #{item_url}"
       self.topics.map { |t| t.gitter_room_id.presence || '5ca7a4aed73408ce4fbced18'}.compact.uniq.each do |room_id| # learn-awesome/community
         GitterNotifyJob.perform_later(message,room_id)
+      end
+    end
+  end
+
+  def notify_slack
+    if Rails.env.production?
+      item_url = Rails.application.routes.url_helpers.item_url(self)
+      message = "New #{self.item_type} added in #{self.topics.map(&:name).join(',')}: #{self.name}: #{item_url}"
+      self.topics.map { |t| t.slack_room_id.presence || 'new-items'}.compact.uniq.each do |room_id|
+        SlackNotifyJob.perform_later(message,room_id)
       end
     end
   end

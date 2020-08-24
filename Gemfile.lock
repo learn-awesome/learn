@@ -127,6 +127,8 @@ GEM
       i18n (~> 1.6.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.12.2)
     flamegraph (0.9.5)
     flattened_active_admin (0.0.7)
@@ -138,6 +140,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    gli (2.19.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -326,6 +329,13 @@ GEM
     simple_oauth (0.3.1)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
+    slack-ruby-client (0.14.6)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      gli
+      hashie
+      websocket-driver
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -432,6 +442,7 @@ DEPENDENCIES
   sentry-raven
   sidekiq
   sitemap_generator
+  slack-ruby-client
   slim
   slim-rails
   spring

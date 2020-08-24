@@ -13,14 +13,6 @@
 #  notes       :text
 #  score       :decimal(3, 2)
 #
-# Indexes
-#
-#  index_recommendations_on_idea_set_id  (idea_set_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (idea_set_id => idea_sets.id)
-#
 
 require 'test_helper'
 

@@ -9,17 +9,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_user_topics_on_topic_id  (topic_id)
-#  index_user_topics_on_user_id   (user_id)
-#  uniq_user_topic_action         (user_id,topic_id,action) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_rails_...  (topic_id => topics.id)
-#  fk_rails_...  (user_id => users.id)
-#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 

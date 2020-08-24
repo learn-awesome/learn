@@ -151,6 +151,6 @@ class TopicsController < InheritedResources::Base
 
   def topic_params
     params.require(:topic).permit(:display_name, :name, :search_index, :gitter_room,
-    :gitter_room_id, :parent_id, :second_parent_id, :description, :image_url, :gpt_quiz_prompt, :gpt_answer_prompt)
+    :gitter_room_id, :slack_room_id, :parent_id, :second_parent_id, :description, :image_url, :gpt_quiz_prompt, :gpt_answer_prompt)
   end
 end

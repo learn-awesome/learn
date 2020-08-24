@@ -10,11 +10,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_user_vouchers_on_user_id     (user_id)
-#  index_user_vouchers_on_voucher_id  (voucher_id)
-#
 
 class UserVoucher < ApplicationRecord
 	belongs_to :user

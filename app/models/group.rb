@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id          :uuid             not null, primary key
+#  name        :string           not null
+#  description :text
+#  image_url   :string
+#  website_url :string
+#  is_public   :boolean          default("false"), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 require 'digest'
 
 class Group < ApplicationRecord
