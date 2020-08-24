@@ -2,32 +2,22 @@
 #
 # Table name: topics
 #
-#  id               :uuid             not null, primary key
-#  name             :string           not null
-#  search_index     :string           not null
-#  gitter_room      :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  display_name     :string
-#  user_id          :uuid
-#  parent_id        :uuid
-#  second_parent_id :uuid
-#  image_url        :string
-#  gitter_room_id   :string
-#  description      :text
-#
-# Indexes
-#
-#  index_topics_on_name              (name) UNIQUE
-#  index_topics_on_parent_id         (parent_id)
-#  index_topics_on_second_parent_id  (second_parent_id)
-#  index_topics_on_user_id           (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (parent_id => topics.id)
-#  fk_rails_...  (second_parent_id => topics.id)
-#  fk_rails_...  (user_id => users.id)
+#  id                :uuid             not null, primary key
+#  name              :string           not null
+#  search_index      :string           not null
+#  gitter_room       :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  display_name      :string
+#  user_id           :uuid
+#  parent_id         :uuid
+#  second_parent_id  :uuid
+#  image_url         :string
+#  gitter_room_id    :string
+#  description       :text
+#  wiki_title        :string
+#  gpt_quiz_prompt   :text
+#  gpt_answer_prompt :text
 #
 
 require 'openai'
@@ -126,9 +116,12 @@ class Topic < ApplicationRecord
 	end
 
 	def self.discover
+		Topic.order('RANDOM()').first
+	end
+
+	def self.discover_with_items
 		topic = Topic.order('RANDOM()').first
-		return topic unless Rails.env.production?
-		return topic if topic.items.count > 5
+		return topic if topic.items.count > 2
 		return Topic.discover
 	end
 
