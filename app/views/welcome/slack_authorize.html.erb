@@ -1,0 +1,11 @@
+<% if @message.blank? %>
+  <h1>Success!</h1>
+
+  <p>LearnAwesomeBot is now added to your workspace!</p>
+
+  <p>Your users can now start using <code>/startlearning [topic]</code> and <code>/stoplearning [topic]</code> in any of your public channels.</p>
+
+  <p>Happy learning!</p>
+<% else %>
+  <%= @message %>
+<% end %>

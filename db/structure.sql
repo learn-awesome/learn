@@ -422,6 +422,28 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: slack_authorizations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.slack_authorizations (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    token json NOT NULL
+);
+
+
+--
+-- Name: slack_subscriptions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.slack_subscriptions (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    slack_authorization_id uuid NOT NULL,
+    channel_id character varying NOT NULL,
+    topic_id uuid NOT NULL
+);
+
+
+--
 -- Name: social_logins; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -769,6 +791,22 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: slack_authorizations slack_authorizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.slack_authorizations
+    ADD CONSTRAINT slack_authorizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slack_subscriptions slack_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.slack_subscriptions
+    ADD CONSTRAINT slack_subscriptions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: social_logins social_logins_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1073,6 +1111,20 @@ CREATE UNIQUE INDEX index_reviews_on_user_id_and_item_id ON public.reviews USING
 
 
 --
+-- Name: index_slack_subscriptions_on_slack_authorization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_slack_subscriptions_on_slack_authorization_id ON public.slack_subscriptions USING btree (slack_authorization_id);
+
+
+--
+-- Name: index_slack_subscriptions_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_slack_subscriptions_on_topic_id ON public.slack_subscriptions USING btree (topic_id);
+
+
+--
 -- Name: index_social_logins_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1232,6 +1284,14 @@ CREATE UNIQUE INDEX uniq_user_topic_action ON public.user_topics USING btree (us
 
 ALTER TABLE ONLY public.user_topics
     ADD CONSTRAINT fk_rails_0aa5b25f82 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: slack_subscriptions fk_rails_0eeea316fa; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.slack_subscriptions
+    ADD CONSTRAINT fk_rails_0eeea316fa FOREIGN KEY (slack_authorization_id) REFERENCES public.slack_authorizations(id);
 
 
 --
@@ -1491,6 +1551,14 @@ ALTER TABLE ONLY public.topic_reactions
 
 
 --
+-- Name: slack_subscriptions fk_rails_f22957c2b3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.slack_subscriptions
+    ADD CONSTRAINT fk_rails_f22957c2b3 FOREIGN KEY (topic_id) REFERENCES public.topics(id);
+
+
+--
 -- Name: topic_relations fk_rails_f2d3454ee0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1584,6 +1652,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200721201658'),
 ('20200723051447'),
 ('20200730185439'),
-('20200824210734');
+('20200824210734'),
+('20200824230523');
 
 

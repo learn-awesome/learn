@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:csp_report]
+  skip_before_action :verify_authenticity_token, :only => [:csp_report, :slack_authorize, :slack_command]
 
   def index
   	if current_user
@@ -78,7 +78,7 @@ class WelcomeController < ApplicationController
     redirect_to browser_extension(request)
   end
 
-  def slack
+  def join_slack
     redirect_to "https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ"
   end
 
@@ -97,6 +97,42 @@ class WelcomeController < ApplicationController
   end
 
   def csp_report
+    Rails.logger.info request.body.read
+  end
+
+  def slack_authorize
+    Rails.logger.info request.body.read
+    code = params[:code]
+    client_id = ENV['SLACK_CLIENT_ID']
+    client_secret = ENV['SLACK_CLIENT_SECRET']
+
+    if client_secret.blank? || client_id.blank? || code.blank?
+      @message = "Token(s) missing for Slack authorization"
+      return
+    end
+
+    resp = HTTParty.get('https://slack.com/api/oauth.v2.access', query: {code: code, client_id: client_id, client_secret: client_secret})
+    if resp.code == 200
+      data = JSON.parse(resp.body)
+      if data['ok']
+        # https://api.slack.com/authentication/oauth-v2
+        team_id = data["team"]["id"]
+        authz = SlackAuthorization.all.select { |a| a.token['team']['id'] == team_id }.first || SlackAuthorization.new
+        authz.token = data # overwrite if existing
+        unless authz.save
+          @message = "Could not save authorization: #{authz.errors.inspect}"
+        end
+      else
+        @message = "Failure in /slack_authorize: #{resp.body}"
+      end
+    else
+      @message = "Something went wrong in /slack_authorize"
+    end
+  end
+
+  def slack_command
+    # /startlearning [topic]
+    # /stoplearning [topic]
     Rails.logger.info request.body.read
   end
 
