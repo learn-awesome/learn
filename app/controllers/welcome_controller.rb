@@ -79,7 +79,10 @@ class WelcomeController < ApplicationController
   end
 
   def join_slack
-    redirect_to "https://join.slack.com/t/learnawesomeorg/shared_invite/zt-evhyahcw-FpHIMYqz3S7YkB54Aq2HPQ"
+    if params['oauth_initiate'].to_s == 'true'
+      redirect_to "https://slack.com/oauth/v2/authorize?client_id=1084096741861.1332746175969&scope=chat:write,chat:write.public,commands&user_scope="
+      return
+    end
   end
 
   def programs
