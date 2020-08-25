@@ -158,10 +158,10 @@ class WelcomeController < ApplicationController
     if command == "/startlearning"
       SlackSubscription.find_or_create_by(slack_authorization_id: authz.id, topic_id: topic.id, channel_id: channel_id)
       item_url = Rails.application.routes.url_helpers.item_url(topic.items.shuffle.first)
-      render plain: "Subscribed to #{topic.display_name}. Try this? #{item_url}"
+      render json: {"response_type": "in_channel", "text": "Subscribed to #{topic.display_name}. Try this? #{item_url}"}
     elsif command == "/stoplearning"
       SlackSubscription.where(slack_authorization_id: authz.id, topic_id: topic.id, channel_id: channel_id).first.try(&:destroy)
-      render plain: "Unsubscribed to #{topic.display_name}"
+      render json: {"response_type": "in_channel", "text": "Unsubscribed to #{topic.display_name}"}
     end
   end
 
