@@ -122,7 +122,7 @@ class Topic < ApplicationRecord
 	def self.discover_with_items
 		topic = Topic.order('RANDOM()').first
 		return topic if topic.items.count > 2
-		return Topic.discover
+		return Topic.discover_with_items
 	end
 
 	def self.searchable_language

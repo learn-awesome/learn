@@ -134,9 +134,35 @@ class WelcomeController < ApplicationController
   end
 
   def slack_command
+    # https://api.slack.com/interactivity/slash-commands#command_structure
     # /startlearning [topic]
     # /stoplearning [topic]
-    Rails.logger.info request.body.read
+    # params will be like:
+    # {"token"=>"", "team_id"=>"T5P64TVP1", "team_domain"=>"indiumtalk", "channel_id"=>"C019EHTKWLT", "channel_name"=>"learnbot", "user_id"=>"U5NBAPKEE", "user_name"=>"nilesh", "command"=>"/startlearning", "text"=>"python", "api_app_id"=>"A019SMY55UH", "response_url"=>"https://hooks.slack.com/commands/T5P64TVP1/xxx", "trigger_id"=>"xxx"}
+    command = params["command"]
+    text = params["text"]
+    team_id = params['team_id']
+    channel_id = params['channel_id']
+    topic = Topic.where(name: text).first
+    topic = Topic.where("name like ?", "%#{text}%").first unless topic
+
+    unless topic
+      render plain: "No such topic found"
+      return
+    end
+
+    authz = SlackAuthorization.all.select { |a| a.token['team']['id'] == team_id }.first
+
+    response_url = params["response_url"]
+
+    if command == "/startlearning"
+      SlackSubscription.find_or_create_by(slack_authorization_id: authz.id, topic_id: topic.id, channel_id: channel_id)
+      item_url = Rails.application.routes.url_helpers.item_url(topic.items.shuffle.first)
+      render plain: "Subscribed to #{topic.display_name}. Try this? #{item_url}"
+    elsif command == "/stoplearning"
+      SlackSubscription.where(slack_authorization_id: authz.id, topic_id: topic.id, channel_id: channel_id).first.try(&:destroy)
+      render plain: "Unsubscribed to #{topic.display_name}"
+    end
   end
 
   private

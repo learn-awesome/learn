@@ -17,7 +17,7 @@
         <% User.onboarding_steps.each do |step| %>
             <div class="mb-2">
               <%= onboarding_status[step.first].first ? '✓' : '✗' %> &nbsp;
-              <a class="underline text-blue-500 hover:text-blue-700" href="<%= onboarding_status[step.first].last %>" <%= [:installed_browser_extension, :join_chat].include?(step.first) ? 'target=_blank' : '' %>><%= step[1] %></a>
+              <a class="underline text-blue-500 hover:text-blue-700" href="<%= onboarding_status[step.first].last %>" <%= [:installed_browser_extension].include?(step.first) ? 'target=_blank' : '' %>><%= step[1] %></a>
             </div>
         <% end %>
 
