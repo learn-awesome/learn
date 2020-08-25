@@ -35,6 +35,7 @@ class Topic < ApplicationRecord
 	has_many :items, :through => :idea_sets
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
+	has_many :slack_subscriptions
 	belongs_to :user, optional: true
 	belongs_to :parent, class_name: "Topic", optional: true
 	belongs_to :second_parent, class_name: "Topic", optional: true, foreign_key: "second_parent_id"

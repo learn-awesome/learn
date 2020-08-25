@@ -6,6 +6,7 @@ class SlackNotifyJob < ApplicationJob
   def perform(message, room_id)
     return if ENV['SLACK_API_TOKEN'].blank?
     return if room_id.blank?
+    return if message.blank?
     return unless Rails.env.production?
 
     # https://github.com/slack-ruby/slack-ruby-client
