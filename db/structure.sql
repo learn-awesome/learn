@@ -237,7 +237,8 @@ CREATE TABLE public.idea_sets (
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    description text
+    description text,
+    is_approved boolean DEFAULT false NOT NULL
 );
 
 
@@ -1653,6 +1654,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200723051447'),
 ('20200730185439'),
 ('20200824210734'),
-('20200824230523');
+('20200824230523'),
+('20200825025845');
 
 

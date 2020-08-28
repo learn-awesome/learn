@@ -33,6 +33,11 @@ class Topic < ApplicationRecord
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :people, :through => :idea_sets
 	has_many :items, :through => :idea_sets
+
+	def approved_items
+		Item.where(idea_set: self.idea_sets.approved)
+	end
+
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	has_many :slack_subscriptions
@@ -90,7 +95,7 @@ class Topic < ApplicationRecord
 
 	def advanced_search(item_type, length, quality)
 		results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
-			self.items
+			self.approved_items
 		end
 	    if item_type.present?
 	      results = results.where(item_type_id: item_type)
