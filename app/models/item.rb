@@ -656,7 +656,7 @@ class Item < ApplicationRecord
       end
 
       # Notify all Slack subscriptions for each of the topics (only once per channel)
-      self.topics.map { |t| t.slack_subscriptions }.flatten.uniq_by { |s| [s.slack_authorization_id, s.channel_id] }.each do |sub|
+      self.topics.map { |t| t.slack_subscriptions }.flatten.uniq { |s| [s.slack_authorization_id, s.channel_id] }.each do |sub|
         SlackSubscriptionNotifyJob.perform_later(message, sub.id)
       end 
     end
