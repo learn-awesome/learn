@@ -234,14 +234,20 @@ class User < ApplicationRecord
 	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)
 	  		# Send Accept response
-	  		ActivityPubFollowAcceptedJob.perform_later(afp.id)
-		elsif body_hash["type"] == "Unollow" # Do this check first
+			ActivityPubFollowAcceptedJob.perform_later(afp.id)
+			return true, "Follow accepted"
+		elsif body_hash["type"] == "Unfollow" # Do this check first
 			Rails.logger.info "Unfollow request from ActivityPub for #{self.id}: #{body_hash.inspect}"
+			return false, "Unfollow not yet implemented for #{self.id}: #{body_hash.inspect}"
 		else
-	  		Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
-	  	end
+			Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
+			return false, "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"  
+		end
+	  elsif body_hash["type"] == "Delete"
+		# a user has been deleted
+		return false, "Deleting users not implemented"   
 	  else
-	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
+	    return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end
 	end
 

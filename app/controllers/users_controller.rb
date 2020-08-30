@@ -204,8 +204,11 @@ end
     post_body = request.raw_post
     Rails.logger.info "headers = #{headers.inspect}"
     Rails.logger.info "body = #{post_body}"
-    @user.add_to_inbox!(headers, post_body)
-    render json: {}
+    result, message = @user.add_to_inbox!(headers, post_body)
+    unless result
+      raise message
+    end
+    render json: {message: message}, status: (result ? 200 : 400)
   end
 
   def outbox
