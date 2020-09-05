@@ -245,7 +245,9 @@ class User < ApplicationRecord
 		end
 	  elsif body_hash["type"] == "Delete"
 		# a user has been deleted
-		return false, "Deleting users not implemented"   
+		apf = self.activity_pub_followers.select { |x| x.object == body_hash["object"] }.first
+		apf.destroy if apf
+		return true, "Follower #{apf.object} deleted"   
 	  else
 	    return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end

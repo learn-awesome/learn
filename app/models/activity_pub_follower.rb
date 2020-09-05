@@ -28,6 +28,11 @@ class ActivityPubFollower < ApplicationRecord
     data["actor"]
   end
 
+  def object
+    data = JSON.parse(self.metadata)
+    data["object"]
+  end
+
   def accept_follow_request!
     data = JSON.parse(self.metadata)
 
