@@ -27,7 +27,7 @@ class User < ApplicationRecord
 	validates :nickname, presence: true
 	validates :nickname, exclusion: { in: %w(learnawesome admin root), message: "%{value} is reserved." }, if: Proc.new { |a| Rails.env.production? }
 
-	validates_length_of :nickname, in: 4..20, allow_blank: false
+	validates_length_of :nickname, in: 4..30, allow_blank: false
 	validates_length_of :bio, maximum: 140
 	validates_length_of :description, maximum: 400
 
@@ -246,8 +246,12 @@ class User < ApplicationRecord
 	  elsif body_hash["type"] == "Delete"
 		# a user has been deleted
 		apf = self.activity_pub_followers.select { |x| x.object == body_hash["object"] }.first
-		apf.destroy if apf
-		return true, "Follower #{apf.object} deleted"   
+		if apf
+			apf.destroy
+			return true, "Follower #{apf.object} deleted"
+		else
+			return true, "APF does not exist"
+		end
 	  else
 	    return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end
