@@ -252,6 +252,8 @@ class User < ApplicationRecord
 		else
 			return true, "APF does not exist"
 		end
+	  elsif body_hash["type"] == "Undo"
+		return true, "Undo is not implemented"
 	  else
 	    return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end
