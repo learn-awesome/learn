@@ -65,12 +65,14 @@ class Topic < ApplicationRecord
 	end
 
 	def as_json(options = {})
-		{
-			id: self.id,
-			name: self.name,
-			search_index: self.search_index,
-			to_param: self.to_param
-		}
+		super(
+			only: [:id, :name, :search_index, :display_name, :to_param],
+			include: { 
+				parent: { only: [:id, :name] },
+				second_parent: { only: [:id, :name] } 
+			},
+			methods: [:to_param]
+		)
 	end
 
 	def self.button_style(theme = :bootstrap)

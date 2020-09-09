@@ -166,6 +166,14 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def dataset
+    render json: {
+      topics: Topic.all,
+      idea_sets: IdeaSet.all,
+      experts: Person.all
+    }
+  end
+
   private
 
   def fetch_entities(is_fuzzy)

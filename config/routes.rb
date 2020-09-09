@@ -154,4 +154,5 @@ Rails.application.routes.draw do
   post '/csp-violation-report-endpoint' => 'welcome#csp_report'
   get '/slack_authorize' => 'welcome#slack_authorize'
   post '/slack_command' => 'welcome#slack_command'
+  get '/dataset' => 'welcome#dataset'
 end

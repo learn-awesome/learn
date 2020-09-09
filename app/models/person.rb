@@ -71,11 +71,10 @@ class Person < ApplicationRecord
 	end
 
 	def as_json(options = {})
-		{
-			id: self.id,
-			name: self.name,
-			to_param: self.to_param
-		}
+		super(
+			only: [:id, :name, :description, :kind, :second_kind, :website, :goodreads, :twitter, :image_url],
+			methods: [:to_param]
+		)
 	end
 
 	def goodreads_url

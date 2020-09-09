@@ -34,4 +34,14 @@ class IdeaSet < ApplicationRecord
 	def display_name
 		name
 	end
+
+	def as_json(options = {})
+		super(
+			only: [:id, :name],
+			include: {
+				items: { only: [:id, :name, :item_type_id], include: { links: {only: [:url] }} },
+				topic_idea_sets: { only: [:topic_id] } 
+			}
+		)
+	end
 end
