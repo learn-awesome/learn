@@ -39,7 +39,7 @@ class IdeaSet < ApplicationRecord
 		super(
 			only: [:id, :name],
 			include: {
-				items: { only: [:id, :name, :item_type_id], include: { links: {only: [:url] }} },
+				items: { only: [:id, :name, :item_type_id, :image_url, :description, :overall_score], include: { links: {only: [:url] }} },
 				topic_idea_sets: { only: [:topic_id] } 
 			}
 		)

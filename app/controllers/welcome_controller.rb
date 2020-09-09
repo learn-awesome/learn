@@ -167,10 +167,9 @@ class WelcomeController < ApplicationController
   end
 
   def dataset
+    # This should return fast to stay within Heroku's 30 seconds limit.
     render json: {
-      topics: Topic.all,
-      idea_sets: IdeaSet.all,
-      experts: Person.all
+      topics: Topic.all
     }
   end
 
