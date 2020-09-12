@@ -114,3 +114,5 @@ gem 'sitemap_generator'
 gem 'openai'
 
 gem 'slack-ruby-client'
+
+gem 'aws-sdk-s3'
