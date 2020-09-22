@@ -89,6 +89,9 @@
 			<a class="link-muted h3 mr-3" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
 				<i class="fas fa-cogs"></i>
 			</a>
+			<a class="link-muted h3 mr-3" href="<%= new_recommendation_path(idea_set_id: @item.idea_set_id) %>" title="Add Recommendation">
+				<i class="fas fa-cogs"></i>
+			</a>
 			<% end %>
 
 		</span>

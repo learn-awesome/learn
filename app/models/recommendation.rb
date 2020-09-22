@@ -21,6 +21,16 @@ class Recommendation < ApplicationRecord
   belongs_to :item, optional: true
   belongs_to :person, optional: true
 
+  belongs_to :user
+
+  validates_presence_of :idea_set_id
+
+  validate :expert_or_item_required
+
+  def expert_or_item_required
+    errors.add("Expert or Item", "must be present.") if item_id.blank? && person_id.blank?
+  end
+
   def display_name
   	self.target.display_name
   end

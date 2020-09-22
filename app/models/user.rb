@@ -53,6 +53,8 @@ class User < ApplicationRecord
 	has_many :group_members, dependent: :destroy, inverse_of: :user
 	has_many :groups, through: :group_members
 
+	has_many :recommendations
+
 	after_create :update_points
 	after_create :create_default_deck
 

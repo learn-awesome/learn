@@ -1,0 +1,19 @@
+h1 Listing recommendations
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @recommendations.each do |recommendation|
+      tr
+        td = link_to 'Show', recommendation
+        td = link_to 'Edit', edit_recommendation_path(recommendation)
+        td = link_to 'Destroy', recommendation, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Recommendation', new_recommendation_path

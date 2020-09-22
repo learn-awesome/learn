@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  resources :recommendations
   authenticate :admin_user do
     mount Sidekiq::Web => '/sidekiq'
   end
@@ -73,7 +74,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :idea_sets, only: [:new, :create, :edit, :update]
+  resources :idea_sets, only: [:show, :new, :create, :edit, :update]
+
+  resources :recommendations, only: [:new, :create]
 
   resources :item_types, only: [:index, :show] do
     collection do
