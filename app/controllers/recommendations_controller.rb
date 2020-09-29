@@ -11,7 +11,7 @@ class RecommendationsController < InheritedResources::Base
   def create
     @recommendation = current_user.recommendations.new(recommendation_params)
 
-    if @recommendation.save
+    if Item.new.can_user_add_recommendations?(current_user) and @recommendation.save
       redirect_to @recommendation.idea_set, notice: "Recommendation added successfully."
     else
       render :new

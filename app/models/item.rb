@@ -169,6 +169,14 @@ class Item < ApplicationRecord
     return true
   end
 
+  def can_user_add_recommendations?(editor)
+    return false if editor.nil? or !editor.is_a?(User)
+    return true if Rails.env.development?
+    return false if editor.score < 500
+    return false if self.is_syllabus?
+    return true
+  end
+
   def can_user_destroy?(user)
     return true if user and user.is_core_dev?
     return false
