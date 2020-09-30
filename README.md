@@ -26,6 +26,8 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 - Add richer metadata to items so that advanced search becomes more useful.
 
+- This #Penademic situation available online facilities for you.
+
 # Development Setup with Vagrant
 
 ```
