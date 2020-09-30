@@ -233,10 +233,10 @@ class User < ApplicationRecord
 
 	  if body_hash["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
 	  	if body_hash["type"] == "Follow" # Do this check first
-	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
+	  		Rails.logger.info "New follow from ActivityPub for user #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)
 	  		# Send Accept response
-			ActivityPubFollowAcceptedJob.perform_later(afp.id)
+			ActivityPubFollowAcceptedJob.perform_later(afp.id, 'user')
 			return true, "Follow accepted"
 		elsif body_hash["type"] == "Unfollow" # Do this check first
 			Rails.logger.info "Unfollow request from ActivityPub for #{self.id}: #{body_hash.inspect}"

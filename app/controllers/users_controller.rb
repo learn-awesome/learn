@@ -179,16 +179,25 @@ end
     if username.split(":").first != 'acct'
       error = "acct prefix not found in #{query}"
     end
-    userid = username.split(":").last.gsub("_","-")
-    @user = User.find(userid)
-    if @user.nil?
-      error = "user #{query} not found"
+
+    if username.split(":").last.start_with?("topic-")
+      topicid = username.split(":").last.gsub("topic-","").gsub("_","-")
+      @topic = Topic.where(id: topicid).first
+      if @topic.nil?
+        error = "topic #{query} not found"
+      end
+    else
+      userid = username.split(":").last.gsub("_","-")
+      @user = User.find(userid)
+      if @user.nil?
+        error = "user #{query} not found"
+      end
     end
 
     if error.present?
       render json: {error: error}, status: :not_found
     else
-      render json: @user.webfinger_json
+      render json: (@user || @topic).webfinger_json
     end
 
   end

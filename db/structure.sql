@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -237,8 +223,7 @@ CREATE TABLE public.idea_sets (
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    description text,
-    is_approved boolean DEFAULT false NOT NULL
+    description text
 );
 
 
@@ -429,7 +414,9 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.slack_authorizations (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    token json NOT NULL
+    token json NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -441,7 +428,9 @@ CREATE TABLE public.slack_subscriptions (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     slack_authorization_id uuid NOT NULL,
     channel_id character varying NOT NULL,
-    topic_id uuid NOT NULL
+    topic_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -455,6 +444,19 @@ CREATE TABLE public.social_logins (
     auth0_info json,
     post_reviews boolean DEFAULT true NOT NULL,
     user_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: topic_activity_pub_followers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.topic_activity_pub_followers (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    topic_id uuid NOT NULL,
+    metadata text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -817,6 +819,14 @@ ALTER TABLE ONLY public.social_logins
 
 
 --
+-- Name: topic_activity_pub_followers topic_activity_pub_followers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topic_activity_pub_followers
+    ADD CONSTRAINT topic_activity_pub_followers_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: topic_idea_sets topic_idea_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1134,6 +1144,13 @@ CREATE INDEX index_social_logins_on_user_id ON public.social_logins USING btree 
 
 
 --
+-- Name: index_topic_activity_pub_followers_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topic_activity_pub_followers_on_topic_id ON public.topic_activity_pub_followers USING btree (topic_id);
+
+
+--
 -- Name: index_topic_idea_sets_on_idea_set_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1302,6 +1319,14 @@ ALTER TABLE ONLY public.slack_subscriptions
 
 ALTER TABLE ONLY public.user_user_relations
     ADD CONSTRAINT fk_rails_10bcd883e4 FOREIGN KEY (from_user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: topic_activity_pub_followers fk_rails_14e820a7ac; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topic_activity_pub_followers
+    ADD CONSTRAINT fk_rails_14e820a7ac FOREIGN KEY (topic_id) REFERENCES public.topics(id);
 
 
 --
@@ -1656,7 +1681,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200730185439'),
 ('20200824210734'),
 ('20200824230523'),
-('20200825025845'),
-('20200922144058');
+('20200922144058'),
+('20200930190125');
 
 
