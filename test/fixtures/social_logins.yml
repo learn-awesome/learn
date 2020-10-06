@@ -13,10 +13,8 @@
 
 one:
   auth0_uid: MyString
-  auth0info: 
   user: one
 
 two:
   auth0_uid: MyString
-  auth0info: 
   user: two
