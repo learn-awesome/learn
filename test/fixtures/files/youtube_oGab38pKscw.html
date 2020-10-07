@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html style="font-size: 10px;font-family: Roboto, Arial, sans-serif;" lang="en-US" dir="ltr" gl="US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="origin-trial" data-feature="Web Components V0" data-expires="2020-10-23" content="AhbmRDASY7NuOZD9cFMgQihZ+mQpCwa8WTGdTx82vSar9ddBQbziBfZXZg+ScofvEZDdHQNCEwz4yM7HjBS9RgkAAABneyJvcmlnaW4iOiJodHRwczovL3lvdXR1YmUuY29tOjQ0MyIsImZlYXR1cmUiOiJXZWJDb21wb25lbnRzVjAiLCJleHBpcnkiOjE2MDM0ODY4NTYsImlzU3ViZG9tYWluIjp0cnVlfQ==">
+<meta http-equiv="origin-trial" data-feature="Web Components V0" data-expires="2020-10-27" content="Av2+1qfUp3MwEfAFcCccykS1qFmvLiCrMZ//pHQKnRZWG9dldVo8HYuJmGj2wZ7nDg+xE4RQMQ+Ku1zKM3PvYAIAAABmeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IldlYkNvbXBvbmVudHNWMCIsImV4cGlyeSI6MTYwMzgzNjc3MiwiaXNTdWJkb21haW4iOnRydWV9">
+<meta http-equiv="origin-trial" data-feature="Web Components V0" data-expires="2021-01-08" content="AixUK+8UEShlt6+JX1wy9eg+XL+eV5PYSEDPH3C90JNVbIkE1Rg1FyVUfu2bZ/y6Pm1xbPLzuwHYHjv4uKPNnA4AAABqeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXByb2QuY29tOjQ0MyIsImZlYXR1cmUiOiJXZWJDb21wb25lbnRzVjAiLCJleHBpcnkiOjE2MTAwNjQ0MjMsImlzU3ViZG9tYWluIjp0cnVlfQ==">
+<meta http-equiv="origin-trial" data-feature="Web Components V0" data-expires="2021-03-09" content="AhHpq2nUT6fqP0Kmkq49EWIcl2P1LK1ceU05BoiVnWi8ZIWDdmX/kMwL+ZtuC3oIf0tns8XnO5fm946JEzPVEwgAAABqeyJvcmlnaW4iOiJodHRwczovL2MuZ29vZ2xlcnMuY29tOjQ0MyIsImZlYXR1cmUiOiJXZWJDb21wb25lbnRzVjAiLCJleHBpcnkiOjE2MTIyMjM5OTksImlzU3ViZG9tYWluIjp0cnVlfQ==">  
+  
+<link rel="shortcut icon" href="https://www.youtube.com/s/desktop/d5bd6dd9/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://www.youtube.com/s/desktop/d5bd6dd9/img/favicon_32.png" sizes="32x32">
+<link rel="icon" href="https://www.youtube.com/s/desktop/d5bd6dd9/img/favicon_48.png" sizes="48x48">
+<link rel="icon" href="https://www.youtube.com/s/desktop/d5bd6dd9/img/favicon_96.png" sizes="96x96">
+<link rel="icon" href="https://www.youtube.com/s/desktop/d5bd6dd9/img/favicon_144.png" sizes="144x144">    
+  
+  
+  
+  
+
+  <style name="www-roboto">@font-face{font-family:'Roboto';font-style:italic;font-weight:500;src:local('Roboto Medium Italic'),local('Roboto-MediumItalic'),url(//fonts.gstatic.com/s/roboto/v18/KFOjCnqEu92Fr1Mu51S7ACc6CsE.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:italic;font-weight:400;src:local('Roboto Italic'),local('Roboto-Italic'),url(//fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1Mu51xIIzc.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:local('Roboto Regular'),local('Roboto-Regular'),url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;src:local('Roboto Medium'),local('Roboto-Medium'),url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)format('truetype');}</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=YT%20Sans%3A300%2C500%2C700" name="www-webfont-yt-sans">
+<link rel="stylesheet" href="/s/player/1a1b48e5/www-player.css" name="player/www-player" id="player-css">
+<link rel="stylesheet" href="https://www.youtube.com/s/desktop/d5bd6dd9/cssbin/www-main-desktop-player-skeleton.css" name="www-main-desktop-player-skeleton">
+<link rel="stylesheet" href="https://www.youtube.com/s/desktop/d5bd6dd9/cssbin/www-main-desktop-watch-page-skeleton.css" name="www-main-desktop-watch-page-skeleton">
+<style name="global_styles">body{padding:0;margin:0;overflow-y:scroll}body.autoscroll{overflow-y:auto}body.no-scroll{overflow:hidden}body.no-y-scroll{overflow-y:hidden}.hidden{display:none}textarea{--paper-input-container-input_-_white-space:pre-wrap}.grecaptcha-badge{visibility:hidden}</style>
+<style name="masthead_shell">ytd-masthead.shell{background:rgba(255,255,255,0.98);position:fixed;top:0;right:0;left:0;display:-ms-flex;display:-webkit-flex;display:flex;height:56px;-ms-flex-align:center;-webkit-align-items:center;align-items:center}ytd-masthead.shell #menu-icon{margin-left:16px}ytd-app>ytd-masthead.chunked{position:fixed;top:0;width:100%}ytd-masthead.shell.dark,ytd-masthead.shell.theater{background:rgba(40,40,40,0.98)}ytd-masthead.shell.full-window-mode{background:rgba(40,40,40,0.98);opacity:0;transform:translateY(calc(-100% - 5px))}ytd-masthead.shell>*:first-child{padding-left:16px}ytd-masthead.shell>*:last-child{padding-right:16px}ytd-masthead #masthead-logo{display:-ms-flex;display:-webkit-flex;display:flex}ytd-masthead #masthead-logo #country-code{margin-right:2px}ytd-masthead.shell #yt-logo-svg,ytd-masthead.shell #yt-logo-red-svg{align-self:center;margin-left:8px;padding:0;color:black}ytd-masthead.shell #a11y-skip-nav{display:none}ytd-masthead.shell svg{width:40px;height:40px;padding:8px;margin-right:8px;box-sizing:border-box;color:#606060;fill:currentColor}ytd-masthead .external-icon{width:24px;height:24px}ytd-masthead .yt-icons-ext{fill:currentColor;color:#606060}ytd-masthead.shell.dark .yt-icons-ext ytd-masthead.shell.theater .yt-icons-ext{fill:#fff}ytd-masthead svg#yt-logo-svg{width:80px}ytd-masthead svg#yt-logo-red-svg{width:106.4px}@media (max-width:656px){ytd-masthead.shell>*:first-child{padding-left:8px}ytd-masthead.shell>*:last-child{padding-right:8px}ytd-masthead.shell svg{margin-right:0}ytd-masthead #masthead-logo{-ms-flex:1 1 .000000001px;-webkit-flex:1;flex:1;-webkit-flex-basis:.000000001px;flex-basis:.000000001px}ytd-masthead.shell #yt-logo-svg,ytd-masthead.shell #yt-logo-red-svg{margin-left:4px}}@media (min-width:876px){ytd-masthead #masthead-logo{width:129px}}#masthead-skeleton-icons{display:flex;flex:1;flex-direction:row;justify-content:flex-end}ytd-masthead.masthead-finish #masthead-skeleton-icons{display:none}.masthead-skeleton-icon{border-radius:50%;height:32px;width:32px;margin:0 8px;background-color:hsl(0,0%,89%)}ytd-masthead.dark .masthead-skeleton-icon{background-color:hsl(0,0%,16%)}</style>
+<style name="masthead_custom_styles" is="custom-style" id="ext-styles">ytd-masthead .yt-icons-ext{color:var(--yt-spec-icon-active-other)}ytd-masthead svg#yt-logo-svg #youtube-paths path,ytd-masthead svg#yt-logo-red-svg #youtube-red-paths path{fill:#282828}ytd-masthead.dark svg#yt-logo-svg #youtube-paths path,ytd-masthead.dark svg#yt-logo-red-svg #youtube-red-paths path,ytd-masthead.theater svg#yt-logo-svg #youtube-paths path,ytd-masthead.theater svg#yt-logo-red-svg #youtube-red-paths path{fill:#fff}</style>
+<style name="searchbox">#search-input.ytd-searchbox-spt input{-webkit-appearance:none;-webkit-font-smoothing:antialiased;background-color:transparent;border:none;box-shadow:none;color:inherit;font-family:'Roboto','Noto',sans-serif;font-size:16px;font-weight:400;line-height:24px;margin-left:4px;max-width:100%;outline:none;text-align:inherit;width:100%;-ms-flex:1 1 .000000001px;-webkit-flex:1;flex:1;-webkit-flex-basis:.000000001px;flex-basis:.000000001px}#search-container.ytd-searchbox-spt{pointer-events:none;position:absolute;top:0;right:0;bottom:0;left:0}#search-input.ytd-searchbox-spt #search::-webkit-input-placeholder,#search-input.ytd-searchbox-spt #search::-moz-input-placeholder,#search-input.ytd-searchbox-spt #search:-ms-input-placeholder{color:hsl(0,0%,53.3%)}</style>
+<style name="kevlar_global_styles">html{background-color:#f9f9f9!important;-webkit-text-size-adjust:none}html[dark]{background-color:#181818!important}#logo-red-icon-container.ytd-topbar-logo-renderer{width:86px}</style>
+<style name="emergencycssformatted">.ytd-rich-shelf-renderer #title-container {
+-ms-flex-pack: center; -webkit-justify-content: center; justify-content: center
+}</style>
+<style name="emergencycssexp">
+      
+      
+    </style>
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.youtube.com/opensearch?locale=en_US" title="YouTube">
+<link rel="manifest" href="/s/notifications/manifest/manifest.json" crossorigin="use-credentials">
+<!-- end of chunk -->        
+
+  
+    
+  </head>
+<body>
+<div id="player" class="skeleton flexy">
+      <div id="player-wrap">
+        <div id="player-api"></div>
+                
+
+      </div>
+  </div>
+    
+
+  <!-- end of chunk -->
+    
+  <ytd-app disable-upgrade="true">
+    <ytd-masthead id="masthead" slot="masthead" class="shell  chunked" disable-upgrade="true"><div id="search-container" class="ytd-searchbox-spt" slot="search-container"></div>
+<div id="search-input" class="ytd-searchbox-spt" slot="search-input"><input id="search" autocapitalize="none" autocomplete="off" autocorrect="off" hidden name="search_query" tabindex="0" type="text" spellcheck="false"></div>
+<svg id="menu-icon" class="external-icon" preserveaspectratio="xMidYMid meet"><g id="menu" class="yt-icons-ext" viewbox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></g></svg><div id="masthead-logo" slot="masthead-logo">  <div style="display: flex;">
+    <svg id="yt-logo-svg" class="external-icon" viewbox="0 0 200 60">
+      <g id="yt-logo" viewbox="0 0 200 60" preserveaspectratio="xMidYMid meet">
+        <g>
+          <path fill="#FF0000" d="M63,14.87c-0.72-2.7-2.85-4.83-5.56-5.56C52.54,8,32.88,8,32.88,8S13.23,8,8.32,9.31
+            c-2.7,0.72-4.83,2.85-5.56,5.56C1.45,19.77,1.45,30,1.45,30s0,10.23,1.31,15.13c0.72,2.7,2.85,4.83,5.56,5.56
+            C13.23,52,32.88,52,32.88,52s19.66,0,24.56-1.31c2.7-0.72,4.83-2.85,5.56-5.56C64.31,40.23,64.31,30,64.31,30
+            S64.31,19.77,63,14.87z"></path>
+          <polygon fill="#FFFFFF" points="26.6,39.43 42.93,30 26.6,20.57"></polygon>
+        </g>
+        <g>
+          <g id="youtube-paths">
+            <path fill="#282828" d="M92.69,48.03c-1.24-0.84-2.13-2.14-2.65-3.91c-0.52-1.77-0.79-4.12-0.79-7.06v-4
+              c0-2.97,0.3-5.35,0.9-7.15c0.6-1.8,1.54-3.11,2.81-3.93c1.27-0.82,2.94-1.24,5.01-1.24c2.04,0,3.67,0.42,4.9,1.26
+              c1.23,0.84,2.13,2.15,2.7,3.93c0.57,1.78,0.85,4.16,0.85,7.12v4c0,2.94-0.28,5.3-0.83,7.08c-0.55,1.78-1.45,3.09-2.7,3.91
+              c-1.24,0.82-2.93,1.24-5.06,1.24C95.65,49.29,93.93,48.87,92.69,48.03z M99.66,43.71c0.34-0.9,0.52-2.37,0.52-4.4v-8.59
+              c0-1.98-0.17-3.42-0.52-4.34c-0.34-0.91-0.95-1.37-1.82-1.37c-0.84,0-1.43,0.46-1.78,1.37c-0.34,0.91-0.52,2.36-0.52,4.34v8.59
+              c0,2.04,0.16,3.51,0.49,4.4c0.33,0.9,0.93,1.35,1.8,1.35C98.71,45.06,99.31,44.61,99.66,43.71z"></path>
+            <path fill="#282828" d="M188.16,37.13v1.39c0,1.77,0.05,3.09,0.16,3.98c0.1,0.88,0.32,1.53,0.65,1.93
+              c0.33,0.4,0.84,0.61,1.53,0.61c0.93,0,1.57-0.36,1.91-1.08c0.34-0.72,0.53-1.92,0.56-3.6l5.35,0.31
+              c0.03,0.24,0.04,0.57,0.04,0.99c0,2.55-0.7,4.45-2.09,5.71c-1.39,1.26-3.36,1.89-5.91,1.89c-3.06,0-5.2-0.96-6.43-2.88
+              c-1.23-1.92-1.84-4.88-1.84-8.9v-4.81c0-4.14,0.64-7.15,1.91-9.06c1.27-1.9,3.45-2.85,6.54-2.85c2.13,0,3.76,0.39,4.9,1.17
+              c1.14,0.78,1.94,1.99,2.41,3.64c0.46,1.65,0.7,3.93,0.7,6.83v4.72H188.16z M188.95,25.53c-0.31,0.39-0.52,1.03-0.63,1.91
+              c-0.11,0.88-0.16,2.23-0.16,4.02v1.98h4.54v-1.98c0-1.77-0.06-3.11-0.18-4.02c-0.12-0.91-0.34-1.56-0.65-1.93
+              c-0.31-0.37-0.8-0.56-1.46-0.56C189.75,24.94,189.26,25.14,188.95,25.53z"></path>
+            <path fill="#282828" d="M77.59,36.61l-7.06-25.49h6.16l2.47,11.55c0.63,2.85,1.09,5.27,1.39,7.28h0.18
+              c0.21-1.44,0.67-3.85,1.39-7.24l2.56-11.6h6.16L83.7,36.61v12.23h-6.11V36.61z"></path>
+            <path fill="#282828" d="M126.45,21.28v27.55h-4.85l-0.54-3.37h-0.13c-1.32,2.55-3.3,3.82-5.93,3.82c-1.83,0-3.18-0.6-4.05-1.8
+              c-0.87-1.2-1.3-3.07-1.3-5.62V21.28h6.2v20.23c0,1.23,0.13,2.11,0.4,2.63c0.27,0.52,0.72,0.79,1.35,0.79
+              c0.54,0,1.06-0.16,1.55-0.49c0.49-0.33,0.86-0.75,1.1-1.26V21.28H126.45z"></path>
+            <path fill="#282828" d="M158.27,21.28v27.55h-4.85l-0.54-3.37h-0.13c-1.32,2.55-3.3,3.82-5.93,3.82c-1.83,0-3.18-0.6-4.05-1.8
+              c-0.87-1.2-1.3-3.07-1.3-5.62V21.28h6.2v20.23c0,1.23,0.13,2.11,0.4,2.63c0.27,0.52,0.72,0.79,1.35,0.79
+              c0.54,0,1.06-0.16,1.55-0.49c0.49-0.33,0.86-0.75,1.1-1.26V21.28H158.27z"></path>
+            <path fill="#282828" d="M143.31,16.11h-6.16v32.72h-6.07V16.11h-6.16v-4.99h18.38V16.11z"></path>
+            <path fill="#282828" d="M178.8,25.69c-0.38-1.74-0.98-3-1.82-3.78c-0.84-0.78-1.99-1.17-3.46-1.17c-1.14,0-2.2,0.32-3.19,0.97
+              c-0.99,0.64-1.75,1.49-2.29,2.54h-0.05l0-14.52h-5.98v39.11h5.12l0.63-2.61h0.13c0.48,0.93,1.2,1.66,2.16,2.2
+              c0.96,0.54,2.02,0.81,3.19,0.81c2.1,0,3.64-0.97,4.63-2.9c0.99-1.93,1.48-4.95,1.48-9.06v-4.36
+              C179.36,29.84,179.17,27.43,178.8,25.69z M173.11,36.93c0,2.01-0.08,3.58-0.25,4.72c-0.16,1.14-0.44,1.95-0.83,2.43
+              c-0.39,0.48-0.91,0.72-1.57,0.72c-0.51,0-0.98-0.12-1.42-0.36c-0.43-0.24-0.79-0.6-1.06-1.08V27.71
+              c0.21-0.75,0.57-1.36,1.08-1.84c0.51-0.48,1.06-0.72,1.66-0.72c0.63,0,1.12,0.25,1.46,0.74c0.34,0.49,0.58,1.33,0.72,2.49
+              c0.13,1.17,0.2,2.83,0.2,4.99V36.93z"></path>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div style="display: none;">
+    <svg id="yt-logo-red-svg" class="external-icon" viewbox="0 0 98 24" style="width:86px;">
+      <g id="yt-logo-red" viewbox="0 0 98 24" preserveaspectratio="xMidYMid meet">
+        <g>
+          <path fill="#FF0000" d="M28.4,5.12c-0.34-1.24-1.31-2.2-2.55-2.52C23.62,2,14.68,2,14.68,2S5.75,2,3.52,2.6
+            C2.29,2.93,1.33,3.89,1,5.12C0.59,7.39,0.39,9.69,0.4,12c-0.01,2.31,0.19,4.61,0.6,6.88c0.33,1.23,1.29,2.19,2.52,2.52
+            C5.75,22,14.68,22,14.68,22s8.93,0,11.16-0.6c1.24-0.32,2.22-1.28,2.56-2.52c0.41-2.27,0.61-4.57,0.6-6.88
+            C29.01,9.69,28.81,7.39,28.4,5.12z"></path>
+          <polygon fill="#FFFFFF" points="11.83,16.29 19.25,12 11.83,7.71"></polygon>
+        </g>
+        <g id="youtube-red-paths">
+          <path fill="#282828" d="M41.67,8.35V9c0,3.45-1.53,5.48-4.88,5.48h-0.51v6h-2.74V3.42h3.49C40.22,3.42,41.67,4.77,41.67,8.35z
+            M38.79,8.6c0-2.49-0.45-3.09-2-3.09h-0.51v7h0.47c1.47,0,2-1.06,2-3.37L38.79,8.6z"></path>
+          <path fill="#282828" d="M48.14,7.83L48,11.08c-1.17-0.24-2.13-0.08-2.6,0.69v8.78h-2.67V8h2.17l0.24,2.71h0.1c0.28-2,1.2-3,2.39-3
+            C47.8,7.73,47.98,7.77,48.14,7.83z"></path>
+          <path fill="#282828" d="M51.27,15.25v0.63c0,2.21,0.12,3,1.06,3s1.1-0.69,1.12-2.12l2.43,0.14c0.18,2.7-1.23,3.9-3.61,3.9
+            c-2.9,0-3.76-1.9-3.76-5.35v-2.23c0-3.64,1-5.41,3.84-5.41s3.64,1.51,3.64,5.29v2.15H51.27z M51.27,12.67v0.9h2.06v-0.89
+            c0-2.3-0.16-3-1-3s-1,0.67-1,3L51.27,12.67z"></path>
+          <path fill="#282828" d="M70.02,11.1v9.46H67.2v-9.25c0-1-0.27-1.53-0.88-1.53c-0.54,0.02-1.02,0.34-1.25,0.82
+            c0.01,0.17,0.01,0.34,0,0.51v9.46h-2.79v-9.26c0-1-0.27-1.53-0.88-1.53c-0.53,0.02-1,0.33-1.23,0.8v10H57.4V8h2.23l0.25,1.59l0,0
+            c0.51-1.12,1.63-1.85,2.86-1.86c1.05-0.07,1.98,0.67,2.16,1.7c0.55-1.01,1.61-1.65,2.76-1.66C69.4,7.78,70.02,9,70.02,11.1z"></path>
+          <path fill="#282828" d="M71.4,4.83c0-1.35,0.49-1.74,1.53-1.74s1.53,0.45,1.53,1.74s-0.47,1.74-1.53,1.74S71.4,6.22,71.4,4.83z
+            M71.59,8h2.7v12.56h-2.7V8z"></path>
+          <path fill="#282828" d="M83.5,8v12.56h-2.2L81.05,19h-0.06c-0.46,1.08-1.53,1.77-2.7,1.74c-1.67,0-2.43-1.06-2.43-3.37V8h2.82
+            v9.19c0,1.1,0.23,1.55,0.8,1.55c0.52-0.02,0.98-0.33,1.2-0.8V8H83.5z"></path>
+          <path fill="#282828" d="M97.8,11.1v9.46h-2.82v-9.25c0-1-0.27-1.53-0.88-1.53c-0.54,0.02-1.02,0.34-1.25,0.82
+            c0.01,0.17,0.01,0.34,0,0.51v9.46h-2.79v-9.26c0-1-0.27-1.53-0.88-1.53c-0.53,0.02-1,0.33-1.23,0.8v10h-2.81V8h2.26l0.24,1.59l0,0
+            c0.51-1.12,1.63-1.85,2.86-1.86c1.04-0.07,1.97,0.64,2.17,1.66c0.55-0.99,1.6-1.61,2.73-1.62C97.15,7.78,97.8,9,97.8,11.1z"></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+<span id="country-code"></span>
+</div>
+<div id="masthead-skeleton-icons" slot="masthead-skeleton">
+<div class="masthead-skeleton-icon"></div>
+<div class="masthead-skeleton-icon"></div>
+<div class="masthead-skeleton-icon"></div>
+<div class="masthead-skeleton-icon"></div>
+</div></ytd-masthead>
+      <a slot="guide-links-primary" href="https://www.youtube.com/about/" style="display: none;">About</a>
+  <a slot="guide-links-primary" href="https://www.youtube.com/about/press/" style="display: none;">Press</a>
+  <a slot="guide-links-primary" href="https://www.youtube.com/about/copyright/" style="display: none;">Copyright</a>
+  <a slot="guide-links-primary" href="/t/contact_us" style="display: none;">Contact us</a>
+  <a slot="guide-links-primary" href="https://www.youtube.com/creators/" style="display: none;">Creators</a>
+  <a slot="guide-links-primary" href="https://www.youtube.com/ads/" style="display: none;">Advertise</a>
+  <a slot="guide-links-primary" href="https://developers.google.com/youtube" style="display: none;">Developers</a>
+
+      <a slot="guide-links-secondary" href="/t/terms" style="display: none;">Terms</a>
+  <a slot="guide-links-secondary" href="https://www.google.com/intl/en/policies/privacy/" style="display: none;">Privacy</a>
+  <a slot="guide-links-secondary" href="https://www.youtube.com/about/policies/" style="display: none;">Policy &amp; Safety</a>
+    <a slot="guide-links-secondary" href="https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&amp;utm_source=ythp&amp;utm_medium=LeftNav&amp;utm_content=txt&amp;u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen" style="display: none;">How YouTube works</a>
+  <a slot="guide-links-secondary" href="/new" style="display: none;">Test new features</a>
+
+      <div id="vat-notice" slot="vat-notice" style="display: none;">
+  </div>
+
+      <div id="copyright" slot="copyright" style="display: none;">
+    <div dir="ltr" style="display:inline">© 2020 Google LLC</div>
+  </div>
+
+  </ytd-app>
+
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+
+
+      
+
+  
+  
+
+  
+  <!-- end of chunk -->
+    <div id="watch-page-skeleton" class="watch-skeleton ">
+    <div id="container">
+      <div id="related">
+        <div class="autoplay skeleton-light-border-bottom">
+          <div id="upnext" class="skeleton-bg-color"></div>
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+        </div>
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+            <div class="video-skeleton">
+    <div class="video-details">
+      <div class="thumbnail skeleton-bg-color"></div>
+      <div class="details flex-1">
+        <div class="video-title text-shell skeleton-bg-color"></div>
+        <div class="video-meta text-shell skeleton-bg-color"></div>
+      </div>
+    </div>
+  </div>
+
+      </div>
+      <div id="info-container">
+        <div id="primary-info" class="skeleton-light-border-bottom">
+          <div id="title" class="text-shell skeleton-bg-color"></div>
+          <div id="info">
+            <div id="count" class="text-shell skeleton-bg-color"></div>
+            <div class="flex-1"></div>
+            <div id="menu">
+                <div class="menu-button skeleton-bg-color"></div>
+                <div class="menu-button skeleton-bg-color"></div>
+                <div class="menu-button skeleton-bg-color"></div>
+                <div class="menu-button skeleton-bg-color"></div>
+                <div class="menu-button skeleton-bg-color"></div>
+            </div>
+          </div>
+        </div>
+        <div id="secondary-info" class="skeleton-light-border-bottom">
+          <div id="top-row">
+            <div id="video-owner" class="flex-1">
+              <div id="channel-icon" class="skeleton-bg-color"></div>
+              <div id="upload-info" class="flex-1">
+                <div id="owner-name" class="text-shell skeleton-bg-color">
+                </div>
+                <div id="published-date" class="text-shell skeleton-bg-color">
+                </div>
+              </div>
+            </div>
+            <div id="subscribe-button" class="skeleton-bg-color"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      
+    <link rel="canonical" href="https://www.youtube.com/watch?v=oGab38pKscw">
+
+    <link rel="alternate" media="handheld" href="https://m.youtube.com/watch?v=oGab38pKscw">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.youtube.com/watch?v=oGab38pKscw">
+  <meta name="theme-color" content="#ff0000">
+
+              <title>The High Price of Materialism - YouTube</title>
+    <meta name="title" content="The High Price of Materialism">
+
+      <meta name="description" content="More at http://www.newdream.org Video by New Dream Psychologist Tim Kasser discusses how America's culture of consumerism undermines our well-being. When peo...">
+
+        <meta name="keywords" content="center, new, american, dream, high, price, materialism, tim, kasser, sustainability, environment, happiness">
+
+
+        <link rel="shortlink" href="https://youtu.be/oGab38pKscw">
+            <link rel="alternate" href="android-app://com.google.android.youtube/http/www.youtube.com/watch?v=oGab38pKscw">
+    <link rel="alternate" href="ios-app://544007664/vnd.youtube/www.youtube.com/watch?v=oGab38pKscw">
+
+    <link rel="alternate" type="application/json+oembed" href="http://www.youtube.com/oembed?format=json&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoGab38pKscw" title="The High Price of Materialism">
+  <link rel="alternate" type="text/xml+oembed" href="http://www.youtube.com/oembed?format=xml&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoGab38pKscw" title="The High Price of Materialism">
+
+      <link rel="image_src" href="https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg">
+    <meta property="og:site_name" content="YouTube">
+      <meta property="og:url" content="https://www.youtube.com/watch?v=oGab38pKscw">
+    <meta property="og:title" content="The High Price of Materialism">
+    <meta property="og:image" content="https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+      <meta property="og:description" content="More at http://www.newdream.org Video by New Dream Psychologist Tim Kasser discusses how America's culture of consumerism undermines our well-being. When peo...">
+
+    <meta property="al:ios:app_store_id" content="544007664">
+    <meta property="al:ios:app_name" content="YouTube">
+      <meta property="al:ios:url" content="vnd.youtube://www.youtube.com/watch?v=oGab38pKscw&amp;feature=applinks">
+
+      <meta property="al:android:url" content="vnd.youtube://www.youtube.com/watch?v=oGab38pKscw&amp;feature=applinks">
+    <meta property="al:android:app_name" content="YouTube">
+    <meta property="al:android:package" content="com.google.android.youtube">
+    <meta property="al:web:url" content="https://www.youtube.com/watch?v=oGab38pKscw&amp;feature=applinks">
+
+    <meta property="og:type" content="video.other">
+      <meta property="og:video:url" content="https://www.youtube.com/embed/oGab38pKscw">
+      <meta property="og:video:secure_url" content="https://www.youtube.com/embed/oGab38pKscw">
+      <meta property="og:video:type" content="text/html">
+      <meta property="og:video:width" content="1280">
+      <meta property="og:video:height" content="720">
+
+        <meta property="og:video:tag" content="center">
+        <meta property="og:video:tag" content="new">
+        <meta property="og:video:tag" content="american">
+        <meta property="og:video:tag" content="dream">
+        <meta property="og:video:tag" content="high">
+        <meta property="og:video:tag" content="price">
+        <meta property="og:video:tag" content="materialism">
+        <meta property="og:video:tag" content="tim">
+        <meta property="og:video:tag" content="kasser">
+        <meta property="og:video:tag" content="sustainability">
+        <meta property="og:video:tag" content="environment">
+        <meta property="og:video:tag" content="happiness">
+
+    <meta property="fb:app_id" content="87741124305">
+
+      <meta name="twitter:card" content="player">
+    <meta name="twitter:site" content="@youtube">
+    <meta name="twitter:url" content="https://www.youtube.com/watch?v=oGab38pKscw">
+    <meta name="twitter:title" content="The High Price of Materialism">
+    <meta name="twitter:description" content="More at http://www.newdream.org Video by New Dream Psychologist Tim Kasser discusses how America's culture of consumerism undermines our well-being. When peo...">
+    <meta name="twitter:image" content="https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg">
+    <meta name="twitter:app:name:iphone" content="YouTube">
+    <meta name="twitter:app:id:iphone" content="544007664">
+    <meta name="twitter:app:name:ipad" content="YouTube">
+    <meta name="twitter:app:id:ipad" content="544007664">
+      <meta name="twitter:app:url:iphone" content="vnd.youtube://www.youtube.com/watch?v=oGab38pKscw&amp;feature=applinks">
+      <meta name="twitter:app:url:ipad" content="vnd.youtube://www.youtube.com/watch?v=oGab38pKscw&amp;feature=applinks">
+    <meta name="twitter:app:name:googleplay" content="YouTube">
+    <meta name="twitter:app:id:googleplay" content="com.google.android.youtube">
+    <meta name="twitter:app:url:googleplay" content="https://www.youtube.com/watch?v=oGab38pKscw">
+      <meta name="twitter:player" content="https://www.youtube.com/embed/oGab38pKscw">
+      <meta name="twitter:player:width" content="1280">
+      <meta name="twitter:player:height" content="720">
+
+
+    <iframe src="https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dpassive%26hl%3Den%26next%3D%252Fsignin_passive&amp;hl=en&amp;passive=true&amp;service=youtube&amp;uilel=3" style="display: none"></iframe>
+  
+  
+  
+  
+      <div id="watch7-content" class="watch-main-col" itemscope itemid="" itemtype="http://schema.org/VideoObject">
+        <link itemprop="url" href="https://www.youtube.com/watch?v=oGab38pKscw">
+    <meta itemprop="name" content="The High Price of Materialism">
+    <meta itemprop="description" content="More at http://www.newdream.org Video by New Dream Psychologist Tim Kasser discusses how America's culture of consumerism undermines our well-being. When peo...">
+
+
+    <meta itemprop="paid" content="False">
+
+      <meta itemprop="channelId" content="UCPNHrqGIAzPASNtIXqDdd0A">
+      <meta itemprop="videoId" content="oGab38pKscw">
+
+      <meta itemprop="duration" content="PT5M37S">
+      <meta itemprop="unlisted" content="False">
+
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <link itemprop="url" href="http://www.youtube.com/user/centernewdream">
+            <link itemprop="name" content="New Dream">
+        </span>
+
+        
+
+
+    <link itemprop="thumbnailUrl" href="https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg">
+    <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+      <link itemprop="url" href="https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg">
+      <meta itemprop="width" content="1280">
+      <meta itemprop="height" content="720">
+    </span>
+
+      <link itemprop="embedUrl" href="https://www.youtube.com/embed/oGab38pKscw">
+      <meta itemprop="playerType" content="HTML5 Flash">
+      <meta itemprop="width" content="1280">
+      <meta itemprop="height" content="720">
+
+      <meta itemprop="isFamilyFriendly" content="True">
+      <meta itemprop="regionsAllowed" content="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW">
+      <meta itemprop="interactionCount" content="930794">
+      <meta itemprop="datePublished" content="2011-12-04">
+      <meta itemprop="uploadDate" content="2011-12-04">
+      <meta itemprop="genre" content="Nonprofits &amp; Activism">
+
+
+  </div>
+
+      
+
+  
+  
+</body>
+</html>
