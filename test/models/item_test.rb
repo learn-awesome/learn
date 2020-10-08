@@ -42,6 +42,34 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   test "advanced search" do
-  	assert_equal Item.advanced_search(nil,nil,nil,nil).count, Item.all.count
+    assert_equal Item.advanced_search(nil,nil,nil,nil).count, Item.all.count
+  end
+
+  test "extract opengraph data" do
+    url = "https://www.youtube.com/watch?v=oGab38pKscw"
+    response_body = File.read(fixture_file("youtube_oGab38pKscw.html"))
+    stub_request(:get, url).to_return(status: 200, body: response_body)
+
+    result = Item.extract_opengraph_data(url)
+
+    assert_equal("video", result[:item_type])
+    assert_equal([], result[:topics])
+    assert_equal("https://www.youtube.com/watch?v=oGab38pKscw", result[:canonical])
+    assert_equal("https://i.ytimg.com/vi/oGab38pKscw/maxresdefault.jpg", result[:image_url])
+    assert_equal("The High Price of Materialism", result[:title])
+    assert(result[:description])
+  end
+
+  test "Downloading Open Graph data handles request throttled responses" do
+    url = "https://www.youtube.com/watch?v=oGab38pKscw"
+    stub_request(:get, url).to_return(status: 429)
+
+    result = Item.extract_opengraph_data(url)
+
+    assert_equal({}, result, "Return an empty Hash when requests are throttled")
+  end
+
+  def fixture_file(filename)
+    Rails.root.join("test", "fixtures", "files", filename)
   end
 end

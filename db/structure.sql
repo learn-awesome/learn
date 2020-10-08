@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -53,7 +39,7 @@ COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -
@@ -237,8 +223,7 @@ CREATE TABLE public.idea_sets (
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    description text,
-    is_approved boolean DEFAULT false NOT NULL
+    description text
 );
 
 
@@ -429,7 +414,9 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.slack_authorizations (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    token json NOT NULL
+    token json NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -441,7 +428,9 @@ CREATE TABLE public.slack_subscriptions (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     slack_authorization_id uuid NOT NULL,
     channel_id character varying NOT NULL,
-    topic_id uuid NOT NULL
+    topic_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -1656,7 +1645,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200730185439'),
 ('20200824210734'),
 ('20200824230523'),
-('20200825025845'),
 ('20200922144058');
 
 

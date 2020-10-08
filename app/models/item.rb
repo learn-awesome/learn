@@ -532,19 +532,7 @@ class Item < ApplicationRecord
           metadata: {isbn: isbn, page_count: page_count}
         }
       elsif url.include?("youtube.com") or url.include?("vimeo.com")
-        page = Nokogiri::HTML(open(url))
-        canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
-        image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
-        title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
-        description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
-        {
-          item_type: 'video',
-          topics: [],
-          canonical: canonical,
-          image_url: image_url,
-          title: title,
-          description: description
-        }
+        opengraph_from_video(url)
       elsif url.include?("wikipedia.org")
         page = Nokogiri::HTML(open(url))
         title = page.at('title')&.content
@@ -574,6 +562,29 @@ class Item < ApplicationRecord
         end
       end
     end
+  end
+
+  ##
+  # Extract Open Graph data from a video URL.
+  #
+  def self.opengraph_from_video(url)
+    page = Nokogiri::HTML.parse(URI.open(url))
+    canonical = page.at('link[rel="canonical"]')&.get_attribute("href")
+    image_url = page.at('meta[property="og:image"]')&.get_attribute("content")
+    title = page.at('meta[property="og:title"]')&.get_attribute("content")
+    description = page.at('meta[property="og:description"]')&.get_attribute("content")
+
+    {
+      item_type: 'video',
+      topics: [],
+      canonical: canonical,
+      image_url: image_url,
+      title: title,
+      description: description
+    }
+  rescue OpenURI::HTTPError => ex
+    Rails.logger.error "Error: #{ex.message} in 'opengraph_from_video'"
+    {}
   end
 
   def display_rating

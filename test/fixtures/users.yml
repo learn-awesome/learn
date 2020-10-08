@@ -25,5 +25,3 @@
 
 first_user:
   nickname: firstuser
-  auth0_uid: firstuser
-  authinfo: []
