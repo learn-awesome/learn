@@ -134,6 +134,28 @@ class TopicsController < InheritedResources::Base
     end
   end
 
+  def actor
+    @topic = Topic.from_param(params[:id])
+    render json: @topic.actor_json
+  end
+
+  def inbox
+    @topic = Topic.from_param(params[:id])
+    headers = request.headers.env.reject { |key| key.to_s.include?('.') }
+    post_body = request.raw_post
+    Rails.logger.info "headers = #{headers.inspect}"
+    Rails.logger.info "body = #{post_body}"
+    result, message = @topic.add_to_inbox!(headers, post_body)
+    unless result
+      raise message
+    end
+    render json: {message: message}, status: (result ? 200 : 400)
+  end
+
+  def outbox
+    @topic = Topic.from_param(params[:id])
+  end
+
   protected
   def resource
     @topic = Topic.from_param(params[:id])

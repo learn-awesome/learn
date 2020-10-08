@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       post 'wiki_update'
       get 'practice'
       post 'practice'
+      get 'actor'
+      post 'inbox'
+      get 'outbox'
     end
     collection do
       get 'search'
