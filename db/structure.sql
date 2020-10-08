@@ -39,7 +39,7 @@ COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -
@@ -1683,6 +1683,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200824230523'),
 ('20200922144058'),
 ('20200930190125');
-
 
 
