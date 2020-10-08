@@ -20,12 +20,14 @@ one:
   user:
   question: MyText
   answer: MyText
-  level: MyString
-  last_practised_at: 2020-02-13 02:29:15
+  level: 1
+  user: first_user
+  deck: one
 
 two:
   user:
   question: MyText
   answer: MyText
-  level: MyString
-  last_practised_at: 2020-02-13 02:29:15
+  level: 2
+  user: first_user
+  deck: two
