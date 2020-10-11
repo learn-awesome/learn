@@ -20,7 +20,6 @@
 #  interactive_score     :decimal(3, 2)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  typical_age_range     :string
 #  description           :text
 #  metadata              :json             not null
 #  page_count            :integer
@@ -53,7 +52,10 @@ class Item < ApplicationRecord
   validates :idea_set, presence: true
   validates :user, presence: true
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
-  validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
+
+  LEVELS = ["childlike","beginner","intermediate","advanced","research"]
+  validates_inclusion_of :level, in: LEVELS, allow_nil: true, allow_blank: false
+
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
   after_create :update_points # :notify_gitter
@@ -195,7 +197,7 @@ class Item < ApplicationRecord
   	end
   end
 
-  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil)
+  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil, level = nil)
     results = Item.all
 
     if topic_name.present?
@@ -232,6 +234,10 @@ class Item < ApplicationRecord
 
     if person_kind.present?
       results = results.where(idea_set_id: Recommendation.where(person_id: Person.where(kind: person_kind).pluck(:id)).pluck(:idea_set_id))
+    end
+
+    if level.present?
+      results = results.where(level: level)
     end
 
     return results.limit(50)

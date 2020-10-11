@@ -275,7 +275,7 @@ CREATE TABLE public.items (
     interactive_score numeric(3,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    typical_age_range character varying,
+    level character varying,
     description text,
     metadata json DEFAULT '{}'::json NOT NULL,
     page_count integer,
@@ -1682,6 +1682,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200824210734'),
 ('20200824230523'),
 ('20200922144058'),
-('20200930190125');
+('20200930190125'),
+('20201010231135');
 
 

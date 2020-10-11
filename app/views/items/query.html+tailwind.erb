@@ -1,7 +1,8 @@
 <div class="card max-w-8xl mx-auto">
 
 <%= form_with local: true, method: :get, class: "simple-form-inline" do |form| %>
-  Show me &nbsp; 
+  Show me &nbsp;
+  <%= form.select :level, [["childlike","childlike"],["beginner","beginner"],["intermediate","intermediate"],["advanced","advanced"],["research","research"]], {selected: @level, include_blank: "Any level"}, class: "form-control" %> &nbsp;   
   <%= form.select :item_type, ItemType.all.collect {|t| [t.display_name_plural, t.id]}, {selected: @item_type, include_blank: "Any format"}, class: "form-control" %> &nbsp; about &nbsp; 
   <%= form.select :topic, Topic.all.sort_by(&:display_name).collect {|t| [t.display_name, t.name]}, {selected: @topic_name, include_blank: "Any topic"}, class: "form-control" %> and about &nbsp;
   <%= form.select :second_topic, Topic.all.sort_by(&:display_name).collect {|t| [t.display_name, t.name]}, {selected: @second_topic, include_blank: "Any topic"}, class: "form-control" %>

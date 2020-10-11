@@ -90,7 +90,15 @@ class Topic < ApplicationRecord
 		'community'
 	end
 
-	def advanced_search(item_type, length, quality)
+	def available_levels
+		items = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
+			self.items
+		end
+
+		items.pluck(:level).uniq
+	end
+
+	def advanced_search(item_type, length, quality, level = nil)
 		results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
 			self.items
 		end
@@ -106,7 +114,12 @@ class Topic < ApplicationRecord
 
 	    if ['inspirational', 'educational', 'challenging', 'entertaining', 'visual', 'interactive'].include?(quality)
 	      results = results.where("#{quality}_score >= 4.0")
-	    end
+		end
+		
+		if Item::LEVELS.include?(level)
+			results = results.where(level: level)
+		end
+
 	    return results
 	end
 

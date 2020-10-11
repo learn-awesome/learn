@@ -197,7 +197,7 @@ class ItemsController < ApplicationController
       item.item_type_id = params[:item_type_id] if params[:item_type_id] && ItemType.find(params[:item_type_id])
       item.estimated_time = params[:estimated_time]
       item.time_unit = params[:estimated_time_unit]
-      item.typical_age_range = params[:typical_age_range]
+      item.level = params[:level]
       item.year = params[:year]
       item.description = params[:description].try(:strip)
       item.protected_description = params[:protected_description].try(:strip)
@@ -321,6 +321,7 @@ class ItemsController < ApplicationController
   def query
     @topic_name = params[:topic]
     @item_type = params[:item_type]
+    @level = params[:level]
     @length = params[:length]
     @quality = params[:quality]
 
@@ -339,7 +340,7 @@ class ItemsController < ApplicationController
         end
       end
       # query items
-      @items = Item.advanced_search(@topic_name, @item_type, @length, @quality, @second_topic, @person_kind, @published_year, @min_score)
+      @items = Item.advanced_search(@topic_name, @item_type, @length, @quality, @second_topic, @person_kind, @published_year, @min_score, @level)
     else
       @items = []
     end
@@ -352,7 +353,7 @@ class ItemsController < ApplicationController
     # end
 
     def item_params
-      params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :typical_age_range, :image_url, 
+      params.require(:item).permit(:name, :item_type_id, :estimated_time, :year, :time_unit, :level, :image_url, 
       :description, :metadata, :page_count, :goodreads_rating, :isbn, :isbn13, :cost, :language, :protected_description)
     end
 

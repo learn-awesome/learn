@@ -36,13 +36,9 @@
 				<%= @item.estimated_time.to_s + @item.time_unit[0] %>
 			</span>
 		<% end %>
-		<% if @item.typical_age_range.present? %>
+		<% if @item.level.present? %>
 			<span class="nohover inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline py-1 px-2 text-sm leading-tight btn-soft-info" data-toggle="tooltip" data-placement="top" title="Typical age range">
-				<% if @item.typical_age_range[0] == '-' %>
-					<%= "For ages: Upto #{@item.typical_age_range[1..]} years"%>
-				<% else %>
-					<%= "For ages: #{@item.typical_age_range[0...-1]}+ years"%>
-				<% end %>
+			Level: <%= @item.level %>
 			</span>
 		<% end %>
 		<% if @item.year.present? %>

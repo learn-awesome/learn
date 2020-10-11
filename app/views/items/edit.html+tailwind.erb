@@ -67,15 +67,8 @@
         </div>
 
         <div>
-        <label for="item_typical_age_range">Typical age range:</label>
-        <select name="item[typical_age_range]" id="item_typical_age_range">
-            <option value="">All ages</option>
-            <option value="-6">Upto 6 yrs</option>
-            <option value="6-">6 yrs+</option>
-            <option value="-13">Upto 13yrs</option>
-            <option value="13-">13 yrs+</option>
-            <option value="18-">18 yrs+</option>
-        </select>
+        <%= form.label :level %>
+        <%= form.collection_select :level, Item::LEVELS, :to_s, :capitalize, {prompt: 'Choose level'}, required: false, class: "w-full" %>
         </div>
 
         <div>

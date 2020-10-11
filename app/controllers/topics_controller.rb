@@ -38,6 +38,7 @@ class TopicsController < InheritedResources::Base
     @item_type = params[:item_type]
     @length = params[:length]
     @quality = params[:quality]
+    @level = params[:level].presence # which tab to show selected by default
     @topic = Topic.from_param(params[:id])
     if @topic.nil?
         flash[:danger] = "We couldn't find this topic."
@@ -48,12 +49,8 @@ class TopicsController < InheritedResources::Base
       @does_follow = @user_topics.find { |ut| (ut.topic_id == @topic.id) && (ut.action == 'follow') }
     end
 
-    if request.variant.to_s =~ /tailwind/
-      @item_type_items = @topic.advanced_search(@item_type, @length, @quality)
-    else
-      @item_type_items = @topic.advanced_search(@item_type, @length, @quality).paginate(page: params[:page])
-    end
- 
+    @item_type_items = @topic.advanced_search(@item_type, @length, @quality, @level)
+
     @learning_plans = @topic.advanced_search('learning_plan', nil, nil)
   end
 
@@ -71,6 +68,7 @@ class TopicsController < InheritedResources::Base
       else
         @user_topics.create!(topic: @topic, action: "follow")
       end
+      Rails.cache.delete("user_onboarding_#{current_user.id}")
     end
     redirect_to @topic
   end
