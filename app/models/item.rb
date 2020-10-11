@@ -54,7 +54,7 @@ class Item < ApplicationRecord
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
 
   LEVELS = ["childlike","beginner","intermediate","advanced","research"]
-  validates_inclusion_of :level, in: LEVELS, allow_nil: true, allow_blank: false
+  validates_inclusion_of :level, in: LEVELS, allow_nil: true
 
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
