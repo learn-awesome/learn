@@ -18,6 +18,7 @@
 #  wiki_title        :string
 #  gpt_quiz_prompt   :text
 #  gpt_answer_prompt :text
+#  slack_room_id     :string
 #
 
 require 'test_helper'

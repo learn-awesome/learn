@@ -20,7 +20,7 @@
 #  interactive_score     :decimal(3, 2)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  typical_age_range     :string
+#  level                 :string
 #  description           :text
 #  metadata              :json             not null
 #  page_count            :integer
@@ -32,6 +32,7 @@
 #  language              :string
 #  overall_score         :decimal(3, 2)
 #  protected_description :text
+#  is_approved           :boolean          default("false"), not null
 #
 
 require 'test_helper'

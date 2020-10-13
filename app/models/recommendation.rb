@@ -12,6 +12,7 @@
 #  url         :string
 #  notes       :text
 #  score       :decimal(3, 2)
+#  user_id     :uuid
 #
 
 class Recommendation < ApplicationRecord
