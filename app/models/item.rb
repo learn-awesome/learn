@@ -711,9 +711,15 @@ class Item < ApplicationRecord
     if self.links.any? { |l| l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }
       Item.video_embed(self.links.select { |l| 
         l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }.first.url)
+    elsif self.is_wiki? and self.links.any? { |l| l.url.include?("wikipedia.org") }
+      self.links.select { |l| l.url.include?("wikipedia.org") }.first.url.gsub(".wikipedia.org",".m.wikipedia.org")
     else
-      self.links.first.url
+      nil # self.links.first.url
     end
+  end
+
+  def is_wiki?
+    self.item_type_id == 'wiki'
   end
 
   def self.youtube_id(youtube_url)

@@ -11,13 +11,18 @@
 		<p class="text-2xl text-gray-900 font-bold"><%= @item.display_name %></p>
 		<div class="prose">
 			<p>
-				<% if @item.large_thumbnail.present? %>
+				<% if @item.large_thumbnail.present? and !@item.embed_url %>
 					<a href="<%= @item.primary_link.url %>" target="_blank"><img src="<%= @item.large_thumbnail %>" class="mr-2 mb-2" style="max-height: 400px;"/></a>
 				<% end %>
 				<%= @item.display_description %>
 				<%= @item.display_protected_description %>
 			</p>
 		</div>
+
+		<% if @item.embed_url %>
+			<iframe width="100%" height="600" class="w-full" src="<%= @item.embed_url %>"/>
+		<% end %>
+
 		<% if !@item.is_syllabus? %>
 		<p class="mb-4"><%= link_to "Visit #{@item.primary_link.name} on #{@item.primary_link.top_domain}", @item.primary_link.url, class: "block rounded-lg px-4 py-4 mr-2 mt-4 bg-purple-700 hover:bg-purple-800 text-white text-center font-semibold leading-none", target: :_blank, rel: "nofollow" %></p>
 		<% end %>
