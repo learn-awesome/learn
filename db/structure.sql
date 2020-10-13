@@ -1047,6 +1047,13 @@ CREATE INDEX index_links_on_item_id ON public.links USING btree (item_id);
 
 
 --
+-- Name: index_links_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_links_on_url ON public.links USING btree (url);
+
+
+--
 -- Name: index_people_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1685,6 +1692,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200922144058'),
 ('20200930190125'),
 ('20201010231135'),
-('20201013025845');
+('20201013025845'),
+('20201013025846');
 
 
