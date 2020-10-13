@@ -76,7 +76,7 @@
 
 						<div class="d-flex flex-wrap align-items-center">
 							<% @user.fav_topics.each do |topic| %>
-								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style} mr-1" %>
+								<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style(:tailwind)} mr-1" %>
 							<% end %>
 						</div>
 </div>
@@ -105,7 +105,7 @@
 	  <% @user.reviews.where(status: 'learned').each do |rev| %>
 	   <%= render rev.item %>
 	   <% rev.item.topics.map do |topic| %>
-			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style}" %>
+			<%= link_to topic.name, topic, class: "btn btn-sm #{Topic.button_style(:tailwind)}" %>
 	   <% end %>
 	  <% end %>
 </div>
