@@ -10,6 +10,8 @@
 
         <%= form.collection_select :second_topic, all_topics, :id, :name, {prompt: 'Choose secondary topic', selected: @topics.to_a.drop(1).first&.id}, required: false, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow" %>
 
+        <%= form.collection_select :level, Item::LEVELS, :to_s, :capitalize, {prompt: 'Choose level'}, required: false, class: "mt-6 block py-2 px-4 bg-gray-200 w-full shadow", style: "max-width: 100%" %>
+
         <div class="flex justify-between items-center mt-6">
         <%= form.submit "Save", class: "py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-600 focus:outline-none" %>
         </div>

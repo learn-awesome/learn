@@ -6,6 +6,8 @@
 
 #### Awesome learning resources organized by topics, formats and difficulty. Optimal learning paths for any topic.
 
+<img width="100%" src="https://user-images.githubusercontent.com/19304/94602661-cbb4f380-02b2-11eb-81aa-419e4c4a53b2.png">
+
 This is the code that powers https://learnawesome.org
 
 This is built using Rails 6.0, PostgreSQL, and Tailwind CSS
@@ -14,9 +16,9 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 # To Do
 
-- Build a mobile app (currently, there is a minimal Android version built in Flutter. A learning assistant should be always near you.
+- Improve the [mobile app](https://github.com/learn-awesome/mobile-app)
 
-- Improve automatic extraction of metadata from links. I did this for books, but it remains pending for other formats like videos etc.
+- Improve automatic extraction of metadata such as topics,images etc from links to books, videos, courses etc.
 
 - Improve the topic hierarchy for easy navigation.
 

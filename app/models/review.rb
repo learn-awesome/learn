@@ -134,6 +134,7 @@ class Review < ApplicationRecord
   }
 
   def self.sample_reviews(item, exclude_user = nil)
+    return []
     return [] if User.where.not(id: [exclude_user.try(:id), User.learnawesome.try(:id), *item.reviews.pluck(&:user_id)].compact.uniq).count == 0
     [2,3,2,3,4].sample.times.map {
       Review.new(

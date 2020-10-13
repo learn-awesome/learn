@@ -27,7 +27,7 @@ class User < ApplicationRecord
 	validates :nickname, presence: true
 	validates :nickname, exclusion: { in: %w(learnawesome admin root), message: "%{value} is reserved." }, if: Proc.new { |a| Rails.env.production? }
 
-	validates_length_of :nickname, in: 4..20, allow_blank: false
+	validates_length_of :nickname, in: 4..30, allow_blank: false
 	validates_length_of :bio, maximum: 140
 	validates_length_of :description, maximum: 400
 
@@ -52,6 +52,8 @@ class User < ApplicationRecord
 
 	has_many :group_members, dependent: :destroy, inverse_of: :user
 	has_many :groups, through: :group_members
+
+	has_many :recommendations
 
 	after_create :update_points
 	after_create :create_default_deck
@@ -231,17 +233,31 @@ class User < ApplicationRecord
 
 	  if body_hash["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
 	  	if body_hash["type"] == "Follow" # Do this check first
-	  		Rails.logger.info "New follow from ActivityPub for #{self.id}"
+	  		Rails.logger.info "New follow from ActivityPub for user #{self.id}"
 	  		afp = self.activity_pub_followers.create!(metadata: body)
 	  		# Send Accept response
-	  		ActivityPubFollowAcceptedJob.perform_later(afp.id)
-		elsif body_hash["type"] == "Unollow" # Do this check first
+			ActivityPubFollowAcceptedJob.perform_later(afp.id, 'user')
+			return true, "Follow accepted"
+		elsif body_hash["type"] == "Unfollow" # Do this check first
 			Rails.logger.info "Unfollow request from ActivityPub for #{self.id}: #{body_hash.inspect}"
+			return false, "Unfollow not yet implemented for #{self.id}: #{body_hash.inspect}"
 		else
-	  		Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
-	  	end
+			Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
+			return false, "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"  
+		end
+	  elsif body_hash["type"] == "Delete"
+		# a user has been deleted
+		apf = self.activity_pub_followers.select { |x| x.object == body_hash["object"] }.first
+		if apf
+			apf.destroy
+			return true, "Follower #{apf.object} deleted"
+		else
+			return true, "APF does not exist"
+		end
+	  elsif body_hash["type"] == "Undo"
+		return true, "Undo is not implemented"
 	  else
-	    raise "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
+	    return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
 	  end
 	end
 
@@ -304,6 +320,7 @@ class User < ApplicationRecord
 				first_item: [self.submissions.count > 0, Rails.application.routes.url_helpers.user_url(self)],
 				first_user_follow: [self.following.count > 0, "/users"],
 				first_referral: [self.invited.count > 0, Rails.application.routes.url_helpers.settings_user_path(self)],
+				first_group: [self.groups.count > 0, Rails.application.routes.url_helpers.user_groups_path(self)],
 				first_collection: [self.collections.count > 0, Rails.application.routes.url_helpers.user_collections_path(self)],
 				embed_reviews: [self.has_used_embed, Rails.application.routes.url_helpers.user_url(self)],
 				first_flashcard: [self.flash_cards.count > 0, "/flash_cards/practice"],
@@ -328,6 +345,7 @@ class User < ApplicationRecord
 			[:first_item, "Add your first link"],
 			[:first_user_follow, "Follow another user"],
 			[:first_referral, "Invite a friend"],
+			[:first_group, "Create or join a group"],
 			[:first_collection, "Create your first collection"],
 			[:embed_reviews, "Embed your reviews on your blog or other sites"],
 			[:first_flashcard, "Create your first flashcard"],

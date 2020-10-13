@@ -166,6 +166,13 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def dataset
+    # This should return fast to stay within Heroku's 30 seconds limit.
+    render json: {
+      topics: Topic.all
+    }
+  end
+
   private
 
   def fetch_entities(is_fuzzy)

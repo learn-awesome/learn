@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  resources :recommendations
   authenticate :admin_user do
     mount Sidekiq::Web => '/sidekiq'
   end
@@ -40,6 +41,9 @@ Rails.application.routes.draw do
       post 'wiki_update'
       get 'practice'
       post 'practice'
+      get 'actor'
+      post 'inbox'
+      get 'outbox'
     end
     collection do
       get 'search'
@@ -73,7 +77,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :idea_sets, only: [:new, :create, :edit, :update]
+  resources :idea_sets, only: [:show, :new, :create, :edit, :update]
+
+  resources :recommendations, only: [:new, :create]
 
   resources :item_types, only: [:index, :show] do
     collection do
@@ -154,4 +160,5 @@ Rails.application.routes.draw do
   post '/csp-violation-report-endpoint' => 'welcome#csp_report'
   get '/slack_authorize' => 'welcome#slack_authorize'
   post '/slack_command' => 'welcome#slack_command'
+  get '/dataset' => 'welcome#dataset'
 end

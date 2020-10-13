@@ -67,15 +67,8 @@
         </div>
 
         <div>
-        <label for="item_typical_age_range">Typical age range:</label>
-        <select name="item[typical_age_range]" id="item_typical_age_range">
-            <option value="">All ages</option>
-            <option value="-6">Upto 6 yrs</option>
-            <option value="6-">6 yrs+</option>
-            <option value="-13">Upto 13yrs</option>
-            <option value="13-">13 yrs+</option>
-            <option value="18-">18 yrs+</option>
-        </select>
+        <%= form.label :level %>
+        <%= form.collection_select :level, Item::LEVELS, :to_s, :capitalize, {prompt: 'Choose level'}, required: false, class: "w-full" %>
         </div>
 
         <div>
@@ -88,6 +81,11 @@
         <div class="form-inline">
             <label class="text-gray-700" for="item_cost">Cost (USD): &nbsp;</label>
             <input min="0" step="0.01" class="px-4 py-2 rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" type="number" name="item[cost]" id="item_cost" value="<%= @item.cost %>">&nbsp;
+        </div>
+
+        <div>
+        <%= form.label :is_approved %>
+        <%= form.check_box :is_approved %>
         </div>
 
         <div>

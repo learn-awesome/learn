@@ -24,9 +24,6 @@ class IdeaSet < ApplicationRecord
 	accepts_nested_attributes_for :person_idea_sets, allow_destroy: true
 	accepts_nested_attributes_for :recommendations, allow_destroy: true
 
-	scope :approved, -> { where(:is_approved => true) }
-	scope :unapproved, -> { where(:is_approved => false) }
-
 	def review
 		Review.new
 	end
@@ -36,5 +33,15 @@ class IdeaSet < ApplicationRecord
 
 	def display_name
 		name
+	end
+
+	def as_json(options = {})
+		super(
+			only: [:id, :name],
+			include: {
+				items: { only: [:id, :name, :item_type_id, :image_url, :description, :overall_score], include: { links: {only: [:url] }} },
+				topic_idea_sets: { only: [:topic_id] } 
+			}
+		)
 	end
 end

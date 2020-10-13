@@ -1,5 +1,5 @@
 <% if item.item_type_id == 'book' and item.large_thumbnail.present? %>
-<a href="<%= item_path(item) %>" class="block w-64 bg-white shadow-lg rounded-lg mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-64 <%= item.is_approved? ? 'bg-white' : 'bg-red' %> shadow-lg rounded-lg mr-4 mb-4 transition duration-200 transform hover:scale-105">
 <div class="flex">
     <div class="w-1/3 bg-cover" style="background-image: url(&quot;<%= item.large_thumbnail %>&quot;);"></div>
     <div class="w-2/3 p-4 md:p-4">
@@ -14,7 +14,7 @@
 </a>
 
 <% elsif item.item_type_id == 'video'%>
-<a href="<%= item_path(item) %>" class="block w-xs max-w-md bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-xs max-w-md <%= item.is_approved? ? 'bg-white' : 'bg-red' %> shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
     <img src="<%= item.thumbnail %>" alt="videocover" class="w-full h-56 object-cover">
     <div class="py-5 text-center">
         <p href="#" class="block text-lg text-gray-800 font-semibold"><%= item.display_name %></p>
@@ -23,7 +23,7 @@
 </a>
 
 <% else %>
-<a href="<%= item_path(item) %>" class="block w-xs max-w-md bg-white shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+<a href="<%= item_path(item) %>" class="block w-xs max-w-md <%= item.is_approved? ? 'bg-white' : 'bg-red-200' %> shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
     <div class="py-5 px-4">
         <p href="#" class="block text-lg text-gray-800 font-semibold"><%= item.display_name %></p>
         <span class="text-sm text-gray-700"><%= item.primary_link.try(:top_domain) %></span>

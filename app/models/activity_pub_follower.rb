@@ -23,6 +23,16 @@ class ActivityPubFollower < ApplicationRecord
     full_inbox = actor["inbox"]
   end
 
+  def actor
+    data = JSON.parse(self.metadata)
+    data["actor"]
+  end
+
+  def object
+    data = JSON.parse(self.metadata)
+    data["object"]
+  end
+
   def accept_follow_request!
     data = JSON.parse(self.metadata)
 
@@ -53,5 +63,9 @@ class ActivityPubFollower < ApplicationRecord
       body: doc.to_json,
       headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
     )
+  end
+
+  def accept_unfollow_request!
+    #TODO
   end
 end

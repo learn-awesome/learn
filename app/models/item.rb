@@ -20,7 +20,6 @@
 #  interactive_score     :decimal(3, 2)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  typical_age_range     :string
 #  description           :text
 #  metadata              :json             not null
 #  page_count            :integer
@@ -53,7 +52,13 @@ class Item < ApplicationRecord
   validates :idea_set, presence: true
   validates :user, presence: true
   validates :image_url, allow_blank: true, format: URI::regexp(%w[http https])
-  validates :typical_age_range, allow_blank: true, format: /\A(\d{1,2})?-(\d{1,2})?\Z/
+
+  LEVELS = ["childlike","beginner","intermediate","advanced","research"]
+  validates :level, inclusion: {in: LEVELS}, allow_nil: true
+  before_validation(on: [:create, :update]) do
+    self.level = nil if self.level == ''
+  end
+
   validates :links, presence: true, if: -> { item_type_id != 'learning_plan' and !allow_without_links}
   after_save :clear_cache
   after_create :update_points # :notify_gitter
@@ -65,6 +70,9 @@ class Item < ApplicationRecord
 
   attr_accessor :other_item_id
   attr_accessor :allow_without_links
+
+	scope :approved, -> { where(:is_approved => true) }
+	scope :unapproved, -> { where(:is_approved => false) }
 
   scope :curated, -> { where("1 = 1") }
   scope :recent, -> { order("created_at DESC").limit(3) }
@@ -169,6 +177,14 @@ class Item < ApplicationRecord
     return true
   end
 
+  def can_user_add_recommendations?(editor)
+    return false if editor.nil? or !editor.is_a?(User)
+    return true if Rails.env.development?
+    return false if editor.score < 500
+    return false if self.is_syllabus?
+    return true
+  end
+
   def can_user_destroy?(user)
     return true if user and user.is_core_dev?
     return false
@@ -187,7 +203,7 @@ class Item < ApplicationRecord
   	end
   end
 
-  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil)
+  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil, level = nil)
     results = Item.all
 
     if topic_name.present?
@@ -224,6 +240,10 @@ class Item < ApplicationRecord
 
     if person_kind.present?
       results = results.where(idea_set_id: Recommendation.where(person_id: Person.where(kind: person_kind).pluck(:id)).pluck(:idea_set_id))
+    end
+
+    if level.present?
+      results = results.where(level: level)
     end
 
     return results.limit(50)
@@ -524,19 +544,7 @@ class Item < ApplicationRecord
           metadata: {isbn: isbn, page_count: page_count}
         }
       elsif url.include?("youtube.com") or url.include?("vimeo.com")
-        page = Nokogiri::HTML(open(url))
-        canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
-        image_url = page.at('meta[property="og:image"]')&.attributes["content"]&.value
-        title = page.at('meta[property="og:title"]')&.attributes["content"]&.value
-        description = page.at('meta[property="og:description"]')&.attributes["content"]&.value
-        {
-          item_type: 'video',
-          topics: [],
-          canonical: canonical,
-          image_url: image_url,
-          title: title,
-          description: description
-        }
+        opengraph_from_video(url)
       elsif url.include?("wikipedia.org")
         page = Nokogiri::HTML(open(url))
         title = page.at('title')&.content
@@ -566,6 +574,29 @@ class Item < ApplicationRecord
         end
       end
     end
+  end
+
+  ##
+  # Extract Open Graph data from a video URL.
+  #
+  def self.opengraph_from_video(url)
+    page = Nokogiri::HTML.parse(URI.open(url))
+    canonical = page.at('link[rel="canonical"]')&.get_attribute("href")
+    image_url = page.at('meta[property="og:image"]')&.get_attribute("content")
+    title = page.at('meta[property="og:title"]')&.get_attribute("content")
+    description = page.at('meta[property="og:description"]')&.get_attribute("content")
+
+    {
+      item_type: 'video',
+      topics: [],
+      canonical: canonical,
+      image_url: image_url,
+      title: title,
+      description: description
+    }
+  rescue OpenURI::HTTPError => ex
+    Rails.logger.error "Error: #{ex.message} in 'opengraph_from_video'"
+    {}
   end
 
   def display_rating
@@ -656,7 +687,7 @@ class Item < ApplicationRecord
       end
 
       # Notify all Slack subscriptions for each of the topics (only once per channel)
-      self.topics.map { |t| t.slack_subscriptions }.flatten.uniq_by { |s| [s.slack_authorization_id, s.channel_id] }.each do |sub|
+      self.topics.map { |t| t.slack_subscriptions }.flatten.uniq { |s| [s.slack_authorization_id, s.channel_id] }.each do |sub|
         SlackSubscriptionNotifyJob.perform_later(message, sub.id)
       end 
     end

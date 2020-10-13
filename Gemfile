@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.3.2'
+gem 'rails', '6.0.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -57,6 +57,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'webdrivers'
+  gem "webmock", "~> 3.9"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -114,3 +115,5 @@ gem 'sitemap_generator'
 gem 'openai'
 
 gem 'slack-ruby-client'
+
+gem 'aws-sdk-s3'

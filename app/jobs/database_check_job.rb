@@ -4,6 +4,7 @@ class DatabaseCheckJob < ApplicationJob
   def perform
   	begin
       ideas_without_topics = IdeaSet.pluck(:id) - TopicIdeaSet.distinct.pluck(:idea_set_id)
+      topics_without_ideas = Topic.pluck(:id) - TopicIdeaSet.distinct.pluck(:topic_id) # can be deleted unless they have children topics
       items_without_links  = Item.where.not(item_type_id: 'learning_plan').pluck(:id) - Link.distinct.pluck(:item_id)
       ideas_without_items  = IdeaSet.pluck(:id) - Item.distinct.pluck(:idea_set_id)
       duplicate_links = Link.select([:url]).group(:url).having("count(id) > 1").map(&:url)
@@ -32,6 +33,7 @@ class DatabaseCheckJob < ApplicationJob
 
       result = {
         ideas_without_topics: ideas_without_topics,
+        topics_without_ideas: topics_without_ideas,
         items_without_links: items_without_links,
         ideas_without_items: ideas_without_items,
         duplicate_links: duplicate_links,

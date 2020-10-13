@@ -33,11 +33,6 @@ class Topic < ApplicationRecord
 	has_many :idea_sets, :through => :topic_idea_sets
 	has_many :people, :through => :idea_sets
 	has_many :items, :through => :idea_sets
-
-	def approved_items
-		Item.where(idea_set: self.idea_sets.approved)
-	end
-
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	has_many :slack_subscriptions
@@ -70,12 +65,14 @@ class Topic < ApplicationRecord
 	end
 
 	def as_json(options = {})
-		{
-			id: self.id,
-			name: self.name,
-			search_index: self.search_index,
-			to_param: self.to_param
-		}
+		super(
+			only: [:id, :name, :search_index, :display_name, :to_param],
+			include: { 
+				parent: { only: [:id, :name] },
+				second_parent: { only: [:id, :name] } 
+			},
+			methods: [:to_param]
+		)
 	end
 
 	def self.button_style(theme = :bootstrap)
@@ -93,9 +90,17 @@ class Topic < ApplicationRecord
 		'community'
 	end
 
-	def advanced_search(item_type, length, quality)
+	def available_levels
+		items = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
+			self.items
+		end
+
+		items.pluck(:level).uniq
+	end
+
+	def advanced_search(item_type, length, quality, level = nil)
 		results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
-			self.approved_items
+			self.items
 		end
 	    if item_type.present?
 	      results = results.where(item_type_id: item_type)
@@ -109,7 +114,12 @@ class Topic < ApplicationRecord
 
 	    if ['inspirational', 'educational', 'challenging', 'entertaining', 'visual', 'interactive'].include?(quality)
 	      results = results.where("#{quality}_score >= 4.0")
-	    end
+		end
+		
+		if Item::LEVELS.include?(level)
+			results = results.where(level: level)
+		end
+
 	    return results
 	end
 
@@ -306,4 +316,86 @@ class Topic < ApplicationRecord
 		result[misc] = misc_child unless misc_child.blank?
 		return result.sort_by {|k,v| k.name.try(:downcase).to_s }.to_h
 	end
+
+	def activitypub_id
+		id.to_s.gsub("-","_")
+	end
+
+	def webfinger_json
+		{
+			subject: "acct:topic-#{self.activitypub_id}@learnawesome.org",
+			links: [
+				{
+					rel: "self",
+					type: "application/activity+json",
+					href: Rails.application.routes.url_helpers.actor_topic_url(self)
+				}
+			]
+		}
+	end
+
+	def actor_json
+		# For ActivityPub
+		{
+			"@context": [
+				"https://www.w3.org/ns/activitystreams",
+				"https://w3id.org/security/v1"
+			],
+
+			"id": Rails.application.routes.url_helpers.actor_topic_url(self),
+			"type": "Person",
+			"preferredUsername": self.activitypub_id.to_s,
+			"name": "#{self.name} on learnawesome.org",
+			"summary": "Learning resources on #{self.name} topic",
+			"icon": [
+			    self.image_url.to_s
+			  ],
+
+			"inbox": Rails.application.routes.url_helpers.inbox_topic_url(self),
+			"outbox": Rails.application.routes.url_helpers.outbox_topic_url(self, format: :json),
+
+			"publicKey": {
+				"id": (Rails.application.routes.url_helpers.actor_topic_url(self) + "#main-key"),
+				"owner": Rails.application.routes.url_helpers.actor_topic_url(self),
+				"publicKeyPem": ENV['ACTIVITYPUB_PUBKEY'].to_s
+			}
+		}
+	end
+
+	def add_to_inbox!(all_headers, body)
+		# keyId="https://learnawesome.org/topics/8a16a2e4-dcb7-4167-a2a2-51d3af9d1613-algebra/actor#main-key",headers="(request-target) host date",signature="..."
+		# {'Host': 'learnawesome.org', 'Date': '2019-11-14T12:39:31+05:30'}
+		inbox_path = Rails.application.routes.url_helpers.inbox_topic_path(self)
+		actor_url = Rails.application.routes.url_helpers.actor_topic_url(self)
+		body_hash = JSON.parse(body)
+  
+		if body_hash["object"] == actor_url and ActivityPub.verify(nil, all_headers, inbox_path)
+			if body_hash["type"] == "Follow" # Do this check first
+				Rails.logger.info "New follow from ActivityPub for topic #{self.id}"
+				afp = self.topic_activity_pub_followers.create!(metadata: body)
+				# Send Accept response
+			  ActivityPubFollowAcceptedJob.perform_later(afp.id, 'topic')
+			  return true, "Follow accepted"
+		  elsif body_hash["type"] == "Unfollow" # Do this check first
+			  Rails.logger.info "Unfollow request from ActivityPub for topic #{self.id}: #{body_hash.inspect}"
+			  return false, "Unfollow not yet implemented for topic #{self.id}: #{body_hash.inspect}"
+		  else
+			  Rails.logger.info "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"
+			  return false, "Unknown ActivityType for #{self.id}: #{body_hash.inspect}"  
+		  end
+		elsif body_hash["type"] == "Delete"
+		  # a user has been deleted
+		  apf = self.topic_activity_pub_followers.select { |x| x.object == body_hash["object"] }.first
+		  if apf
+			  apf.destroy
+			  return true, "Follower #{apf.object} deleted"
+		  else
+			  return true, "APF does not exist"
+		  end
+		elsif body_hash["type"] == "Undo"
+		  return true, "Undo is not implemented"
+		else
+		  return false, "Request signature could not be verified: #{all_headers.inspect} body=#{body}"
+		end
+	  end
 end
