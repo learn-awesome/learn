@@ -25,6 +25,9 @@ class Link < ApplicationRecord
     ''
   ]
 
+  EMBED_ALLOWED_DOMAINS = [
+  ]
+
   def valid_url?
     uri = URI.parse(url)
     uri.is_a?(URI::HTTP) && !uri.host.nil? && !BLACKLISTED_DOMAINS.include?(uri.host)
