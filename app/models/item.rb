@@ -713,7 +713,7 @@ class Item < ApplicationRecord
         l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }.first.url)
     elsif self.is_wiki? and self.links.any? { |l| l.url.include?("wikipedia.org") }
       self.links.select { |l| l.url.include?("wikipedia.org") }.first.url.gsub(".wikipedia.org",".m.wikipedia.org")
-    elsif Link::EMBED_ALLOWED_DOMAINS.include?(self.primary_link.top_domain)
+    elsif self.primary_link && Link::EMBED_ALLOWED_DOMAINS.include?(self.primary_link.top_domain)
       self.primary_link.url
     end
   end
