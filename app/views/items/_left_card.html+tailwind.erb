@@ -20,7 +20,7 @@
 		</div>
 
 		<% if @item.embed_url %>
-			<iframe width="100%" height="600" class="w-full" src="<%= @item.embed_url %>"/>
+			<iframe width="100%" height="600" class="w-full" src="<%= @item.embed_url %>"></iframe>
 		<% end %>
 
 		<% if !@item.is_syllabus? %>

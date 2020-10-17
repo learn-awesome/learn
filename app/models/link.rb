@@ -26,6 +26,7 @@ class Link < ApplicationRecord
   ]
 
   EMBED_ALLOWED_DOMAINS = [
+    'web.archive.org'
   ]
 
   def valid_url?
