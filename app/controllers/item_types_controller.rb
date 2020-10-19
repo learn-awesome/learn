@@ -10,13 +10,18 @@ class ItemTypesController < ApplicationController
 			redirect_to root_path and return
 		end
 
-		if request.variant.to_s =~ /tailwind/
-			@item_type_items = Item.advanced_search(@topic_name, @item_type, @length, @quality).paginate(page: params[:page])
-		else
-			# @item_type_items = @topic.advanced_search(@item_type, @length, @quality)
-			@topics = Topic.eager_load(:items).where("items.item_type_id=?", @item_type.id).order(:name).paginate(page: params[:page])
-			flash.now[:danger] = "No Topics and Items" if @topics.blank?
-		end
+		# TODO: Personalize this query based on topics and reviewers the user is following.
+		@item_type_items = Item
+			.where(item_type_id: @item_type.id)
+			.where((topic = Topic.where(name: @topic_name).first) && {id: topic.items.map(&:id)})
+			.where(Review::QUALITY_TAGS.include?(@quality) && "#{@quality}_score >= 4.0")
+			.where(@length.present? && ["case when time_unit = 'minutes' then estimated_time when time_unit = 'hours' then estimated_time * 60 end between :start and :finish", {start: @length.split("-").first.to_i, finish: @length.split("-").last.to_i}])
+			.order("overall_score DESC")
+			.limit(200)
+			.sort_by { |i| i.topics.first.followers_count.to_i * -1 }
+			.paginate(page: params[:page])
+
+		# @item_type_items = Item.advanced_search(@topic_name, @item_type, @length, @quality, nil, nil, nil, nil, nil, 100).sort_by { |i| i.topics.first.followers_count.to_i * -1 }.paginate(page: params[:page])
 	end
 
 	def index

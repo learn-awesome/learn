@@ -10,6 +10,8 @@
             </span>
         </p>
         
+        <p>(Are you? <%= @person.name %>?) You can claim to editing and curation this page by <a target="_blank" class="text-blue-500 underline" href="https://twitter.com/messages/compose?recipient_id=1114259648326987776&text=I+would+like+to+claim+this+expert+profile:+<%= person_url(@person) %>">sending us a DM on Twitter</a> or in Slack.</p>
+        
         <% if current_user.try(:score).to_i > 500 %><%= link_to "Edit", edit_person_path(@person), class: "text-blue-500 underline" %><% end %>
         <p class="py-2 text-gray-700"><%= @person.description %></p>
 

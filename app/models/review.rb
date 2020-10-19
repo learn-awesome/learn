@@ -40,6 +40,8 @@ class Review < ApplicationRecord
   scope :interested, -> { where(status: ['want_to_learn', 'learning', 'learned']) }
 
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
+  QUALITY_TAGS = SCORE_TYPES.map(&:to_s).map { |q| q.gsub("_score", "")}
+  
   STATUSES = {want_to_learn: "Want to learn", learning: "Currently learning", learned: "Already learned"}
 
   SAMPLE_COMMENTS = {

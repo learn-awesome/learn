@@ -52,9 +52,13 @@
 </div>
 <div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
 	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
-	<% items.each do |item| %>
+	<% items.take(4).each do |item| %>
 		<%= render partial: 'topics/item', locals: {item: item} %>
 	<% end %>
 	</div>
 </div>
 <% end %>
+
+<div class="paginations">
+  <%= will_paginate @item_type_items, :container => false %>
+</div>

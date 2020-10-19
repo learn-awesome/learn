@@ -205,7 +205,7 @@ class Item < ApplicationRecord
   	end
   end
 
-  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil, level = nil)
+  def self.advanced_search(topic_name, item_type, length, quality, second_topic_name = nil, person_kind = nil, published_year = nil, min_score = nil, level = nil, limit = 50)
     results = Item.all
 
     if topic_name.present?
@@ -248,7 +248,7 @@ class Item < ApplicationRecord
       results = results.where(level: level)
     end
 
-    return results.limit(50)
+    return results.limit(limit)
   end
 
   def self.discover(topics = nil, item_type_ids = nil)

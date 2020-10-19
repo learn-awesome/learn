@@ -20,7 +20,7 @@
 
 class UserTopic < ApplicationRecord
 	belongs_to :user, inverse_of: :user_topics
-	belongs_to :topic, inverse_of: :user_topics
+	belongs_to :topic, inverse_of: :user_topics, counter_cache: :followers_count
 	validates :user_id, presence: true
 	validates :topic_id, presence: true
 	validates :action, presence: true

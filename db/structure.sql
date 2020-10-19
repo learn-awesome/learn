@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -237,8 +223,7 @@ CREATE TABLE public.idea_sets (
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    description text,
-    is_approved boolean DEFAULT false NOT NULL
+    description text
 );
 
 
@@ -430,7 +415,9 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.slack_authorizations (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    token json NOT NULL
+    token json NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -442,7 +429,9 @@ CREATE TABLE public.slack_subscriptions (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     slack_authorization_id uuid NOT NULL,
     channel_id character varying NOT NULL,
-    topic_id uuid NOT NULL
+    topic_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -538,7 +527,8 @@ CREATE TABLE public.topics (
     wiki_title character varying,
     gpt_quiz_prompt text,
     gpt_answer_prompt text,
-    slack_room_id character varying
+    slack_room_id character varying,
+    followers_count integer
 );
 
 
@@ -1700,11 +1690,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200730185439'),
 ('20200824210734'),
 ('20200824230523'),
-('20200825025845'),
 ('20200922144058'),
 ('20200930190125'),
 ('20201010231135'),
 ('20201013025845'),
-('20201013025846');
+('20201013025846'),
+('20201018233116'),
+('20201019010226');
 
 
