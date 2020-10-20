@@ -216,12 +216,63 @@ class User < ApplicationRecord
 			"inbox": Rails.application.routes.url_helpers.inbox_user_url(self),
 			"outbox": Rails.application.routes.url_helpers.outbox_user_url(self, format: :json),
 
+			"followers": Rails.application.routes.url_helpers.ap_followers_user_url(self),
+			"following": Rails.application.routes.url_helpers.ap_following_user_url(self),
+
 			"publicKey": {
 				"id": (Rails.application.routes.url_helpers.actor_user_url(self) + "#main-key"),
 				"owner": Rails.application.routes.url_helpers.actor_user_url(self),
 				"publicKeyPem": ENV['ACTIVITYPUB_PUBKEY'].to_s
 			}
 		}
+	end
+
+	def ap_url
+		Rails.application.routes.url_helpers.actor_user_url(self)
+	end
+
+	def ap_followers_json(request, params)
+		if params[:page].blank?
+			{
+			"@context": "https://www.w3.org/ns/activitystreams",
+			"id": request.original_url,
+			"type": "OrderedCollection",
+			"totalItems": (self.followers.count + self.activity_pub_followers.count),
+			"first": request.original_url + "?page=1"
+			}
+		else
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollectionPage",
+				"totalItems": (self.followers.count + self.activity_pub_followers.count),
+				"next": Rails.application.routes.url_helpers.ap_followers_user_url(self) + "?page=#{params[:page].to_i + 1}",
+				"partOf": Rails.application.routes.url_helpers.ap_followers_user_url(self),
+				"orderedItems": (self.followers.order(:created_at) + self.activity_pub_followers.order(:created_at)).drop((params[:page].to_i - 1) * 12).take(12).map(&:ap_url)
+			}
+		end
+	end
+
+	def ap_following_json(request, params)
+		if params[:page].blank?
+			{
+			"@context": "https://www.w3.org/ns/activitystreams",
+			"id": request.original_url,
+			"type": "OrderedCollection",
+			"totalItems": self.following.count,
+			"first": request.original_url + "?page=1"
+			}
+		else
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollectionPage",
+				"totalItems": self.following.count,
+				"next": Rails.application.routes.url_helpers.ap_following_user_url(self) + "?page=#{params[:page].to_i + 1}",
+				"partOf": Rails.application.routes.url_helpers.ap_following_user_url(self),
+				"orderedItems": self.followers.order(:created_at).drop((params[:page].to_i - 1) * 12).take(12).map(&:ap_url)
+			}
+		end
 	end
 
 	def add_to_inbox!(all_headers, body)

@@ -137,6 +137,16 @@ class TopicsController < InheritedResources::Base
     render json: @topic.actor_json
   end
 
+  def ap_followers
+    @topic = Topic.find(params[:id])
+    render json: @topic.ap_followers_json(request, params)
+  end
+
+  def ap_following
+    @topic = Topic.find(params[:id])
+    render json: @topic.ap_followers_json(request, params)
+  end
+
   def inbox
     @topic = Topic.from_param(params[:id])
     headers = request.headers.env.reject { |key| key.to_s.include?('.') }

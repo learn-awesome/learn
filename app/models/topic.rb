@@ -37,6 +37,9 @@ class Topic < ApplicationRecord
 	has_many :user_topics, dependent: :destroy, inverse_of: :topic
 	has_many :users, through: :user_topics
 	has_many :slack_subscriptions
+
+	has_many :topic_activity_pub_followers, dependent: :destroy, inverse_of: :topic
+
 	belongs_to :user, optional: true
 	belongs_to :parent, class_name: "Topic", optional: true
 	belongs_to :second_parent, class_name: "Topic", optional: true, foreign_key: "second_parent_id"
@@ -359,6 +362,50 @@ class Topic < ApplicationRecord
 				"publicKeyPem": ENV['ACTIVITYPUB_PUBKEY'].to_s
 			}
 		}
+	end
+
+	def ap_followers_json(request, params)
+		if params[:page].blank?
+			{
+			"@context": "https://www.w3.org/ns/activitystreams",
+			"id": request.original_url,
+			"type": "OrderedCollection",
+			"totalItems": (self.users.count + self.topic_activity_pub_followers.count),
+			"first": request.original_url + "?page=1"
+			}
+		else
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollectionPage",
+				"totalItems": (self.users.count + self.topic_activity_pub_followers.count),
+				"next": Rails.application.routes.url_helpers.ap_followers_topic_url(self) + "?page=#{params[:page].to_i + 1}",
+				"partOf": Rails.application.routes.url_helpers.ap_followers_topic_url(self),
+				"orderedItems": (self.users.order(:created_at) + self.topic_activity_pub_followers.order(:created_at)).drop((params[:page].to_i - 1) * 12).take(12).map(&:ap_url)
+			}
+		end
+	end
+
+	def ap_following_json(request, params)
+		if params[:page].blank?
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollection",
+				"totalItems": 0,
+				"first": request.original_url + "?page=1"
+			}
+		else
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollectionPage",
+				"totalItems": 0,
+				"next": Rails.application.routes.url_helpers.ap_following_topic_url(self) + "?page=#{params[:page].to_i + 1}",
+				"partOf": Rails.application.routes.url_helpers.ap_following_topic_url(self),
+				"orderedItems": []
+			}
+		end
 	end
 
 	def add_to_inbox!(all_headers, body)

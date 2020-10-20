@@ -44,6 +44,9 @@ Rails.application.routes.draw do
       get 'actor'
       post 'inbox'
       get 'outbox'
+
+      get 'ap_followers'
+      get 'ap_following'
     end
     collection do
       get 'search'
@@ -102,6 +105,9 @@ Rails.application.routes.draw do
       post 'garden'
       get 'upgrade_role'
       get 'downgrade_role'
+
+      get 'ap_followers'
+      get 'ap_following'
     end
 
     collection do

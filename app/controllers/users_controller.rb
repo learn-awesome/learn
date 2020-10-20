@@ -207,6 +207,16 @@ end
     render json: @user.actor_json
   end
 
+  def ap_followers
+    @user = User.find(params[:id])
+    render json: @user.ap_followers_json(request, params)
+  end
+
+  def ap_following
+    @user = User.find(params[:id])
+    render json: @user.ap_followers_json(request, params)
+  end
+
   def inbox
     @user = User.find(params[:id])
     headers = request.headers.env.reject { |key| key.to_s.include?('.') }

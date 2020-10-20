@@ -28,6 +28,10 @@ class ActivityPubFollower < ApplicationRecord
     data["actor"]
   end
 
+  def ap_url
+    self.actor
+  end
+
   def object
     data = JSON.parse(self.metadata)
     data["object"]

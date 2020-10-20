@@ -13,7 +13,7 @@ require 'httparty'
 
 class TopicActivityPubFollower < ApplicationRecord
   belongs_to :topic
-  validates_presence_of :user
+  validates_presence_of :topic
   validates_presence_of :metadata
   validates_uniqueness_of :metadata
 
@@ -39,7 +39,7 @@ class TopicActivityPubFollower < ApplicationRecord
     doc = {
       "@context": "https://www.w3.org/ns/activitystreams",
       "type": "Accept",
-      "actor": Rails.application.routes.url_helpers.actor_topic_url(self.user),
+      "actor": Rails.application.routes.url_helpers.actor_topic_url(self.topic),
 
       "object": {
         "type": data["type"],
