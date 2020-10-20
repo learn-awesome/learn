@@ -214,7 +214,7 @@ end
 
   def ap_following
     @user = User.find(params[:id])
-    render json: @user.ap_followers_json(request, params)
+    render json: @user.ap_following_json(request, params)
   end
 
   def inbox

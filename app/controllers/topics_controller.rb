@@ -144,7 +144,7 @@ class TopicsController < InheritedResources::Base
 
   def ap_following
     @topic = Topic.find(params[:id])
-    render json: @topic.ap_followers_json(request, params)
+    render json: @topic.ap_following_json(request, params)
   end
 
   def inbox
