@@ -204,7 +204,10 @@ end
 
   def actor
     @user = User.find(params[:id])
-    render json: @user.actor_json
+    respond_to do |format|
+      format.html { redirect_to user_url(@user) }
+      format.any { render json: @user.actor_json }
+    end
   end
 
   def ap_followers

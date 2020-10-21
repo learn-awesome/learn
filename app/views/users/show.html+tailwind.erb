@@ -82,13 +82,39 @@
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
-<h1 class="text-gray-800 text-xl font-semibold mb-2">Followers & Following</h1>
-	<% if @user.followers.any? %>
-	<p>Followers: <% @user.followers.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
-	<% end %>
-	<% if @user.following.any? %>
-	<p>Following: <% @user.following.each do |f| %><%= link_to f.nickname, user_path(f) %>, <% end %></p>
-	<% end %>
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Followers</h1>
+<% @user.followers.each do |f| %>
+	<a href="<%= user_path(f) %>" class="flex-shrink-0 group inline-block rounded border-1 pr-2 mr-2 border-gray-100 hover:bg-blue-100 focus:outline-none">
+		<div class="flex items-center">
+			<div>
+			<img class="inline-block h-9 w-9 rounded-full" src="<%= f.avatar_image %>" alt="">
+			</div>
+			<div class="ml-3">
+			<p class="text-sm leading-5 font-medium text-gray-700 group-hover:text-gray-900">
+				<%= f.nickname %>
+			</p>
+			</div>
+		</div>
+	</a>
+<% end %>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
+<h1 class="text-gray-800 text-xl font-semibold mb-2">Following</h1>
+<% @user.following.each do |f| %>
+	<a href="<%= user_path(f) %>" class="flex-shrink-0 group inline-block rounded border-1 pr-2 mr-2 border-gray-100 hover:bg-blue-100 focus:outline-none">
+		<div class="flex items-center">
+			<div>
+			<img class="inline-block h-9 w-9 rounded-full" src="<%= f.avatar_image %>" alt="">
+			</div>
+			<div class="ml-3">
+			<p class="text-sm leading-5 font-medium text-gray-700 group-hover:text-gray-900">
+				<%= f.nickname %>
+			</p>
+			</div>
+		</div>
+	</a>
+<% end %>
 </div>
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
