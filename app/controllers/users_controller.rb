@@ -180,8 +180,8 @@ end
       error = "acct prefix not found in #{query}"
     end
 
-    if username.split(":").last.start_with?("topic-")
-      topicid = username.split(":").last.gsub("topic-","").gsub("_","-")
+    if username.split(":").last.start_with?("topic_")
+      topicid = username.split(":").last.gsub("topic_","").gsub("_","-")
       @topic = Topic.where(id: topicid).first
       if @topic.nil?
         error = "topic #{query} not found"
