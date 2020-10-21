@@ -162,6 +162,7 @@ class TopicsController < InheritedResources::Base
 
   def outbox
     @topic = Topic.from_param(params[:id])
+    render json: @topic.outbox_json(request, params)
   end
 
   protected

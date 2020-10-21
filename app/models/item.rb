@@ -116,6 +116,31 @@ class Item < ApplicationRecord
     }
   end
 
+  def activity_pub_message
+    url = Rails.application.routes.url_helpers.item_url(self)
+
+    return "New #{self.item_type_id} added for #{self.topics.map(&:name).join(',')}: <a href='#{url}' target='_blank'>#{self.display_name}</a>"
+  end
+
+  def activity_pub(topic)
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "id": "https://learnawesome.org/post-item-activity-pub/#{self.id}",
+      "type": "Create",
+      "actor": Rails.application.routes.url_helpers.actor_topic_url(topic),
+
+      "object": {
+        "id": Rails.application.routes.url_helpers.item_url(self),
+        "type": "Note",
+        "published": self.created_at.iso8601,
+        "attributedTo": Rails.application.routes.url_helpers.actor_topic_url(topic),
+        # "inReplyTo": "https://mastodon.social/@Gargron/100254678717223630",
+        "content": self.activity_pub_message,
+        "to": "https://www.w3.org/ns/activitystreams#Public"
+      }
+    }
+  end
+
   def display_item_type
 		ItemType.display_name_singular(self.item_type_id)
 	end
