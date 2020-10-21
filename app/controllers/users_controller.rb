@@ -235,6 +235,7 @@ end
 
   def outbox
     @user = User.find(params[:id])
+    render json: @user.outbox_json(request, params)
   end
 
   def onboarding

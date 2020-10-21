@@ -253,6 +253,28 @@ class User < ApplicationRecord
 		end
 	end
 
+	def outbox_json(request, params)
+		if params[:page].blank?
+			{
+			"@context": "https://www.w3.org/ns/activitystreams",
+			"id": request.original_url,
+			"type": "OrderedCollection",
+			"totalItems": self.reviews.count,
+			"first": request.original_url + "?page=1"
+			}
+		else
+			{
+				"@context": "https://www.w3.org/ns/activitystreams",
+				"id": request.original_url,
+				"type": "OrderedCollectionPage",
+				"totalItems": self.reviews.count,
+				"next": Rails.application.routes.url_helpers.outbox_user_url(self, format: :json) + "?page=#{params[:page].to_i + 1}",
+				"partOf": Rails.application.routes.url_helpers.outbox_user_url(self, format: :json),
+				"orderedItems": self.reviews.order("created_at DESC").drop((params[:page].to_i - 1) * 20).take(20).map(&:activity_pub)
+			}
+		end
+	end
+
 	def ap_following_json(request, params)
 		if params[:page].blank?
 			{
