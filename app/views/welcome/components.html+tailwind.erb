@@ -2,13 +2,15 @@
 <div class="ml-64"><%= render DropDownComponent.new(label: "dropdown", items: []) %></div>
 
 <h1>SplitButtonComponent</h1>
-<div class="ml-64"><%= render SplitButtonComponent.new(id_prefix: "sbc", name: "sbc", labels: [["Learned", "learned"], ["Currently learning","learning"], ["Want to learm", "want_to_learn"]], value: "want_to_learn") %></div>
+<div class="ml-64"><%= render SplitButtonComponent.new(item: Item.discover, user: current_user) %></div>
 
 <h1>ActivityPanelComponent</h1>
-<%= render ActivityPanelComponent.new(user: current_user) %>
+<%= render ActivityPanelComponent.new(review: Review.last, user: current_user) %>
 
 <h1>ItemPanelComponent</h1>
-<%= render ItemPanelComponent.new(item: Item.discover) %>
+<div class="bg-white overflow-hidden shadow rounded-lg px-4 sm:px-6">
+<%= render ItemPanelComponent.new(item: Item.discover, user: current_user) %>
+</div>
 
 <h1>TestComponent</h1>
 <%= render TestComponent.new(title: "testing") %>

@@ -1,29 +1,33 @@
-<div class="bg-white overflow-hidden shadow rounded-lg">
-  <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
+
+  <div class="border-b border-gray-200 py-5">
     <!-- Content goes here -->
     <!-- We use less vertical padding on card headers on desktop than on body sections -->
         <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-no-wrap">
             <div class="ml-4 mt-4">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                <%= @item.display_name %>
-            </h3>
-            <p class="mt-1 text-sm leading-5 text-gray-500">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-pink-100 text-pink-800"><%= @item.item_type_id %></span>
-                in
-                <% @item.topics.each do |topic| %>
-                <a href='#' class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs leading-4 font-medium bg-gray-100 rounded-full"><%= topic.display_name %></a>
-                <% end %>
-            </p>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    <%= @item.display_name %>
+                </h3>
+                <p class="mt-1 text-sm leading-5 text-gray-500">
+                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-pink-100 text-pink-800"><%= @item.item_type_id %></span>
+                    in
+                    <% @item.topics.each do |topic| %>
+                    <a href='#' class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs leading-4 font-medium bg-gray-100 rounded-full"><%= topic.display_name %></a>
+                    <% end %>
+                </p>
             </div>
             <div class="ml-4 mt-4 flex-shrink-0">
-            <%= render SplitButtonComponent.new(id_prefix: "sbc", name: "sbc", labels: [["Learned", "learned"], ["Currently learning","learning"], ["Want to learm", "want_to_learn"]], value: "want_to_learn") %>
+                    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+                    <!-- Heroicon name: share -->
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path></svg>
+                    </button>
+                    <%= render SplitButtonComponent.new(item: @item, user: @user) %>
             </div>
         </div>
   </div>
-  <div class="px-4 py-5 sm:p-6">
+  <div class="py-5 sm:p-6">
     <%= @item.display_description %>
   </div>
-  <div class="border-t border-gray-200 px-4 py-4 sm:px-6">
+  <div class="border-t border-gray-200 py-4">
     <!-- Content goes here -->
     <!-- We use less vertical padding on card footers at all sizes than on headers or boqdy sections -->
     Recommended by:
@@ -35,7 +39,7 @@
     <img class="-ml-2 inline-block h-10 w-10 rounded-full text-white shadow-solid" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
     </div>
   </div>
-</div>
+
 
 
 

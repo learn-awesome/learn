@@ -1,14 +1,14 @@
 <div class="bg-white overflow-hidden shadow rounded-lg">
-  <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
+  <div class="relativeborder-b border-gray-200 px-4 py-5 sm:px-6">
     <!-- Content goes here -->
     <!-- We use less vertical padding on card headers on desktop than on body sections -->
-    <img class="inline-block h-14 w-14 rounded-full" src="<%= @user.avatar_image %>" alt="">
+    <img class="absolute inline-block h-14 w-14 rounded-full" src="<%= @review.user.avatar_image %>" alt="">
 
-    <b><%= @user.nickname %></b> wants to learn
+    <b><%= @review.user.nickname %></b> wants to learn
 </span>
   </div>
   <div class="px-4 py-5 sm:p-6">
-    <!-- Content goes here -->
+    <%= render ItemPanelComponent.new(item: @review.item, user: @user) %>
   </div>
   <div class="border-t border-gray-200 bg-gray-200 px-4 py-4 sm:px-6">
     <!-- Content goes here -->
