@@ -173,6 +173,9 @@ class WelcomeController < ApplicationController
     }
   end
 
+  def components
+  end
+
   private
 
   def fetch_entities(is_fuzzy)

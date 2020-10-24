@@ -1,17 +1,47 @@
-<div class="btn-group">
-  <% if value %>
-  	<button type="button" class="btn btn-outline-success">✔</button>
-  	<button type="button" class="btn btn-outline-success" disabled><%= labels.find { |x| x.last == value }.first %></button>
-  <% else %>
-  	<button type="button" class="btn btn-success"><%= labels.first %></button>
-  <% end %>
-  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+<span class="relative z-0 inline-flex shadow-sm rounded-md">
+  <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+    Want to learn
   </button>
-  <div class="dropdown-menu dropdown-menu-right">
-    <% labels.each do |label| %>
-    <% next if label.last == value %>
-    <a class="dropdown-item" href="#"><%= label.first %></a>
-    <% end %>
-  </div>
-</div>
+  <span x-data="{ isopen: false }" class="-ml-px relative block">
+    <button @click="isopen = !isopen" type="button" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Expand">
+      <!-- Heroicon name: chevron-down -->
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <!--
+      Dropdown panel, show/hide based on dropdown state.
+
+      Entering: "transition ease-out duration-100"
+        From: "transform opacity-0 scale-95"
+        To: "transform opacity-100 scale-100"
+      Leaving: "transition ease-in duration-75"
+        From: "transform opacity-100 scale-100"
+        To: "transform opacity-0 scale-95"
+    -->
+    <div    
+    x-show="isopen"
+    @click.away="isopen = false"
+    x-transition:enter="transition ease-out duration-100 transform"
+    x-transition:enter-start="opacity-0 scale-95"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-75 transform"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95" 
+    class="origin-top-right absolute right-0 mt-2 -mr-1 w-56 rounded-md shadow-lg">
+      <div class="rounded-md bg-white shadow-xs">
+        <div class="py-1">
+          <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+            Currently learning
+          </a>
+          <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+            Already learned
+          </a>
+          <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+            Create collection
+          </a>
+        </div>
+      </div>
+    </div>
+  </span>
+</span>

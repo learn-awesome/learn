@@ -155,6 +155,7 @@ Rails.application.routes.draw do
   get '/suggestions' => 'welcome#suggestions'
   get '/whatsnew' => 'welcome#whatsnew'
   get '/kids' => 'welcome#kids'
+  get '/components' => 'welcome#components'
   get '/.well-known/webfinger' => 'users#webfinger'
   get '/browser_addon' => 'welcome#browser_addon'
   get '/join_slack' => 'welcome#join_slack'

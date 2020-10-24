@@ -91,7 +91,7 @@ gem 'redcarpet'
 gem 'faker'
 
 gem "cocoon"
-gem "view_component"
+gem "view_component", require: "view_component/engine"
 
 gem 'rack-mini-profiler'
 
