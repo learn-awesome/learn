@@ -30,11 +30,17 @@ class ReviewsController < ApplicationController
 		@review.overall_score = params[:review][:overall_score] if params[:review].has_key?(:overall_score)
 		@review.notes = params[:review][:notes] if params[:review].has_key?(:notes)
 		@review.private_notes = params[:review][:private_notes] if params[:review].has_key?(:private_notes)
-		if @review.save
-			redirect_to item_path(@review.item)
-		else
-			flash[:error] = @review.errors.first
-			redirect_back fallback_location: root_path
+		respond_to do |format|
+			if @review.save
+				format.html { redirect_to item_path(@review.item) }
+				format.js
+			else
+				format.html {
+					flash[:error] = @review.errors.first
+					redirect_back fallback_location: root_path
+				}
+				format.js
+			end
 		end
 	end
 
@@ -56,11 +62,17 @@ class ReviewsController < ApplicationController
 		@review.overall_score = params[:review][:overall_score]
 		@review.notes = params[:review][:notes]
 		@review.private_notes = params[:review][:private_notes]
-		if @review.save
-			redirect_to item_path(@review.item)
-		else
-			flash[:danger] = @review.errors.first
-			redirect_back fallback_location: root_path
+		respond_to do |format|
+			if @review.save
+				format.html { redirect_to item_path(@review.item) }
+				format.js { render 'update' }
+			else
+				format.html {
+					flash[:danger] = @review.errors.first
+					redirect_back fallback_location: root_path
+				}
+				format.js { render 'update' }
+			end
 		end
 	end
 

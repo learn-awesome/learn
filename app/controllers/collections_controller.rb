@@ -41,7 +41,10 @@ class CollectionsController < InheritedResources::Base
         CollectionItem.create!(item_id: params[:item_id], collection: resource)
       end
     end
-    redirect_to item_path(item, open_status_menu: true)
+    respond_to do |format|
+      format.html { redirect_to item_path(item, open_status_menu: true) }
+      format.js { @review = Review.where(item: item, user: current_user).first || Review.new(item: item, user: current_user) }
+    end
   end
 
   def import_goodreads_list

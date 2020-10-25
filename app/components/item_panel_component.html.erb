@@ -16,11 +16,7 @@
                 </p>
             </div>
             <div class="ml-4 mt-4 flex-shrink-0">
-                    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
-                    <!-- Heroicon name: share -->
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path></svg>
-                    </button>
-                    <%= render SplitButtonComponent.new(item: @item, user: @user) %>
+                   <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: true) %>
             </div>
         </div>
   </div>

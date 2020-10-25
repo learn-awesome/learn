@@ -1,16 +1,16 @@
-<!-- TODO Button submits should be done via AJAX -->
-
+<% if @user %>
+<div class="review-<%= @review.item.id %>">
 <span class="relative z-0 inline-flex shadow-sm rounded-md">
   <% if @review.persisted? and @review.status.present? %>
-  <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), review_path(@review, review: {status: ""}), method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium bg-gray-400 hover:bg-gray-600 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
+  <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), review_path(@review, review: {status: ""}), remote: true, method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium bg-gray-400 hover:bg-gray-600 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
   <% elsif @review.persisted? %>
-  <%= button_to Review::STATUSES[:want_to_learn], review_path(@review, review: {status: "want_to_learn"}), method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
+  <%= button_to Review::STATUSES[:want_to_learn], review_path(@review, review: {status: "want_to_learn"}), remote: true, method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
   <% else %>
-  <%= button_to Review::STATUSES[:want_to_learn], reviews_path(review: {status: "want_to_learn", item_id: @item.id}), method: :post, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
+  <%= button_to Review::STATUSES[:want_to_learn], reviews_path(review: {status: "want_to_learn", item_id: @item.id}), remote: true, method: :post, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
   <% end %>
 
 
-  <span x-data="{ isopen: false }" class="-ml-px relative block">
+  <span x-data="{ isopen: <%= @isopen %> }" class="-ml-px relative block">
     <button @click="isopen = !isopen" type="button" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700 transition ease-in-out duration-150" aria-label="Expand">
       <!-- Heroicon name: chevron-down -->
       <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -41,15 +41,15 @@
         <div class="py-1">
           <% Review::STATUSES.keys.reject { |s| s == (@review.status.try(:to_sym) || :want_to_learn) }.each do |st| %>
             <% if @review.new_record? %>
-              <%= link_to Review::STATUSES[st], reviews_path(review: {status: st, item_id: @item.id}), method: :post, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+              <%= link_to Review::STATUSES[st], reviews_path(review: {status: st, item_id: @item.id}), method: :post, remote: true, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
             <% else %>
-              <%= link_to Review::STATUSES[st], review_path(@review, review: {status: st}), method: :patch, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+              <%= link_to Review::STATUSES[st], review_path(@review, review: {status: st}), method: :patch, remote: true, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
             <% end %>
           <% end %>
 
           <div class="border-t border-gray-100"></div>
           <% @user.collections.each do |coll| %>
-            <%= link_to toggle_item_user_collection_path(@user, coll, item_id: @item.id), method: :post, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" do %>
+            <%= link_to toggle_item_user_collection_path(@user, coll, item_id: @item.id), method: :post, remote: true, class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" do %>
               <div class="custom-control custom-checkbox mb-2">
                 <input id="customCheck1" class="bg-white" type="checkbox" <%= @lists_added.include?(coll.id) ? "checked" : "" %> >
                 <label class="custom-control-label" for="customCheck1"><%= coll.name %></label>
@@ -63,3 +63,8 @@
     </div>
   </span>
 </span>
+</div>
+<% else %>
+ <!-- user is not logged in. Either show a disabled button or hide it altogether. -->
+ <button disabled class="bg-gray-200 text-gray-400 cursor-default p-2">Log in to start learning this.</button>
+<% end %>
