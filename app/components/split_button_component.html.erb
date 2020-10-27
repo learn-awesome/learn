@@ -2,7 +2,7 @@
 <div class="review-<%= @review.item.id %>">
 <span class="relative z-0 inline-flex shadow-sm rounded-md">
   <% if @review.persisted? and @review.status.present? %>
-  <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), review_path(@review, review: {status: ""}), remote: true, method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium bg-gray-400 hover:bg-gray-600 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
+  <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), review_path(@review, review: {status: ""}), remote: true, method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium bg-gray-400 hover:bg-gray-600 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700", "x-on:mouseenter": "$event.target.value = $event.target.value.replace('✔','⨯')", "x-on:mouseleave": "$event.target.value = $event.target.value.replace('⨯','✔')" %>
   <% elsif @review.persisted? %>
   <%= button_to Review::STATUSES[:want_to_learn], review_path(@review, review: {status: "want_to_learn"}), remote: true, method: :patch, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 text-sm leading-5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:z-10 focus:outline-none focus:border-indigo-700 focus:shadow-outline-blue active:bg-indigo-700" %>
   <% else %>
