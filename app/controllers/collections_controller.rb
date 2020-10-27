@@ -9,7 +9,10 @@ class CollectionsController < InheritedResources::Base
   	@collection = Collection.new(collection_params)
   	@collection.user = current_user
     create! do |format|
+      # if an item_id was passed then add that to this newly created collection
+      CollectionItem.create!(item_id: collection_params[:item_id], collection: @collection) if collection_params[:item_id].present?
       format.html { redirect_to user_collections_path(@collection.user) }
+      format.js { @review = Review.where(item_id: collection_params[:item_id], user: current_user).first || Review.new(item_id: collection_params[:item_id], user: current_user) }
     end
   end
 
@@ -68,6 +71,6 @@ class CollectionsController < InheritedResources::Base
 
   private
   def collection_params
-  	params.require(:collection).permit(:name, :description, :goodreads_list_url)
+  	params.require(:collection).permit(:name, :description, :goodreads_list_url, :item_id)
   end
 end

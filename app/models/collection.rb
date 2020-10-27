@@ -18,4 +18,5 @@ class Collection < ApplicationRecord
   validates :name, presence: true, length: { in: 3..350 }
 
   attr_accessor :goodreads_list_url
+  attr_accessor :item_id
 end

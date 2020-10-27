@@ -48,7 +48,11 @@
               <% end %>
             <% end %>
             <div class="border-t border-gray-100"></div>
-            <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" href="<%= new_user_collection_path(@user) %>">Create New Collection</a>
+            <%= form_for([@user, ::Collection.new(item_id: @item.id)], remote: true, class: "mt-1 flex rounded-md shadow-sm") do |form| %>
+              <%= form.text_field :name, required: true, placeholder: "Add to a new collection", class: "form-input block w-full rounded-none rounded-l-md pl-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5" %>
+              <%= form.hidden_field :item_id %>
+              <%= form.submit 'Save', class: "-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-gray-50 hover:text-gray-500 hover:bg-white focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" %>
+            <% end %>
         </div>
       </div>
     </div>
