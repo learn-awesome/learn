@@ -1,1 +1,1 @@
-$(".review-<%= @review.item.id %>").replaceWith("<%= escape_javascript(render partial: 'reviews/review_status', locals: { review: @review } ) %>");
+$(".review-<%= @review.item.id %>").replaceWith("<%= escape_javascript(render partial: 'reviews/review_status', locals: { review: @review, isopen: true } ) %>");

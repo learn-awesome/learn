@@ -17,16 +17,7 @@
         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     </button>
-    <!--
-      Dropdown panel, show/hide based on dropdown state.
 
-      Entering: "transition ease-out duration-100"
-        From: "transform opacity-0 scale-95"
-        To: "transform opacity-100 scale-100"
-      Leaving: "transition ease-in duration-75"
-        From: "transform opacity-100 scale-100"
-        To: "transform opacity-0 scale-95"
-    -->
     <div    
     x-show="isopen"
     @click.away="isopen = false"

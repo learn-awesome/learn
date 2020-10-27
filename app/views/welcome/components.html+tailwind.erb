@@ -2,7 +2,7 @@
 <div class="ml-64"><%= render DropDownComponent.new(label: "dropdown", items: []) %></div>
 
 <h1>SplitButtonComponent</h1>
-<div class="ml-64"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: true) %></div>
+<div class="ml-64"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %></div>
 
 <h1>ActivityPanelComponent</h1>
 <%= render ActivityPanelComponent.new(review: Review.last, user: current_user) %>
