@@ -1,6 +1,16 @@
-<span class="rating">
-<% (1..5).to_a.reverse.each do |score| %>
-  <input type="radio" id="<%= id_prefix %><%= score %>" name="<%= name %>" value="<%= score %>" <%= "checked" if value.to_i == score %> onchange="<%= onchange %>" />
-  <label for="<%= id_prefix %><%= score %>"></label>
+<%= form_with(model: @review) do |form| %>
+<div 
+  x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
+  class="flex ml-8 cursor-pointer text-orange-600" 
+  @click="orig = val; $nextTick(() => { Rails.fire($el.parentElement,'submit') });"
+>
+  <input type="number" name="review[overall_score]" :value="orig" class="hidden"/>
+  <span class="text-gray-400" @mouseenter="val = null" @mouseleave="val = orig">⨯</span>
+
+  <template x-for="item in [1,2,3,4,5]">
+    <span x-text="val >= item ? '★' : '☆'" @mouseenter="val = item" @mouseleave="val = orig"></span>
+  </template>
+
+</div>
+<input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
 <% end %>
-</span>
