@@ -4,16 +4,22 @@
 <h1>SplitButtonComponent</h1>
 <div class="ml-64"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %></div>
 
-<h1>ActivityPanelComponent</h1>
-<%= render ActivityPanelComponent.new(review: Review.last, user: current_user) %>
 
-<h1>ItemPanelComponent</h1>
-<div class="bg-white overflow-hidden shadow rounded-lg px-4 sm:px-6">
-<%= render ItemPanelComponent.new(item: Item.discover, user: current_user) %>
-</div>
+<h1>ItemPanelComponents in grid layout</h1>
+<ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<% Item.all.take(6).each do |item| %>
+  <li class="col-span-1 bg-white rounded-lg shadow">
+  <%= render ItemPanelComponent.new(item: item, user: current_user) %>
+  </li>
+<% end %>
+</li>
+
 
 <h1>TestComponent</h1>
 <%= render TestComponent.new(title: "testing") %>
 
 <h1>FiveStarComponent</h1>
 <%= render FiveStarComponent.new(id_prefix: "fsc", name: "foo", value: "5") %>
+
+<h1>ActivityPanelComponent</h1>
+<%= render ActivityPanelComponent.new(review: Review.last, user: current_user) %>
