@@ -24,8 +24,10 @@ class Auth0Controller < ApplicationController
           user = present_user
           user.image_url = request.env['omniauth.auth']["info"]["image"]
         else
+          nick = request.env['omniauth.auth']["info"]["nickname"].gsub(" ", "")
+          nick += (1000 + rand(10_000)).to_s if nick.length < 4
           user = User.new(
-            nickname: request.env['omniauth.auth']["info"]["nickname"].gsub(" ", ""),
+            nickname: nick,
             image_url: request.env['omniauth.auth']["info"]["image"],
             referrer: request.env['omniauth.params']['ref'])
             if ["learnawesome", "admin", "root"].include?(user.nickname)
