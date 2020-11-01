@@ -26,6 +26,8 @@ class Auth0Controller < ApplicationController
         else
           nick = request.env['omniauth.auth']["info"]["nickname"].gsub(" ", "")
           nick += (1000 + rand(10_000)).to_s if nick.length < 4
+          nick = ("u" + nick) unless nick[0..0] =~ /[a-zA-Z]/
+          
           user = User.new(
             nickname: nick,
             image_url: request.env['omniauth.auth']["info"]["image"],
