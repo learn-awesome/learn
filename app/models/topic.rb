@@ -227,7 +227,7 @@ class Topic < ApplicationRecord
 	end
 
 	def update_from_wiki
-		# return unless Rails.env.production?
+		return unless Rails.env.production?
 		wiki_title = self.wiki_title.presence || Topic.search_wiki(self.name)
 		if wiki_title
 			self.wiki_title = wiki_title

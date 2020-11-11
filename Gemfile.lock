@@ -256,7 +256,7 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.14.5)
-    puma (4.3.5)
+    puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-mini-profiler (1.1.3)
@@ -457,7 +457,7 @@ DEPENDENCIES
   omniauth-auth0
   openai
   pg (>= 0.18, < 2.0)
-  puma (~> 4.3)
+  puma (= 4.3.6)
   rack-mini-profiler
   rails (= 6.0.3.4)
   react-rails

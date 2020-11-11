@@ -5,10 +5,9 @@
     <img class="absolute inline-block h-14 w-14 rounded-full" src="<%= @review.user.avatar_image %>" alt="">
 
     <b><%= @review.user.nickname %></b> wants to learn
-</span>
   </div>
   <div class="px-4 py-5 sm:p-6">
-    <%= render ItemPanelComponent.new(item: @review.item, user: @user) %>
+    <% if @review %><%= render ItemPanelComponent.new(item: @review.item, user: @user) %><% end %>
   </div>
   <div class="border-t border-gray-200 bg-gray-200 px-4 py-4 sm:px-6">
     <!-- Content goes here -->
