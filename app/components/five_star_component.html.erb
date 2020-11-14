@@ -1,11 +1,11 @@
-<%= form_with(model: @review) do |form| %>
+<%= form_with(model: @review, class: "inline") do |form| %>
 <div 
   x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
-  class="flex ml-8 cursor-pointer text-orange-600" 
+  class="inline-flex cursor-pointer text-orange-600" 
   @click="orig = val; $nextTick(() => { Rails.fire($el.parentElement,'submit') });"
 >
   <input type="number" name="review[overall_score]" :value="orig" class="hidden"/>
-  <span class="text-gray-400" @mouseenter="val = null" @mouseleave="val = orig">⨯</span>
+  <span class="text-gray-400 mr-1" @mouseenter="val = null" @mouseleave="val = orig">×</span>
 
   <template x-for="item in [1,2,3,4,5]">
     <span x-text="val >= item ? '★' : '☆'" @mouseenter="val = item" @mouseleave="val = orig"></span>

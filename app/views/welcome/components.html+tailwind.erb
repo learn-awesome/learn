@@ -1,20 +1,19 @@
-<p>TestComponent: <%= render TestComponent.new(title: "this text should display inline") %></p>
+<!-- <p class="mt-8">TestComponent: <%= render TestComponent.new(title: "this text should display inline") %></p> -->
 
-<h1>FiveStarComponent</h1>
+<h1 class="mt-8">FiveStarComponent</h1>
 <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: Item.order(:created_at).first.id, user: current_user)) %>
 
-<h1>DropDownComponent</h1>
-<div class="ml-64"><%= render DropDownComponent.new(label: "dropdown", items: []) %></div>
+<h1 class="mt-8">DropDownComponent</h1>
+<%= render DropDownComponent.new(label: "dropdown", items: []) %>
 
-<h1>SplitButtonComponent</h1>
-<div class="ml-64"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %></div>
+<h1 class="mt-8">SplitButtonComponent</h1>
+<%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %>
 
-<h1>ItemPanelComponent</h1>
+<h1 class="mt-8">ItemPanelComponent</h1>
 <%= render ItemPanelComponent.new(item: Item.discover, user: current_user) %>
 
-<h1>ItemsGridComponent</h1>
+<h1 class="mt-8">ItemsGridComponent</h1>
 <%= render ItemsGridComponent.new(items: Item.all.take(6), user: current_user) %>
 
-
-<h1>ActivityPanelComponent</h1>
+<h1 class="mt-8">ActivityPanelComponent</h1>
 <%= render ActivityPanelComponent.new(review: Review.last, user: current_user) %>
