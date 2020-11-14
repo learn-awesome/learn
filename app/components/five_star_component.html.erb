@@ -1,4 +1,4 @@
-<%= form_with(model: @review, class: "inline") do |form| %>
+<%= form_with(model: @review, class: "inline review-rating-#{@review.item.id}") do |form| %>
 <div 
   x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
   class="inline-flex cursor-pointer text-orange-600" 

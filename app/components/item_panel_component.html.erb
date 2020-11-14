@@ -1,29 +1,51 @@
-<div class="flex-1 flex flex-col">
+<div class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="flex-1 p-6 flex flex-col">
   <div>
     <div class='w-32 mb-2 ml-2 float-right 2xl:w-40'>
-      <img class="w-full h-auto rounded-md shadow-lg" src="<%= @item.image_url %>" alt="">
+      <% if @item.image_url %><img class="w-full h-auto rounded-md shadow-lg" src="<%= @item.image_url %>" alt=""><% end %>
     </div>
     <div class='inline'>
       <div>
-          <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-pink-100 text-pink-800"><%= @item.item_type_id %></span>
-          in
-          <% @item.topics.each do |topic| %>
-            <a href='<%= link_to topic %>' class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs leading-4 font-medium bg-gray-100 rounded-full"><%= topic.display_name %></a>
-          <% end %>
-      </div>
-      <div>
-        <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: false) %>
-        <a href="<%= item_path(@item) %>" class="">
-          <span class="mt-4 text-xl leading-7 font-semibold text-gray-900">
-            <%= @item.display_name %>
+        <a href="/item_types/<%= @item.item_type_id %>" class="inline-block">
+          <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-pink-100 text-pink-800">
+            <%= @item.item_type_id %>
           </span>
         </a>
+        in
+        <% @item.topics.each do |topic| %>
+          <a href='<%= topic_path(topic) %>' class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 bg-gray-100 rounded-full"><%= topic.display_name %></a>
+        <% end %>
       </div>
-
-      <p class="mt-3 text-base leading-6 text-gray-500">
-        <%= @item.display_description %>
-      </p>
+      <a href="<%= item_path(@item) %>" class="block">
+        <h3 class="mt-4 text-xl leading-7 font-semibold text-gray-900">
+          <%= @item.display_name %>
+        </h3>
+        
+        <p class="mt-3 text-base leading-6 text-gray-500">
+          <%= @item.display_description %>
+        </p>
+      </a>
     </div>
   </div>
-
 </div>
+
+<div class="border-t border-gray-200">
+  <div class="-mt-px flex">
+    <div class="w-0 flex-1 flex border-r border-gray-200">
+      <div class="relative -mr-px w-0 flex-1 inline-flex p-2">
+        <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: false) %>
+        <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: @item.id, user: @user)) %>
+      </div>
+    </div>
+    <div class="-ml-px w-0 flex-1 flex">
+      <div class="flex p-2 overflow-hidden">
+        <img class="inline-block h-10 w-10 rounded-full text-white shadow-solid" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        <img class="-ml-2 inline-block h-10 w-10 rounded-full text-white shadow-solid" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        <img class="-ml-2 inline-block h-10 w-10 rounded-full text-white shadow-solid" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
+        <img class="-ml-2 inline-block h-10 w-10 rounded-full text-white shadow-solid" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
