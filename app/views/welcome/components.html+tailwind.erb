@@ -10,7 +10,9 @@
 <%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %>
 
 <h1 class="mt-8">ItemPanelComponent</h1>
+<div class="bg-white rounded-lg shadow-lg">
 <%= render ItemPanelComponent.new(item: Item.order(:created_at).first, user: current_user) %>
+</div>
 
 <h1 class="mt-8">ItemsGridComponent</h1>
 <%= render ItemsGridComponent.new(items: Item.all.take(6), user: current_user) %>

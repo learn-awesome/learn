@@ -1,7 +1,8 @@
+<% if @user %>
 <%= form_with(model: @review, class: "inline review-rating-#{@review.item.id}") do |form| %>
 <div 
   x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
-  class="inline-flex cursor-pointer text-orange-600" 
+  class="inline-flex cursor-pointer text-orange-600 text-2xl" 
   @click="orig = val; $nextTick(() => { Rails.fire($el.parentElement,'submit') });"
 >
   <input type="number" name="review[overall_score]" :value="orig" class="hidden"/>
@@ -13,4 +14,8 @@
 
 </div>
 <input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
+<% end %>
+
+<% else %>
+<!-- not logged in -->
 <% end %>
