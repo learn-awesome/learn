@@ -121,7 +121,7 @@ $star-off-color: #CCCCCC;
   color: black;
 }
 
-#topformdiv .tt-menu a:hover div {
+#topformdiv .tt-menu a:hover div, #topformdiv a.tt-cursor div {
 	background-color: #6b15b6;
 	color: white;
 }

@@ -35,13 +35,32 @@ function autosuggest(){
 	  }
 	});
 
+	$('.typeahead').bind('typeahead:select', function(ev, entityType, data) {
+		window.location = getPath(entityType, data)
+	});
+
+	function getPath(entityType, data){
+		switch(entityType) {
+			case 'Topic':
+					return '/topics/' + data.to_param;
+			case 'Item':
+					return '/items/' + data.to_param;
+			case 'Person':
+					return '/people/' + data.to_param;
+			default:
+			console.error('unhandled entity: ' + data.type);
+		}
+	}
+
 	$('#topsearch').typeahead({
 		highlight: true,
 		minLength: 3,
 		autoselect: true
 	}, {
 	  name: 'best-items',
-	  display: 'name',
+	  display: function (data) {
+			return data[1].name
+		},
 	  limit: 15,
 	  source: bestResults,
 	  templates: {
@@ -50,21 +69,19 @@ function autosuggest(){
 	        'No such things',
 	      '</div>'
 	    ].join('\n'),
-	    suggestion: function(data) {
-	        var entityType;
-	        entityType = data[0];
-            data = data[1];
+	    suggestion: function(option) {
+						let [entityType, data] = option;
             switch(entityType) {
                 case 'Topic':
-                    return '<a href="/topics/' + data.to_param + '"><div><strong>' + data.name + '</strong></div></a>';
+                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong></div></a>';
                 case 'Item':
                     var itemType = data.item_type_id;
                     if(data.creators) {
                         itemType += ' by ' + data.creators;
                     }
-                    return '<a href="/items/' + data.to_param + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
+                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
                 case 'Person':
-                    return '<a href="/people/' + data.to_param + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
+                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
                 default:
                 console.error('unhandled entity: ' + data.type);
             }
