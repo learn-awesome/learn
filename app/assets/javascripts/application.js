@@ -26,7 +26,25 @@ function copyToClipboard(link) {
 }
 
 function autosuggest(){
-	var bestResults = new Bloodhound({
+	var topicResults = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  remote: {
+	    url: '/search.json?q=%QUERY',
+	    wildcard: '%QUERY'
+	  }
+	});
+
+	var itemResults = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  remote: {
+	    url: '/search.json?q=%QUERY',
+	    wildcard: '%QUERY'
+	  }
+	});
+
+	var personResults = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  remote: {
@@ -52,42 +70,93 @@ function autosuggest(){
 		}
 	}
 
+	function filter(suggestions, entityType){
+		const result = suggestions && suggestions.filter((item) => item[0] === entityType)
+		return result
+	}
+
 	$('#topsearch').typeahead({
 		highlight: true,
 		minLength: 3,
 		autoselect: true
-	}, {
+	}, 
+	{
 	  name: 'best-items',
 	  display: function (data) {
 			return data[1].name
 		},
-	  limit: 15,
-	  source: bestResults,
+		limit: 5,
+		async: true,
+	  source: function(query, sync, async) {
+			return topicResults.search(query,
+				function(suggestions) {
+					return sync(filter(suggestions, 'Topic'));
+				},
+				function(suggestions) {
+					return async(filter(suggestions, 'Topic'));
+			});
+	},
 	  templates: {
-	    empty: [
-	      '<div class="empty-message">',
-	        'No such things',
-	      '</div>'
-	    ].join('\n'),
+	    header: '<h1>Topic</h1>',
 	    suggestion: function(option) {
-						let [entityType, data] = option;
-            switch(entityType) {
-                case 'Topic':
-                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong></div></a>';
-                case 'Item':
-                    var itemType = data.item_type_id;
-                    if(data.creators) {
-                        itemType += ' by ' + data.creators;
-                    }
-                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
-                case 'Person':
-                    return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
-                default:
-                console.error('unhandled entity: ' + data.type);
-            }
+				let [entityType, data] = option;
+        return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong></div></a>';
 	    }
 	  }
-	});
+	}, 
+	{
+	  name: 'best-items',
+	  display: function (data) {
+			return data[1].name
+		},
+		limit: 5,
+		async: true,
+	  source: function(query, sync, async) {
+			return itemResults.search(query,
+				function(suggestions) {
+					return sync(filter(suggestions, 'Item'));
+				},
+				function(suggestions) {
+					return async(filter(suggestions, 'Item'));
+			});
+	},
+	  templates: {
+	    header: '<h1>Item</h1>',
+	    suggestion: function(option) {
+				let [entityType, data] = option;
+        var itemType = data.item_type_id;
+				if(data.creators) {
+						itemType += ' by ' + data.creators;
+				}
+				return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
+	    }
+	  }
+	},
+	{
+	  name: 'best-items',
+	  display: function (data) {
+			return data[1].name
+		},
+		limit: 5,
+		async: true,
+	  source: function(query, sync, async) {
+			return personResults.search(query,
+				function(suggestions) {
+					return sync(filter(suggestions, 'Person'));
+				},
+				function(suggestions) {
+					return async(filter(suggestions, 'Person'));
+			});
+	},
+	  templates: {
+	    header: '<h1>Person</h1>',
+	    suggestion: function(option) {
+				let [entityType, data] = option;
+        return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + 'Person' + '</div></div></a>';
+	    }
+	  }
+	}
+	);
 }
 
 document.addEventListener('DOMContentLoaded', function(){
