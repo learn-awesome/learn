@@ -13,20 +13,25 @@
 </div>
 <% else %>
 
-<div class="bg-white">
+<div class="bg-white rounded-lg shadow-lg">
   <div class="max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-      Humanity's universal learning map
+      Lifelong learning with friends
     </h2>
-    <h4 class="mt-4 font-regular tracking-tight text-gray-600">
-      <%= Topic.count %> topics. <%= ItemType.count %> formats. <b><big><%= Item.count %></big></b> learning resources. 
-      <% if current_user.try(:can_see_metrics?) %><%= User.count %> users. <%= Review.count %> reviews.<% end %>
-      All about YOU - the lifelong learner.
+    <h4 class="mt-4 font-regular tracking-tight text-gray-600"> 
+		<% if current_user.try(:can_see_metrics?) %>
+		  <%= Topic.count %> topics.
+		  <%= ItemType.count %> formats.
+		  <%= Item.count %> learning resources.
+		  <%= User.count %> users.
+		  <%= Review.count %> reviews.
+		<% end %><br/>
+		Find new sources of knowledge curated by lifelong learners like you. Discover leading experts and great content like talks, books, articles and podcasts. Share with friends and like-minded peers.
     </h4>
     <div class="mt-8 flex justify-center">
       <div class="inline-flex rounded-md shadow">
         <a href="/topics" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-          Explore
+          Explore Topics
         </a>
       </div>
       <div class="ml-3 inline-flex">

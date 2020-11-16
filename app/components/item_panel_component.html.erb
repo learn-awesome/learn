@@ -2,18 +2,22 @@
 <div class="flex-1 p-6 flex flex-col">
   <div>
     <div class='w-32 mb-2 ml-2 float-right 2xl:w-40'>
-      <% if @item.image_url %><img class="w-full h-auto rounded-md shadow-lg" src="<%= @item.image_url %>" alt=""><% end %>
+      <%= render ItemThumbnailComponent.new(item: @item) %>
     </div>
     <div class='inline'>
       <div>
+        <% unless @hide_item_type %>
         <a href="/item_types/<%= @item.item_type_id %>" class="inline-block">
           <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-pink-100 text-pink-800">
             <%= @item.item_type_id %>
           </span>
         </a>
         in
+        <% end %>
+        <% unless @hide_topics %>
         <% @item.topics.each do |topic| %>
           <a href='<%= topic_path(topic) %>' class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 bg-gray-100 rounded-full"><%= topic.display_name %></a>
+        <% end %>
         <% end %>
       </div>
       <a href="<%= item_path(@item) %>" class="block">

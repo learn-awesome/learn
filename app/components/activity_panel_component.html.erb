@@ -1,16 +1,9 @@
-<div class="bg-white overflow-hidden shadow rounded-lg">
-  <div class="relativeborder-b border-gray-200 px-4 py-5 sm:px-6">
-    <!-- Content goes here -->
-    <!-- We use less vertical padding on card headers on desktop than on body sections -->
-    <img class="absolute inline-block h-14 w-14 rounded-full" src="<%= @review.user.avatar_image %>" alt="">
-
-    <b><%= @review.user.nickname %></b> wants to learn
+<div class="bg-gray-200 shadow-lg rounded-lg">
+  <div class="border-b border-gray-200 px-2 py-2">
+    <a href="<%= user_path(@review.user) %>"><img class="inline-block h-14 w-14 rounded-full" src="<%= @review.user.avatar_image %>" alt=""></a>
+    <a href="<%= user_path(@review.user) %>"><b><%= @review.user.nickname %></b></a> <%= @review.display_status %>
   </div>
-  <div class="px-4 py-5 sm:p-6">
-    <% if @review %><%= render ItemPanelComponent.new(item: @review.item, user: @user) %><% end %>
-  </div>
-  <div class="border-t border-gray-200 bg-gray-200 px-4 py-4 sm:px-6">
-    <!-- Content goes here -->
-    <!-- We use less vertical padding on card footers at all sizes than on headers or body sections -->
+  <div class="bg-white rounded-b-lg">
+    <%= render ItemPanelComponent.new(item: @review.item, user: @user, hide_item_type: true, hide_topics: true) %>
   </div>
 </div>

@@ -1,2 +1,2 @@
 $(".review-<%= @review.item.id %>").replaceWith("<%= escape_javascript(render partial: 'review_status', locals: { review: @review, isopen: false } ) %>"); 
-$(".review-rating-<%= @review.item.id %>").replaceWith("<%= escape_javascript(render partial: 'review_rating', locals: { review: @review, isopen: false } ) %>");
+$(".review-rating-<%= @review.item.id %>").replaceWith("<%= escape_javascript(render partial: 'review_rating', locals: { review: @review } ) %>");
