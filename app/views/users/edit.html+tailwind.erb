@@ -2,7 +2,7 @@
     <h2 class="text-lg text-gray-700 font-semibold capitalize">Edit Profile</h2>
     <%= form_for @user, html: {class: "simple-form"} do |form| %>
                 <%= form.label :nickname, class: "text-gray-700" %>
-                <%= form.text_field :nickname, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+                <%= form.text_field :nickname, required: true, pattern: "/^[a-zA-Z][a-zA-Z0-9\_.\-]+$/", class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
 
                 <%= form.label :bio, class: "text-gray-700" %>
                 <%= form.text_field :bio, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
