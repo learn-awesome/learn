@@ -1,4 +1,3 @@
-<% if @review.user %>
 <%= form_with(model: @review, class: "inline review-rating-#{@review.item.id}") do |form| %>
 <div 
   x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
@@ -14,8 +13,4 @@
 
 </div>
 <input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
-<% end %>
-
-<% else %>
-<!-- not logged in -->
 <% end %>
