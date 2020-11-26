@@ -103,6 +103,18 @@ class WelcomeController < ApplicationController
     Rails.logger.info request.body.read
   end
 
+  def twitterhookcrccheck
+    # Twitter will call this when registering a webhook with a GET
+    crc_token = params['crc_token']
+    render json: {response_token: "sha256=#{generate_crc_response(ENV['TWITTER_CONSUMER_SECRET'], crc_token)}"}
+  end
+
+  def twitterhook
+    # Once webhook is registered, twitter will send events here with a POST
+    request.body.rewind
+    Rails.logger.info request.body.read
+  end
+
   def slack_authorize
     Rails.logger.info request.body.read
     code = params[:code]
@@ -186,4 +198,11 @@ class WelcomeController < ApplicationController
 
   def kids
   end
+
+  def generate_crc_response(consumer_secret, crc_token)
+    require 'base64'
+    require 'json'
+		hash = OpenSSL::HMAC.digest('sha256', consumer_secret, crc_token)
+		return Base64.encode64(hash).strip!
+	end
 end

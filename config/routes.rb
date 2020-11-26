@@ -165,6 +165,8 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => 'welcome#sitemap'
   get '/collection_discover' => 'welcome#collection_discover'
   post '/csp-violation-report-endpoint' => 'welcome#csp_report'
+  get '/webhooks/twitter' => 'welcome#twitterhookcrccheck'
+  post '/webhooks/twitter' => 'welcome#twitterhook'
   get '/slack_authorize' => 'welcome#slack_authorize'
   post '/slack_command' => 'welcome#slack_command'
   get '/dataset' => 'welcome#dataset'
