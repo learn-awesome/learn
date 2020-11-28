@@ -106,7 +106,7 @@ class WelcomeController < ApplicationController
   def twitterhookcrccheck
     # Twitter will call this when registering a webhook with a GET
     crc_token = params['crc_token']
-    render json: {response_token: "sha256=#{generate_crc_response(ENV['TWITTER_CONSUMER_SECRET'], crc_token)}"}
+    render json: {response_token: "sha256=#{generate_crc_response(ENV['TWBOT_CONSUMER_SECRET'], crc_token)}"}
   end
 
   def twitterhook
