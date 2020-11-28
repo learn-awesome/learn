@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:csp_report, :slack_authorize, :slack_command]
+  skip_before_action :verify_authenticity_token, :only => [:csp_report, :slack_authorize, :slack_command, :twitterhook]
 
   def index
   	if current_user
