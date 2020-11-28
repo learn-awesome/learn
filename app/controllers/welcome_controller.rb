@@ -112,7 +112,10 @@ class WelcomeController < ApplicationController
   def twitterhook
     # Once webhook is registered, twitter will send events here with a POST
     request.body.rewind
-    Rails.logger.info request.body.read
+    event = request.body.read
+    # TODO: Listen for mentions, look up the link in the parent tweet and add topic/item as needed.
+    TwitterBotJob.perform_later(event)
+    render json: {success: true}
   end
 
   def slack_authorize
