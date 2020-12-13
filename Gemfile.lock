@@ -147,6 +147,7 @@ GEM
     faraday_middleware (0.14.0)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.12.2)
+    final_redirect_url (0.1.0)
     flamegraph (0.9.5)
     flattened_active_admin (0.0.7)
       rails (>= 3.2.0)
@@ -443,6 +444,7 @@ DEPENDENCIES
   coffee-rails (~> 5.0)
   devise
   faker
+  final_redirect_url
   flamegraph
   flattened_active_admin
   font-awesome-rails

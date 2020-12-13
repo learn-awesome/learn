@@ -38,7 +38,7 @@ class Auth0Client
 			config.bearer_token        = ENV["TWBOT_BEARER_TOKEN"]
 		end
 
-		client.status(tweet_id)
+		client.status(tweet_id, tweet_mode: 'extended')
 	end
 
 	def self.post_tweet(social_login, message, in_reply_to = nil)

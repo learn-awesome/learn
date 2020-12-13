@@ -1,6 +1,7 @@
 require 'json'
 require 'uri'
 require 'pathname'
+require 'final_redirect_url'
 
 class TwitterBotJob < ApplicationJob
   queue_as :default
@@ -146,11 +147,12 @@ class TwitterBotJob < ApplicationJob
       # Find a URL in the tweet this is a reply to
       parent_tweet_id = tweet["in_reply_to_status_id_str"]
       ptw = Auth0Client.get_tweet(parent_tweet_id)
-      url = ptw.split.map { |s| URI.parse(s) rescue nil }.select { |u| u && u.hostname }.first.to_s
-      # TODO: Find the ultimate destination URL by following all redirects and shortened URLs
+
+      # We are using tweet_mode=extended
+      url = JSON.parse(ptw.to_json)["entities"]["urls"].first["expanded_url"]
     end
     
-    Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet") and return unless url
+    Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", in_reply_to: tweet_id) and return unless url
 
     # extract topic name, rating, status, review from the tweet text
     data = parse_tweet(tweet["text"].sub(/@learnawesomebot/i, "").strip)

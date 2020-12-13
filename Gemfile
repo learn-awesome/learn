@@ -117,3 +117,5 @@ gem 'openai'
 gem 'slack-ruby-client'
 
 gem 'aws-sdk-s3'
+
+gem 'final_redirect_url'
