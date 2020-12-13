@@ -173,7 +173,7 @@ class TwitterBotJob < ApplicationJob
       topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
       
       # Create idea_set+item+link
-      extracted = Item.extract_opengraph_data(url])
+      extracted = Item.extract_opengraph_data(url)
       Item.transaction do
         idea_set = IdeaSet.new(name: (extracted[:title].presence || url)[0..255])
         idea_set.save
