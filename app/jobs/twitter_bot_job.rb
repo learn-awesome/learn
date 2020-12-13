@@ -119,13 +119,13 @@ class TwitterBotJob < ApplicationJob
 
     return unless event["for_user_id"] == "1114259648326987776" # must be for the LearnAwesomeBot
     return unless event["tweet_create_events"] # must be a new tweet created event
-    return unless event["user_has_blocked"] # must not be mentioned by a blocked user
+    return if event["user_has_blocked"] # must not be mentioned by a blocked user
     tweet = event["tweet_create_events"].first
     tweet_id = tweet["id_str"]
     
     user = tweet["user"]
-    return if user["id_str"] == "1114259648326987776" # must not be self
-    la_user = SocialLogin.where("auth0_uid LIKE 'twitter%'").where("auth0_info LIKE '%nickname\\\":\"#{user['screen_name']}\"%'").first.try(:user)
+    return if user["id_str"] == "1114259648326987776" # must not be posted by self
+    la_user = SocialLogin.where("auth0_uid LIKE 'twitter%'").where("auth0_info::text LIKE '%nickname\\\\\":\\\\\"#{user['screen_name']}\\\\\"%'").first.try(:user)
 
     # user must be a known user
     unless la_user
@@ -149,13 +149,13 @@ class TwitterBotJob < ApplicationJob
       ptw = Auth0Client.get_tweet(parent_tweet_id)
 
       # We are using tweet_mode=extended
-      url = JSON.parse(ptw.to_json)["entities"]["urls"].first["expanded_url"]
+      url = JSON.parse(ptw.to_json)["entities"]["urls"].first.try(:[],"expanded_url")
     end
     
     Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", in_reply_to: tweet_id) and return unless url
 
     # extract topic name, rating, status, review from the tweet text
-    data = parse_tweet(tweet["text"].sub(/@learnawesomebot/i, "").strip)
+    data = TwitterBotJob.parse_tweet(tweet["text"].sub(/@learn_awesome/i, "").strip)
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
 
     # find item
