@@ -159,7 +159,7 @@ class TwitterBotJob < ApplicationJob
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
 
     # find item
-    item = Link.where(url: url).first.item
+    item = Link.where(url: url).first.try(:item)
 
     if item # found existing item
       # No need to create topic or item
