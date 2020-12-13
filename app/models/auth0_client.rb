@@ -55,7 +55,7 @@ class Auth0Client
 		  config.access_token_secret = auth0_first_identity["access_token_secret"]
 		end
 		if in_reply_to
-			client.update(message, in_reply_to_status_id: in_reply_to)
+			client.update("@" + in_reply_to["user"]["screen_name"] + " " + message, in_reply_to_status: in_reply_to)
 		else
 			client.update(message)
 		end
