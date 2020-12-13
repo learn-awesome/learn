@@ -1,9 +1,18 @@
 require 'json'
+require 'uri'
+require 'pathname'
 
 class TwitterBotJob < ApplicationJob
   queue_as :default
 
   def perform(event_string)
+
+    Rails.logger.info "In TwitterBotJob"
+    Rails.logger.info event_string
+
+    bot_sl = SocialLogin.where(auth0_uid: "twitter|1114259648326987776").first
+    return unless bot_sl
+
     # Listen for mentions, look up the link in the parent tweet and add topic/item as needed.
     event = JSON.parse(event_string)
 
@@ -32,12 +41,12 @@ class TwitterBotJob < ApplicationJob
         "location": null,
         "url": null,
         "description": "Just a little girl having fun while learning.",
-        "translator_type": "none",
         "protected": false,
         "verified": false,
         "followers_count": 20,
         "friends_count": 26,
         "listed_count": 0,
+        "translator_type": "none",
         "favourites_count": 1,
         "statuses_count": 17,
         "created_at": "Mon Apr 06 06:27:14 +0000 2020",
@@ -111,32 +120,132 @@ class TwitterBotJob < ApplicationJob
     return unless event["tweet_create_events"] # must be a new tweet created event
     return unless event["user_has_blocked"] # must not be mentioned by a blocked user
     tweet = event["tweet_create_events"].first
+    tweet_id = tweet["id_str"]
     
     user = tweet["user"]
     return if user["id_str"] == "1114259648326987776" # must not be self
     la_user = SocialLogin.where("auth0_uid LIKE 'twitter%'").where("auth0_info LIKE '%nickname\\\":\"#{user['screen_name']}\"%'").first.try(:user)
-    # TODO return unless user is admin/whitelisted-user
-    return unless la_user and la_user.is_admin?
+
+    # user must be a known user
+    unless la_user
+      msg = "You must connect your Twitter account to your LearnAwesome.org account to use this bot."
+      Auth0Client.post_tweet(bot_sl, msg, in_reply_to: tweet_id)
+      return
+    end
+    
+    # user must be whitelisted for bot
+    unless la_user.is_admin?
+      msg = "This feature is currently only available to beta testers for LearnAwesome. Please join our Slack group to become one."
+      Auth0Client.post_tweet(bot_sl, msg, in_reply_to: tweet_id)
+      return
+    end
 
     url = tweet["entities"]["urls"].first
 
     unless url
-      # TODO: Find a URL in the tweet this is a reply to
+      # Find a URL in the tweet this is a reply to
       parent_tweet_id = tweet["in_reply_to_status_id_str"]
+      ptw = Auth0Client.get_tweet(parent_tweet_id)
+      url = ptw.split.map { |s| URI.parse(s) rescue nil }.select { |u| u && u.hostname }.first.to_s
+      # TODO: Find the ultimate destination URL by following all redirects and shortened URLs
     end
-    return unless url
+    
+    Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet") and return unless url
 
-    # TODO extract topic name from the tweet text
-    topic = tweet["text"].parse_for_topic
-    return if topic.blank?
+    # extract topic name, rating, status, review from the tweet text
+    data = parse_tweet(tweet["text"].sub(/@learnawesomebot/i, "").strip)
+    Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
 
-    # TODO create topic if doesn't exist
-    # TODO create item if url doesn't exist in Link.url
-    # TODO add topic to the found or created item
+    # find item
+    item = Link.where(url: url).first.item
 
-    # TODO post a reply to the user whether topic/item were created or found with the link
+    if item # found existing item
+      # No need to create topic or item
+    elsif la_user.is_admin? # create new item
+      unless data[:topic] && data[:item_type]
+        Auth0Client.post_tweet(bot_sl, "Both topic and format are needed to add a new item.", in_reply_to: tweet_id) and return
+      end
 
-    Rails.logger.info "In TwitterBotJob"
-    Rails.logger.info event_string    
+      item_type = ItemType.where(id: data[:item_type].to_s).first
+      Auth0Client.post_tweet(bot_sl, "We don't recognize that format or item type.", in_reply_to: tweet_id) and return unless item_type
+
+      # Create topic if needed
+      topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
+      
+      # Create idea_set+item+link
+      extracted = Item.extract_opengraph_data(url])
+      Item.transaction do
+        idea_set = IdeaSet.new(name: (extracted[:title].presence || url)[0..255])
+        idea_set.save
+        TopicIdeaSet.create(topic_id: topic.id, idea_set: idea_set)
+        item = Item.new(
+          item_type: item_type,
+          name: idea_set.name,
+          user: la_user,
+          is_approved: la_user.is_admin?
+        )
+        item.links.build
+        item.links.first.url = url
+        item.save
+      end
+      
+    end
+
+    # Add or update the review
+    review = Review.find_or_initialize_by(user: la_user, item: item)
+    review.status = data[:status] if data[:status]
+    review.overall_score = data[:rating] if data[:rating]
+    review.notes = review.notes.to_s + data[:review].to_s
+    review.save
+    message = "Updated your review on " + Rails.application.routes.url_helpers.item_url(item)
+
+    Auth0Client.post_tweet(bot_sl, message, in_reply_to: tweet_id)
+    return
+  end
+
+  def self.parse_tweet(text)
+    # Extract status, rating, review, topic and format from the text and return
+    # Example texts:
+    # only status: i want to learn / i am currently learning / i have learned
+    # only rating: rate 3 or rate 3/5
+
+    status_map = {
+      "i want to learn" => "want_to_learn",
+      "want to learn" => "want_to_learn",
+      "i wanna learn" => "want_to_learn",
+      "wanna learn" => "want_to_learn",
+
+      "learning" => "learning",
+      "am learning" => "learning",
+      "i am learning" => "learning",
+      "i'm learning" => "learning",
+      "am currently learning" => "learning",
+      "i am currently learning" => "learning",
+      "i'm currently learning" => "learning",
+
+      "have learned" => "learned",
+      "i have learned" => "learned",
+      "learned" => "learned",
+      "i learned" => "learned",
+      "already learned" => "learned",
+      "i already learned" => "learned",
+      "have already learned" => "learned",
+      "i have already learned" => "learned"
+    }
+
+    topic = status = rating = review = nil
+
+    status_match = text.match /(?<status>#{status_map.keys.join("|")})\s(this|it)?/i
+    status = status_map[status_match[:status].downcase] if status_match
+
+    rating_match = text.match /rate (?<rating>\d)\s?\/?\s?5?/i
+    rating = rating_match[:rating].to_i if rating_match
+
+    topic_match = text.match /in\s+(?<topic>[[:graph:]]+)/i
+    topic = topic_match[:topic] if topic_match
+
+    review = text.sub(status_match.to_s, "").sub(rating_match.to_s, "").sub(topic_match.to_s, "").strip.presence
+
+    return {topic: topic, status: status, rating: rating, review: review}
   end
 end

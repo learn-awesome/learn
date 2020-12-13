@@ -31,7 +31,17 @@ class Auth0Client
 		auth0_user_profile["identities"].first
 	end
 
-	def self.post_tweet(social_login, message)
+	def self.get_tweet(tweet_id)
+		client = Twitter::REST::Client.new do |config|
+			config.consumer_key        = ENV["TWBOT_CONSUMER_KEY"]
+			config.consumer_secret     = ENV["TWBOT_CONSUMER_SECRET"]
+			config.bearer_token        = ENV["TWBOT_BEARER_TOKEN"]
+		end
+
+		client.status(tweet_id)
+	end
+
+	def self.post_tweet(social_login, message, in_reply_to = nil)
 		auth0_access_token = self.get_access_token
 		auth0_user_profile = self.get_user_profile(auth0_access_token, social_login) if auth0_access_token
 		return false if auth0_user_profile.nil?
@@ -44,7 +54,11 @@ class Auth0Client
 		  config.access_token        = auth0_first_identity["access_token"]
 		  config.access_token_secret = auth0_first_identity["access_token_secret"]
 		end
-		client.update(message)
+		if in_reply_to
+			client.update(message, in_reply_to_status_id: in_reply_to)
+		else
+			client.update(message)
+		end
 		return true
 	end
 
