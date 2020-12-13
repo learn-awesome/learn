@@ -202,6 +202,8 @@ class TwitterBotJob < ApplicationJob
 
     Auth0Client.post_tweet(bot_sl, message, in_reply_to: tweet)
     return
+  rescue => e
+    Rails.logger.info "Something went wrong in TwitterBotJob#perform: #{e.message}"
   end
 
   def self.parse_tweet(text)
@@ -245,8 +247,10 @@ class TwitterBotJob < ApplicationJob
     topic_match = text.match /in\s+(?<topic>[[:graph:]]+)/i
     topic = topic_match[:topic] if topic_match
 
+    #TODO: parse format or item_type, probably with "as a book" or "as course"
+
     review = text.sub(status_match.to_s, "").sub(rating_match.to_s, "").sub(topic_match.to_s, "").strip.presence
 
-    return {topic: topic, status: status, rating: rating, review: review}
+    return {topic: topic, status: status, rating: rating, review: review, item_type: nil}
   end
 end

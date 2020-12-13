@@ -55,9 +55,9 @@ class Auth0Client
 		  config.access_token_secret = auth0_first_identity["access_token_secret"]
 		end
 		if in_reply_to
-			client.update("@" + in_reply_to["user"]["screen_name"] + " " + message, in_reply_to_status: in_reply_to)
+			client.update("@" + in_reply_to.user.try(:screen_name).to_s + " " + message.to_s, in_reply_to_status: in_reply_to)
 		else
-			client.update(message)
+			client.update(message.to_s)
 		end
 		return true
 	end
