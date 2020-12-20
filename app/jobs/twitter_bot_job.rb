@@ -163,6 +163,7 @@ class TwitterBotJob < ApplicationJob
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
 
     item_or_topic_or_url = Link.lookup_entity_by_url(url)
+    item = nil
 
     if item_or_topic_or_url.is_a?(Topic)
       # The url points to a LearnAwesome topic, we shouldn't treat this as a learning resource
@@ -171,6 +172,7 @@ class TwitterBotJob < ApplicationJob
     elsif item_or_topic_or_url.is_a?(Item)
       # Item found. No need to create topic or item. Adding review after this if block
       # Not returning here
+      item = item_or_topic_or_url
     elsif item_or_topic_or_url.nil?
       # lookup_entity_by_url returned nil. Either something went wrong or it's a LA url
       return
@@ -186,10 +188,10 @@ class TwitterBotJob < ApplicationJob
       topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
       
       extracted = Item.extract_opengraph_data(url) rescue {}
-      
+
       # Create idea_set+item+link
       Item.transaction do
-        idea_set = IdeaSet.new(name: (extracted[:title].presence || url)[0..255])
+        idea_set = IdeaSet.new(name: (extracted[:title].presence || item_or_topic_or_url)[0..255])
         idea_set.save
         TopicIdeaSet.create(topic_id: topic.id, idea_set: idea_set)
         item = Item.new(
@@ -199,7 +201,7 @@ class TwitterBotJob < ApplicationJob
           is_approved: la_user.is_tester?
         )
         item.links.build
-        item.links.first.url = url
+        item.links.first.url = item_or_topic_or_url
         item.save
       end
       
@@ -207,7 +209,7 @@ class TwitterBotJob < ApplicationJob
       Auth0Client.post_tweet(bot_sl, "You need to earn points to be able to add new items", tweet) and return
     end
 
-    if data[:status] or data[:rating] or data[:review]
+    if item && (data[:status] || data[:rating] || data[:review])
       # Add or update the review
       review = Review.find_or_initialize_by(user: la_user, item: item)
       review.status = data[:status] if data[:status]
