@@ -42,6 +42,10 @@ class Auth0Client
 	end
 
 	def self.post_tweet(social_login, message, in_reply_to = nil)
+		if in_reply_to && !(in_reply_to["user"] && in_reply_to["user"]["screen_name"])
+			Rails.logger.info "Could not find user to reply to. Don't want to post to everyone"
+			return
+		end
 		auth0_access_token = self.get_access_token
 		auth0_user_profile = self.get_user_profile(auth0_access_token, social_login) if auth0_access_token
 		return false if auth0_user_profile.nil?
