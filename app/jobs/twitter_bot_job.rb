@@ -123,6 +123,7 @@ class TwitterBotJob < ApplicationJob
     tweet = event["tweet_create_events"].first
 
     user = tweet["user"]
+    return unless user
     return if user["id_str"] == "1114259648326987776" # must not be posted by self
     la_user = SocialLogin.where("auth0_uid LIKE 'twitter%'").where("auth0_info::text LIKE '%nickname\\\\\":\\\\\"#{user['screen_name']}\\\\\"%'").first.try(:user)
 
