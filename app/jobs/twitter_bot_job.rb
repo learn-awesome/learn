@@ -217,6 +217,8 @@ class TwitterBotJob < ApplicationJob
       "want to learn" => "want_to_learn",
       "i wanna learn" => "want_to_learn",
       "wanna learn" => "want_to_learn",
+      "i'd like to learn" => "want_to_learn",
+      "i would like to learn" => "want_to_learn",
 
       "learning" => "learning",
       "am learning" => "learning",
@@ -238,11 +240,13 @@ class TwitterBotJob < ApplicationJob
 
     topic = status = rating = review = nil
 
-    status_match = text.match /(?<status>#{status_map.keys.join("|")})\s(this|it)?/i
+    status_match = text.match /(?<status>#{status_map.keys.join("|")})\s(this|it|that)?/i
     status = status_map[status_match[:status].downcase] if status_match
 
     rating_match = text.match /rate (?<rating>\d)\s?\/?\s?5?/i
     rating = rating_match[:rating].to_i if rating_match
+    rating = 5 if rating > 5
+    rating = nil if rating <= 0
 
     topic_match = text.match /in\s+(?<topic>[[:graph:]]+)/i
     topic = topic_match[:topic] if topic_match

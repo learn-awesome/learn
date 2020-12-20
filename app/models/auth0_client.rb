@@ -55,11 +55,10 @@ class Auth0Client
 		  config.access_token_secret = auth0_first_identity["access_token_secret"]
 		end
 		if in_reply_to
-			client.update("@" + in_reply_to["user"].try(:[],"screen_name").to_s + " " + message.to_s, in_reply_to_status: in_reply_to)
+			client.update("@" + in_reply_to["user"].try(:[],"screen_name").to_s + " " + message.to_s, in_reply_to_status_id: in_reply_to["id_str"].to_i)
 		else
 			client.update(message.to_s)
 		end
-		return true
 	end
 
 	def self.post_linkedin_share(social_login, payload)
