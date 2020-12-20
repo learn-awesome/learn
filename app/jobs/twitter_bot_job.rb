@@ -160,7 +160,7 @@ class TwitterBotJob < ApplicationJob
 
     # extract topic name, rating, status, review from the tweet text
     data = TwitterBotJob.parse_tweet(tweet_text.sub(/@learn_awesome/i, "").strip)
-    Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
+    Rails.logger.info "TwitterBotJob: data = #{data.inspect}, url = #{url}"
 
     item_or_topic_or_url = Link.lookup_entity_by_url(url)
     item = nil
@@ -187,22 +187,23 @@ class TwitterBotJob < ApplicationJob
       # Create topic if needed
       topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
       
-      extracted = Item.extract_opengraph_data(url) rescue {}
+      extracted = Item.extract_opengraph_data(item_or_topic_or_url) rescue {}
 
       # Create idea_set+item+link
       Item.transaction do
         idea_set = IdeaSet.new(name: (extracted[:title].presence || item_or_topic_or_url)[0..255])
-        idea_set.save
-        TopicIdeaSet.create(topic_id: topic.id, idea_set: idea_set)
+        idea_set.save!
+        TopicIdeaSet.create!(topic_id: topic.id, idea_set: idea_set)
         item = Item.new(
           item_type: item_type,
+          idea_set: idea_set,
           name: idea_set.name,
           user: la_user,
           is_approved: la_user.is_tester?
         )
         item.links.build
         item.links.first.url = item_or_topic_or_url
-        item.save
+        item.save!
       end
       
     else # User is not allowed to create new items
