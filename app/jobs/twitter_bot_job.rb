@@ -130,14 +130,14 @@ class TwitterBotJob < ApplicationJob
     # user must be a known user
     unless la_user
       msg = "You must connect your Twitter account to your LearnAwesome.org account to use this bot."
-      Auth0Client.post_tweet(bot_sl, msg, in_reply_to: tweet)
+      Auth0Client.post_tweet(bot_sl, msg, tweet)
       return
     end
     
     # user must be whitelisted for bot
     unless la_user.is_admin?
       msg = "This feature is currently only available to beta testers for LearnAwesome. Please join our Slack group to become one."
-      Auth0Client.post_tweet(bot_sl, msg, in_reply_to: tweet)
+      Auth0Client.post_tweet(bot_sl, msg, tweet)
       return
     end
 
@@ -152,7 +152,7 @@ class TwitterBotJob < ApplicationJob
       url = JSON.parse(ptw.to_json)["entities"]["urls"].first.try(:[],"expanded_url")
     end
     
-    Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", in_reply_to: tweet) and return unless url
+    Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", tweet) and return unless url
 
     extracted = nil
     begin
@@ -178,11 +178,11 @@ class TwitterBotJob < ApplicationJob
       # No need to create topic or item
     elsif la_user.is_admin? # create new item
       unless data[:topic] && data[:item_type]
-        Auth0Client.post_tweet(bot_sl, "Both topic and format are needed to add a new item.", in_reply_to: tweet) and return
+        Auth0Client.post_tweet(bot_sl, "Both topic and format are needed to add a new item.", tweet) and return
       end
 
       item_type = ItemType.where(id: data[:item_type].to_s).first
-      Auth0Client.post_tweet(bot_sl, "We don't recognize that format or item type.", in_reply_to: tweet) and return unless item_type
+      Auth0Client.post_tweet(bot_sl, "We don't recognize that format or item type.", tweet) and return unless item_type
 
       # Create topic if needed
       topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
@@ -217,7 +217,7 @@ class TwitterBotJob < ApplicationJob
       message = "You can find this item at " + Rails.application.routes.url_helpers.item_url(item)
     end
 
-    Auth0Client.post_tweet(bot_sl, message, in_reply_to: tweet) if message.present?
+    Auth0Client.post_tweet(bot_sl, message, tweet) if message.present?
     return
   rescue => e
     Rails.logger.info "Something went wrong in TwitterBotJob#perform: #{e.message}"
