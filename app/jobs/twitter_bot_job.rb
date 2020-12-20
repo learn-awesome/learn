@@ -191,7 +191,9 @@ class TwitterBotJob < ApplicationJob
 
       # Create idea_set+item+link
       Item.transaction do
-        idea_set = IdeaSet.new(name: (extracted[:title].presence || item_or_topic_or_url)[0..255])
+        name = (extracted[:title].presence || item_or_topic_or_url)[0..255]
+        name.encode!('UTF-8', 'ISO-8859-1')
+        idea_set = IdeaSet.new(name: name)
         idea_set.save!
         TopicIdeaSet.create!(topic_id: topic.id, idea_set: idea_set)
         item = Item.new(
