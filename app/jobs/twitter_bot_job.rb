@@ -153,6 +153,19 @@ class TwitterBotJob < ApplicationJob
     
     Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", in_reply_to: tweet) and return unless url
 
+    extracted = nil
+    begin
+      # Find ultimate destination url
+      url = FinalRedirectUrl.final_redirect_url(url)
+
+      # TODO find canonical url
+      extracted = Item.extract_opengraph_data(url)
+      url = extracted[:canonical] || url
+    rescue Exception => e
+      Rails.logger.info "Exception in TwitterBotJob finding canonical URL: #{e.message}"
+      return
+    end
+
     # extract topic name, rating, status, review from the tweet text
     data = TwitterBotJob.parse_tweet(tweet["text"].sub(/@learn_awesome/i, "").strip)
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
@@ -174,7 +187,6 @@ class TwitterBotJob < ApplicationJob
       topic = Topic.where(name: data[:topic].downcase).first || Topic.create(display_name: data[:topic], 'search_index': data[:topic], 'gitter_room': data[:topic])
       
       # Create idea_set+item+link
-      extracted = Item.extract_opengraph_data(url)
       Item.transaction do
         idea_set = IdeaSet.new(name: (extracted[:title].presence || url)[0..255])
         idea_set.save
@@ -192,15 +204,19 @@ class TwitterBotJob < ApplicationJob
       
     end
 
-    # Add or update the review
-    review = Review.find_or_initialize_by(user: la_user, item: item)
-    review.status = data[:status] if data[:status]
-    review.overall_score = data[:rating] if data[:rating]
-    review.notes = review.notes.to_s + data[:review].to_s
-    review.save
-    message = "Updated your review on " + Rails.application.routes.url_helpers.item_url(item)
+    if data[:status] or data[:rating] or data[:review]
+      # Add or update the review
+      review = Review.find_or_initialize_by(user: la_user, item: item)
+      review.status = data[:status] if data[:status]
+      review.overall_score = data[:rating] if data[:rating]
+      review.notes = review.notes.to_s + data[:review].to_s
+      review.save
+      message = "Updated your review on " + Rails.application.routes.url_helpers.item_url(item)
+    else
+      message = "You can find this item at " + Rails.application.routes.url_helpers.item_url(item)
+    end
 
-    Auth0Client.post_tweet(bot_sl, message, in_reply_to: tweet)
+    Auth0Client.post_tweet(bot_sl, message, in_reply_to: tweet) if message.present?
     return
   rescue => e
     Rails.logger.info "Something went wrong in TwitterBotJob#perform: #{e.message}"
@@ -245,16 +261,21 @@ class TwitterBotJob < ApplicationJob
 
     rating_match = text.match /rate (?<rating>\d)\s?\/?\s?5?/i
     rating = rating_match[:rating].to_i if rating_match
-    rating = 5 if rating > 5
-    rating = nil if rating <= 0
+    rating = 5 if rating > 5 if rating
+    rating = nil if rating <= 0 if rating
 
     topic_match = text.match /in\s+(?<topic>[[:graph:]]+)/i
     topic = topic_match[:topic] if topic_match
 
-    #TODO: parse format or item_type, probably with "as a book" or "as course"
+    format_match = text.match /as (a )?(?<format>#{ItemType.all.map(&:id).join("|")})/i
+    format = format_match[:format] if format_match
 
-    review = text.sub(status_match.to_s, "").sub(rating_match.to_s, "").sub(topic_match.to_s, "").strip.presence
+    review = text.sub(status_match.to_s, "")
+      .sub(rating_match.to_s, "")
+      .sub(topic_match.to_s, "")
+      .sub(format_match.to_s, "")
+      .strip.presence
 
-    return {topic: topic, status: status, rating: rating, review: review, item_type: nil}
+    return {topic: topic, status: status, rating: rating, review: review, item_type: format}
   end
 end
