@@ -122,8 +122,9 @@ class TwitterBotJob < ApplicationJob
     return if event["user_has_blocked"] # must not be mentioned by a blocked user
     tweet = event["tweet_create_events"].first
 
-    return unless tweet["text"].to_s.downcase.include?("bot")
+    return unless tweet["text"].to_s.downcase.include?(/\sbot/i)
     tweet_text = tweet["text"].to_s.sub(/bot[,:]+\s+/i,"")
+    Rails.logger.info "Received bot command: #{tweet_text}"
 
     user = tweet["user"]
     return unless user
@@ -157,6 +158,10 @@ class TwitterBotJob < ApplicationJob
     
     Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", tweet) and return unless url
 
+    # extract topic name, rating, status, review from the tweet text
+    data = TwitterBotJob.parse_tweet(tweet_text.sub(/@learn_awesome/i, "").strip)
+    Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
+    
     item_or_topic_or_url = Link.lookup_entity_by_url(url)
 
     if item_or_topic_or_url.is_a?(Topic)
