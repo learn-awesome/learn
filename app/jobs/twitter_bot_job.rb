@@ -122,6 +122,9 @@ class TwitterBotJob < ApplicationJob
     return if event["user_has_blocked"] # must not be mentioned by a blocked user
     tweet = event["tweet_create_events"].first
 
+    return unless tweet["text"].to_s.downcase.include?("bot")
+    tweet_text = tweet["text"].to_s.sub(/bot[,:]+\s+/i,"")
+
     user = tweet["user"]
     return unless user
     return if user["id_str"] == "1114259648326987776" # must not be posted by self
@@ -168,7 +171,7 @@ class TwitterBotJob < ApplicationJob
     end
 
     # extract topic name, rating, status, review from the tweet text
-    data = TwitterBotJob.parse_tweet(tweet["text"].sub(/@learn_awesome/i, "").strip)
+    data = TwitterBotJob.parse_tweet(tweet_text.sub(/@learn_awesome/i, "").strip)
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
 
     # find item
@@ -212,7 +215,7 @@ class TwitterBotJob < ApplicationJob
       review.overall_score = data[:rating] if data[:rating]
       review.notes = review.notes.to_s + data[:review].to_s
       review.save
-      message = "Updated your review on " + Rails.application.routes.url_helpers.item_url(item)
+      message = "Nice! Your learning status and review is now updated at " + Rails.application.routes.url_helpers.item_url(item)
     else
       message = "You can find this item at " + Rails.application.routes.url_helpers.item_url(item)
     end
