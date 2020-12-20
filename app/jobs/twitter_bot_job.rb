@@ -161,7 +161,7 @@ class TwitterBotJob < ApplicationJob
     # extract topic name, rating, status, review from the tweet text
     data = TwitterBotJob.parse_tweet(tweet_text.sub(/@learn_awesome/i, "").strip)
     Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
-    
+
     item_or_topic_or_url = Link.lookup_entity_by_url(url)
 
     if item_or_topic_or_url.is_a?(Topic)
@@ -221,6 +221,7 @@ class TwitterBotJob < ApplicationJob
     return
   rescue => e
     Rails.logger.info "Something went wrong in TwitterBotJob#perform: #{e.message}"
+    Rails.logger.info e.backtrace
   end
 
   def self.parse_tweet(text)
