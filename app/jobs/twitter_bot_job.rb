@@ -122,8 +122,8 @@ class TwitterBotJob < ApplicationJob
     return if event["user_has_blocked"] # must not be mentioned by a blocked user
     tweet = event["tweet_create_events"].first
 
-    return unless tweet["text"].to_s.downcase.include?(/\sbot/i)
-    tweet_text = tweet["text"].to_s.sub(/bot[,:]+\s+/i,"")
+    return unless tweet["text"].to_s.match(/\sbot[,:]*\s/i)
+    tweet_text = tweet["text"].to_s.sub(/\sbot[,:]*\s/i," ")
     Rails.logger.info "Received bot command: #{tweet_text}"
 
     user = tweet["user"]
