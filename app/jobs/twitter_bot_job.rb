@@ -210,7 +210,7 @@ class TwitterBotJob < ApplicationJob
       Auth0Client.post_tweet(bot_sl, "You need to earn points to be able to add new items", tweet) and return
     end
 
-    if item && (data[:status] || data[:rating] || data[:review])
+    if item.persisted? && (data[:status] || data[:rating] || data[:review])
       # Add or update the review
       review = Review.find_or_initialize_by(user: la_user, item: item)
       review.status = data[:status] if data[:status]
@@ -218,7 +218,7 @@ class TwitterBotJob < ApplicationJob
       review.notes = review.notes.to_s + data[:review].to_s
       review.save
       message = "Nice! Your learning status and review is now updated at " + Rails.application.routes.url_helpers.item_url(item)
-    else
+    elsif item.persisted?
       message = "You can find this item at " + Rails.application.routes.url_helpers.item_url(item)
     end
 
