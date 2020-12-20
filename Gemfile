@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.3.4'
+gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '4.3.6'
+gem 'puma', '5.1.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -77,9 +77,9 @@ gem 'omniauth-auth0'
 gem 'bootstrap'
 gem 'jquery-rails'
 
-gem 'textacular', '5.2.0'
+gem 'textacular', git: 'https://github.com/textacular/textacular'
 
-gem "font-awesome-rails"
+gem "font-awesome-rails", git: 'https://github.com/bokmann/font-awesome-rails'
 
 gem "sentry-raven"
 
