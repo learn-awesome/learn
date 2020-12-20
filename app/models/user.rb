@@ -113,6 +113,10 @@ class User < ApplicationRecord
 		self.role == "admin"
 	end
 
+	def is_tester?
+		self.is_admin? || (self.role == 'tester')
+	end
+
 	def get_reviews(item_type_id, status, quality = nil, min_quality_score = 0)
 		results = self.reviews
 		if status.present?

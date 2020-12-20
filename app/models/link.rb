@@ -12,6 +12,7 @@
 #
 
 require 'uri/http'
+require 'final_redirect_url'
 
 class Link < ApplicationRecord
   belongs_to :item, inverse_of: :links
@@ -42,5 +43,34 @@ class Link < ApplicationRecord
 
   def is_broken?
   	false
+  end
+
+  def self.lookup_entity_by_url(url)
+    return unless url.present?
+    url = FinalRedirectUrl.final_redirect_url(url) # Follow redirects up to level 10 # TODO: excute JS-based redirects
+
+    if Rails.env.production?
+      domain = "https://learnawesome.org"
+    else
+      domain = "http://localhost"
+    end
+
+    if url.include?("#{domain}/items/")
+      return Item.from_param(url.sub("#{domain}/items/",""))
+    elsif url.include?("#{domain}/topics/")
+      return Topic.from_param(url.sub("#{domain}/topics/",""))
+    # elsif url.include?("#{domain}/reviews/")
+    #   return Review.where(id: url.sub("#{domain}/reviews","")).first
+    elsif url.include?(domain)
+      return nil # LearnAwesome URLs should not be treated like external URLs
+    else
+      extracted = Item.extract_opengraph_data(url) rescue {}
+      url = extracted[:canonical] || url
+      item = Link.where(url: url).first.try(:item)
+      return item || url
+    end
+  rescue Exception => e
+    Rails.logger.info "Exception in Link.lookup_entity_by_url for #{url}: #{e.message}"
+    return nil
   end
 end

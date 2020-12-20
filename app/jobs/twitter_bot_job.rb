@@ -138,7 +138,7 @@ class TwitterBotJob < ApplicationJob
     end
     
     # user must be whitelisted for bot
-    unless la_user.is_admin?
+    unless la_user.is_tester?
       msg = "This feature is currently only available to beta testers for LearnAwesome. Please join our Slack group to become one."
       Auth0Client.post_tweet(bot_sl, msg, tweet)
       return
@@ -157,29 +157,19 @@ class TwitterBotJob < ApplicationJob
     
     Auth0Client.post_tweet(bot_sl, "No link found either in your tweet or the parent tweet", tweet) and return unless url
 
-    extracted = nil
-    begin
-      # Find ultimate destination url
-      url = FinalRedirectUrl.final_redirect_url(url)
+    item_or_topic_or_url = Link.lookup_entity_by_url(url)
 
-      # TODO find canonical url
-      extracted = Item.extract_opengraph_data(url)
-      url = extracted[:canonical] || url
-    rescue Exception => e
-      Rails.logger.info "Exception in TwitterBotJob finding canonical URL: #{e.message}"
+    if item_or_topic_or_url.is_a?(Topic)
+      # The url points to a LearnAwesome topic, we shouldn't treat this as a learning resource
+      # TODO: see data[:status] and decide if user wants to follow or unfollow that topic
       return
-    end
-
-    # extract topic name, rating, status, review from the tweet text
-    data = TwitterBotJob.parse_tweet(tweet_text.sub(/@learn_awesome/i, "").strip)
-    Rails.logger.info "TwitterBotJob: data = #{data.inspect}"
-
-    # find item
-    item = Link.where(url: url).first.try(:item)
-
-    if item # found existing item
-      # No need to create topic or item
-    elsif la_user.is_admin? # create new item
+    elsif item_or_topic_or_url.is_a?(Item)
+      # Item found. No need to create topic or item. Adding review after this if block
+      # Not returning here
+    elsif item_or_topic_or_url.nil?
+      # lookup_entity_by_url returned nil. Either something went wrong or it's a LA url
+      return
+    elsif la_user.is_tester? # we have an external URL and user is allowed to create new items
       unless data[:topic] && data[:item_type]
         Auth0Client.post_tweet(bot_sl, "Both topic and format are needed to add a new item.", tweet) and return
       end
@@ -199,13 +189,15 @@ class TwitterBotJob < ApplicationJob
           item_type: item_type,
           name: idea_set.name,
           user: la_user,
-          is_approved: la_user.is_admin?
+          is_approved: la_user.is_tester?
         )
         item.links.build
         item.links.first.url = url
         item.save
       end
       
+    else # User is not allowed to create new items
+      Auth0Client.post_tweet(bot_sl, "You need to earn points to be able to add new items", tweet) and return
     end
 
     if data[:status] or data[:rating] or data[:review]
