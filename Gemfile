@@ -85,7 +85,7 @@ gem "sentry-raven"
 
 gem 'twitter'
 gem 'httparty'
-gem 'sidekiq'
+gem 'sidekiq', '5.2.8'
 
 gem 'redcarpet'
 gem 'faker'
