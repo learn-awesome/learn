@@ -7,8 +7,7 @@ ruby '2.7.2'
 gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '5.1.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '6.0.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,10 +37,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'will_paginate', '~> 3.3.0'
 
+group :production do
+  # Use Puma as the app server
+  gem 'puma', '5.1.1'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'annotate'
+  gem 'falcon'
 end
 
 group :development do
