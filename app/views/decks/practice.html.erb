@@ -1,10 +1,12 @@
-<div class="mb-4">
-  <nav aria-label="breadcrumb">
-    <h2>
-      Practice FlashCards from deck: <%= @deck.name %>
-      <%= link_to 'See All Decks', decks_path, class: "float-right btn-sm btn-primary" %>
+<div class="md:flex md:items-center md:justify-between mb-8">
+  <div class="flex-1 min-w-0">
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+    Practice deck: <%= @deck.name %>
     </h2>
-  </nav>
+  </div>
+  <div class="mt-4 flex md:mt-0 md:ml-4">
+    <%= link_to 'See All Decks', decks_path, class: "ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  </div>
 </div>
 
 <div class="row">
@@ -18,7 +20,7 @@
   <div class="col-md-12 mb-4">
     You can also practice cards in a specific deck:
     <% current_user.decks.each do |deck| %>
-      <%= link_to deck.name, practice_deck_path(deck), class: "btn btn-outline-primary" %>
+      <%= link_to deck.name, practice_deck_path(deck), class: "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-purple-100 text-purple-800 hover:bg-purple-300 border-2 border-purple-300" %>
     <% end %>
   </div>
 </div>
@@ -26,7 +28,7 @@
 
 <div class="row">
   <div class="col-md-12 mb-4">
-    You can create new flash cards either <%= link_to 'manually', new_flash_card_path %>, using our <a target="_blank" href="<%= browser_extension(request) %>">browser extension</a>, or in bulk
-    via our <%= link_to 'quick note-taking feature', notes_flash_cards_path %>.
+    You can create new flash cards either <%= link_to 'manually', new_flash_card_path, class: "underline text-purple-500" %>, using our <a target="_blank" class="underline text-purple-500" href="<%= browser_extension(request) %>">browser extension</a>, or in bulk
+    via our <%= link_to 'quick note-taking feature', notes_flash_cards_path, class: "underline text-purple-500" %>.
   </div>
 </div>

@@ -50,7 +50,7 @@ class DecksController < InheritedResources::Base
     end
 
     def deck_params
-      params.require(:deck).permit(:name, :is_public)
+      params.require(:deck).permit(:name, :is_public, :description, :image_url)
     end
 
 end
