@@ -21,7 +21,7 @@ module Learn
       'X-Frame-Options' => 'ALLOW-FROM http://bizzy.polyglot.network'
     }
 
-    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :delayed_job
 
     config.x.application_job.default_url_options = { host: "https://learnawesome.org" }
 
