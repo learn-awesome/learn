@@ -33,7 +33,11 @@ class SocialLogin < ApplicationRecord
 	end
 
 	def is_from_github?
-		self.auth0_uid.include?("github")
+		self.auth0_uid.include?("github|")
+	end
+
+	def is_from_auth0?
+		self.auth0_uid.include?("auth0|")
 	end
 
 	def linkedin_person_urn
