@@ -962,10 +962,10 @@ CREATE INDEX delayed_jobs_priority ON public.delayed_jobs USING btree (priority,
 
 
 --
--- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_active_admin_comments_on_author; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON public.active_admin_comments USING btree (author_type, author_id);
+CREATE INDEX index_active_admin_comments_on_author ON public.active_admin_comments USING btree (author_type, author_id);
 
 
 --
@@ -976,10 +976,10 @@ CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_com
 
 
 --
--- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_active_admin_comments_on_resource; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
+CREATE INDEX index_active_admin_comments_on_resource ON public.active_admin_comments USING btree (resource_type, resource_id);
 
 
 --

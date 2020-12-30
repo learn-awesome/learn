@@ -4,6 +4,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 
   setup do
-  	Capybara.server_port = 3000
+    Capybara.server_port = 3000
+    WebMock.allow_net_connect!
   end
 end

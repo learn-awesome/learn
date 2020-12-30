@@ -73,3 +73,16 @@ For GraphQL clients, first send the user to https://learnawesome.eu.auth0.com/lo
 
 After successful login/signup, `user.authinfo` will have a field called `id_token`.
 The value of that token can be used as the `Authorization` header with `Bearer` prefix. This ensures that user can only perform permitted operations via graphQL api.
+
+# Testing
+
+We have starting adding automated Browser testing via Capybara.
+
+```
+# To setup browser for automated selenium testing
+bundle exec rake webdrivers:chromedriver:update
+```
+
+Then:
+
+`bin/rails test:system`
