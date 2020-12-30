@@ -539,7 +539,7 @@ class Item < ApplicationRecord
   end
 
   def self.extract_opengraph_data(url)
-    Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
+    # Rails.cache.fetch("grdata_#{url}", expires_in: 12.hours) do
       if url.include?("goodreads.com")
         # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
         item_type = 'book'
@@ -604,7 +604,7 @@ class Item < ApplicationRecord
           {}
         end
       end
-    end
+    # end
   end
 
   ##
@@ -694,9 +694,9 @@ class Item < ApplicationRecord
   end
 
   def clear_cache
-    self.topics.each do |t|
-      Rails.cache.delete("topic_items_#{t.id}")
-    end
+    # self.topics.each do |t|
+    #   Rails.cache.delete("topic_items_#{t.id}")
+    # end
   end
 
   def notify_gitter

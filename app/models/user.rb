@@ -388,7 +388,7 @@ class User < ApplicationRecord
 	end
 
 	def onboarding
-		Rails.cache.fetch("user_onboarding_#{self.id}", expires_in: 30.minutes) do
+		# Rails.cache.fetch("user_onboarding_#{self.id}", expires_in: 30.minutes) do
 			 {
 				first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
 				first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.topics_path],
@@ -406,7 +406,7 @@ class User < ApplicationRecord
 				social_login: [self.social_logins.count > 1, Rails.application.routes.url_helpers.settings_user_path(self)],
 				join_chat: [false, "/join_slack"]
 			}
-		end
+		# end
 	end
 
 	def onboarding_percentage

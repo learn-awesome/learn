@@ -93,17 +93,19 @@ class Topic < ApplicationRecord
 	end
 
 	def available_levels
-		items = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
-			self.items
-		end
+		items = self.items
+		# items = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
+		# 	self.items
+		# end
 
 		items.pluck(:level).uniq
 	end
 
 	def advanced_search(item_type, length, quality, level = nil)
-		results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
-			self.items
-		end
+		results = self.items
+		# results = Rails.cache.fetch("topic_items_#{self.id}", expires_in: 24.hours) do
+		# 	self.items
+		# end
 	    if item_type.present?
 	      results = results.where(item_type_id: item_type)
 	    end
@@ -169,13 +171,13 @@ class Topic < ApplicationRecord
 	end
 
 	def self.get_all
-		Rails.cache.fetch("all_topics", expires_in: 1.hours) do
+		# Rails.cache.fetch("all_topics", expires_in: 1.hours) do
 			Topic.all.to_a.sort_by(&:display_name)
-		end
+		# end
 	end
 
 	def clear_cache
-		Rails.cache.delete('all_topics')
+		# Rails.cache.delete('all_topics')
 	end
 
 	def ancestors

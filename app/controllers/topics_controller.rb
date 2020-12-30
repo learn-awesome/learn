@@ -68,7 +68,7 @@ class TopicsController < InheritedResources::Base
       else
         @user_topics.create!(topic: @topic, action: "follow")
       end
-      Rails.cache.delete("user_onboarding_#{current_user.id}")
+      # Rails.cache.delete("user_onboarding_#{current_user.id}")
     end
     redirect_to @topic
   end
