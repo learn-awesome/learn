@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	before_action :allow_rack_mini_profiler
 	before_action :set_variant 
 
-	layout proc { |controller| params['ext'].to_s == 'true' ? "embed_#{request.variant.first}" :  request.variant.first.to_s }
+	layout proc { |controller| params['ext'].to_s == 'true' ? 'embed' :  'application' }
 
 	private
 	def set_raven_context

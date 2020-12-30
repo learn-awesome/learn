@@ -121,3 +121,5 @@ gem 'aws-sdk-s3'
 gem 'final_redirect_url'
 
 gem 'delayed_job_active_record'
+
+gem 'turbo-rails'
