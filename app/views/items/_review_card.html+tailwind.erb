@@ -11,7 +11,7 @@
 
 <div class="bg-white rounded-lg shadow-lg mb-4 mr-4 p-2">
 	<h1 class="text-gray-800 text-xl font-semibold mb-2">Reviews</h1>
-	<% (@item.reviews.completed.popular.to_a + Review.sample_reviews(@item, current_user)).each do |rev| %>
+	<% @item.reviews.completed.popular.each do |rev| %>
 		<% if rev.persisted? %>
 			<a href="<%= review_path(rev) %>" class="block flex border-t-2 p-2 hover:bg-gray-200">
 		<% else %>
