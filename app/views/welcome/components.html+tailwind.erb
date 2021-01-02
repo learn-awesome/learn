@@ -9,6 +9,9 @@
 <h1 class="mt-8">SplitButtonComponent</h1>
 <%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %>
 
+<h1 class="mt-8">FlashCardComponent</h1>
+<%= render FlashCardComponent.new(fid: FlashCard.first.id) %>
+
 <h1 class="mt-8">ItemPanelComponent</h1>
 <div class="bg-white rounded-lg shadow-lg">
 <%= render ItemPanelComponent.new(item: Item.order(:created_at).first, user: current_user) %>
