@@ -42,7 +42,7 @@ class Review < ApplicationRecord
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
   QUALITY_TAGS = SCORE_TYPES.map(&:to_s).map { |q| q.gsub("_score", "")}
   
-  STATUSES = {want_to_learn: "Want to learn", learning: "Currently learning", learned: "Already learned"}
+  STATUSES = {want_to_learn: "Want to Learn", learning: "Currently Learning", learned: "Already Learned"}
 
   def update_item_ratings
   	SCORE_TYPES.each do |quality_score|
