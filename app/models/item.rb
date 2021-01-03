@@ -173,7 +173,7 @@ class Item < ApplicationRecord
   end
 
   def get_people(for_user)
-    self.reviews.map(&:user).take(5)
+    self.reviews.map(&:user).take(5) * 3
   end
 
   def large_thumbnail

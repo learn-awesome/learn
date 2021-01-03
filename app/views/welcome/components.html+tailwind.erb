@@ -9,11 +9,14 @@
 <h1 class="mt-8">SplitButtonComponent</h1>
 <div class="px-24"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %></div>
 
+<h1 class="mt-8">StarRatingComponent</h1>
+<%= render StarRatingComponent.new(value: "3.2", count: 132) %>
+
 <h1 class="mt-8">FlashCardComponent</h1>
 <%= render FlashCardComponent.new(fid: FlashCard.first.id) %>
 
 <h1 class="mt-8">ItemPanelComponent</h1>
-<div class="bg-white rounded-lg shadow-lg">
+<div class="bg-white rounded-lg shadow-lg max-w-lg mx-auto">
 <%= render ItemPanelComponent.new(item: Item.order(:created_at).first, user: current_user) %>
 </div>
 

@@ -20,15 +20,17 @@
         <% end %>
         <% end %>
       </div>
+      
       <a href="<%= item_path(@item) %>" class="block">
+        <%= render StarRatingComponent.new(value: @item.overall_score.to_s, count: @item.reviews.with_rating.count) %>
         <h3 class="mt-4 text-xl leading-7 font-semibold text-gray-900">
           <%= @item.display_name %>
         </h3>
+      </a>
         <p class="text-gray-500 text-sm"><%= @item.primary_link.top_domain %></p>
         <p class="mt-3 text-base leading-6 text-gray-500">
           <%= @item.display_description %>
         </p>
-      </a>
     </div>
   </div>
 </div>
@@ -36,18 +38,18 @@
 <div class="border-t border-gray-200">
   <div class="-mt-px flex">
     <div class="w-0 flex-1 flex border-r border-gray-200">
-      <div class="relative -mr-px w-0 flex-1 inline-flex justify-around items-center p-2">
+      <div class="relative -mr-px w-0 flex-1 inline-flex justify-between items-center p-2">
         <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: false) %>
         <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: @item.id, user: @user)) %>
-        <div class="flex p-2 overflow-hidden">
-          <% @item.get_people(@user).each_with_index do |p, i| %>
-            <img title="<%= p.nickname %>" class="<%= i >= 1 ? '-ml-2' : '' %> inline-block h-10 w-10 rounded-full text-white shadow-solid" src="<%= p.avatar_image %>" alt="">
-          <% end %>
-        </div>
       </div>
     </div>
-
+  </div>
+  <div class="flex p-2 overflow-hidden">
+  <% @item.get_people(@user).each_with_index do |p, i| %>
+    <img title="<%= p.nickname %>" class="<%= i >= 1 ? '-ml-2' : '' %> inline-block h-10 w-10 rounded-full text-white shadow-solid" src="<%= p.avatar_image %>" alt="">
+  <% end %>
   </div>
 </div>
+
 </div>
 

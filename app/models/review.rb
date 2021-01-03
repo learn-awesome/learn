@@ -35,6 +35,7 @@ class Review < ApplicationRecord
   after_save :change_status
 
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
+  scope :with_rating, -> { where("overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
   scope :popular, -> { order("overall_score DESC").limit(10) }
   scope :interested, -> { where(status: ['want_to_learn', 'learning', 'learned']) }
