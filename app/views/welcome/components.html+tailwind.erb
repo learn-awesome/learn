@@ -17,7 +17,7 @@
 
 <h1 class="mt-8">ItemPanelComponent</h1>
 <div class="bg-white rounded-lg shadow-lg max-w-lg mx-auto">
-<%= render ItemPanelComponent.new(item: Item.order(:created_at).first, user: current_user) %>
+<%= render ItemPanelComponent.new(item: Item.where(item_type_id: 'book').first, user: current_user) %>
 </div>
 
 <h1 class="mt-8">ItemsGridComponent</h1>

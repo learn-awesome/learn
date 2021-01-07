@@ -165,6 +165,10 @@ class Item < ApplicationRecord
     end
   end
 
+  def image_might_be_landscape?
+    self.item_type_id == 'video'
+  end
+
   def average_overall_score
     return 0 unless reviews.present?
     scores = reviews.pluck(:overall_score).compact
