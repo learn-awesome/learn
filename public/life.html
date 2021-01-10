@@ -9,7 +9,7 @@
         <section class="min-h-screen flex" style="min-height: 93vh;">
             <aside class="bg-red-200 w-2/3 resize-x overflow-scroll flex flex-col">
                 <div class="bg-yellow-200 h-1/2 resize-y overflow-scroll flex">
-                    <article class="bg-yellow-300 w-1/2 resize-x overflow-scroll p-4">
+                    <article class="bg-yellow-300 w-1/2 resize-x overflow-scroll p-4 flex flex-col space-y-2">
                         <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
                                 <svg class="text-red-500 h-16 w-16 animate-pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -21,10 +21,10 @@
                             {name: 'Fat %', to: '21.9'},{name: 'Weight', to: '75'},{name: '6km', to: '23'}]">
                                 <div>
                                 <div class="p-2">
-                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dt contenteditable x-text="item.name" class="text-base font-normal text-gray-900"></dt>
                                     <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                                     <div class="flex items-baseline text-xl font-semibold text-indigo-600">
-                                        <span x-text="item.to"></span>
+                                        <span contenteditable x-text="item.to"></span>
                                         </span>
                                     </div>
                                     </dd>
@@ -32,8 +32,9 @@
                                 </div>
                             </template>
                         </dl>
+                        <textarea class="flex-grow shadow-lg rounded-lg bg-yellow-200 bg-opacity-80 p-2 resize-none" placeholder="type your TODOs and notes here" id="health"></textarea>
                     </article>
-                    <article class="bg-yellow-100 overflow-scroll flex-grow p-4">
+                    <article class="bg-yellow-100 overflow-scroll flex-grow flex flex-col space-y-2 p-4">
                         <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
                                 <svg class="h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,10 +45,10 @@
                             {name: 'Net Worth', to: '$40K'}]">
                                 <div>
                                 <div class="p-2">
-                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dt contenteditable x-text="item.name" class="text-base font-normal text-gray-900"></dt>
                                     <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                                     <div class="flex items-baseline text-xl font-semibold text-indigo-600">
-                                        <span x-text="item.to"></span>
+                                        <span contenteditable x-text="item.to"></span>
                                         </span>
                                     </div>
 
@@ -56,10 +57,11 @@
                                 </div>
                             </template>
                         </dl>
+                        <textarea class="flex-grow shadow-lg rounded-lg bg-yellow-200 bg-opacity-80 p-2 resize-none" placeholder="type your TODOs and notes here" id="health"></textarea>
                     </article>
                 </div>
                 <div class="bg-blue-200 flex-grow overflow-scroll flex">
-                    <article class="bg-blue-300 w-1/2 resize-x overflow-scroll p-4">
+                    <article class="bg-blue-300 w-1/2 resize-x overflow-scroll p-4 flex flex-col space-y-2">
                         <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
                                 <svg class="h-16 w-16 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,10 +73,10 @@
                             {name: 'College', to: '24.5%'}]">
                                 <div>
                                 <div class="p-2">
-                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dt contenteditable x-text="item.name" class="text-base font-normal text-gray-900"></dt>
                                     <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                                     <div class="flex items-baseline text-xl font-semibold text-indigo-600">
-                                        <span x-text="item.to"></span>
+                                        <span contenteditable x-text="item.to"></span>
                                         </span>
                                     </div>
                                     </dd>
@@ -82,8 +84,9 @@
                                 </div>
                             </template>
                         </dl>
+                        <textarea class="flex-grow shadow-lg rounded-lg bg-blue-200 bg-opacity-80 p-2 resize-none" placeholder="type your TODOs and notes here" id="health"></textarea>
                     </article>
-                    <article class="bg-blue-100 overflow-scroll flex-grow p-4">
+                    <article class="bg-blue-100 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
                         <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
                                 <svg class="h-16 w-16 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,10 +98,10 @@
                             {name: 'Family vacation', to: '19 days'}]">
                                 <div>
                                 <div class="p-2">
-                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dt contenteditable x-text="item.name" class="text-base font-normal text-gray-900"></dt>
                                     <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                                     <div class="flex items-baseline text-xl font-semibold text-indigo-600">
-                                        <span x-text="item.to"></span>
+                                        <span contenteditable x-text="item.to"></span>
                                         </span>
                                     </div>
 
@@ -107,10 +110,11 @@
                                 </div>
                             </template>
                         </dl>
+                        <textarea class="flex-grow shadow-lg rounded-lg bg-blue-200 bg-opacity-80 p-2 resize-none" placeholder="type your TODOs and notes here" id="relationships"></textarea>
                     </article>
                 </div>
             </aside>
-            <main class="bg-green-200 overflow-scroll flex-grow p-4">
+            <main class="bg-green-200 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
                 <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                     <div class="flex items-center justify-center text-red-500 ">
                         <svg class="h-16 w-16 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,16 +125,17 @@
                     {name: 'Leisure days', to: '4'}]">
                         <div>
                         <div class="p-2">
-                            <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                            <dt contenteditable x-text="item.name" class="text-base font-normal text-gray-900"></dt>
                             <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                             <div class="flex items-baseline text-xl font-semibold text-indigo-600">
-                                <span x-text="item.to"></span>
+                                <span contenteditable x-text="item.to"></span>
                             </div>
                             </dd>
                         </div>
                         </div>
                     </template>
                 </dl>
+                <textarea class="flex-grow shadow-lg rounded-lg bg-green-300 bg-opacity-80 p-2 resize-none" placeholder="type your TODOs and notes here" id="joy"></textarea>
             </main>
         </section>
 
