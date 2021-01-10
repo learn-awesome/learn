@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://unpkg.com/twinklecss@1.1.0/twinkle.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+    </head>
+    <body class="bg-gray-200">
+        <section class="min-h-screen flex" style="min-height: 93vh;">
+            <aside class="bg-red-200 w-2/3 resize-x overflow-scroll flex flex-col">
+                <div class="bg-yellow-200 h-1/2 resize-y overflow-scroll flex">
+                    <article class="bg-yellow-300 w-1/2 resize-x overflow-scroll p-4">
+                        <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-red-500 ">
+                                <svg class="text-red-500 h-16 w-16 animate-pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                    <rect width="256" height="256" fill="none"></rect>
+                                    <polyline points="32 128 72 128 88 104 120 152 136 128 160 128" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                                    <path d="M28.11427,95.99348Q28.00077,94.004,28,92A52.00881,52.00881,0,0,1,128.00008,71.965l-.00019.00008A52.00881,52.00881,0,0,1,228,92c0,68-100,124-100,124s-39.94466-22.369-69.34251-55.99891" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                            </div>
+                            <template x-for="item in [
+                            {name: 'Fat %', to: '21.9'},{name: 'Weight', to: '75'},{name: '6km', to: '23'}]">
+                                <div>
+                                <div class="p-2">
+                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                                    <div class="flex items-baseline text-xl font-semibold text-indigo-600">
+                                        <span x-text="item.to"></span>
+                                        </span>
+                                    </div>
+                                    </dd>
+                                </div>
+                                </div>
+                            </template>
+                        </dl>
+                    </article>
+                    <article class="bg-yellow-100 overflow-scroll flex-grow p-4">
+                        <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-red-500 ">
+                                <svg class="h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <template x-for="item in [
+                            {name: 'Net Worth', to: '$40K'}]">
+                                <div>
+                                <div class="p-2">
+                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                                    <div class="flex items-baseline text-xl font-semibold text-indigo-600">
+                                        <span x-text="item.to"></span>
+                                        </span>
+                                    </div>
+
+                                    </dd>
+                                </div>
+                                </div>
+                            </template>
+                        </dl>
+                    </article>
+                </div>
+                <div class="bg-blue-200 flex-grow overflow-scroll flex">
+                    <article class="bg-blue-300 w-1/2 resize-x overflow-scroll p-4">
+                        <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-red-500 ">
+                                <svg class="h-16 w-16 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <template x-for="item in [
+                            {name: 'Books', to: '71'},
+                            {name: 'College', to: '24.5%'}]">
+                                <div>
+                                <div class="p-2">
+                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                                    <div class="flex items-baseline text-xl font-semibold text-indigo-600">
+                                        <span x-text="item.to"></span>
+                                        </span>
+                                    </div>
+                                    </dd>
+                                </div>
+                                </div>
+                            </template>
+                        </dl>
+                    </article>
+                    <article class="bg-blue-100 overflow-scroll flex-grow p-4">
+                        <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-red-500 ">
+                                <svg class="h-16 w-16 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <template x-for="item in [
+                            {name: 'Friends helped', to: '4'},
+                            {name: 'Family vacation', to: '19 days'}]">
+                                <div>
+                                <div class="p-2">
+                                    <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                                    <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                                    <div class="flex items-baseline text-xl font-semibold text-indigo-600">
+                                        <span x-text="item.to"></span>
+                                        </span>
+                                    </div>
+
+                                    </dd>
+                                </div>
+                                </div>
+                            </template>
+                        </dl>
+                    </article>
+                </div>
+            </aside>
+            <main class="bg-green-200 overflow-scroll flex-grow p-4">
+                <dl x-data="{}" class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                    <div class="flex items-center justify-center text-red-500 ">
+                        <svg class="h-16 w-16 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <template x-for="item in [
+                    {name: 'Leisure days', to: '4'}]">
+                        <div>
+                        <div class="p-2">
+                            <dt x-text="item.name" class="text-base font-normal text-gray-900"></dt>
+                            <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                            <div class="flex items-baseline text-xl font-semibold text-indigo-600">
+                                <span x-text="item.to"></span>
+                            </div>
+                            </dd>
+                        </div>
+                        </div>
+                    </template>
+                </dl>
+            </main>
+        </section>
+
+        <footer class="bg-gradient-to-b from-white to-gray-400 flex items-center" style="height: 7vh;">
+            <div class="relative bg-purple-500 w-full h-0.5">
+                <span class="relative flex h-5 w-5" style="left: 35vw; bottom: 1vh;">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-5 w-5 bg-purple-500"></span>
+                  </span>
+            </div>
+        </footer>
+    </body>
+</html>
