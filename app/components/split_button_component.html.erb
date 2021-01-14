@@ -1,12 +1,12 @@
 <% if @user %>
-<div class="inline review-<%= @review.item.id %>">
-<div class="relative inline-flex shadow-sm rounded-md">
+<div class="review-<%= @review.item.id %> relative w-full sm:w-48 flex shadow-sm rounded-md">
   <% if @review.persisted? and @review.status.present? %>
     <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), 
       review_path(@review, review: {status: ""}),
       remote: true,
+      form_class: "w-full",
       method: :patch,
-      class: "cursor-pointer relative inline-flex items-center px-4 py-2 rounded-l-md border border-purple-400 text-sm leading-5 font-medium bg-purple-100 hover:bg-purple-200 focus:outline-none",
+      class: "cursor-pointer w-full h-full px-4 py-2 rounded-l-md border border-purple-400 text-sm leading-5 font-medium bg-purple-100 hover:bg-purple-200 focus:outline-none",
       "x-on:mouseenter": "$event.target.value = $event.target.value.replace('✔','╳')",
       "x-on:mouseleave": "$event.target.value = $event.target.value.replace('╳','✔')" 
     %>
@@ -17,14 +17,15 @@
           reviews_path(review: {status: "want_to_learn", item_id: @item.id})
       ),
       remote: true,
+      form_class: "w-full",
       method: (@review.persisted? ? :patch : :post),
-      class: "cursor-pointer relative inline-flex items-center px-4 py-2 rounded-l-md border border-purple-400 text-sm leading-5 font-medium text-purple-900 bg-purple-300 hover:bg-purple-200 focus:outline-none"
+      class: "cursor-pointer w-full h-full px-4 py-2 rounded-l-md border border-purple-400 text-sm leading-5 font-medium text-purple-900 bg-purple-300 hover:bg-purple-200 focus:outline-none"
     %>
   <% end %>
 
 
-  <span x-data="{ isopen: <%= @isopen %> }" class="-ml-px relative block">
-    <button @click="isopen = !isopen" type="button" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-purple-400 text-sm leading-5 font-medium bg-purple-300 hover:bg-purple-200 focus:outline-none transition ease-in-out duration-150" aria-label="Expand">
+  <span x-data="{ isopen: <%= @isopen %> }" class="-ml-px relative block h-full">
+    <button @click="isopen = !isopen" type="button" class="relative inline-flex h-full items-center px-2 py-2 rounded-r-md border border-purple-400 text-sm leading-5 font-medium bg-purple-300 hover:bg-purple-200 focus:outline-none transition ease-in-out duration-150" aria-label="Expand">
       <!-- Heroicon name: chevron-down -->
       <svg class="h-5 w-5 text-purple-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -71,8 +72,8 @@
     </div>
   </span>
 </div>
-</div>
+
 <% else %>
  <!-- user is not logged in. Either show a disabled button or hide it altogether. -->
- <button disabled class="bg-gray-200 text-gray-400 cursor-default p-2">Log in to start learning this.</button>
+ <!-- <button disabled class="w-full bg-gray-200 text-gray-400 cursor-default p-2 h-full">Log in to start learning this.</button> -->
 <% end %>

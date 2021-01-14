@@ -1,22 +1,26 @@
-<%= form_with(model: @review, class: "inline review-rating-#{@review.item.id}") do |form| %>
-<div 
-  x-data="{ val: <%= @review.overall_score.to_json %>, orig: <%= @review.overall_score.to_json %> }"
-  class="inline-flex cursor-pointer text-2xl" 
-  @click="orig = val; $nextTick(() => { Rails.fire($el.parentElement,'submit') });"
->
-  <input type="number" name="review[overall_score]" :value="orig" class="hidden"/>
+<%= form_with(
+  model: @review, 
+  class: "text-2xl px-3 pr-4 flex-1 flex justify-center items-center min-w-max-content border bg-red-100 border-yellow-300 rounded review-rating-#{@review.item.id}",
+  html: {
+    "x-data" => "{ val: #{@review.overall_score.to_json}, orig: #{@review.overall_score.to_json} }", 
+    "@click" => "orig = val; $nextTick(() => { Rails.fire($el,'submit') });",
+    "style" => "min-width: 7.0em;"
+  }
+) do |form|
+%>
+
+  <input type="number" name="review[overall_score]" :value="orig" class="hidden" />
   
-  <span class="text-gray-400 hover:text-gray-700 mr-1" @mouseenter="val = null" @mouseleave="val = orig">×</span>
+  <span class="cursor-pointer text-gray-400 hover:text-gray-700 px-1" @mouseenter="val = null" @mouseleave="val = orig">×</span>
   
 
   <template x-for="item in [1,2,3,4,5]">
     <span 
       @mouseenter="val = item" 
       @mouseleave="val = orig"
-      class="text-gray-300"
-      :class="{'text-red-600': (val >= item)}">★</span>
+      class="cursor-pointer text-gray-300"
+      :class="{'text-yellow-400': (val >= item)}">★</span>
   </template>
 
-</div>
-<input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
+  <input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
 <% end %>

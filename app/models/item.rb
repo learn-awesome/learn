@@ -634,6 +634,22 @@ class Item < ApplicationRecord
     {}
   end
 
+  def read_time
+    if self.estimated_time
+      self.estimated_time.to_s + " " + self.time_unit
+    end
+  end
+
+  def detail_params
+    list = {}
+    list[:published] = self.year if self.year
+    list[:language] = self.language if self.language.present?
+    list[:cost] = self.cost if self.cost
+    list[:time] = self.read_time if self.read_time.present?
+    list[:difficulty] = self.level if self.level
+    return list
+  end
+
   def display_rating
     Review.display_rating(self.average_overall_score)
   end
@@ -804,5 +820,9 @@ class Item < ApplicationRecord
 
   def primary_link
     self.links.find { |l| l.is_primary } or self.links.order(:created_at).first
+  end
+
+  def alternative_links
+    self.links.reject { |l| l.id == self.primary_link.id }
   end
 end

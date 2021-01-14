@@ -7,4 +7,10 @@ class ItemPanelComponent < ViewComponent::Base
     @is_embedded = is_embedded
     @reviews = (Review.where("notes is not null").take(2) + Recommendation.where("notes is not null").take(2)).select { |r| r.notes.presence }
   end
+
+  def rev_message
+    @reviews.group_by(&:class).map do |k,v|
+      pluralize(v.size, k == Review ? 'user' : 'expert')
+    end.join(" and ")
+  end
 end

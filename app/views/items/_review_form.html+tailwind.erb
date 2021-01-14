@@ -14,35 +14,61 @@
 		</div>
 	</div>
 
-	<%= form_with(model: @my_review) do |form| %>
-		<div class="">
-			<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-			<br>
-			<div class="item_categorization">
-				<div class="btn-group-toggle" data-toggle="buttons">
-					<% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
-					<input type="hidden" name="review[<%= quality %>_score]" value="0" />
-					<label class="inline-block align-middle text-center select-none border rounded py-2 px-2 cursor-pointer text-sm leading-tight ml-1 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'bg-blue-500 text-white' : '' %>">
-					<input class="hidden" type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
-					</label>
-					<% end %>
-				</div>
-			</div>
+
+
+
+	<div class="" x-data="{ tab: 'review' }">
+		<div class="flex -mx-px">
+		<button
+			x-on:click="tab = 'review'"
+			x-bind:class="{ 'bg-gray-200': tab === 'review' }"
+			class="bg-transparent hover:bg-gray-200 text-gray-700 font-semibold rounded-t focus:outline-none mx-px py-2 px-4"
+			type="button">
+			Review
+		</button>
+		<button
+			x-on:click="tab = 'notes'"
+			x-bind:class="{ 'bg-gray-200': tab === 'notes' }"
+			class="bg-transparent hover:bg-gray-200 text-gray-700 font-semibold rounded-t focus:outline-none mx-px py-2 px-4"
+			type="button">
+			Notes
+		</button>
 		</div>
-	<% end %>
 
-	<%= form_with(model: @my_review, local: true) do |form| %>				
-			<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
-			<div class="mb-4 mb-4 pd-6">
-				<p>This is your public review</p>
-				<%= form.text_area :notes, class: 'resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your public review here' %>
-			</div>
+		<div class="bg-gray-50 p-4 border border-gray-200 rounded-b">
+		<div x-show="tab === 'review'" class="">
 
-			<div class="mb-4 mb-4 pd-6">
-				<p>These are your private notes</p>
-				<%= form.text_area :private_notes, class: 'resize-y appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your private notes here' %>
-			</div>
-			<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
-	<% end %>
+			<%= form_with(model: @my_review) do |form| %>
+				<div class="">
+					<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+					<div class="item_categorization">
+						<div class="btn-group-toggle" data-toggle="buttons">
+							<% [:inspirational, :educational, :challenging, :entertaining, :visual, :interactive].each do |quality| %>
+							<input type="hidden" name="review[<%= quality %>_score]" value="0" />
+							<label class="inline-block align-middle text-center select-none border rounded py-2 px-2 cursor-pointer text-sm leading-tight ml-1 mb-2 <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'bg-blue-500 text-white' : '' %>">
+							<input class="hidden" type="checkbox" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'active' : '' %> autocomplete="off" name="review[<%= quality %>_score]" onchange="this.form.submit();" value="5" <%= @my_review.send(quality.to_s + "_score").to_i >= 3 ? 'checked' : '' %>> <%= quality.capitalize %>
+							</label>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+
+			<%= form_with(model: @my_review, local: true) do |form| %>				
+				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+				<%= form.text_area :notes, class: 'resize-y appearance-none  w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your public review here' %>
+				<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+			<% end %>
+		</div>
+
+		<div x-show="tab === 'notes'" class="">
+			<%= form_with(model: @my_review, local: true) do |form| %>				
+				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
+				<%= form.text_area :private_notes, class: 'resize-y appearance-none w-full bg-amber-50 text-amber-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-amber-500 h-48 resize-none', placeholder: 'Write your private notes here' %>
+				<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+			<% end %>
+		</div>
+		</div>
+	</div>
 
 </div>

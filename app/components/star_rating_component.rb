@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class StarRatingComponent < ViewComponent::Base
-  def initialize(value:, count:)
-    @value = value
-    @count = count
+  def initialize(item:)
+    @item = item
   end
 end
