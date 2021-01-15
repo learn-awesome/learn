@@ -5,7 +5,7 @@ class ItemPanelComponent < ViewComponent::Base
     @hide_item_type = hide_item_type
     @hide_topics = hide_topics
     @is_embedded = is_embedded
-    @reviews = (Review.where("notes is not null").take(2) + Recommendation.where("notes is not null").take(2)).select { |r| r.notes.presence }
+    @reviews = (@item.reviews.where("notes is not null").take(2) + @item.idea_set.recommendations.where("notes is not null").take(2)).select { |r| r.notes.presence }
   end
 
   def rev_message

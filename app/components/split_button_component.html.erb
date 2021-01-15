@@ -1,5 +1,5 @@
 <% if @user %>
-<div class="review-<%= @review.item.id %> relative w-full sm:w-48 flex shadow-sm rounded-md">
+<div class="review-<%= @review.item.id %> relative w-full sm:w-48 flex shadow-md rounded-md">
   <% if @review.persisted? and @review.status.present? %>
     <%= button_to ("✔ " + Review::STATUSES[@review.status.to_sym]), 
       review_path(@review, review: {status: ""}),
