@@ -26,6 +26,10 @@ class ItemType < ApplicationRecord
 		ItemType.order('RANDOM()').first
 	end
 
+	def discover_item
+		Item.where(item_type_id: self.id).order('RANDOM()').first
+	end
+
 	def icon
 		"/icons/#{id}.svg"
 	end

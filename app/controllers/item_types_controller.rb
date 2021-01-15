@@ -28,12 +28,26 @@ class ItemTypesController < ApplicationController
 	end
 
 	def discover
-		item_type = ItemType.discover
-		if item_type
-		  redirect_to item_type
-		else
-		  flash[:danger] = "No formats exist."
-		  redirect_to root_path
+		item_type = ItemType.find(params[:id])
+
+		if item_type # /item_types/book/discover
+			# random item
+			item = item_type.discover_item
+			if item
+				redirect_to item
+			else
+				flash[:danger] = "No items exist as #{params[:id]}"
+				redirect_to root_path
+			end
+		else # item_types/discover
+			# random format
+			item_type = ItemType.discover
+			if item_type
+				redirect_to item_type
+			else
+				flash[:danger] = "No formats exist."
+				redirect_to root_path
+			end
 		end
 	end
 end

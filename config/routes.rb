@@ -88,6 +88,10 @@ Rails.application.routes.draw do
     collection do
       get 'discover'
     end
+
+    member do
+      get 'discover'
+    end
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
