@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(id: params[:id]).first
+    @user = User.from_param(params[:id])
     if @user.nil?
       flash[:danger] = "We couldn't find this user."
       redirect_to root_path and return
@@ -22,11 +22,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
+  	@user = User.from_param(params[:id])
   end
 
   def upgrade_role
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     if @user and current_user and current_user.is_admin?
       if @user.is_regular?
         @user.role = 'moderator'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def downgrade_role
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     if @user and current_user and current_user.is_admin?
       if @user.is_admin?
         @user.role = 'moderator'
@@ -71,7 +71,7 @@ end
   end
   
   def update
-  	@user = User.find(params[:id])
+  	@user = User.from_param(params[:id])
   	if @user.id != current_user.id
   		flash[:error] = "Operation not permitted"
   		redirect_back fallback_location: root_path
@@ -90,7 +90,7 @@ end
   end
 
   def reviews
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     @item_type = params[:item_type].presence or 'book'
     @status = params[:status].presence or 'learned'
     @quality = params[:quality]
@@ -108,7 +108,7 @@ end
   end
 
   def toggle_follow
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     @following = current_user.from_user_relations
     @user_action = @following.find { |u| u.to_user_id == @user.id }
     if @user_action
@@ -121,7 +121,7 @@ end
   end
 
   def settings
-    @user = User.find(params[:id])
+    @user =User.from_param(params[:id])
     if @user.id != current_user.id # users can modify only their own settings
       flash[:danger] = "Not authorized"
       redirect_back(fallback_location: root_path) and return
@@ -148,7 +148,7 @@ end
     end
 
     def toggle_reviewposting
-      @user = User.find(params[:id])
+      @user = User.from_param(params[:id])
       if @user.id != current_user.id or !request.post? # users can modify only their own settings
         flash[:danger] = "Not authorized"
         redirect_back(fallback_location: settings_user_path(@user)) and return
@@ -203,7 +203,7 @@ end
   end
 
   def actor
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     respond_to do |format|
       format.html { redirect_to user_url(@user) }
       format.any { render json: @user.actor_json }
@@ -211,17 +211,17 @@ end
   end
 
   def ap_followers
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     render json: @user.ap_followers_json(request, params)
   end
 
   def ap_following
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     render json: @user.ap_following_json(request, params)
   end
 
   def inbox
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     headers = request.headers.env.reject { |key| key.to_s.include?('.') }
     post_body = request.raw_post
     Rails.logger.info "headers = #{headers.inspect}"
@@ -234,12 +234,17 @@ end
   end
 
   def outbox
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
     render json: @user.outbox_json(request, params)
   end
 
   def onboarding
-    @user = User.find(params[:id])
+    @user = User.from_param(params[:id])
+  end
+
+  protected
+  def resource
+    @user ||= end_of_association_chain.from_param(params[:id])
   end
 
 end

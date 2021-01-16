@@ -3,7 +3,7 @@ class GroupsController < InheritedResources::Base
     before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :destroy, :add_member, :accept_invite]
     custom_actions :resource => [:add_member, :accept_invite]
   
-    belongs_to :user
+    belongs_to :user, :finder => :from_param, :param => :user_id
   
     def create
         @group = Group.new(group_params)
@@ -63,6 +63,11 @@ class GroupsController < InheritedResources::Base
         flash[:danger] = msg
         redirect_to user_group_path(resource.admins.first, resource)
       end
+    end
+
+    protected
+    def resource
+      @group ||= end_of_association_chain.from_param(params[:id])
     end
 
     private

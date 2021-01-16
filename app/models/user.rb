@@ -58,8 +58,15 @@ class User < ApplicationRecord
 	after_create :update_points
 	after_create :create_default_deck
 
-	def self.from_param(id)
-		self.where(id: id.to_s.split("-")[0..4].join("-")).first
+	def to_param
+		self.id.to_s.split("-").first + "-" + self.nickname.to_s.parameterize
+	end
+
+	def self.from_param(slug)
+		# self.where(id: id.to_s.split("-")[0..4].join("-")).first
+		id_without_slug = slug.split("-").first
+		# first treat slug as uuid, then fallback as uuid-prefix, both with an optional suffix
+		User.where(id: slug.to_s.split("-")[0..4].join("-")).first || self.where("users.id::varchar LIKE '#{id_without_slug}%'").first
 	end
 
 	def self.lookup_all_by_email(email)

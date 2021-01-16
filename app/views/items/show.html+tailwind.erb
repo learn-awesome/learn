@@ -1,14 +1,14 @@
 <% content_for :title do %>
-	<%= @item.display_name %> :: LearnAwesome
+	<%= @item.og_title %> :: LearnAwesome.org
 <% end %>
 <% content_for :opengraph do %>
   <link rel="canonical" href="<%= item_url(@item) %>" />
-  <meta name="keywords" content="personalized learning platform, edtech, curated links, best books, best podcasts, best videos, learn new skills">
-  <meta name="description" content="<%= @item.description %>: LearnAwesome.org :: Humanity's universal learning map">
-  <meta property="og:title" content="<%= @item.display_name %> :: LearnAwesome.org">
-  <meta property="og:description" content="LearnAwesome.org :: Humanity's universal learning map">
-  <meta property="og:image" content="<%= @item.new_thumbnail || 'https://learnawesome.org/stream/assets/img/ogimage.png' %>">
-  <!-- <meta property="og:url" content="https://learnawesome.org/"> -->
+  <meta name="keywords" content="<%= @item.og_keywords %>">
+  <meta name="description" content="<%= @item.og_description %>">
+  <meta property="og:title" content="<%= @item.og_title %>">
+  <meta property="og:description" content="<%= @item.og_description %>">
+  <meta property="og:image" content="<%= @item.og_image %>">
+  <meta property="og:url" content="<%= item_url(@item) %>">
   <meta name="twitter:card" content="summary_large_image">
 <% end %>
 

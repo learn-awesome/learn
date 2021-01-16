@@ -21,6 +21,17 @@ class Group < ApplicationRecord
         self.group_members.select { |gm| gm.role == 'admin' and gm.status == 'confirmed' }.map(&:user)
     end
 
+    def to_param
+        self.id.to_s.split("-").first + "-" + self.name.to_s.parameterize
+    end
+
+    def self.from_param(slug)
+        # self.where(id: id.to_s.split("-")[0..4].join("-")).first
+        id_without_slug = slug.split("-").first
+        # first treat slug as uuid, then fallback as uuid-prefix, both with an optional suffix
+        User.where(id: slug.to_s.split("-")[0..4].join("-")).first || self.where("groups.id::varchar LIKE '#{id_without_slug}%'").first
+    end
+
     def is_admin?(user)
         self.admins.include?(user)
     end

@@ -829,4 +829,25 @@ class Item < ApplicationRecord
   def alternative_links
     self.links.reject { |l| l.id == self.primary_link.id }
   end
+
+  def display_format
+    ItemType.display_name_singular(self.item_type_id)
+  end
+
+  def og_description
+    msg = "a #{self.display_format} about #{self.topics.map(&:display_name).to_sentence}"
+    return msg[0..400]
+  end
+
+  def og_keywords
+    (["learning",self.display_format] + self.topics.map(&:display_name)).join(',')
+  end
+
+  def og_image
+      self.new_thumbnail.presence || 'https://learnawesome.org/stream/assets/img/ogimage.png'
+  end
+
+  def og_title
+    "#{self.display_name} :: LearnAwesome.org"
+  end
 end
