@@ -1,3 +1,30 @@
+<% if !user_signed_in? || true %>
+  <div class="max-w-screen-xl mx-auto text-center py-12">
+    <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+      Lifelong learning with friends
+	</h2>
+	
+    <ul class="mt-4 font-regular tracking-tight text-gray-600 lg:max-w-2xl lg:mx-auto"> 
+		<li class="mb-2">Find new sources of knowledge curated by lifelong learners like you.</li>
+		<li class="mb-2">Discover leading experts and great content like talks, books, articles and podcasts.</li>
+		<li class="mb-2">Share with friends and like-minded peers.</li>
+	</ul>
+	
+    <div class="mt-8 flex justify-center">
+      <div class="inline-flex rounded-md shadow">
+        <a href="/topics" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+          Explore Topics
+        </a>
+      </div>
+      <div class="ml-3 inline-flex">
+        <a href="/about" class="inline-flex items-center justify-center px-5 py-3 border border-indigo-200 text-base leading-6 font-medium rounded-md text-indigo-700 bg-purple-100 hover:text-indigo-600 hover:bg-purple-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out">
+          Learn more
+        </a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <% if @user_topics.present? %>
 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Your Topics</h3>
 
@@ -16,9 +43,7 @@
 
 
 <% if @following_reviews.any? %>
-<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Activity</h3>
-
-<div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
+<div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
 	<section class="space-y-6 lg:col-start-1 lg:col-span-2" aria-labelledby="applicant-information-title">
 	  <% @following_reviews.each do |rev| %>
 		<%= render ActivityPanelComponent.new(review: rev, user: current_user) %>

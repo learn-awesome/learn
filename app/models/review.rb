@@ -35,6 +35,7 @@ class Review < ApplicationRecord
   after_save :change_status
 
   scope :completed, -> { where("notes IS NOT NULL or overall_score IS NOT NULL") }
+  scope :ready, -> { where("(notes IS NOT NULL and notes != '') or overall_score IS NOT NULL or status IS NOT NULL") }
   scope :with_rating, -> { where("overall_score IS NOT NULL") }
   scope :recent, -> { order("created_at DESC").limit(10) }
   scope :popular, -> { order("overall_score DESC").limit(10) }
@@ -43,7 +44,7 @@ class Review < ApplicationRecord
   SCORE_TYPES = [:inspirational_score, :educational_score, :challenging_score, :entertaining_score, :visual_score, :interactive_score]
   QUALITY_TAGS = SCORE_TYPES.map(&:to_s).map { |q| q.gsub("_score", "")}
   
-  STATUSES = {want_to_learn: "Want to Learn", learning: "Currently Learning", learned: "Already Learned"}
+  STATUSES = {want_to_learn: "Want to Learn", learning: "Currently Learning", learned: "Finished Learning"}
 
   def update_item_ratings
   	SCORE_TYPES.each do |quality_score|
@@ -153,13 +154,13 @@ class Review < ApplicationRecord
   end
 
   def display_status
-    msg = ""
-    msg = "wants to learn" if self.status.to_s == 'want_to_learn'
-    msg = "started learning" if self.status.to_s == 'learning'
-    msg = "finished learning" if self.status.to_s == 'learned'
-    msg += " and" if msg.present? and self.overall_score.present?
-    msg += (" rated " + ("★" * self.overall_score.to_i) + ("☆" * (5 - self.overall_score.to_i))) if self.overall_score.present?
-    return msg
+    status_msg = {want_to_learn: "wants to learn", learning: "is learning", learned: "finished learning"}[self.status.to_sym] if self.status
+    if self.overall_score.present?
+      rating_msg = (" rated " + ("★" * self.overall_score.to_i) + ("☆" * (5 - self.overall_score.to_i)))
+    else
+      rating_msg = "reviewed" unless status_msg
+    end
+    return [status_msg, rating_msg].compact.join(" and ")
   end
 
   def display_rating

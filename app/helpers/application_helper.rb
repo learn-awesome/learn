@@ -14,4 +14,13 @@ module ApplicationHelper
         "https://chrome.google.com/webstore/detail/learnawesome/mfmicnedcecjcchodnaijomibiplacie"
     end
   end
+
+  def shorter_time_ago(ts)
+    time_ago_in_words(ts).gsub(/ mi.*/, 'm')
+      .gsub(/ h.*/, 'h')
+      .gsub(/ d.*/, 'd')
+      .gsub(/ mo.*/, 'mo')
+      .gsub(/ y.*/, 'y')
+      .gsub(/about /,'')
+  end
 end

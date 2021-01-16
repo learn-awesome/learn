@@ -3,7 +3,8 @@ class ItemPanelComponent < ViewComponent::Base
     @item = item
     @user = user
     @is_embedded = is_embedded
-    @reviews = (@item.reviews.where("notes is not null").take(2) + @item.idea_set.recommendations.where("notes is not null").take(2)).select { |r| r.notes.presence }
+    embedded_in_review_id = is_embedded
+    @reviews = (@item.reviews.where("notes is not null").where.not(id: embedded_in_review_id).take(2) + @item.idea_set.recommendations.where("notes is not null").take(2)).select { |r| r.notes.presence }
   end
 
   def rev_message

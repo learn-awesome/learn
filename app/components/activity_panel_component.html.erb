@@ -1,13 +1,34 @@
-<div class="bg-purple-50 shadow-lg rounded-lg">
+<div class="bg-purple-100 shadow rounded-md">
   <div class="border-b border-purple-200 px-2 py-4">
-    <a href="<%= user_path(@review.user) %>"><img class="inline-block h-8 w-8 rounded-full" src="<%= @review.user.avatar_image %>" alt=""></a>
-    <a href="<%= user_path(@review.user) %>" class="border-dashed border-b border-transparent hover:border-purple-500"><b><%= @review.user.nickname %></b></a> <%= @review.display_status %> 
-    a <%= ItemType.display_name_singular(@review.item.item_type_id) %> in 
-    <% @review.item.topics.each do |topic| %>
-      <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-purple-500 bg-purple-100 border border-purple-200 rounded hover:bg-purple-200 hover:text-black font-semibold"><%= topic.display_name %></a>
+    <div class="flex">
+      <div class="flex-grow">
+        <a href="<%= user_path(@review.user) %>">
+          <img class="inline-block h-8 w-8 rounded-full" src="<%= @review.user.avatar_image %>" alt="">
+        </a>
+        
+        <a href="<%= user_path(@review.user) %>" class="font-bold border-dashed border-b border-transparent hover:border-purple-500">
+          <%= @review.user.nickname %>
+        </a>
+        
+        <%= @review.display_status %> 
+        
+        a <%= ItemType.display_name_singular(@review.item.item_type_id) %> in 
+        
+        <% @review.item.topics.each do |topic| %>
+          <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-purple-500 bg-purple-200 border border-purple-300 rounded hover:bg-purple-300 hover:text-black font-semibold whitespace-no-wrap"><%= topic.display_name %></a>
+        <% end %>
+      </div>
+    
+      <div><%= link_to helpers.shorter_time_ago(@review.created_at), @review, class: "text-xs text-gray-500 hover:underline whitespace-no-wrap", title: @review.updated_at.to_s %></div>
+    </div>
+    
+    <% if @review.notes.present? %>
+      <blockquote class="italic border-l-2 border-gray-400 pl-2 mt-4 my-2">
+        <%= truncate(@review.notes, length: 500) %>
+      </blockquote>
     <% end %>
   </div>
   <div class="bg-white rounded-b-lg">
-    <%= render ItemPanelComponent.new(item: @review.item, user: @user, is_embedded: true) %>
+    <%= render ItemPanelComponent.new(item: @review.item, user: @user, is_embedded: @review.id) %>
   </div>
 </div>
