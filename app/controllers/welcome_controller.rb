@@ -189,8 +189,13 @@ class WelcomeController < ApplicationController
   end
 
   def components
+    # for itempanel component
     @item = Item.includes(idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}).order(:created_at).first
+
+    # for star-rating component and review status (splitbutton) component. Same item as above.
     @dummy_review = Review.find_or_initialize_by(item_id: @item, user: current_user)
+
+    # for activitypanel component
     @real_review = Review.where("status is not null").order('RANDOM()').first
     render
   end

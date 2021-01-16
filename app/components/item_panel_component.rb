@@ -6,7 +6,8 @@ class ItemPanelComponent < ViewComponent::Base
     embedded_in_review_id = is_embedded
     @reviews = @item.reviews.select(&:notes).reject { |r| r.id == embedded_in_review_id}.take(2) + 
       @item.idea_set.recommendations.select(&:notes).take(2)
-    @my_review = @reviews.select { |rv| rv.user_id == @viewer.id }.first || Review.new(item: @item, user: @viewer)
+    
+    @my_review = @item.reviews.select { |rv| rv.user_id == @viewer.id }.first || Review.new(item: @item, user: @viewer)
   end
 
   def rev_message
