@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
   	if current_user
       @user_topics = current_user.user_topics
       if current_user.following.any?
-        @following_reviews = Review.where(user: current_user.following).order("updated_at DESC").ready.limit(50)
+        @following_reviews = Review.includes(user: {}, item: {idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}}).where(user: current_user.following).ready.order("updated_at DESC").limit(50)
       else
         @following_reviews = []
       end
@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
       end
     	render 'dashboard/show'
     else
-      @following_reviews = Review.ready.order("updated_at DESC").limit(20).to_a.shuffle
+      @following_reviews = Review.includes(user: {}, item: {idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}}).ready.order("updated_at DESC").limit(20).to_a.shuffle
       # redirect_to topics_path
       render 'dashboard/show'
     end
@@ -196,7 +196,7 @@ class WelcomeController < ApplicationController
     @dummy_review = Review.find_or_initialize_by(item_id: @item, user: current_user)
 
     # for activitypanel component
-    @real_review = Review.where("status is not null").order('RANDOM()').first
+    @real_review = Review.includes(user: {}, item: {idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}}).ready.order('RANDOM()').first
     render
   end
 
