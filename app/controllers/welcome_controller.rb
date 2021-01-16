@@ -189,6 +189,10 @@ class WelcomeController < ApplicationController
   end
 
   def components
+    @item = Item.includes(idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}).order(:created_at).first
+    @dummy_review = Review.find_or_initialize_by(item_id: @item, user: current_user)
+    @real_review = Review.where("status is not null").order('RANDOM()').first
+    render
   end
 
   private

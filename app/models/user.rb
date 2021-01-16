@@ -396,7 +396,7 @@ class User < ApplicationRecord
 
 	def onboarding
 		# Rails.cache.fetch("user_onboarding_#{self.id}", expires_in: 30.minutes) do
-			 {
+		@onboarding ||= {
 				first_follow_topic: [self.user_topics.count > 0, Rails.application.routes.url_helpers.topics_path],
 				first_review: [self.reviews.count > 0, Rails.application.routes.url_helpers.topics_path],
 				profile_bio: [self.bio.to_s.present?, Rails.application.routes.url_helpers.edit_user_url(self)],

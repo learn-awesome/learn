@@ -1,19 +1,20 @@
-<!-- <p class="mt-8">TestComponent: <%= render TestComponent.new(title: "this text should display inline") %></p> -->
-
-<h1 class="mt-8">FiveStarComponent</h1>
-<%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: Item.order(:created_at).first.id, user: current_user)) %>
-
 <h1 class="mt-8">DropDownComponent</h1>
 <div class="px-24"><%= render DropDownComponent.new(label: "dropdown", items: []) %></div>
 
-<h1 class="mt-8">SplitButtonComponent</h1>
-<div class="px-24"><%= render SplitButtonComponent.new(item: Item.order(:created_at).first, user: current_user, isopen: false) %></div>
+<div class="mt-6 flex flex-col space-y-2 sm:flex-row sm:justify-between sm:items-stretch sm:space-y-0 sm:space-x-2">
+    <p>FiveStarComponent</p>
+    <p>SplitButtonComponent</p>
+</div>
+<div class="mt-6 flex flex-col space-y-2 sm:flex-row sm:justify-between sm:items-stretch sm:space-y-0 sm:space-x-2">
+    <%= render FiveStarComponent.new(review: @dummy_review) %>
+    <%= render SplitButtonComponent.new(review: @dummy_review, isopen: false) %></div>
+</div>
 
 <h1 class="mt-8">ItemPanelComponent</h1>
-<%= render ItemPanelComponent.new(item: Item.where(item_type_id: 'video').first, user: current_user) %>
+<%= render ItemPanelComponent.new(item: @item, viewer: current_user) %>
 
 <h1 class="mt-8">ActivityPanelComponent</h1>
-<%= render ActivityPanelComponent.new(review: Review.where("status is not null").order('RANDOM()').first, user: current_user) %>
+<%= render ActivityPanelComponent.new(review: @real_review, viewer: current_user) %>
 
 <h1 class="mt-8">FlashCardComponent</h1>
 <%= render FlashCardComponent.new(fid: FlashCard.first.id) %>

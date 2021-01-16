@@ -9,7 +9,7 @@
     </a>
     <span class="text-gray-400 mx-1">in</span>
 
-    <% @item.topics.each do |topic| %>
+    <% @item.idea_set.topics.take(3).each do |topic| %>
       <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-gray-500 bg-gray-100 border border-gray-200 rounded hover:bg-gray-200 hover:text-black font-semibold"><%= topic.display_name %></a>
     <% end %>
   </div>
@@ -25,7 +25,7 @@
 
   <% if @item.primary_link %>
   <a href="<%= @item.primary_link.url %>" target='_blank' class="">
-      <h1 class="inline text-xl md:text-3xl font-bold border-dashed border-b border-transparent hover:border-purple-500"><%= @item.display_name %></h1>
+      <h1 class="inline text-xl md:text-2xl font-bold border-dashed border-b border-transparent hover:border-purple-500"><%= @item.display_name %></h1>
       <p class="inline whitespace-no-wrap">
         <span class="text-gray-500 text-sm">
           (<%= @item.primary_link.top_domain %>)
@@ -38,7 +38,7 @@
     </p>
   </a>
   <% else %>
-  <h1 class="text-xl md:text-3xl font-bold"><%= @item.display_name %></h1>
+  <h1 class="text-xl md:text-2xl font-bold"><%= @item.display_name %></h1>
   <% end %>
 
   <p class="my-2">
@@ -73,8 +73,8 @@
   </div>
 
   <div class="clear-both mt-6 flex flex-col space-y-2 sm:flex-row sm:justify-between sm:items-stretch sm:space-y-0 sm:space-x-2">
-    <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: @item.id, user: @user)) %>
-    <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: false) %>
+    <%= render FiveStarComponent.new(review: @my_review) %>
+    <%= render SplitButtonComponent.new(review: @my_review, isopen: false) %>
   </div>
 
   <% if @item.detail_params.present? %>
@@ -165,25 +165,25 @@
         <a target='_blank' href="https://www.facebook.com/sharer/sharer.php?u=<%= item_url(@item) %>&src=sdkpreparse" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Share on Facebook</a>
       </div>
       <div class="py-1" role="none">
-        <% if @item.can_user_edit?(@user) %>
+        <% if @item.can_user_edit?(@viewer) %>
         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" href="<%= edit_item_path(@item, item_id: @item.id) %>" title="Edit Item">
           <i class="far fa-edit"></i> Edit Item
         </a>
         <% end %>
 
-        <% if @item.can_user_destroy?(@user) %>
+        <% if @item.can_user_destroy?(@viewer) %>
         <%= link_to @item, method: 'delete', data: { confirm: "Are you sure?" }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900', title: "Delete Item" do %>
           <i class="fas fa-trash-alt"></i> Delete Item
         <% end %>
         <% end %>
 
-        <% if @item.can_user_change_related_items?(@user) %>
+        <% if @item.can_user_change_related_items?(@viewer) %>
         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" href="<%= edit_idea_set_path(@item.idea_set) %>" title="Add or remove related items">
           <i class="fas fa-cogs"></i> Related Items
         </a>
         <% end %>
 
-        <% if @item.can_user_add_recommendations?(@user) %>
+        <% if @item.can_user_add_recommendations?(@viewer) %>
         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" href="<%= new_recommendation_path(idea_set_id: @item.idea_set_id) %>" title="Add Recommendation">
           <i class="fas fa-plus-circle"></i> Recommendations
         </a>

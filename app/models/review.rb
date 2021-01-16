@@ -48,14 +48,7 @@ class Review < ApplicationRecord
   STATUSES = {want_to_learn: "Want to Learn", learning: "Currently Learning", learned: "Finished Learning"}
 
   def update_item_ratings
-  	SCORE_TYPES.each do |quality_score|
-  		avg_score = self.item.reviews.where("#{quality_score} is not null").average(quality_score)
-  		self.item.write_attribute(quality_score, avg_score.to_f) if avg_score
-  		self.item.save
-    end
-    avg_score = self.item.reviews.where("overall_score is not null").average(:overall_score)
-    self.item.overall_score = avg_score
-    self.item.save
+    self.item.update_score
   end
 
   def update_points

@@ -12,9 +12,9 @@
         
         <%= @review.display_status %> 
         
-        this <%= ItemType.display_name_singular(@review.item.item_type_id) %> in 
+        this <%= ItemType.display_name_singular(@item.item_type_id) %> in 
         
-        <% @review.item.topics.each do |topic| %>
+        <% @item.idea_set.topics.take(3).each do |topic| %>
           <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-purple-500 bg-purple-200 border border-purple-300 rounded hover:bg-purple-300 hover:text-black font-semibold whitespace-no-wrap"><%= topic.display_name %></a>
         <% end %>
       </div>
@@ -29,6 +29,6 @@
     <% end %>
   </div>
   <div class="bg-white rounded-b-lg">
-    <%= render ItemPanelComponent.new(item: @review.item, user: @user, is_embedded: @review.id) %>
+    <%= render ItemPanelComponent.new(item: @item, viewer: @viewer, is_embedded: @review.id) %>
   </div>
 </div>

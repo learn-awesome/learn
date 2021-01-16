@@ -4,7 +4,8 @@ module ApplicationHelper
   end
 
   def current_user
-  	@current_user ||= SocialLogin.find_by_auth0_uid(session[:userinfo]).try(:user) if user_signed_in?
+    # @current_user ||= SocialLogin.find_by_auth0_uid(session[:userinfo]).try(:user) if user_signed_in?
+    @current_user ||= User.joins(:social_logins).where("social_logins.auth0_uid = ?",session[:userinfo]).first
   end
 
   def browser_extension(request)

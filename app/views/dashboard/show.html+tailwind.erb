@@ -1,4 +1,4 @@
-<% if !user_signed_in? || true %>
+<% if !user_signed_in? %>
   <div class="max-w-screen-xl mx-auto text-center py-12">
     <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
       Lifelong learning with friends
@@ -46,7 +46,7 @@
 <div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
 	<section class="space-y-6 lg:col-start-1 lg:col-span-2" aria-labelledby="applicant-information-title">
 	  <% @following_reviews.each do |rev| %>
-		<%= render ActivityPanelComponent.new(review: rev, user: current_user) %>
+		<%= render ActivityPanelComponent.new(review: rev, viewer: current_user) %>
 	  <% end %>
 	</section>
 

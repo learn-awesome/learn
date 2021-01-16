@@ -1,10 +1,12 @@
 class ItemPanelComponent < ViewComponent::Base
-  def initialize(item:, user:, is_embedded: false)
+  def initialize(item:, viewer:, is_embedded: false)
     @item = item
-    @user = user
+    @viewer = viewer
     @is_embedded = is_embedded
     embedded_in_review_id = is_embedded
-    @reviews = (@item.reviews.where("notes is not null").where.not(id: embedded_in_review_id).take(2) + @item.idea_set.recommendations.where("notes is not null").take(2)).select { |r| r.notes.presence }
+    @reviews = @item.reviews.select(&:notes).reject { |r| r.id == embedded_in_review_id}.take(2) + 
+      @item.idea_set.recommendations.select(&:notes).take(2)
+    @my_review = @reviews.select { |rv| rv.user_id == @viewer.id }.first || Review.new(item: @item, user: @viewer)
   end
 
   def rev_message

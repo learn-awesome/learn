@@ -93,8 +93,8 @@ class Item < ApplicationRecord
   		avg_score = self.reviews.where("#{quality_score} is not null").average(quality_score)
   		self.write_attribute(quality_score, avg_score) if avg_score
     end
-    avg_overall_score = self.reviews.where("overall_score is not null").average(:overall_score)
-    self.write_attribute(:overall_score, avg_overall_score) if avg_overall_score
+    avg_overall_score = self.reviews.with_rating.average(:overall_score)
+    self.overall_score = avg_overall_score
     self.save
   end
 
@@ -103,11 +103,11 @@ class Item < ApplicationRecord
   end
 
   def authors
-    self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person)
+    self.idea_set.person_idea_sets.select { |pr| pr.role == 'creator' }.collect(&:person)
   end
 
   def creators
-    self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person)
+    self.idea_set.person_idea_sets.select { |pr| pr.role == 'creator' }.collect(&:person)
   end
 
   def as_json(options = {})
@@ -823,7 +823,7 @@ class Item < ApplicationRecord
   end
 
   def primary_link
-    self.links.find { |l| l.is_primary } or self.links.order(:created_at).first
+    @primary_link ||= (self.links.find { |l| l.is_primary } or self.links.sort_by(&:created_at).first)
   end
 
   def alternative_links
