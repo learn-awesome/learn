@@ -31,6 +31,7 @@ class Review < ApplicationRecord
 
   after_create :update_points
   after_save :update_item_ratings
+  after_destroy :update_item_ratings
   after_save :post_to_social_media
   after_save :change_status
 

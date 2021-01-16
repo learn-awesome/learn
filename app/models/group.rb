@@ -87,4 +87,27 @@ class Group < ApplicationRecord
     def invite_code
         Digest::SHA256.hexdigest(self.id + ENV['RAILS_MASTER_KEY'].to_s)[0..20]
     end
+
+    def og_description
+        #TODO: Don't list usernames if group.is_public is false
+        msg = self.users.map(&:nickname).to_sentence +
+        " are learning from books, videos, courses, podcasts, newsletters, livestreams and more"
+        return msg[0..400]
+    end
+
+    def og_keywords
+        #TODO: Don't list usernames if group.is_public is false
+        msg = "best books, best courses, best podcasts, best learning resources, best newsletters" +
+            self.users.map(&:nickname).join(',') + ",learnawesome,learning map,learning community"
+        return msg[0..400]
+    end
+
+    def og_image
+        # TODO: generate image on-the-fly from members' profile pictures
+        self.image_url.presence || 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    end
+
+    def og_title
+        "#{self.name} group on LearnAwesome.org"
+    end
 end
