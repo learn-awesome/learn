@@ -1,4 +1,0 @@
-<div class="px-2 flex flex-col">
-  <div class="text-base font-semibold text-yellow-400">★ <span class="text-gray-900"><%= @item.overall_score || "-" %></span></div>
-  <div class="text-xs leading-none whitespace-pre font-normal text-gray-500"><%= pluralize(@item.reviews.with_rating.count, "rating") %></div>
-</div>

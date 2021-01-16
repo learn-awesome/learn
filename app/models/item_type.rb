@@ -36,13 +36,14 @@ class ItemType < ApplicationRecord
 
 	def self.display_name_singular(item_type_id)
 		{
-			'cert' => "Certification",
-			'chat' => 'Forum',
-			'learning_plan' => 'Syllabus',
+			'cert' => "certification",
+			'chat' => 'forum',
+			'learning_plan' => 'syllabus',
 			'qna' => "Q&A site",
-			'thing' => "Thing or Toy",
-			'webconf' => "Online conference",
-			'webmeet' => "Online meetup"
-		}[item_type_id.to_sym] || item_type_id.capitalize
+			'thing' => "thing or toy",
+			'webconf' => "online conference",
+			'webmeet' => "online meetup",
+			'flashcard' => "flashcard deck"
+		}[item_type_id] || item_type_id.sub("_"," ")
 	end
 end

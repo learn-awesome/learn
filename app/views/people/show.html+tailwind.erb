@@ -3,6 +3,10 @@
         <p class="mb-4">
             <% if @person.image_url.present? %>
                 <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="inline h-16 object-cover object-center">
+            <% else %>
+            <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-purple-900">
+                <span class="text-sm font-bold leading-none text-white"><%= @person.initials %></span>
+            </span>
             <% end %>
             <span class="text-xl font-semibold text-gray-800">
             <%= @person.name %>

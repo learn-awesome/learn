@@ -11,71 +11,24 @@
 	<% end %>
 
 </div>
-<% else %>
-
-<div class="bg-white rounded-lg shadow-lg">
-  <div class="max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-    <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-      Lifelong learning with friends
-    </h2>
-    <h4 class="mt-4 font-regular tracking-tight text-gray-600"> 
-		<% if current_user.try(:can_see_metrics?) %>
-		  <%= Topic.count %> topics.
-		  <%= ItemType.count %> formats.
-		  <%= Item.count %> learning resources.
-		  <%= User.count %> users.
-		  <%= Review.count %> reviews.
-		<% end %><br/>
-		Find new sources of knowledge curated by lifelong learners like you. Discover leading experts and great content like talks, books, articles and podcasts. Share with friends and like-minded peers.
-    </h4>
-    <div class="mt-8 flex justify-center">
-      <div class="inline-flex rounded-md shadow">
-        <a href="/topics" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-          Explore Topics
-        </a>
-      </div>
-      <div class="ml-3 inline-flex">
-        <a href="/about" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out">
-          Learn more
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <% end %>
 
-<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 mt-4 font-semibold">Join our peer learning groups</h3>
-
-<div class="overflow-auto whitespace-no-wrap md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:overflow-hidden md:gap-6 mb-4">
-
-			<%= link_to Item.find_by_name('Syllabus: Machine Learning for Managers'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="machine-learning" class="w-full h-24 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Machine Learning for Managers</h1>
-			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Scratch programming for kids'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1584697964190-7383cbee8277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="scratch-programming" class="w-full h-24 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Scratch Programming for Kids</h1>
-			<% end %>
-			<%= link_to Item.find_by_name('Syllabus: Personal Finance'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1550565118-3a14e8d0386f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="personal finance" class="w-full h-24 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Personal Finance</h1>
-			<% end %>
-			<!-- <%= link_to Item.find_by_name('Syllabus: Cooking with Food Science'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="cooking" class="w-full h-24 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Cooking with Food Science</h1>
-			<% end %> -->
-			<%= link_to Item.find_by_name('Syllabus: Fiction Writing for Beginners'), class:"inline-block max-w-xs rounded-md overflow-hidden mr-3 md:mr-0 transition duration-200 transform hover:scale-105" do %>
-				<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80" alt="fiction-writing" class="w-full h-24 object-cover object-center">
-				<h1 class="bg-gray-800 py-2 px-4 text-white font-semibold text-lg">Fiction Writing for Beginners</h1>
-			<% end %>
-
-</div>
 
 <% if @following_reviews.any? %>
 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4 font-semibold">Activity</h3>
 
-<div class="grid gap-5 max-w-lg mx-auto lg:grid-cols-4 lg:max-w-none mb-4">
-    <%= render partial: 'dashboard/review', collection: @following_reviews %>
+<div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
+	<section class="space-y-6 lg:col-start-1 lg:col-span-2" aria-labelledby="applicant-information-title">
+	  <% @following_reviews.each do |rev| %>
+		<%= render ActivityPanelComponent.new(review: rev, user: current_user) %>
+	  <% end %>
+	</section>
+
+	<!-- <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
+		<div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6 mb-8">
+			<p>Aside</p>
+		</div>
+	</section> -->
 </div>
 <% end %>

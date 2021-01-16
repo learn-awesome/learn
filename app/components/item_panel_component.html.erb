@@ -1,20 +1,19 @@
 <main class="bg-white shadow-xl rounded-lg">
 
-<article class="px-4 py-5 sm:p-6">
+<article class="px-4 py-4">
 
+  <% if !@is_embedded %>
   <div class="mb-4 text-sm text-gray-900">
-    <% unless @hide_item_type %>
     <a href="/item_types/<%= @item.item_type_id %>" class="text-gray-500 hover:text-black font-semibold">
-      <%= ItemType.display_name_singular(@item.item_type_id) %>
+      <%= ItemType.display_name_singular(@item.item_type_id).capitalize %>
     </a>
     <span class="text-gray-400 mx-1">in</span>
-    <% end %>
-    <% unless @hide_topics %>
-      <% @item.topics.each do |topic| %>
-        <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-gray-500 bg-gray-100 border border-gray-200 rounded hover:bg-gray-200 hover:text-black font-semibold"><%= topic.display_name %></a>
-      <% end %>
+
+    <% @item.topics.each do |topic| %>
+      <a href='<%= topic_path(topic) %>' class="flex-shrink-0 px-1 py-0.5 text-gray-500 bg-gray-100 border border-gray-200 rounded hover:bg-gray-200 hover:text-black font-semibold"><%= topic.display_name %></a>
     <% end %>
   </div>
+  <% end %>
 
   <% if !@item.image_might_be_landscape? && @item.image_url.present? %>
     <!-- non-video (book) with a cover image -->
@@ -26,8 +25,8 @@
 
   <% if @item.primary_link %>
   <a href="<%= @item.primary_link.url %>" target='_blank' class="">
-      <h1 class="inline text-xl font-bold"><%= @item.display_name %></h1>
-      <p class="inline whitespace-nowrap">
+      <h1 class="inline text-xl font-bold border-dashed border-b border-transparent hover:border-purple-500"><%= @item.display_name %></h1>
+      <p class="inline whitespace-no-wrap">
         <span class="text-gray-500 text-sm">
           (<%= @item.primary_link.top_domain %>)
         </span>
@@ -42,7 +41,20 @@
   <h1 class="text-xl font-bold"><%= @item.display_name %></h1>
   <% end %>
 
-  <p class="my-2"><%= @item.authors.map { |au| link_to(au.name, au, class: "text-purple-600 hover:text-purple-800 tracking-light") }.to_sentence.html_safe %></p>
+  <p class="my-2">
+  <% @item.authors.each do |au| %>
+    <%= link_to(au, class: "text-purple-600 hover:text-purple-800 tracking-light") do %>
+      <% if au.image_url.present? %>
+          <img src="<%= au.image_url %>" alt="<%= au.name %>" class="inline h-8 w-8 rounded-full object-cover object-center">
+      <% else %>
+      <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-purple-900">
+          <span class="text-sm font-bold leading-none text-white"><%= au.initials %></span>
+      </span>
+      <% end %>
+      <span class="mr-4"><%= au.name %></span>
+    <% end %>
+  <% end %>
+  </p>
 
   <% if @item.embed_url %>
     <iframe width="100%" height="500" class="w-full" src="<%= @item.embed_url %>"></iframe>
@@ -56,13 +68,12 @@
   </p>
   <% end %>
 
-  <div class="text-justify text-sm text-gray-500 prose max-w-full"><%= @item.display_description %></div>
+  <div class="text-justify text-sm text-gray-500 prose max-w-full">
+      <%= @item.display_description %>
+  </div>
 
   <div class="clear-both mt-6 flex flex-col space-y-2 sm:flex-row sm:justify-between sm:items-stretch sm:space-y-0 sm:space-x-2">
-    <div class="min-w-max-content border border-gray-300 rounded flex flex-row items-stretch bg-white shadow-md">
-        <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: @item.id, user: @user)) %>
-        <%= render StarRatingComponent.new(item: @item) %>
-    </div>
+    <%= render FiveStarComponent.new(review: Review.find_or_initialize_by(item_id: @item.id, user: @user)) %>
     <%= render SplitButtonComponent.new(item: @item, user: @user, isopen: false) %>
   </div>
 
@@ -123,9 +134,9 @@
 
 <!-- card footer -->
 <footer class="bg-gray-50 rounded-b-lg px-4 py-4 sm:px-6 flex flex-wrap items-center">
-  <div class="text-xs text-gray-500 hover:text-gray-700">
-    Added <% if @item.user %>by <%= link_to @item.user.nickname, @item.user, class: "hover:underline" %><% end %> 
-    <%= link_to (time_ago_in_words(@item.created_at) + " ago"), @item, class: "hover:underline", title: @item.created_at.to_s %>
+  <div class="text-xs text-gray-500">
+    Added <% if @item.user %>by <%= link_to @item.user.nickname, @item.user, class: "hover:underline hover:text-gray-700" %><% end %> 
+    <%= link_to (time_ago_in_words(@item.created_at) + " ago"), @item, class: "hover:underline hover:text-gray-700", title: @item.created_at.to_s %>
   </div>
   <div x-data="{ isopen: false }" class="relative flex flex-grow justify-end space-x-4">
     <button @click="isopen = !isopen" aria-haspopup="true" class="w-8 h-8 bg-gray-50 inline-flex items-center justify-center text-gray-400 rounded-full hover:text-gray-500 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">

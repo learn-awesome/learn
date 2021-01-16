@@ -50,7 +50,10 @@ class Review < ApplicationRecord
   		avg_score = self.item.reviews.where("#{quality_score} is not null").average(quality_score)
   		self.item.write_attribute(quality_score, avg_score.to_f) if avg_score
   		self.item.save
-  	end
+    end
+    avg_score = self.item.reviews.where("overall_score is not null").average(:overall_score)
+    self.item.overall_score = avg_score
+    self.item.save
   end
 
   def update_points
@@ -150,9 +153,13 @@ class Review < ApplicationRecord
   end
 
   def display_status
-    return "wants to learn" if self.status.to_s == 'want_to_learn'
-    return "started learning" if self.status.to_s == 'learning'
-    return "finished learning" if self.status.to_s == 'learned'
+    msg = ""
+    msg = "wants to learn" if self.status.to_s == 'want_to_learn'
+    msg = "started learning" if self.status.to_s == 'learning'
+    msg = "finished learning" if self.status.to_s == 'learned'
+    msg += " and" if msg.present? and self.overall_score.present?
+    msg += (" rated " + ("★" * self.overall_score.to_i) + ("☆" * (5 - self.overall_score.to_i))) if self.overall_score.present?
+    return msg
   end
 
   def display_rating

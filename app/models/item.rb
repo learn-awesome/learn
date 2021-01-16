@@ -106,6 +106,10 @@ class Item < ApplicationRecord
     self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person)
   end
 
+  def creators
+    self.idea_set.person_idea_sets.where(role: 'creator').collect(&:person)
+  end
+
   def as_json(options = {})
     {
       id: self.id,

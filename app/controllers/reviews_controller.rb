@@ -20,6 +20,11 @@ class ReviewsController < ApplicationController
 			else
 				@review.status = params[:review][:status]
 			end
+		else # status not passed in request but might change due to rating
+			if params[:review].has_key?(:overall_score) and @review.overall_score.nil? and @review.status.nil?
+				# rating changing from null to something
+				@review.status = 'learned'
+			end
 		end
 		@review.inspirational_score = params[:review][:inspirational_score] if params[:review].has_key?(:inspirational_score)
 		@review.educational_score = params[:review][:educational_score] if params[:review].has_key?(:educational_score)
@@ -62,6 +67,14 @@ class ReviewsController < ApplicationController
 		@review.overall_score = params[:review][:overall_score]
 		@review.notes = params[:review][:notes]
 		@review.private_notes = params[:review][:private_notes]
+
+		unless params[:review].has_key?(:status) # status not passed in request but might change due to rating
+			if params[:review].has_key?(:overall_score)
+				# rating changing from null to something
+				@review.status = 'learned'
+			end
+		end
+		
 		respond_to do |format|
 			if @review.save
 				format.html { redirect_to item_path(@review.item) }

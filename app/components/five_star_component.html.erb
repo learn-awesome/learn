@@ -1,6 +1,8 @@
+<div class="min-w-max-content border border-gray-300 rounded flex flex-row items-stretch bg-white shadow-md review-rating-<%= @review.item.id %>">
+
 <%= form_with(
   model: @review, 
-  class: "text-2xl px-3 pr-4 flex-1 flex justify-center items-center min-w-max-content border bg-red-100 border-yellow-300 rounded review-rating-#{@review.item.id}",
+  class: "text-2xl px-3 pr-4 flex-1 flex justify-center items-center min-w-max-content border bg-red-100 border-yellow-300 rounded",
   html: {
     "x-data" => "{ val: #{@review.overall_score.to_json}, orig: #{@review.overall_score.to_json} }", 
     "@click" => "orig = val; $nextTick(() => { Rails.fire($el,'submit') });",
@@ -11,7 +13,9 @@
 
   <input type="number" name="review[overall_score]" :value="orig" class="hidden" />
   
-  <span class="cursor-pointer text-gray-400 hover:text-gray-700 px-1" @mouseenter="val = null" @mouseleave="val = orig">×</span>
+  <% if @review.overall_score %>
+  <span class="cursor-pointer text-gray-400 hover:text-gray-700 px-1" @mouseenter="val = null" @mouseleave="val = orig" title="clear your rating">×</span>
+  <% end %>
   
 
   <template x-for="item in [1,2,3,4,5]">
@@ -19,8 +23,15 @@
       @mouseenter="val = item" 
       @mouseleave="val = orig"
       class="cursor-pointer text-gray-300"
-      :class="{'text-yellow-400': (val >= item)}">★</span>
+      :class="{'text-yellow-400': (val >= item)}" title="add your rating">★</span>
   </template>
 
   <input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
 <% end %>
+
+<div class="px-2 flex flex-col">
+  <div class="text-base font-semibold text-yellow-400">★ <span class="text-gray-900"><%= @review.item.overall_score || "-" %></span></div>
+  <div class="text-xs leading-none whitespace-pre font-normal text-gray-500"><%= pluralize(@review.item.reviews.with_rating.count, "rating") %></div>
+</div>
+
+</div>

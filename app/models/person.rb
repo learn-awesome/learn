@@ -61,6 +61,10 @@ class Person < ApplicationRecord
 		self.name
 	end
 
+	def initials
+		self.name.split(" ")[0..1].flatten.map(&:first).join
+	end
+
 	def to_param
 		self.id.to_s + "-" + self.name.to_s.parameterize
 	end
