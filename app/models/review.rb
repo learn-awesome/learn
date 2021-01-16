@@ -55,6 +55,11 @@ class Review < ApplicationRecord
     UserPointsService.call(self.user)
   end
 
+  def is_ready_to_show?
+    # has something to show in the review tabs in itempanelcomponent
+    self.overall_score.present? || self.notes.present? || self.quality_tags.present?
+  end
+
   def change_status
     # if self.overall_score.present? and self.status.nil?
     #   self.status = 'learned'
@@ -119,7 +124,11 @@ class Review < ApplicationRecord
   end
 
   def tags_text
-    SCORE_TYPES.select { |s| self.read_attribute(s).to_i >= 4 }.map { |s| s.to_s.sub("_score", "") }.join(", ")
+    quality_tags.join(", ")
+  end
+
+  def quality_tags
+    SCORE_TYPES.select { |s| self.read_attribute(s).to_i >= 4 }.map { |s| s.to_s.sub("_score", "") }
   end
 
   def as_json(options = {})
