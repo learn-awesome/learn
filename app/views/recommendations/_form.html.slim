@@ -1,6 +1,6 @@
 .card.max-w-md.mx-auto
   = form_for @recommendation, html: {class: "simple-form"} do |form|
-    h1 Add Recommendation
+    
     - if @recommendation.errors.any?
       #error_explanation
         h2 = "#{pluralize(@recommendation.errors.count, "error")} prohibited this recommendation from being saved:"
@@ -9,7 +9,7 @@
             li = message
 
     = form.label :person_id, "Expert:"
-    = form.collection_select :person_id, Person.all, :id, :name, {prompt: '--Select--'}, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white"
+    = form.collection_select :person_id, Person.all.sort_by { |p| p.name.downcase }, :id, :name, {prompt: '--Select--'}, required: true, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white"
 
     = form.label :idea_set_id, "For: #{@recommendation.idea_set.name}"
     = form.hidden_field :idea_set_id

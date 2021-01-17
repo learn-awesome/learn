@@ -82,7 +82,7 @@ Rails.application.routes.draw do
 
   resources :idea_sets, only: [:show, :new, :create, :edit, :update]
 
-  resources :recommendations, only: [:new, :create]
+  resources :recommendations, except: [:index, :show]
 
   resources :item_types, only: [:index, :show] do
     collection do

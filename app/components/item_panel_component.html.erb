@@ -108,6 +108,7 @@
       <ul class="bg-gray-100 p-4 border border-gray-200 rounded-b">
         <% @reviews.each do |r| %>
         <li x-show="tab === '<%= r.id %>'">
+
           <% if r.is_a?(Review) %>
           <p>
             <span class="text-orange-500 text-lg mr-2"><%= r.display_rating %></span>
@@ -118,10 +119,26 @@
             <% end %>
           </p>
           <% end %>
+
           <%= r.notes %> <%# TODO: we seem to have some recommendations without any metadata/url/rating etc %>
-          <% if r.is_a?(Recommendation) && r.url.present? %>
-            <p class="mt-4">From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'><%= r.url %></a></p>
+
+          <% if r.is_a?(Recommendation) %>
+            <% if r.url.present? %>
+            <p class="mt-4">
+              From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'>
+                <%= r.url %>
+              </a>
+            </p>
+            <% end %>
+            
+            <% if @viewer && @viewer.can_modify_recommendations? %>
+              <p>
+              <%= link_to "Edit", edit_recommendation_path(r), class: "underline text-indigo-500" %>
+              <%= link_to "Delete", r, method: :delete, class: "underline text-indigo-500", data: {confirm: "Are you sure?", disable_with: "Processing..."} %>
+              </p>
+            <% end %>
           <% end %>
+
         </li>
         <% end %>
       </ul>
@@ -135,8 +152,22 @@
             <%= r.try(:person).try(:name) || r.try(:user).try(:nickname) %>:
           </div>
           <p class="pl-8 py-4 text-gray-600"><%= r.notes %></p>
-          <% if r.is_a?(Recommendation) && r.url.present? %>
-            <p class="mt-4">From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'><%= r.url %></a></p>
+          
+          <% if r.is_a?(Recommendation) %>
+            <% if r.url.present? %>
+            <p class="mt-4">
+              From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'>
+                <%= r.url %>
+              </a>
+            </p>
+            <% end %>
+            
+            <% if @viewer && @viewer.can_modify_recommendations? %>
+              <p>
+              <%= link_to "Edit", edit_recommendation_path(r), class: "" %>
+              <%= link_to "Delete", r, method: :delete, confirm: "Are you sure?", disable_with: "Processing...", class: "" %>
+              </p>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -199,9 +230,9 @@
         </a>
         <% end %>
 
-        <% if @item.can_user_add_recommendations?(@viewer) %>
+        <% if @viewer && @viewer.can_modify_recommendations? %>
         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" href="<%= new_recommendation_path(idea_set_id: @item.idea_set_id) %>" title="Add Recommendation">
-          <i class="fas fa-plus-circle"></i> Recommendations
+          <i class="fas fa-plus-circle"></i> Add Recommendation
         </a>
         <% end %>
       </div>

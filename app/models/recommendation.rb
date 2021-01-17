@@ -16,13 +16,13 @@
 #
 
 class Recommendation < ApplicationRecord
-  belongs_to :idea_set
+  belongs_to :idea_set # what is being recommended
 
-  # one of the 2 below will be present
+  # who is recommending.  one of the 2 below must be present
   belongs_to :item, optional: true
   belongs_to :person, optional: true
 
-  belongs_to :user
+  belongs_to :user # which user did the last modification
 
   validates_presence_of :idea_set_id
 

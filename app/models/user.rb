@@ -178,6 +178,12 @@ class User < ApplicationRecord
 		Rails.env.development? or self.score.to_i >= 5000
 	end
 
+	def can_modify_recommendations?
+		return false if self.score < 50000
+		return false unless self.is_core_dev?
+		return true
+	end
+
 	def can_add_syllabus?
 		Rails.env.development? or self.score.to_i >= 20000
 	end
