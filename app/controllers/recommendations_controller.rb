@@ -16,6 +16,8 @@ class RecommendationsController < InheritedResources::Base
   end
 
   def update
+    @recommendation = Recommendation.find(params[:id])
+    @recommendation.user = current_user
     update! { @recommendation.idea_set.items.first }
   end
 
