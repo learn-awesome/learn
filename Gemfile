@@ -77,9 +77,9 @@ gem 'omniauth-auth0'
 gem 'bootstrap'
 gem 'jquery-rails'
 
-gem 'textacular', git: 'https://github.com/textacular/textacular'
+gem 'textacular', '5.4.0'
 
-gem "font-awesome-rails", git: 'https://github.com/bokmann/font-awesome-rails'
+gem "font-awesome-rails", '4.7.0.6'
 
 gem "sentry-raven"
 

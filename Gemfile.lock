@@ -1,17 +1,3 @@
-GIT
-  remote: https://github.com/bokmann/font-awesome-rails
-  revision: 87ce085ec38d9ca29fdbfd9df9e704e0a640a187
-  specs:
-    font-awesome-rails (4.7.0.6)
-      railties (>= 3.2, < 6.2)
-
-GIT
-  remote: https://github.com/textacular/textacular
-  revision: ec312c8d07ff4bb71deeb8a9873112a5cb190de9
-  specs:
-    textacular (5.3.0)
-      activerecord (>= 5.0, < 6.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -178,6 +164,8 @@ GEM
     flamegraph (0.9.5)
     flattened_active_admin (0.0.7)
       rails (>= 3.2.0)
+    font-awesome-rails (4.7.0.6)
+      railties (>= 3.2, < 6.2)
     formadmin (0.2.1)
       activeadmin
     formtastic (3.1.5)
@@ -392,6 +380,8 @@ GEM
       sprockets (>= 3.0.0)
     stackprof (0.2.16)
     temple (0.8.2)
+    textacular (5.4.0)
+      activerecord (>= 5.0, < 6.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -465,7 +455,7 @@ DEPENDENCIES
   final_redirect_url
   flamegraph
   flattened_active_admin
-  font-awesome-rails!
+  font-awesome-rails (= 4.7.0.6)
   formadmin
   httparty
   jbuilder (~> 2.5)
@@ -492,7 +482,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   stackprof
-  textacular!
+  textacular (= 5.4.0)
   turbo-rails
   twitter
   tzinfo-data
