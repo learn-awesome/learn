@@ -200,15 +200,22 @@ class WelcomeController < ApplicationController
     render
   end
 
+  def kids
+    @items = Item.where(level: 'childlike').limit(40)
+    @grouping_by = params['grouping'] || 'topic'
+    if @grouping_by == 'topic'
+      @mapped_items = @items.group_by { |item| item.topics.first }
+    else
+      @mapped_items = @items.group_by(&:item_type_id).map { |k,v| [ItemType.find(k), v] }.to_h
+    end
+  end
+
   private
 
   def fetch_entities(is_fuzzy)
     @items = Item.search(@q, 10, is_fuzzy)
     @topics = Topic.search(@q, 10, is_fuzzy)
     @people = Person.search(@q, 10, is_fuzzy)
-  end
-
-  def kids
   end
 
   def generate_crc_response(consumer_secret, crc_token)

@@ -46,4 +46,8 @@ class ItemType < ApplicationRecord
 			'flashcard' => "flashcard deck"
 		}[item_type_id] || item_type_id.sub("_"," ")
 	end
+
+	def display_name
+		self.display_name_plural
+	end
 end

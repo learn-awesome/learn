@@ -1,18 +1,29 @@
+<div class="md:flex md:items-center md:justify-between">
+  <div class="flex-1 min-w-0">
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+      Kids Corner
+    </h2>
+  </div>
+  <div class="mt-4 flex md:mt-0 md:ml-4">
 
-<div class="row">
-<!-- Cards with Tabs -->
-<div class="col-md-6 mb-4">
-
-	      <div class="card mb-4">
-	        <div class="card-header d-md-flex align-items-center">
-	          <h2 class="h3 card-header-title">Games</h2>
-	        </div>
-
-	        <div class="card-body">
-                <h2>Games</h2>
-	        </div>
-
-	      </div>
+    <%= link_to kids_path(grouping: (@grouping_by == 'topic' ? 'format' : 'topic')), class: "ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
+		Group by <% if @grouping_by == 'topic' %>Format<% else %>Topic<% end %>
+    <% end %>
+  </div>
 </div>
 
-<div class="danger success info notice warning">
+<% @mapped_items.each do |key, items| %>
+	<div class="mt-6">
+	<div class="px-4 xl:px-8">
+		<h3 class="text-gray-900 text-xl">
+		<%= link_to key.display_name, key, class: "text-blue-500 underline hover:text-blue-700" %>
+		</h3>
+	</div>
+	<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
+		<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
+		<% items.take(4).each do |item| %>
+			<%= render partial: 'topics/item', locals: {item: item} %>
+		<% end %>
+		</div>
+	</div>
+<% end %>
