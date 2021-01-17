@@ -28,7 +28,7 @@ class ItemTypesController < ApplicationController
 	end
 
 	def discover
-		item_type = ItemType.find(params[:id])
+		item_type = ItemType.where(id: params[:id]).first
 
 		if item_type # /item_types/book/discover
 			# random item
