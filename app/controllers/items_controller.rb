@@ -211,7 +211,7 @@ class ItemsController < ApplicationController
           link = item.links.find_by(id: link_params[:id])
           next if link_params[:url].blank?
           if link
-            link.update(url: link_params[:url])
+            link.update(url: link_params[:url], is_primary: link_params[:is_primary], allows_embed: link_params[:allows_embed])
           else
             item.links.create(url: link_params[:url])
           end

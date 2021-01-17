@@ -75,9 +75,9 @@ function autosuggest(){
                 case 'Topic':
                     return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong></div></a>';
                 case 'Item':
-                    var itemType = data.item_type_id;
-                    if(data.creators) {
-                        itemType += ' by ' + data.creators;
+					var itemType = data.item_type_id;
+                    if(data.creators && data.creators.length > 0) {
+                        itemType += ' by ' + data.creators[0].name;
                     }
                     return '<a href="' + getPath(entityType, data) + '"><div><strong>' + data.name + '</strong><br/>' + itemType + '</div></a>';
                 case 'Person':

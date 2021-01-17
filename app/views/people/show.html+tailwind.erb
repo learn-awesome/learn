@@ -1,54 +1,89 @@
-<div class="max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-    <div class="py-4 px-6">
-        <p class="mb-4">
-            <% if @person.image_url.present? %>
-                <img src="<%= @person.image_url %>" alt="<%= @person.name %>" class="inline h-16 object-cover object-center">
-            <% else %>
-            <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-purple-900">
-                <span class="text-sm font-bold leading-none text-white"><%= @person.initials %></span>
+<div class="p-4 md:flex md:items-center md:justify-between md:space-x-5">
+  <div class="flex items-start space-x-5">
+    <div class="flex-shrink-0">
+      <div class="relative">
+        <% if @person.image_url.present? %>
+            <img class="h-16 w-16 rounded-full" src="<%= @person.image_url %>" alt="">
+        <% else %>
+            <span class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-purple-900">
+                <span class="text-2xl font-bold leading-none text-white"><%= @person.initials %></span>
             </span>
-            <% end %>
-            <span class="text-xl font-semibold text-gray-800">
-            <%= @person.name %>
-            <% if @person.kind %>(<%= @person.kind %>)<% end %>
-            </span>
-        </p>
+        <% end %>
+        <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+      </div>
+    </div>
+    <!--
+      Use vertical padding to simulate center alignment when both lines of text are one line,
+      but preserve the same layout if the text wraps without making the image jump around.
+    -->
+    <div class="pt-1.5">
+      <h1 class="text-2xl font-bold text-gray-900"><%= @person.name %></h1>
+      <p class="text-sm font-medium text-gray-500">
+        <% if @person.kind %><%= @person.kind %>.<% end %>
+        <%= @person.description %>
+        <% if @person.items.size > 0 %><%= @person.items.size %> works.<% end %>
+        <% if @person.recommendations.size > 0 %><%= @person.recommendations.size %> reviews.<% end %>
         
-        <p>(Are you <%= @person.name %>?) You can claim editing and curation rights for this page by <a target="_blank" class="text-blue-500 underline" href="https://twitter.com/messages/compose?recipient_id=1114259648326987776&text=I+would+like+to+claim+this+expert+profile:+<%= person_url(@person) %>">sending us a DM on Twitter</a> or on Slack.</p>
-        
-        <% if current_user.try(:score).to_i > 500 %><%= link_to "Edit", edit_person_path(@person), class: "text-blue-500 underline" %><% end %>
-        <p class="py-2 text-gray-700"><%= @person.description %></p>
-
         <% if @person.website.present? %>
-            <%= link_to "Website", @person.website, class: "text-blue-500 underline mr-2" %>
+            <%= link_to "Website", @person.website, class: "text-blue-500 underline mr-2", target: '_blank' %>
         <% end %>
 
         <% if @person.twitter_url.present? %>
-            <%= link_to "Twitter", @person.twitter_url, class: "text-blue-500 underline mr-2" %>
+            <%= link_to "Twitter", @person.twitter_url, class: "text-blue-500 underline mr-2", target: '_blank' %>
         <% end %>
 
         <% if @person.goodreads_url.present? %>
-            <%= link_to "GoodReads Author Profile", @person.goodreads_url, class: "text-blue-500 underline mr-2" %>
+            <%= link_to "GoodReads Author Profile", @person.goodreads_url, class: "text-blue-500 underline mr-2", target: '_blank' %>
         <% end %>
+      </p>
     </div>
-
-    <div class="py-4 px-6">
-        <h2 class="text-md font-semibold text-gray-800">Works:</h2>
-        <ul>
-        <% @person.items.group_by(&:item_type).each do |it, items| %>
-            <% items.each do |i| %>
-                <li><%= render i %></li>
-            <% end %>
-        <% end %>
-        </ul>
-    </div>
-
-    <div class="py-4 px-6">
-        <h2 class="text-md font-semibold text-gray-800">Recommendations:</h2>
-        <ul>
-        <% @person.recommended_idea_sets.includes(:items).each do |idea_set| %>
-                <li class="mb-2"><%= render idea_set.items.first %></li>
-        <% end %>
-        </ul>
-    </div>
+  </div>
+  <div class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
+    <% if current_user.try(:score).to_i > 500 %>
+        <%= link_to "Edit", edit_person_path(@person), class: "inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" %>
+    <% end %>
+  </div>
 </div>
+
+<!-- TODO: should we group works and reviews by item type? -->
+
+<% if @person.idea_sets.any? %>
+
+<div class="pb-5 border-b border-gray-200">
+  <div class="-ml-2 -mt-2 flex flex-wrap items-baseline">
+    <h3 class="ml-2 mt-2 text-lg leading-6 font-medium text-gray-900">
+      Works
+    </h3>
+    <p class="ml-2 mt-1 text-sm text-gray-500 truncate"></p>
+  </div>
+</div>
+
+<div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
+	<section class="space-y-6 lg:col-start-1 lg:col-span-2" aria-labelledby="applicant-information-title">
+	  <% @person.idea_sets.each do |is| %>
+		<%= render ItemPanelComponent.new(item: is.items.first, viewer: current_user, is_embedded: nil) %>
+	  <% end %>
+	</section>
+</div>
+<% end %>
+
+<% if @person.recommendations.any? %>
+
+<div class="pb-5 border-b border-gray-200">
+  <div class="-ml-2 -mt-2 flex flex-wrap items-baseline">
+    <h3 class="ml-2 mt-2 text-lg leading-6 font-medium text-gray-900">
+      Reviews
+    </h3>
+    <p class="ml-2 mt-1 text-sm text-gray-500 truncate"></p>
+  </div>
+</div>
+
+<div class="my-4 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-full lg:grid-flow-col-dense lg:grid-cols-3">
+	<section class="space-y-6 lg:col-start-1 lg:col-span-2" aria-labelledby="applicant-information-title">
+	  <% @person.recommendations.each do |rec| %>
+		<%= render ItemPanelComponent.new(item: rec.idea_set.items.first, viewer: current_user, is_embedded: nil) %>
+	  <% end %>
+	</section>
+</div>
+<% end %>
+

@@ -27,8 +27,12 @@ class Link < ApplicationRecord
   ]
 
   EMBED_ALLOWED_DOMAINS = [
-    'web.archive.org'
+    'web.archive.org',
+    'ncbi.nlm.nih.gov'
   ]
+
+  def embed_tag
+  end
 
   def valid_url?
     uri = URI.parse(url)

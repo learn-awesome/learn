@@ -13,7 +13,7 @@
                 <td width="33%" style="padding: 2px 15px;">
                     <% if member %>
                     <%= link_to user_url(member) do %>
-                        <img src="<%= member.avatar_image %>" style="width: 50px; height: 50px; border-radius: 25px; vertical-align: middle;"/>
+                        <img src="<%= member.avatar_image %>" style="width: 50px; height: 50px; border-radius: 25px; vertical-align: middle;"/><br/>
                         <%= member.nickname %>
                     <% end %>
                     <% end %>
@@ -27,7 +27,7 @@
 Here is some recent activity in this group:
 <ul>
 <% @group_reviews.each do |review| %>
-    <li><b><%= review.user.nickname %></b>: <%= review.display_status %> <%= review.display_rating %> (<%= review.item.display_item_type %> in <%= review.item.topics.first.display_name %>) <%= link_to review.item.name, item_url(review.item) %></li>
+    <li><b><%= review.user.nickname %></b>: <%= review.display_status %> (<%= review.item.display_item_type %> in <%= review.item.topics.first.display_name %>) <%= link_to review.item.name, item_url(review.item) %></li>
 <% end %>
 </ul>
 </p>
@@ -39,7 +39,7 @@ Here is some recent activity in this group:
 <% end %>
 
 <p>LearnAwesome is building <a href="<%= about_url %>">Humanity's universal learning map</a> by collecting learning resources like books,
-courses, videos, podcasts, newsletters, apps, games, interactive explorables etc. More than <% User.count.floor(-2) %> users have already
+courses, videos, podcasts, newsletters, apps, games, interactive explorables etc. More than <%= User.count.floor(-2) + 100 %> users have already
 joined and are using it for their learning projects.</p>
 
 <% if @user %>

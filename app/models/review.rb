@@ -157,6 +157,7 @@ class Review < ApplicationRecord
   end
 
   def display_status
+    # this is used in activitypanelcomponent's header and invite_email
     status_msg = {want_to_learn: "wants to learn", learning: "is learning", learned: "finished learning"}[self.status.to_sym] if self.status
     if self.overall_score.present?
       rating_msg = (" rated " + ("★" * self.overall_score.to_i) + ("☆" * (5 - self.overall_score.to_i)))

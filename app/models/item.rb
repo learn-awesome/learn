@@ -762,17 +762,46 @@ class Item < ApplicationRecord
 
   def embed_url
     if self.links.any? { |l| l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }
-      Item.video_embed(self.links.select { |l| 
-        l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }.first.url)
+      Item.video_embed(self.links.select { |l| l.url.include?("youtube.com") or l.url.include?("vimeo.com") or l.url.include?("youtu.be") }.first.url)
     elsif self.is_wiki? and self.links.any? { |l| l.url.include?("wikipedia.org") }
       self.links.select { |l| l.url.include?("wikipedia.org") }.first.url.gsub(".wikipedia.org",".m.wikipedia.org")
+    elsif self.is_book? and self.links.any? { |l| l.url.include?("archive.org") }
+      self.links.select { |l| l.url.include?("archive.org") }.first.url
     elsif self.primary_link && Link::EMBED_ALLOWED_DOMAINS.include?(self.primary_link.top_domain)
       self.primary_link.url
     end
   end
 
+  def book_cover_size_image
+    return if self.embed_tag
+    return if self.is_video?
+    return self.image_url.presence
+  end
+
+  def video_thumbnail_size_image
+    return unless self.is_video?
+    return self.image_url.presence
+  end
+
+  def embed_tag
+    # self.links.select(&:embed_tag).first
+    return unless self.embed_url
+    css = ''
+    css += 'h-60 md:h-96' if self.is_video?
+    html_attr = "height='600'" if ['wiki','book','research_paper'].include?(self.item_type_id)
+    return "<iframe allowfullscreen frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' class='w-full #{css}' #{html_attr} src='#{self.embed_url}'></iframe>".html_safe
+  end
+
   def is_wiki?
     self.item_type_id == 'wiki'
+  end
+
+  def is_book?
+    self.item_type_id == 'book'
+  end
+
+  def is_video?
+    self.item_type_id == 'video'
   end
 
   def self.youtube_id(youtube_url)
@@ -809,6 +838,8 @@ class Item < ApplicationRecord
                        :vimeo
       end
     end
+
+    return nil unless video_id.present? && video_prov.present?
 
     case video_prov
       when :youtube

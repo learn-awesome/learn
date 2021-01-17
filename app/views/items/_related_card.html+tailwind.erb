@@ -3,7 +3,7 @@
 	<a href="<%= rel.primary_link.url %>" target='_blank' class="block flex border-t-2 p-2 hover:bg-gray-200">
 		<img class="mr-3 h-24 w-24" src="<%= rel.thumbnail %>" alt="<%= rel.item_type.display_name_plural %>">
 		<p>
-			<%= ItemType.display_name_singular(rel.item_type_id) %>: <%= rel.display_name %><br/>
+			<%= ItemType.display_name_singular(rel.item_type_id).capitalize %>: <%= rel.display_name %><br/>
 			<span class="text-sm text-gray-600"><%= rel.primary_link.top_domain %></span>
 		</p>
 	</a>

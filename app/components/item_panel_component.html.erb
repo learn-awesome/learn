@@ -15,11 +15,10 @@
   </div>
   <% end %>
 
-  <% if !@item.image_might_be_landscape? && @item.image_url.present? %>
-    <!-- non-video (book) with a cover image -->
+  <% if @item.book_cover_size_image %>
     <a href="<%= @item.primary_link.url %>" target='_blank'>
       <img class="h-64 w-44 mr-6 mb-6 float-left border border-purple-200 rounded-md shadow-md md:shadow-xl transform transition ease-out duration-300 hover:scale-105" 
-        src="<%= @item.image_url %>" alt="">
+        src="<%= @item.book_cover_size_image %>" alt="">
     </a>
   <% end %>
 
@@ -56,10 +55,10 @@
   <% end %>
   </p>
 
-  <% if @item.embed_url %>
-    <iframe class="w-full <%= 'h-60 md:h-96' if @item.item_type_id == 'video' %>" <% if @item.item_type_id == 'wiki' %>height="600"<% end %> src="<%= @item.embed_url %>"></iframe>
-  <% elsif @item.image_might_be_landscape? && @item.image_url.present? %>
-    <a href="<%= @item.primary_link.url %>" target='_blank'><img class="w-full rounded-md shadow-lg" src="<%= @item.image_url %>" alt=""></a>
+  <%if @item.embed_tag %>
+      <%= @item.embed_tag %>
+  <% elsif @item.video_thumbnail_size_image %>
+    <a href="<%= @item.primary_link.url %>" target='_blank'><img class="w-full rounded-md shadow-lg" src="<%= @item.video_thumbnail_size_image %>" alt=""></a>
   <% end %>
 
   <% if @item.alternative_links.any? %>
@@ -68,7 +67,7 @@
   </p>
   <% end %>
 
-  <div class="text-justify text-sm text-gray-500 prose max-w-full">
+  <div class="text-justify text-sm text-gray-500 prose <% if @is_embedded %>overflow-y-auto max-h-96<% end %> max-w-full">
       <%= @item.display_description %>
   </div>
 
@@ -120,6 +119,9 @@
           </p>
           <% end %>
           <%= r.notes %> <%# TODO: we seem to have some recommendations without any metadata/url/rating etc %>
+          <% if r.is_a?(Recommendation) && r.url.present? %>
+            <p class="mt-4">From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'><%= r.url %></a></p>
+          <% end %>
         </li>
         <% end %>
       </ul>
@@ -133,6 +135,9 @@
             <%= r.try(:person).try(:name) || r.try(:user).try(:nickname) %>:
           </div>
           <p class="pl-8 py-4 text-gray-600"><%= r.notes %></p>
+          <% if r.is_a?(Recommendation) && r.url.present? %>
+            <p class="mt-4">From <a class="text-purple-500 underline hover:text-purple-700" href='<%= r.url %>' target='_blank'><%= r.url %></a></p>
+          <% end %>
         </div>
       <% end %>
     </div>
