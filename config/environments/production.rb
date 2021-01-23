@@ -27,7 +27,7 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = Uglifier.new(harmony: true) # this is from rails 5.2
 
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = Tailwindcss::Compressor.new(files_with_class_names: Rails.root.glob("app/views/**/*.*") + Rails.root.glob("app/helpers/**/*.rb") + Rails.root.glob("app/components/*.html.erb"))
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
