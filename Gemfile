@@ -102,8 +102,8 @@ gem 'memory_profiler'
 gem 'flamegraph'
 gem 'stackprof'
 
-gem 'webpacker'
-gem 'react-rails'
+# gem 'webpacker'
+# gem 'react-rails'
 
 gem 'oauth' # for goodreads api
 
