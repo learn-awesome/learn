@@ -19,7 +19,7 @@
         <% end %>
       </div>
     
-      <div><%= link_to helpers.shorter_time_ago(@review.created_at), @review, class: "text-xs text-gray-500 hover:underline whitespace-no-wrap", title: @review.updated_at.to_s %></div>
+      <div><%= link_to helpers.shorter_time_ago(@review.updated_at), @review, class: "text-xs text-gray-500 hover:underline whitespace-no-wrap", title: @review.updated_at.to_s %></div>
     </div>
     
     <% if @review.notes.present? %>

@@ -174,6 +174,19 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.from_param(params[:id])
+    if @item.is_book? and ENV['PROXYCRAWL_TOKEN'].present? and @item.links.detect {|l| l.url.include?("amazon.com") }
+      if params['proxycrawl'].to_s == 'true'
+        b = Book.new(amazon_link: @item.links.detect {|l| l.url.include?("amazon.com") }.url)
+        Amazon.extract_proxycrawl(b)
+        @item.name = b.title
+        @item.description = b.description
+        @item.isbn = b.isbn
+        @item.isbn13 = b.isbn13
+        @item.image_url = b.cover_image
+      else
+        @show_proxycrawl = true
+      end
+    end
   end
 
   def update

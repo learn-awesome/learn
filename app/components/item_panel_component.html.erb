@@ -163,10 +163,10 @@
             <% end %>
             
             <% if @viewer && @viewer.can_modify_recommendations? %>
-              <p>
-              <%= link_to "Edit", edit_recommendation_path(r), class: "" %>
-              <%= link_to "Delete", r, method: :delete, confirm: "Are you sure?", disable_with: "Processing...", class: "" %>
-              </p>
+            <p>
+            <%= link_to "Edit", edit_recommendation_path(r), class: "underline text-indigo-500" %>
+            <%= link_to "Delete", r, method: :delete, class: "underline text-indigo-500", data: {confirm: "Are you sure?", disable_with: "Processing..."} %>
+            </p>
             <% end %>
           <% end %>
         </div>

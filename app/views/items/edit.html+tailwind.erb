@@ -2,6 +2,10 @@
 <%= form_for @item, html: {class: "simple-form"} do |form| %>
     <h1>Edit: <%= @item.display_name %></h1>
 
+    <% if @show_proxycrawl %>
+        <%= link_to "Fetch data from Amazon", edit_item_path(@item, proxycrawl: 'true'), class: 'underline text-indigo-500' %>
+    <% end %>
+
     <% if @item.errors.any? %>
     <ul>
     <% @item.errors.full_messages.each do |msg| %>

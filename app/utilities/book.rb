@@ -3,7 +3,7 @@ class Book
 	attr_accessor :title, :isbn, :isbn13, :author_name, :author_link
 	attr_accessor :amazon_link, :openlibrary_link, :google_books_link
 	attr_accessor :learn_awesome_id, :four_minute_books_link, :fmb_summary_length
-	attr_accessor :number_of_pages, :publish_date, :cover_image
+	attr_accessor :number_of_pages, :publish_date, :cover_image, :price
 	attr_accessor :goodreads_id, :goodreads_link, :description, :topics
 	attr_accessor :derek_sivers_link, :derek_sivers_description, :derek_sivers_rating
 	attr_accessor :direct_link, :skip_post_amazon_scrape, :blas_link
