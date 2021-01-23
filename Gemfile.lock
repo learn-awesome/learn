@@ -126,7 +126,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
-    connection_pool (2.2.3)
     crack (0.4.4)
     crass (1.0.6)
     delayed_job (4.1.9)
@@ -273,8 +272,6 @@ GEM
     rack (2.0.9)
     rack-mini-profiler (2.2.0)
       rack (>= 1.2.0)
-    rack-protection (2.1.0)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.0)
@@ -312,7 +309,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.5.1)
-    redis (4.2.5)
     regexp_parser (1.8.2)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -335,11 +331,6 @@ GEM
       rubyzip (>= 1.2.2)
     sentry-raven (3.1.1)
       faraday (>= 1.0)
-    sidekiq (5.2.8)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (< 2.1.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
     simple_oauth (0.3.1)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
@@ -459,7 +450,6 @@ DEPENDENCIES
   redcarpet
   sass-rails (= 6.0.0)
   sentry-raven
-  sidekiq (= 5.2.8)
   sitemap_generator
   slack-ruby-client
   slim
