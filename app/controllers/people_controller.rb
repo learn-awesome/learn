@@ -38,6 +38,8 @@ class PeopleController < ApplicationController
 		@person.website = data[:website]
 		@person.goodreads = data[:goodreads] unless @person.goodreads.present?
 		@person.twitter = data[:twitter]
+		@person.wikipedia_url = data[:wikipedia_url]
+		@person.youtube_url = data[:youtube_url]
 
 		render 'edit'
 	end
@@ -56,6 +58,8 @@ class PeopleController < ApplicationController
 		@person.twitter = params[:person][:twitter]
 		@person.goodreads = params[:person][:goodreads]
 		@person.image_url = params[:person][:image_url]
+		@person.wikipedia_url = data[:wikipedia_url]
+		@person.youtube_url = data[:youtube_url]
 		@person.kind = params[:person][:kind]
 
 		if @person.save

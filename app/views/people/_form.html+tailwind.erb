@@ -36,6 +36,16 @@
         </div>
 
         <div class="mb-4">
+            <%= form.label :wikipedia_url, class: "text-gray-700" %>
+            <%= form.url_field :wikipedia_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
+            <%= form.label :youtube_url, class: "text-gray-700" %>
+            <%= form.url_field :youtube_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
+        </div>
+
+        <div class="mb-4">
             <%= form.label :image_url, class: "text-gray-700" %>
             <%= form.text_field :image_url, class: "w-full mt-1 px-4 py-2 block rounded bg-gray-200 text-gray-800 border border-gray-300 focus:outline-none focus:bg-white" %>
         </div>

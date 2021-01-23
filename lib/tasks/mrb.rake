@@ -24,3 +24,19 @@ namespace :mrb do
         end
     end
 end
+
+=begin
+// /_next/data/OobI_r5osFBZZ3qHQV04X/experts.json
+let experts = window.__NEXT_DATA__.props.pageProps.data.topRecommenders;
+
+// /mike-rowe-books
+
+let recos = Array.from(document.querySelectorAll('div#maincontent div.tab-pane')[0].querySelectorAll('li')).map((li) => ({
+  cover: li.querySelector('img').src,
+  genius_link: li.querySelector('a').href,
+  title: li.querySelector('h3').innerText,
+  author: li.querySelector('h4').innerText,
+  review: li.querySelector('p').innerText.replace("Source:",""),
+  source: li.querySelector('p a').href
+}));
+=end

@@ -911,7 +911,8 @@ CREATE TABLE public.people (
     image_url character varying,
     kind character varying,
     second_kind character varying,
-    wikipedia_url character varying
+    wikipedia_url character varying,
+    youtube_url character varying
 );
 
 
@@ -2485,6 +2486,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201018233116'),
 ('20201019010226'),
 ('20201230145346'),
-('20210116203058');
+('20210116203058'),
+('20210123134411');
 
 
