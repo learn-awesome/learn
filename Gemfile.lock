@@ -151,7 +151,7 @@ GEM
       ruby2_keywords
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
-    ffi (1.14.1)
+    ffi (1.14.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -215,10 +215,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.4.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -314,7 +313,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     ruby2_keywords (0.0.2)
-    ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -437,7 +435,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.5)
   jquery-rails
-  listen (>= 3.0.5, < 3.2)
+  listen (= 3.4.1)
   memory_profiler
   oauth
   omniauth
@@ -455,7 +453,7 @@ DEPENDENCIES
   slim
   slim-rails
   spring
-  spring-watcher-listen (~> 2.0.0)
+  spring-watcher-listen (~> 2.0.1)
   stackprof
   tailwindcss-rails (~> 0.3.1)
   textacular (= 5.4.0)
@@ -470,7 +468,7 @@ DEPENDENCIES
   will_paginate (~> 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.2.3
