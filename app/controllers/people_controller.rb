@@ -15,8 +15,8 @@ class PeopleController < ApplicationController
 		@person.twitter = params[:person][:twitter]
 		@person.goodreads = params[:person][:goodreads]
 		@person.image_url = params[:person][:image_url]
-		@person.wikipedia_url = params[:wikipedia_url]
-		@person.youtube_url = params[:youtube_url]
+		@person.wikipedia_url = params[:person][:wikipedia_url]
+		@person.youtube_url = params[:person][:youtube_url]
 		@person.kind = params[:person][:kind]
 
 		if @person.save
@@ -58,8 +58,8 @@ class PeopleController < ApplicationController
 		@person.twitter = params[:person][:twitter]
 		@person.goodreads = params[:person][:goodreads]
 		@person.image_url = params[:person][:image_url]
-		@person.wikipedia_url = params[:wikipedia_url]
-		@person.youtube_url = params[:youtube_url]
+		@person.wikipedia_url = params[:person][:wikipedia_url]
+		@person.youtube_url = params[:person][:youtube_url]
 		@person.kind = params[:person][:kind]
 
 		if @person.save
