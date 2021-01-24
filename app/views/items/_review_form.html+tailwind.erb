@@ -38,7 +38,7 @@
 			<%= form_with(model: @my_review, local: true) do |form| %>				
 				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 				<%= form.text_area :notes, class: 'resize-y appearance-none  w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none', placeholder: 'Write your public review here' %>
-				<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-semibold py-1 px-2 rounded' %>
+				<%= form.submit 'Save', class: 'cursor-pointer shadow bg-indigo-500 hover:bg-indigo-600 text-white focus:shadow-outline focus:outline-none text-white font-semibold py-1 px-2 rounded' %>
 			<% end %>
 		</div>
 
@@ -46,7 +46,7 @@
 			<%= form_with(model: @my_review, local: true) do |form| %>				
 				<input type="hidden" name="review[item_id]" value="<%= @item.id %>" />
 				<%= form.text_area :private_notes, class: 'resize-y appearance-none w-full bg-yellow-50 text-yellow-800 border border-yellow-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-yellow-100 focus:border-yellow-500 h-48 resize-none', placeholder: 'Write your private notes here' %>
-				<%= form.submit 'Save', class: 'shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-semibold py-1 px-2 rounded' %>
+				<%= form.submit 'Save', class: 'cursor-pointer shadow bg-indigo-500 hover:bg-indigo-600 text-white focus:shadow-outline focus:outline-none text-white font-semibold py-1 px-2 rounded' %>
 			<% end %>
 		</div>
 		</div>

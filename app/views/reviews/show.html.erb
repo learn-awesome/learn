@@ -24,7 +24,7 @@
             </p>
             <div>
               <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
-                <%= @review.item.name %>
+                <%= link_to @review.item.name, @review.item %>
               </h3>
               <p class="mt-3 text-base leading-6 text-gray-500">
                 <%= @review.notes.to_s.truncate(100) %>

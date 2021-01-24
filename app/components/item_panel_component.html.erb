@@ -111,7 +111,7 @@
 
           <% if r.is_a?(Review) %>
           <p>
-            <span class="text-orange-500 text-lg mr-2"><%= r.display_rating %></span>
+            <span class="text-yellow-500 tracking-tighter text-lg mr-2"><%= r.display_rating %></span>
             <% r.quality_tags.each_with_index do |tag, index| %>
             <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-<%= @tag_colors[index] %>-100 text-<%= @tag_colors[index] %>-800">
               <%= tag %>

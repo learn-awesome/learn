@@ -6,7 +6,7 @@
 <div class="mt-6" style="columns: 6 240px; column-gap: 1rem;">
 <% groups.each do |parent, children| %>
     <!-- background-image: url('https://picsum.photos/seed/<%= parent.name %>/300/500?blur=1');  -->
-  <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-2xl focus:outline-none">
+  <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-lg focus:outline-none">
 
                         <% if parent.persisted? %>
                             <%= link_to parent.display_name, topic_path(parent), class: "mt-1 p-1 text-gray-900 font-semibold text-lg hover:text-blue-500" %></h2>
