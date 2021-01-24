@@ -18,7 +18,7 @@ class Amazon
 		})
 		# res = Net::HTTP.get_response(proxy_link)
 		begin
-			page = Nokogiri::HTML(open(proxy_link))
+			page = Nokogiri::HTML(URI.open(proxy_link))
 			isbn_li = page.css('table#productDetailsTable ul').at('li:contains("ISBN")')
 			book.isbn = isbn_li && isbn_li.text.gsub("ISBN-10: ","")
 			if page.at('link[rel="canonical"]')

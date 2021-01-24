@@ -11,7 +11,7 @@ class FourMinuteBooks
 	end
 
 	def self.list
-		doc = Nokogiri::HTML(open("https://fourminutebooks.com/book-summaries/"))
+		doc = Nokogiri::HTML(URI.open("https://fourminutebooks.com/book-summaries/"))
 		doc.css('li a.post_title').map { |li|
 			Book.new(title: li.text.gsub(" Summary", ""), four_minute_books_link: li[:href])
 		}
@@ -19,7 +19,7 @@ class FourMinuteBooks
 
 	def self.extract(book)
 		puts "\nFourMinuteBooks start: #{book}"
-		page = Nokogiri::HTML(open(book.four_minute_books_link))
+		page = Nokogiri::HTML(URI.open(book.four_minute_books_link))
 		book.direct_link = page.at('a[href*="wp-content"]').try(:[], :href)
 		book.amazon_link = page.at('a[href*="amzn.to"]').try(:[], :href)
 		book.author_link = page.at('a[text()*="Learn more about the author"]').try(:[], :href)

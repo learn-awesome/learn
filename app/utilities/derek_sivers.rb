@@ -25,7 +25,7 @@ class DerekSivers
 	end
 
 	def self.list
-		doc = Nokogiri::HTML(open("https://sivers.org/book"))
+		doc = Nokogiri::HTML(URI.open("https://sivers.org/book"))
 		doc.css('section#allbooks div.abook').map { |d|
 			Book.new(
 				# TODO extract link to amazon page

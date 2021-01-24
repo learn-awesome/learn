@@ -551,7 +551,7 @@ class Item < ApplicationRecord
       if url.include?("goodreads.com")
         # url = 'https://www.goodreads.com/book/show/23692271-sapiens?ac=1&from_search=true'
         item_type = 'book'
-        page = Nokogiri::HTML(open(url))
+        page = Nokogiri::HTML(URI.open(url))
 
         canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
         isbn = page.at('meta[property="books:isbn"]')&.attributes["content"]&.value
@@ -585,7 +585,7 @@ class Item < ApplicationRecord
       elsif url.include?("youtube.com") or url.include?("vimeo.com")
         opengraph_from_video(url)
       elsif url.include?("wikipedia.org")
-        page = Nokogiri::HTML(open(url))
+        page = Nokogiri::HTML(URI.open(url))
         title = page.at('title')&.content
         canonical = page.at('link[rel="canonical"]')&.attributes["href"]&.value
         {
@@ -596,7 +596,7 @@ class Item < ApplicationRecord
         }
       else
         begin
-          page = Nokogiri::HTML(open(url))
+          page = Nokogiri::HTML(URI.open(url))
           title = page.at('title')&.content
           if title.blank? && url.end_with?(".pdf")
             title = File.basename(URI.parse(url).path).sub(".pdf", "").gsub("_", " ").gsub("-", " ")
