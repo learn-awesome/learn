@@ -193,11 +193,10 @@ class WelcomeController < ApplicationController
     @item = Item.includes(idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}).order(:created_at).first
 
     # for star-rating component and review status (splitbutton) component. Same item as above.
-    @dummy_review = Review.find_or_initialize_by(item_id: @item, user: current_user)
+    @dummy_review = Review.find_or_initialize_by(item: @item, user: current_user)
 
     # for activitypanel component
     @real_review = Review.includes(user: {}, item: {idea_set: [people: {},topics:{},recommendations: {}], reviews: {}, links: {}}).ready.order('RANDOM()').first
-    render
   end
 
   def kids

@@ -1,8 +1,9 @@
-<div class="min-w-max-content border border-gray-300 rounded flex flex-row items-stretch bg-white shadow-md review-rating-<%= @review.item.id %>">
+<div class="min-w-max-content border border-gray-300 rounded flex flex-row items-stretch bg-white review-rating-<%= @review.item.id %>">
 
+<% if @review.user %>
 <%= form_with(
   model: @review, 
-  class: "text-2xl px-3 pr-4 flex-1 flex justify-center items-center min-w-max-content border bg-red-100 border-yellow-300 rounded",
+  class: "text-2xl px-3 pr-4 flex-1 flex justify-center items-center min-w-max-content border bg-yellow-50 border-yellow-300 rounded shadow transform scale-y-105 -translate-x-0.5",
   html: {
     "x-data" => "{ val: #{@review.overall_score.to_json}, orig: #{@review.overall_score.to_json} }", 
     "@click" => "orig = val; $nextTick(() => { Rails.fire($el,'submit') });",
@@ -14,7 +15,11 @@
   <input type="number" name="review[overall_score]" :value="orig" class="hidden" />
   
   <% if @review.overall_score %>
-  <span class="cursor-pointer text-gray-400 hover:text-gray-700 px-1" @mouseenter="val = null" @mouseleave="val = orig" title="clear your rating">×</span>
+  <span class="cursor-pointer h-5 w-5 text-gray-400 hover:text-gray-600 mr-2" @mouseenter="val = null" @mouseleave="val = orig" title="clear your rating">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+    </svg>
+  </span>
   <% end %>
   
 
@@ -22,16 +27,17 @@
     <span 
       @mouseenter="val = item" 
       @mouseleave="val = orig"
-      class="cursor-pointer text-gray-300"
+      class="cursor-pointer text-gray-300 tracking-tighter"
       :class="{'text-yellow-400': (val >= item)}" title="add your rating">★</span>
   </template>
 
   <input type="hidden" name="review[item_id]" value="<%= @review.item_id %>" />
 <% end %>
+<% end %>
 
 <div class="px-2 flex flex-col">
   <div class="text-base font-semibold text-yellow-400">★ <span class="text-gray-900"><%= @review.item.overall_score || "-" %></span></div>
-  <div class="text-xs leading-none whitespace-pre font-normal text-gray-500"><%= pluralize(@review.item.reviews.select(&:notes).size, "rating") %></div>
+  <div class="text-xs text-center leading-none whitespace-pre font-normal text-gray-500"><%= pluralize(@review.item.reviews.select(&:overall_score).size, "rating") %></div>
 </div>
 
 </div>
