@@ -1,0 +1,52 @@
+<div id="cy" class="w-full h-screen"></div>
+
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/dagre@0.7.4/dist/dagre.js"></script>
+<script src="https://cytoscape.org/cytoscape.js-dagre/cytoscape-dagre.js"></script>
+<script src="https://assets.wesound.academy/assets/js/cytoscape-panzoom.js"></script>
+<link href="https://assets.wesound.academy/assets/css/cytoscape.js-panzoom.css" rel="stylesheet">
+
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function(){
+    var cy = window.cy = cytoscape({
+    container: document.getElementById('cy'),
+
+    boxSelectionEnabled: false,
+
+    style: [
+        {
+        selector: 'node',
+        css: {
+            'label': 'data(id)',
+            'text-valign': 'center',
+            'text-halign': 'center'
+        }
+        },
+        {
+        selector: ':parent',
+        css: {
+            'text-valign': 'top',
+            'text-halign': 'center',
+        }
+        },
+        {
+        selector: 'edge',
+        css: {
+            'curve-style': 'bezier',
+            'target-arrow-shape': 'triangle'
+        }
+        }
+    ],
+
+    elements: $.getJSON('/topics/graph.json'),
+
+    layout: {
+        name: 'concentric'
+    }
+    });
+
+    cy.panzoom({
+        maxZoom: 1.5
+    });
+});
+</script>

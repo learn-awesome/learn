@@ -54,6 +54,13 @@ class TopicsController < InheritedResources::Base
     @learning_plans = @topic.advanced_search('learning_plan', nil, nil)
   end
 
+  def graph
+      respond_to do |format|
+        format.html
+        format.json
+      end
+  end
+
   def explore
     @topic = Topic.from_param(params[:id])
   end

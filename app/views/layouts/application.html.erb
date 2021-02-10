@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
   </head>
 
-  <body class="antialiased font-sans bg-gray-50">
+  <body class="antialiased font-sans bg-pink-50">
 
 <div class="h-screen flex overflow-hidden" x-data="{ sidebarOpen: false }">
   <!-- Off-canvas menu for mobile -->
@@ -143,7 +143,7 @@
     </div>
 
     <main class="flex-1 relative z-0 overflow-y-auto py-2 focus:outline-none" tabindex="0">
-      <div class="mx-auto">
+      <div class="mx-auto pl-1 pr-2">
 
         <% flash.each do |name, msg| -%>
             <%= content_tag :div, msg, class: "flex items-center #{name} text-white text-sm font-bold px-4 py-3 rounded mb-4 max-w-md mx-auto" %>
