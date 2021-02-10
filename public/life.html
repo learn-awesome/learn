@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://unpkg.com/twinklecss@1.1.0/twinkle.min.css">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+        <link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
     </head>
     <body class="">
         <section class="min-h-screen flex flex-row" style="min-height: 93vh;">
@@ -134,6 +135,7 @@
                 </span>
             </div>
         </footer>
+        <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
         <script>
             function saveAllData(){
                 ['h','w','k','r','j'].forEach(function(prefix){
@@ -167,7 +169,32 @@
                 loadAllData();
                 let inputs = document.querySelectorAll('input,textarea'); // 6*5 + 5 elements
                 inputs.forEach(inp => inp.onchange = saveData);
+
+                var doneTour = localStorage.getItem('EventTour') === 'Completed';
+                if (doneTour) {
+                    // already seen
+                    return;
+                }
+                else {
+                    var introguide = introJs().setOptions({
+                        steps: [{
+                            title: 'Welcome',
+                            intro: 'Hello World! 👋'
+                        }]
+                    });
+
+                    introguide.start();
+
+                    introguide.oncomplete(function () {
+                        localStorage.setItem('EventTour', 'Completed');
+                    });
+
+                    introguide.onexit(function () {
+                        localStorage.setItem('EventTour', 'Completed');
+                    });
+                }
             });
         </script>
+        
     </body>
 </html>
