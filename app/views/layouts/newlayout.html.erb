@@ -113,37 +113,40 @@
     -->
     <nav x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'block': open, 'hidden': !open }" class="hidden lg:hidden" aria-label="Global">
       <div class="max-w-3xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-4">
-        <a href="#" aria-current="page" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Home</a>
+        <a href="/" aria-current="page" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Home</a>
 
-        <a href="#" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Popular</a>
+        <a href="/topics" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Topics</a>
 
-        <a href="#" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Communities</a>
+        <a href="/formats" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Formats</a>
 
-        <a href="#" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Trending</a>
+        <a href="/people" aria-current="false" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium text-gray-900">Experts</a>
       </div>
       <div class="border-t border-gray-200 pt-4 pb-3">
+        <% if current_user %>
         <div class="max-w-3xl mx-auto px-4 flex items-center sm:px-6">
           <div class="flex-shrink-0">
-            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+            <img class="h-10 w-10 rounded-full" src="<%= current_user.avatar_image %>" alt="">
           </div>
           <div class="ml-3">
-            <div class="text-base font-medium text-gray-800">Chelsea Hagon</div>
-            <div class="text-sm font-medium text-gray-500">chelseahagon@example.com</div>
+            <div class="text-base font-medium text-gray-800"><%= current_user.nickname %></div>
+            <!-- <div class="text-sm font-medium text-gray-500">chelseahagon@example.com</div> -->
           </div>
-          <button type="button" class="ml-auto flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-            <span class="sr-only">View notifications</span>
-            <!-- Heroicon name: outline/bell -->
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
         </div>
+        <% end %>
         <div class="mt-3 max-w-3xl mx-auto px-2 space-y-1 sm:px-4">
-          <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Profile</a>
+          <% if current_user %>
+          <a href="/users/<%= current_user.id %>" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Profile</a>
 
-          <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Settings</a>
+          <a href="/users/<%= current_user.id %>/settings" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Settings</a>
 
-          <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign out</a>
+          <a href="/users/<%= current_user.id %>/collections" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Collections</a>
+
+          <a href="/users/<%= current_user.id %>/groups" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Groups</a>
+
+          <a href="/logout" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign out</a>
+          <% else %>
+            <a href="/auth/auth0" class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign In</a>
+          <% end %>
         </div>
       </div>
     </nav>
