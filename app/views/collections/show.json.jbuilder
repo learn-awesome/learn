@@ -1,1 +1,1 @@
-json.partial! "collections/collection", collection: @collection
+json.partial! "collections/collection", resource: @collection

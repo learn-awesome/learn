@@ -3,7 +3,8 @@ class CollectionsController < InheritedResources::Base
   before_action :logged_in_using_omniauth?, only: [:new, :create, :edit, :update, :destroy, :import_goodreads_list]
   custom_actions :resource => [:import_goodreads_list, :toggle_item]
 
-  belongs_to :user
+  belongs_to :user, :finder => :from_param, :param => :user_id
+  respond_to :html, :json
 
   def create
   	@collection = Collection.new(collection_params)

@@ -18,10 +18,10 @@
   </div>
   <div class="mt-2 md:flex md:items-center md:justify-between">
     <div class="flex-1 min-w-0">
-      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 dark:text-gray-200 sm:text-3xl sm:leading-9 sm:truncate">
         <%= resource.name %>
       </h2>
-	  <p><%= resource.description %></p>
+	  <p class="dark:text-gray-400"><%= resource.description %></p>
     </div>
     <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
   
@@ -29,7 +29,7 @@
   <% if current_user == parent %>
   <% if false %>
   <span class="hidden sm:block ml-3 shadow-sm rounded-md">
-  <%= link_to('Import List from GoodReads', import_goodreads_list_resource_path(@collection), method: :get, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out") %>
+  <%= link_to('Import List from GoodReads', import_goodreads_list_resource_path(@collection), method: :get, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 dark:bg-black focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out") %>
   </span>
   <% end %>
 
@@ -41,17 +41,140 @@
   </div>
 </div>
 
-<% resource.items.inject({}) { |acc,item| item.topics.each { |t| acc[t] ||= []; acc[t] << item }; acc }.sort_by { |k,v| k.name }.each do |topic, items| %>
-<div class="mt-6">
-<div class="px-4 xl:px-8">
-    <h3 class="text-gray-900 text-xl"><%= link_to topic.display_name, topic, class: "text-blue-500 underline hover:text-blue-700" %></h3>
-    <!-- <p class="text-gray-600">Live like the stars in these luxurious Southern California estates.</p> -->
-</div>
-<div class="mt-6 sm:overflow-x-auto sm:overflow-y-hidden">
-	<div class="px-4 sm:inline-flex sm:pt-2 sm:pb-8 xl:px-8 flex-wrap">
-	<% items.each do |item| %>
-		<%= render partial: 'topics/item', locals: {item: item} %>
-	<% end %>
-	</div>
-</div>
-<% end %>
+
+      <div class="" id="app">
+      <% if resource.items.size > 1 %>
+        <div class="flex mx-auto my-6">
+            <input type="search" v-model="searchQuery" name="searchQuery" id="searchQuery" class="rounded p-2 w-full bg-grey-light dark:bg-grey-darker border-grey-light focus:bg-white border border-solid focus:border-indigo-light text-blue-darkest" placeholder="Search in this collection by name" />
+        </div>
+      <% end %>
+        <div class="flex flex-wrap lg:flex-nowrap mx-auto text-indigo-darkest">
+          <% if resource.items.size > 1 %>
+            <div class="w-full lg:w-1/4 lg:mr-4">
+                <div class="bg-white dark:bg-black p-4 border border-solid border-grey-light sticky top-0">
+                    <details open>
+                        <summary class="font-bold text-purple-dark dark:text-gray-300 pb-2 uppercase">Filter by Formats</summary>
+
+                        <% resource.formats.each do |format| %>
+                            <label class="mb-1 inline-flex px-2 rounded-full bg-indigo-100 text-indigo-700 items-center space-x-1">
+                              <span class="text-gray-900 whitespace-nowrap"><%= format %></span>
+                              <input type="checkbox" name="formatfacet" v-model="formatfacet" value="<%= format %>" class="form-tick appearance-none h-4 w-4 border border-gray-300 rounded-md checked:bg-indigo-600 checked:border-transparent focus:outline-none">
+                            </label>
+                        <% end %>
+                    </details>
+                    <% if resource.levels.any? %>
+                    <details open>
+                        <summary class="font-bold text-purple-dark dark:text-gray-300 pb-2 uppercase">Filter by Level</summary>
+
+                        <% resource.levels.each do |level| %>
+                            <label class="mb-1 inline-flex px-2 rounded-full bg-red-100 text-red-700 items-center space-x-1">
+                              <span class="text-gray-900 whitespace-nowrap"><%= level %></span>
+                              <input type="checkbox" name="levelfacet" v-model="levelfacet" value="<%= level %>" class="form-tick appearance-none h-4 w-4 border border-gray-300 rounded-md checked:bg-red-600 checked:border-transparent focus:outline-none">
+                            </label>
+                        <% end %>
+                    </details>
+                    <% end %>
+                    <details open>
+                        <summary class="font-bold text-purple-dark dark:text-gray-300 pb-2 uppercase">Filter by Topics</summary>
+
+                        <% resource.topics.each do |topic| %>
+                            <label class="mb-1 inline-flex px-2 rounded-full bg-green-100 text-green-700 items-center space-x-1">
+                              <span class="text-gray-900 whitespace-nowrap"><%= topic %></span>
+                              <input type="checkbox" name="topicfacet" v-model="topicfacet" value="<%= topic %>" class="form-tick appearance-none h-4 w-4 border border-gray-300 rounded-md checked:bg-green-600 checked:border-transparent focus:outline-none">
+                            </label>
+                        <% end %>
+                    </details>
+                </div>
+            </div>
+          
+            <div class="xs:w-full lg:w-3/4">
+                <p class="mb-2 text-right">{{filterItems.length}} items</p>
+                <div class="mb-2">
+                  <button v-for="format in formatfacet" type="button" v-on:click="removeFacet('format',format)" class="inline-flex items-center px-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {{format}}
+                    <svg class="ml-2 -mr-0.5 h-3 w-3" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                      <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                    </svg>
+                  </button>
+
+                  <button v-for="level in levelfacet" type="button" v-on:click="removeFacet('level',level)" class="inline-flex items-center px-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full bg-red-100 text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {{level}}
+                    <svg class="ml-2 -mr-0.5 h-3 w-3" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                      <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                    </svg>
+                  </button>
+
+                  <button v-for="topic in topicfacet" type="button" v-on:click="removeFacet('topic',topic)" class="inline-flex items-center px-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full bg-green-100 text-green-700 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {{topic}}
+                    <svg class="ml-2 -mr-0.5 h-3 w-3" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                      <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                    </svg>
+                  </button>
+                </div>
+                <div v-if="filterItems.length == 0">
+                    <h2 class=" text-indigo-darker pb-2 text-xl">Sorry</h2>
+                    <p class="text-black">There seem to be no items under your criteria with query: {{searchQuery}}, formats: {{formatfacet}}, levels: {{levelfacet}}, topics: {{topicfacet}}</p>
+                </div>
+                <% end %>
+                <div class="flex flex-wrap">
+                  <a v-for="item in filterItems" :key="item.id" :href="item.path" class="block w-xs max-w-xs bg-white dark:bg-black shadow-lg rounded-lg overflow-hidden mr-4 mb-4 transition duration-200 transform hover:scale-105">
+                      <div class="py-5 px-4">
+                          <p class="block text-sm text-gray-400">{{item.format}} in {{item.topic_names}}</p>
+                          <p class="block text-lg text-gray-800 dark:text-gray-100 font-semibold">{{item.display_name}}</p>
+                          <span class="text-sm text-gray-700 dark:text-gray-200">{{item.top_domain}}</span>
+                      </div>
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+<script type="text/javascript">
+let app = new Vue({
+  el: '#app',
+  data() {
+      return{
+          endpoint:      "<%= resource_url(resource, format: :json) %>",
+          items: [],
+          searchQuery: null,
+          levelfacet: [],
+          formatfacet: [],
+          topicfacet: [],
+      }
+  },
+  methods: {
+      fetchitems() {
+          fetch(this.endpoint)
+              .then(blob => blob.json())
+              .then(data => this.items.push(...data.items));
+      },
+
+      removeFacet(type,name){
+        if(type == 'format') this.formatfacet.splice(this.formatfacet.indexOf(name),1);
+        if(type == 'topic') this.topicfacet.splice(this.topicfacet.indexOf(name),1);
+        if(type == 'level') this.levelfacet.splice(this.levelfacet.indexOf(name),1)
+      }
+  },
+  computed: {
+      filterItems(){
+          const myRegex = new RegExp(this.searchQuery, 'gi')
+          return this.items.filter(result => {
+            return !this.searchQuery || result.name.match(myRegex);
+          }).filter(result => {
+            return this.topicfacet.length == 0 || result.topics.filter(x => this.topicfacet.includes(x.name)).length > 0;
+          }).filter(result => {
+            return this.levelfacet.length == 0 || this.levelfacet.includes(result.level);
+          }).filter(result => {
+            return this.formatfacet.length == 0 || this.formatfacet.includes(result.format);
+          })
+      }
+  },
+  mounted(){
+      this.fetchitems();
+  }
+});
+</script>

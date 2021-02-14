@@ -19,4 +19,16 @@ class Collection < ApplicationRecord
 
   attr_accessor :goodreads_list_url
   attr_accessor :item_id
+
+  def topics
+    self.items.map(&:topics).flatten.map(&:name).uniq.sort
+  end
+
+  def formats
+    self.items.map(&:item_type_id).uniq.sort
+  end
+
+  def levels
+    self.items.map(&:level).uniq.sort
+  end
 end
