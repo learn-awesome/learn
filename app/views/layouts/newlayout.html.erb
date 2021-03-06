@@ -161,7 +161,10 @@
       </div>
       <%# render partial: 'layouts/newlayout_demo' %>
       <main class="lg:col-span-9 xl:col-span-10">
-      <%= yield %>
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "flex items-center #{name} text-white text-sm font-bold px-4 py-3 rounded mb-4 max-w-md mx-auto" %>
+        <% end -%>
+        <%= yield %>
       </main>
     </div>
   </div>

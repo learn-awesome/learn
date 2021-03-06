@@ -2,10 +2,10 @@ require 'openai'
 
 class TopicsController < InheritedResources::Base
   include Secured
-  before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update, :wiki_update]
-  before_action :permission_check, only: [:merge, :edit, :update, :wiki_update]
+  before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update, :wiki_update, :destroy]
+  before_action :permission_check, only: [:merge, :edit, :update, :wiki_update, :destroy]
   respond_to :html, :json
-  actions :all, except: [:destroy]
+  actions :all
 
   # def index
   #     respond_to do |format|
@@ -115,6 +115,14 @@ class TopicsController < InheritedResources::Base
     redirect_to @topic
   end
 
+  def destroy
+    @topic = Topic.from_param(params[:id])
+    if @topic.do_delete!
+      flash[:success] = "Topic has been deleted"
+    end
+    redirect_to topics_path
+  end
+
   def practice
     @topic = Topic.from_param(params[:id])
     unless @topic.is_gpt_enabled?(current_user)
@@ -180,7 +188,7 @@ class TopicsController < InheritedResources::Base
   private
 
   def permission_check
-   handlers = {edit: :can_edit_topic?, update: :can_edit_topic?, merge: :can_merge_topic?, wiki_update: :can_wiki_update_topic?}
+   handlers = {edit: :can_edit_topic?, update: :can_edit_topic?, destroy: :can_delete_topic?, merge: :can_merge_topic?, wiki_update: :can_wiki_update_topic?}
     if !current_user.try(handlers[params[:action].to_sym])
       flash[:danger] = "Not allowed"
       redirect_to topic_path(id: params[:id]) and return

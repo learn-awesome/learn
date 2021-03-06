@@ -49,6 +49,11 @@ class Topic < ApplicationRecord
 	after_destroy :clear_cache
 	after_create :update_from_wiki
 
+	def do_delete!
+		raise "Will leave orphan items" if self.idea_sets.any? { |is| is.topics.count == 1 }
+		self.destroy!
+	end
+
 	def set_properties
 		self.display_name = self.display_name.to_s.strip.gsub(/\s+/, ' ')
 		if self.display_name.present? and self.name.blank?

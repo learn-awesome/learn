@@ -62,6 +62,17 @@
     </span>
     <% end %>
 
+    <% if current_user.try(:can_delete_topic?) %>
+    <span class="hidden sm:block shadow-sm rounded-md">
+      <%= button_to(topic_path(topic), method: :delete, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out") do %>
+        <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+        </svg>
+        Delete
+      <% end %>
+    </span>
+    <% end %>
+
     <span class="hidden sm:block ml-3 shadow-sm rounded-md">
       <%= link_to(new_item_path(topic: topic.id), method: :get, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out") do %>
         <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
