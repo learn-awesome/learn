@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" media="all" href="/assets/tailwind.debug-6ec7e4502df8c2d51840a2f228848aa108b0cac4894fce5e9a823bd36fec9bb7.css" />
+    <link rel="stylesheet" media="all" href="/assets/inter-font.debug-b0dc98f3f7cb69e18aec7574c47b7160130a93feca4ef6e3e9a1c007eea39613.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
+  </head>
+
+  <body class="antialiased font-sans">
+
+<div id="cy" class="w-full h-screen"></div>
+
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+
+
+<script type="text/javascript">
+
+function initCyto(data){
+    var cy = window.cy = cytoscape({
+        container: document.getElementById('cy'),
+
+        boxSelectionEnabled: false,
+
+        style: [
+            {
+            selector: 'node',
+            css: {
+                'content': 'data(id)',
+                'text-valign': 'center',
+                'text-halign': 'center'
+            }
+            },
+            {
+            selector: ':parent',
+            css: {
+                'text-valign': 'top',
+                'text-halign': 'center',
+            }
+            },
+            {
+            selector: 'edge',
+            css: {
+                'curve-style': 'bezier',
+                'target-arrow-shape': 'triangle'
+            }
+            }
+        ],
+
+        elements: data,
+
+        layout: {
+            name: 'preset',
+            padding: 5
+        },
+
+        autoungrabify: true,
+
+    });
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+    fetch('/gamegraph.json')
+    .then(response => response.json())
+    .then(data => initCyto(data));
+});
+</script>
+
+</body>
+</html>

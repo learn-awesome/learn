@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" media="all" href="/assets/tailwind.debug-6ec7e4502df8c2d51840a2f228848aa108b0cac4894fce5e9a823bd36fec9bb7.css" />
+    <link rel="stylesheet" media="all" href="/assets/inter-font.debug-b0dc98f3f7cb69e18aec7574c47b7160130a93feca4ef6e3e9a1c007eea39613.css" />
+    <link rel="stylesheet" href="/stream/assets/vendor/font-awesome/css/all.min.css">
+    <link href="https://www.jq22.com/demo/8a60fa0a-5511-11e4-be1b-00163e001348/jquery.cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
+    
+    <script src="https://www.jq22.com/demo/8a60fa0a-5511-11e4-be1b-00163e001348/jquery-1.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <script src="/cyto/cytoscape-context-menus.js"></script>
+    <script src="https://www.jq22.com/demo/8a60fa0a-5511-11e4-be1b-00163e001348/jquery.cytoscape.js-panzoom.js"></script>
+    <style>
+.cy-context-menus-cxt-menu {
+    display:none;
+    z-index: 1000;
+    position:absolute;
+    border:1px solid #A0A0A0;
+    padding: 0;
+    margin: 0;
+    width:auto;
+}
+
+.cy-context-menus-cxt-menuitem {
+    display:block;
+    width: 100%;
+    padding: 3px 20px;
+    position:relative;
+    margin:0;
+    background-color:#f8f8f8;
+    font-weight:normal;
+    font-size: 12px;
+    white-space:nowrap;
+    border: 0;
+    text-align: left;
+}
+
+.cy-context-menus-cxt-menuitem:enabled {
+    color: #000000;
+}
+
+.cy-context-menus-ctx-operation:focus {
+  outline: none;
+}
+
+.cy-context-menus-cxt-menuitem:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0B9BCD;
+    background-image: none;
+    cursor: pointer;
+}
+
+.cy-context-menus-cxt-menuitem[content]:before {
+    content:attr(content);
+}
+
+.cy-context-menus-divider {
+  border-bottom:1px solid #A0A0A0;
+}
+
+.cy-context-menus-submenu-indicator {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+    </style>
+  </head>
+
+  <body class="antialiased font-sans">
+
+<div id="cy" class="w-full h-screen"></div>
+
+
+
+<script type="text/javascript">
+var contextMenu;
+var allSelected = function (type) {
+    if (type == 'node') {
+    return cy.nodes().length == cy.nodes(':selected').length;
+    }
+    else if (type == 'edge') {
+    return cy.edges().length == cy.edges(':selected').length;
+    }
+    return false;
+}
+
+var selectAllOfTheSameType = function (type) {
+    if (type == 'node') {
+    cy.nodes().select();
+    } else if (type == 'edge') {
+    cy.edges().select();
+    }
+};
+var unselectAllOfTheSameType = function (type) {
+    if (type == 'node') {
+    cy.nodes().unselect();
+    ;
+    } else if (type == 'edge') {
+    cy.edges().unselect();
+    }
+};
+
+function initCyto(data){
+    var cy = window.cy = cytoscape({
+        container: document.getElementById('cy'),
+
+        boxSelectionEnabled: false,
+
+        style: [
+            {
+            selector: 'node',
+            css: {
+                'content': 'data(id)',
+                'text-valign': 'center',
+                'text-halign': 'center'
+            }
+            },
+            {
+            selector: ':parent',
+            css: {
+                'text-valign': 'top',
+                'text-halign': 'center',
+            }
+            },
+            {
+            selector: 'edge',
+            css: {
+                'curve-style': 'bezier',
+                'target-arrow-shape': 'triangle'
+            }
+            }
+        ],
+
+        elements: data,
+
+        layout: {
+            name: 'preset',
+            padding: 5
+        }
+
+    })
+    
+    cy.on('cxttap', function(event) {
+          if (allSelected('node')) {
+            contextMenu.hideMenuItem('select-all-nodes');
+            contextMenu.showMenuItem('unselect-all-nodes');
+          }
+          else {
+            contextMenu.hideMenuItem('unselect-all-nodes');
+            contextMenu.showMenuItem('select-all-nodes');
+          }
+          if (allSelected('edge')) {
+            contextMenu.hideMenuItem('select-all-edges');
+            contextMenu.showMenuItem('unselect-all-edges');
+          }
+          else {
+            contextMenu.hideMenuItem('unselect-all-edges');
+            contextMenu.showMenuItem('select-all-edges');
+          }
+    });
+
+    window.cy.cytoscapePanzoom({});
+
+
+        // demo your core ext
+        var contextMenu = window.cy.contextMenus({
+          menuItems: [
+            {
+              id: 'remove',
+              content: 'remove',
+              tooltipText: 'remove',
+              image: {src: "cyto/remove.svg", width: 12, height: 12, x: 6, y: 4},
+              selector: 'node, edge',
+              onClickFunction: function (event) {
+                var target = event.target || event.cyTarget;
+                removed = target.remove();
+
+                contextMenu.showMenuItem('undo-last-remove');
+              },
+              hasTrailingDivider: true
+            },
+            {
+              id: 'undo-last-remove',
+              content: 'undo last remove',
+              selector: 'node, edge',
+              show: false,
+              coreAsWell: true,
+              onClickFunction: function (event) {
+                if (removed) {
+                  removed.restore();
+                }
+                contextMenu.hideMenuItem('undo-last-remove');
+              },
+              hasTrailingDivider: true
+            },
+            {
+              id: 'color',
+              content: 'change color',
+              tooltipText: 'change color',
+              selector: 'node',
+              hasTrailingDivider: true,
+              submenu: [
+                {
+                  id: 'color-blue',
+                  content: 'blue',
+                  tooltipText: 'blue',
+                  onClickFunction: function (event) {
+                    let target = event.target || event.cyTarget;
+                    target.style('background-color', 'blue');
+                  },
+                  submenu: [
+                    {
+                      id: 'color-light-blue',
+                      content: 'light blue',
+                      tooltipText: 'light blue',
+                      onClickFunction: function (event) {
+                        let target = event.target || event.cyTarget;
+                        target.style('background-color', 'lightblue');
+                      },
+                    },
+                    {
+                      id: 'color-dark-blue',
+                      content: 'dark blue',
+                      tooltipText: 'dark blue',
+                      onClickFunction: function (event) {
+                        let target = event.target || event.cyTarget;
+                        target.style('background-color', 'darkblue');
+                      },
+                    },
+                  ],
+                },
+                {
+                  id: 'color-green',
+                  content: 'green',
+                  tooltipText: 'green',
+                  onClickFunction: function (event) {
+                    let target = event.target || event.cyTarget;
+                    target.style('background-color', 'green');
+                  },
+                },
+                {
+                  id: 'color-red',
+                  content: 'red',
+                  tooltipText: 'red',
+                  onClickFunction: function (event) {
+                    let target = event.target || event.cyTarget;
+                    target.style('background-color', 'red');
+                  },
+                },
+              ]
+            },
+            {
+              id: 'add-node',
+              content: 'add node',
+              tooltipText: 'add node',
+              image: {src: "cyto/add.svg", width: 12, height: 12, x: 6, y: 4},
+              coreAsWell: true,
+              onClickFunction: function (event) {
+                var data = {
+                  group: 'nodes'
+                };
+
+                var pos = event.position || event.cyPosition;
+
+                cy.add({
+                  data: data,
+                  position: {
+                    x: pos.x,
+                    y: pos.y
+                  }
+                });
+              }
+            },
+            {
+              id: 'select-all-nodes',
+              content: 'select all nodes',
+              selector: 'node',
+              coreAsWell: true,
+              show: true,
+              onClickFunction: function (event) {
+                selectAllOfTheSameType('node');
+
+                contextMenu.hideMenuItem('select-all-nodes');
+                contextMenu.showMenuItem('unselect-all-nodes');
+              }
+            },
+            {
+              id: 'unselect-all-nodes',
+              content: 'unselect all nodes',
+              selector: 'node',
+              coreAsWell: true,
+              show: false,
+              onClickFunction: function (event) {
+                unselectAllOfTheSameType('node');
+
+                contextMenu.showMenuItem('select-all-nodes');
+                contextMenu.hideMenuItem('unselect-all-nodes');
+              }
+            },
+            {
+              id: 'select-all-edges',
+              content: 'select all edges',
+              selector: 'edge',
+              coreAsWell: true,
+              show: true,
+              onClickFunction: function (event) {
+                selectAllOfTheSameType('edge');
+
+                contextMenu.hideMenuItem('select-all-edges');
+                contextMenu.showMenuItem('unselect-all-edges');
+              }
+            },
+            {
+              id: 'unselect-all-edges',
+              content: 'unselect all edges',
+              selector: 'edge',
+              coreAsWell: true,
+              show: false,
+              onClickFunction: function (event) {
+                unselectAllOfTheSameType('edge');
+
+                contextMenu.showMenuItem('select-all-edges');
+                contextMenu.hideMenuItem('unselect-all-edges');
+              }
+            }
+          ]
+        });
+
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+    fetch('/gamegraph.json')
+    .then(response => response.json())
+    .then(data => initCyto(data));
+});
+</script>
+
+</body>
+</html>
