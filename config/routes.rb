@@ -47,6 +47,9 @@ Rails.application.routes.draw do
 
       get 'ap_followers'
       get 'ap_following'
+
+      get 'custom'
+      post 'custom'
     end
     collection do
       get 'search'

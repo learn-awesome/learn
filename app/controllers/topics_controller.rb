@@ -123,6 +123,21 @@ class TopicsController < InheritedResources::Base
     redirect_to topics_path
   end
 
+  def custom
+    @topic = Topic.from_param(params[:id])
+    if request.get?
+      @form = CustomTopicForm.new
+    else
+      @form = CustomTopicForm.new(params: params[:custom_topic_form])
+
+      if @form.process
+        redirect_to @topic, notice: "Changes have been saved! #{@form.age} #{@form.email}"
+      else
+        render
+      end
+    end
+  end
+
   def practice
     @topic = Topic.from_param(params[:id])
     unless @topic.is_gpt_enabled?(current_user)

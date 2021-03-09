@@ -124,3 +124,7 @@ gem 'delayed_job_active_record'
 
 gem 'turbo-rails'
 gem "tailwindcss-rails", "~> 0.3.1"
+
+gem 'simple_form'
+gem 'heroicon'
+gem "simple_form_tailwind", github: "abevoelker/simple_form_tailwind"
