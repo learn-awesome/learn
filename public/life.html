@@ -23,120 +23,163 @@ textarea::placeholder {
         <section class="min-h-screen flex flex-row" style="min-height: 93vh;">
             <aside class="w-2/3 flex-shrink-0 resize-x overflow-scroll flex flex-col">
                 <div class="h-1/2 w-full resize-y overflow-scroll flex">
-                    <article class="bg-yellow-100 w-1/2 flex-shrink-0 resize-x overflow-scroll p-4 flex flex-col space-y-2">
-                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-yellow-50 overflow-hidden shadow divide-y divide-gray-200">
+                    <article class="bg-pink-300 w-1/2 flex-shrink-0 resize-x overflow-scroll p-4 flex flex-col space-y-2">
+                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
-                                <svg class="text-red-500 h-16 w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" stroke="currentColor">
-                                    <rect width="256" height="256" fill="none" stroke="none"></rect>
-                                    <polyline points="32 128 72 128 88 104 120 152 136 128 160 128" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
-                                    <path d="M28.11427,95.99348Q28.00077,94.004,28,92A52.00881,52.00881,0,0,1,128.00008,71.965l-.00019.00008A52.00881,52.00881,0,0,1,228,92c0,68-100,124-100,124s-39.94466-22.369-69.34251-55.99891" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
-                            </div>
-                            <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="h1label" value="" placeholder="Body Fat" class="text-base font-normal bg-yellow-50 text-gray-900"/>
-                                <input type="text" id="h1val" value="" placeholder="20%" class="text-xl font-semibold bg-yellow-50 text-indigo-600"/>
-                            </div>
-                            <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="h2label" value="" placeholder="Deadlift" class="text-base font-normal bg-yellow-50 text-gray-900"/>
-                                <input type="text" id="h2val" value="" placeholder="120kg" class="text-xl font-semibold bg-yellow-50 text-indigo-600"/>
-                            </div>
-                            <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="h3label" value="" placeholder="6km Run time" class="text-base font-normal bg-yellow-50 text-gray-900"/>
-                                <input type="text" id="h3val" value="" placeholder="30min" class="text-xl font-semibold bg-yellow-50 text-indigo-600"/>
-                            </div>
-                        </dl>
-                        <textarea id="htext" class="flex-grow shadow-lg rounded-lg bg-yellow-200 p-2 resize-none" placeholder="health" id="health"></textarea>
-                    </article>
-                    <article class="bg-pink-100 overflow-scroll flex-grow flex flex-col space-y-2 p-4">
-                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-pink-50 overflow-hidden shadow divide-y divide-gray-200">
-                            <div class="flex items-center justify-center text-green-400 ">
-                                <svg class="h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.2" d="M24 40.5C24 40.5 5.25 30 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5Z" fill="url(#paint0_linear)"/>
+                                    <path d="M6 24H13.5L16.5 19.5L22.5 28.5L25.5 24H30" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M5.27143 17.9988C5.25724 17.7501 5.2501 17.5005 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5C24 40.5 16.5104 36.3058 10.9983 30.0002" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <defs>
+                                        <linearGradient id="paint0_linear" x1="4" y1="0" x2="804" y2="0" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#EF4444"/>
+                                            <stop offset="0.5" stop-color="#F43D6F"/>
+                                            <stop offset="1" stop-color="#EC4899"/>
+                                        </linearGradient>
+                                        <linearGradient id="paint1_linear" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#EAB308"/>
+                                            <stop offset="0.5" stop-color="#F49500"/>
+                                            <stop offset="1" stop-color="#F97316"/>
+                                        </linearGradient>
+                                        <linearGradient id="paint2_linear" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#22C55E"/>
+                                            <stop offset="0.5" stop-color="#00CE95"/>
+                                            <stop offset="1" stop-color="#2DD4BF"/>
+                                        </linearGradient>
+                                        <linearGradient id="paint3_linear" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#3B82F6"/>
+                                            <stop offset="0.5" stop-color="#00A2FC"/>
+                                            <stop offset="1" stop-color="#38BDF8"/>
+                                        </linearGradient>
+                                        <linearGradient id="paint4_linear" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#7C3AED"/>
+                                            <stop offset="0.5" stop-color="#A330E0"/>
+                                            <stop offset="1" stop-color="#C026D3"/>
+                                        </linearGradient>
+                                    </defs>
                                 </svg>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="w1label" value="" placeholder="Net Worth" class="text-base font-normal bg-pink-50 text-gray-900"/>
-                                <input type="text" id="w1val" value="" placeholder="$40K" class="text-xl font-semibold bg-pink-50 text-indigo-600"/>
+                                <input type="text" id="h1label" value="" placeholder="Body Fat" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="h1val" value="" placeholder="20%" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="w2label" value="" placeholder="Savings/mo" class="text-base font-normal bg-pink-50 text-gray-900"/>
-                                <input type="text" id="w2val" value="" placeholder="$2,200" class="text-xl font-semibold bg-pink-50 text-indigo-600"/>
+                                <input type="text" id="h2label" value="" placeholder="Deadlift" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="h2val" value="" placeholder="120kg" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="w3label" value="" placeholder="Expenses/mo" class="text-base font-normal bg-pink-50 text-gray-900"/>
-                                <input type="text" id="w3val" value="" placeholder="$4,200" class="text-xl font-semibold bg-pink-50 text-indigo-600"/>
+                                <input type="text" id="h3label" value="" placeholder="6km Run time" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="h3val" value="" placeholder="30min" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                         </dl>
-                        <textarea id="wtext" class="flex-grow shadow-lg rounded-lg bg-pink-200 p-2 resize-none" placeholder="wealth" id="wealth"></textarea>
+                        <textarea id="htext" class="flex-grow shadow-lg rounded-lg bg-pink-50 p-2 resize-none" placeholder="health" id="health"></textarea>
+                    </article>
+                    <article class="bg-green-300 overflow-scroll flex-grow flex flex-col space-y-2 p-4">
+                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-green-400 ">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.2" d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z" fill="url(#paint2_linear)"/>
+                                    <path d="M24 13.5V16.5" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M24 31.5V34.5" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.5 31.5H26.25C27.2446 31.5 28.1984 31.1049 28.9017 30.4017C29.6049 29.6984 30 28.7446 30 27.75C30 26.7554 29.6049 25.8016 28.9017 25.0983C28.1984 24.3951 27.2446 24 26.25 24H21.75C20.7554 24 19.8016 23.6049 19.0983 22.9017C18.3951 22.1984 18 21.2446 18 20.25C18 19.2554 18.3951 18.3016 19.0983 17.5983C19.8016 16.8951 20.7554 16.5 21.75 16.5H28.5" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="w1label" value="" placeholder="Net Worth" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="w1val" value="" placeholder="$40K" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="w2label" value="" placeholder="Savings/mo" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="w2val" value="" placeholder="$2,200" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="w3label" value="" placeholder="Expenses/mo" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="w3val" value="" placeholder="$4,200" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                        </dl>
+                        <textarea id="wtext" class="flex-grow shadow-lg rounded-lg bg-green-50 p-2 resize-none" placeholder="wealth" id="wealth"></textarea>
                     </article>
                 </div>
                 <div class="w-full flex-grow overflow-scroll flex">
-                    <article class="bg-purple-100 w-1/2 flex-shrink-0 resize-x overflow-scroll p-4 flex flex-col space-y-2">
-                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-purple-50 overflow-hidden shadow divide-y divide-gray-200">
-                            <div class="flex items-center justify-center text-purple-500 ">
-                                <svg class="h-16 w-16 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    <article class="bg-yellow-300 w-1/2 flex-shrink-0 resize-x overflow-scroll p-4 flex flex-col space-y-2">
+                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.2" d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147Z" fill="url(#paint1_linear)"/>
+                                    <path d="M16.5005 43.5H31.5005" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147V31.3147Z" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M25.5229 10.647C27.3577 10.9589 29.0503 11.8327 30.367 13.1479C31.6838 14.463 32.5597 16.1545 32.8738 17.9889" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="k1label" value="" placeholder="Work progress" class="text-base font-normal bg-purple-50 text-gray-900"/>
-                                <input type="text" id="k1val" value="" placeholder="71%" class="text-xl font-semibold bg-purple-50 text-indigo-600"/>
+                                <input type="text" id="k1label" value="" placeholder="Work progress" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="k1val" value="" placeholder="71%" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="k2label" value="" placeholder="GPA" class="text-base font-normal bg-purple-50 text-gray-900"/>
-                                <input type="text" id="k2val" value="" placeholder="3.5" class="text-xl font-semibold bg-purple-50 text-indigo-600"/>
+                                <input type="text" id="k2label" value="" placeholder="GPA" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="k2val" value="" placeholder="3.5" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="k3label" value="" placeholder="Books/mo" class="text-base font-normal bg-purple-50 text-gray-900"/>
-                                <input type="text" id="k3val" value="" placeholder="4" class="text-xl font-semibold bg-purple-50 text-indigo-600"/>
+                                <input type="text" id="k3label" value="" placeholder="Books/mo" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="k3val" value="" placeholder="4" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                         </dl>
-                        <textarea id="ktext" class="flex-grow shadow-lg rounded-lg bg-purple-200 p-2 resize-none" placeholder="work" id="learning"></textarea>
+                        <textarea id="ktext" class="flex-grow shadow-lg rounded-lg bg-yellow-50 p-2 resize-none" placeholder="work" id="learning"></textarea>
                     </article>
-                    <article class="bg-indigo-100 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
-                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-indigo-50 overflow-hidden shadow divide-y divide-gray-200">
+                    <article class="bg-blue-300 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
+                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                             <div class="flex items-center justify-center text-red-500 ">
-                                <svg class="h-16 w-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.2" d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z" fill="url(#paint3_linear)"/>
+                                    <path d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z" stroke="url(#paint3_linear)" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.1399 10.8632C30.4809 10.4854 31.8874 10.3993 33.2645 10.6108C34.6416 10.8223 35.9574 11.3264 37.1232 12.0892C38.2891 12.8521 39.2779 13.8559 40.0232 15.0331C40.7684 16.2102 41.2528 17.5335 41.4436 18.9136C41.6344 20.2937 41.5272 21.6987 41.1293 23.0339C40.7313 24.3691 40.0519 25.6036 39.1367 26.6541C38.2215 27.7046 37.0919 28.5468 35.8238 29.124C34.5557 29.7011 33.1787 29.9999 31.7854 30" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.99927 37.0119C4.52202 34.8459 6.54357 33.0781 8.89324 31.8577C11.2429 30.6372 13.8517 30.0001 16.4994 30C19.1471 29.9999 21.756 30.6368 24.1058 31.8571C26.4555 33.0773 28.4772 34.845 30.0001 37.0109" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M31.7854 30C34.4333 29.9981 37.0428 30.6343 39.3927 31.8546C41.7427 33.075 43.764 34.8437 45.2854 37.0109" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="r1label" value="" placeholder="Family Time" class="text-base font-normal bg-indigo-50 text-gray-900"/>
-                                <input type="text" id="r1val" value="" placeholder="12h" class="text-xl font-semibold bg-indigo-50 text-indigo-600"/>
+                                <input type="text" id="r1label" value="" placeholder="Family Time" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r1val" value="" placeholder="12h" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="r2label" value="" placeholder="Last party" class="text-base font-normal bg-indigo-50 text-gray-900"/>
-                                <input type="text" id="r2val" value="" placeholder="2w" class="text-xl font-semibold bg-indigo-50 text-indigo-600"/>
+                                <input type="text" id="r2label" value="" placeholder="Last party" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r2val" value="" placeholder="2w" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                             <div class="px-2 py-1 flex flex-col space-y-1">
-                                <input type="text" id="r3label" value="" placeholder="Followers #" class="text-base font-normal bg-indigo-50 text-gray-900"/>
-                                <input type="text" id="r3val" value="" placeholder="1200" class="text-xl font-semibold bg-indigo-50 text-indigo-600"/>
+                                <input type="text" id="r3label" value="" placeholder="Followers #" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r3val" value="" placeholder="1200" class="text-xl font-semibold text-indigo-600 text-center"/>
                             </div>
                         </dl>
-                        <textarea id="rtext" class="flex-grow shadow-lg rounded-lg bg-indigo-200 p-2 resize-none" placeholder="relationships" id="relationships"></textarea>
+                        <textarea id="rtext" class="flex-grow shadow-lg rounded-lg bg-blue-50 p-2 resize-none" placeholder="relationships" id="relationships"></textarea>
                     </article>
                 </div>
             </aside>
-            <main class="bg-green-100 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
-                <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-green-50 overflow-hidden shadow divide-y divide-gray-200">
+            <main class="bg-purple-300 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
+                <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
                     <div class="flex items-center justify-center text-red-500 ">
-                        <svg class="h-16 w-16 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.2" d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z" fill="url(#paint4_linear)"/>
+                            <path d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z" stroke="url(#paint4_linear)" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M31.7959 28.4993C31.0052 29.8669 29.8686 31.0025 28.5002 31.792C27.1318 32.5815 25.5798 32.9971 24 32.9971C22.4202 32.9971 20.8683 32.5815 19.4999 31.7921C18.1315 31.0026 16.9948 29.867 16.2041 28.4994" stroke="url(#paint4_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.25 22.5C18.4926 22.5 19.5 21.4926 19.5 20.25C19.5 19.0074 18.4926 18 17.25 18C16.0074 18 15 19.0074 15 20.25C15 21.4926 16.0074 22.5 17.25 22.5Z" fill="url(#paint4_linear)"/>
+                            <path d="M30.75 22.5C31.9926 22.5 33 21.4926 33 20.25C33 19.0074 31.9926 18 30.75 18C29.5074 18 28.5 19.0074 28.5 20.25C28.5 21.4926 29.5074 22.5 30.75 22.5Z" fill="url(#paint4_linear)"/>
+                        </svg>                            
                     </div>
                     <div class="px-2 py-1 flex flex-col space-y-1">
-                        <input type="text" id="j1label" value="" placeholder="Mood" class="text-base font-normal bg-green-50 text-gray-900"/>
-                        <input type="text" id="j1val" value="" placeholder="upbeat" class="text-xl font-semibold bg-green-50 text-indigo-600"/>
+                        <input type="text" id="j1label" value="" placeholder="Mood" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                        <input type="text" id="j1val" value="" placeholder="upbeat" class="text-xl font-semibold text-indigo-600 text-center"/>
                     </div>
                     <div class="px-2 py-1 flex flex-col space-y-1">
-                        <input type="text" id="j2label" value="" placeholder="Play time/mo" class="text-base font-normal bg-green-50 text-gray-900"/>
-                        <input type="text" id="j2val" value="" placeholder="6 days" class="text-xl font-semibold bg-green-50 text-indigo-600"/>
+                        <input type="text" id="j2label" value="" placeholder="Play time/mo" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                        <input type="text" id="j2val" value="" placeholder="6 days" class="text-xl font-semibold text-indigo-600 text-center"/>
                     </div>
                     <div class="px-2 py-1 flex flex-col space-y-1">
-                        <input type="text" id="j3label" value="" placeholder="-" class="text-base font-normal bg-green-50 text-gray-900"/>
-                        <input type="text" id="j3val" value="" placeholder="-" class="text-xl font-semibold bg-green-50 text-indigo-600"/>
+                        <input type="text" id="j3label" value="" placeholder="-" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                        <input type="text" id="j3val" value="" placeholder="-" class="text-xl font-semibold text-indigo-600 text-center"/>
                     </div>
                 </dl>
-                <textarea id="jtext" class="flex-grow shadow-lg rounded-lg bg-green-200 p-2 resize-none" placeholder="joy" id="joy"></textarea>
+                <textarea id="jtext" class="flex-grow shadow-lg rounded-lg bg-purple-50 p-2 resize-none" placeholder="joy" id="joy"></textarea>
             </main>
         </section>
 
