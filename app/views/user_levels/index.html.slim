@@ -1,0 +1,33 @@
+h1 Listing user_levels
+
+table
+  thead
+    tr
+      th User
+      th Course
+      th Level
+      th Answer
+      th Status
+      th Feedback
+      th Metadata
+      th
+      th
+      th
+
+  tbody
+    - @user_levels.each do |user_level|
+      tr
+        td = user_level.user
+        td = user_level.course
+        td = user_level.level
+        td = user_level.answer
+        td = user_level.status
+        td = user_level.feedback
+        td = user_level.metadata
+        td = link_to 'Show', user_level
+        td = link_to 'Edit', edit_user_level_path(user_level)
+        td = link_to 'Destroy', user_level, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New User level', new_user_level_path

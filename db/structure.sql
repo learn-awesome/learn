@@ -690,6 +690,23 @@ CREATE TABLE public.collections (
 
 
 --
+-- Name: courses; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.courses (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    name character varying NOT NULL,
+    description text,
+    image_url character varying,
+    topic_id uuid NOT NULL,
+    user_id uuid NOT NULL,
+    cost integer NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: decks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -870,6 +887,25 @@ CREATE TABLE public.items (
     overall_score numeric(3,2),
     protected_description text,
     is_approved boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: levels; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.levels (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    name character varying NOT NULL,
+    description text,
+    course_id uuid NOT NULL,
+    seq integer NOT NULL,
+    item_type_id character varying NOT NULL,
+    link character varying,
+    answer_type character varying NOT NULL,
+    answer_prompt text NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -1121,6 +1157,24 @@ CREATE TABLE public.topics (
 
 
 --
+-- Name: user_levels; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.user_levels (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid NOT NULL,
+    course_id uuid NOT NULL,
+    level_id uuid NOT NULL,
+    answer text,
+    status character varying NOT NULL,
+    feedback text,
+    metadata json,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: user_topics; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1185,7 +1239,8 @@ CREATE TABLE public.users (
     has_used_browser_extension boolean DEFAULT false NOT NULL,
     has_used_embed boolean DEFAULT false NOT NULL,
     tiddlywiki_url character varying,
-    theme character varying
+    theme character varying,
+    rocketchat_logintoken character varying
 );
 
 
@@ -1375,6 +1430,14 @@ ALTER TABLE ONLY public.collections
 
 
 --
+-- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT courses_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: decks decks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1444,6 +1507,14 @@ ALTER TABLE ONLY public.item_types
 
 ALTER TABLE ONLY public.items
     ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: levels levels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.levels
+    ADD CONSTRAINT levels_pkey PRIMARY KEY (id);
 
 
 --
@@ -1564,6 +1635,14 @@ ALTER TABLE ONLY public.topic_relations
 
 ALTER TABLE ONLY public.topics
     ADD CONSTRAINT topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_levels user_levels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_levels
+    ADD CONSTRAINT user_levels_pkey PRIMARY KEY (id);
 
 
 --
@@ -1712,6 +1791,20 @@ CREATE INDEX index_collections_on_user_id ON public.collections USING btree (use
 
 
 --
+-- Name: index_courses_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_courses_on_topic_id ON public.courses USING btree (topic_id);
+
+
+--
+-- Name: index_courses_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_courses_on_user_id ON public.courses USING btree (user_id);
+
+
+--
 -- Name: index_decks_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1786,6 +1879,20 @@ CREATE INDEX index_items_on_item_type_id ON public.items USING btree (item_type_
 --
 
 CREATE INDEX index_items_on_user_id ON public.items USING btree (user_id);
+
+
+--
+-- Name: index_levels_on_course_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_levels_on_course_id ON public.levels USING btree (course_id);
+
+
+--
+-- Name: index_levels_on_item_type_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_levels_on_item_type_id ON public.levels USING btree (item_type_id);
 
 
 --
@@ -1975,6 +2082,27 @@ CREATE INDEX index_topics_on_second_parent_id ON public.topics USING btree (seco
 --
 
 CREATE INDEX index_topics_on_user_id ON public.topics USING btree (user_id);
+
+
+--
+-- Name: index_user_levels_on_course_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_levels_on_course_id ON public.user_levels USING btree (course_id);
+
+
+--
+-- Name: index_user_levels_on_level_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_levels_on_level_id ON public.user_levels USING btree (level_id);
+
+
+--
+-- Name: index_user_levels_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_levels_on_user_id ON public.user_levels USING btree (user_id);
 
 
 --
@@ -2263,6 +2391,14 @@ ALTER TABLE ONLY public.reviews
 
 
 --
+-- Name: courses fk_rails_74cf90f09f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT fk_rails_74cf90f09f FOREIGN KEY (topic_id) REFERENCES public.topics(id);
+
+
+--
 -- Name: topics fk_rails_7b812cfb44; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2279,6 +2415,14 @@ ALTER TABLE ONLY public.topic_idea_sets
 
 
 --
+-- Name: user_levels fk_rails_957708fd26; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_levels
+    ADD CONSTRAINT fk_rails_957708fd26 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: collections fk_rails_9b33697360; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2292,6 +2436,14 @@ ALTER TABLE ONLY public.collections
 
 ALTER TABLE ONLY public.collection_items
     ADD CONSTRAINT fk_rails_b1a778644b FOREIGN KEY (collection_id) REFERENCES public.collections(id);
+
+
+--
+-- Name: courses fk_rails_b3c61f05ef; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT fk_rails_b3c61f05ef FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -2316,6 +2468,22 @@ ALTER TABLE ONLY public.user_topics
 
 ALTER TABLE ONLY public.person_idea_sets
     ADD CONSTRAINT fk_rails_c3b7c63f2d FOREIGN KEY (idea_set_id) REFERENCES public.idea_sets(id);
+
+
+--
+-- Name: user_levels fk_rails_cdb3e7b24f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_levels
+    ADD CONSTRAINT fk_rails_cdb3e7b24f FOREIGN KEY (level_id) REFERENCES public.levels(id);
+
+
+--
+-- Name: levels fk_rails_d223b78719; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.levels
+    ADD CONSTRAINT fk_rails_d223b78719 FOREIGN KEY (item_type_id) REFERENCES public.item_types(id);
 
 
 --
@@ -2356,6 +2524,14 @@ ALTER TABLE ONLY public.person_idea_sets
 
 ALTER TABLE ONLY public.links
     ADD CONSTRAINT fk_rails_e1bb872bea FOREIGN KEY (item_id) REFERENCES public.items(id);
+
+
+--
+-- Name: levels fk_rails_e397b0035d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.levels
+    ADD CONSTRAINT fk_rails_e397b0035d FOREIGN KEY (course_id) REFERENCES public.courses(id);
 
 
 --
@@ -2404,6 +2580,14 @@ ALTER TABLE ONLY public.social_logins
 
 ALTER TABLE ONLY public.flash_cards
     ADD CONSTRAINT fk_rails_f949b3ea79 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: user_levels fk_rails_f98c61ac53; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_levels
+    ADD CONSTRAINT fk_rails_f98c61ac53 FOREIGN KEY (course_id) REFERENCES public.courses(id);
 
 
 --
@@ -2487,6 +2671,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201019010226'),
 ('20201230145346'),
 ('20210116203058'),
-('20210123134411');
+('20210123134411'),
+('20210320143641'),
+('20210320144041'),
+('20210320144914'),
+('20210321095807');
 
 

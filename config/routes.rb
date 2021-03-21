@@ -2,7 +2,18 @@
 
 Rails.application.routes.draw do
 
+  resources :courses do
+    resources :levels do
+      resources :user_levels
+    end
+
+    member do
+      post 'enroll'
+    end
+  end
+
   resources :recommendations
+  
   authenticate :admin_user do
     # mount Sidekiq::Web => '/sidekiq'
   end
@@ -178,4 +189,7 @@ Rails.application.routes.draw do
   get '/slack_authorize' => 'welcome#slack_authorize'
   post '/slack_command' => 'welcome#slack_command'
   get '/dataset' => 'welcome#dataset'
+
+  get '/rocketchat/iframe' => 'rocketchat#iframe'
+  get '/rocketchat/api' => 'rocketchat#api'
 end

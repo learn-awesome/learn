@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @level.name
+p
+  strong Description:
+  = @level.description
+p
+  strong Course:
+  = link_to @level.course.name, @level.course.name
+p
+  strong Seq:
+  = @level.seq
+p
+  strong Item type:
+  = @level.item_type
+p
+  strong Link:
+  = @level.link
+p
+  strong Answer type:
+  = @level.answer_type
+p
+  strong Answer prompt:
+  = @level.answer_prompt
+
+=> link_to 'Edit', edit_resource_path
+'|
+=< link_to 'Back', collection_path

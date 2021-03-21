@@ -1,0 +1,6 @@
+<script>
+      window.parent.postMessage({
+        event: 'login-with-token',
+        loginToken: '${ req.session.user.rocketchatAuthToken }'
+      }, 'https://chat.learnawesome.org');
+</script>

@@ -1,0 +1,13 @@
+= simple_form_for(@course) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name, required: true
+    = f.input :description
+    = f.input :image_url
+    = f.association :topic
+    = f.input :cost, required: true, input_html: { min: '0', step: '1', max: '100' }
+
+  .form-actions
+    = f.button :submit

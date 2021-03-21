@@ -1,0 +1,15 @@
+= simple_form_for(@user_level) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.association :user
+    = f.association :course
+    = f.association :level
+    = f.input :answer
+    = f.input :status
+    = f.input :feedback
+    = f.input :metadata
+
+  .form-actions
+    = f.button :submit

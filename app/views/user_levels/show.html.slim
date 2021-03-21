@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong User:
+  = @user_level.user
+p
+  strong Course:
+  = @user_level.course
+p
+  strong Level:
+  = @user_level.level
+p
+  strong Answer:
+  = @user_level.answer
+p
+  strong Status:
+  = @user_level.status
+p
+  strong Feedback:
+  = @user_level.feedback
+p
+  strong Metadata:
+  = @user_level.metadata
+
+=> link_to 'Edit', edit_user_level_path(@user_level)
+'|
+=< link_to 'Back', user_levels_path

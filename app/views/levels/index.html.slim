@@ -1,0 +1,35 @@
+h1 Listing levels
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th Course
+      th Seq
+      th Item type
+      th Link
+      th Answer type
+      th Answer prompt
+      th
+      th
+      th
+
+  tbody
+    - @levels.each do |level|
+      tr
+        td = level.name
+        td = level.description
+        td = link_to level.course.name, level.course
+        td = level.seq
+        td = level.item_type
+        td = level.link
+        td = level.answer_type
+        td = level.answer_prompt
+        td = link_to 'Show', resource_path(level)
+        td = link_to 'Edit', edit_resource_path(level)
+        td = link_to 'Destroy', resource_path(level), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Level', new_resource_path

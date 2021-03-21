@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  course: one
+  level: one
+  answer: MyText
+  status: MyString
+  feedback: MyText
+  metadata: 
+
+two:
+  user: two
+  course: two
+  level: two
+  answer: MyText
+  status: MyString
+  feedback: MyText
+  metadata: 

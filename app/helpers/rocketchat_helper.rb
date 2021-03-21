@@ -1,0 +1,2 @@
+module RocketchatHelper
+end

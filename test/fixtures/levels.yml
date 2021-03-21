@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  course: one
+  seq: 1
+  item_type: one
+  link: MyString
+  answer_type: MyString
+  answer_prompt: MyText
+
+two:
+  name: MyString
+  description: MyText
+  course: two
+  seq: 1
+  item_type: two
+  link: MyString
+  answer_type: MyString
+  answer_prompt: MyText
