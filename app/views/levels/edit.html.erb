@@ -1,0 +1,10 @@
+<div class="max-w-md p-6 mx-auto bg-white rounded-md shadow-md">
+    <h1 class="font-bold text-lg mb-4">Edit Level <%= link_to @level.name, course_level_path(@course, @level), class: 'text-indigo-500 hover:text-indigo-700 underline' %> for <%= link_to @course.name, dashboard_course_path(@course), class: 'text-indigo-500 hover:text-indigo-700 underline' %></h1>
+    <%= render 'form' %>
+    <% if @course.levels.size > 1 %>
+        <p class="mt-4 text-right">
+            <%= link_to 'Delete This Level', course_level_path(@course, @level), data: { confirm: 'Are you sure?' }, method: :delete, class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
+        </p>
+    <% end %>
+</div>
+

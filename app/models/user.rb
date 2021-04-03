@@ -7,18 +7,19 @@
 #  image_url                  :string
 #  bio                        :string
 #  description                :text
-#  score                      :integer          default("100"), not null
+#  score                      :integer          default(100), not null
 #  role                       :string           default("regular"), not null
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
-#  random_fav_topic           :boolean          default("false"), not null
+#  random_fav_topic           :boolean          default(FALSE), not null
 #  random_fav_item_types      :string
 #  referrer                   :string
-#  unsubscribe                :boolean          default("false"), not null
-#  has_used_browser_extension :boolean          default("false"), not null
-#  has_used_embed             :boolean          default("false"), not null
+#  unsubscribe                :boolean          default(FALSE), not null
+#  has_used_browser_extension :boolean          default(FALSE), not null
+#  has_used_embed             :boolean          default(FALSE), not null
 #  tiddlywiki_url             :string
 #  theme                      :string
+#  rocketchat_logintoken      :string
 #
 
 require 'json'
@@ -91,11 +92,65 @@ class User < ApplicationRecord
 		)
 	end
 
+	def get_rocketchat_user_id
+		info = JSON.parse(self.get_rocketchat_userinfo.body)["user"]["_id"]
+	end
+
+	def get_rocketchat_logintoken
+		chat_server = 'https://chat.learnawesome.org'
+		# https://docs.rocket.chat/api/rest-api/methods/authentication/login
+		resp = HTTParty.post(
+			chat_server + '/api/v1/login', 
+			body: {user: self.email, password: self.rocketchat_password}, 
+			headers: {'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'], 'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID']}
+		)
+	end
+
+	def self.rocketchat_integration_enabled?
+		Rails.env.production? && ENV['ROCKETCHAT_ADMIN_USERNAME'].present? && ENV['ROCKETCHAT_ADMIN_PASSWORD'].present? && ENV['ROCKETCHAT_SALT'].present?
+	end
+
+	def self.get_rocketchat_admin_token
+        chat_server = 'https://chat.learnawesome.org'
+        # https://docs.rocket.chat/api/rest-api/methods/authentication/login
+		resp = HTTParty.post(
+			chat_server + '/api/v1/login', 
+			body: {username: ENV['ROCKETCHAT_ADMIN_USERNAME'], password: ENV['ROCKETCHAT_ADMIN_PASSWORD']}
+		)
+        if resp.code == 200 && JSON.parse(resp.body)["status"] == "success"
+            ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'] = JSON.parse(resp.body)["data"]["authToken"]
+            ENV['ROCKETCHAT_ADMIN_USERID'] = JSON.parse(resp.body)["data"]["userId"]
+        else
+            raise "Failure while getting RocketChat admin token"
+        end
+    end
+
+	def self.create_rocketchat_user(username, name, email, password)
+		chat_server = 'https://chat.learnawesome.org'
+		resp = HTTParty.post(
+			chat_server + '/api/v1/users.create', 
+			body: {
+				username: username,
+				name: name,
+				email: email,
+				password: password,
+				verified: true
+			}.to_json, 
+			headers: {
+				'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'],
+				'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID'],
+				'Content-Type' => 'application/json'
+			}
+		)
+	end
+
 	def create_or_login_rocketchat
 		return unless self.persisted?
 		return unless self.email.present?
 		# See if it has been persisted in db
 		return self.rocketchat_logintoken if self.rocketchat_logintoken.present?
+
+		chat_server = 'https://chat.learnawesome.org'
 
 		userinfo_resp = self.get_rocketchat_userinfo
 
@@ -103,30 +158,19 @@ class User < ApplicationRecord
 			# Found user
 		else
 			# create if user does not exist: https://docs.rocket.chat/api/rest-api/methods/users/create
-			resp = HTTParty.post(
-				chat_server + '/api/v1/users.create', 
-				body: {
-					username: self.rocketchat_username,
-					name: self.rocketchat_username,
-					email: self.email,
-					password: self.rocketchat_password,
-					verified: true
-				}, 
-				headers: {'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'], 'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID']}
-			)
-
+			resp = User.create_rocketchat_user(self.rocketchat_username, self.rocketchat_username, self.email, self.rocketchat_password)
+			unless resp.code == 200 && JSON.parse(resp.body)["success"]
+				raise "Error while creating Rocketchat user: #{JSON.parse(resp.body).inspect}"
+			end
 			self.set_rocketchat_avatar rescue nil
 		end
 
-		# now get login token (and persist it?): https://docs.rocket.chat/api/rest-api/methods/authentication/login
-		resp = HTTParty.post(
-			chat_server + '/api/v1/login', 
-			body: {user: self.email, password: self.rocketchat_password}, 
-			headers: {'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'], 'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID']}
-		)
-		if resp.code == 200 && JSON.parse(userinfo_resp.body)["success"]
-			self.rocketchat_logintoken = JSON.parse(resp.body)["data"]["authToken"]
+		login_resp = self.get_rocketchat_logintoken
+		if login_resp.code == 200 && JSON.parse(login_resp.body)["status"] == "success"
+			self.rocketchat_logintoken = JSON.parse(login_resp.body)["data"]["authToken"]
 			self.save
+		else
+			raise "Error while fetching Rocketchat loginToken: #{JSON.parse(login_resp.body).inspect}"
 		end
 		self.rocketchat_logintoken
 	end

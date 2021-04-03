@@ -1,27 +1,37 @@
       <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
         <div class="flex-shrink-0">
-          <img class="h-48 w-full object-cover" src="<%= course.image_url %>" alt="">
+          <%= link_to course_path(course) do %>
+            <img class="h-48 w-full object-cover" src="<%= course.image_url %>" alt="">
+          <% end %>
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-sm font-medium text-indigo-600">
-              <a href="<%= topic_path(course.topic) %>" class="hover:underline">
-                <%= course.topic.name %>
+              <% if course.is_featured? %>
+              <svg class="text-pink-700 h-4 w-4 inline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <% end %>
+              <a href="<%= topic_path(course.topic) %>" class="px-0.5 py-0.5 hover:underline">
+                <%= course.topic.display_name_without_ancestors %>
               </a>
+              &middot;
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                <%= course.count_students > 0 ? "#{course.count_students} learning" : 'New!' %>
+              </span>
             </p>
             <a href="<%= course_path(course) %>" class="block mt-2">
-              <p class="text-xl font-semibold text-gray-900">
+              <p class="text-xl font-semibold text-gray-900 hover:underline">
                 <%= course.name %>
               </p>
               <p class="mt-3 text-base text-gray-500">
-                <%= course.description %>
+                <%= course.description.to_s.truncate(180) %>
               </p>
             </a>
           </div>
           <div class="mt-6 flex items-center">
             <div class="flex-shrink-0">
               <a href="<%= user_path(course.user) %>">
-                <span class="sr-only"><%= course.user.nickname %></span>
                 <img class="h-10 w-10 rounded-full" src="<%= course.user.image_url %>" alt="">
               </a>
             </div>
@@ -32,14 +42,8 @@
                 </a>
               </p>
               <div class="flex space-x-1 text-sm text-gray-500">
-                <time datetime="2020-03-16">
-                  <%= course.created_at.to_date %>
-                </time>
-                <span aria-hidden="true">
-                  &middot;
-                </span>
                 <span>
-                  7 days
+                  <%= course.user.bio %>
                 </span>
               </div>
             </div>

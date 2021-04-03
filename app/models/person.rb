@@ -16,6 +16,7 @@
 #  kind          :string
 #  second_kind   :string
 #  wikipedia_url :string
+#  youtube_url   :string
 #
 require 'nokogiri'
 

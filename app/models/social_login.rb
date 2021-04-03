@@ -5,7 +5,7 @@
 #  id           :uuid             not null, primary key
 #  auth0_uid    :string
 #  auth0_info   :json
-#  post_reviews :boolean          default("true"), not null
+#  post_reviews :boolean          default(TRUE), not null
 #  user_id      :uuid             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

@@ -8,7 +8,13 @@ Rails.application.routes.draw do
     end
 
     member do
+      get 'enroll'
       post 'enroll'
+      get 'dashboard'
+    end
+
+    collection do
+      get 'intro'
     end
   end
 

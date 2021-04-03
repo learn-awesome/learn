@@ -1,54 +1,110 @@
-  <% if @course.user != current_user %>
-    <%= render partial: 'teacher_dashboard' %>
-  <% else %>
-  
-  <% current_user_level = @course.current_user_level(current_user) %>
-
-<% if current_user_level %>
-<div class="md:flex md:items-center md:justify-between mb-12">
-  <div class="flex-1 min-w-0">
-    <p><a href="/courses" class="text-indigo-700 underline">Browse All Courses</a></p>
-    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-      <%= @course.name %>
-    </h2>
-    <p class="text-gray-700 text-regular">By <%= @course.user.nickname %></p>
+<div>
+  <div>
+    <nav class="sm:hidden" aria-label="Back">
+      <a href="#" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+        <!-- Heroicon name: solid/chevron-left -->
+        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        Back
+      </a>
+    </nav>
+    <nav class="hidden sm:flex" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-4">
+        <li>
+          <div>
+            <a href="<%= courses_path %>" class="text-sm font-medium text-gray-500 hover:text-gray-700">All Courses</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
   </div>
-  <div class="mt-4 flex md:mt-0 md:ml-4">
+  <div class="mt-2 md:flex md:items-center md:justify-between">
+    <div class="flex-1 min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        <%= @course.name %>
+      </h2>
+    </div>
+    <% if @teacher %>
+    <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+      <% if @prev_level_index %><%= link_to 'Previous', course_path(@course, level: @prev_level_index), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %><% end %>
+      <% if @next_level_index %><%= link_to 'Next', course_path(@course, level: @next_level_index), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %><% end %>
+      <%= link_to 'Edit This Level', edit_course_level_path(@course, @shown_level), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= link_to 'Dashboard', dashboard_course_path(@course), class: "ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
+    <% end %>
   </div>
 </div>
-<% end %>
 
-<main class="lg:relative">
-    <div class="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
-      <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-        <% if current_user_level %>
-          <h1 class="text-2xl tracking-tight font-bold text-gray-900"><%= current_user_level.level.name %></h1>
-          <p><%= current_user_level.level.description %></p>
-          <p><a href="<%= current_user_level.level.link %>" target="_blank"><%= current_user_level.level.item_type_id %></a></p>
-        <% else %>
-          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-            <span class="block xl:inline"><%= @course.name %></span>
-            <span class="block text-indigo-600 xl:inline">by <%= @course.user.nickname %></span>
-          </h1>
-          <p class="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-            <%= @course.description %>
-          </p>
-          <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-              <%= button_to 'Start', enroll_course_path(@course), class: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10" %>
-            </div>
-            <!-- <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                Live demo
-              </a>
-            </div> -->
+
+<main class="mt-8 lg:relative">
+    <div class="w-full">
+      <div class="h-96 lg:w-1/2 xl:pr-16">
+        <div class="flex space-x-4">
+          <div class="flex flex-shrink items-center px-2.5 py-0.5 rounded-md text-4xl font-medium bg-yellow-100 text-yellow-800 border border-yellow-800">
+            <%= @shown_level_index %>
           </div>
-        <% end %>
+          <div>
+            <h1 class="text-2xl tracking-tight font-bold text-gray-900"><%= @shown_level.name %></h1>
+            <p><%= @shown_level.description %></p>
+            <p><a href="<%= @shown_level.link %>" target="_blank"><%= @shown_level.item_type_id %></a></p>
+          </div>
+        </div>
+
+          <% if @student %>
+          <p class="bg-yellow-200 border-2 border-yellow-500 text-yellow-800 p-4 mt-2 rounded-md">
+            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
+            <%= @current_user_level.feedback %>
+          </p>
+          <%= simple_form_for(@current_user_level, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@current_user_level.course, @current_user_level.level,@current_user_level)) do |f| %>
+            <div class="mt-8 form-inputs space-y-6">
+            <%= f.input :answer, label: @current_user_level.level.answer_prompt, as: @current_user_level.level.answer_type, required: true, wrapper: :tailwind_string_input %>
+            <%= f.button :submit, 'Submit Work', class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            </div>
+          <% end %>
+          <% else %>
+            <% @course.get_student_levels(@shown_level_index).values.flatten.to_a.sort_by { |ul| ['submitted','pending','rejected','accepted'].index(ul.status) }.each do |ul| %>
+              <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mt-4">
+                <div class="px-4 py-5 sm:px-6">
+                  <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= ul.user.image_url %>" alt="">
+                  <%= ul.user.nickname %>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium <%= {pending: 'bg-yellow-100 text-yellow-800', submitted: 'bg-yellow-100 text-yellow-800', accepted: 'bg-green-100 text-green-800',rejected: 'bg-red-100 text-red-800'}[ul.status.to_sym] %>"><%= ul.status %></span>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                  <% if ul.is_link_submission? %>
+                    <%= link_to ul.answer, ul.answer, class: 'text-indigo-500 hover:text-indigo-700 underline' %>
+                  <% else %>
+                    <%= ul.answer %>
+                  <% end %>
+                </div>
+                <div class="px-4 py-4 sm:px-6">
+
+                <% if ul.status == 'accepted' %>
+                  <p class="bg-green-200 border-2 border-green-500 text-green-800 p-4 mt-2 rounded-md">
+                    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
+                    <%= ul.feedback %>
+                  </p>
+                <% else %>
+                  <%= simple_form_for(ul, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@course, @shown_level, ul)) do |f| %>
+                    <div class="mt-8 form-inputs space-y-6">
+                    <%= f.input :feedback, label: 'Your feedback', required: true, wrapper: :tailwind_string_input %>
+                    <%= f.button :submit, 'Save feedback', class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+                    <%= f.button :submit, 'Accept', class: "px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" %>
+                    <%= f.button :submit, 'Reject', class: "px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
+                    </div>
+                  <% end %>
+                <% end %>
+
+                </div>
+              </div>
+            <% end %>
+
+          <% end %>
       </div>
     </div>
     <div class="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-      <img class="absolute inset-0 w-full h-full object-cover" src="<%= @course.image_url %>" alt="">
+      <% if User.rocketchat_integration_enabled? %>
+      <iframe width='100%;' height='100%' src="https://chat.learnawesome.org/channel/<%= @shown_level.rocketchat_channel_name %>?layout=embedded" frameborder="0"></iframe>
+      <% end %>
     </div>
-  </main>
-
-<% end %>
+</main>

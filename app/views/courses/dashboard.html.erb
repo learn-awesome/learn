@@ -1,0 +1,96 @@
+<div>
+  <div>
+    <nav class="sm:hidden" aria-label="Back">
+      <a href="#" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+        <!-- Heroicon name: solid/chevron-left -->
+        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        Back
+      </a>
+    </nav>
+    <nav class="hidden sm:flex" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-4">
+        <li>
+          <div>
+            <a href="<%= courses_path %>" class="text-sm font-medium text-gray-500 hover:text-gray-700">All Courses</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="mt-2 md:flex md:items-center md:justify-between">
+    <div class="flex-1 min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        <%=link_to @course.name, @course, class: "underline text-indigo-500" %>
+      </h2>
+    </div>
+    <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+      <%= link_to 'Add New Level', new_course_level_path(@course), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= link_to 'Edit Course', edit_course_path(@course), class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
+  </div>
+</div>
+
+<div class="mt-6 flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Level
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Pending
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Submitted
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Rejected
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @course.levels.each_with_index do |level, idx| %>
+            <tr class="<%= idx % 2 == 0 ? 'bg-white' : 'bg-gray-50' %>">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <span class="font-bold"><%= (idx + 1) %></span> &nbsp; <%= link_to level.name, course_path(@course, level: (idx+1)), class: "underline text-indigo-600 hover:text-indigo-900" %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex -space-x-2 overflow-hidden">
+                <% @course.get_student_levels(idx+1)['pending'].to_a.map(&:user).each do |u| %>
+                    <%= link_to course_path(@course, level: (idx+1)) do %>
+                      <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="<%= u.image_url %>" alt="<%= u.nickname %>" title="<%= u.nickname %>">
+                    <% end %>
+                <% end %>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex -space-x-2 overflow-hidden">
+                <% @course.get_student_levels(idx+1)['submitted'].to_a.map(&:user).each do |u| %>
+                    <%= link_to course_path(@course, level: (idx+1)) do %>
+                      <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="<%= u.image_url %>" alt="<%= u.nickname %>" title="<%= u.nickname %>">
+                    <% end %>
+                <% end %>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex -space-x-2 overflow-hidden">
+                <% @course.get_student_levels(idx+1)['rejected'].to_a.map(&:user).each do |u| %>
+                  <%= link_to course_path(@course, level: (idx+1)) do %>
+                    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="<%= u.image_url %>" alt="<%= u.nickname %>" title="<%= u.nickname %>">
+                  <% end %>
+                <% end %>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

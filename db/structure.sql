@@ -700,9 +700,10 @@ CREATE TABLE public.courses (
     image_url character varying,
     topic_id uuid NOT NULL,
     user_id uuid NOT NULL,
-    cost integer NOT NULL,
+    cost integer DEFAULT 0 NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    score integer DEFAULT 0
 );
 
 
@@ -900,7 +901,7 @@ CREATE TABLE public.levels (
     description text,
     course_id uuid NOT NULL,
     seq integer NOT NULL,
-    item_type_id character varying NOT NULL,
+    item_type_id character varying,
     link character varying,
     answer_type character varying NOT NULL,
     answer_prompt text NOT NULL,
@@ -2675,6 +2676,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210320143641'),
 ('20210320144041'),
 ('20210320144914'),
-('20210321095807');
+('20210321095807'),
+('20210321142504');
 
 

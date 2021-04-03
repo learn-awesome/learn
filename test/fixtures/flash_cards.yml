@@ -5,7 +5,7 @@
 #  id                   :uuid             not null, primary key
 #  question             :text             not null
 #  answer               :text             not null
-#  level                :integer          default("1"), not null
+#  level                :integer          default(1), not null
 #  url                  :string
 #  last_practiced_at    :datetime
 #  practice_count       :integer

@@ -2,13 +2,18 @@
 #
 # Table name: links
 #
-#  id         :uuid             not null, primary key
-#  url        :string           not null
-#  item_id    :uuid             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  name       :string
-#  is_primary :boolean
+#  id            :uuid             not null, primary key
+#  url           :string           not null
+#  item_id       :uuid             not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  name          :string
+#  is_primary    :boolean
+#  embed_tag     :string
+#  mimetype      :string
+#  has_paywall   :boolean
+#  has_loginwall :boolean
+#  has_ads       :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

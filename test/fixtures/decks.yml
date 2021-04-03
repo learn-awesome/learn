@@ -5,7 +5,7 @@
 #  id          :uuid             not null, primary key
 #  name        :string
 #  user_id     :uuid             not null
-#  is_public   :boolean          default("false"), not null
+#  is_public   :boolean          default(FALSE), not null
 #  description :string
 #  image_url   :string
 #  tags        :string

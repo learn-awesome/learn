@@ -7,7 +7,7 @@
 #  description :text
 #  image_url   :string
 #  website_url :string
-#  is_public   :boolean          default("false"), not null
+#  is_public   :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
