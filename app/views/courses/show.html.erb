@@ -52,10 +52,12 @@
         </div>
 
           <% if @student %>
+          <% if @current_user_level.feedback.present? %>
           <p class="bg-yellow-200 border-2 border-yellow-500 text-yellow-800 p-4 mt-2 rounded-md">
             <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
             <%= @current_user_level.feedback %>
           </p>
+          <% end %>
           <%= simple_form_for(@current_user_level, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@current_user_level.course, @current_user_level.level,@current_user_level)) do |f| %>
             <div class="mt-8 form-inputs space-y-6">
             <%= f.input :answer, label: @current_user_level.level.answer_prompt, as: @current_user_level.level.answer_type, required: true, wrapper: :tailwind_string_input %>
@@ -104,7 +106,7 @@
     </div>
     <div class="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
       <% if User.rocketchat_integration_enabled? %>
-      <iframe width='100%;' height='100%' src="https://chat.learnawesome.org/channel/<%= @shown_level.rocketchat_channel_name %>?layout=embedded" frameborder="0"></iframe>
+      <iframe width='100%;' height='100%' src="https://chat.learnawesome.org/group/<%= @shown_level.rocketchat_channel_name %>?layout=embedded" frameborder="0"></iframe>
       <% end %>
     </div>
 </main>

@@ -7,18 +7,21 @@ class UserLevelsController < InheritedResources::Base
   end
 
   def update
-    user_level = UserLevel.find(params[:user_level_id])
+    user_level = UserLevel.find(params[:id])
     if params[:commit] == "Submit Work"
       user_level.answer = params[:answer]
       user_level.submit!
     elsif params[:commit] == "Accept" && user_level.course.taught_by?(current_user)
-      user_level.feedback = params[:feedback]
+      user_level.feedback = params[:user_level][:feedback]
       user_level.accept!
     elsif params[:commit] == "Reject" && user_level.course.taught_by?(current_user)
-      user_level.feedback = params[:feedback]
+      user_level.feedback = params[:user_level][:feedback]
       user_level.reject!
+    elsif params[:commit] == "Save feedback" && user_level.course.taught_by?(current_user)
+      user_level.feedback = params[:user_level][:feedback]
+      user_level.save!
     end
-    redirect_to course_level_path(@user_level.course, @user_level.level) 
+    redirect_to course_level_path(user_level.course, user_level.level) 
   end
 
   def destroy
