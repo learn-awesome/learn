@@ -7,4 +7,12 @@ Rails.application.config.middleware.insert_after Rails::Rack::Logger, Rack::Cors
         credentials: true,
         methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
+
+    allow do
+        origins 'bizzy.polyglot.network'
+    
+        resource '/*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
 end
