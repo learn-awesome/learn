@@ -279,6 +279,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-mini-profiler (2.2.0)
       rack (>= 1.2.0)
     rack-test (1.1.0)
@@ -457,6 +459,7 @@ DEPENDENCIES
   openai
   pg (>= 0.18, < 2.0)
   puma (= 5.1.1)
+  rack-cors
   rack-mini-profiler
   rails
   redcarpet
