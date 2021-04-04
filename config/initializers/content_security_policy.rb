@@ -14,7 +14,7 @@ Rails.application.config.content_security_policy do |policy|
 #   policy.object_src  :none
 #   policy.script_src  :self, :https, "https://cdn.jsdelivr.net"
 #   policy.style_src   :self, :https
-  policy.frame_ancestors :self, "https://bizzy.polyglot.network", "http://localhost:3000", "https://chat.learnawesome.org"
+  policy.frame_ancestors :self, "https://bizzy.polyglot.network", "http://bizzy.polyglot.network", "https://chat.learnawesome.org"
   # If you are using webpack-dev-server then specify webpack-dev-server host
   # policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
 

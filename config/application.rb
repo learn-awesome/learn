@@ -17,6 +17,10 @@ module Learn
 
     config.active_record.schema_format = :sql
 
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOW-FROM https://chat.learnawesome.org'
+    }
+
     config.active_job.queue_adapter = :delayed_job
 
     config.x.application_job.default_url_options = { host: "https://learnawesome.org" }
