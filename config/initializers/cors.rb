@@ -4,6 +4,7 @@ Rails.application.config.middleware.insert_after Rails::Rack::Logger, Rack::Cors
   
       resource '/rocketchat*',
         headers: :any,
+        credentials: true,
         methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
 end
