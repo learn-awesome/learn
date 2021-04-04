@@ -1,4 +1,4 @@
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+Rails.application.config.middleware.insert_after Rails::Rack::Logger, Rack::Cors, :debug => true, :logger => Rails.logger do
     allow do
       origins 'chat.learnawesome.org'
   
