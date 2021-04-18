@@ -46,24 +46,24 @@
           </div>
           <div>
             <h1 class="text-2xl tracking-tight font-bold text-gray-900"><%= @shown_level.name %></h1>
-            <p><%= @shown_level.description %></p>
-            <p><a href="<%= @shown_level.link %>" target="_blank"><%= @shown_level.item_type_id %></a></p>
+            <p><%= @shown_level.item_type_id %>: <a href="<%= @shown_level.link %>" target="_blank" class="underline text-indigo-500 hover:text-indigo-700"><%= @shown_level.link %></a></p>
           </div>
         </div>
+        <p class="prose mt-4"><%= @shown_level.description %></p>
 
           <% if @student %>
-          <% if @current_user_level.feedback.present? %>
-          <p class="bg-yellow-200 border-2 border-yellow-500 text-yellow-800 p-4 mt-2 rounded-md">
-            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
-            <%= @current_user_level.feedback %>
-          </p>
-          <% end %>
-          <%= simple_form_for(@current_user_level, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@current_user_level.course, @current_user_level.level,@current_user_level)) do |f| %>
-            <div class="mt-8 form-inputs space-y-6">
-            <%= f.input :answer, label: @current_user_level.level.answer_prompt, as: @current_user_level.level.answer_type, required: true, wrapper: :tailwind_string_input %>
-            <%= f.button :submit, 'Submit Work', class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-            </div>
-          <% end %>
+            <% if @current_user_level.feedback.present? %>
+            <p class="bg-yellow-200 border-2 border-yellow-500 text-yellow-800 p-4 mt-2 rounded-md">
+              <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
+              <%= @current_user_level.feedback %>
+            </p>
+            <% end %>
+            <%= simple_form_for(@current_user_level, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@current_user_level.course, @current_user_level.level,@current_user_level)) do |f| %>
+              <div class="mt-8 form-inputs space-y-6">
+              <%= f.input :answer, label: @current_user_level.level.answer_prompt, as: @current_user_level.level.answer_type, required: true, wrapper: :tailwind_string_input %>
+              <%= f.button :submit, 'Submit Work', class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+              </div>
+            <% end %>
           <% else %>
             <% @course.get_student_levels(@shown_level_index).values.flatten.to_a.sort_by { |ul| ['submitted','pending','rejected','accepted'].index(ul.status) }.each do |ul| %>
               <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mt-4">
@@ -82,10 +82,12 @@
                 <div class="px-4 py-4 sm:px-6">
 
                 <% if ul.status == 'accepted' %>
-                  <p class="bg-green-200 border-2 border-green-500 text-green-800 p-4 mt-2 rounded-md">
+                  <% if ul.feedback.present? %>
+                    <p class="bg-green-200 border-2 border-green-500 text-green-800 p-4 mt-2 rounded-md">
                     <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white mr-2" src="<%= @course.user.image_url %>" alt="">
                     <%= ul.feedback %>
-                  </p>
+                    </p>
+                  <% end %>
                 <% else %>
                   <%= simple_form_for(ul, builder: SimpleForm::Tailwind::FormBuilder, url: course_level_user_level_path(@course, @shown_level, ul)) do |f| %>
                     <div class="mt-8 form-inputs space-y-6">
