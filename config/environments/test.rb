@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  Rails.application.routes.default_url_options = { :host => 'localhost', :protocol => 'http', :port => 3000}
+  Rails.application.routes.default_url_options = { :host => 'localhost', :protocol => 'https', :port => 8443}
 
   config.cache_classes = false
 

@@ -58,6 +58,8 @@ rake import:import['public/data1.json'] import:import['public/data2.json'] mrb:i
 Set-up caching in dev:
 `rails dev:cache`
 
+Set up SSL certificate for local development. See [this article](https://dev.to/matayoshimariano/how-to-add-ssl-to-your-localhost-development-environment-using-ruby-on-rails-with-puma-14di)
+
 Start the app with some secrets:
 ```
 # These two lines are not needed in local development unless you're testing ActivityPub flows
@@ -65,6 +67,10 @@ export ACTIVITYPUB_PRIVKEY=`cat private.pem`
 export ACTIVITYPUB_PUBKEY=`cat public.pem`
 
 SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s
+
+The app can be accessed at https://localhost:8443/ 
+
+Don't use http://localhost:3000/ for loca development because it leads to weird issues with SameSite, non-Secure cookies
 
 Either use your own Auth0 tenant (which needs some configuration) or contact us to get the values of the above environment variables.
 ```
