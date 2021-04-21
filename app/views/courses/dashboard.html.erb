@@ -94,3 +94,14 @@
     </div>
   </div>
 </div>
+
+<div class="">
+  <h1 class="text-md font-semibold mt-4 mb-4">Students who have cleared the final level</h1>
+  <div class="flex -space-x-2 overflow-hidden">
+    <% @course.get_student_levels(@course.levels.size)['accepted'].to_a.map(&:user).each do |u| %>
+        <%= link_to course_path(@course, level: @course.levels.size) do %>
+          <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="<%= u.image_url %>" alt="<%= u.nickname %>" title="<%= u.nickname %>">
+        <% end %>
+    <% end %>
+  </div>
+</div>

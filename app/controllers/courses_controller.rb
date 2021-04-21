@@ -39,7 +39,7 @@ class CoursesController < InheritedResources::Base
   def create
     @course = Course.new(course_params)
     @course.user = current_user
-    create! { dashboard_course_path(@course) }
+    create!(notice: "Great! Now define some levels with learning materials and challenges.") { dashboard_course_path(@course) }
   end
 
   def update

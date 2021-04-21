@@ -42,7 +42,7 @@ class Course < ApplicationRecord
   end
 
   def create_first_level
-    self.levels.create!(seq: 1, name: 'first level', answer_type: 'text', answer_prompt: 'to complete this level, tell us why you want to learn this?')
+    self.levels.create!(seq: 1, name: 'first level', description: 'this is the description', answer_type: 'text', answer_prompt: 'This prompt explains to the students what they are supposed to accomplish and submit')
   end
 
   def first_level

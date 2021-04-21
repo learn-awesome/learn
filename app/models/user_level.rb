@@ -20,6 +20,14 @@ class UserLevel < ApplicationRecord
 
   after_create :add_user_to_chat_room
 
+  def accepted?
+    self.status == 'accepted'
+  end
+
+  def rejected?
+    self.status == 'rejected'
+  end
+
   def submit!
     self.status = 'submitted'
     self.save!
@@ -39,6 +47,16 @@ class UserLevel < ApplicationRecord
 
   def is_link_submission?
     self.level.answer_type == 'url' && self.answer.present?
+  end
+
+  def inspect
+    {
+      user: user.nickname,
+      course_level: (course.name.to_s + ":" + level.name + "(" + level.seq.to_s + ")"),
+      answer: answer,
+      status: status,
+      id: id
+    }.inspect
   end
 
   def add_user_to_chat_room
