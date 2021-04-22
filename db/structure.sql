@@ -690,6 +690,21 @@ CREATE TABLE public.collections (
 
 
 --
+-- Name: course_invite_codes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.course_invite_codes (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    code character varying NOT NULL,
+    description text,
+    course_id uuid NOT NULL,
+    max_limit integer NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: courses; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -703,7 +718,10 @@ CREATE TABLE public.courses (
     cost integer DEFAULT 0 NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    score integer DEFAULT 0
+    score integer DEFAULT 0,
+    first_assistant_id uuid,
+    second_assistant_id uuid,
+    invite_msg text
 );
 
 
@@ -1171,7 +1189,8 @@ CREATE TABLE public.user_levels (
     feedback text,
     metadata json,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    invite_code character varying
 );
 
 
@@ -1428,6 +1447,14 @@ ALTER TABLE ONLY public.collection_items
 
 ALTER TABLE ONLY public.collections
     ADD CONSTRAINT collections_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: course_invite_codes course_invite_codes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.course_invite_codes
+    ADD CONSTRAINT course_invite_codes_pkey PRIMARY KEY (id);
 
 
 --
@@ -1789,6 +1816,27 @@ CREATE INDEX index_collection_items_on_item_id ON public.collection_items USING 
 --
 
 CREATE INDEX index_collections_on_user_id ON public.collections USING btree (user_id);
+
+
+--
+-- Name: index_course_invite_codes_on_course_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_course_invite_codes_on_course_id ON public.course_invite_codes USING btree (course_id);
+
+
+--
+-- Name: index_courses_on_first_assistant_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_courses_on_first_assistant_id ON public.courses USING btree (first_assistant_id);
+
+
+--
+-- Name: index_courses_on_second_assistant_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_courses_on_second_assistant_id ON public.courses USING btree (second_assistant_id);
 
 
 --
@@ -2368,6 +2416,14 @@ ALTER TABLE ONLY public.topics
 
 
 --
+-- Name: courses fk_rails_65e51188f9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT fk_rails_65e51188f9 FOREIGN KEY (second_assistant_id) REFERENCES public.users(id);
+
+
+--
 -- Name: review_reactions fk_rails_6975d6d5df; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2576,6 +2632,14 @@ ALTER TABLE ONLY public.social_logins
 
 
 --
+-- Name: course_invite_codes fk_rails_f62e25d07c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.course_invite_codes
+    ADD CONSTRAINT fk_rails_f62e25d07c FOREIGN KEY (course_id) REFERENCES public.courses(id);
+
+
+--
 -- Name: flash_cards fk_rails_f949b3ea79; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2589,6 +2653,14 @@ ALTER TABLE ONLY public.flash_cards
 
 ALTER TABLE ONLY public.user_levels
     ADD CONSTRAINT fk_rails_f98c61ac53 FOREIGN KEY (course_id) REFERENCES public.courses(id);
+
+
+--
+-- Name: courses fk_rails_fbdda12dea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT fk_rails_fbdda12dea FOREIGN KEY (first_assistant_id) REFERENCES public.users(id);
 
 
 --
@@ -2677,6 +2749,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210320144041'),
 ('20210320144914'),
 ('20210321095807'),
-('20210321142504');
+('20210321142504'),
+('20210422124328');
 
 

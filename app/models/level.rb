@@ -73,4 +73,47 @@ class Level < ApplicationRecord
   rescue Exception => ex
     Rails.logger.error "Error in Level#create_rocketchat_channel for #{self.id}: #{ex.message}"
   end
+
+  def add_leader(user)
+    return unless User.rocketchat_integration_enabled? && self.persisted?
+    User.get_rocketchat_admin_token
+    token = self.course.user.create_or_login_rocketchat
+    chat_server = 'https://chat.learnawesome.org'
+    resp = HTTParty.post(
+			chat_server + '/api/v1/groups.addLeader', 
+			body: {
+				roomId: self.get_rocketchat_channel_id,
+        userId: user.get_rocketchat_user_id
+			}.to_json, 
+			headers: {
+				'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'],
+				'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID'],
+				'Content-Type' => 'application/json'
+			}
+		)
+  rescue Exception => ex
+    Rails.logger.error "Error in Level#create_rocketchat_channel for #{self.id}: #{ex.message}"
+  end
+
+  def add_moderator(user)
+    return unless User.rocketchat_integration_enabled? && self.persisted?
+    User.get_rocketchat_admin_token
+    token = self.course.user.create_or_login_rocketchat
+    chat_server = 'https://chat.learnawesome.org'
+    resp = HTTParty.post(
+			chat_server + '/api/v1/groups.groups.addModerator', 
+			body: {
+				roomId: self.get_rocketchat_channel_id,
+        userId: user.get_rocketchat_user_id
+			}.to_json, 
+			headers: {
+				'X-Auth-Token' => ENV['ROCKETCHAT_ADMIN_AUTHTOKEN'],
+				'X-User-Id' => ENV['ROCKETCHAT_ADMIN_USERID'],
+				'Content-Type' => 'application/json'
+			}
+		)
+  rescue Exception => ex
+    Rails.logger.error "Error in Level#create_rocketchat_channel for #{self.id}: #{ex.message}"
+  end
+
 end

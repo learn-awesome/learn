@@ -9,7 +9,21 @@
     </p>
     <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
       <div class="rounded-md shadow">
-        <%= button_to 'Join The Course', enroll_course_path(@course), method: :get, class: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 cursor-pointer" %>
+        <% if @course.requires_invite_code? %>
+          <div class="max-w-md p-6 mx-auto bg-white rounded-md shadow-md">
+          
+          <%= simple_form_for(@course, builder: SimpleForm::Tailwind::FormBuilder, url: enroll_course_path(@course), method: :get) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-inputs space-y-6">
+            <%= f.input :invite_code, label: "This course requires an invite code to join: #{@course.invite_msg}", placeholder: "Enter Invite Code", required: true, wrapper: :tailwind_string_input %>
+            <%= f.button :submit, 'Join This Course', class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            </div>
+          <% end %>
+          </div>
+        <% else %>
+          <%= button_to 'Join This Course', enroll_course_path(@course), method: :get, class: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 cursor-pointer" %>
+        <% end %>
       </div>
     </div>
     <footer class="mt-8">

@@ -7,9 +7,9 @@ class CoursesController < InheritedResources::Base
     @current_user_level = @course.current_user_level(current_user)
     if current_user.nil?
       render 'landing_page'
-    elsif @current_user_level || @course.user == current_user
+    elsif @current_user_level || @course.taught_by?(current_user)
       # enrolled or teacher
-      if @course.user == current_user
+      if @course.taught_by?(current_user)
         @teacher = true
         @shown_level_index = (params[:level] && params[:level].to_i ) || 1
 
@@ -59,11 +59,12 @@ class CoursesController < InheritedResources::Base
 
   def enroll
     @course = Course.from_param(params[:id])
-    status, message = @course.enroll!(current_user)
+    invite_code = params[:course][:invite_code]
+    status, message = @course.enroll!(current_user, invite_code)
     if status
       redirect_to @course, notice: "All the best!"
     else
-      redirect_to @course, alert: message
+      render 'landing_page', notice: message
     end
   end
 
@@ -75,7 +76,7 @@ class CoursesController < InheritedResources::Base
   private
 
     def course_params
-      params.require(:course).permit(:name, :description, :image_url, :topic_id, :cost)
+      params.require(:course).permit(:name, :description, :image_url, :topic_id, :cost, :invite_msg)
     end
 
 end
