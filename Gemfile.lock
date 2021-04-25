@@ -372,8 +372,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stackprof (0.2.16)
-    tailwindcss-rails (0.3.1)
-      rails (>= 6.0.0)
     temple (0.8.2)
     textacular (5.4.0)
       activerecord (>= 5.0, < 6.2)
@@ -474,7 +472,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.1)
   stackprof
-  tailwindcss-rails (~> 0.3.1)
   textacular (= 5.4.0)
   turbo-rails
   twitter
