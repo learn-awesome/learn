@@ -585,42 +585,6 @@ ALTER SEQUENCE hdb_catalog.remote_schemas_id_seq OWNED BY hdb_catalog.remote_sch
 
 
 --
--- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.active_admin_comments (
-    id bigint NOT NULL,
-    namespace character varying,
-    body text,
-    resource_type character varying,
-    resource_id bigint,
-    author_type character varying,
-    author_id bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.active_admin_comments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_comments.id;
-
-
---
 -- Name: activity_pub_followers; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -630,22 +594,6 @@ CREATE TABLE public.activity_pub_followers (
     metadata text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: admin_users; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.admin_users (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    email character varying DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying,
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -1292,13 +1240,6 @@ ALTER TABLE ONLY hdb_catalog.remote_schemas ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
-
-
---
 -- Name: delayed_jobs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1402,27 +1343,11 @@ ALTER TABLE ONLY hdb_catalog.remote_schemas
 
 
 --
--- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.active_admin_comments
-    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
-
-
---
 -- Name: activity_pub_followers activity_pub_followers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.activity_pub_followers
     ADD CONSTRAINT activity_pub_followers_pkey PRIMARY KEY (id);
-
-
---
--- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.admin_users
-    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -1756,45 +1681,10 @@ CREATE INDEX delayed_jobs_priority ON public.delayed_jobs USING btree (priority,
 
 
 --
--- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON public.active_admin_comments USING btree (author_type, author_id);
-
-
---
--- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_comments USING btree (namespace);
-
-
---
--- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
-
-
---
 -- Name: index_activity_pub_followers_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_activity_pub_followers_on_user_id ON public.activity_pub_followers USING btree (user_id);
-
-
---
--- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_admin_users_on_email ON public.admin_users USING btree (email);
-
-
---
--- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON public.admin_users USING btree (reset_password_token);
 
 
 --
@@ -2750,6 +2640,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210320144914'),
 ('20210321095807'),
 ('20210321142504'),
-('20210422124328');
+('20210422124328'),
+('20210425055427');
 
 
