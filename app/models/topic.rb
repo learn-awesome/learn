@@ -267,7 +267,7 @@ class Topic < ApplicationRecord
 
 	def gpt_questions(user, max_tokens: 70)
 		return nil unless self.is_gpt_enabled?(user)
-		client = Openai::Client.new(pk: ENV['GPT3_PUBLIC_KEY'], sk: ENV['GPT3_SECRET_KEY'])
+		client = OpenAI::Client.new(api_key: ENV['GPT3_SECRET_KEY'], default_engine: 'davinci')
 		completions = client.completions(prompt: self.gpt_quiz_prompt, max_tokens: max_tokens)
 		completions["choices"].first["text"].split("Question: ").map(&:strip)
 	end
