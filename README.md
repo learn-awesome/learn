@@ -26,6 +26,17 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 - Add richer metadata to items so that advanced search becomes more useful.
 
+# Development setup with Docker
+
+You will need to put some values in `.env.dev`
+
+Run `docker compose up --build` to start the webapp, background worker, and database server.
+
+To run the migrations and some seed data: `docker compose run web rake db:migrate`
+To run rails console: `docker compose run web rails c`
+
+When you want to stop the servers: `docker compose down`
+
 # Development Setup with Vagrant
 
 ```
