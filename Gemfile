@@ -127,6 +127,6 @@ gem "tailwindcss-rails", "~> 0.3.1"
 
 gem 'simple_form'
 gem 'heroicon'
-gem "simple_form_tailwind", github: "abevoelker/simple_form_tailwind"
+gem "simple_form_tailwind_css", github: "abevoelker/simple_form_tailwind_css"
 
 gem 'rack-cors'

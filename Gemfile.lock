@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/abevoelker/simple_form_tailwind.git
-  revision: d805493eca242f39cd0365fc4f3921b14b6fb79d
+  remote: https://github.com/abevoelker/simple_form_tailwind_css.git
+  revision: 2c6e7d3654bc2f5dc1bf43db4618f968ce874502
   specs:
-    simple_form_tailwind (0.0.1)
+    simple_form_tailwind_css (0.0.2)
       heroicon
       simple_form
 
@@ -466,7 +466,7 @@ DEPENDENCIES
   sass-rails (= 6.0.0)
   sentry-raven
   simple_form
-  simple_form_tailwind!
+  simple_form_tailwind_css!
   sitemap_generator
   slack-ruby-client
   slim
