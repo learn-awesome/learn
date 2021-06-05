@@ -1,23 +1,34 @@
 # FROM nileshtrivedi/ubuntu1804ruby3:1.0
 FROM ruby:3.0.1-buster
 
-RUN apt update \
+RUN apt update -y \
     && apt install -y --no-install-recommends \
-        postgresql-client build-essential nodejs npm \
+        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools \
     && rm -rf /var/lib/apt/lists/*
 
-RUN npm install yarn
+# upgrade postgresql-client for pg_dump
+RUN curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main" > /etc/apt/sources.list.d/postgresql.list' 
+RUN apt update -y && apt install -y --no-install-recommends postgresql-client-13
+
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+RUN npm install -g yarn
+RUN yarn install --check-files
 
 RUN bundle config --global frozen 1
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 
 RUN bundle install
 
 COPY . .
 
+EXPOSE 8443
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ./entrypoint.sh
 

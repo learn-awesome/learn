@@ -1,30 +1,19 @@
 version: "3.9"
 
 services:
-  web:
+  learnawesome:
+    # single container will run both the app and the background worker
     build: .
     env_file:
       - .env.dev
     ports: 
+      - "8443:8443"
       - "3000:3000"
-    command: bundle exec rails s -b '0.0.0.0'
-    links:
-      - db
-
-  worker:
-    build: .
-    env_file:
-      - .env.dev
-    command: bundle exec rake jobs:work
-    links:
-      - db
-
-  db:
-    image: postgres:11.12
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=learn
-      - POSTGRES_PASSWORD=learn
-      - POSTGRES_DB=learn_development
+    networks:
+      - dev-network
+    volumes:
+      - .:/app
+  
+networks:
+  dev-network:
+    external: true

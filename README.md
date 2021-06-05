@@ -10,7 +10,7 @@
 
 This is the code that powers https://learnawesome.org
 
-This is built using Rails 6.0, PostgreSQL, and Tailwind CSS
+This is built using Rails 6.1, PostgreSQL, and Tailwind CSS
 
 For development, please come to [Slack](https://learnawesome.org/join_slack).
 
@@ -28,31 +28,42 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 # Development setup with Docker
 
-You will need to put some values in `.env.dev`
+You may need to put some values in `.env.dev`
 
-Run `docker compose up --build` to start the webapp, background worker, and database server.
+First, let's create a network so containers can find each other by name:
 
-To run the migrations and some seed data: `docker compose run web rake db:migrate`
-To run rails console: `docker compose run web rails c`
+`docker network create dev-network`
 
-When you want to stop the servers: `docker compose down`
+If you don't have postgres running somewhere already, install and start it:
 
-# Development Setup with Vagrant
+`docker run -d --name pg13dbhost --net dev-network --restart always -p 5432:5432 -v ~/pg13dbhost:/var/lib/postgresql/data -e POSTGRES_USER=learn -e POSTGRES_PASSWORD=learn -e POSTGRES_DB=learndb postgres:13.3`
+
+Note that:
+- run creates a new container from specified image
+- -d = detached/background mode
+- name will be the hostname to be used either with --link or in user-defined networks
+- --restart always will restart this container any time Docker is started, such as for a laptop reboot
+- -p 5432:5432 : will expose this postgres on your docker host
+- -v creates a volume for persisted data
+
+Now, install and start Redis:
+
+`docker run -d --name redis6host --net dev-network --restart always -p 6379:6379 -v ~/redis6host:/data -e REDIS_PASSWORD=learn redis:6.2.4`
+
+Now you can start the app while linking to these containers and overriding some environment variables:
 
 ```
-vagrant up
-vagrant provision
-
-# connect to vm
-vagrant ssh
-
-# Start the app in vm. Make sure to specify Auth0 creds. Ask us if you don't have your own.
-SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s -b 0.0.0.0
-
-# To destroy the vm
-vagrant destroy
-
+docker build -t learnawesome .
+docker run -it -p 8443:8443 --env-file .env.dev --net dev-network --link pg13dbhost:pg13dbhost --link redis6host:redis6host -e DATABASE_HOST=pg13dbhost -e AUTH0_DOMAIN=learnawesomedev.eu.auth0.com -e AUTH0_PUBKEY=pubkey -e AUTH0_PRIVKEY=privkey learnawesome
 ```
+
+Using `docker-compose.yml`, the above two commands can also be run by:
+
+`DATABASE_HOST=pg13dbhost AUTH0_DOMAIN=learnawesomedev.eu.auth0.com AUTH0_PUBKEY=pubkey AUTH0_PRIVKEY=privkey docker compose up --build`
+
+Now, the app can be accessed at https://localhost:8443
+
+In production, port 8443 will not be exposed and therefore, SSL proxy over port 3000 will be needed.
 
 # Local install
 
@@ -77,11 +88,11 @@ Start the app with some secrets:
 export ACTIVITYPUB_PRIVKEY=`cat private.pem`
 export ACTIVITYPUB_PUBKEY=`cat public.pem`
 
-SECRET_KEY_BASE=462487da70bd5a66aa230b387f61737d642b52c7d3b576e93413eddfc25fc8144eb52d19ae42d4bd8c4521f97e53956e0b3d8b4dba587f9edc7e8dbcc5238e8f AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= rails s
+SECRET_KEY_BASE= AUTH0_DOMAIN= AUTH0_PUBKEY= AUTH0_PRIVKEY= bundle exec puma
 
 The app can be accessed at https://localhost:8443/ 
 
-Don't use http://localhost:3000/ for loca development because it leads to weird issues with SameSite, non-Secure cookies
+Don't use http://localhost:3000/ for local development because it leads to weird issues with SameSite, non-Secure cookies
 
 Either use your own Auth0 tenant (which needs some configuration) or contact us to get the values of the above environment variables.
 ```
