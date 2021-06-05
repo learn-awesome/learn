@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -m
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -rf /app/tmp/pids/server.pid
@@ -15,14 +15,15 @@ done
 
 echo "Database ready to accept connections."
 
-# Create DATABASE_NAME if necessaru
+# Create DATABASE_NAME if necessary
 # exec bundle exec rake db:create
 
 # Run migrations and start background job processor
-exec bundle exec rake db:migrate && bundle exec rake jobs:work &
+bundle exec rake db:migrate
+bundle exec rake jobs:work &
 
 if [[ "$RAILS_ENV" == "production" ]]; then
-  exec bundle exec rake assets:precompile &
+  bundle exec rake assets:precompile
 fi
 
-exec bundle exec puma -C config/puma.rb
+bundle exec puma -C config/puma.rb
