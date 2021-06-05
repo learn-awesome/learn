@@ -16,7 +16,7 @@ done
 echo "Database ready to accept connections."
 
 # Create DATABASE_NAME if necessaru
-exec bundle exec rake db:create
+# exec bundle exec rake db:create
 
 # Run migrations and start background job processor
 exec bundle exec rake db:migrate && bundle exec rake jobs:work &
