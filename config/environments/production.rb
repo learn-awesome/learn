@@ -30,7 +30,7 @@ Rails.application.configure do
   config.assets.css_compressor = Tailwindcss::Compressor.new(files_with_class_names: Rails.root.glob("app/views/**/*.*") + Rails.root.glob("app/helpers/**/*.rb") + Rails.root.glob("app/components/*.html.erb"))
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
