@@ -22,7 +22,7 @@ echo "Database ready to accept connections."
 exec bundle exec rake db:migrate && bundle exec rake jobs:work &
 
 if [[ "$RAILS_ENV" == "production" ]]; then
-  exec bundle exec rake assets:precompile
+  exec bundle exec rake assets:precompile &
 fi
 
 exec bundle exec puma -C config/puma.rb
