@@ -21,6 +21,7 @@ echo "Database ready to accept connections."
 # Run migrations and start background job processor
 bundle exec rake db:migrate
 bundle exec rake jobs:work &
+cron &
 
 if [[ "$RAILS_ENV" == "production" ]]; then
   bundle exec rake assets:precompile

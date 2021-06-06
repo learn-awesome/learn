@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+GEM_HOME=/usr/local/bundle
+
+* * * * * root cd /app && /usr/local/bin/rake update_social_media >> /var/log/cron.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job

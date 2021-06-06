@@ -3,7 +3,7 @@ FROM ruby:3.0.1-buster
 
 RUN apt update -y \
     && apt install -y --no-install-recommends \
-        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools \
+        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools cron \
     && rm -rf /var/lib/apt/lists/*
 
 # upgrade postgresql-client for pg_dump
@@ -24,6 +24,15 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 
 RUN bundle install
+
+# Add crontab file in the cron directory
+COPY crontab /etc/cron.d/learnawesomecron
+
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/learnawesomecron
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
 
 COPY . .
 
