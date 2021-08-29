@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.hosts.clear # Allow development mode with ngrok, gitpod URLs etc
+
   Rails.application.routes.default_url_options = { :host => 'localhost', :protocol => 'https', :port => 8443}
 
   # In the development environment your application's code is reloaded on
