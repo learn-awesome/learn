@@ -6,4 +6,21 @@ ports:
     onOpen: open-browser
 
 tasks:
-  - init: bundle install && yarn install --check-files && bundle exec rake db:create db:migrate db:seed
+  - name: Rails server
+    init: >
+      bundle install &&
+      yarn install --check-files &&
+      bundle exec rake db:create db:migrate db:seed &&
+      gp sync-done appsetupdone
+    command: bundle exec puma -C config/puma.rb
+
+  - name: Rails console
+    init: gp sync-await appsetupdone
+    command: bundle exec rails console
+  
+  - name: PG Console
+    command: bundle exec rails dbconsole
+
+  - name: Background Jobs
+    init: gp sync-await appsetupdone
+    command: bundle exec rake jobs:work

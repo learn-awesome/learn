@@ -7,6 +7,13 @@ RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
 RUN bash -lc "rvm install ruby-3.0.1 && rvm use ruby-ruby-3.0.1 --default"
 RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
 
+ENV RACK_ENV development
+ENV RAILS_ENV development
+ENV DATABASE_PORT 5432
+ENV DATABASE_NAME learndb
+ENV DATABASE_USERNAME learn
+ENV DATABASE_PASSWORD learn
+
 # Install Node and Yarn
 # ENV NODE_VERSION=14.14.0
 # RUN bash -c ". .nvm/nvm.sh && \
