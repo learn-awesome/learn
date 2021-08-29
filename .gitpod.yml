@@ -7,5 +7,3 @@ ports:
 
 tasks:
   - init: bundle install && yarn install --check-files && bundle exec rake db:create db:migrate db:seed
-  - console: rails console
-  - db: psql -h localhost -d postgres
