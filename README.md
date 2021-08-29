@@ -26,7 +26,17 @@ For development, please come to [Slack](https://learnawesome.org/join_slack).
 
 - Add richer metadata to items so that advanced search becomes more useful.
 
-# Development setup with Docker
+# Develop with GitPod
+
+If you have an account with gitpod.io, you can simply visit [this URL](https://gitpod.io/#https://github.com/learn-awesome/learn) to get a complete coding environment with everything pre-configured: PostgreSQL, Ruby, NodeJS. The database will already be pre-loaded with seed data and GitPod will open the webapp in a separate browser window (make sure that popup is not blocked by your browser).
+
+As you can see in .gitpod.yml, this will open all necessary tools in terminal: Main Rails server process, Rails console, Postgres console, Background job process etc.
+
+LearnAwesome uses Auth0 for logging-in and because GitPod gives you dynamically generated URLs, those will not be pre-approved. Therefore, login/signup in your GitPod instance will not work currently. We need to figure out a solution for this.
+
+This is the easiest way to start hacking on and contributing to the LearnAwesome codebase.
+
+# Develop locally with Docker
 
 You may need to put some values in `.env.dev`
 

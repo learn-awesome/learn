@@ -11,6 +11,7 @@ tasks:
       bundle install &&
       yarn install --check-files &&
       bundle exec rake db:create db:migrate db:seed &&
+      bundle exec rake import:import['public/data1.json']
       gp sync-done appsetupdone
     command: bundle exec puma -C config/puma.rb
 
