@@ -1,10 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 8443
+    onOpen: open-browser
+
 tasks:
-  - init: bundle install
+  - init: bundle install && yarn install --check-files
     dbsetup: bundle exec rake db:create db:migrate db:seed
   - console: rails console
   - db: psql -h localhost -d postgres
-  # - cache: redis-server
-image:
-  file: .gitpod.Dockerfile
-ports:
-  - port: 8443
+
