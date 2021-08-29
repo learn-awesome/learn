@@ -1,6 +1,7 @@
 FROM gitpod/workspace-postgres
-                    
-USER gitpod
+
+# If we need Redis:
+# RUN sudo apt-get update  && sudo apt-get install -y   redis-server  && sudo rm -rf /var/lib/apt/lists/*
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
