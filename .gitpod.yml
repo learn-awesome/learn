@@ -19,6 +19,7 @@ tasks:
     command: bundle exec rails console
   
   - name: PG Console
+    init: gp sync-await appsetupdone
     command: bundle exec rails dbconsole
 
   - name: Background Jobs
