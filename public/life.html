@@ -17,6 +17,17 @@ textarea::placeholder {
 .introjs-tooltip {
     min-width: 400px;
 }
+#lifedot::-webkit-slider-thumb{
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
         </style>
     </head>
     <body class="">
@@ -164,7 +175,7 @@ textarea::placeholder {
                             <path d="M31.7959 28.4993C31.0052 29.8669 29.8686 31.0025 28.5002 31.792C27.1318 32.5815 25.5798 32.9971 24 32.9971C22.4202 32.9971 20.8683 32.5815 19.4999 31.7921C18.1315 31.0026 16.9948 29.867 16.2041 28.4994" stroke="url(#paint4_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M17.25 22.5C18.4926 22.5 19.5 21.4926 19.5 20.25C19.5 19.0074 18.4926 18 17.25 18C16.0074 18 15 19.0074 15 20.25C15 21.4926 16.0074 22.5 17.25 22.5Z" fill="url(#paint4_linear)"/>
                             <path d="M30.75 22.5C31.9926 22.5 33 21.4926 33 20.25C33 19.0074 31.9926 18 30.75 18C29.5074 18 28.5 19.0074 28.5 20.25C28.5 21.4926 29.5074 22.5 30.75 22.5Z" fill="url(#paint4_linear)"/>
-                        </svg>                            
+                        </svg>
                     </div>
                     <div class="px-2 py-1 flex flex-col space-y-1">
                         <input type="text" id="j1label" value="" placeholder="Mood" class="text-sm uppercase text-center font-normal text-gray-900"/>
@@ -185,6 +196,7 @@ textarea::placeholder {
 
         <footer class="bg-gradient-to-b from-white to-gray-200 flex items-center" style="height: 7vh;">
             <input id="lifedot" type="range" name="age" value="76" min="0" max="100" class="w-full"/>
+
         </footer>
         <button class="fixed bottom-0 right-0 h-8 w-8" onclick="introguide.start()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#aaa">
@@ -280,6 +292,6 @@ textarea::placeholder {
                 }
             });
         </script>
-        
+
     </body>
 </html>
