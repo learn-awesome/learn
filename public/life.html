@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://unpkg.com/twinklecss@1.1.0/twinkle.min.css">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
         <link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
-
+        <link rel="stylesheet" href="./life.css">
         <style>
 textarea::placeholder {
     color: #aaa;
@@ -191,7 +191,33 @@ textarea::placeholder {
                     </div>
                 </dl>
                 <textarea id="jtext" class="flex-grow shadow-lg rounded-lg bg-purple-50 p-2 resize-none" placeholder="joy" id="joy"></textarea>
-            </main>
+                    </article>
+                    <article class="bg-blue-300 overflow-scroll flex-grow p-4 flex flex-col space-y-2">
+                        <dl class="mt-2 grid grid-cols-4 divide-y-0 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200">
+                            <div class="flex items-center justify-center text-red-500 ">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.2" d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z" fill="url(#paint3_linear)"/>
+                                    <path d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z" stroke="url(#paint3_linear)" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.1399 10.8632C30.4809 10.4854 31.8874 10.3993 33.2645 10.6108C34.6416 10.8223 35.9574 11.3264 37.1232 12.0892C38.2891 12.8521 39.2779 13.8559 40.0232 15.0331C40.7684 16.2102 41.2528 17.5335 41.4436 18.9136C41.6344 20.2937 41.5272 21.6987 41.1293 23.0339C40.7313 24.3691 40.0519 25.6036 39.1367 26.6541C38.2215 27.7046 37.0919 28.5468 35.8238 29.124C34.5557 29.7011 33.1787 29.9999 31.7854 30" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.99927 37.0119C4.52202 34.8459 6.54357 33.0781 8.89324 31.8577C11.2429 30.6372 13.8517 30.0001 16.4994 30C19.1471 29.9999 21.756 30.6368 24.1058 31.8571C26.4555 33.0773 28.4772 34.845 30.0001 37.0109" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M31.7854 30C34.4333 29.9981 37.0428 30.6343 39.3927 31.8546C41.7427 33.075 43.764 34.8437 45.2854 37.0109" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="r1label" value="" placeholder="Work" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r1val" value="" placeholder="12h" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="r2label" value="" placeholder="Charity" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r2val" value="" placeholder="2w" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                            <div class="px-2 py-1 flex flex-col space-y-1">
+                                <input type="text" id="r3label" value="" placeholder="People Helped" class="text-sm uppercase text-center font-normal text-gray-900"/>
+                                <input type="text" id="r3val" value="" placeholder="1200" class="text-xl font-semibold text-indigo-600 text-center"/>
+                            </div>
+                        </dl>
+                        <textarea id="rtext" class="flex-grow shadow-lg rounded-lg bg-purple-50 p-2 resize-none" placeholder="Do Good" id="relationships"></textarea>
+                    </article>            </main>
         </section>
 
         <footer class="bg-gradient-to-b from-white to-gray-200 flex items-center" style="height: 7vh;">
