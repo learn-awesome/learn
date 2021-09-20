@@ -27,14 +27,21 @@
       }
 
       #lifedot {
-        /* position: relative;
-        bottom: 0; */
+        position: relative;
+        bottom: 0;
       }
       #lifedotLabel {
-        /* background-color: rgba(0, 0, 0, 0.35);
+        display: none;
+        background-color: rgba(0, 0, 0, 0.35);
         border-radius: 0.5rem 0.5rem 0 0;
         padding: 1px 3px;
-        position: absolute; */
+        position: fixed;
+        bottom: 24px;
+        text-align: center;
+      }
+      footer:hover #lifedotLabel,
+      footer:focus #lifedotLabel {
+        display: block;
       }
     </style>
   </head>
@@ -805,7 +812,7 @@
     <script>
       // Used to display the user's currently set age
       const lifedot = document.querySelector("#lifedot");
-      let lifedotLabel = document.querySelector("lifedotLabel");
+      const lifedotLabel = document.querySelector("#lifedotLabel");
 
       function saveAllData() {
         ["h", "w", "k", "r", "j"].forEach(function (prefix) {
@@ -867,6 +874,10 @@
         localStorage.setItem(ev.target.id, ev.target.value);
       }
 
+      function setLifeDotLabel() {
+        lifedotLabel.innerHTML = `Your Age: ${lifedot.value}`;
+      }
+
       var introguide;
 
       document.addEventListener("DOMContentLoaded", (event) => {
@@ -876,6 +887,7 @@
 
         let storedAge = localStorage.getItem("lifedot");
         lifedot.value = storedAge;
+        lifedot.onchange = setLifeDotLabel;
 
         introguide = introJs().setOptions({
           steps: [
