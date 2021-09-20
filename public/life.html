@@ -20,29 +20,22 @@
         color: #aaa;
         text-align: center;
         font-size: 3em;
-        line-height: 200px;
       }
 
       .introjs-tooltip {
         min-width: 400px;
       }
 
-      /* input[type="range"]::-webkit-slider-thumb,
-      input[type="range"]::-moz-range-thumb {
-        -webkit-appearance: none;
-        animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+      #lifedot {
+        /* position: relative;
+        bottom: 0; */
       }
-
-      @keyframes ping {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(2);
-          opacity: 0;
-        }
-      } */
+      #lifedotLabel {
+        /* background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 0.5rem 0.5rem 0 0;
+        padding: 1px 3px;
+        position: absolute; */
+      }
     </style>
   </head>
   <body class="">
@@ -779,6 +772,7 @@
       class="bg-gradient-to-b from-white to-gray-200 flex items-center"
       style="height: 7vh"
     >
+      <label for="lifedot" id="lifedotLabel"></label>
       <input
         id="lifedot"
         type="range"
@@ -809,6 +803,10 @@
     </button>
     <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
     <script>
+      // Used to display the user's currently set age
+      const lifedot = document.querySelector("#lifedot");
+      let lifedotLabel = document.querySelector("lifedotLabel");
+
       function saveAllData() {
         ["h", "w", "k", "r", "j"].forEach(function (prefix) {
           localStorage.setItem(
@@ -870,7 +868,6 @@
       }
 
       var introguide;
-      const lifedot = document.querySelector("#lifedot");
 
       document.addEventListener("DOMContentLoaded", (event) => {
         loadAllData();
