@@ -31,13 +31,14 @@
         bottom: 0;
       }
       #lifedotLabel {
-        display: none;
-        background-color: rgba(0, 0, 0, 0.35);
+        display: none; /* sets to block on :hover and :focus */
+        background-color: rgba(0, 0, 0, 0.55);
         border-radius: 0.5rem 0.5rem 0 0;
-        padding: 1px 3px;
+        padding: 3px 5px;
         position: fixed;
-        bottom: 24px;
-        text-align: center;
+        bottom: 7vh;
+        left: 50%;
+        transform: translateX(-50%);
       }
       footer:hover #lifedotLabel,
       footer:focus #lifedotLabel {
@@ -779,7 +780,11 @@
       class="bg-gradient-to-b from-white to-gray-200 flex items-center"
       style="height: 7vh"
     >
-      <label for="lifedot" id="lifedotLabel"></label>
+      <label
+        for="lifedot"
+        id="lifedotLabel"
+        class="text-xl font-semibold text-gray-100"
+      ></label>
       <input
         id="lifedot"
         type="range"
@@ -810,7 +815,7 @@
     </button>
     <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
     <script>
-      // Used to display the user's currently set age
+      // Used to display the user's currently age
       const lifedot = document.querySelector("#lifedot");
       const lifedotLabel = document.querySelector("#lifedotLabel");
 
@@ -874,11 +879,15 @@
         localStorage.setItem(ev.target.id, ev.target.value);
       }
 
-      function setLifeDotLabel() {
-        lifedotLabel.innerHTML = `Your Age: ${lifedot.value}`;
-      }
-
       var introguide;
+
+      lifedot.addEventListener("click", (ev) => {
+        ev.preventDefault();
+
+        localStorage.setItem(lifedot, lifedot.value);
+
+        lifedotLabel.innerHTML = `Your Age: ${lifedot.value}`;
+      });
 
       document.addEventListener("DOMContentLoaded", (event) => {
         loadAllData();
@@ -887,7 +896,6 @@
 
         let storedAge = localStorage.getItem("lifedot");
         lifedot.value = storedAge;
-        lifedot.onchange = setLifeDotLabel;
 
         introguide = introJs().setOptions({
           steps: [
