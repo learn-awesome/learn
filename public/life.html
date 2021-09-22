@@ -36,13 +36,114 @@
         border-radius: 0.5rem 0.5rem 0 0;
         padding: 3px 5px;
         position: fixed;
-        bottom: 7vh;
+        bottom: 30px;
         left: 50%;
         transform: translateX(-50%);
       }
       footer:hover #lifedotLabel,
       footer:focus #lifedotLabel {
         display: block;
+      }
+
+      input[type="range"] {
+        height: 30px;
+        -webkit-appearance: none;
+        margin: 10px 0;
+        width: 100%;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        background: #a4cafe;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        box-shadow: 0 0 3px #a4cafe;
+        border: 1px solid #a4cafe;
+        height: 24px;
+        width: 16px;
+        border-radius: 4px;
+        background: #ffffff;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -7px;
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transition: box-shadow 0.2s;
+      }
+      input[type="range"]:hover::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px #a4cafe;
+      }
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        height: 11px;
+        cursor: pointer;
+        background: #a4cafe;
+      }
+      input[type="range"]::-moz-range-thumb {
+        box-shadow: 0 0 3px #a4cafe;
+        border: 1px solid #a4cafe;
+        height: 24px;
+        width: 16px;
+        border-radius: 4px;
+        background: #ffffff;
+        cursor: pointer;
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transition: box-shadow 0.2s;
+      }
+      input[type="range"]:hover::-moz-range-thumb {
+        box-shadow: 0 0 0 3px #a4cafe;
+      }
+      input[type="range"]::-ms-track {
+        width: 100%;
+        height: 11px;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+      input[type="range"]::-ms-fill-lower {
+        background: #a4cafe;
+        border: 0px solid #010101;
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px #000000;
+      }
+      input[type="range"]::-ms-fill-upper {
+        background: #a4cafe;
+        border: 0px solid #010101;
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px #000000;
+      }
+      input[type="range"]::-ms-thumb {
+        margin-top: 1px;
+        box-shadow: 0 0 3px #a4cafe;
+        border: 1px solid #a4cafe;
+        height: 24px;
+        width: 16px;
+        border-radius: 4px;
+        background: #ffffff;
+        cursor: pointer;
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transition: box-shadow 0.2s;
+      }
+      input[type="range"]:hover::-ms-thumb {
+        box-shadow: 0 0 0 3px #a4cafe;
+      }
+      input[type="range"]:focus::-ms-fill-lower {
+        background: #a4cafe;
+      }
+      input[type="range"]:focus::-ms-fill-upper {
+        background: #a4cafe;
+      }
+
+      @keyframes ping {
+        from {
+          transform: scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
       }
     </style>
   </head>
@@ -785,6 +886,7 @@
         id="lifedotLabel"
         class="text-xl font-semibold text-gray-100"
       ></label>
+      <!-- lifedot.value is set dynamically using the lifedot eventListener in <script> below -->
       <input
         id="lifedot"
         type="range"
@@ -815,7 +917,7 @@
     </button>
     <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
     <script>
-      // Used to display the user's currently age
+      // Used to display the user's current age
       const lifedot = document.querySelector("#lifedot");
       const lifedotLabel = document.querySelector("#lifedotLabel");
 
@@ -882,10 +984,7 @@
       var introguide;
 
       lifedot.addEventListener("click", (ev) => {
-        ev.preventDefault();
-
         localStorage.setItem(lifedot, lifedot.value);
-
         lifedotLabel.innerHTML = `Your Age: ${lifedot.value}`;
       });
 
