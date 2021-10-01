@@ -241,6 +241,7 @@ textarea::placeholder {
                     localStorage.setItem(prefix + '3val',document.getElementById(prefix + '3val').value);
                     localStorage.setItem(prefix + 'text',document.getElementById(prefix + 'text').value);
                 });
+                localStorage.setItem('lifedot',document.getElementById('lifedot').value);
             }
 
             function loadAllData(){
@@ -253,6 +254,7 @@ textarea::placeholder {
                     document.getElementById(prefix + '3val').value = localStorage.getItem(prefix + '3val');
                     document.getElementById(prefix + 'text').value = localStorage.getItem(prefix + 'text');
                 });
+                document.getElementById('lifedot').value = localStorage.getItem('lifedot')
             }
 
             function saveData(ev){
