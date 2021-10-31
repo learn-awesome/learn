@@ -4,14 +4,14 @@ require 'httparty'
 # See https://github.com/tootsuite/mastodon/blob/a8b0bb355d3e7351b9f3d53fe7a3fb6d3d011d33/app/controllers/concerns/signature_verification.rb
 
 class ActivityPub
-	def self.sign(keyId, inbox, host, date, privkey)
+	def self.sign(keyId, inbox, host, date, privkey, digest)
 		# from https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/
 	    keypair       = OpenSSL::PKey::RSA.new(privkey)
-	    string_for_signing = "(request-target): post #{inbox}\nhost: #{host}\ndate: #{date}"
+	    string_for_signing = "(request-target): post #{inbox}\nhost: #{host}\ndate: #{date}\ndigest: #{digest}"
 	    # puts "string_for_signing = #{string_for_signing}"
 
 	    signature     = Base64.strict_encode64(keypair.sign(OpenSSL::Digest::SHA256.new, string_for_signing))
-	    header        = 'keyId="' + keyId + '",headers="(request-target) host date",signature="' + signature + '"'
+	    header        = 'keyId="' + keyId + '",headers="(request-target) host date digest",signature="' + signature + '"'
 	    return header
 	end
 
@@ -59,13 +59,13 @@ class ActivityPub
 		date = Time.now.utc.httpdate
 		inbox, host = "/inbox", "mastodon.social"
 		keyId = "foo"
-		orig_sig_header = ActivityPub.sign(keyId, inbox, host, date, ENV['ACTIVITYPUB_PRIVKEY'].to_s)
+		orig_sig_header = ActivityPub.sign(keyId, inbox, host, date, ENV['ACTIVITYPUB_PRIVKEY'].to_s, "dummydigest")
 
 		puts "\n Built orig_sig_header = #{orig_sig_header}"
 
 		return ActivityPub.verify(
 			ENV['ACTIVITYPUB_PUBKEY'].to_s,
-			{"Host" => host, "Date"=> date, "Signature"=> orig_sig_header},
+			{"HTTP_HOST" => host, "HTTP_DATE"=> date, "HTTP_SIGNATURE"=> orig_sig_header, "HTTP_DIGEST" => "dummydigest"},
 			inbox
 		)
 	end
@@ -75,13 +75,13 @@ class ActivityPub
 		date = Time.now.utc.httpdate
 		inbox, host = Rails.application.routes.url_helpers.inbox_user_url(user), "learnawesome.org"
 		keyId = Rails.application.routes.url_helpers.actor_user_url(user)
-		orig_sig_header = ActivityPub.sign(keyId, inbox, host, date, ENV['ACTIVITYPUB_PRIVKEY'].to_s)
+		orig_sig_header = ActivityPub.sign(keyId, inbox, host, date, ENV['ACTIVITYPUB_PRIVKEY'].to_s, "dummydigest")
 
 		puts "\n Built orig_sig_header = #{orig_sig_header}"
 
 		return ActivityPub.verify(
 			ENV['ACTIVITYPUB_PUBKEY'].to_s,
-			{"Host" => host, "Date"=> date, "Signature"=> orig_sig_header},
+			{"HTTP_HOST" => host, "HTTP_DATE"=> date, "HTTP_SIGNATURE"=> orig_sig_header, "HTTP_DIGEST" => "dummydigest"},
 			inbox
 		)
 	end

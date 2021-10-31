@@ -56,12 +56,13 @@ class TopicActivityPubFollower < ApplicationRecord
       URI.parse(full_inbox).path,
       URI.parse(full_inbox).host,
       date,
-      ENV['ACTIVITYPUB_PRIVKEY'].to_s
+      ENV['ACTIVITYPUB_PRIVKEY'].to_s,
+      "SHA-256=#{Digest::SHA256.base64digest(doc.to_json)}"
     )
 
     HTTParty.post(full_inbox,
       body: doc.to_json,
-      headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json'}
+      headers: { 'Date': date, 'Signature': signature_header , 'Content-Type': 'application/json', 'Digest': "SHA-256=#{Digest::SHA256.base64digest(doc.to_json)}"}
     )
   end
 
