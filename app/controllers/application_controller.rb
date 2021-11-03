@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
 	include ApplicationHelper
 	before_action :set_raven_context
 	before_action :allow_rack_mini_profiler
-	before_action :set_variant 
+	before_action :set_variant
+	after_action :remove_x_frame_options
 
 	layout proc { |controller| params['ext'].to_s == 'true' ? 'embed' :  'newlayout' }
 
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
 			current_user.try(:theme_variant) || :tailwind
 		Rails.logger.info("Using variant = #{var}")
 		request.variant = var
+	end
+
+	def remove_x_frame_options
+	  response.headers.except! 'X-Frame-Options'
 	end
 end
