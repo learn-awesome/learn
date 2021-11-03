@@ -56,7 +56,7 @@ Note that:
 - -p 5432:5432 : will expose this postgres on your docker host
 - -v creates a volume for persisted data
 
-Now, install and start Redis:
+Redis is no longer required but if you want, you can run that as well:
 
 `docker run -d --name redis6host --net dev-network --restart always -p 6379:6379 -v ~/redis6host:/data -e REDIS_PASSWORD=learn redis:6.2.4`
 
@@ -74,6 +74,8 @@ Using `docker-compose.yml`, the above two commands can also be run by:
 Now, the app can be accessed at https://localhost:8443
 
 In production, port 8443 will not be exposed and therefore, SSL proxy over port 3000 will be needed.
+
+To get shell access in the container, run `docer exec -it <container_name> /bn/bash`. All the environment variables will be already set so commands like `rails console` or `rake db:seed` can be run easily.
 
 # Local install
 
