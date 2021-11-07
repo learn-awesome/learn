@@ -82,7 +82,7 @@ ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_
 --
 
 CREATE TABLE public.activity_pub_followers (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id uuid NOT NULL,
     metadata text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE public.activity_pub_followers (
 --
 
 CREATE TABLE public.admin_users (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
@@ -123,7 +123,7 @@ CREATE TABLE public.ar_internal_metadata (
 --
 
 CREATE TABLE public.collection_items (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     collection_id uuid NOT NULL,
     item_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE public.collection_items (
 --
 
 CREATE TABLE public.collections (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     user_id uuid NOT NULL,
     is_public boolean DEFAULT false NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE public.collections (
 --
 
 CREATE TABLE public.course_invite_codes (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     code character varying NOT NULL,
     description text,
     course_id uuid NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE public.course_invite_codes (
 --
 
 CREATE TABLE public.courses (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     description text,
     image_url character varying,
@@ -188,7 +188,7 @@ CREATE TABLE public.courses (
 --
 
 CREATE TABLE public.decks (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying,
     user_id uuid NOT NULL,
     is_public boolean DEFAULT false NOT NULL,
@@ -244,7 +244,7 @@ ALTER SEQUENCE public.delayed_jobs_id_seq OWNED BY public.delayed_jobs.id;
 --
 
 CREATE TABLE public.flash_cards (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     question text NOT NULL,
     answer text NOT NULL,
     level integer DEFAULT 1 NOT NULL,
@@ -264,7 +264,7 @@ CREATE TABLE public.flash_cards (
 --
 
 CREATE TABLE public.group_members (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     group_id uuid NOT NULL,
     user_id uuid NOT NULL,
     role character varying NOT NULL,
@@ -279,7 +279,7 @@ CREATE TABLE public.group_members (
 --
 
 CREATE TABLE public.groups (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     description text,
     image_url character varying,
@@ -295,7 +295,7 @@ CREATE TABLE public.groups (
 --
 
 CREATE TABLE public.idea_sets (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -308,7 +308,7 @@ CREATE TABLE public.idea_sets (
 --
 
 CREATE TABLE public.item_reactions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     kind character varying NOT NULL,
     body text,
     user_id uuid NOT NULL,
@@ -333,7 +333,7 @@ CREATE TABLE public.item_types (
 --
 
 CREATE TABLE public.items (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     item_type_id character varying NOT NULL,
     estimated_time integer,
@@ -372,7 +372,7 @@ CREATE TABLE public.items (
 --
 
 CREATE TABLE public.levels (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     description text,
     course_id uuid NOT NULL,
@@ -391,7 +391,7 @@ CREATE TABLE public.levels (
 --
 
 CREATE TABLE public.links (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     url character varying NOT NULL,
     item_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -411,7 +411,7 @@ CREATE TABLE public.links (
 --
 
 CREATE TABLE public.people (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     description text,
     website character varying,
@@ -434,7 +434,7 @@ CREATE TABLE public.people (
 --
 
 CREATE TABLE public.person_idea_sets (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     person_id uuid NOT NULL,
     idea_set_id uuid NOT NULL,
     role character varying,
@@ -448,7 +448,7 @@ CREATE TABLE public.person_idea_sets (
 --
 
 CREATE TABLE public.recommendations (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     idea_set_id uuid NOT NULL,
     metadata text,
     created_at timestamp(6) without time zone NOT NULL,
@@ -467,7 +467,7 @@ CREATE TABLE public.recommendations (
 --
 
 CREATE TABLE public.review_reactions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     kind character varying NOT NULL,
     body text,
     user_id uuid NOT NULL,
@@ -482,7 +482,7 @@ CREATE TABLE public.review_reactions (
 --
 
 CREATE TABLE public.reviews (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id uuid NOT NULL,
     item_id uuid NOT NULL,
     status character varying,
@@ -515,7 +515,7 @@ CREATE TABLE public.schema_migrations (
 --
 
 CREATE TABLE public.slack_authorizations (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     token json NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -527,7 +527,7 @@ CREATE TABLE public.slack_authorizations (
 --
 
 CREATE TABLE public.slack_subscriptions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     slack_authorization_id uuid NOT NULL,
     channel_id character varying NOT NULL,
     topic_id uuid NOT NULL,
@@ -541,7 +541,7 @@ CREATE TABLE public.slack_subscriptions (
 --
 
 CREATE TABLE public.social_logins (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     auth0_uid character varying,
     auth0_info json,
     post_reviews boolean DEFAULT true NOT NULL,
@@ -556,7 +556,7 @@ CREATE TABLE public.social_logins (
 --
 
 CREATE TABLE public.topic_activity_pub_followers (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     topic_id uuid NOT NULL,
     metadata text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
@@ -569,7 +569,7 @@ CREATE TABLE public.topic_activity_pub_followers (
 --
 
 CREATE TABLE public.topic_idea_sets (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     topic_id uuid NOT NULL,
     idea_set_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -583,7 +583,7 @@ CREATE TABLE public.topic_idea_sets (
 --
 
 CREATE TABLE public.topic_reactions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     kind character varying NOT NULL,
     body text,
     user_id uuid NOT NULL,
@@ -598,7 +598,7 @@ CREATE TABLE public.topic_reactions (
 --
 
 CREATE TABLE public.topic_relations (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     from_id uuid NOT NULL,
     to_id uuid NOT NULL,
     kind character varying NOT NULL,
@@ -612,7 +612,7 @@ CREATE TABLE public.topic_relations (
 --
 
 CREATE TABLE public.topics (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     name character varying NOT NULL,
     search_index character varying NOT NULL,
     gitter_room character varying,
@@ -638,7 +638,7 @@ CREATE TABLE public.topics (
 --
 
 CREATE TABLE public.user_levels (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id uuid NOT NULL,
     course_id uuid NOT NULL,
     level_id uuid NOT NULL,
@@ -657,7 +657,7 @@ CREATE TABLE public.user_levels (
 --
 
 CREATE TABLE public.user_topics (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id uuid NOT NULL,
     topic_id uuid NOT NULL,
     action character varying NOT NULL,
@@ -671,7 +671,7 @@ CREATE TABLE public.user_topics (
 --
 
 CREATE TABLE public.user_user_relations (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     from_user_id uuid NOT NULL,
     to_user_id uuid NOT NULL,
     action character varying DEFAULT 'follow'::character varying NOT NULL,
@@ -686,7 +686,7 @@ CREATE TABLE public.user_user_relations (
 --
 
 CREATE TABLE public.user_vouchers (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id bigint NOT NULL,
     voucher_id bigint NOT NULL,
     status character varying NOT NULL,
@@ -701,7 +701,7 @@ CREATE TABLE public.user_vouchers (
 --
 
 CREATE TABLE public.users (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     nickname character varying NOT NULL,
     image_url character varying,
     bio character varying,
@@ -727,7 +727,7 @@ CREATE TABLE public.users (
 --
 
 CREATE TABLE public.vouchers (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     user_id bigint NOT NULL,
     code character varying NOT NULL,
     max_limit integer,
