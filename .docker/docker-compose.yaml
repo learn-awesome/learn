@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  learnawesome:
+    build: .
+    environment:
+      - DATABASE_HOST=pg13dbhost
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=learndb
+      - DATABASE_USERNAME=learn
+      - DATABASE_PASSWORD=learn
+      - RACK_ENV=development
+      - RAILS_ENV=development
+      - RAILS_LOG_TO_STDOUT=enabled
+      - RAILS_SERVE_STATIC_FILES=enabled
+      - LC_ALL=en_US.UTF-8
+      - LANGUAGE=en_US.UTF-8
+      - LANG=en_US.UTF-8
+    ports: 
+      - "8443:8443"
+      - "3000:3000"
+    depends_on:
+      - "pg13dbhost"
+
+  pg13dbhost:
+    image: postgres:13.3
+    environment:
+      - POSTGRES_USER=learn
+      - POSTGRES_PASSWORD=learn
+      - POSTGRES_DB=learndb
+      

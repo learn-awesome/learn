@@ -14,20 +14,11 @@ This is built using Rails 6.1, PostgreSQL, and Tailwind CSS
 
 For development, please come to [Slack](https://learnawesome.org/join_slack).
 
-# To Do
+There are multiple ways to run this app locally:
 
-- Improve the [mobile app](https://github.com/learn-awesome/mobile-app)
-
-- Improve automatic extraction of metadata such as topics,images etc from links to books, videos, courses etc.
-
-- Improve the topic hierarchy for easy navigation.
-
-- Improve the browser extension and the flashcard module.
-
-- Add richer metadata to items so that advanced search becomes more useful.
-
-# Develop with GitPod
-
+<details>
+  <summary>Develop with GitPod</summary>
+  
 If you have an account with gitpod.io, you can simply visit [this URL](https://gitpod.io/#https://github.com/learn-awesome/learn) to get a complete coding environment with everything pre-configured: PostgreSQL, Ruby, NodeJS. The database will already be pre-loaded with seed data and GitPod will open the webapp in a separate browser window (make sure that popup is not blocked by your browser).
 
 As you can see in .gitpod.yml, this will open all necessary tools in terminal: Main Rails server process, Rails console, Postgres console, Background job process etc.
@@ -35,8 +26,33 @@ As you can see in .gitpod.yml, this will open all necessary tools in terminal: M
 LearnAwesome uses Auth0 for logging-in and because GitPod gives you dynamically generated URLs, those will not be pre-approved. Therefore, login/signup in your GitPod instance will not work currently. We need to figure out a solution for this.
 
 This is the easiest way to start hacking on and contributing to the LearnAwesome codebase.
+</details>
 
-# Develop locally with Docker
+
+<details>
+  <summary>Run as a Docker Dev Environment</summary>
+
+You must have Docker Desktop installed with [Dev Environment](https://docs.docker.com/desktop/dev-environments/) feature supported.
+
+In Docker Dashboard -> Preferences -> General, the checkbox for "Use Docker Compose V2" must be SWITCHED OFF.
+
+Now choose Docker Dashboard -> Dev Environments -> Create -> Local Directory -> Choose the root folder of this project.
+Launch VS Code container for the app, open a new terminal and run `./entrypoint.sh`
+This will set up database, run migrations, insert seed data, and start puma on port 3000 and port 8443 with HTTPS.
+
+The config for this method is picked from `.docker/docker-compose.yaml` and not the `docker-compose.yml` in project's root directory.
+</details>
+
+<details>
+  <summary>Develop locally with Docker Compose</summary>
+
+Run `docker compose up --build` and access on https://localhost:8443/
+The config for this method comes from `docker-compose.yml` in project's root directory.
+
+</details>
+
+<details>
+  <summary>Develop locally with Docker</summary>
 
 You may need to put some values in `.env.dev`
 
@@ -75,9 +91,16 @@ Now, the app can be accessed at https://localhost:8443
 
 In production, port 8443 will not be exposed and therefore, SSL proxy over port 3000 will be needed.
 
+
 To get shell access in the container, run `docer exec -it <container_name> /bn/bash`. All the environment variables will be already set so commands like `rails console` or `rake db:seed` can be run easily.
 
-# Local install
+</details>
+
+
+
+
+<details>
+    <summary>Local install</summary>
 
 ```
 bundle install
@@ -126,3 +149,11 @@ bundle exec rake webdrivers:chromedriver:update
 Then:
 
 `bin/rails test:system`
+
+</details>
+
+<details>
+    <summary>Production Environment</summary>
+
+We use CapRover to deploy LearnAwesome on a web app. A postgresql instance is already provided by the platform, so we only need to run the app container (defined in `Dockerfile`). This is specified in `captain-definition` file in the project root directory.
+</details>

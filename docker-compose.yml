@@ -9,11 +9,15 @@ services:
     ports: 
       - "8443:8443"
       - "3000:3000"
-    networks:
-      - dev-network
+    depends_on:
+      - "pg13dbhost"
     volumes:
       - .:/app
-  
-networks:
-  dev-network:
-    external: true
+
+  pg13dbhost:
+    image: postgres:13.3
+    environment:
+      - POSTGRES_USER=learn
+      - POSTGRES_PASSWORD=learn
+      - POSTGRES_DB=learndb
+      
