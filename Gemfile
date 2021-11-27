@@ -123,7 +123,7 @@ gem 'final_redirect_url'
 gem 'delayed_job_active_record'
 
 gem 'turbo-rails'
-gem "tailwindcss-rails", "~> 0.3.3"
+gem "tailwindcss-rails", "~> 0.5.1"
 
 gem 'simple_form'
 gem 'heroicon'
