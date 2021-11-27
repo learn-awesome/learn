@@ -36,6 +36,7 @@ cron &
 if [[ "$RAILS_ENV" == "development" ]]; then
   echo "Running rake db:seed ..."
   bundle exec rake db:seed
+  bundle exec rake import:import['public/data1.json']
 fi
 
 if [[ "$RAILS_ENV" == "production" ]]; then

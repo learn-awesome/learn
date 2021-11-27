@@ -39,3 +39,5 @@ ubuntu-bionic-18.04-cloudimg-console.log
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.docker/devenvs-docker-compose.yaml
