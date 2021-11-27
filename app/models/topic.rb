@@ -324,7 +324,7 @@ class Topic < ApplicationRecord
 			end
 		end
 		result[misc] = misc_child unless misc_child.blank?
-		return result.sort_by {|k,v| k.name.try(:downcase).to_s }.to_h
+		return result.sort_by {|k,v| k.name.try(:downcase).to_s }.rotate.to_h
 	end
 
 	def activitypub_id

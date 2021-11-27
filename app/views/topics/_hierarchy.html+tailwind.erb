@@ -9,14 +9,14 @@
   <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-lg focus:outline-none">
 
                         <% if parent.persisted? %>
-                            <%= link_to parent.display_name, topic_path(parent), class: "mt-1 p-1 text-gray-900 font-semibold text-lg hover:text-blue-500" %></h2>
+                            <%= link_to parent.display_name, topic_path(parent), class: "mt-1 p-1 text-purple-600 underline font-semibold text-lg hover:text-purple-900", style: "text-decoration-style: dotted;" %></h2>
                         <% else %>
                             <h4 class="mt-1 p-1 text-gray-900 font-semibold text-lg"><%= parent.display_name %></h4>
                         <% end %>
 
                         <div class="mt-2 flex flex-wrap text-sm text-gray-900">
                         <% children.take(show_max).sort_by(&:name).each do |child| %>
-                            <%= link_to child.display_name_without_ancestors, topic_path(child), class: "hover:text-blue-500 px-2" %>
+                            <%= link_to child.display_name_without_ancestors, topic_path(child), class: "text-purple-600 no-underline hover:underline hover:text-purple-900 px-2" %>
                         <% end %>
                         </div>
                         <% if children.size > show_max %>
