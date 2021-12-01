@@ -1,9 +1,8 @@
-# FROM nileshtrivedi/ubuntu1804ruby3:1.0
-FROM ruby:3.0.1-buster
+FROM ruby:3.0.3-slim-buster
 
 RUN apt update -y \
     && apt install -y --no-install-recommends \
-        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools cron \
+        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools cron git libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # upgrade postgresql-client for pg_dump
