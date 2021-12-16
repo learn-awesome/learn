@@ -130,3 +130,4 @@ gem 'heroicon'
 gem "simple_form_tailwind_css", github: "abevoelker/simple_form_tailwind_css"
 
 gem 'rack-cors'
+
