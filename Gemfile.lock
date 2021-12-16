@@ -294,7 +294,7 @@ GEM
     pg (1.2.3)
     popper_js (2.9.3)
     public_suffix (4.0.6)
-    puma (5.3.2)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -488,7 +488,7 @@ DEPENDENCIES
   omniauth-auth0
   openai
   pg (>= 0.18, < 2.0)
-  puma (= 5.3.2)
+  puma (= 5.5.1)
   rack-cors
   rack-mini-profiler
   rails (= 6.1.4.4)
