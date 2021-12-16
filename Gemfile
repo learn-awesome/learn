@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.3.2'
+gem 'rails', '6.1.4.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -81,7 +81,7 @@ gem 'textacular', '5.4.0'
 
 gem "font-awesome-rails", '4.7.0.6'
 
-gem "sentry-raven"
+gem "sentry-ruby"
 
 gem 'twitter'
 gem 'httparty'
@@ -91,7 +91,7 @@ gem 'redcarpet'
 gem 'faker'
 
 gem "cocoon"
-gem "view_component", require: "view_component/engine"
+gem "view_component"
 
 gem 'rack-mini-profiler'
 
