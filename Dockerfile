@@ -1,21 +1,11 @@
-FROM ruby:3.0.3-slim-buster
+FROM ruby:3.0.2-slim-bullseye
 
 RUN apt update -y \
     && apt install -y --no-install-recommends \
-        locales postgresql-client build-essential nodejs npm curl ca-certificates gnupg redis-tools cron git libpq-dev \
+        locales postgresql-client-13 build-essential nodejs npm yarnpkg cron git libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# upgrade postgresql-client for pg_dump
-RUN curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main" > /etc/apt/sources.list.d/postgresql.list' 
-RUN apt update -y && apt install -y --no-install-recommends postgresql-client-13
-
-ENV LANGUAGE en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-
-RUN npm install -g yarn
-RUN yarn install --check-files
+RUN yarnpkg install --check-files
 
 RUN bundle config --global frozen 1
 
@@ -39,4 +29,3 @@ EXPOSE 8443
 EXPOSE 3000
 
 CMD ./entrypoint.sh
-
