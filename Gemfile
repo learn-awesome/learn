@@ -73,6 +73,7 @@ gem 'formadmin'
 
 gem 'omniauth'
 gem 'omniauth-auth0'
+gem "omniauth-rails_csrf_protection"
 
 gem 'bootstrap'
 gem 'jquery-rails'
@@ -82,6 +83,8 @@ gem 'textacular', '5.4.0'
 gem "font-awesome-rails", '4.7.0.6'
 
 gem "sentry-ruby"
+gem "sentry-rails"
+gem "sentry-delayed_job"
 
 gem 'twitter'
 gem 'httparty'

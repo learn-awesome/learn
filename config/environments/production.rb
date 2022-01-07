@@ -132,6 +132,6 @@ OmniAuth.config.on_failure = Proc.new { |env|
 }
 
 
-Raven.configure do |config|
+Sentry.init do |config|
   config.dsn = 'https://607e84c7d0ad454f9cbd666ca4285cd0:45b994b08f194f6cab29798193900d1a@sentry.io/1497282'
 end

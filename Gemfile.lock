@@ -289,6 +289,9 @@ GEM
     omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     openai (0.2.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
@@ -362,6 +365,12 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sentry-delayed_job (4.8.1)
+      delayed_job (>= 4.0)
+      sentry-ruby-core (~> 4.8.1)
+    sentry-rails (4.8.1)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 4.8.1)
     sentry-ruby (4.8.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
@@ -486,6 +495,7 @@ DEPENDENCIES
   oauth
   omniauth
   omniauth-auth0
+  omniauth-rails_csrf_protection
   openai
   pg (>= 0.18, < 2.0)
   puma (= 5.5.1)
@@ -494,6 +504,8 @@ DEPENDENCIES
   rails (= 6.1.4.4)
   redcarpet
   sass-rails (= 6.0.0)
+  sentry-delayed_job
+  sentry-rails
   sentry-ruby
   simple_form
   simple_form_tailwind_css!

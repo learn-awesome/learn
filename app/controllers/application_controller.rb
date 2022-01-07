@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	include ApplicationHelper
-	before_action :set_raven_context
+	before_action :set_sentry_context
 	before_action :allow_rack_mini_profiler
 	before_action :set_variant
 	after_action :remove_x_frame_options
@@ -8,12 +8,13 @@ class ApplicationController < ActionController::Base
 	layout proc { |controller| params['ext'].to_s == 'true' ? 'embed' :  'newlayout' }
 
 	private
-	def set_raven_context
+	def set_sentry_context
 		Rails.logger.info "ORIGIN = #{request.headers['origin']}"
+		return unless Rails.env.production?
 		if session[:userinfo]
-			Raven.user_context(id: session[:userinfo])
+			Sentry.set_user(id: session[:userinfo])
 		end
-		Raven.extra_context(params: params.to_unsafe_h, url: request.url)
+		Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
 	end
 
 	def allow_rack_mini_profiler
