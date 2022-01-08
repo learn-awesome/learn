@@ -4,6 +4,8 @@ class TopicsController < InheritedResources::Base
   include Secured
   before_action :logged_in_using_omniauth?, only: [:toggle_follow, :new, :create, :merge, :edit, :update, :wiki_update, :destroy]
   before_action :permission_check, only: [:merge, :edit, :update, :wiki_update, :destroy]
+  skip_before_action :verify_authenticity_token, :only => [:inbox]
+  
   respond_to :html, :json
   actions :all
 
