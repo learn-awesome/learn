@@ -328,7 +328,7 @@ class Topic < ApplicationRecord
 	end
 
 	def activitypub_id
-		id.to_s.gsub("-","_")
+		"topic_" + id.to_s.gsub("-","_")
 	end
 
 	def webfinger_json
