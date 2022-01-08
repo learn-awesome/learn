@@ -333,7 +333,7 @@ class Topic < ApplicationRecord
 
 	def webfinger_json
 		{
-			subject: "acct:topic_#{self.activitypub_id}@learnawesome.org",
+			subject: "acct:#{self.activitypub_id}@learnawesome.org",
 			links: [
 				{
 					rel: "self",
