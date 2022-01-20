@@ -10,7 +10,7 @@
 
 This is the code that powers https://learnawesome.org
 
-This is built using Rails 6.1, PostgreSQL, and Tailwind CSS
+This is built using Ruby, Rails, PostgreSQL, Tailwind CSSm and AlpineJS.
 
 For development, please come to [Slack](https://learnawesome.org/join_slack).
 
