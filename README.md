@@ -109,7 +109,9 @@ rake db:drop db:create db:migrate db:seed
 
 To import some data:
 ```
-rake import:import['public/data1.json'] import:import['public/data2.json'] mrb:import_experts
+rake import:import['public/data1.json'] 
+rake import:import['public/data2.json'] 
+rake mrb:import_experts
 ```
 
 Set-up caching in dev:

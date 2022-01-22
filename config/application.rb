@@ -17,6 +17,7 @@ module Learn
   	end
 
     config.active_record.schema_format = :sql
+    config.active_record.legacy_connection_handling = false
 
     config.active_job.queue_adapter = :delayed_job
 

@@ -221,7 +221,6 @@ SimpleForm.setup do |config|
   # want when using Tailwind. These settings disable them:
   config.button_class = nil
   config.default_form_class = nil
-  config.form_class = nil
   config.generate_additional_classes_for = []
   config.label_text = lambda { |label, required, explicit_label| "#{label}" }
 end
