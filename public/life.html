@@ -1,886 +1,716 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/twinklecss@1.1.0/twinkle.min.css"
-    />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .header-section {
+                @apply mt-2 grid grid-cols-4 divide-x rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200
+            }
+            .box-section{
+                @apply px-2 py-1 flex flex-col space-y-1
+            }
+            .textarea{
+                @apply flex-grow shadow-lg rounded-lg p-2 resize-none placeholder:text-3xl placeholder:pt-16
+            }
+            .min-ht{
+                min-height: 300px;
+            }
+            .header-input-title{
+                @apply text-sm p-1 text-center font-normal text-gray-900
+            }
+            .header-input-text{
+                @apply text-xl font-semibold text-indigo-600 text-center
+            }
+            .article{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht
+            }
+            .health{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht resize-y bg-pink-500 md:w-1/2 flex-shrink-0  md:resize-none lg:resize-x
+            }
+            .wealth{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht resize-y bg-green-500 flex-grow  lg:resize-none
+            }
+            .work{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht resize-y bg-yellow-500 md:w-1/2 flex-shrink-0 lg:resize-x  md:resize-none
+            }
+            .relationship{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht resize-y bg-blue-500 flex-grow  lg:resize-none
+            }
+            .joy{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht lg:h-1/2 bg-purple-500 resize-y md:resize-none lg:resize-y md:w-1/2 lg:w-full
+            }
+            .good{
+                @apply w-full overflow-scroll flex flex-col p-4 space-y-2 min-ht resize-y flex-grow bg-teal-500 md:w-1/2 lg:w-full
+            }
+        }
+    </style>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js"
       defer
     ></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/intro.js/minified/introjs.min.css"
-    />
-
     <style>
-      textarea::placeholder {
-        color: #aaa;
-        text-align: center;
-        font-size: 3em;
-      }
-
-      .introjs-tooltip {
-        min-width: 400px;
-      }
-
-      #lifedot {
-        position: relative;
-        bottom: 0;
-      }
-      #lifedotLabel {
-        display: none; /* sets to block on :hover and :focus */
-        background-color: rgba(0, 0, 0, 0.55);
-        border-radius: 0.5rem 0.5rem 0 0;
-        padding: 3px 5px;
-        position: fixed;
-        bottom: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      footer:hover #lifedotLabel,
-      footer:focus #lifedotLabel {
-        display: block;
-      }
-
-      input[type="range"] {
-        height: 30px;
-        -webkit-appearance: none;
-        margin: 10px 0;
-        width: 100%;
-      }
-      input[type="range"]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 10px;
-        cursor: pointer;
-        background: #a4cafe;
-      }
-      input[type="range"]::-webkit-slider-thumb {
-        box-shadow: 0 0 3px #a4cafe;
-        border: 1px solid #a4cafe;
-        height: 24px;
-        width: 16px;
-        border-radius: 4px;
-        background: #ffffff;
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -7px;
-      }
-      input[type="range"]:hover::-webkit-slider-thumb {
-        box-shadow: 0 0 0 3px #a4cafe;
-      }
-      input[type="range"]::-moz-range-track {
-        width: 100%;
-        height: 11px;
-        cursor: pointer;
-        background: #a4cafe;
-      }
-      input[type="range"]::-moz-range-thumb {
-        box-shadow: 0 0 3px #a4cafe;
-        border: 1px solid #a4cafe;
-        height: 24px;
-        width: 16px;
-        border-radius: 4px;
-        background: #ffffff;
-        cursor: pointer;
-      }
-      input[type="range"]:hover::-moz-range-thumb {
-        box-shadow: 0 0 0 3px #a4cafe;
-      }
-      input[type="range"]::-ms-track {
-        width: 100%;
-        height: 11px;
-        cursor: pointer;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-      }
-      input[type="range"]::-ms-fill-lower {
-        background: #a4cafe;
-        border: 0px solid #010101;
-        border-radius: 2px;
-        box-shadow: 1px 1px 1px #000000;
-      }
-      input[type="range"]::-ms-fill-upper {
-        background: #a4cafe;
-        border: 0px solid #010101;
-        border-radius: 2px;
-        box-shadow: 1px 1px 1px #000000;
-      }
-      input[type="range"]::-ms-thumb {
-        margin-top: 1px;
-        box-shadow: 0 0 3px #a4cafe;
-        border: 1px solid #a4cafe;
-        height: 24px;
-        width: 16px;
-        border-radius: 4px;
-        background: #ffffff;
-        cursor: pointer;
-      }
-      input[type="range"]:hover::-ms-thumb {
-        box-shadow: 0 0 0 3px #a4cafe;
-      }
-      input[type="range"]:focus::-ms-fill-lower {
-        background: #a4cafe;
-      }
-      input[type="range"]:focus::-ms-fill-upper {
-        background: #a4cafe;
-      }
-    </style>
-  </head>
-  <body class="">
-    <section class="min-h-screen flex flex-row" style="min-height: 93vh">
-      <aside class="w-2/3 flex-shrink-0 resize-x overflow-scroll flex flex-col">
-        <div class="h-1/2 w-full resize-y overflow-scroll flex">
-          <article
-            class="
-              bg-pink-300
-              w-1/2
-              flex-shrink-0
-              resize-x
-              overflow-scroll
-              p-4
-              flex flex-col
-              space-y-2
-            "
-          >
-            <dl
-              class="
-                mt-2
-                grid grid-cols-4
-                divide-y-0 divide-x
-                rounded-lg
-                bg-white
-                overflow-hidden
-                shadow
-                divide-y divide-gray-200
-              "
-            >
-              <div class="flex items-center justify-center text-red-500">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    opacity="0.2"
-                    d="M24 40.5C24 40.5 5.25 30 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5Z"
-                    fill="url(#paint0_linear)"
-                  />
-                  <path
-                    d="M6 24H13.5L16.5 19.5L22.5 28.5L25.5 24H30"
-                    stroke="url(#paint0_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M5.27143 17.9988C5.25724 17.7501 5.2501 17.5005 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5C24 40.5 16.5104 36.3058 10.9983 30.0002"
-                    stroke="url(#paint0_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="paint0_linear"
-                      x1="4"
-                      y1="0"
-                      x2="804"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#EF4444" />
-                      <stop offset="0.5" stop-color="#F43D6F" />
-                      <stop offset="1" stop-color="#EC4899" />
-                    </linearGradient>
-                    <linearGradient
-                      id="paint1_linear"
-                      x1="0"
-                      y1="0"
-                      x2="800"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#EAB308" />
-                      <stop offset="0.5" stop-color="#F49500" />
-                      <stop offset="1" stop-color="#F97316" />
-                    </linearGradient>
-                    <linearGradient
-                      id="paint2_linear"
-                      x1="0"
-                      y1="0"
-                      x2="800"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#22C55E" />
-                      <stop offset="0.5" stop-color="#00CE95" />
-                      <stop offset="1" stop-color="#2DD4BF" />
-                    </linearGradient>
-                    <linearGradient
-                      id="paint3_linear"
-                      x1="0"
-                      y1="0"
-                      x2="800"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#3B82F6" />
-                      <stop offset="0.5" stop-color="#00A2FC" />
-                      <stop offset="1" stop-color="#38BDF8" />
-                    </linearGradient>
-                    <linearGradient
-                      id="paint4_linear"
-                      x1="0"
-                      y1="0"
-                      x2="800"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#7C3AED" />
-                      <stop offset="0.5" stop-color="#A330E0" />
-                      <stop offset="1" stop-color="#C026D3" />
-                    </linearGradient>
-                    <linearGradient
-                      id="paint5_linear"
-                      x1="0"
-                      y1="0"
-                      x2="800"
-                      y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#7C3AED" />
-                      <stop offset="0.5" stop-color="#A330E0" />
-                      <stop offset="1" stop-color="#C026D3" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="h1label"
-                  value=""
-                  placeholder="Body Fat"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="h1val"
-                  value=""
-                  placeholder="20%"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="h2label"
-                  value=""
-                  placeholder="Deadlift"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="h2val"
-                  value=""
-                  placeholder="120kg"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="h3label"
-                  value=""
-                  placeholder="6km Run time"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="h3val"
-                  value=""
-                  placeholder="30min"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-            </dl>
-            <textarea
-              id="htext"
-              class="flex-grow shadow-lg rounded-lg bg-pink-50 p-2 resize-none"
-              placeholder="health"
-              id="health"
-            ></textarea>
-          </article>
-          <article
-            class="
-              bg-green-300
-              overflow-scroll
-              flex-grow flex flex-col
-              space-y-2
-              p-4
-            "
-          >
-            <dl
-              class="
-                mt-2
-                grid grid-cols-4
-                divide-y-0 divide-x
-                rounded-lg
-                bg-white
-                overflow-hidden
-                shadow
-                divide-y divide-gray-200
-              "
-            >
-              <div class="flex items-center justify-center text-green-400">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    opacity="0.2"
-                    d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
-                    fill="url(#paint2_linear)"
-                  />
-                  <path
-                    d="M24 13.5V16.5"
-                    stroke="url(#paint2_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M24 31.5V34.5"
-                    stroke="url(#paint2_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
-                    stroke="url(#paint2_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M19.5 31.5H26.25C27.2446 31.5 28.1984 31.1049 28.9017 30.4017C29.6049 29.6984 30 28.7446 30 27.75C30 26.7554 29.6049 25.8016 28.9017 25.0983C28.1984 24.3951 27.2446 24 26.25 24H21.75C20.7554 24 19.8016 23.6049 19.0983 22.9017C18.3951 22.1984 18 21.2446 18 20.25C18 19.2554 18.3951 18.3016 19.0983 17.5983C19.8016 16.8951 20.7554 16.5 21.75 16.5H28.5"
-                    stroke="url(#paint2_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="w1label"
-                  value=""
-                  placeholder="Net Worth"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="w1val"
-                  value=""
-                  placeholder="$40K"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="w2label"
-                  value=""
-                  placeholder="Savings/mo"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="w2val"
-                  value=""
-                  placeholder="$2,200"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="w3label"
-                  value=""
-                  placeholder="Expenses/mo"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="w3val"
-                  value=""
-                  placeholder="$4,200"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-            </dl>
-            <textarea
-              id="wtext"
-              class="flex-grow shadow-lg rounded-lg bg-green-50 p-2 resize-none"
-              placeholder="wealth"
-              id="wealth"
-            ></textarea>
-          </article>
-        </div>
-        <div class="w-full flex-grow overflow-scroll flex">
-          <article
-            class="
-              bg-yellow-300
-              w-1/2
-              flex-shrink-0
-              resize-x
-              overflow-scroll
-              p-4
-              flex flex-col
-              space-y-2
-            "
-          >
-            <dl
-              class="
-                mt-2
-                grid grid-cols-4
-                divide-y-0 divide-x
-                rounded-lg
-                bg-white
-                overflow-hidden
-                shadow
-                divide-y divide-gray-200
-              "
-            >
-              <div class="flex items-center justify-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    opacity="0.2"
-                    d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147Z"
-                    fill="url(#paint1_linear)"
-                  />
-                  <path
-                    d="M16.5005 43.5H31.5005"
-                    stroke="url(#paint1_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147V31.3147Z"
-                    stroke="url(#paint1_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M25.5229 10.647C27.3577 10.9589 29.0503 11.8327 30.367 13.1479C31.6838 14.463 32.5597 16.1545 32.8738 17.9889"
-                    stroke="url(#paint1_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="k1label"
-                  value=""
-                  placeholder="Work progress"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="k1val"
-                  value=""
-                  placeholder="71%"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="k2label"
-                  value=""
-                  placeholder="GPA"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="k2val"
-                  value=""
-                  placeholder="3.5"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="k3label"
-                  value=""
-                  placeholder="Books/mo"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="k3val"
-                  value=""
-                  placeholder="4"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-            </dl>
-            <textarea
-              id="ktext"
-              class="
-                flex-grow
-                shadow-lg
-                rounded-lg
-                bg-yellow-50
-                p-2
-                resize-none
-              "
-              placeholder="work"
-              id="learning"
-            ></textarea>
-          </article>
-          <article
-            class="
-              bg-blue-300
-              overflow-scroll
-              flex-grow
-              p-4
-              flex flex-col
-              space-y-2
-            "
-          >
-            <dl
-              class="
-                mt-2
-                grid grid-cols-4
-                divide-y-0 divide-x
-                rounded-lg
-                bg-white
-                overflow-hidden
-                shadow
-                divide-y divide-gray-200
-              "
-            >
-              <div class="flex items-center justify-center text-red-500">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    opacity="0.2"
-                    d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z"
-                    fill="url(#paint3_linear)"
-                  />
-                  <path
-                    d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z"
-                    stroke="url(#paint3_linear)"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                  />
-                  <path
-                    d="M29.1399 10.8632C30.4809 10.4854 31.8874 10.3993 33.2645 10.6108C34.6416 10.8223 35.9574 11.3264 37.1232 12.0892C38.2891 12.8521 39.2779 13.8559 40.0232 15.0331C40.7684 16.2102 41.2528 17.5335 41.4436 18.9136C41.6344 20.2937 41.5272 21.6987 41.1293 23.0339C40.7313 24.3691 40.0519 25.6036 39.1367 26.6541C38.2215 27.7046 37.0919 28.5468 35.8238 29.124C34.5557 29.7011 33.1787 29.9999 31.7854 30"
-                    stroke="url(#paint3_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M2.99927 37.0119C4.52202 34.8459 6.54357 33.0781 8.89324 31.8577C11.2429 30.6372 13.8517 30.0001 16.4994 30C19.1471 29.9999 21.756 30.6368 24.1058 31.8571C26.4555 33.0773 28.4772 34.845 30.0001 37.0109"
-                    stroke="url(#paint3_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M31.7854 30C34.4333 29.9981 37.0428 30.6343 39.3927 31.8546C41.7427 33.075 43.764 34.8437 45.2854 37.0109"
-                    stroke="url(#paint3_linear)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="r1label"
-                  value=""
-                  placeholder="Family Time"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="r1val"
-                  value=""
-                  placeholder="12h"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="r2label"
-                  value=""
-                  placeholder="Last party"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="r2val"
-                  value=""
-                  placeholder="2w"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
-                <input
-                  type="text"
-                  id="r3label"
-                  value=""
-                  placeholder="Followers #"
-                  class="
-                    text-sm
-                    uppercase
-                    text-center
-                    font-normal
-                    text-gray-900
-                  "
-                />
-                <input
-                  type="text"
-                  id="r3val"
-                  value=""
-                  placeholder="1200"
-                  class="text-xl font-semibold text-indigo-600 text-center"
-                />
-              </div>
-            </dl>
-            <textarea
-              id="rtext"
-              class="flex-grow shadow-lg rounded-lg bg-blue-50 p-2 resize-none"
-              placeholder="relationships"
-              id="relationships"
-            ></textarea>
-          </article>
-        </div>
-      </aside>
-      <main
-        class="
-          overflow-scroll
-          flex-grow
-          flex flex-col
-        "
-      >
-      <article class="h-1/2 w-full resize-y overflow-scroll flex flex-col bg-purple-300 p-4 space-y-2">
-        <dl
-          class="
-            mt-2
-            grid grid-cols-4
-            divide-y-0 divide-x
-            rounded-lg
-            bg-white
-            overflow-hidden
-            shadow
-            divide-y divide-gray-200
-          "
-        >
-          <div class="flex items-center justify-center text-red-500">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                opacity="0.2"
-                d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
-                fill="url(#paint4_linear)"
-              />
-              <path
-                d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
-                stroke="url(#paint4_linear)"
-                stroke-width="2"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M31.7959 28.4993C31.0052 29.8669 29.8686 31.0025 28.5002 31.792C27.1318 32.5815 25.5798 32.9971 24 32.9971C22.4202 32.9971 20.8683 32.5815 19.4999 31.7921C18.1315 31.0026 16.9948 29.867 16.2041 28.4994"
-                stroke="url(#paint4_linear)"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M17.25 22.5C18.4926 22.5 19.5 21.4926 19.5 20.25C19.5 19.0074 18.4926 18 17.25 18C16.0074 18 15 19.0074 15 20.25C15 21.4926 16.0074 22.5 17.25 22.5Z"
-                fill="url(#paint4_linear)"
-              />
-              <path
-                d="M30.75 22.5C31.9926 22.5 33 21.4926 33 20.25C33 19.0074 31.9926 18 30.75 18C29.5074 18 28.5 19.0074 28.5 20.25C28.5 21.4926 29.5074 22.5 30.75 22.5Z"
-                fill="url(#paint4_linear)"
-              />
-            </svg>
-          </div>
-          <div class="px-2 py-1 flex flex-col space-y-1">
-            <input
-              type="text"
-              id="j1label"
-              value=""
-              placeholder="Mood"
-              class="text-sm uppercase text-center font-normal text-gray-900"
-            />
-            <input
-              type="text"
-              id="j1val"
-              value=""
-              placeholder="upbeat"
-              class="text-xl font-semibold text-indigo-600 text-center"
-            />
-          </div>
-          <div class="px-2 py-1 flex flex-col space-y-1">
-            <input
-              type="text"
-              id="j2label"
-              value=""
-              placeholder="Play time/mo"
-              class="text-sm uppercase text-center font-normal text-gray-900"
-            />
-            <input
-              type="text"
-              id="j2val"
-              value=""
-              placeholder="6 days"
-              class="text-xl font-semibold text-indigo-600 text-center"
-            />
-          </div>
-          <div class="px-2 py-1 flex flex-col space-y-1">
-            <input
-              type="text"
-              id="j3label"
-              value=""
-              placeholder="-"
-              class="text-sm uppercase text-center font-normal text-gray-900"
-            />
-            <input
-              type="text"
-              id="j3val"
-              value=""
-              placeholder="-"
-              class="text-xl font-semibold text-indigo-600 text-center"
-            />
-          </div>
-        </dl>
-        <textarea
-          id="jtext"
-          class="flex-grow shadow-lg rounded-lg bg-purple-50 p-2 resize-none"
-          placeholder="joy"
-          id="joy"
-        ></textarea>
-        </article>
-        <article class="w-full overflow-scroll flex-grow flex flex-col bg-teal-300 p-4 space-y-2">
-            <dl
-              class="
-                mt-2
-                grid grid-cols-4
-                divide-y-0 divide-x
-                rounded-lg
-                bg-white
-                overflow-hidden
-                shadow
-                divide-y divide-gray-200
-              "
-            >
+        textarea::placeholder {
+          color: #aaa;
+          text-align: center;
+          /* font-size: 3em; */
+        }
+  
+        .introjs-tooltip {
+          min-width: 400px;
+        }
+  
+        #lifedot {
+          position: relative;
+          bottom: 0;
+        }
+        #lifedotLabel {
+          display: none; /* sets to block on :hover and :focus */
+          background-color: rgba(0, 0, 0, 0.55);
+          border-radius: 0.5rem 0.5rem 0 0;
+          padding: 3px 5px;
+          position: fixed;
+          bottom: 60px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        footer:hover #lifedotLabel,
+        footer:focus #lifedotLabel {
+          display: block;
+        }
+  
+        input[type="range"] {
+          height: 30px;
+          -webkit-appearance: none;
+          margin: 10px 0;
+          width: 100%;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 10px;
+          cursor: pointer;
+          background: #a4cafe;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          box-shadow: 0 0 3px #a4cafe;
+          border: 1px solid #a4cafe;
+          height: 24px;
+          width: 16px;
+          border-radius: 4px;
+          background: #ffffff;
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin-top: -7px;
+        }
+        input[type="range"]:hover::-webkit-slider-thumb {
+          box-shadow: 0 0 0 3px #a4cafe;
+        }
+        input[type="range"]::-moz-range-track {
+          width: 100%;
+          height: 11px;
+          cursor: pointer;
+          background: #a4cafe;
+        }
+        input[type="range"]::-moz-range-thumb {
+          box-shadow: 0 0 3px #a4cafe;
+          border: 1px solid #a4cafe;
+          height: 24px;
+          width: 16px;
+          border-radius: 4px;
+          background: #ffffff;
+          cursor: pointer;
+        }
+        input[type="range"]:hover::-moz-range-thumb {
+          box-shadow: 0 0 0 3px #a4cafe;
+        }
+        input[type="range"]::-ms-track {
+          width: 100%;
+          height: 11px;
+          cursor: pointer;
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+          background: #a4cafe;
+          border: 0px solid #010101;
+          border-radius: 2px;
+          box-shadow: 1px 1px 1px #000000;
+        }
+        input[type="range"]::-ms-fill-upper {
+          background: #a4cafe;
+          border: 0px solid #010101;
+          border-radius: 2px;
+          box-shadow: 1px 1px 1px #000000;
+        }
+        input[type="range"]::-ms-thumb {
+          margin-top: 1px;
+          box-shadow: 0 0 3px #a4cafe;
+          border: 1px solid #a4cafe;
+          height: 24px;
+          width: 16px;
+          border-radius: 4px;
+          background: #ffffff;
+          cursor: pointer;
+        }
+        input[type="range"]:hover::-ms-thumb {
+          box-shadow: 0 0 0 3px #a4cafe;
+        }
+        input[type="range"]:focus::-ms-fill-lower {
+          background: #a4cafe;
+        }
+        input[type="range"]:focus::-ms-fill-upper {
+          background: #a4cafe;
+        }
+      </style>
+</head>
+<body class="">
+    <main class="min-h-screen flex flex-col lg:flex-row w-full" style="min-height: 93vh">
+        <aside class="w-full lg:w-2/3 flex-shrink-0 lg:resize-x overflow-scroll flex flex-col">
+            <div class="h-1/2 w-full md:resize-y overflow-scroll flex flex-col md:flex-row">
+                <!-- health section  -->
+                <article class="health">
+                    <dl class="header-section">
+                    <div class="flex items-center justify-center text-red-500">
+                        <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            opacity="0.2"
+                            d="M24 40.5C24 40.5 5.25 30 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5Z"
+                            fill="url(#paint0_linear)"
+                        />
+                        <path
+                            d="M6 24H13.5L16.5 19.5L22.5 28.5L25.5 24H30"
+                            stroke="url(#paint0_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M5.27143 17.9988C5.25724 17.7501 5.2501 17.5005 5.25 17.25C5.25038 14.9965 6.03122 12.8127 7.45977 11.0699C8.88832 9.32701 10.8764 8.13272 13.086 7.69003C15.2956 7.24734 17.5903 7.58358 19.58 8.64158C21.5697 9.69958 23.1315 11.414 24 13.4935L24 13.4935C24.8685 11.414 26.4303 9.69959 28.42 8.64158C30.4097 7.58358 32.7044 7.24734 34.914 7.69003C37.1236 8.13272 39.1117 9.32701 40.5402 11.0699C41.9688 12.8127 42.7496 14.9965 42.75 17.25C42.75 30 24 40.5 24 40.5C24 40.5 16.5104 36.3058 10.9983 30.0002"
+                            stroke="url(#paint0_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <defs>
+                            <linearGradient
+                            id="paint0_linear"
+                            x1="4"
+                            y1="0"
+                            x2="804"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#EF4444" />
+                            <stop offset="0.5" stop-color="#F43D6F" />
+                            <stop offset="1" stop-color="#EC4899" />
+                            </linearGradient>
+                            <linearGradient
+                            id="paint1_linear"
+                            x1="0"
+                            y1="0"
+                            x2="800"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#EAB308" />
+                            <stop offset="0.5" stop-color="#F49500" />
+                            <stop offset="1" stop-color="#F97316" />
+                            </linearGradient>
+                            <linearGradient
+                            id="paint2_linear"
+                            x1="0"
+                            y1="0"
+                            x2="800"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#22C55E" />
+                            <stop offset="0.5" stop-color="#00CE95" />
+                            <stop offset="1" stop-color="#2DD4BF" />
+                            </linearGradient>
+                            <linearGradient
+                            id="paint3_linear"
+                            x1="0"
+                            y1="0"
+                            x2="800"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#3B82F6" />
+                            <stop offset="0.5" stop-color="#00A2FC" />
+                            <stop offset="1" stop-color="#38BDF8" />
+                            </linearGradient>
+                            <linearGradient
+                            id="paint4_linear"
+                            x1="0"
+                            y1="0"
+                            x2="800"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#7C3AED" />
+                            <stop offset="0.5" stop-color="#A330E0" />
+                            <stop offset="1" stop-color="#C026D3" />
+                            </linearGradient>
+                            <linearGradient
+                            id="paint5_linear"
+                            x1="0"
+                            y1="0"
+                            x2="800"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                            >
+                            <stop stop-color="#7C3AED" />
+                            <stop offset="0.5" stop-color="#A330E0" />
+                            <stop offset="1" stop-color="#C026D3" />
+                            </linearGradient>
+                        </defs>
+                        </svg>
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="h1label"
+                        value=""
+                        placeholder="Body Fat"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="h1val"
+                        value=""
+                        placeholder="20%"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="h2label"
+                        value=""
+                        placeholder="Deadlift"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="h2val"
+                        value=""
+                        placeholder="120kg"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="h3label"
+                        value=""
+                        placeholder="6km Run time"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="h3val"
+                        value=""
+                        placeholder="30min"
+                        class="header-input-text"
+                        />
+                    </div>
+                    </dl>
+                    <textarea id="htext" class="textarea bg-pink-50 text-pink-900" placeholder="health" id="health"></textarea>
+                </article>
+                <!-- wealth section  -->
+                <article class="wealth">
+                    <dl class="header-section">
+                    <div class="flex items-center justify-center text-green-400">
+                        <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            opacity="0.2"
+                            d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
+                            fill="url(#paint2_linear)"
+                        />
+                        <path
+                            d="M24 13.5V16.5"
+                            stroke="url(#paint2_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M24 31.5V34.5"
+                            stroke="url(#paint2_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
+                            stroke="url(#paint2_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M19.5 31.5H26.25C27.2446 31.5 28.1984 31.1049 28.9017 30.4017C29.6049 29.6984 30 28.7446 30 27.75C30 26.7554 29.6049 25.8016 28.9017 25.0983C28.1984 24.3951 27.2446 24 26.25 24H21.75C20.7554 24 19.8016 23.6049 19.0983 22.9017C18.3951 22.1984 18 21.2446 18 20.25C18 19.2554 18.3951 18.3016 19.0983 17.5983C19.8016 16.8951 20.7554 16.5 21.75 16.5H28.5"
+                            stroke="url(#paint2_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        </svg>
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="w1label"
+                        value=""
+                        placeholder="Net Worth"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="w1val"
+                        value=""
+                        placeholder="$40K"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="w2label"
+                        value=""
+                        placeholder="Savings/mo"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="w2val"
+                        value=""
+                        placeholder="$2,200"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="w3label"
+                        value=""
+                        placeholder="Expenses/mo"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="w3val"
+                        value=""
+                        placeholder="$4,200"
+                        class="header-input-text"
+                        />
+                    </div>
+                    </dl>
+                    <textarea id="wtext" class="textarea bg-green-50 text-green-900" placeholder="wealth" id="wealth"></textarea>
+                </article>
+            </div>
+            <div class="w-full flex-grow overflow-scroll flex flex-col md:flex-row md:resize-y">
+                <!-- work section  -->
+                <article class="work">
+                    <dl class="header-section">
+                    <div class="flex items-center justify-center">
+                        <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            opacity="0.2"
+                            d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147Z"
+                            fill="url(#paint1_linear)"
+                        />
+                        <path
+                            d="M16.5005 43.5H31.5005"
+                            stroke="url(#paint1_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M14.7574 31.3147C12.9738 29.9216 11.5292 28.1424 10.5321 26.1107C9.53503 24.0791 9.01145 21.8478 9.00072 19.5847C8.95579 11.4542 15.5105 4.6956 23.6388 4.50429C26.7885 4.42845 29.8822 5.34629 32.481 7.12762C35.0797 8.90895 37.0516 11.4633 38.117 14.4284C39.1823 17.3935 39.2869 20.6188 38.4161 23.6467C37.5453 26.6746 35.7431 29.3515 33.2653 31.2975C32.7196 31.7204 32.2771 32.2617 31.9714 32.8807C31.6656 33.4997 31.5046 34.1801 31.5005 34.8705L31.5005 36.0001C31.5005 36.3979 31.3425 36.7794 31.0612 37.0607C30.7799 37.342 30.3983 37.5 30.0005 37.5H18.0005C17.6026 37.5 17.2211 37.342 16.9398 37.0607C16.6585 36.7794 16.5005 36.3979 16.5005 36.0001L16.5004 34.8692C16.4987 34.1833 16.3409 33.5068 16.0389 32.8909C15.7369 32.275 15.2987 31.736 14.7574 31.3147V31.3147Z"
+                            stroke="url(#paint1_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M25.5229 10.647C27.3577 10.9589 29.0503 11.8327 30.367 13.1479C31.6838 14.463 32.5597 16.1545 32.8738 17.9889"
+                            stroke="url(#paint1_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        </svg>   
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="k1label"
+                        value=""
+                        placeholder="Work progress"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="k1val"
+                        value=""
+                        placeholder="71%"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="k2label"
+                        value=""
+                        placeholder="GPA"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="k2val"
+                        value=""
+                        placeholder="3.5"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="k3label"
+                        value=""
+                        placeholder="Books/mo"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="k3val"
+                        value=""
+                        placeholder="4"
+                        class="header-input-text"
+                        />
+                    </div>
+                    </dl>
+                    <textarea id="ktext" class="textarea bg-yellow-50 text-yellow-900" placeholder="work" id="learning"></textarea>
+                </article>
+                <!-- relationships section  -->
+                <article class="relationship">
+                <dl class="header-section">
+                    <div class="flex items-center justify-center text-red-500">
+                        <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            opacity="0.2"
+                            d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z"
+                            fill="url(#paint3_linear)"
+                        />
+                        <path
+                            d="M16.5001 30C21.8849 30 26.2501 25.6348 26.2501 20.25C26.2501 14.8652 21.8849 10.5 16.5001 10.5C11.1153 10.5 6.75012 14.8652 6.75012 20.25C6.75012 25.6348 11.1153 30 16.5001 30Z"
+                            stroke="url(#paint3_linear)"
+                            stroke-width="2"
+                            stroke-miterlimit="10"
+                        />
+                        <path
+                            d="M29.1399 10.8632C30.4809 10.4854 31.8874 10.3993 33.2645 10.6108C34.6416 10.8223 35.9574 11.3264 37.1232 12.0892C38.2891 12.8521 39.2779 13.8559 40.0232 15.0331C40.7684 16.2102 41.2528 17.5335 41.4436 18.9136C41.6344 20.2937 41.5272 21.6987 41.1293 23.0339C40.7313 24.3691 40.0519 25.6036 39.1367 26.6541C38.2215 27.7046 37.0919 28.5468 35.8238 29.124C34.5557 29.7011 33.1787 29.9999 31.7854 30"
+                            stroke="url(#paint3_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M2.99927 37.0119C4.52202 34.8459 6.54357 33.0781 8.89324 31.8577C11.2429 30.6372 13.8517 30.0001 16.4994 30C19.1471 29.9999 21.756 30.6368 24.1058 31.8571C26.4555 33.0773 28.4772 34.845 30.0001 37.0109"
+                            stroke="url(#paint3_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M31.7854 30C34.4333 29.9981 37.0428 30.6343 39.3927 31.8546C41.7427 33.075 43.764 34.8437 45.2854 37.0109"
+                            stroke="url(#paint3_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        </svg>  
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="r1label"
+                        value=""
+                        placeholder="Family Time"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="r1val"
+                        value=""
+                        placeholder="12h"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="r2label"
+                        value=""
+                        placeholder="Last party"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="r2val"
+                        value=""
+                        placeholder="2w"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="r3label"
+                        value=""
+                        placeholder="Followers #"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="r3val"
+                        value=""
+                        placeholder="1200"
+                        class="header-input-text"
+                        />
+                    </div>
+                </dl>
+                    <textarea id="rtext" class="textarea bg-blue-50 text-blue-900" placeholder="relationships" id="relationships"></textarea>
+                </article>
+            </div>
+        </aside>
+        <section class="flex flex-grow flex-col md:flex-row lg:flex-col lg:w-1/3 overflow-scroll w-full md:resize-y">
+            <!-- joy section  -->
+            <article class="joy">
+                <dl class="header-section">
+                    <div class="flex items-center justify-center text-red-500">
+                        <svg
+                        width="48"
+                        height="48"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            opacity="0.2"
+                            d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
+                            fill="url(#paint4_linear)"
+                        />
+                        <path
+                            d="M24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42Z"
+                            stroke="url(#paint4_linear)"
+                            stroke-width="2"
+                            stroke-miterlimit="10"
+                        />
+                        <path
+                            d="M31.7959 28.4993C31.0052 29.8669 29.8686 31.0025 28.5002 31.792C27.1318 32.5815 25.5798 32.9971 24 32.9971C22.4202 32.9971 20.8683 32.5815 19.4999 31.7921C18.1315 31.0026 16.9948 29.867 16.2041 28.4994"
+                            stroke="url(#paint4_linear)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M17.25 22.5C18.4926 22.5 19.5 21.4926 19.5 20.25C19.5 19.0074 18.4926 18 17.25 18C16.0074 18 15 19.0074 15 20.25C15 21.4926 16.0074 22.5 17.25 22.5Z"
+                            fill="url(#paint4_linear)"
+                        />
+                        <path
+                            d="M30.75 22.5C31.9926 22.5 33 21.4926 33 20.25C33 19.0074 31.9926 18 30.75 18C29.5074 18 28.5 19.0074 28.5 20.25C28.5 21.4926 29.5074 22.5 30.75 22.5Z"
+                            fill="url(#paint4_linear)"
+                        />
+                        </svg>
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="j1label"
+                        value=""
+                        placeholder="Mood"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="j1val"
+                        value=""
+                        placeholder="upbeat"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="j2label"
+                        value=""
+                        placeholder="Play time/mo"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="j2val"
+                        value=""
+                        placeholder="6 days"
+                        class="header-input-text"
+                        />
+                    </div>
+                    <div class="box-section">
+                        <input
+                        type="text"
+                        id="j3label"
+                        value=""
+                        placeholder="-"
+                        class="header-input-title"
+                        />
+                        <input
+                        type="text"
+                        id="j3val"
+                        value=""
+                        placeholder="-"
+                        class="header-input-text"
+                        />
+                    </div>
+                </dl>
+                <textarea id="jtext" class="textarea bg-purple-50 text-purple-900" placeholder="joy" id="joy"></textarea>
+            </article>
+            <!-- do good section  -->
+            <article class="good">
+                <dl class="header-section">
               <div class="flex items-center justify-center text-red-500">
                 <svg
                   width="48"
@@ -892,67 +722,62 @@
                   xmlns="http://www.w3.org/2000/svg"
                 >
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+                </svg>
               </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
+              <div class="box-section">
                 <input
                   type="text"
                   id="g1label"
                   value=""
                   placeholder="voice"
-                  class="text-sm uppercase text-center font-normal text-gray-900"
+                  class="header-input-title"
                 />
                 <input
                   type="text"
                   id="g1val"
                   value=""
                   placeholder="-"
-                  class="text-xl font-semibold text-indigo-600 text-center"
+                  class="header-input-text"
                 />
               </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
+              <div class="box-section">
                 <input
                   type="text"
                   id="g2label"
                   value=""
                   placeholder="vote"
-                  class="text-sm uppercase text-center font-normal text-gray-900"
+                  class="header-input-title"
                 />
                 <input
                   type="text"
                   id="g2val"
                   value=""
                   placeholder="-"
-                  class="text-xl font-semibold text-indigo-600 text-center"
+                  class="header-input-text"
                 />
               </div>
-              <div class="px-2 py-1 flex flex-col space-y-1">
+              <div class="box-section">
                 <input
                   type="text"
                   id="g3label"
                   value=""
                   placeholder="-"
-                  class="text-sm uppercase text-center font-normal text-gray-900"
+                  class="header-input-title"
                 />
                 <input
                   type="text"
                   id="g3val"
                   value=""
                   placeholder="-"
-                  class="text-xl font-semibold text-indigo-600 text-center"
+                  class="header-input-text"
                 />
               </div>
-            </dl>
-            <textarea
-              id="gtext"
-              class="flex-grow shadow-lg rounded-lg bg-purple-50 p-2 resize-none"
-              placeholder="do good"
-              id="good"
-            ></textarea>
+                </dl>
+            <textarea id="gtext" class="textarea bg-cyan-50 text-cyan-900" placeholder="do good" id="good"></textarea>
             </article>
-      </main>
-    </section>
-
+        </section>
+    </main>
+    
     <footer
       class="bg-gradient-to-b from-white to-gray-200 flex items-center"
       style="height: 7vh"
@@ -1132,5 +957,5 @@
         }
       });
     </script>
-  </body>
+</body>
 </html>
