@@ -1,3 +1,5 @@
+# This version of the project has been deprecated. Please see [the new pure-Javascript version](https://github.com/learn-awesome/learndb) for the latest code.
+
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/learn-awesome/learn) 
 
 # LearnAwesome
